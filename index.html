@@ -690,6 +690,89 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .flash>.ilu{position:absolute;right:10px;top:10px;width:76px;max-width:76px;pointer-events:none}
 .flash-cab{padding-right:80px;min-height:44px}
 .nota-q{margin:16px 2px 8px;font-weight:700}
+/* ---------- chama da ofensiva ---------- */
+.chama-viva{position:relative;flex:none;width:58px;height:70px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;color:inherit}
+.chama-viva svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 10px rgba(255,106,20,.35))}
+.chama-viva g{transform-box:fill-box;transform-origin:50% 100%}
+.cv-ext{animation:cv-danca 1.8s ease-in-out infinite}
+.cv-mei{animation:cv-danca 1.25s ease-in-out infinite reverse}
+.cv-int{animation:cv-int .9s ease-in-out infinite}
+.cv-brilho{fill:#ff8a1f;opacity:.22;transform-box:fill-box;transform-origin:center;animation:cv-brilho 1.8s ease-in-out infinite}
+.chama-viva.n2 svg{filter:drop-shadow(0 6px 14px rgba(255,106,20,.55))}
+.chama-viva.n3 svg{filter:drop-shadow(0 0 10px rgba(255,190,40,.7)) drop-shadow(0 6px 16px rgba(255,80,20,.55))}
+.chama-viva.apagada svg{filter:none}
+.chama-viva.apagada .cv-ext path{fill:var(--trilho)}
+.chama-viva.apagada .cv-mei path{fill:var(--line)}
+.chama-viva.apagada .cv-int,.chama-viva.apagada .cv-brilho{display:none}
+.chama-viva.apagada g{animation:none}
+.chama-viva.aticar svg{animation:cv-atica .65s cubic-bezier(.3,1.6,.5,1)}
+.chama-viva.apagada.aticar svg{animation:treme .45s}
+.chama-viva .faisca{position:absolute;left:50%;bottom:45%;width:7px;height:7px;border-radius:50%;background:#ffc53d;box-shadow:0 0 8px #ff8a1f;pointer-events:none;animation:faisca .85s ease-out forwards}
+@keyframes cv-danca{0%,100%{transform:scale(1,1) skewX(0)}25%{transform:scale(1.04,.95) skewX(-3deg)}50%{transform:scale(.96,1.06) skewX(2deg)}75%{transform:scale(1.02,.97) skewX(-1deg)}}
+@keyframes cv-int{0%,100%{transform:scale(1)}50%{transform:scale(.9,1.12)}}
+@keyframes cv-brilho{50%{opacity:.42;transform:scale(1.18)}}
+@keyframes cv-atica{0%{transform:scale(1)}35%{transform:scale(1.3) translateY(-5px)}100%{transform:scale(1)}}
+@keyframes faisca{from{transform:translate(-50%,0) scale(1);opacity:1}to{transform:translate(calc(-50% + var(--dx)),var(--dy)) scale(.2);opacity:0}}
+/* ---------- calendário da prova ---------- */
+.cal-prova{position:relative;flex:none;width:62px;height:74px;padding:0;border:0;background:none;cursor:pointer;perspective:320px;-webkit-tap-highlight-color:transparent;color:inherit}
+.cal-in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transform-origin:50% 0;transition:transform .65s cubic-bezier(.3,1.3,.5,1)}
+.cal-prova.virado .cal-in{transform:rotateY(180deg)}
+.cal-prova.cal-prova .cal-pag{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;border-radius:12px;background:var(--surface);border:1px solid var(--line);box-shadow:0 4px 0 -1px var(--surface),0 4px 0 0 var(--line),0 10px 18px -12px rgba(0,0,0,.45);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.cal-prova.cal-prova .cal-verso{transform:rotateY(180deg)}
+.cal-prova.cal-prova .cal-mes{display:block;width:100%;background:var(--lacre);color:#fff;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;line-height:1;padding:6px 0 5px;text-align:center}
+.cal-prova.cal-prova .cal-verso .cal-mes{background:var(--toga-txt)}
+.cal-prova.cal-prova .cal-dia{display:block;font-family:var(--f-display);font-size:1.75rem;font-weight:700;line-height:1;margin-top:7px;color:var(--fg);font-variant-numeric:tabular-nums}
+.cal-prova.cal-prova .cal-sem{display:block;font-size:.62rem;color:var(--muted);font-weight:700;margin-top:3px;line-height:1}
+.cal-prova::before,.cal-prova::after{content:"";position:absolute;top:-4px;left:17px;width:6px;height:11px;border-radius:3px;background:var(--muted);z-index:2}
+.cal-prova::after{left:auto;right:17px}
+.cal-prova.vazio .cal-dia{color:var(--muted)}
+/* ---------- estatísticas maiores ---------- */
+.hs{padding:16px 14px}
+.hs .anel{width:62px;height:62px}
+.atalhos .at-ilu{display:block;margin:-6px 0 2px}
+.atalhos .at-ilu .ilu{width:100%;max-width:132px;height:auto;display:block}
+.item>.tile{width:46px;height:46px;border-radius:12px}
+.item>.tile svg.i,.card>.tile svg.i{width:25px;height:25px}
+.card>.tile{width:48px;height:48px;border-radius:12px}
+/* ---------- animações ---------- */
+@keyframes ent-sobe{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes ent-pop{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.18)}100%{transform:scale(1)}}
+@keyframes cresce{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes flutua{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes ilu-pula{0%{scale:1}30%{scale:1.14}55%{scale:.94}80%{scale:1.04}100%{scale:1}}
+@keyframes pisca{0%,100%{opacity:1;scale:1}50%{opacity:.35;scale:.6}}
+@keyframes treme{0%,100%{transform:none}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+@keyframes vibra-ok{0%{transform:scale(1)}35%{transform:scale(1.035)}100%{transform:scale(1)}}
+@keyframes onda{to{transform:scale(1);opacity:0}}
+@keyframes vira-card{from{transform:perspective(900px) rotateY(80deg);opacity:.4}to{transform:none;opacity:1}}
+@keyframes desliza{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes revela{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes hoje-pulsa{0%,100%{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--toga-txt)}50%{box-shadow:0 0 0 2px var(--surface),0 0 0 7px color-mix(in srgb,var(--toga-txt) 25%,transparent)}}
+.ent{animation:ent-sobe .5s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*45ms)}
+.anim-on .semana i{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards;animation-delay:calc(var(--d,0)*70ms + .25s)}
+.semana .hoje.on i,.semana .hoje i{animation:hoje-pulsa 2.2s ease-in-out infinite}
+.anim-on .semana .hoje i{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards calc(var(--d,0)*70ms + .25s),hoje-pulsa 2.2s ease-in-out 1s infinite}
+.anim-on .b7{transform-origin:50% 100%;animation:cresce .7s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*70ms + .2s)}
+.anim-on .cal-prova .cal-in{animation:cal-cai .8s cubic-bezier(.3,1.4,.5,1) backwards .2s}
+@keyframes cal-cai{from{transform:rotateX(-85deg);opacity:0}to{transform:none;opacity:1}}
+.anel-v{transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.2,1)}
+.hoje-hero .ilu,.capa-tela .ilu,.vazio-ilu .ilu,.hoje-card .ilu{animation:flutua 5s ease-in-out infinite;transition:transform .25s ease-out;transform:perspective(500px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));cursor:pointer}
+.ilu.pula{animation:ilu-pula .6s cubic-bezier(.3,1.4,.5,1),flutua 5s ease-in-out infinite}
+.p-brilho{transform-box:fill-box;transform-origin:center;animation:pisca 2.6s ease-in-out infinite}
+.p-brilho:nth-of-type(2n){animation-delay:1.3s}
+.plano.feito>.tile{animation:ent-pop .5s cubic-bezier(.3,1.4,.5,1) backwards .3s}
+.card,.item,.botao,.alt,.opcoes button,.cores button,.estilos button,.paletas button{transition:transform .14s ease,background-color .15s,box-shadow .2s}
+.card:active:not(:disabled),.item:active:not(:disabled),.botao:active:not(:disabled),.alt:active:not(:disabled),.opcoes button:active,.cores button:active,.estilos button:active,.paletas button:active{transform:scale(.975)}
+.onda-host{position:relative;overflow:hidden}
+.onda{position:absolute;border-radius:50%;background:currentColor;opacity:.16;transform:scale(0);pointer-events:none;animation:onda .6s ease-out forwards}
+.alt.anim-ok{animation:vibra-ok .45s ease}
+.alt.anim-err{animation:treme .45s ease}
+.flash.vira{animation:vira-card .45s cubic-bezier(.2,.8,.2,1)}
+.flash.vira .flash-r{animation:revela .4s ease .2s backwards}
+.flash.desliza{animation:desliza .35s cubic-bezier(.2,.8,.2,1)}
+.estouro{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:60;animation:estoura .75s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes estoura{from{transform:translate(0,0) rotate(0) scale(1);opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.4);opacity:0}}
+html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *::after{animation:none!important;transition:none!important}
 </style>
 <style id="estilo-premium">
 /* =====================================================================
@@ -787,6 +870,7 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 [data-estilo="premium"] .hs b{font-size:1.75rem;font-weight:800;letter-spacing:-.04em;color:var(--fg)}
 [data-estilo="premium"] .hs b small{color:var(--muted);font-weight:600}
 [data-estilo="premium"] .hs span{color:var(--muted);font-size:.84rem;font-weight:500}
+[data-estilo="premium"] .cal-prova.cal-prova .cal-frente .cal-mes{background:var(--grad)}[data-estilo="premium"] .cal-prova .cal-pag{border-radius:16px}
 [data-estilo="premium"] .hs-ic,[data-estilo="premium"] .hs-chama{background:var(--grad-suave);color:var(--p1-txt);border-radius:14px}
 [data-estilo="premium"] .anel circle:last-child,[data-estilo="premium"] .anel .an-v{stroke:var(--p1)}
 [data-estilo="premium"] .semana .dia i{border-radius:50%}
@@ -807,8 +891,10 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"])[data-estilo="premium"] .tile,:root:not([data-theme="light"])[data-estilo="premium"] .tile-mini{background:color-mix(in srgb,var(--c) 26%,var(--surface));color:color-mix(in srgb,var(--c) 45%,#fff)}}
 [data-theme="dark"][data-estilo="premium"] .tile,[data-theme="dark"][data-estilo="premium"] .tile-mini{background:color-mix(in srgb,var(--c) 26%,var(--surface));color:color-mix(in srgb,var(--c) 45%,#fff)}
 [data-estilo="premium"] .plano .tile{color:#fff}
+[data-estilo="premium"] .lista .plano>.tile{background:var(--grad);color:#fff}
+[data-estilo="premium"] .lista .plano.feito>.tile{background:var(--ok)}
 [data-estilo="premium"] .lista{background:none;border:0;box-shadow:none;display:grid;gap:10px;border-radius:0}
-[data-estilo="premium"] .item{background:var(--surface);border:1px solid var(--line)!important;border-radius:22px;box-shadow:var(--sombra);padding:14px 16px;grid-template-columns:44px minmax(0,1fr) auto}
+[data-estilo="premium"] .item{background:var(--surface);border:1px solid var(--line)!important;border-radius:22px;box-shadow:var(--sombra);padding:14px 16px;grid-template-columns:48px minmax(0,1fr) auto}
 [data-estilo="premium"] .item:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))!important}
 [data-estilo="premium"] .item.ass{grid-template-columns:minmax(0,1fr) auto}
 [data-estilo="premium"] .item-tit{font-family:var(--f-body);font-weight:700;font-size:1rem;line-height:1.3;letter-spacing:-.015em}
@@ -1650,6 +1736,9 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <p class="nota">No estilo Clássico, a cor pinta a barra do topo e os destaques. Vale nos modos claro e escuro.</p>`}
  <div class="secao" role="heading" aria-level="2">Modo claro ou escuro</div>
  <div class="cores tres">${TEMAS.map(([k,n,d,i])=>`<button data-acao="cfg-tema" data-v="${k}" aria-pressed="${((S.cfg&&S.cfg.tema)||"auto")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="secao" role="heading" aria-level="2">Animações</div>
+ <div class="cores">${[["on","Ligadas","Movimento nas telas, na chama e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="cfg-anim" data-v="${k}" aria-pressed="${((S.cfg&&S.cfg.anim)||"on")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <p class="nota">Se o sistema estiver com movimento reduzido, o app respeita essa escolha.</p>
  <div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Quando ver a correção</div>
@@ -1672,8 +1761,8 @@ function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeSt
  `<main class="wrap">${capaTela("trofeu","Seu progresso","Cada dia de estudo conta. Veja onde você mais acerta e o que treinar.")}
  <div class="hoje-stats">
   <div class="hs hs-meta">${anel(hoje.q||0,meta,`${hoje.q||0} de ${meta} questões hoje`)}<div><b>${hoje.q||0}<small>/${meta}</small></b><span>questões hoje</span></div></div>
-  <div class="hs hs-seq"><span class="hs-chama" aria-hidden="true">${ic("chama")}</span><div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
-  <div class="hs hs-prova"><span class="hs-ic" aria-hidden="true">${ic("pct")}</span><div><b>${pctG===null?"—":pctG+"%"}</b><span>${pctG===null?"responda questões para medir":`de acerto em ${(o+e).toLocaleString("pt-BR")} questões`}</span></div></div>
+  <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
+  <div class="hs hs-prova">${anel(o,o+e,pctG===null?"Sem questões respondidas":`${pctG}% de acerto`)}<div><b>${pctG===null?"—":pctG+"%"}</b><span>${pctG===null?"responda questões para medir":`de acerto em ${(o+e).toLocaleString("pt-BR")} questões`}</span></div></div>
  </div>
  <p class="nota">Hoje: ${hoje.q||0} questões, ${hoje.c||0} cartões revisados e ${hoje.p||0} temas lidos. Dias com estudo registrados: ${ativos}.</p>
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Últimos 7 dias</div><span class="contador">${tot7} no total · meta batida em ${bateu} de 7</span></div>
@@ -1747,8 +1836,49 @@ function anel(v,max,rot){const p=max?Math.min(1,v/max):0;const C=2*Math.PI*42;
  return `<svg class="anel" viewBox="0 0 100 100" role="img" aria-label="${esc(rot)}"><circle cx="50" cy="50" r="42" class="anel-t"/><circle cx="50" cy="50" r="42" class="anel-v${p>=1?" cheio":""}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-p)).toFixed(1)}" transform="rotate(-90 50 50)"/></svg>`}
 function semana(){const D=S.dias||{};const fmt=new Intl.DateTimeFormat("pt-BR",{weekday:"long"});let h="",n=0;
  for(let k=6;k>=0;k--){const d=new Date();d.setDate(d.getDate()-k);const on=temAtiv(D[hojeStr(d.getTime())]);if(on)n++;
-  h+=`<li class="dia${on?" on":""}${k===0?" hoje":""}"><i aria-hidden="true">${on?ic("ok"):""}</i><span aria-hidden="true">${fmt.format(d).slice(0,1).toUpperCase()}</span><span class="sr">${fmt.format(d)}${k===0?" (hoje)":""}: ${on?"estudou":"sem estudo"}</span></li>`}
+  h+=`<li class="dia${on?" on":""}${k===0?" hoje":""}" style="--d:${6-k}"><i aria-hidden="true">${on?ic("ok"):""}</i><span aria-hidden="true">${fmt.format(d).slice(0,1).toUpperCase()}</span><span class="sr">${fmt.format(d)}${k===0?" (hoje)":""}: ${on?"estudou":"sem estudo"}</span></li>`}
  return `<ol class="semana" aria-label="Estudo nos últimos 7 dias: ${n} de 7">${h}</ol>`}
+/* ---------- chama da ofensiva e calendário da prova ---------- */
+function chamaViva(seq){const on=seq>0;const nv=seq>=30?" n3":seq>=7?" n2":"";
+ return `<button class="chama-viva${on?nv:" apagada"}" data-acao="chama" aria-label="${on?`Ofensiva de ${seq} dia${seq===1?"":"s"} seguido${seq===1?"":"s"}. Toque para atiçar a chama`:"Ofensiva apagada. Estude hoje para acender a chama"}"><svg viewBox="0 0 64 80" aria-hidden="true" focusable="false"><defs><linearGradient id="cv-g1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#e3321b"/><stop offset=".55" stop-color="#ff7a1a"/><stop offset="1" stop-color="#ffb52e"/></linearGradient><linearGradient id="cv-g2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff951f"/><stop offset="1" stop-color="#ffd84a"/></linearGradient><radialGradient id="cv-g3" cx=".5" cy=".78" r=".65"><stop offset="0" stop-color="#fffbea"/><stop offset="1" stop-color="#ffe26a"/></radialGradient></defs>
+ <ellipse class="cv-brilho" cx="32" cy="75" rx="22" ry="4.5"/>
+ <g class="cv-ext"><path fill="url(#cv-g1)" d="M32 78C16 78 6 67 6 53c0-12 7-20 13-27 1 6 4 10 8 11-1-13 5-25 17-33-2 11 3 18 9 26 4 6 7 12 7 21 0 16-12 27-28 27z"/></g>
+ <g class="cv-mei"><path fill="url(#cv-g2)" d="M32 78c-10 0-17-7-17-16 0-8 5-13 9-18 1 4 3 7 6 8 0-7 3-13 9-17-1 7 2 11 5 16 3 4 5 8 5 13 0 8-7 14-17 14z"/></g>
+ <g class="cv-int"><path fill="url(#cv-g3)" d="M32 78c-5 0-9-4-9-9 0-5 3-8 6-11 1 3 2 4 4 5 1-3 2-6 5-8 0 4 1 6 2 9 1 2 1 4 1 6 0 5-4 8-9 8z"/></g></svg></button>`}
+const MESES_C=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+function calProva(falta){const p=S.cfg&&S.cfg.prova;
+ if(!p||falta===null)return `<button class="cal-prova vazio" data-acao="ir-raiz" data-tela="config" aria-label="Definir a data da prova nas configurações"><span class="cal-in"><span class="cal-pag"><span class="cal-mes">prova</span><span class="cal-dia">?</span><span class="cal-sem">definir</span></span></span></button>`;
+ const d=new Date(p+"T12:00:00");const sem=new Intl.DateTimeFormat("pt-BR",{weekday:"short"}).format(d).replace(".","");const ok=falta>=0;const semanas=falta>=14;
+ return `<button class="cal-prova" data-acao="cal-vira" aria-label="Prova em ${d.getDate()} de ${new Intl.DateTimeFormat("pt-BR",{month:"long"}).format(d)}. Toque para virar o calendário"><span class="cal-in"><span class="cal-pag cal-frente"><span class="cal-mes">${MESES_C[d.getMonth()]}</span><span class="cal-dia">${d.getDate()}</span><span class="cal-sem">${sem}</span></span><span class="cal-pag cal-verso"><span class="cal-mes">faltam</span><span class="cal-dia">${ok?(semanas?Math.floor(falta/7):falta):"0"}</span><span class="cal-sem">${ok?(semanas?"semanas":falta===1?"dia":"dias"):"passou"}</span></span></span></button>`}
+/* ---------- animações e efeitos interativos ---------- */
+function animOn(){if(S.cfg&&S.cfg.anim==="off")return false;try{return !(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}catch(e){return true}}
+function contar(el){const t=el.firstChild;if(!t||t.nodeType!==3)return;const m=t.nodeValue.match(/^(\d+)(%?)$/);if(!m)return;const fim=+m[1];if(fim<2)return;const t0=performance.now(),dur=750;
+ (function p(now){const k=Math.min(1,(now-t0)/dur);t.nodeValue=Math.round(fim*(1-Math.pow(1-k,3)))+m[2];if(k<1&&el.isConnected)requestAnimationFrame(p);else t.nodeValue=fim+m[2]})(t0)}
+function animarTela(nova){document.documentElement.setAttribute("data-anim",S.cfg&&S.cfg.anim==="off"?"off":"on");
+ if(!nova||!animOn())return;const m=document.querySelector("#app main");if(!m)return;let i=0;const GRUPO=".lista,.grade-mat,.hoje-stats,.estilos,.cores,.paletas,.opcoes";
+ const marca=x=>{x.style.setProperty("--i",Math.min(i++,14));x.classList.add("ent")};
+ [...m.children].forEach(c=>{if(c.matches(GRUPO))[...c.children].forEach(marca);else marca(c)});
+ m.querySelectorAll(".hs b").forEach(contar);
+ m.querySelectorAll(".anel-v").forEach(c=>{const fim=c.getAttribute("stroke-dashoffset");c.style.transition="none";c.style.strokeDashoffset=c.getAttribute("stroke-dasharray");requestAnimationFrame(()=>requestAnimationFrame(()=>{c.style.transition="";c.style.strokeDashoffset=fim}))});
+ m.querySelectorAll(".b7").forEach((b,k)=>b.style.setProperty("--i",k));
+ m.classList.add("anim-on")}
+function faiscas(btn){if(!animOn())return;btn.classList.remove("aticar");void btn.offsetWidth;btn.classList.add("aticar");if(btn.classList.contains("apagada"))return;
+ for(let k=0;k<10;k++){const s=document.createElement("span");s.className="faisca";const a=-Math.PI/2+(Math.random()-.5)*2.2,r=26+Math.random()*30;s.style.setProperty("--dx",(Math.cos(a)*r).toFixed(1)+"px");s.style.setProperty("--dy",(Math.sin(a)*r).toFixed(1)+"px");s.style.animationDelay=(Math.random()*.12).toFixed(2)+"s";btn.appendChild(s);setTimeout(()=>s.remove(),1100)}}
+function estouro(el,cores){if(!el||!animOn())return;const r=el.getBoundingClientRect();const cx=r.left+Math.min(r.width,60)/2+8,cy=r.top+r.height/2;
+ for(let k=0;k<16;k++){const s=document.createElement("span");s.className="estouro";s.style.left=cx+"px";s.style.top=cy+"px";s.style.background=cores[k%cores.length];const a=Math.random()*Math.PI*2,d=40+Math.random()*50;
+  s.style.setProperty("--dx",(Math.cos(a)*d).toFixed(0)+"px");s.style.setProperty("--dy",(Math.sin(a)*d-20).toFixed(0)+"px");s.style.setProperty("--r",Math.round(Math.random()*540)+"deg");document.body.appendChild(s);setTimeout(()=>s.remove(),900)}}
+function efeitoResposta(certo){if(!animOn())return;const ok=document.querySelector("#app .alt.certa"),er=document.querySelector("#app .alt.errada");
+ if(certo&&ok){ok.classList.add("anim-ok");estouro(ok,["#3bb273","#f2b632","#2e86ab","#ffffff"])}else if(er){er.classList.add("anim-err");if(ok)ok.classList.add("anim-ok")}
+ else{const sel=document.querySelector('#app .alt[aria-checked="true"]');if(sel)sel.classList.add("anim-ok")}}
+function efeitoCartao(cls){if(!animOn())return;const f=document.querySelector("#app .flash");if(f){f.classList.remove("vira","desliza");void f.offsetWidth;f.classList.add(cls)}}
+document.addEventListener("pointerdown",e=>{if(!animOn())return;const el=e.target.closest(".card,.item,.botao,.alt,.opcoes button,.cores button,.estilos button,.paletas button");if(!el||el.disabled)return;
+ const r=el.getBoundingClientRect();const t=Math.max(r.width,r.height)*2.2;const o=document.createElement("span");o.className="onda";o.style.width=o.style.height=t+"px";o.style.left=(e.clientX-r.left-t/2)+"px";o.style.top=(e.clientY-r.top-t/2)+"px";
+ el.classList.add("onda-host");el.appendChild(o);setTimeout(()=>o.remove(),650)},{passive:true});
+let iluInclinada=null;
+document.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||!animOn())return;const box=e.target.closest&&e.target.closest(".hoje-hero,.capa-tela,.vazio-ilu");const ilu=box&&box.querySelector(".ilu");
+ if(iluInclinada&&iluInclinada!==ilu){iluInclinada.style.removeProperty("--rx");iluInclinada.style.removeProperty("--ry");iluInclinada=null}
+ if(!ilu)return;const r=box.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ilu.style.setProperty("--ry",(x*18).toFixed(1)+"deg");ilu.style.setProperty("--rx",(-y*14).toFixed(1)+"deg");iluInclinada=ilu},{passive:true});
+document.addEventListener("click",e=>{const ilu=e.target.closest&&e.target.closest(".hoje-hero .ilu,.capa-tela .ilu,.vazio-ilu .ilu");if(!ilu||!animOn())return;ilu.classList.remove("pula");void ilu.getBoundingClientRect();ilu.classList.add("pula");setTimeout(()=>ilu.classList.remove("pula"),650)});
 function dataHoje(){const t=new Intl.DateTimeFormat("pt-BR",{weekday:"long",day:"numeric",month:"long"}).format(new Date());return t.charAt(0).toUpperCase()+t.slice(1)}
 function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaVencidos(),aps=apsVencidas(),errs=errosHoje().length;const seq=sequencia();const meta=metaDia();const hoje=(S.dias&&S.dias[hojeStr()])||{};const falta=diasProva();
  const foco=discsFoco();const precisa=[...new Set(foco.map(periodoDe).filter(i=>i>=0&&!apOk(i)))];if(precisa.length)Promise.all(precisa.map(carregarApP)).then(()=>reRenderSe("hoje"));
@@ -1777,18 +1907,18 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  </section>
  <div class="hoje-stats">
   <div class="hs hs-meta">${anel(hoje.q||0,meta,`${hoje.q||0} de ${meta} questões hoje`)}<div><b>${hoje.q||0}<small>/${meta}</small></b><span>questões hoje</span></div></div>
-  <div class="hs hs-seq"><span class="hs-chama" aria-hidden="true">${ic("chama")}</span><div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
-  <div class="hs hs-prova"><span class="hs-ic" aria-hidden="true">${ic("calendario")}</span><div><b>${falta===null||falta<0?"—":falta}</b><span>${falta===null?"sem data de prova":falta<0?"a prova já passou":falta===1?"dia para a prova":"dias para a prova"}</span></div></div>
+  <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
+  <div class="hs hs-prova">${calProva(falta)}<div><b>${falta===null||falta<0?"—":falta}</b><span>${falta===null?"sem data de prova":falta<0?"a prova já passou":falta===1?"dia para a prova":"dias para a prova"}</span></div></div>
  </div>
  ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Plano de hoje</div><span class="contador">${nFeito} de ${nTot} feito${nFeito===1?"":"s"}</span></div>
  <div class="lista plano-lista">${itens}</div>
  ${per!==null?`<div class="dica"><p style="margin:0"><b>${esc(F.nome)}.</b> ${esc(F.txt)} <button class="link-inline" data-acao="ir-raiz" data-tela="config">Alterar</button></p></div>`:""}
  <div class="secao" role="heading" aria-level="2">Atalhos</div><div class="grade-mat atalhos">
- <button class="card" data-acao="ir-raiz" data-tela="busca">${tile("var(--toga)","lupa")}<b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
- <button class="card" data-acao="ir-raiz" data-tela="cartoes">${tile("var(--lacre)","cartas")}<b>Todos os cartões</b><small>Escolha uma matéria</small></button>
- <button class="card" data-acao="ir-raiz" data-tela="favs">${tile("var(--nv5)","marcador")}<b>Favoritos e anotações</b><small>Seus temas marcados</small></button>
- <button class="card" data-acao="ir-raiz" data-tela="metas">${tile("var(--ok)","barras")}<b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button></div></main>`}
+ <button class="card" data-acao="ir-raiz" data-tela="busca"><span class="at-ilu">${ilustra("lupa","var(--toga)")}</span><b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="cartoes"><span class="at-ilu">${ilustra("cartas","var(--lacre)")}</span><b>Todos os cartões</b><small>Escolha uma matéria</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="favs"><span class="at-ilu">${ilustra("marcador","var(--nv5)")}</span><b>Favoritos e anotações</b><small>Seus temas marcados</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="metas"><span class="at-ilu">${ilustra("alvo","var(--ok)")}</span><b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button></div></main>`}
 
 /* ---------- busca nas apostilas ---------- */
 const limpo=t=>String(t).replace(/\*\*|==/g,"").replace(/^(::\S+|!!|\?\?|>|#+|\* )\s?/gm,"").replace(/\s\|\s/g," — ").replace(/\|/g," ");
@@ -1980,12 +2110,13 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();
+  const telaNova=!rota.manterScroll;
   app.innerHTML=`<a class="pular" href="#conteudo">Pular para o conteúdo</a>`+h;
   {const m=app.querySelector("main");if(m){m.id="conteudo";m.tabIndex=-1}}
   if(gaveta){const g=app.querySelector(".gaveta nav button");if(g&&document.activeElement&&!document.activeElement.closest(".gaveta"))try{g.focus({preventScroll:true})}catch(e){}}
   if(rota.tela==="quiz")iniciarRelogio();
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
-  acompanharLeitura();realcarPagina();
+  acompanharLeitura();realcarPagina();animarTela(telaNova);
 }
 
 /* ---------- lei seca ---------- */
@@ -2194,7 +2325,7 @@ function comecar(key){const s=sim(key);if(!s||!s.qids.length)return;
 
 /* ---------- prova ---------- */
 function responderQ(o){const s=sessao,id=s.qids[idx];if(!s.corrFinal&&s.resp[id]!==undefined)return;
-  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0);s.pos=idx;salvar();rota.manterScroll=true;render()}
+  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal)efeitoResposta(o===0);else efeitoResposta(null)}
 function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   if(!q){return topo("Questão indisponível","",{voltarAcao:"pausar"})+`<main class="wrap">${vazio("carimbo","Questão retirada do banco","Ela foi removida depois de uma revisão. Passe para a próxima: a sua nota considera só as questões disponíveis.")}</main>`+navQuiz()}
   const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
@@ -2299,13 +2430,16 @@ document.addEventListener("click",e=>{
     case "cards-per":rota.p=+b.dataset.p;rota.manterScroll=true;render();break;
     case "cards-disc":{const d=b.dataset.d;iniciarDeck([d],15,"Cartões · "+nomeCurto(infoDisc(d).nome));break}
     case "cards-venc":{const ds=[...new Set(Object.keys(S.cards||{}).filter(id=>S.cards[id].due<=Date.now()).map(id=>id.split(":")[0]))].filter(d=>DISC[d]);iniciarDeck(ds,0,"Revisão de hoje");break}
-    case "card-virar":deck.virado=true;rota.manterScroll=true;render();break;
+    case "card-virar":deck.virado=true;rota.manterScroll=true;render();efeitoCartao("vira");break;
     case "card-nota":avaliarCartao(+b.dataset.v);render();break;
     case "rev-ap":{const d=b.dataset.d;const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*864e5;salvar()}ir({tela:"ler",d,pg:999,pagina:true});break}
     case "meta":S.cfg=S.cfg||{};S.cfg.meta=+b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
+    case "chama":faiscas(b);break;
+    case "cal-vira":b.classList.toggle("virado");break;
+    case "cfg-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-tema":S.cfg=S.cfg||{};S.cfg.tema=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-modoq":S.cfg=S.cfg||{};S.cfg.modoQ=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-corr":S.cfg=S.cfg||{};S.cfg.corrFinal=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
