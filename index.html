@@ -684,6 +684,30 @@ html[data-anim="on"] .pv-cfg.pv-nova{animation:ent-pop .55s cubic-bezier(.2,1.4,
 .pv-erro{margin:0;color:var(--erro);min-height:0}
 .pv-como{margin-top:4px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .pv-como summary{cursor:pointer;font-weight:700}.pv-como ul{margin:8px 0 0;padding-left:18px;font-size:.9rem;line-height:1.5}
+.pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
+.pv-notas summary{cursor:pointer;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:6px}.pv-notas summary .i{width:16px;height:16px;color:var(--c)}
+.pv-nts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+@media (min-width:520px){.pv-nts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pv-nt{display:grid;gap:2px;font-size:.8rem}.pv-nt span{font-weight:700}.pv-nt small{color:var(--muted);font-size:.72rem}
+.pv-nt input,.pv-vale input{width:100%;box-sizing:border-box;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:700 1rem/1.2 inherit;min-width:0}
+.pv-vale{margin:8px 0 0;font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:4px}.pv-vale input{width:58px;padding:4px 6px;font-size:.85rem}
+.pv-res{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);--rc:var(--c)}
+.pv-res.vazio p{margin:0;font-size:.85rem;color:var(--muted)}
+.pv-res.ok{--rc:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--line))}.pv-res.ex{--rc:#ff8a1f;border-color:color-mix(in srgb,#ff8a1f 45%,var(--line))}
+.pv-res.pa{--rc:#2e86ab}.pv-res.rp{--rc:var(--erro)}
+.pv-regua{position:relative;height:12px;border-radius:99px;background:var(--trilho);margin:14px 0 6px}
+.pv-regua-v{position:absolute;left:0;top:0;bottom:0;border-radius:inherit;background:var(--rc)}
+.pv-marca{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--fg);opacity:.55}
+.pv-marca span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font:700 .65rem/1.4 var(--f-display);font-style:normal}
+.pv-alvo{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:3px solid var(--rc);background:var(--surface)}
+.pv-res-t{display:flex;gap:8px;align-items:flex-start;margin-top:6px}.pv-res-t b{display:block;font-size:.95rem}.pv-res-t p{margin:2px 0 0;font-size:.85rem;line-height:1.45}.pv-res-t small{display:block;margin-top:4px;color:var(--muted);font-size:.75rem}
+.pv-selo{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ok);color:#fff}.pv-selo .i{width:18px;height:18px}
+.pv-meta-nota{margin:8px 0 0;font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:6px}.pv-meta-nota .i{width:16px;height:16px;color:var(--c)}
+html[data-anim="on"] .pv-regua-v{animation:pv-enche 1s cubic-bezier(.2,.8,.3,1) both .15s;transform-origin:0 50%}
+html[data-anim="on"] .pv-alvo{animation:pv-pulsa 1.4s ease-in-out infinite}
+html[data-anim="on"] .pv-res.pv-novo{animation:pv-res-in .4s ease-out both}
+@keyframes pv-res-in{from{opacity:0;transform:translateY(6px)}}
+html[data-anim="on"] .pv-res.ok .pv-selo{animation:ent-pop .6s cubic-bezier(.2,1.6,.4,1) both .5s}
 .treme{animation:treme .45s}
 [data-estilo="premium"] .pv,[data-estilo="premium"] .pv-cfg{border-radius:22px;border-left-width:0;box-shadow:inset 5px 0 0 var(--c),0 10px 24px -18px color-mix(in srgb,var(--c) 60%,transparent)}
 @keyframes pv-pulsa{50%{transform:scale(1.08)}}
@@ -1946,7 +1970,7 @@ function metaBanner(){const m=metaDia();const q=((S.dias||{})[hojeStr()]||{}).q|
    Cada prova = uma matéria da faculdade + uma ou mais datas (P1, P2, substitutiva…).
    O app mede o preparo de cada uma (questões feitas, acerto e leitura da apostila) e
    distribui o estudo até cada data, dando prioridade à prova mais próxima e menos preparada. */
-const ROTULOS_PROVA=["P1","P2","P3","Substitutiva","Exame final","Trabalho","Outra"];
+const ROTULOS_PROVA=["N1","N2","Substitutiva (por falta)","Exame final","Trabalho","Outra"];
 const avOn=()=>!!(S.cfg&&S.cfg.av);
 const provasFac=()=>((S.cfg&&S.cfg.provasFac)||[]).filter(x=>DISC[x.d]);
 const diasAte=dt=>Math.round((inicioDia(new Date(dt+"T12:00:00").getTime())-inicioDia())/864e5);
@@ -1971,17 +1995,56 @@ function provasAtivas(){return provasFac().map(estadoProva).filter(x=>x.prox).so
 function proxSimDisc(d){const n=nFac(d);for(let i=0;i<n;i++){const k=`fac:${d}:${i}`;if(livreSim(k))return k}return null}
 /* meta diária: soma o que cada prova pede (as próximas 3 semanas), sem baixar da meta normal */
 function metaProvas(){if(!avOn())return 0;return Math.min(100,provasAtivas().filter(x=>x.prox.n<=21).reduce((s,x)=>s+x.alvo,0))}
+/* ---------- notas no formato Afya Unigranrio ----------
+   N1 + N2 somam até 100 pontos. Com 70 ou mais, aprovação direta. De 40 a 69,9 a pessoa
+   vai para o exame final (toda a matéria, de 0 a 100) e passa se (N1 + N2 + exame) ÷ 2 for 50 ou mais.
+   Abaixo de 40, reprovação. A substitutiva é só para quem faltou: entra no lugar da N1 ou da N2 que ficou sem nota. */
+const NOTA_REGRA={dir:70,ex:40,fim:50};
+const fmtNota=v=>(Math.round(v*10)/10).toLocaleString("pt-BR");
+function situacaoNotas(p){const N=p.notas||{};const le=k=>N[k]===""||N[k]==null||isNaN(+N[k])?null:+N[k];
+ const v1=le("v1")||50,v2=le("v2")||(100-v1>0?100-v1:50);const lim=(x,m)=>x===null?null:Math.max(0,Math.min(m,x));
+ let n1=lim(le("n1"),v1),n2=lim(le("n2"),v2),sub=le("sub"),ex=lim(le("ex"),100),usouSub=null;
+ if(sub!==null){if(n1===null){n1=lim(sub,v1);usouSub="N1"}else if(n2===null){n2=lim(sub,v2);usouSub="N2"}}
+ const R=NOTA_REGRA,base={n1,n2,ex,v1,v2,usouSub,ignorouSub:sub!==null&&!usouSub};
+ if(n1===null&&n2===null)return {...base,est:"vazio",soma:null};
+ if(n1===null||n2===null){const tem=n1!==null?n1:n2,falta=n1!==null?"N2":"N1",max=n1!==null?v2:v1;const pDir=R.dir-tem,pEx=R.ex-tem;
+  if(pDir<=0)return {...base,est:"aprovado",soma:tem,titulo:"Aprovação garantida",msg:`Você já somou ${fmtNota(tem)} pontos. Mesmo com zero na ${falta}, passa direto. Agora é estudar para aprender de verdade.`};
+  if(pDir<=max)return {...base,est:"parcial",soma:tem,falta:pDir,titulo:`Mire em ${fmtNota(pDir)} na ${falta}`,msg:`Com ${fmtNota(tem)} pontos até aqui, você precisa de ${fmtNota(pDir)} de ${fmtNota(max)} na ${falta} para passar direto (70). ${pEx>0?`Com ${fmtNota(pEx)} já garante o exame final.`:"O exame final já está garantido como rede de segurança."}`};
+  if(pEx<=max)return {...base,est:"parcial",soma:tem,falta:pEx,titulo:`Mire em ${fmtNota(pEx)} na ${falta}`,msg:`A ${falta} vale ${fmtNota(max)}, então os 70 direto ficaram fora de alcance. Com ${fmtNota(pEx)} você chega aos 40 e ganha a chance do exame final. Dá para virar.`};
+  return {...base,est:"parcial",soma:tem,titulo:`Capriche na ${falta}`,msg:`Nem a nota máxima na ${falta} leva aos 40. Converse com a coordenação sobre as opções e use a ${falta} para aprender o máximo.`}}
+ const soma=n1+n2;
+ if(soma>=R.dir)return {...base,est:"aprovado",soma,titulo:"Aprovado direto!",msg:`N1 + N2 = ${fmtNota(soma)} pontos. Passou sem exame final. Parabéns, o esforço valeu.`};
+ if(soma<R.ex)return {...base,est:"reprovado",soma,titulo:"Abaixo de 40",msg:`N1 + N2 = ${fmtNota(soma)} pontos, menos que os 40 do exame final. Confira com a coordenação e use o app para chegar mais forte na próxima vez.`};
+ const preciso=Math.max(0,2*R.fim-soma);
+ if(ex===null)return {...base,est:"exame",soma,falta:preciso,titulo:`Exame final: precisa de ${fmtNota(preciso)}`,msg:`N1 + N2 = ${fmtNota(soma)} pontos. No exame final (toda a matéria, de 0 a 100) você precisa de ${fmtNota(preciso)} para a média (soma + exame) ÷ 2 chegar a 50.`};
+ const media=(soma+ex)/2;
+ return media>=R.fim?{...base,est:"aprovado",soma,media,titulo:"Aprovado no exame final!",msg:`Média final ${fmtNota(media)} (${fmtNota(soma)} + ${fmtNota(ex)}) ÷ 2. Você virou o jogo.`}
+  :{...base,est:"reprovado",soma,media,titulo:`Média final ${fmtNota(media)}`,msg:`Faltaram ${fmtNota(R.fim-media)} pontos na média. Procure a coordenação e não desanime: cada questão que você faz aqui conta para a próxima.`}}
+/* régua de 0 a 100 com as marcas do exame (40) e da aprovação direta (70) */
+function resultadoNotas(p){const s=situacaoNotas(p);const id="pv-res-"+p.id;
+ if(s.est==="vazio")return `<div class="pv-res vazio" id="${id}"><p>Lance as notas quando saírem. O app mostra quanto falta para passar.</p></div>`;
+ const pct=Math.max(0,Math.min(100,s.soma));const st={aprovado:"ok",exame:"ex",parcial:"pa",reprovado:"rp"}[s.est];
+ return `<div class="pv-res ${st}" id="${id}" role="status">
+  <div class="pv-regua" role="img" aria-label="N1 mais N2: ${fmtNota(s.soma)} de 100 pontos. Exame final a partir de 40, aprovação direta com 70."><i class="pv-regua-v" style="width:${pct}%"></i><i class="pv-marca" style="left:40%"><span>40</span></i><i class="pv-marca m70" style="left:70%"><span>70</span></i>${s.falta&&s.est==="parcial"?`<i class="pv-alvo" style="left:${Math.min(100,pct+s.falta)}%"></i>`:""}</div>
+  <div class="pv-res-t">${s.est==="aprovado"?`<span class="pv-selo" aria-hidden="true">${ic("ok")}</span>`:""}<div><b>${esc(s.titulo)}</b><p>${esc(s.msg)}</p>${s.usouSub?`<small>A substitutiva entrou no lugar da ${s.usouSub}.</small>`:""}${s.ignorouSub?`<small>A substitutiva só vale para quem faltou à N1 ou à N2. Como as duas têm nota, ela não entrou na conta.</small>`:""}</div></div></div>`}
+function blocoNotas(p){const N=p.notas||{};const s=situacaoNotas(p);const camp=(k,rot,max,dica)=>`<label class="pv-nt"><span>${rot}</span><input type="text" inputmode="decimal" autocomplete="off" placeholder="—" value="${N[k]==null?"":esc(fmtNota(N[k]))}" data-nota="${k}" data-id="${p.id}" aria-label="${rot} de ${esc(infoDisc(p.d).nome)}"><small>${dica}</small></label>`;
+ return `<details class="pv-notas"${N.n1!=null||N.n2!=null||N.sub!=null?" open":""}><summary>${ic("alvo")} Notas e média</summary>
+  <div class="pv-nts">${camp("n1","N1",s.v1,`de ${fmtNota(s.v1)}`)}${camp("n2","N2",s.v2,`de ${fmtNota(s.v2)}`)}${camp("sub","Substitutiva",Math.max(s.v1,s.v2),"se faltou")}${camp("ex","Exame final",100,"de 100")}</div>
+  ${resultadoNotas(p)}
+  <p class="pv-vale">Quanto vale cada prova: N1 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v1).replace(",",".")}" data-nota="v1" data-id="${p.id}" aria-label="Pontos da N1"> · N2 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v2).replace(",",".")}" data-nota="v2" data-id="${p.id}" aria-label="Pontos da N2"> <small>(somam 100)</small></p></details>`}
 /* cartão de uma prova (Hoje e Metas) */
 function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=proxSimDisc(x.p.d);const ok=x.hoje>=x.alvo&&x.alvo>0;
  return `<article class="pv${urg?" pv-urg":""}${x.prox?"":" pv-passou"}" style="--c:${f.cor}">
   <div class="pv-topo">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${esc(nomeCurto(f.nome))}</b><span class="pv-quando">${x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · ${dataCurta(x.prox.dt)}`:"Todas as datas já passaram"}</span></div>
    <div class="pv-anel">${anel(x.preparo,100,`Preparo de ${x.preparo}%`)}<span><b>${x.preparo}%</b><small>preparo</small></span></div></div>
   ${x.prox&&x.prox.n<=99?`<div class="pv-contagem" aria-hidden="true">${String(Math.max(0,x.prox.n)).padStart(2,"0").split("").map((c,i)=>`<span style="--i:${i}">${c}</span>`).join("")}<em>${x.prox.n===1?"dia":"dias"}</em></div>`:""}
-  ${x.etapa?`<p class="pv-etapa"><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${esc(x.etapa.txt)}</p>`:""}
+  ${x.etapa?`<p class="pv-etapa"><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${esc(x.etapa.txt)}${/exame final/i.test(x.prox.r||"")?" O exame final cobre toda a matéria.":""}</p>`:""}
+  ${!completo&&x.prox?(()=>{const s=situacaoNotas(x.p);return s.est==="parcial"||s.est==="exame"?`<p class="pv-meta-nota">${ic("alvo")} ${esc(s.titulo)}</p>`:""})():""}
   ${completo?`<div class="pv-barras">
    <div><span>Questões feitas</span><b>${x.feitas} de ${x.n}</b><i class="pv-bar"><i style="width:${x.n?x.feitas*100/x.n:0}%"></i></i></div>
    <div><span>Acerto</span><b>${x.acerto===null?"—":x.acerto+"%"}</b><i class="pv-bar ok"><i style="width:${x.acerto||0}%"></i></i></div>
    <div><span>Leitura da apostila</span><b>${x.temas?`${x.lidos} de ${x.temas} temas`:"—"}</b><i class="pv-bar lei"><i style="width:${x.temas?x.lidos*100/x.temas:0}%"></i></i></div></div>
+   ${situacaoNotas(x.p).est!=="vazio"?resultadoNotas({...x.p,id:x.p.id+"-m"}):""}
    ${x.datas.length>1?`<ol class="pv-datas">${x.datas.map(dd=>`<li class="${dd.n<0?"passou":dd.n===0?"hoje":""}"><b>${esc(dd.r||"Prova")}</b> ${dataCurta(dd.dt)} <small>${quandoTxt(dd.n)}</small></li>`).join("")}</ol>`:""}`:""}
   ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:`Hoje: ${x.alvo} ${x.alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
  </article>`}
@@ -2006,7 +2069,7 @@ function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAt
  ${on?`<div class="pv-config">${L.length?L.map(p=>{const f=infoDisc(p.d);const ds=(p.datas||[]).slice().sort((a,b)=>a.dt.localeCompare(b.dt));
    return `<div class="pv-cfg${rota.novaProva===p.id?" pv-nova":""}" style="--c:${f.cor}">${tile(f.cor,f.ic)}<div class="pv-cfg-in"><b>${esc(f.nome)}</b>
     <ul class="pv-chips">${ds.map(dd=>`<li><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
-    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div></div>
+    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div>${blocoNotas(p)}</div>
     <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button></div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
   <div class="pv-form"><b>Adicionar prova</b>
    <label class="campo"><span>Matéria</span><select id="av-d">${opts}</select></label>
@@ -2016,6 +2079,7 @@ function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAt
    <li><b>Preparo</b> de cada prova = questões feitas da matéria (35%), seu acerto nelas (35%) e temas lidos na apostila (30%).</li>
    <li><b>Prioridade</b>: quanto mais perto a prova e menor o preparo, mais ela aparece no plano de hoje.</li>
    <li><b>Questões por dia</b>: o que falta resolver (mais as erradas) dividido pelos dias até a prova. A meta diária soma as provas das próximas 3 semanas.</li>
+   <li><b>Notas (Afya Unigranrio)</b>: N1 + N2 somam até 100. Com 70 ou mais, aprovação direta. De 40 a 69,9, exame final (toda a matéria), e passa quem tiver (N1 + N2 + exame) ÷ 2 de 50 ou mais. A substitutiva é para quem faltou e entra no lugar da N1 ou da N2 sem nota. Confira sempre o manual do aluno da sua unidade.</li>
    <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
@@ -2994,6 +3058,14 @@ document.addEventListener("click",e=>{
   }
 });
 document.addEventListener("change",e=>{if(e.target.id==="corrFinal"){S.cfg.corrFinal=e.target.checked;salvar();rota.manterScroll=true;render()}
+  if(e.target.dataset&&e.target.dataset.nota){const el=e.target,p=(S.cfg.provasFac||[]).find(x=>x.id===el.dataset.id);if(!p)return;
+   const antes=situacaoNotas(p).est;p.notas=p.notas||{};const v=el.value.trim().replace(",",".");
+   if(v===""||isNaN(+v))delete p.notas[el.dataset.nota];else p.notas[el.dataset.nota]=Math.max(0,+v);salvar();
+   const s=situacaoNotas(p),box=document.getElementById("pv-res-"+p.id);
+   if(el.dataset.nota==="v1"||el.dataset.nota==="v2"){const o=document.querySelector(`[data-nota="${el.dataset.nota==="v1"?"v2":"v1"}"][data-id="${p.id}"]`);if(o&&p.notas[o.dataset.nota]==null)o.value=el.dataset.nota==="v1"?s.v2:s.v1}
+   if(box){box.outerHTML=resultadoNotas(p);const nb=document.getElementById("pv-res-"+p.id);
+    if(nb&&animOn())nb.classList.add("pv-novo");
+    if(nb&&s.est==="aprovado"&&antes!=="aprovado"){estouro(nb,[infoDisc(p.d).cor,"#ffc53d","#3bb273","#ffffff"]);anunciar(s.titulo)}}}
   if(e.target.id==="data-prova"){S.cfg=S.cfg||{};S.cfg.prova=e.target.value||"";salvar();rota.manterScroll=true;render()}});
 let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
