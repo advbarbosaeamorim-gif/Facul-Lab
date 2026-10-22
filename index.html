@@ -1386,6 +1386,7 @@ Object.assign(ILU,{
  cartas:`<rect x="66" y="42" width="80" height="94" rx="10" class="f-a" transform="rotate(-11 106 89)" opacity=".6"/><rect x="94" y="36" width="80" height="94" rx="10" class="f-t" transform="rotate(8 134 83)"/><rect x="80" y="30" width="80" height="100" rx="10" class="f-w s-t" stroke-width="2"/><path d="M108 70a12 12 0 1 1 17 11c-3 2-5 4-5 8" class="s-b" fill="none" stroke-width="7" stroke-linecap="round"/><circle cx="120" cy="102" r="4.5" class="f-b"/><path d="M98 118h44" class="s-a" stroke-width="3" stroke-linecap="round" opacity=".5"/>`,
  marcador:`<rect x="70" y="34" width="98" height="104" rx="8" class="f-a"/><rect x="80" y="34" width="88" height="104" rx="6" class="f-w s-t" stroke-width="2"/><path d="M92 58h40M92 70h56M92 82h56M92 94h36" class="s-t" stroke-width="4" stroke-linecap="round" opacity=".3"/><path d="M134 24h28v54l-14-11-14 11z" class="f-b"/><path d="M148 36l3.2 6.5 7 1-5.1 5 1.2 7-6.3-3.3-6.3 3.3 1.2-7-5.1-5 7-1z" class="f-w"/>`,
  trofeu:`<path d="M92 34h56v30a28 28 0 0 1-56 0z" class="f-b"/><path d="M92 42H76a15 15 0 0 0 17 22M148 42h16a15 15 0 0 1-17 22" class="s-b" fill="none" stroke-width="6" stroke-linecap="round"/><rect x="114" y="90" width="12" height="16" class="f-t"/><rect x="96" y="104" width="48" height="12" rx="3" class="f-t"/><rect x="86" y="116" width="68" height="10" rx="3" class="f-a"/><path d="M108 52l8 8 15-16" class="s-w" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 40l3 7 7 3-7 3-3 7-3-7-7-3 7-3zM182 70l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" class="f-a" opacity=".7"/>`,
+ engrenagem:`<g class="f-t">${seq(8,i=>`<rect x="110" y="30" width="20" height="24" rx="4" transform="rotate(${i*45} 120 80)"/>`)}<circle cx="120" cy="80" r="40"/></g><circle cx="120" cy="80" r="17" class="f-w s-t" stroke-width="3"/><g class="f-a">${seq(6,i=>`<rect x="176" y="28" width="10" height="12" rx="2.5" transform="rotate(${i*60} 181 46)"/>`)}<circle cx="181" cy="46" r="14"/></g><circle cx="181" cy="46" r="5" class="f-w"/>`,
  checklist:`<rect x="72" y="34" width="96" height="104" rx="8" class="f-w s-t" stroke-width="2"/><rect x="98" y="26" width="44" height="16" rx="5" class="f-t"/>`+seq(3,i=>`<rect x="84" y="${56+i*24}" width="14" height="14" rx="3" class="${i<2?"f-b":"f-s s-t"}" stroke-width="2"/>${i<2?`<path d="M87 ${63+i*24}l3 3 6-7" class="s-w" fill="none" stroke-width="2.5" stroke-linecap="round"/>`:""}<path d="M106 ${63+i*24}h48" class="s-t" stroke-width="4" stroke-linecap="round" opacity=".35"/>`)+`<path d="M180 116l16-16 8 8-16 16-11 3z" class="f-a"/>`
 });
 /* escolhe a ilustração do tema pelo título */
@@ -1911,7 +1912,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  const tudo=qOk&&(cOk||!venc)&&!errs&&!aps.length;
  const titulo=tudo?"Plano de hoje cumprido":pend===1?"Falta 1 tarefa para hoje":`${pend} tarefas para hoje`;
  const linha=tudo?"Você fechou o dia. Se quiser ir além, revise um mapa mental ou adiante cartões novos.":(hoje.q||0)<meta?`Faltam ${meta-(hoje.q||0)} questões para a meta de ${meta}.`:"Meta de questões batida. Agora, revise o que está pendente.";
- return topo("Hoje",`${dataHoje()}`,{menu:true})+
+ return topo("Hoje",`${dataHoje()}`,{menu:true,dir:`<button class="icone" data-acao="ir-raiz" data-tela="config" aria-label="Configurações">${ic("eng")}</button>`})+
  `<main class="wrap hoje">
  <section class="hoje-hero" aria-labelledby="hoje-tit">
   <div class="hh-txt"><p class="hh-fase">${esc(nomePer(per))} · ${esc(F.nome)}</p><h2 id="hoje-tit">${titulo}</h2><p class="hh-linha">${linha}</p></div>
@@ -1930,7 +1931,31 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  <button class="card" data-acao="ir-raiz" data-tela="busca"><span class="at-ilu">${ilustra("lupa","var(--toga)")}</span><b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="cartoes"><span class="at-ilu">${ilustra("cartas","var(--lacre)")}</span><b>Todos os cartões</b><small>Escolha uma matéria</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="favs"><span class="at-ilu">${ilustra("marcador","var(--nv5)")}</span><b>Favoritos e anotações</b><small>Seus temas marcados</small></button>
- <button class="card" data-acao="ir-raiz" data-tela="metas"><span class="at-ilu">${ilustra("alvo","var(--ok)")}</span><b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button></div></main>`}
+ <button class="card" data-acao="ir-raiz" data-tela="metas"><span class="at-ilu">${ilustra("alvo","var(--ok)")}</span><b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="progresso"><span class="at-ilu">${ilustra("trofeu","var(--toga)")}</span><b>Progresso geral</b><small>Acertos em todas as matérias</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="config"><span class="at-ilu">${ilustra("engrenagem","var(--muted)")}</span><b>Configurações</b><small>Período, prova e aparência</small></button></div></main>`}
+
+/* ---------- progresso geral: o mesmo painel do Simulado OAB, somando tudo o que foi respondido ---------- */
+function telaProgresso(){
+ const c=S.hist.filter(a=>a.status==="concluido");
+ const media=c.length?Math.round(c.reduce((s,a)=>s+res(a).pct,0)/c.length):0;
+ const tm=c.length?c.reduce((s,a)=>s+a.tempo,0)/c.length:0;
+ let ok=0,er=0;Object.keys(S.stats).forEach(k=>{if(!QMAP[k])return;if(S.stats[k].u)ok++;else er++});
+ const tot=ok+er,n=QS.length;
+ const ms=Object.keys(porM).filter(m=>META[m]).map(m=>{const x=statMat(porM[m]);return {m,...x,pct:x.v?Math.round(x.o*100/x.v):null}}).sort((a,b)=>(b.v>0)-(a.v>0)||(a.pct===null?0:a.pct)-(b.pct===null?0:b.pct)||META[a.m].nome.localeCompare(META[b.m].nome));
+ const nh=itensHoje(),sq=sequencia();
+ return topo("Progresso geral","Faculdade e Exame de Ordem, tudo junto",{menu:true})+
+ `<main class="wrap">${capaTela("trofeu","Seu caminho até aqui","Todas as questões que você respondeu, nos simulados da OAB, por matéria e da faculdade.")}
+  <button class="card hoje-card" data-acao="ir-raiz" data-tela="hoje">${tile("var(--lacre)","alvo")}<b>${nh?`Revisar hoje: ${nh} ${nh>1?"itens":"item"}`:"Plano de hoje"}</b><small>${perAtual()!==null?esc(nomePer(perAtual()))+" · ":""}${sq?`${sq} dia${sq>1?"s":""} seguido${sq>1?"s":""} de estudo · `:""}${esc(textoProva())}</small></button>
+  <div class="metrica" style="margin-top:6px">${tile("var(--toga)","pct")}<div><div class="top"><span>Nota média nos simulados</span><b>${c.length?media+"%":"—"}</b></div><div class="trilho"><i class="f-toga" style="width:${media}%;background:var(--ok)"></i></div></div></div>
+  <div class="metrica">${tile("var(--lacre)","relogio")}<div><div class="top"><span>Tempo médio por simulado</span><b>${c.length?dur(tm):"—"}</b></div><div class="trilho"><i class="f-lacre" style="width:${Math.min(100,tm*100/(5*3600))}%"></i></div></div></div>
+  <div class="secao" role="heading" aria-level="2">Questões respondidas</div>
+  <div class="metrica">${tile("var(--toga)","barras")}<div><div class="top"><span>${tot.toLocaleString("pt-BR")} de ${n.toLocaleString("pt-BR")}</span>${contagem({ok,er,br:0}).replace(/<span class="c-br"[\s\S]*?<\/span><\/span>(?=<\/span>$)/,"")}</div>
+   <div class="trilho"><i class="f-ok" style="width:${ok*100/n}%"></i><i class="f-er" style="width:${er*100/n}%"></i></div></div></div>
+  <div class="secao" role="heading" aria-level="2">% acertos por matéria</div>
+  ${tot?"":`<p class="sinc" style="text-align:left">Responda questões de qualquer matéria e o acerto de cada uma aparece aqui.</p>`}
+  <div class="assuntos">${ms.map(x=>`<button class="assunto" data-acao="materia" data-m="${x.m}">${tile(META[x.m].cor,META[x.m].ic)}<span class="barra${x.v?" tem":""}">${x.v?`<i class="ok" style="width:${x.pct}%"></i><i class="er" style="width:${100-x.pct}%"></i>`:""}<span><b>${esc(META[x.m].nome)}</b><em>${x.v?x.pct+"%":"—"}</em></span></span></button>`).join("")}</div>
+  <p class="sinc">${esc(statusSinc)}</p></main>`}
 
 /* ---------- busca nas apostilas ---------- */
 const limpo=t=>String(t).replace(/\*\*|==/g,"").replace(/^(::\S+|!!|\?\?|>|#+|\* )\s?/gm,"").replace(/\s\|\s/g," — ").replace(/\|/g," ");
@@ -2102,7 +2127,9 @@ function aplicarCor(){const c=corAtual();const h=document.documentElement;if(c==
   if(!document.getElementById("pg-defs"))document.body.insertAdjacentHTML("afterbegin",PG_DEFS);
   const t=S.cfg&&S.cfg.tema;if(t==="claro")h.setAttribute("data-theme","light");else if(t==="escuro")h.setAttribute("data-theme","dark");else h.removeAttribute("data-theme");
   /* a barra do sistema acompanha o topo do app */
-  try{const m=document.querySelector('meta[name="theme-color"]');const cs=getComputedStyle(h);const v=cs.getPropertyValue(estiloAtual()==="premium"?"--bg":"--toga").trim();if(m&&v)m.setAttribute("content",v)}catch(e){}}
+  try{const m=document.querySelector('meta[name="theme-color"]');const cs=getComputedStyle(h);const v=cs.getPropertyValue(estiloAtual()==="premium"?"--p1":"--toga").trim();if(m&&v)m.setAttribute("content",v)}catch(e){}}
+/* no tema automático, a barra do sistema troca junto com o claro/escuro do celular */
+try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>aplicarCor())}catch(e){}
 const TEMAS=[["auto","Automático","Segue o celular","meio"],["claro","Claro","Fundo claro","sol"],["escuro","Escuro","Fundo escuro","lua"]];
 const MODOS_Q=[["imediato","Tocar e responder","Ao tocar na alternativa, a resposta é registrada na hora (como era antes)","ok"],["avancar","Responder e avançar sozinho","Ao tocar na alternativa, o app registra a resposta e passa para a próxima questão","seta"],["confirmar","Marcar e confirmar","Toque para marcar, troque se quiser, e depois aperte \"Confirmar resposta\"","alvo"]];
 /* avisos para leitores de tela */
@@ -2118,7 +2145,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
     case "oab":h=telaOab();break; case "materias":h=telaMaterias();break; case "materia":h=telaMateria();break;
     case "faculdade":h=telaFaculdade();break; case "disc":h=telaDisc();break; case "periodo":h=telaPeriodo();break; case "pre":h=telaPre();break;
     case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break;
-    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
+    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();
@@ -2196,9 +2223,9 @@ function telaGaveta(){
   const errs=Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]).length;
   return `<div class="camada" data-acao="fechar-gaveta"><aside class="gaveta" role="dialog" aria-modal="true" aria-label="Menu">
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
-   <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("busca","lupa","Buscar em tudo")}
+   <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("metas","barras","Metas e desempenho")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
-   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}${it("metas","barras","Metas e desempenho")}
+   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
    <button data-acao="erradas" ${errs?"":"disabled"} style="${errs?"":"opacity:.5"}">${ic("refazer")}<span>Refazer questões erradas${errs?` (${errs})`:""}</span></button>
    <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}${it("sobre","info","Como funciona")}</nav></aside></div>`}
 
