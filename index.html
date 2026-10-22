@@ -54,7 +54,7 @@
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;cursor:pointer}
-html{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--foco,var(--lacre));outline-offset:2px}
 main:focus{outline:none}
 svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -2042,7 +2042,7 @@ function mostrarFesta(a){const v=versoDaChave(a.key);const fr=MOTIVA[Math.floor(
  const velho=document.querySelector(".festa");if(velho)velho.remove();
  const el=document.createElement("div");el.className="festa";el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label","Gabarito perfeito");
  el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card">${TROFEU}<h2>Gabaritou!</h2><p class="frase">${esc(fr)}</p>${versoCard(v,"Para celebrar")}<button class="botao cheio" data-acao="festa-fechar" style="width:100%">Continuar</button></div>`;
- document.body.appendChild(el);confete(el.querySelector("canvas"))}
+ document.body.appendChild(el);confete(el.querySelector("canvas"));syncVoltar()}
 /* ---------- estado ---------- */
 const CHAVE="simuladoOAB.v2";
 function novoEstado(){return {v:2,atualizado:0,hist:[],stats:{},cfg:{corrFinal:true},lidos:{}}}
@@ -2155,8 +2155,27 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(gaveta){const g=app.querySelector(".gaveta nav button");if(g&&document.activeElement&&!document.activeElement.closest(".gaveta"))try{g.focus({preventScroll:true})}catch(e){}}
   if(rota.tela==="quiz")iniciarRelogio();
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
-  acompanharLeitura();realcarPagina();animarTela(telaNova);
+  acompanharLeitura();realcarPagina();animarTela(telaNova);syncVoltar();
 }
+
+/* ---------- botão voltar do celular ----------
+   Enquanto houver para onde voltar (menu ou janela aberta, tela interna, ou outra aba que não seja Hoje),
+   o app mantém uma entrada extra no histórico. O voltar do sistema consome essa entrada e o app volta
+   um passo; em Hoje, sem nada aberto, a entrada some e o próximo voltar sai do app normalmente. */
+let guardaVoltar=false;
+function podeVoltar(){return !!(gaveta||repQ||folha||document.querySelector(".festa")||pilha.length||rota.tela!=="hoje")}
+function syncVoltar(){try{if(podeVoltar()){if(!guardaVoltar){history.pushState({fl:1},"");guardaVoltar=true}}else if(guardaVoltar){guardaVoltar=false;history.back()}}catch(e){}}
+function voltarSistema(){
+  const fs=document.querySelector(".festa");if(fs){fs.remove();return}
+  if(repQ){repQ=null;rota.manterScroll=true;render();return}
+  if(gaveta){gaveta=false;rota.manterScroll=true;render();return}
+  if(folha){folha=false;confirmar=null;rota.manterScroll=true;render();return}
+  /* usa o mesmo botão de voltar do topo, que já sabe pausar o simulado, salvar a leitura etc. */
+  const b=document.querySelector('.topo .topo-linha > button.icone:first-child');
+  if(b&&b.dataset.acao!=="gaveta"){b.click();return}
+  if(rota.tela!=="hoje"){raiz({tela:"hoje"});return}
+}
+window.addEventListener("popstate",()=>{if(!guardaVoltar)return;guardaVoltar=false;voltarSistema();syncVoltar()});
 
 /* ---------- lei seca ---------- */
 const LS=(window.LEISECA||[]).filter(x=>x&&x.t&&Array.isArray(x.l)&&x.l.length===4&&x.t.indexOf(x.l[0])>=0&&META[x.m]);
@@ -2496,7 +2515,7 @@ document.addEventListener("click",e=>{
     case "ls-resp":lsResponder(+b.dataset.v);break;
     case "ls-prox":if(lsSess&&lsSess.resp[lsSess.i]!==undefined){lsSess.i++;render();topoTela()}break;
     case "ls-sair":lsSess=null;{const f=pilha.length&&pilha[pilha.length-1].tela==="leiseca";if(f)voltar();else raiz({tela:"leiseca"})}break;
-    case "festa-fechar":{const f=document.querySelector(".festa");if(f)f.remove();break}
+    case "festa-fechar":{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();break}
     case "fonte":{S.cfg=S.cfg||{};S.cfg.fonte=Math.max(-1,Math.min(2,(S.cfg.fonte||0)+(+b.dataset.v)));salvar();rota.manterScroll=true;render();break}
     case "imprimir":imprimir();break;
     case "periodo":periodo=+b.dataset.p;rota.manterScroll=true;render();break;
