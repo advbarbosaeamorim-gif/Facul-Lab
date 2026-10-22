@@ -669,7 +669,7 @@ html[data-anim="on"] .pv-bar>i{animation:pv-enche .9s cubic-bezier(.2,.8,.3,1) b
 .pv-cfg.pv-sai{opacity:0;transform:translateX(30px) scale(.96)}
 html[data-anim="on"] .pv-cfg.pv-nova{animation:ent-pop .55s cubic-bezier(.2,1.4,.4,1) both}
 .pv-chips{list-style:none;margin:6px 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.pv-chips li{display:flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:99px;background:color-mix(in srgb,var(--c) 14%,var(--surface));font-size:.82rem}
+.pv-chips li{display:flex;align-items:center;gap:2px;padding:2px 2px 2px 6px;border-radius:99px;background:color-mix(in srgb,var(--c) 14%,var(--surface));font-size:.82rem}
 .icone.mini{width:26px;height:26px;min-width:26px;padding:0}.icone.mini svg{width:14px;height:14px}
 .pv-cfg-in{min-width:0}
 .pv-add-data{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:6px;align-items:center}
@@ -684,6 +684,17 @@ html[data-anim="on"] .pv-cfg.pv-nova{animation:ent-pop .55s cubic-bezier(.2,1.4,
 .pv-erro{margin:0;color:var(--erro);min-height:0}
 .pv-como{margin-top:4px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .pv-como summary{cursor:pointer;font-weight:700}.pv-como ul{margin:8px 0 0;padding-left:18px;font-size:.9rem;line-height:1.5}
+.pv-ok{flex:none;width:16px;height:16px;margin-right:4px;fill:#2fa36b;stroke:none}.pv-ok path{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+html[data-anim="on"] .pv-ok{animation:ent-pop .5s cubic-bezier(.2,1.6,.4,1) both .1s}
+html[data-anim="on"] .pv-ok path{stroke-dasharray:14;stroke-dashoffset:14;animation:pv-risca .45s ease-out forwards .4s}
+html[data-anim="on"] .pv-chip-novo{animation:pv-res-in .4s ease-out both}
+html[data-anim="on"] .pv-chip-novo .pv-ok{animation:ent-pop .6s cubic-bezier(.2,1.6,.4,1) both .2s,pv-brilho 1.2s ease-out .8s}
+@keyframes pv-risca{to{stroke-dashoffset:0}}
+@keyframes pv-brilho{0%{filter:drop-shadow(0 0 0 #2fa36b)}40%{filter:drop-shadow(0 0 6px #2fa36b)}100%{filter:drop-shadow(0 0 0 transparent)}}
+.pv-mais{margin-top:2px}.pv-mais summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;border:1px dashed var(--line);font-size:.85rem;font-weight:600;color:var(--muted)}
+.pv-mais summary::-webkit-details-marker{display:none}.pv-mais summary .i{width:15px;height:15px}
+.pv-mais[open] summary{color:var(--fg);border-style:solid;margin-bottom:8px}.pv-mais[open] summary .i{transform:rotate(45deg);transition:transform .2s}
+html[data-anim="on"] .pv-mais[open] .pv-add-data{animation:pv-res-in .3s ease-out both}
 .pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
 html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
@@ -2073,8 +2084,8 @@ function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAt
   <div class="opcoes"><button data-acao="av-notas" data-v="0" aria-pressed="${!notasOn()}">Desligado</button><button data-acao="av-notas" data-v="1" aria-pressed="${notasOn()}">Ligado</button></div></div>`:""}
  ${on?`<div class="pv-config">${L.length?L.map(p=>{const f=infoDisc(p.d);const ds=(p.datas||[]).slice().sort((a,b)=>a.dt.localeCompare(b.dt));
    return `<div class="pv-cfg${rota.novaProva===p.id?" pv-nova":""}" style="--c:${f.cor}">${tile(f.cor,f.ic)}<div class="pv-cfg-in"><b>${esc(f.nome)}</b>
-    <ul class="pv-chips">${ds.map(dd=>`<li><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
-    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div>${notasOn()?blocoNotas(p):""}</div>
+    <ul class="pv-chips">${ds.map(dd=>`<li${rota.novaData===p.id+dd.dt?' class="pv-chip-novo"':""}><svg class="pv-ok" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M5.5 10.4l3 3 6-6.3"/></svg><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
+    <details class="pv-mais"${rota.abreData===p.id?" open":""}><summary>${ic("mais")} Outra prova desta matéria</summary><div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${(()=>{const sug=ROTULOS_PROVA.find(r=>!ds.some(dd=>dd.r===r))||"Outra";return ROTULOS_PROVA.map(r=>`<option${r===sug?" selected":""}>${r}</option>`).join("")})()}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Adicionar data</button></div></details>${notasOn()?blocoNotas(p):""}</div>
     <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button></div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
   <div class="pv-form"><b>Adicionar prova</b>
    <label class="campo"><span>Matéria</span><select id="av-d">${opts}</select></label>
@@ -2992,11 +3003,11 @@ document.addEventListener("click",e=>{
     case "av-add":{const d=$("#av-d").value,dt=$("#av-dt").value,rr=$("#av-r").value;const er=$("#av-erro");
       if(!dt){if(er)er.textContent="Escolha o dia da prova.";const i=$("#av-dt");if(i){i.focus();i.classList.remove("treme");void i.offsetWidth;i.classList.add("treme")}break}
       S.cfg.provasFac=S.cfg.provasFac||[];let p=S.cfg.provasFac.find(x=>x.d===d);if(!p){p={id:"p"+Date.now().toString(36),d,datas:[]};S.cfg.provasFac.push(p)}
-      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaProva=p.id;rota.manterScroll=true;render();rota.novaProva=null;
+      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaProva=p.id;rota.novaData=p.id+dt;rota.manterScroll=true;render();rota.novaProva=null;rota.novaData=null;
       {const el=document.querySelector(".pv-nova");if(el){estouro(el,[infoDisc(d).cor,"#ffc53d","#3bb273","#ffffff"]);try{el.scrollIntoView({block:"nearest",behavior:animOn()?"smooth":"auto"})}catch(e){}}}anunciar("Prova adicionada");break}
     case "av-add-data":{const id=b.dataset.id;const dt=($("#av-dt-"+id)||{}).value,rr=($("#av-r-"+id)||{}).value;const p=(S.cfg.provasFac||[]).find(x=>x.id===id);
       if(!p)break;if(!dt){const i=$("#av-dt-"+id);if(i){i.focus();i.classList.remove("treme");void i.offsetWidth;i.classList.add("treme")}break}
-      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaProva=id;rota.manterScroll=true;render();rota.novaProva=null;anunciar("Data adicionada");break}
+      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaData=id+dt;rota.manterScroll=true;render();rota.novaData=null;anunciar("Data adicionada");break}
     case "av-del-data":{const p=(S.cfg.provasFac||[]).find(x=>x.id===b.dataset.id);if(p){p.datas=p.datas.filter(x=>!(x.dt===b.dataset.dt&&(x.r||"")===b.dataset.r));if(!p.datas.length)S.cfg.provasFac=S.cfg.provasFac.filter(x=>x!==p)}salvar();rota.manterScroll=true;render();break}
     case "av-del":{const el=b.closest(".pv-cfg");const fim=()=>{S.cfg.provasFac=(S.cfg.provasFac||[]).filter(x=>x.id!==b.dataset.id);salvar();rota.manterScroll=true;render();anunciar("Prova removida")};
       if(el&&animOn()){el.classList.add("pv-sai");setTimeout(fim,280)}else fim();break}
