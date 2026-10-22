@@ -113,6 +113,8 @@ Se duas ou mais pessoas falecerem **na mesma ocasião** e **não for possível a
 
 > Exemplo: um casal sem filhos morre em um acidente de carro, e não se sabe quem morreu primeiro. Se o marido tivesse morrido antes, a esposa teria herdado dele e, ao morrer, transmitido tudo aos pais dela. Pela comoriência, presume-se que morreram juntos: os bens do marido vão para os pais dele, e os da esposa, para os pais dela.
 
+!! Ausência em três degraus = "**C-P-D**": **C**uradoria → **P**rovisória (**1 ano**, ou **3** com representante) → **D**efinitiva (**10 anos** depois, ou **80 anos de idade + 5** sem notícias). Morte presumida sem ausência: **perigo de vida** ou **2 anos após a guerra**. Comoriência: morreram juntos, **um não herda do outro**.
+
 ?? O que é comoriência e qual é sua consequência? | É a presunção de morte simultânea de pessoas falecidas na mesma ocasião, sem que se saiba quem morreu primeiro (art. 8º). A consequência é que uma não herda da outra.
 ?? Quando se pode declarar a morte presumida sem declaração de ausência? | Quando for extremamente provável a morte de quem estava em perigo de vida, ou quando o desaparecido em campanha ou prisioneiro não for encontrado até 2 anos após o fim da guerra (art. 7º).
 ?? Depois de quanto tempo da arrecadação dos bens se pode pedir a sucessão provisória, se o ausente não deixou representante? | 1 ano (art. 26). Se deixou representante, 3 anos.
@@ -251,6 +253,8 @@ São públicos os bens do domínio nacional pertencentes às pessoas jurídicas 
 - Os bens públicos **não estão sujeitos a usucapião** (art. 102; arts. 183, §3º, e 191, parágrafo único, da Constituição).
 - Os bens públicos também são **impenhoráveis**: as dívidas judiciais do Estado se pagam por **precatório** (art. 100 da Constituição).
 - O uso comum dos bens públicos pode ser **gratuito ou retribuído** (art. 103): a praça é gratuita, mas o pedágio e a zona azul são cobrados.
+
+> Exemplo: em um apartamento alugado, o apartamento é bem **imóvel**; o aluguel que ele rende todo mês é **fruto** civil; o ar-condicionado instalado na sala é **pertença** (não vai junto na venda, salvo acordo); refazer o telhado que ameaça cair é benfeitoria **necessária**; construir uma garagem é **útil**; instalar uma fonte decorativa é **voluptuária**.
 
 ?? Quem vende uma casa vende automaticamente os móveis que estão dentro dela? | Não. Os móveis são pertenças, e os negócios sobre o bem principal não as abrangem, salvo se o contrário resultar da lei, da vontade ou das circunstâncias (art. 94).
 ?? Qual é a diferença entre fruto e produto? | O fruto é produzido periodicamente sem diminuir a substância da coisa (aluguel, juros, frutas); o produto diminui a substância quando retirado (minério).
@@ -414,6 +418,8 @@ O Direito prefere, sempre que possível, **conservar** os negócios jurídicos:
 
 !! **N**ulo = **N**unca convalesce, **N**inguém confirma, juiz conhece de ofício. **A**nulável = **A**s partes podem confirmar, há prazo, só o interessado alega.
 
+> Atenção: no Código Civil de 2002, a **simulação** gera **nulidade** (art. 167), e não mais anulabilidade, como no Código de 1916. Já a **fraude contra credores** continua sendo causa de **anulabilidade** (art. 171, II). É uma troca que as bancas adoram.
+
 ?? Um negócio nulo pode ser confirmado pelas partes? Convalesce com o tempo? | Não, nas duas perguntas (art. 169).
 ?? Qual é o prazo para anular um negócio quando a lei diz que ele é anulável, mas não fixa prazo? | 2 anos, contados da conclusão do ato (art. 179).
 ?? O que é a conversão do negócio jurídico nulo? | O aproveitamento do negócio nulo como outro negócio, cujos requisitos ele preenche, quando se possa supor que as partes o teriam querido (art. 170).
@@ -435,6 +441,8 @@ Segundo o Enunciado 37 das Jornadas de Direito Civil, a responsabilidade civil d
 - a deterioração ou destruição da coisa alheia, ou a lesão a pessoa, a fim de **remover perigo iminente** (estado de necessidade). Nesse caso, o ato só será legítimo quando as circunstâncias o tornarem **absolutamente necessário**, não excedendo os limites do indispensável para a remoção do perigo.
 
 > Atenção: mesmo agindo em estado de necessidade, quem destrói coisa de terceiro **inocente** deve indenizá-lo, com direito de regresso contra quem causou o perigo (arts. 929 e 930). O motorista que desvia de uma criança e bate no carro estacionado de um vizinho não comete ilícito, mas deve indenizar o vizinho e pode cobrar depois do responsável pela situação de perigo.
+
+!! Ato ilícito = "**CCDN**": **C**onduta, **C**ulpa, **D**ano, **N**exo (art. 186). Abuso de direito (art. 187) = direito exercido **fora do fim**, da **boa-fé** ou dos **bons costumes**, e **independe de culpa**. Excludentes (art. 188): **L**egítima defesa, **E**xercício regular, **E**stado de necessidade; mas o terceiro **inocente** é indenizado.
 
 ?? O que é abuso de direito? | É o exercício de um direito que excede manifestamente os limites impostos pelo seu fim econômico ou social, pela boa-fé ou pelos bons costumes (art. 187).
 ?? Quem age em estado de necessidade e danifica coisa de terceiro inocente deve indenizar? | Sim, com direito de regresso contra quem causou o perigo (arts. 929 e 930).
@@ -774,6 +782,10 @@ Quando uma nova Constituição entra em vigor, o que acontece com todas as leis 
 - **Desconstitucionalização:** a ideia de que normas da Constituição anterior, compatíveis com a nova, continuariam valendo como leis ordinárias. **Não é admitida** no Brasil, salvo se a nova Constituição a prever expressamente.
 - **Mutação constitucional:** é a **alteração do sentido** da norma constitucional **sem mudança do texto**, por meio da interpretação, em razão de mudanças na realidade social. Exemplo: o STF passou a reconhecer a **união estável entre pessoas do mesmo sexo** como entidade familiar, sem que o texto do art. 226, §3º, que fala em "homem e mulher", tenha sido alterado (ADI 4.277 e ADPF 132).
 
+> Atenção: lei anterior à Constituição e incompatível com ela **não é inconstitucional**: ela **não foi recebida** (foi revogada). Por isso, para discutir sua compatibilidade com a Constituição de 1988 no controle concentrado, o instrumento é a **ADPF**, e não a ADI.
+
+!! Constituição nova x normas velhas: **Recepção** só olha o **conteúdo** (pode mudar de status: CTN virou lei complementar). **Não** existem no Brasil: inconstitucionalidade **superveniente**, **repristinação** automática e **desconstitucionalização** (salvo previsão expressa). **Mutação** = muda o sentido, não o texto.
+
 ?? O Código Tributário Nacional foi aprovado como lei ordinária. Com que status foi recebido pela Constituição de 1988? | Como lei complementar, porque a Constituição passou a exigir lei complementar para as normas gerais de direito tributário (art. 146).
 ?? Uma lei anterior à Constituição e incompatível com ela é inconstitucional? | Não, segundo o STF. Ela simplesmente não foi recebida (foi revogada). Não existe inconstitucionalidade superveniente.
 ?? O que é mutação constitucional? | A alteração do sentido de uma norma constitucional sem mudança do texto, por meio da interpretação.
@@ -821,6 +833,8 @@ Os direitos fundamentais são os **direitos humanos positivados na Constituiçã
 ::piramide Posição dos tratados no Brasil|Tratados de direitos humanos aprovados em cada Casa do Congresso, em dois turnos, por 3/5 dos votos (art. 5º, §3º): equivalentes às emendas constitucionais|Demais tratados de direitos humanos: status supralegal (acima das leis e abaixo da Constituição; RE 466.343)|Tratados comuns: status de lei ordinária
 
 Por causa do status supralegal do **Pacto de San José da Costa Rica**, que proíbe a prisão civil por dívidas (exceto a do devedor de alimentos), ficou **ilícita a prisão civil do depositário infiel**, qualquer que seja a modalidade do depósito (**Súmula Vinculante 25**), apesar de a Constituição prevê-la no art. 5º, LXVII. O Pacto paralisou a eficácia das leis que regulavam essa prisão. O primeiro tratado aprovado com equivalência de emenda foi a **Convenção sobre os Direitos das Pessoas com Deficiência** e seu Protocolo Facultativo.
+
+> Exemplo: um clube privado expulsa um sócio sem lhe dar chance de se defender. Embora a relação seja entre particulares, o sócio pode invocar o contraditório e a ampla defesa: é a **eficácia horizontal** dos direitos fundamentais, aplicada pelo STF no RE 201.819.
 
 ?? Um turista estrangeiro, de passagem pelo Brasil, tem direito ao habeas corpus? | Sim. O STF estende os direitos fundamentais aos estrangeiros não residentes.
 ?? O que é eficácia horizontal dos direitos fundamentais? | A aplicação dos direitos fundamentais nas relações entre particulares, como no caso da exclusão de sócio sem direito de defesa (RE 201.819).
@@ -890,6 +904,8 @@ Por causa do status supralegal do **Pacto de San José da Costa Rica**, que pro�
 
 !! Imprescritíveis = "**RA-GA**": **RA**cismo e **G**rupos **A**rmados. Os "**3TH**" (Tortura, Tráfico, Terrorismo e Hediondos) são inafiançáveis e sem graça ou anistia, mas prescrevem.
 
+> Exemplo: às 23h, policiais sem mandado arrombam a porta de uma casa apenas porque "acharam suspeito" o morador. Se não havia **fundadas razões** de flagrante, justificadas depois, a entrada é ilícita e as provas obtidas são **inadmissíveis** (art. 5º, XI e LVI; STF, Tema 280). Com mandado judicial, a entrada só poderia ocorrer **durante o dia**.
+
 ?? Pode-se entrar em uma casa à noite, sem consentimento, para cumprir mandado judicial de busca? | Não. A ordem judicial só pode ser cumprida durante o dia. À noite, só em flagrante, desastre ou para prestar socorro.
 ?? Uma CPI pode determinar interceptação telefônica? | Não. A interceptação exige ordem judicial e fins penais. A CPI pode quebrar sigilo bancário, fiscal e de registros telefônicos, mas não determinar escuta.
 ?? Para dissolver compulsoriamente uma associação, o que é preciso? | Decisão judicial transitada em julgado (art. 5º, XIX). Para suspender suas atividades, basta decisão judicial.
@@ -926,6 +942,8 @@ Conceder-se-á habeas data (inciso LXXII) para **assegurar o conhecimento** de i
 São **gratuitas** as ações de **habeas corpus e habeas data** e, na forma da lei, os atos necessários ao exercício da cidadania (inciso LXXVII).
 
 !! Remédios: **HC** = corpo (ir e vir); **HD** = dados (meus); **MI** = falta lei; **MS** = o resto que for líquido e certo; **AP** = o patrimônio é de todos.
+
+> Exemplo: Júlia foi eliminada de um concurso público porque a banca não aceitou seu diploma, embora ele esteja registrado no MEC. Ela tem todos os **documentos** que provam o direito: cabe **mandado de segurança**, em até **120 dias** da ciência do ato. Se precisasse de perícia ou testemunhas, o caminho seria uma ação comum. Se o problema fosse saber o que consta sobre ela em um cadastro público, seria **habeas data**.
 
 ?? Uma empresa pode propor ação popular? | Não. Só o cidadão (eleitor) tem legitimidade; pessoa jurídica não (Súmula 365 do STF).
 ?? Qual é o prazo para impetrar mandado de segurança? | 120 dias, contados da ciência do ato impugnado (art. 23 da Lei 12.016/2009).
@@ -1065,6 +1083,12 @@ Ao longo da matéria, você vai perceber que a teoria do crime funciona como um 
 
 ::ilus grade|O Direito Penal é a última opção do Estado: só atua quando os outros ramos do Direito não bastam.
 
+!! Direito Penal = **última** e **mais dura** resposta do Estado: protege os **bens jurídicos** mais importantes e é o único ramo que pode tirar a **liberdade**. Por isso tem **limites** (os princípios penais).
+
+?? O que é bem jurídico para o Direito Penal? | Aquilo que a sociedade considera tão valioso que merece a proteção mais forte do Estado, como a vida, a liberdade e o patrimônio.
+?? Por que o Direito Penal é cercado de limites? | Porque é o único ramo que pode tirar a liberdade de alguém; os princípios penais impedem que o Estado use esse poder de forma arbitrária, excessiva ou injusta.
+?? Quais perguntas a teoria do crime faz diante de um fato? | Se o fato está descrito em uma lei penal, se contraria o Direito ou havia justificativa e se o autor merece ser censurado.
+
 # Princípios do Direito Penal
 Princípios são as ideias-base que orientam a criação e a aplicação das leis penais. Alguns estão escritos na Constituição e no Código Penal; outros foram construídos pela doutrina e pelos tribunais. Na prática, eles servem para duas coisas: limitar o legislador (que não pode criar qualquer crime) e orientar o juiz (que não pode aplicar a lei de qualquer jeito).
 
@@ -1182,6 +1206,10 @@ Pense nesses três elementos como **degraus de uma escada**. Só se sobe para o 
 Uma consequência prática importante: a **ilicitude** é avaliada em relação ao **fato** (o fato é permitido ou proibido pelo Direito?), enquanto a **culpabilidade** é avaliada em relação ao **autor** (essa pessoa merece ser censurada?). Por isso, quando se exclui a ilicitude, o fato passa a ser lícito para todos, inclusive para quem ajudou. Quando se exclui a culpabilidade, o fato continua ilícito; só aquele autor específico deixa de ser punido.
 
 > Exemplo: um homem saudável e um adolescente de 16 anos agridem juntos uma pessoa. O fato é típico e ilícito para os dois. O adolescente, porém, não é culpável (é inimputável pela idade), e responde pelo ECA. O adulto responde normalmente. A inimputabilidade de um não beneficia o outro.
+
+?? Qual é o conceito analítico de crime na teoria tripartida? | Crime é fato típico, ilícito e culpável.
+?? Por que a exclusão da ilicitude beneficia todos os envolvidos, e a da culpabilidade não? | Porque a ilicitude se refere ao fato (que passa a ser lícito para todos), enquanto a culpabilidade se refere ao autor (só aquele autor deixa de ser punido).
+?? Quais são os elementos da culpabilidade? | Imputabilidade, potencial consciência da ilicitude e exigibilidade de conduta diversa.
 
 # Fato típico
 O fato típico é o primeiro degrau. Ele tem quatro elementos: **conduta**, **resultado**, **nexo causal** e **tipicidade**. Nos crimes que não exigem resultado (como os de mera conduta), bastam a conduta e a tipicidade.
@@ -1567,6 +1595,13 @@ A doutrina classifica os crimes de várias formas. Conhecer essas classificaçõ
 
 > Exemplo: a Súmula 96 do STJ diz que a **extorsão** se consuma **independentemente da obtenção da vantagem indevida**. Basta que a vítima, constrangida, faça ou deixe de fazer o que o agente exigiu. Se o agente não chega a receber o dinheiro, o crime já está consumado. Isso é típico dos crimes formais.
 
+!! Resultado: **M**aterial = **M**orreu (precisa do resultado); **F**ormal = **F**ez a conduta, já consumou (extorsão, Súmula 96); **M**era conduta = nem há resultado no tipo. Tentativa: **uni**ssubsistente **não** admite; **pluri** admite. **Permanente** = flagrante enquanto durar.
+
+?? Qual é a diferença entre crime próprio e crime de mão própria? | O próprio exige qualidade especial do agente, mas admite coautoria e participação (peculato). O de mão própria só pode ser praticado pessoalmente e admite participação, mas não coautoria (falso testemunho).
+?? Qual é a diferença entre crime material, formal e de mera conduta? | O material exige o resultado para a consumação; o formal descreve resultado, mas se consuma com a conduta; o de mera conduta nem descreve resultado.
+?? Até quando é possível o flagrante em um crime permanente? | Enquanto durar a permanência, como na extorsão mediante sequestro.
+?? Crime unissubsistente admite tentativa? | Não, porque é praticado em um único ato, como a injúria verbal.
+
 # Roteiro para resolver um caso
 Toda questão de teoria do crime pode ser resolvida com o mesmo roteiro. Treine-o até ficar automático.
 
@@ -1580,6 +1615,11 @@ Toda questão de teoria do crime pode ser resolvida com o mesmo roteiro. Treine-
 8. **Mais de uma pessoa participou?** Defina autores e partícipes e aplique os arts. 29 a 31.
 
 > Caso: Rafael, 25 anos, descobre que Bruno furtou sua moto. Uma semana depois, encontra Bruno sozinho na rua e, com raiva, dá-lhe vários socos, causando lesões leves. Bruno, para escapar, empurra Rafael, que cai e fratura o braço. Análise: (1) a conduta de Rafael é voluntária e dolosa; (2) encaixa-se na lesão corporal (art. 129); (3) não há legítima defesa, porque a agressão de Bruno (o furto) já havia terminado uma semana antes, e reagir a agressão passada é vingança; (4) Rafael é imputável e podia agir de outro modo; responde por lesão corporal. Já Bruno repeliu uma agressão injusta e atual, usando um meio moderado (um empurrão): age em legítima defesa e não responde pela fratura de Rafael.
+
+!! Roteiro do caso em 8 passos: **Conduta → Tipo → Dolo/culpa → Nexo → Etapa → Ilicitude → Culpabilidade → Concurso**. Agressão **passada** não autoriza legítima defesa: é vingança.
+
+?? Qual é a ordem do roteiro para resolver um caso de teoria do crime? | Conduta, tipicidade, dolo ou culpa, nexo causal, etapa do crime (iter criminis), excludentes de ilicitude, culpabilidade e concurso de pessoas.
+?? Há legítima defesa contra agressão que já terminou? | Não. A legítima defesa exige agressão atual ou iminente; reagir a agressão passada é vingança.
 
 ::mapa Direito Penal I — Teoria do Crime
 * Princípios: legalidade (reserva, anterioridade, taxatividade, sem analogia contra o réu); retroatividade benéfica; intervenção mínima; lesividade; insignificância MARI
@@ -1609,6 +1649,11 @@ A doutrina tradicional organiza o estudo do processo em torno de três instituto
 Uma imagem ajuda: a jurisdição é o **poder** (o juiz pode decidir), a ação é a **chave** (o autor provoca o juiz) e o processo é o **caminho** (os atos que vão da petição inicial até a decisão).
 
 ::ilus processo|O processo é uma sequência organizada de atos que caminha até uma decisão.
+
+!! Trilogia do processo: **Jurisdição = PODER** (o juiz decide), **Ação = CHAVE** (o autor provoca), **Processo = CAMINHO** (da inicial à decisão). O CPC vale **supletiva e subsidiariamente** para os processos eleitoral, trabalhista e administrativo (art. 15).
+
+?? Quais são os três institutos da trilogia estrutural do processo? | Jurisdição, ação e processo.
+?? O que diz o art. 15 do CPC? | Que, na ausência de normas que regulem processos eleitorais, trabalhistas ou administrativos, o CPC se aplica supletiva e subsidiariamente.
 
 # Formas de solução de conflitos
 ## Lide
@@ -1730,6 +1775,8 @@ As **capacidades** merecem atenção:
 > Atenção: há **perempção** quando o autor der causa, **por três vezes**, a sentença fundada em **abandono da causa**. Ele **não poderá propor nova ação** contra o réu com o mesmo objeto, ficando-lhe ressalvada, entretanto, a possibilidade de **alegar em defesa** o seu direito (art. 486, §3º).
 
 > Atenção: a **convenção de arbitragem** é pressuposto negativo, mas **não pode ser conhecida de ofício** pelo juiz: o réu deve alegá-la na contestação, sob pena de se entender que renunciou ao juízo arbitral (art. 337, §§5º e 6º).
+
+!! Pressupostos: **Existência** = **J-D-C** (Jurisdição, Demanda, Citação). Negativos = "**LICOPECA**": **LI**tispendência, **CO**isa julgada, **PE**rempção, **C**onvenção de **A**rbitragem (esta o juiz não conhece de ofício). Capacidades: **ser parte**, **estar em juízo** e **postular**.
 
 ?? Quais são as três capacidades exigidas das partes? | Capacidade de ser parte, capacidade processual (de estar em juízo) e capacidade postulatória.
 ?? O que acontece com o autor que deu causa a três extinções por abandono? | Ocorre perempção: não pode propor nova ação com o mesmo objeto contra o réu, mas pode alegar seu direito em defesa (art. 486, §3º).

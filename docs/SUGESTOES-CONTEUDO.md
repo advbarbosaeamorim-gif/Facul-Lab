@@ -1,5 +1,21 @@
 # Sugestões de clareza do conteúdo
 
+**Situação em 22/10/2026: todos os itens abaixo foram resolvidos** no PR #2. A doutrina, os fundamentos e os comentários não mudaram.
+
+| Item | O que foi feito |
+|---|---|
+| 1.1 Correta maior que as outras (651) | As alternativas erradas foram reescritas com detalhes plausíveis, mantendo a premissa errada de cada uma e a explicação existente. Gabaritos e enunciados não mudaram. O mesmo critério de antes agora não acha nenhuma questão. |
+| 1.2 Enunciados repetidos (2) | zk10 e el13 viraram perguntas novas, sobre outros pontos da mesma matéria. |
+| 1.3 "exceto" sem destaque | xo09 e xc10 agora usam **EXCETO**. |
+| 2.1 Temas sem "Para memorizar" | Todos os 391 temas têm o quadro. |
+| 2.2 Temas sem cartões | Todos os temas têm cartões (1.591 no total). |
+| 2.3 Temas sem quadro de destaque | Todos os temas têm ao menos um. |
+| 2.4 Parágrafo longo | Virou lista. Nenhum parágrafo comum passa de 900 caracteres. |
+
+O levantamento original segue abaixo, como registro.
+
+---
+
 Levantamento automático feito sobre o banco de **2382 questões** e os **391 temas** das apostilas (1º ao 10º período). Nada aqui foi alterado no conteúdo: são pontos para revisão humana. A doutrina, os fundamentos e os comentários continuam como estão.
 
 O script que gerou esta lista só olha forma (tamanho, marcação, repetição). Cada item precisa de leitura antes de mudar.

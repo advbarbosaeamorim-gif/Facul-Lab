@@ -48,6 +48,8 @@ Há ainda **procedimentos especiais**, como o da **Lei de Drogas** (com defesa p
 
 **Na audiência de instrução e julgamento, a ser realizada no prazo máximo de 60 dias, proceder-se-á à tomada de declarações do ofendido, à inquirição das testemunhas arroladas pela acusação e pela defesa, nesta ordem, ressalvado o disposto no art. 222, bem como aos esclarecimentos dos peritos, às acareações e ao reconhecimento de pessoas e coisas, interrogando-se, em seguida, o acusado** (art. 400). O **interrogatório é o último ato** da instrução, porque é também um meio de **defesa**: o réu fala depois de conhecer toda a prova. O STF estendeu essa regra a todos os procedimentos, inclusive os especiais (HC 127.900).
 
+> Exemplo: Bruno é denunciado por furto qualificado, com pena máxima de **8 anos**: o rito é o **ordinário**, com até **8 testemunhas** por parte. Recebida a denúncia, ele é citado e tem **10 dias** para a **resposta à acusação**. O juiz pode absolvê-lo sumariamente (art. 397); se não o fizer, marca a audiência em até **60 dias**, em que se ouvem a vítima, as testemunhas da acusação e as da defesa e, por **último**, o próprio Bruno. Se a pena máxima fosse de 3 anos, o rito seria o **sumário** (5 testemunhas); se fosse de até 2 anos, o **Juizado** (sumaríssimo).
+
 ?? Qual rito se aplica a um crime com pena de 1 a 4 anos? | O ordinário, porque a pena máxima é igual a 4 anos (art. 394, §1º, I).
 ?? Qual é o último ato da instrução no rito ordinário? | O interrogatório do acusado (art. 400).
 ?? Quantas testemunhas cada parte pode arrolar no rito sumário? | Até 5 (art. 532).
@@ -67,6 +69,8 @@ Há ainda **procedimentos especiais**, como o da **Lei de Drogas** (com defesa p
 - "**A condenação transitou em julgado**" e surgiu prova nova ou se descobriu que a prova era falsa: **revisão criminal**.
 
 > Na prova: o **habeas corpus** cabe em quase todas as situações de prisão, mas, se o enunciado indicar um **recurso cabível e no prazo**, a peça esperada é, em regra, o **recurso**. O HC é a resposta quando não há recurso adequado ou a ilegalidade é urgente e evidente.
+
+!! Pela pista do enunciado: **preso ilegal** = relaxamento; **preso legal, mas desnecessário** = liberdade provisória; **preventiva sem motivo** = revogação; **citado** = resposta à acusação (**10 dias**); **fim da instrução** = memoriais (**5**); **condenado ou absolvido** = apelação (**5 + 8**); **pronúncia ou rejeição da denúncia** = RESE (**5 + 2**); **execução** = agravo em execução (**5**); **trânsito + prova nova** = revisão criminal; **ação privada** = queixa (**6 meses**). Havendo recurso no prazo, ele vem antes do HC.
 
 ?? O cliente foi preso em flagrante por um fato que não se enquadra em nenhuma hipótese do art. 302. Qual a peça? | Pedido de relaxamento da prisão, porque a prisão é ilegal (art. 5º, LXV, da Constituição; art. 310, I).
 ?? O juiz pronunciou o réu. Qual a peça? | Recurso em sentido estrito (art. 581, IV).
@@ -282,6 +286,8 @@ Regras do RESE:
 
 !! Prazos penais: "**5 para quase tudo** (apelação, RESE, agravo em execução, recurso ordinário em HC); **8** para as razões da apelação; **2** para as razões do RESE e para os embargos de declaração; **10** para os infringentes, a resposta à acusação e a apelação do Juizado; **15** para REsp, RE e a apelação supletiva do ofendido".
 
+> Exemplo: o réu é **pronunciado** por homicídio qualificado. A defesa interpõe **recurso em sentido estrito** em **5 dias**, com razões em **2 dias** (art. 581, IV). Levado a Júri, ele é condenado. Agora cabe **apelação** em **5 dias**, com razões em **8**, mas só pelas hipóteses do art. 593, III (por exemplo, decisão **manifestamente contrária à prova dos autos**). Se só a defesa recorrer, o tribunal **não pode agravar** a pena (proibição da *reformatio in pejus*).
+
 ?? Qual é o prazo da apelação e das suas razões? | 5 dias para interpor e 8 dias para as razões (arts. 593 e 600).
 ?? A defesa pode apelar contra a absolvição? | Sim, para buscar fundamento mais favorável do art. 386 (por exemplo, do inciso VII para o IV), que tem efeitos civis.
 ?? Na apelação contra decisão do Júri manifestamente contrária à prova, o tribunal pode absolver o réu? | Não. Só pode mandar o réu a novo julgamento, uma única vez (art. 593, §3º).
@@ -315,6 +321,8 @@ Restrições (súmulas do STF): **não cabe habeas corpus contra decisão conden
 
 !! Habeas corpus: **qualquer pessoa** impetra, **sem advogado**, **sem prazo**, com **liminar**; coação ilegal = **art. 648**; **não** cabe só por **multa** nem com a pena **já extinta**. Competência: um degrau **acima** da autoridade coatora.
 
+> Exemplo: Carlos está preso preventivamente há mais tempo do que a lei permite, por ordem de um **juiz de 1º grau**. Sua irmã, que não é advogada, pode impetrar **habeas corpus** em favor dele: qualquer pessoa pode. Carlos é o **paciente**; o juiz é a **autoridade coatora**; o HC é dirigido ao **tribunal de 2º grau**. Se a coação viesse de um **delegado**, o HC seria dirigido ao **juiz** de 1º grau. Se Carlos tivesse sido condenado apenas a **multa**, não caberia HC (Súmula 693 do STF).
+
 ?? Quem pode impetrar habeas corpus? | Qualquer pessoa, em seu favor ou de outrem, e o Ministério Público, sem necessidade de advogado (art. 654).
 ?? Qual é o órgão competente para o HC contra ato de juiz estadual? | O Tribunal de Justiça.
 ?? Cabe habeas corpus contra condenação apenas a pena de multa? | Não (Súmula 693 do STF).
@@ -337,6 +345,8 @@ Regras:
 - Quando a prova nova ainda precisa ser **produzida** (por exemplo, o depoimento de uma testemunha que só agora apareceu), a defesa ajuíza antes uma **justificação criminal** (produção antecipada de prova), para depois instruir a revisão.
 
 !! Revisão criminal: **só a favor do réu**; **depois do trânsito em julgado**; **a qualquer tempo** (até depois da morte); sempre no **tribunal**; nunca **agrava** a pena; pode pedir **indenização**.
+
+> Exemplo: Ana foi condenada por roubo com base no reconhecimento de uma única testemunha, e a condenação **transitou em julgado**. Anos depois, já cumprida a pena, a testemunha confessa que mentiu. Ana pode ajuizar **revisão criminal** no **tribunal**, a qualquer tempo, mesmo depois de extinta a pena, com base em **depoimento comprovadamente falso** (art. 621, II). Se tivesse morrido, o pedido poderia ser feito pelo cônjuge, ascendente, descendente ou irmão. Procedente a revisão, o tribunal pode absolvê-la e reconhecer **justa indenização**; nunca pode **agravar** a pena.
 
 ?? Cabe revisão criminal contra sentença absolutória? | Não. A revisão é exclusiva da defesa e pressupõe condenação (ou absolvição imprópria).
 ?? Há prazo para a revisão criminal? | Não. Pode ser requerida a qualquer tempo, antes ou depois da extinção da pena (art. 622).
@@ -599,6 +609,8 @@ O processo do trabalho foi pensado para resolver, de forma **rápida e simples**
 
 !! Preparo: custas de **2%** (pagas no prazo do recurso); depósito recursal só do **empregador** condenado; **metade** para os pequenos (ME, EPP, MEI, doméstico, sem fins lucrativos); **isentos** os gratuitos, as filantrópicas e as empresas em **recuperação judicial**; pode ser **fiança bancária ou seguro garantia**; insuficiência: **5 dias** para completar.
 
+> Exemplo: a Vara do Trabalho condena a empresa a pagar R$ 50 mil. A empresa interpõe **recurso ordinário** em **8 dias**, em **duas peças** (interposição ao juiz da Vara e razões ao TRT), com efeito **meramente devolutivo**. Junto, comprova o **preparo**: **custas** de **2%** sobre o valor da condenação e o **depósito recursal**. Se for microempresa ou empresa de pequeno porte, o depósito cai pela **metade**. Se quiser só esclarecer uma omissão da sentença, usa **embargos de declaração** em **5 dias**.
+
 ?? Cabe recurso imediato contra decisão interlocutória na Justiça do Trabalho? | Em regra, não (art. 893, §1º), salvo as exceções da Súmula 214 do TST.
 ?? Qual é o recurso contra acórdão do TRT em recurso ordinário? | Recurso de revista, em 8 dias (art. 896).
 ?? Quais são os indicadores de transcendência do recurso de revista? | Econômica, política, social e jurídica (art. 896-A, §1º).
@@ -623,6 +635,8 @@ O processo do trabalho foi pensado para resolver, de forma **rápida e simples**
 - **Desconsideração da personalidade jurídica:** **aplica-se ao processo do trabalho o incidente de desconsideração da personalidade jurídica previsto nos arts. 133 a 137 do CPC** (art. 855-A). **Da decisão interlocutória que acolher ou rejeitar o incidente: na fase de cognição, não cabe recurso de imediato; na fase de execução, cabe agravo de petição, independentemente de garantia do juízo; se proferida pelo relator em incidente instaurado originariamente no tribunal, cabe agravo interno** (§1º).
 
 !! Execução trabalhista: de ofício **só sem advogado**; impugnação aos cálculos em **8** dias (sob pena de **preclusão**); pagar em **48 horas** ou garantir; protesto após **45** dias; embargos em **5** dias **com garantia** (salvo filantrópicas); agravo de petição em **8** dias **delimitando matérias e valores**.
+
+> Exemplo: transitada em julgado a sentença, a Vara elabora a conta, e as partes têm prazo comum de **8 dias** para impugná-la, indicando itens e valores, sob pena de preclusão. Citada, a empresa tem **48 horas** para pagar ou **garantir** a execução, sob pena de penhora. Garantido o juízo, pode opor **embargos à execução** em **5 dias**. Da decisão dos embargos cabe **agravo de petição** em **8 dias**, **delimitando** as matérias e os **valores** impugnados.
 
 ?? O juiz do trabalho pode iniciar a execução de ofício? | Só quando as partes não estiverem representadas por advogado (art. 878).
 ?? Qual é o prazo para pagar ou garantir a execução trabalhista? | 48 horas (art. 880).
@@ -649,6 +663,8 @@ O processo do trabalho foi pensado para resolver, de forma **rápida e simples**
 - **Ação rescisória:** para desconstituir decisão de mérito transitada em julgado, nas hipóteses do art. 966 do CPC, em até **2 anos** do trânsito (art. 836), com **depósito prévio de 20%** do valor da causa, salvo prova de miserabilidade jurídica do autor.
 
 > Na prova: a 2ª fase de Trabalho cobra, com frequência, **reclamação trabalhista**, **contestação** (com reconvenção ou exceção), **recurso ordinário** (com o preparo), **recurso de revista** (com transcendência e prequestionamento), **agravo de petição** (com delimitação de valores), **embargos à execução**, **inquérito para apuração de falta grave** e **mandado de segurança**. Treine o cálculo e a indicação de **valor** em cada pedido.
+
+!! **Inquérito de falta grave:** ação do **empregador** contra o **estável**, em **30 dias** da suspensão (**decadência**, Súmula 403 do STF), obrigatório para o **dirigente sindical**, até **6** testemunhas. **Acordo extrajudicial:** petição conjunta, **advogados distintos**, sentença em **15 dias**, **suspende** a prescrição. **Rescisória:** **2 anos**, depósito de **20%**. **MS:** exige advogado, vai ao **TRT**.
 
 ?? Qual é o prazo para ajuizar o inquérito para apuração de falta grave? | 30 dias, contados da suspensão do empregado; o prazo é decadencial (art. 853; Súmula 403 do STF).
 ?? O dirigente sindical pode ser dispensado por justa causa sem inquérito? | Não. Exige inquérito judicial (Súmula 379 do TST).
@@ -729,6 +745,8 @@ Identificar o ente público define a **Justiça competente** e, muitas vezes, a 
 - **Coisa julgada:** **a sentença terá eficácia de coisa julgada oponível erga omnes, exceto no caso de haver sido a ação julgada improcedente por deficiência de prova**; neste caso, qualquer cidadão poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova (art. 18). **A sentença que concluir pela carência ou pela improcedência da ação está sujeita ao duplo grau de jurisdição** (art. 19).
 
 !! Ação popular: **cidadão** (título de eleitor); **sem custas**, salvo **má-fé**; contra o ato **lesivo** ao patrimônio, à **moralidade**, ao **meio ambiente** e ao patrimônio **cultural**; sempre no **1º grau**; prescreve em **5 anos**; improcedência por **falta de prova** não faz coisa julgada.
+
+> Exemplo: João pede a um órgão federal os dados que existem sobre ele e não recebe resposta em **10 dias**: com a prova dessa demora, cabe **habeas data**, gratuito e personalíssimo. Se ele quisesse anular um contrato superfaturado da Prefeitura, que lesa o patrimônio público, a peça seria a **ação popular**, proposta por ele como **cidadão** (com título de eleitor). Se o direito dependesse de uma lei que nunca foi editada, caberia **mandado de injunção**. Para qualquer outro direito líquido e certo, com prova pronta, o **mandado de segurança**.
 
 ?? O habeas data serve para obter informações de terceiros? | Não. É personalíssimo; para informações de terceiros ou de interesse coletivo, usa-se o mandado de segurança.
 ?? Cabe habeas data sem prévio requerimento administrativo? | Não (Súmula 2 do STJ; art. 8º, parágrafo único, da Lei 9.507/1997).
@@ -881,6 +899,8 @@ Na 2ª fase de Constitucional, a FGV também cobra **ADI, ADC e ADPF**, com o cl
 - **Defesa:** a contestação costuma atacar a **ausência de dolo específico**, a **atipicidade** da conduta (rol taxativo do art. 11), a **prescrição** e a **desproporcionalidade** das sanções.
 
 !! Improbidade hoje: **só dolosa** (dolo **específico**); art. 11 **taxativo**; MP **e** pessoa jurídica lesada (ADIs 7.042 e 7.043); prescrição de **8 anos** (intercorrente de **4**); fim da culposa **retroage** sem trânsito, prescrição nova **não** (Tema 1.199).
+
+> Exemplo: um ônibus de uma **concessionária** de transporte municipal atropela um pedestre, que não era passageiro. A vítima ajuíza ação de indenização contra a **concessionária**, que responde de forma **objetiva** também perante **terceiros não usuários** (art. 37, §6º). Não precisa provar culpa: basta **conduta, dano e nexo causal**. Não pode processar diretamente o motorista (**dupla garantia**); a concessionária terá **regresso** contra ele se houver dolo ou culpa. O prazo é de **5 anos**.
 
 ?? Contra quem deve ser proposta a ação de indenização por dano causado por servidor? | Contra o ente público ou a prestadora de serviço público; o servidor é parte ilegítima (STF, Tema 940).
 ?? A concessionária de transporte responde objetivamente pelo dano causado a um pedestre não usuário? | Sim (STF, RE 591.874).

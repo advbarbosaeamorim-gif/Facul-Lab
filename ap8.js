@@ -281,6 +281,8 @@ Detalhes:
 
 !! Sociedade de advogados: registro **só na OAB** (nunca em cartório ou junta); **sem** nome de fantasia e **sem** forma empresária; procuração ao **advogado**; **uma** sociedade por Seccional; sócio responde **subsidiária e ilimitadamente**.
 
+> Exemplo: Júlia é advogada empregada de uma construtora, com jornada de **8 horas diárias e 40 semanais**. Numa semana, trabalha 4 horas extras, pagas com adicional de **100%**, e fica até as 22h, recebendo o adicional noturno de **25%** pelo período após as 20h. O dono da empresa pede que ela cuide do seu inventário pessoal: ela **pode recusar**, porque o serviço está fora da relação de emprego. Se a empresa vencer uma ação, os honorários de **sucumbência** são de Júlia, salvo disposição contratual diferente (ADI 1.194).
+
 ?? Qual é a jornada máxima do advogado empregado de uma empresa? | 8 horas diárias contínuas e 40 semanais (art. 20, com a redação da Lei 14.365/2022).
 ?? Qual é o adicional da hora extra do advogado empregado? | Não inferior a 100%, mesmo havendo contrato escrito (art. 20, §2º).
 ?? Onde a sociedade de advogados adquire personalidade jurídica? | Com o registro dos atos constitutivos no Conselho Seccional da OAB da sua sede (art. 15, §1º).
@@ -408,6 +410,8 @@ O **Provimento 205/2021** do Conselho Federal regulamentou o **marketing jurídi
 
 !! Publicidade **proibida** = "**R-O-M-P-A**": **R**ádio, cinema e TV; **O**utdoor e painel luminoso (salvo na **fachada** do escritório); **M**uros, veículos e elevadores; **P**anfletos e mala direta; **A**dvocacia junto com **outra** atividade.
 
+> Exemplo: a advogada Marta mantém um perfil profissional no Instagram. Ela pode publicar vídeos explicando como funciona o divórcio e pode até **impulsionar** essas postagens (Provimento 205/2021). Também pode ter **placa** na fachada do escritório. Não pode, porém, postar "divórcio rápido por R$ 500, resultado garantido" (**valor** de honorários e **promessa de resultado**), nem colocar um **outdoor** na avenida ou adesivar o próprio carro com o nome do escritório (art. 40 do CED).
+
 ?? O advogado pode anunciar seus serviços em um outdoor? | Não (art. 40, II, do CED).
 ?? O advogado pode colocar um painel luminoso na fachada do seu escritório? | Sim. É exceção expressa (art. 40, parágrafo único, do CED).
 ?? O advogado pode divulgar seu telefone ao final de um artigo jurídico em jornal? | Não. Só a referência ao e-mail é permitida (art. 40, V, do CED).
@@ -499,6 +503,8 @@ Note dois detalhes: a suspensão preventiva é decretada pelo TED da **inscriç�
 !! Recurso **sem** efeito suspensivo = "**E-S-F**": **E**leições, **S**uspensão preventiva, **F**alsa prova na inscrição. Prazo geral: **15 dias**.
 
 ::fluxo Processo disciplinar|Representação (não anônima) ou instauração de ofício|Relator instrui e dá parecer preliminar|Defesa prévia (revel: defensor dativo)|Instrução e razões finais|Julgamento pelo TED da Seccional do local da infração|Recurso ao Conselho Seccional e, se cabível, ao Conselho Federal (15 dias)
+
+> Exemplo: o advogado Pedro, inscrito em São Paulo, se apropria de valores de um cliente em um processo que tramita no Paraná. A representação, que não pode ser anônima, é dirigida à **Seccional do Paraná**, onde ocorreu a infração, e o processo corre em **sigilo**. Como o caso ganhou a imprensa, o TED de **São Paulo** (inscrição principal) pode **suspendê-lo preventivamente**, depois de ouvi-lo em sessão especial, e o processo deve terminar em **90 dias**. Pedro terá **15 dias** para cada manifestação, e o recurso contra essa suspensão preventiva **não** tem efeito suspensivo.
 
 ?? Qual Seccional julga a infração cometida por advogado inscrito no RJ durante uma audiência em SP? | A Seccional de SP, onde ocorreu a infração (art. 70).
 ?? Qual órgão pode suspender preventivamente o advogado? | O TED do Conselho onde o acusado tenha inscrição principal, após ouvi-lo em sessão especial (art. 70, §3º).
@@ -786,6 +792,8 @@ O mediador e o conciliador usam **técnicas** para criar um ambiente favorável 
 
 !! Técnicas = "**R-E-P-R-C**": **R**apport, **E**scuta ativa, **P**aráfrase, **R**econtextualização, **C**aucus. Para a criatividade: **brainstorming**; para a empatia: **inversão de papéis**; para a viabilidade: **teste de realidade**.
 
+> Exemplo: numa mediação sobre a guarda de um filho, a mãe diz: "ele nunca aparece nos fins de semana combinados". O mediador usa a **paráfrase** ("a senhora sente falta de previsibilidade nas visitas") e a **recontextualização** ("os dois querem que o menino tenha uma rotina estável"). Quando a discussão esquenta, faz um **caucus** com cada um. Depois, propõe um **brainstorming** de calendários possíveis e, diante de uma proposta irreal, faz o **teste de realidade**: "com o seu horário de trabalho, isso funcionaria na prática?"
+
 ?? Qual técnica consiste em reformular uma fala agressiva de forma positiva? | A recontextualização (ou reformulação).
 ?? O que é o caucus? | A sessão privada, em que o mediador se reúne separadamente com uma das partes; o que nela se diz é confidencial (arts. 19 e 31 da Lei 13.140/2015).
 
@@ -903,6 +911,8 @@ Se uma parte ajuíza ação apesar de existir convenção de arbitragem, a outra
 - **Serventias extrajudiciais:** os cartórios podem realizar conciliação e mediação, nos termos do **Provimento 149/2023 do CNJ** (Código Nacional de Normas do Foro Extrajudicial).
 
 > Na prova: as questões de Mediação e Arbitragem costumam pedir a diferença entre conciliação e mediação (vínculo e possibilidade de sugerir), os princípios do art. 166 do CPC, as regras da audiência do art. 334, os requisitos do mediador judicial, a confidencialidade e suas exceções, a diferença entre cláusula compromissória e compromisso arbitral, a cláusula em contrato de adesão e de consumo, a competência-competência e os prazos da sentença arbitral e da ação de nulidade.
+
+!! Outros espaços = "**C-J-R-O-S**": **C**ontratos administrativos (art. 151 da Lei 14.133: conciliação, mediação, **dispute board** e arbitragem); **J**uizados (árbitro escolhido entre os **juízes leigos**, laudo homologado por sentença **irrecorrível**); **R**estaurativa (vítima, ofensor e comunidade, Resolução 225/2016 do CNJ); **O**nline (ODR, consumidor.gov.br); **S**erventias extrajudiciais (Provimento 149/2023 do CNJ).
 
 ?? A Lei 14.133/2021 permite arbitragem nos contratos administrativos? | Sim, além da conciliação, da mediação e do comitê de resolução de disputas (art. 151 da Lei 14.133/2021).
 ?? Cabe recurso do laudo arbitral homologado nos Juizados Especiais? | Não. A sentença homologatória é irrecorrível (art. 26 da Lei 9.099/1995).
@@ -1125,6 +1135,8 @@ Na ação judicial (procedimento comum), devem ser **citados pessoalmente os con
 - **Não se concederá mandado de segurança** quando se tratar de ato do qual caiba **recurso administrativo com efeito suspensivo**, independentemente de caução; de **decisão judicial da qual caiba recurso com efeito suspensivo**; ou de **decisão judicial transitada em julgado** (art. 5º da Lei 12.016/2009).
 - **Não cabem honorários advocatícios** no mandado de segurança (art. 25 da Lei 12.016/2009). **O mandado de segurança não é substitutivo de ação de cobrança** (Súmula 269 do STF).
 
+> Exemplo: o locatário de uma loja deixa de pagar três aluguéis, e o contrato não tem nenhuma garantia. O locador ajuíza **ação de despejo por falta de pagamento** cumulada com cobrança e pede **liminar** para desocupação em **15 dias**, prestando **caução** de 3 meses de aluguel. Citado, o locatário pode evitar a rescisão **purgando a mora** em **15 dias**, com o depósito do débito atualizado. O **valor da causa** é de **12 aluguéis**.
+
 ?? Qual é o prazo para o locatário purgar a mora na ação de despejo por falta de pagamento? | 15 dias contados da citação (art. 62, II, da Lei 8.245/1991), salvo se já tiver usado a faculdade nos 24 meses anteriores.
 ?? Quando deve ser ajuizada a ação renovatória? | No interregno de 1 ano, no máximo, até 6 meses, no mínimo, antes do fim do contrato (art. 51, §5º, da Lei 8.245/1991).
 ?? A recusa ao exame de DNA prova a paternidade? | Induz presunção relativa (juris tantum) de paternidade (Súmula 301 do STJ).
@@ -1222,6 +1234,8 @@ Detalhes que caem:
 
 !! Recursos: **apelação** (sentença; 2 peças: juiz e tribunal); **agravo** (interlocutória do 1.015; direto no tribunal; peça efeito ao relator); **ED** (5 dias; ao próprio juiz; interrompem); **REsp** (lei federal; relevância) e **RE** (Constituição; repercussão geral), ao presidente do tribunal de origem.
 
+> Exemplo: a sentença julga improcedente o pedido de indenização do seu cliente e é publicada numa segunda-feira. A **apelação** deve ser protocolada em **15 dias úteis**, em **duas peças**: a petição de interposição dirigida ao **juiz** da causa, com o **preparo**, e as razões dirigidas ao **tribunal**. O juiz não faz juízo de admissibilidade e remete os autos. Se o processo estiver pronto, o tribunal pode julgar o mérito desde logo (**causa madura**). Se durante o processo o juiz indeferiu uma prova, a questão não precluiu e vai como **preliminar** da apelação.
+
 ?? A quem é dirigida a petição de interposição da apelação? | Ao juiz que proferiu a sentença; as razões são dirigidas ao tribunal (art. 1.010).
 ?? O juiz de 1º grau faz juízo de admissibilidade da apelação? | Não. Remete os autos ao tribunal independentemente de juízo de admissibilidade (art. 1.010, §3º).
 ?? A apelação contra a sentença que condena a pagar alimentos tem efeito suspensivo? | Não. É uma das exceções do art. 1.012, §1º, II.
@@ -1281,6 +1295,8 @@ Os artigos deste tema são da **Lei 9.099/1995**.
 
 !! Juizado cível = "**40-20-10**": até **40** salários mínimos; sem advogado até **20**; recurso inominado em **10** dias (preparo em **48h**). **Pedido contraposto**, não reconvenção. **REsp não**, **RE sim**.
 
+> Exemplo: Carla teve um prejuízo de 15 salários mínimos com uma loja e quer processá-la no **Juizado Especial Cível**. Como o valor não passa de **20 salários mínimos**, pode ir **sem advogado**. A loja não pode reconvir, mas pode formular **pedido contraposto** fundado nos mesmos fatos. Se Carla faltar à audiência, o processo é **extinto**; se a loja faltar, presumem-se verdadeiros os fatos. Para recorrer da sentença, Carla precisará de **advogado**: **recurso inominado** em **10 dias**, com preparo nas **48 horas** seguintes.
+
 ?? Qual é o limite de valor do Juizado Especial Cível? | 40 salários mínimos (art. 3º, I, da Lei 9.099/1995).
 ?? Uma pessoa jurídica de médio porte pode ser autora no Juizado? | Não. Só microempresas, empresas de pequeno porte e as demais entidades do art. 8º, §1º, da Lei 9.099/1995.
 ?? O réu pode reconvir no Juizado? | Não, mas pode formular pedido contraposto fundado nos mesmos fatos (art. 31 da Lei 9.099/1995).
@@ -1302,6 +1318,8 @@ Antes de entregar qualquer peça, confira:
 - **Fechamento:** "Termos em que pede deferimento. Local..., data... Advogado..., OAB..." sem identificação pessoal.
 
 > Na prova: na 2ª fase, a peça vale **5 pontos** e as 4 questões discursivas valem os outros 5. Muitos candidatos perdem a prova por escolher a **peça errada**, mesmo sabendo o conteúdo: a escolha equivocada pode zerar a peça. Treine a **identificação da peça** com enunciados antigos e monte, para cada uma, o seu **esqueleto** (estrutura e pedidos), para escrever com segurança no dia.
+
+!! Antes de entregar: "**P-E-Q-N-F-F-T-P-V-R-F**": **P**eça certa; **E**ndereçamento; **Q**ualificação; **N**ome e fundamento legal; **F**atos sem inventar; **F**undamentos (uma tese por tópico, preliminares antes do mérito); **T**utela; **P**edidos completos; **V**alor da causa; **R**equisitos do recurso (prazo, preparo, cabimento); **F**echamento sem identificação. A peça errada pode **zerar** a peça.
 
 ?? Quais itens devem constar dos pedidos de uma ação de indenização? | Citação, tutela provisória (se houver), condenação em danos materiais e morais com valores, juros e correção, inversão do ônus da prova (consumo), gratuidade (se for o caso), custas e honorários e produção de provas.
 ?? Como deve ser o fechamento da peça na prova da OAB? | "Termos em que pede deferimento. Local, data. Advogado, OAB", sem identificação pessoal.

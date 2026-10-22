@@ -198,6 +198,8 @@ Efetuar-se-á o pagamento **no domicílio do devedor**, salvo se as partes conve
 - **Não tendo sido ajustada época** para o pagamento, o credor pode exigi-lo **imediatamente** (art. 331).
 - Ao credor assistirá o direito de **cobrar a dívida antes de vencido o prazo** em casos que indicam risco de não recebimento: **falência** do devedor ou concurso de credores; **penhora** dos bens hipotecados ou empenhados por outro credor; e quando **cessarem ou se tornarem insuficientes as garantias** do débito e o devedor, intimado, se negar a reforçá-las (art. 333). É o **vencimento antecipado**.
 
+> Exemplo: Carlos deve R$ 5.000 a Marta. Um credor de Marta penhora esse crédito, e Carlos é intimado da penhora. Mesmo assim, Carlos transfere o dinheiro para Marta. O pagamento **não vale** contra o credor que penhorou, e Carlos pode ser obrigado a pagar de novo (art. 312): **quem paga mal, paga duas vezes**. Restará a Carlos cobrar de Marta o que lhe pagou.
+
 ?? O devedor pagou a quem todos acreditavam ser o credor, mas não era. O pagamento vale? | Sim, se feito de boa-fé ao credor putativo (art. 309).
 ?? O devedor, intimado da penhora do crédito, paga ao credor mesmo assim. O que acontece? | O pagamento não vale contra os terceiros, que podem obrigá-lo a pagar de novo (art. 312).
 ?? Em regra, onde deve ser feito o pagamento? | No domicílio do devedor (art. 327): a dívida é quesível.
@@ -473,6 +475,8 @@ Os **atos unilaterais** são fontes de obrigação que nascem da **vontade de um
 
 > Na prova: as questões preferidas são as modalidades (perda da coisa certa, gênero não perece), solidariedade (não se presume; efeitos da remissão; regresso), cessão x assunção, formas de extinção (sobretudo novação e compensação), mora ex re e perpetuação, cláusula penal (limite e redução), arras e responsabilidade objetiva por fato de outrem.
 
+!! Atos unilaterais = "**PRO-GE-PA-EN**": **PRO**messa de recompensa (cumpre o prometido), **GE**stão de negócios (age sem autorização, no interesse do dono), **PA**gamento indevido (restitui; quem pagou prova o **erro**), **EN**riquecimento sem causa (restitui; ação **subsidiária**; prescreve em **3 anos**).
+
 ?? Quem encontra o objeto anunciado em uma promessa pública de recompensa tem direito a ela? | Sim. Quem faz a promessa por anúncio público contrai obrigação de cumprir o prometido (art. 854).
 ?? A ação de enriquecimento sem causa cabe sempre que alguém se enriquece à custa de outro? | Não. Ela é subsidiária: não cabe se a lei conferir ao lesado outros meios de ressarcimento (art. 886).
 
@@ -492,6 +496,11 @@ con2:`# A organização do Estado brasileiro
 Constitucional I estudou a teoria da Constituição e os direitos fundamentais. Constitucional II estuda a **organização do Estado e dos Poderes**: como o poder é dividido **no território** (a Federação: União, Estados, Distrito Federal e Municípios) e **entre funções** (Legislativo, Executivo e Judiciário), e como a própria Constituição se protege por meio do **controle de constitucionalidade**. É a parte da Constituição que mais aparece nas provas de concursos e na OAB, porque está cheia de números, quóruns e competências.
 
 > Lembre: salvo indicação em contrário, os artigos citados nesta apostila são da **Constituição Federal de 1988**. Quando o artigo for de outra lei, o diploma é indicado.
+
+!! Constitucional II divide o poder em duas direções: **no território** (Federação: União, Estados, DF e Municípios) e **entre funções** (Legislativo, Executivo e Judiciário), e protege a Constituição com o **controle de constitucionalidade**.
+
+?? O que estuda Constitucional II? | A organização do Estado e dos Poderes: a Federação, a separação entre Legislativo, Executivo e Judiciário e o controle de constitucionalidade.
+?? Quais são os entes da Federação brasileira? | União, Estados, Distrito Federal e Municípios.
 
 # A Federação brasileira
 ## Entes e autonomia
@@ -820,6 +829,8 @@ O **CNJ**, composto de **15 membros**, exerce o **controle da atuação administ
 - **STJ:** é o **guardião da lei federal**. Julga, entre outros, o **recurso especial** contra decisão de TRF ou TJ que **contrariar tratado ou lei federal, ou negar-lhes vigência**; **julgar válido ato de governo local contestado em face de lei federal**; ou der a lei federal **interpretação divergente** da que lhe haja atribuído outro tribunal (art. 105, III). Também julga a homologação de sentenças estrangeiras e o exequatur às cartas rogatórias (art. 105, I, i).
 - **Súmula vinculante:** o STF poderá, de ofício ou por provocação, mediante decisão de **2/3 dos seus membros**, após **reiteradas decisões** sobre matéria constitucional, aprovar súmula que terá **efeito vinculante** em relação aos demais órgãos do Poder Judiciário e à administração pública direta e indireta (art. 103-A). Ela **não vincula o Poder Legislativo** na sua função de legislar. Do ato administrativo ou decisão judicial que contrariar a súmula, caberá **reclamação** ao STF (art. 103-A, §3º).
 
+> Exemplo: abre-se uma vaga do quinto constitucional destinada à advocacia no Tribunal de Justiça. A **OAB** escolhe **seis** advogados com mais de 10 anos de atividade (lista sêxtupla); o **TJ** reduz a lista a **três** (lista tríplice); o **Governador** nomeia **um** deles em até 20 dias. O nomeado já entra **vitalício**, porque nos tribunais a vitaliciedade vem com a posse.
+
 ?? Depois de quanto tempo o juiz de primeiro grau adquire a vitaliciedade? | Após 2 anos de exercício (art. 95, I).
 ?? O CNJ pode rever uma sentença judicial? Pode punir um Ministro do STF? | Não, nas duas perguntas. O CNJ não tem função jurisdicional e não tem competência sobre o STF.
 ?? Quantos votos são necessários para o STF recusar a repercussão geral e para aprovar uma súmula vinculante? | 2/3 dos membros, em ambos os casos.
@@ -846,6 +857,8 @@ A **Defensoria Pública** é instituição permanente, essencial à função jur
 
 !! MP = "**U-I-I**": **U**nidade, **I**ndivisibilidade, **I**ndependência funcional. PGR = **35 anos**, **Senado por maioria absoluta**, **2 anos**, recondução permitida.
 
+> Exemplo: a promotora que atua em um júri entra de férias, e outro promotor assume o processo no meio do caminho, sem que nada precise ser refeito. Isso é a **indivisibilidade**. Mas o promotor que assume não é obrigado a pensar como a colega: pode, por exemplo, pedir a absolvição que ela não pediria. Isso é a **independência funcional**.
+
 ?? Quais são os princípios institucionais do Ministério Público? | Unidade, indivisibilidade e independência funcional (art. 127, §1º).
 ?? O Advogado-Geral da União precisa ser membro da carreira? | Não. É de livre nomeação pelo Presidente, dentre cidadãos maiores de 35 anos, de notável saber jurídico e reputação ilibada (art. 131, §1º).
 
@@ -860,6 +873,8 @@ Em situações de crise grave, a Constituição permite que o Estado adote **med
 - No **estado de sítio** por comoção grave, as restrições podem ser mais amplas: obrigação de permanência em localidade determinada; detenção em edifício não destinado a acusados ou condenados por crimes comuns; restrições à inviolabilidade da correspondência, à liberdade de imprensa, radiodifusão e televisão; suspensão da liberdade de reunião; **busca e apreensão em domicílio**; intervenção nas empresas de serviços públicos; requisição de bens (art. 139).
 - Cessado o estado de defesa ou o estado de sítio, cessarão também seus efeitos, **sem prejuízo da responsabilidade pelos ilícitos** cometidos por seus executores ou agentes (art. 141).
 - Lembre que a Constituição **não pode ser emendada** durante o estado de defesa ou de sítio (art. 60, §1º).
+
+> Exemplo: um terremoto de grandes proporções devasta duas cidades do Nordeste, e há saques e desordem. Como a calamidade atinge **locais restritos e determinados**, cabe **estado de defesa**: o Presidente decreta, ouvidos os Conselhos da República e de Defesa Nacional, e submete o decreto ao Congresso em **24 horas**. Se a crise se espalhasse pelo país (comoção grave de repercussão nacional), seria caso de **estado de sítio**, com **autorização prévia** do Congresso.
 
 ?? Qual é a diferença de controle do Congresso entre o estado de defesa e o estado de sítio? | No estado de defesa, o controle é posterior (o decreto é submetido ao Congresso em 24 horas). No estado de sítio, o controle é prévio (o Presidente precisa de autorização antes).
 ?? Qual é o prazo máximo do estado de defesa? | 30 dias, prorrogável uma vez por igual período (art. 136, §2º).
@@ -1396,6 +1411,8 @@ Transitada em julgado a sentença condenatória, a multa será **executada peran
 
 !! Multa = "**10 a 360 dias**, cada dia de **1/30 a 5 salários mínimos**, podendo **triplicar**".
 
+> Exemplo: o juiz fixa **20 dias-multa**, cada um no valor mínimo de **1/30 do salário mínimo**. Supondo um salário mínimo de R$ 1.500 na data do fato, cada dia-multa vale R$ 50, e a multa total é de R$ 1.000, valor que será atualizado monetariamente. Se o réu for muito rico, o juiz pode chegar a 360 dias de 5 salários mínimos cada e, se ainda assim for ineficaz, triplicar.
+
 ?? Qual é o número mínimo e máximo de dias-multa? | De 10 a 360 dias-multa (art. 49).
 ?? A multa não paga pode ser convertida em prisão? | Não. Ela é dívida de valor, executada perante o juiz da execução penal (art. 51).
 
@@ -1483,6 +1500,8 @@ O tempo a remir em função das horas de estudo será **acrescido de 1/3** no ca
 ## Detração
 **Computam-se**, na pena privativa de liberdade e na medida de segurança, o tempo de **prisão provisória**, no Brasil ou no estrangeiro, o de **prisão administrativa** e o de **internação** em hospital de custódia (art. 42). Quem ficou preso preventivamente por 1 ano e é condenado a 5 anos terá apenas 4 anos a cumprir. O juiz que proferir a sentença condenatória já deve considerar a detração para **determinar o regime inicial** (art. 387, §2º, do Código de Processo Penal).
 
+> Exemplo: um réu primário é condenado a 6 anos por furto qualificado (crime sem violência ou grave ameaça). Para progredir do fechado ao semiaberto, precisa cumprir **16%** da pena, cerca de 11 meses e meio, e ter boa conduta. Se trabalhar 3 dias por semana nesse período, ainda **remirá** 1 dia de pena a cada 3 trabalhados. Se tiver ficado preso preventivamente por 4 meses, esse tempo é descontado pela **detração**.
+
 ?? Qual é o percentual de progressão para um condenado primário por roubo (crime com grave ameaça)? | 25% (art. 112, III, da LEP).
 ?? A falta grave interrompe o prazo para a progressão de regime? | Sim (Súmula 534 do STJ; art. 112, §6º, da LEP).
 ?? Quantos dias de trabalho são necessários para remir 1 dia de pena? | 3 dias de trabalho (art. 126, §1º, II, da LEP).
@@ -1526,6 +1545,8 @@ A **medida de segurança** é a resposta penal ao **inimputável** (e, em alguns
 
 !! Medida de segurança: **internação** (reclusão) ou **ambulatorial** (detenção); mínimo de **1 a 3 anos**; máximo = **pena máxima do crime** (Súmula 527 do STJ); sistema **vicariante** (ou pena ou medida).
 
+> Atenção: o inimputável que pratica fato típico e ilícito **não é condenado**. O juiz profere uma **absolvição imprópria**: absolve, mas aplica medida de segurança (art. 386, parágrafo único, III, do Código de Processo Penal). Já o semi-imputável é **condenado**, com pena reduzida, que pode ser substituída por medida de segurança.
+
 ?? Qual é o limite máximo da medida de segurança segundo o STJ? | O limite máximo da pena abstratamente cominada ao delito (Súmula 527 do STJ).
 ?? O semi-imputável pode receber pena e medida de segurança ao mesmo tempo? | Não. Pelo sistema vicariante, aplica-se uma ou outra (art. 98).
 
@@ -1550,6 +1571,8 @@ A concessão de **indulto e a comutação de penas** competem ao **Presidente da
 O **perdão judicial** permite ao juiz **deixar de aplicar a pena** nas hipóteses previstas em lei. O exemplo mais conhecido está no **homicídio culposo**: o juiz poderá deixar de aplicar a pena se as **consequências da infração atingirem o próprio agente de forma tão grave** que a sanção penal se torne desnecessária (art. 121, §5º). É o caso do pai que, por descuido no trânsito, causa a morte do próprio filho. A sentença que concede o perdão judicial é **declaratória** da extinção da punibilidade, **não subsistindo qualquer efeito condenatório** (Súmula 18 do STJ) e não gerando reincidência (art. 120).
 
 !! Art. 107 = "**MAA-PRRP**": **M**orte, **A**nistia/graça/indulto, **A**bolitio, **P**rescrição/decadência/perempção, **R**enúncia e perdão, **R**etratação, **P**erdão judicial.
+
+> Exemplo: o adultério era crime (art. 240 do Código Penal) até a Lei 11.106/2005, que o revogou. Quem respondia a processo por adultério teve a punibilidade extinta pela **abolitio criminis**, e quem já estava condenado deixou de sofrer os efeitos penais da condenação (art. 2º do Código Penal). Os efeitos civis, como uma eventual indenização, não são apagados.
 
 ?? Qual é a diferença entre anistia, graça e indulto? | A anistia é concedida por lei do Congresso e se refere a fatos. A graça é concedida pelo Presidente a uma pessoa determinada. O indulto é concedido pelo Presidente, por decreto, a um grupo de condenados.
 ?? A sentença que concede o perdão judicial gera reincidência? | Não. É declaratória da extinção da punibilidade e não subsiste qualquer efeito condenatório (Súmula 18 do STJ; art. 120).
@@ -1667,6 +1690,10 @@ Conhecer as etapas do procedimento comum é como ter o **mapa de uma viagem**. E
 O procedimento costuma ser dividido em **fases**: a **postulatória** (inicial, audiência de conciliação, contestação, réplica), a **ordinatória** (saneamento), a **instrutória** (provas) e a **decisória** (sentença). Depois da sentença, vêm a fase **recursal** e, se for o caso, a de **cumprimento de sentença**.
 
 !! Fases do procedimento: "**P-O-I-D**": **P**ostulatória, **O**rdinatória (saneamento), **I**nstrutória (provas), **D**ecisória (sentença).
+
+?? A que causas se aplica o procedimento comum? | A todas as causas, salvo disposição em contrário do CPC ou de lei; nos procedimentos especiais e na execução, aplica-se subsidiariamente (art. 318).
+?? Quais são as fases do procedimento comum? | Postulatória, ordinatória (saneamento), instrutória e decisória.
+?? Qual é o prazo da contestação no procedimento comum? | 15 dias.
 
 # A petição inicial
 ## Requisitos (art. 319)
