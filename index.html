@@ -695,6 +695,56 @@ html[data-anim="on"] .pv-chip-novo .pv-ok{animation:ent-pop .6s cubic-bezier(.2,
 .pv-mais summary::-webkit-details-marker{display:none}.pv-mais summary .i{width:15px;height:15px}
 .pv-mais[open] summary{color:var(--fg);border-style:solid;margin-bottom:8px}.pv-mais[open] summary .i{transform:rotate(45deg);transition:transform .2s}
 html[data-anim="on"] .pv-mais[open] .pv-add-data{animation:pv-res-in .3s ease-out both}
+/* Sobre o Facul Lab */
+.sobre-fl{display:grid;gap:14px;padding-bottom:28px}
+.sb-hero{text-align:center;padding:26px 16px 22px;border-radius:var(--r);background:linear-gradient(160deg,color-mix(in srgb,var(--lacre) 16%,var(--surface)),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden}
+.sb-hero h2{margin:12px 0 4px;font:700 1.7rem/1.1 var(--f-display)}.sb-hero p{margin:0;color:var(--muted)}
+.sb-logo{position:relative;width:76px;height:76px;margin:0 auto;display:grid;place-items:center;border-radius:24px;background:var(--lacre);color:#fff;box-shadow:0 12px 26px -12px var(--lacre)}
+.sb-logo>.i{width:42px;height:42px}
+.sb-logo i{position:absolute;inset:-8px;border-radius:30px;border:2px solid color-mix(in srgb,var(--lacre) 45%,transparent);opacity:0}
+html[data-anim="on"] .sb-logo{animation:ent-pop .7s cubic-bezier(.2,1.5,.4,1) both}
+html[data-anim="on"] .sb-logo>.i{animation:sb-balanca 3.6s ease-in-out infinite 1s;transform-origin:50% 20%}
+html[data-anim="on"] .sb-logo i{animation:sb-onda 3s ease-out infinite}html[data-anim="on"] .sb-logo i:nth-of-type(2){animation-delay:1s}html[data-anim="on"] .sb-logo i:nth-of-type(3){animation-delay:2s}
+@keyframes sb-balanca{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+@keyframes sb-onda{0%{opacity:.8;transform:scale(.9)}100%{opacity:0;transform:scale(1.45)}}
+.sb-bloco{padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
+.sb-bloco h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 1.1rem/1.2 var(--f-display)}.sb-bloco h3 .i{width:20px;height:20px;color:var(--lacre)}
+.sb-bloco p{margin:0 0 8px;line-height:1.6}.sb-bloco p:last-child{margin-bottom:0}
+.sb-ciclo{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:.78rem;font-weight:600}
+.sb-ciclo span{flex:1 1 0;display:grid;justify-items:center;gap:4px;text-align:center;color:var(--muted)}
+.sb-ciclo span i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--surface-2);color:var(--fg);font:700 1.1rem/1 var(--f-display);font-style:normal}.sb-ciclo span i .i{width:18px;height:18px}
+.sb-ciclo span.ok i{background:#2fa36b;color:#fff}
+.sb-ciclo em{flex:0 0 22px;height:2px;margin-bottom:20px;background:repeating-linear-gradient(90deg,var(--muted) 0 4px,transparent 4px 8px);opacity:.6}
+html[data-anim="on"] .sb-ciclo span i{animation:sb-vez 3.6s ease-in-out infinite}
+html[data-anim="on"] .sb-ciclo span:nth-of-type(2) i{animation-delay:1.2s}html[data-anim="on"] .sb-ciclo span:nth-of-type(3) i{animation-delay:2.4s}
+html[data-anim="on"] .sb-ciclo em{animation:sb-corre .8s linear infinite}
+@keyframes sb-vez{0%,30%,100%{transform:scale(1);box-shadow:none}12%{transform:scale(1.18);box-shadow:0 0 0 6px color-mix(in srgb,var(--lacre) 25%,transparent)}}
+@keyframes sb-corre{to{background-position:8px 0}}
+.sb-serve{list-style:none;margin:10px 0;padding:0;display:grid;gap:8px}
+@media (min-width:640px){.sb-serve{grid-template-columns:1fr 1fr}}
+.sb-serve li{display:flex;gap:10px;align-items:center;padding:10px;border-radius:14px;background:var(--surface-2)}
+.sb-serve b{display:block;font-size:.92rem}.sb-serve small{color:var(--muted);font-size:.8rem}
+.sb-ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:color-mix(in srgb,var(--lacre) 15%,var(--surface));color:var(--lacre)}.sb-ic .i{width:20px;height:20px}
+html[data-anim="on"] .sb-serve li{animation:pv-res-in .45s ease-out both;animation-delay:calc(.3s + var(--k)*.09s)}
+.sb-nota{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--muted)}.sb-nota .i{flex:none;width:18px;height:18px;margin-top:2px;color:var(--lacre)}
+.sb-nums{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media (min-width:640px){.sb-nums{grid-template-columns:repeat(4,1fr)}}
+.sb-num{padding:14px 10px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);text-align:center}
+.sb-num b{display:block;font:700 1.6rem/1.1 var(--f-display);color:var(--lacre)}.sb-num span{font-size:.8rem;color:var(--muted)}
+.sb-voce{padding:14px 16px;border-radius:var(--r);background:color-mix(in srgb,#2fa36b 14%,var(--surface));border:1px solid color-mix(in srgb,#2fa36b 40%,var(--line))}
+.sb-voce p{margin:4px 0 0;line-height:1.5}
+.sb-trilha{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;margin-top:12px;font-size:.75rem;font-weight:700;color:var(--muted)}
+.sb-trilha svg{width:100%;height:40px;overflow:visible}
+.sb-trilha path{fill:none;stroke-width:3;stroke-linecap:round}.sb-tr-base{stroke:var(--trilho);stroke-dasharray:2 6}.sb-tr-v{stroke:var(--lacre);stroke-dasharray:100;stroke-dashoffset:0}
+html[data-anim="on"] .sb-tr-v{animation:sb-trilha 2.4s cubic-bezier(.4,0,.2,1) both .4s}
+@keyframes sb-trilha{from{stroke-dashoffset:100}}
+.sb-ass{margin:4px 0 0;text-align:center;font:700 1.3rem/1.3 var(--f-display)}.sb-ass span{display:block;font:400 .9rem/1.4 inherit;color:var(--muted);font-style:italic}
+.sb-cta{justify-self:center;margin:0}
+[data-estilo="premium"] .sb-hero{border-radius:28px;background:var(--grad-suave),var(--surface)}
+[data-estilo="premium"] .sb-logo{background:var(--p1);box-shadow:0 12px 26px -12px var(--p1)}[data-estilo="premium"] .sb-logo i{border-color:color-mix(in srgb,var(--p1) 45%,transparent)}
+[data-estilo="premium"] .sb-bloco,[data-estilo="premium"] .sb-num{border-radius:22px}
+[data-estilo="premium"] .sb-bloco h3 .i,[data-estilo="premium"] .sb-num b,[data-estilo="premium"] .sb-ic,[data-estilo="premium"] .sb-nota .i{color:var(--p1)}
+[data-estilo="premium"] .sb-tr-v{stroke:var(--p1)}[data-estilo="premium"] .sb-ic{background:color-mix(in srgb,var(--p1) 14%,var(--surface))}
 .pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
 html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
@@ -2288,6 +2338,7 @@ function animarTela(nova){document.documentElement.setAttribute("data-anim",S.cf
  m.querySelectorAll(".hs b").forEach(contar);
  m.querySelectorAll(".anel-v").forEach(c=>{const fim=c.getAttribute("stroke-dashoffset");c.style.transition="none";c.style.strokeDashoffset=c.getAttribute("stroke-dasharray");requestAnimationFrame(()=>requestAnimationFrame(()=>{c.style.transition="";c.style.strokeDashoffset=fim}))});
  m.querySelectorAll(".b7").forEach((b,k)=>b.style.setProperty("--i",k));
+ m.querySelectorAll(".sb-num b").forEach(contarBR);
  m.classList.add("anim-on")}
 function faiscas(btn){if(!animOn())return;btn.classList.remove("aticar");void btn.offsetWidth;btn.classList.add("aticar");if(btn.classList.contains("apagada"))return;
  for(let k=0;k<10;k++){const s=document.createElement("span");s.className="faisca";const a=-Math.PI/2+(Math.random()-.5)*2.2,r=26+Math.random()*30;s.style.setProperty("--dx",(Math.cos(a)*r).toFixed(1)+"px");s.style.setProperty("--dy",(Math.sin(a)*r).toFixed(1)+"px");s.style.animationDelay=(Math.random()*.12).toFixed(2)+"s";btn.appendChild(s);setTimeout(()=>s.remove(),1100)}}
@@ -2648,7 +2699,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   switch(rota.tela){
     case "oab":h=telaOab();break; case "materias":h=telaMaterias();break; case "materia":h=telaMateria();break;
     case "faculdade":h=telaFaculdade();break; case "disc":h=telaDisc();break; case "periodo":h=telaPeriodo();break; case "pre":h=telaPre();break;
-    case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break;
+    case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break; case "quem":h=telaQuem();break;
     case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
   }
   if(repQ)h+=telaRep();
@@ -2752,7 +2803,7 @@ function telaGaveta(){
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
    <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
    <button data-acao="erradas" ${errs?"":"disabled"} style="${errs?"":"opacity:.5"}">${ic("refazer")}<span>Refazer questões erradas${errs?` (${errs})`:""}</span></button>
-   <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}${it("sobre","info","Como funciona")}</nav></aside></div>`}
+   <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
 /* ---------- OAB ---------- */
 function telaOab(){
@@ -2950,6 +3001,29 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
     <p style="margin-top:10px">${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar este tema na apostila</button>`:""}${botaoRep(q)}</div></details>`}).join("")}</div></main>`}
 
 /* ---------- sobre ---------- */
+/* ---------- Sobre o Facul Lab (texto do autor) ---------- */
+function contarBR(el){const fim=+el.dataset.n;if(!(fim>1)||!animOn()){el.textContent=fim.toLocaleString("pt-BR");return}const t0=performance.now(),dur=1100;
+ (function p(now){const k=Math.min(1,(now-t0)/dur);el.textContent=Math.round(fim*(1-Math.pow(1-k,3))).toLocaleString("pt-BR");if(k<1&&el.isConnected)requestAnimationFrame(p)})(t0)}
+function telaQuem(){let feitas=0;Object.keys(S.stats).forEach(k=>{if(QMAP[k])feitas++});const dias=Object.keys(S.dias||{}).filter(k=>temAtiv(S.dias[k])).length;
+ const num=(n,l)=>`<div class="sb-num"><b data-n="${n}">${n.toLocaleString("pt-BR")}</b><span>${l}</span></div>`;
+ const serve=[["carro","Simulados da 1ª fase da OAB","no formato da prova, com cronômetro"],["grade","Treino por matéria","nas disciplinas cobradas no Exame"],["livro","Área da faculdade","separada do 1º ao 10º período"],["recibo","Gabarito comentado","com o artigo de lei de cada questão"],["cartas","Apostilas, resumos e cartões","de memorização, com revisão programada"],["chama","Metas diárias e sequência","de dias de estudo e contagem regressiva para a prova"]];
+ return topo("Sobre o Facul Lab","Quem fez, por que e para quem",{menu:true})+
+ `<main class="wrap sobre-fl">
+  <section class="sb-hero"><div class="sb-logo" aria-hidden="true">${ic("balanca")}<i></i><i></i><i></i></div><h2>Facul Lab</h2><p>Do primeiro período até a OAB, uma questão de cada vez.</p></section>
+  <section class="sb-bloco"><h3>${ic("coracao")} Quem sou eu</h3><p>Meu nome é <b>Nicolas Amorim</b> e sou estudante de Direito. Como muita gente, divido o tempo entre trabalho e faculdade, e sei como é difícil encaixar os estudos na rotina.</p></section>
+  <section class="sb-bloco"><h3>${ic("lampada")} Por que criei o Facul Lab</h3><p>Sempre tive dificuldade de manter o foco por muito tempo na mesma coisa, e por isso começava cursos e não terminava. Funciono melhor com <b>metas curtas, resposta rápida e progresso que dá para ver</b>.</p>
+   <p>A ideia veio do app de simulados do Detran: questão, correção na hora, próxima questão. Então pensei: por que não estudar Direito do mesmo jeito?</p>
+   <div class="sb-ciclo" aria-hidden="true"><span><i>?</i>Questão</span><em></em><span class="ok"><i>${ic("ok")}</i>Correção na hora</span><em></em><span><i>${ic("prox")}</i>Próxima</span></div></section>
+  <section class="sb-bloco"><h3>${ic("alvo")} Para que ele serve</h3><p>O Facul Lab foi criado para acompanhar o estudante do primeiro período até a OAB. Nele você encontra:</p>
+   <ul class="sb-serve">${serve.map(([i,t,d],k)=>`<li style="--k:${k}"><span class="sb-ic">${ic(i)}</span><div><b>${t}</b><small>${d}</small></div></li>`).join("")}</ul>
+   <p class="sb-nota">${ic("refazer")} As alternativas mudam de ordem a cada tentativa, para você aprender o conteúdo, e não decorar a posição da resposta.</p></section>
+  <section class="sb-nums" aria-label="O Facul Lab em números">${num(QS.length,"questões")}${num(30,"simulados OAB")}${num(10,"períodos")}${num(LS.length,"artigos de lei seca")}</section>
+  ${feitas?`<section class="sb-voce"><b>E você já começou a sua parte.</b><p>${feitas.toLocaleString("pt-BR")} ${feitas===1?"questão respondida":"questões respondidas"}${dias?` em ${dias} ${dias===1?"dia":"dias"} de estudo`:""}. Cada uma é um passo nesse caminho.</p></section>`:""}
+  <section class="sb-bloco sb-obj"><h3>${ic("balanca")} Meu objetivo</h3><p>Meu objetivo é passar na OAB e me tornar advogado. Se o Facul Lab também ajudar outros estudantes com pouco tempo ou dificuldade de foco, ele terá cumprido o seu papel.</p>
+   <div class="sb-trilha" aria-hidden="true"><span>1º período</span><svg viewBox="0 0 300 40" preserveAspectRatio="none"><path class="sb-tr-base" d="M6 30 C70 0 120 40 170 18 S260 6 294 14"/><path class="sb-tr-v" pathLength="100" d="M6 30 C70 0 120 40 170 18 S260 6 294 14"/></svg><span>OAB</span></div></section>
+  <p class="sb-ass">Bons estudos!<span>Nicolas Amorim</span></p>
+  <button class="botao cheio sb-cta" data-acao="ir-raiz" data-tela="hoje">${ic("alvo")} Bora estudar hoje</button>
+ </main>`}
 function telaSobre(){const nO=OAB.reduce((s,m)=>s+(porM[m]||[]).length,0);
   return topo("Como funciona","",{menu:true})+
   `<main class="wrap"><div class="dica"><p style="margin:0 0 8px"><b>Simulados OAB.</b> São 30 provas fixas de 80 questões, com a mesma distribuição de matérias da 1ª fase: 8 de Ética, 6 de Civil, Processo Civil, Constitucional, Penal e Processo Penal, e assim por diante. Você tem 5 horas e precisa de 50% para aprovação.</p>
