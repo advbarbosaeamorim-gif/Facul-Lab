@@ -17,6 +17,13 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 
 ::ilus livros|A reta final é tempo de revisar com foco, não de começar do zero.
 
+!! O Exame em números: **80** questões, aprovação com **40** (50%). Na 2ª fase, **peça = 5** pontos e **4 questões = 5**, aprovação com nota **6**. Reprovou na 2ª? No exame seguinte, faz **só a 2ª fase** (reaproveitamento). Sempre confira o **edital**.
+
+?? Quantas questões tem a 1ª fase do Exame de Ordem e quantas é preciso acertar? | 80 questões; é aprovado quem acerta pelo menos 40 (50%).
+?? Qual é a nota mínima na 2ª fase e como ela se divide? | Nota 6; a peça vale 5 pontos e as quatro questões discursivas valem 5 no total.
+?? O que é o reaproveitamento da 1ª fase? | Quem é aprovado na 1ª fase e reprovado na 2ª pode, no exame seguinte, fazer apenas a 2ª fase.
+?? Quem pode fazer o Exame de Ordem? | Os estudantes dos dois últimos semestres do curso de Direito e os bacharéis.
+
 # A distribuição das questões
 |Matéria|Questões|
 |Ética Profissional|8|
@@ -46,6 +53,12 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 
 > Na prova: não abandone as matérias de 2 questões. Juntas, elas valem **18 questões**, mais que o dobro de Ética, e costumam cobrar pontos bem previsíveis.
 
+?? Qual matéria tem mais questões na 1ª fase e quantas? | Ética Profissional, com 8 questões.
+?? Quais são as cinco matérias com 6 questões? | Constitucional, Civil, Processo Civil, Penal e Processo Penal (30 questões).
+?? Quais matérias têm 5 questões? | Administrativo, Tributário, Trabalho e Processo do Trabalho; Empresarial tem 4.
+?? Quantas questões somam, juntas, as nove matérias de 2 questões? | 18 questões, mais que o dobro de Ética.
+?? Quantas questões somam Ética e as cinco matérias de 6? | 38 questões.
+
 # Técnicas para a reta final
 ::linha Plano de 8 semanas|Semanas 1 e 2 — Ética e as cinco matérias de 6: lei seca e 30 questões por dia|Semanas 3 e 4 — Administrativo, Tributário, Trabalho, Processo do Trabalho e Empresarial|Semana 5 — as nove matérias de 2 questões, uma por dia, com a apostila do período|Semana 6 — primeiro simulado completo; caderno de erros; revisão dos temas fracos|Semana 7 — dois simulados completos cronometrados; revisão das tabelas de números|Semana 8 — revisão leve: mapas mentais, caderno de erros e descanso na véspera
 
@@ -57,6 +70,13 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 
 !! Revisão espaçada = "**1-7-30**". Recordação ativa = "**primeiro tento, depois confiro**".
 
+> Exemplo: Lia estudou Prescrição e decadência na segunda-feira. Revisa o tema na terça (**1 dia**), na segunda seguinte (**7 dias**) e um mês depois (**30 dias**). Em cada revisão, antes de reler, cobre o mapa mental e tenta reconstruí-lo sozinha (**recordação ativa**). Toda questão que erra vira uma linha no **caderno de erros**: "Civil, prescrição, achei que eram 5 anos, mas a reparação civil prescreve em 3 (art. 206, §3º, V)".
+
+?? Em que intervalos fazer a revisão espaçada? | 1 dia, 7 dias e 30 dias depois de estudar o tema.
+?? O que é recordação ativa? | Tentar lembrar sozinho antes de reler: primeiro tento, depois confiro.
+?? O que anotar no caderno de erros? | Matéria, tema, o que você pensou e qual era a regra correta.
+?? Quanto tempo, em média, gastar por questão no simulado da 1ª fase? | Cerca de 3 minutos por questão, já que a prova tem 5 horas.
+
 # Estratégia no dia da prova
 1. **Primeira volta:** responda primeiro as questões que você sabe de imediato. Comece por Ética, que é previsível e dá confiança.
 2. **Segunda volta:** volte às questões que exigem cálculo de prazo ou leitura longa.
@@ -65,6 +85,13 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 5. **Não deixe questões em branco:** não há desconto por erro.
 
 > Dica: leia o **comando** da questão antes do texto. Saber se ela pede a alternativa "correta" ou "incorreta" evita o erro mais bobo e mais comum da prova.
+
+!! Dia da prova = "**3 voltas + comando + 20 + nada em branco**": 1ª volta com o que você sabe (comece por **Ética**); 2ª com prazos e textos longos; 3ª eliminando alternativas (desconfie de "sempre" e "nunca"). Leia o **comando** antes do texto, reserve **20 minutos** para o gabarito e **não deixe nada em branco**.
+
+?? Por que começar a prova por Ética? | Porque é a matéria mais previsível e dá confiança no início.
+?? Quanto tempo reservar para transcrever o gabarito? | Pelo menos 20 minutos.
+?? Vale a pena chutar as questões que não sabe? | Sim. Não há desconto por erro, então não deixe questões em branco.
+?? Que palavras merecem desconfiança nas alternativas? | "Sempre", "nunca", "exclusivamente" e "em qualquer hipótese".
 
 # Revisão por matéria: o que mais cai
 ## Ética Profissional (8)
@@ -193,6 +220,16 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 - **Audiência:** ausência do reclamante arquiva; ausência da reclamada gera revelia (art. 844).
 - **Prescrição:** 5 anos, até 2 anos após o fim do contrato; intercorrente de 2 anos (art. 11-A).
 
+> Exemplo: faltam duas semanas para a prova e Rafael acerta 70% em Ética, mas só 30% em Direito Internacional. Em vez de reler tudo, ele revisa, para cada matéria de 2 questões, apenas os pontos desta lista. Em Internacional, por exemplo: estatuto pessoal pela lei do **domicílio** (art. 7º da LINDB), homologação de sentença estrangeira pelo **STJ** e as regras da **extradição** (art. 5º, LI). Duas questões a mais valem tanto quanto duas de Ética.
+
+!! Os campeões de cada bloco: **Ética** (prerrogativas do art. 7º; incompatibilidade x impedimento; sanções). **Constitucional** (controle; processo legislativo; remédios). **Civil** (nulo x anulável; prescrição 10 e 3 anos). **Processo Civil** (dias úteis; 15 dias; tutelas). **Penal** (teoria do crime; dosimetria trifásica). **Processo Penal** (prisões; recursos em 5 dias; Júri). Nas de 2 questões, a FGV repete os mesmos pontos.
+
+?? Quais as sanções disciplinares do Estatuto da Advocacia? | Censura, suspensão (30 dias a 12 meses), exclusão (2/3 do Conselho Seccional) e multa (1 a 10 anuidades).
+?? Qual é o status dos tratados de direitos humanos não aprovados pelo rito do art. 5º, §3º? | Supralegal (RE 466.343; Súmula Vinculante 25).
+?? Quem homologa sentença estrangeira no Brasil? | O STJ (art. 105, I, i, da Constituição).
+?? Quais as idades mínimas da aposentadoria programada após a EC 103/2019? | 62 anos para a mulher e 65 para o homem.
+?? Qual é o prazo do arrependimento nas compras fora do estabelecimento? | 7 dias (art. 49 do CDC).
+
 # Os números que mais caem
 |Número|Onde aparece|
 |5 dias|ED no processo civil e no trabalhista; apelação, RESE e agravo em execução no processo penal; embargos à execução trabalhista|
@@ -211,6 +248,15 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 
 !! Treine a tabela com **recordação ativa**: cubra a coluna da direita e tente lembrar onde cada número aparece.
 
+> Exemplo de recordação ativa com a tabela: Bia cobre a coluna "Onde aparece" e lê só "**120 dias**". Responde: mandado de segurança. Depois "**5 dias**": embargos de declaração no cível e no trabalhista, apelação, RESE e agravo em execução no penal, embargos à execução trabalhista. Confere, marca os que esqueceu e volta a eles no dia seguinte.
+
+?? Qual é o prazo dos embargos de declaração no processo civil e no trabalhista? | 5 dias.
+?? Qual é o prazo dos recursos trabalhistas? | 8 dias.
+?? Qual é o prazo da resposta à acusação? | 10 dias.
+?? Qual é o prazo para impetrar mandado de segurança? | 120 dias.
+?? Quais os prazos para reclamar de vício de produto no CDC? | 30 dias para não duráveis e 90 dias para duráveis.
+?? Qual é a prescrição geral do Código Civil e a da reparação civil? | 10 anos (geral) e 3 anos (reparação civil).
+
 # A 2ª fase
 - Escolha a área considerando **afinidade** (o que você mais gostou na faculdade e no estágio) e o **volume de matéria** que terá de dominar. Compare as peças cobradas nos últimos exames de cada área antes de decidir.
 - Treine as **peças da FGV dos últimos exames**, cronometrando o tempo (a prova tem 5 horas).
@@ -219,6 +265,13 @@ O Exame é aplicado pela **FGV** em parceria com o Conselho Federal da OAB. Pode
 - Na correção, cada fundamento conta: escreva o **artigo de lei** ao lado de cada tese.
 
 > Na prova: na 2ª fase, peças com **identificação** (nome, assinatura, dados inventados) podem ser anuladas. Use apenas os dados do enunciado e as expressões genéricas permitidas pelo edital.
+
+!! 2ª fase = "**A-P-M-V-A**": **Á**rea por afinidade e volume de matéria; **P**eças antigas da FGV cronometradas (5 horas); **M**apa de peças (momento, destinatário e prazo); **V**ade-mécum com remissões permitidas; **A**rtigo de lei ao lado de cada tese. Nunca se **identifique** na peça.
+
+?? Que critérios usar para escolher a área da 2ª fase? | Afinidade (faculdade e estágio) e o volume de matéria a dominar, comparando as peças dos últimos exames.
+?? O que é o mapa de peças? | Para cada momento processual: qual peça cabe, a quem é dirigida e qual é o prazo.
+?? O que pode anular a peça na 2ª fase? | Qualquer identificação do candidato, como nome, assinatura ou dados inventados.
+?? Por que escrever o artigo de lei ao lado de cada tese? | Porque cada fundamento conta pontos na correção.
 
 ::mapa Revisão Geral para a OAB
 * O exame: FGV; 80 questões; 40 acertos; 2ª fase com peça e 4 questões; nota 6; reaproveitamento
