@@ -611,9 +611,9 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .prev i:nth-child(3){left:7px;top:29px;width:48px;height:4px;opacity:.35}
 .prev i:nth-child(4){left:7px;bottom:6px;width:26px;height:8px;border-radius:4px}
 .prev-premium{background:#f6f4fb}
-.prev-premium i:nth-child(1){left:5px;right:5px;top:5px;height:18px;border-radius:6px;background:linear-gradient(135deg,#7c3aed,#db2777)}
+.prev-premium i:nth-child(1){left:5px;right:5px;top:5px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--g1,#7c3aed),var(--g2,#db2777))}
 .prev-premium i:nth-child(2),.prev-premium i:nth-child(3){background:#16141f}
-.prev-premium i:nth-child(4){background:linear-gradient(135deg,#7c3aed,#db2777)}
+.prev-premium i:nth-child(4){background:linear-gradient(135deg,var(--g1,#7c3aed),var(--g2,#db2777))}
 .prev-classico{background:#eef1f6}
 .prev-classico i:nth-child(1){background:var(--toga)}
 .prev-classico i:nth-child(2),.prev-classico i:nth-child(3){background:#172033}
@@ -690,6 +690,15 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .flash>.ilu{position:absolute;right:10px;top:10px;width:76px;max-width:76px;pointer-events:none}
 .flash-cab{padding-right:80px;min-height:44px}
 .nota-q{margin:16px 2px 8px;font-weight:700}
+
+/* ilustrações: papel claro e traço visível também no modo escuro */
+:root{--papel:#ffffff;--ilu-traco:var(--toga);--ilu-cheio:var(--toga)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt)}}
+:root[data-theme="dark"]{--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt)}
+.ilu .f-w{fill:var(--papel)}.ilu .s-t{stroke:var(--ilu-traco)}.ilu .f-t{fill:var(--ilu-cheio)}
+.ilu .f-alv1{fill:#e5484d}.ilu .f-alv2{fill:#ffc53d}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tile{background:color-mix(in srgb,var(--c) 78%,#fff)}}
+:root[data-theme="dark"] .tile{background:color-mix(in srgb,var(--c) 78%,#fff)}
 /* ---------- chama da ofensiva ---------- */
 .chama-viva{position:relative;flex:none;width:58px;height:70px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;color:inherit}
 .chama-viva svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 10px rgba(255,106,20,.35))}
@@ -816,11 +825,11 @@ html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *:
 [data-estilo="premium"] h1,[data-estilo="premium"] h2,[data-estilo="premium"] h3{letter-spacing:-.025em}
 
 /* topo: vidro sobre o fundo */
-[data-estilo="premium"] .topo{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);color:var(--fg);box-shadow:none;border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+[data-estilo="premium"] .topo{background:var(--grad);color:#fff;box-shadow:0 10px 24px -14px color-mix(in srgb,var(--p1) 80%,transparent);border-bottom:0}
 [data-estilo="premium"] .topo-linha{padding-block:8px}
 [data-estilo="premium"] .topo h1{font-weight:800;font-size:1.3rem;letter-spacing:-.03em}
 [data-estilo="premium"] .topo h1.longo{font-size:1.08rem}
-[data-estilo="premium"] .topo h1 small{font-size:.8rem;font-weight:500;opacity:1;color:var(--muted);letter-spacing:0;margin-top:1px}
+[data-estilo="premium"] .topo h1 small{font-size:.8rem;font-weight:500;opacity:1;color:rgba(255,255,255,.82);letter-spacing:0;margin-top:1px}
 [data-estilo="premium"] .icone{border-radius:12px}
 [data-estilo="premium"] .icone:hover{background:var(--surface-2)}
 [data-estilo="premium"] .progresso-leitura{height:3px;background:transparent}
@@ -1367,7 +1376,7 @@ Object.assign(ILU,{
  cerca:`<path d="M30 130h180" class="s-a" stroke-width="5" stroke-linecap="round" opacity=".6"/>`+seq(8,i=>`<path d="M${46+i*20} 130V92l5-8 5 8v38z" class="f-w s-t" stroke-width="2"/>`)+`<rect x="40" y="98" width="170" height="6" rx="2" class="f-t"/><rect x="40" y="114" width="170" height="6" rx="2" class="f-t"/><path d="M190 130V44" class="s-t" stroke-width="5"/><path d="M190 46h30l-8 9 8 9h-30z" class="f-b"/><path d="M58 72a24 22 0 0 1 48 0z" class="f-a" opacity=".85"/>`,
  coracao:`<path d="M120 116c-30-20-50-38-50-58 0-14 10-24 24-24 10 0 20 6 26 16 6-10 16-16 26-16 14 0 24 10 24 24 0 20-20 38-50 58z" class="f-b"/><path d="M98 52q-8 4-8 14" class="s-w" fill="none" stroke-width="4" stroke-linecap="round" opacity=".6"/><path d="M50 112q34 30 70 26q36 4 70-26v22H50z" class="f-a"/>`,
  lampada:`<path d="M120 30a34 34 0 0 1 20 62v12h-40V92a34 34 0 0 1 20-62z" class="f-a"/><path d="M110 92l4-26 6 8 6-8 4 26" class="s-w" fill="none" stroke-width="3" stroke-linejoin="round"/><rect x="100" y="106" width="40" height="8" rx="3" class="f-t"/><rect x="104" y="116" width="32" height="8" rx="3" class="f-t"/><path d="M114 128h12" class="s-t" stroke-width="5" stroke-linecap="round"/><path d="M74 60h-12M178 60h-12M84 30l-8-8M156 30l8-8M120 18V8" class="s-b" stroke-width="4" stroke-linecap="round"/>`,
- alvo:`<circle cx="110" cy="86" r="46" class="f-b"/><circle cx="110" cy="86" r="33" class="f-w"/><circle cx="110" cy="86" r="20" class="f-b"/><circle cx="110" cy="86" r="8" class="f-w"/><path d="M110 86l72-48" class="s-t" stroke-width="5" stroke-linecap="round"/><path d="M182 38l-2-14 14 4zM182 38l12 6-14 4z" class="f-a"/>`,
+ alvo:`<circle cx="110" cy="86" r="46" class="f-alv1"/><circle cx="110" cy="86" r="33" class="f-alv2"/><circle cx="110" cy="86" r="20" class="f-alv1"/><circle cx="110" cy="86" r="8" class="f-alv2"/><path d="M110 86l72-48" class="s-t" stroke-width="5" stroke-linecap="round"/><path d="M182 38l-2-14 14 4zM182 38l12 6-14 4z" class="f-a"/>`,
  juri:`<rect x="44" y="104" width="152" height="28" rx="6" class="f-t"/><rect x="44" y="100" width="152" height="8" rx="3" class="f-b"/>`+seq(4,i=>`<circle cx="${66+i*36}" cy="64" r="11" class="${i%2?"f-a":"f-b"}"/><path d="M${52+i*36} 100v-8a14 14 0 0 1 28 0v8z" class="${i%2?"f-a":"f-b"}"/>`)+seq(3,i=>`<circle cx="${84+i*36}" cy="40" r="9" class="f-a" opacity=".75"/>`)+`<path d="M112 120h16" class="s-w" stroke-width="3" stroke-linecap="round"/>`,
  estudo:`<path d="M58 112q31-14 62 0V58q-31-14-62 0z" class="f-w s-t" stroke-width="2"/><path d="M182 112q-31-14-62 0V58q31-14 62 0z" class="f-w s-t" stroke-width="2"/><path d="M68 72q21-8 42 0M68 84q21-8 42 0M68 96q14-6 28 0" class="s-a" fill="none" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M130 72q21-8 42 0M130 84q16-6 32 0" class="s-a" fill="none" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M152 60v28l7-6 7 6V58" class="f-b"/><path d="M120 58v54" class="s-t" stroke-width="2"/><rect x="42" y="112" width="156" height="9" rx="4.5" class="f-t"/><g transform="rotate(-32 200 70)"><rect x="194" y="40" width="11" height="46" rx="2" class="f-b"/><path d="M194 86h11l-5.5 11z" class="f-t"/><rect x="194" y="40" width="11" height="8" rx="2" class="f-a"/></g><path d="M62 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" class="f-b"/><path d="M186 22l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" class="f-a" opacity=".7"/>`,
  chama:`<path d="M120 134c-27 0-46-18-46-42 0-20 13-32 23-44 3 10 9 17 16 19 0-21 9-38 26-49-2 18 6 29 15 41 7 9 12 19 12 33 0 24-19 42-46 42z" class="f-b"/><path d="M120 134c-13 0-21-9-21-20 0-11 8-17 14-25 2 7 6 11 12 12 2-7 6-12 12-15 1 7 2 13 2 19 0 17-8 29-19 29z" class="f-w" opacity=".6"/><path d="M60 136h120" class="s-t" stroke-width="4" stroke-linecap="round" opacity=".35"/>`,
@@ -1727,7 +1736,7 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${FASES[f].meta})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
  <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.</p>
  <div class="secao" role="heading" aria-level="2">Estilo visual</div>
- <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="classico"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="classico"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os dois estilos funcionam nos modos claro e escuro e mantêm todas as funções.</p>
  ${estiloAtual()==="premium"?`<div class="secao" role="heading" aria-level="2">Paleta do Premium</div>
  <div class="paletas">${PALETAS.map(([k,n,d,c1,c2])=>`<button data-acao="cfg-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
