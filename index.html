@@ -692,9 +692,9 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .nota-q{margin:16px 2px 8px;font-weight:700}
 
 /* ilustrações: papel claro e traço visível também no modo escuro */
-:root{--papel:#ffffff;--ilu-traco:var(--toga);--ilu-cheio:var(--toga)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt)}}
-:root[data-theme="dark"]{--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt)}
+:root{--papel:#ffffff;--ilu-traco:var(--toga);--ilu-cheio:var(--toga);--cal-tinta:var(--fg);--cal-sub:var(--muted)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt);--cal-tinta:#161b26;--cal-sub:#566072}}
+:root[data-theme="dark"]{--papel:#e9edf4;--ilu-traco:var(--toga-txt);--ilu-cheio:var(--toga-txt);--cal-tinta:#161b26;--cal-sub:#566072}
 .ilu .f-w{fill:var(--papel)}.ilu .s-t{stroke:var(--ilu-traco)}.ilu .f-t{fill:var(--ilu-cheio)}
 .ilu .f-alv1{fill:#e5484d}.ilu .f-alv2{fill:#ffc53d}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tile{background:color-mix(in srgb,var(--c) 78%,#fff)}}
@@ -735,6 +735,8 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .cal-prova::before,.cal-prova::after{content:"";position:absolute;top:-4px;left:17px;width:6px;height:11px;border-radius:3px;background:var(--muted);z-index:2}
 .cal-prova::after{left:auto;right:17px}
 .cal-prova.vazio .cal-dia{color:var(--muted)}
+.cal-prova.cal-prova .cal-pag{background:var(--papel)}.cal-prova.cal-prova .cal-dia{color:var(--cal-tinta)}.cal-prova.cal-prova .cal-sem,.cal-prova.vazio.vazio .cal-dia{color:var(--cal-sub)}
+.cal-prova::before,.cal-prova::after{background:color-mix(in srgb,var(--fg) 70%,transparent)}
 /* ---------- estatísticas maiores ---------- */
 .hs{padding:16px 14px}
 .hs .anel{width:62px;height:62px}
@@ -897,8 +899,9 @@ html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *:
 [data-estilo="premium"] .tile{background:color-mix(in srgb,var(--c) 15%,var(--surface));color:color-mix(in srgb,var(--c) 85%,var(--fg));border-radius:16px;border:0;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 18%,transparent)}
 [data-estilo="premium"] .tile-mini{background:color-mix(in srgb,var(--c) 15%,var(--surface));color:color-mix(in srgb,var(--c) 85%,var(--fg));border-radius:9px}
 [data-estilo="premium"] .plano .tile{background:var(--grad);color:#fff;box-shadow:0 8px 16px -8px color-mix(in srgb,var(--p1) 70%,transparent)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"])[data-estilo="premium"] .tile,:root:not([data-theme="light"])[data-estilo="premium"] .tile-mini{background:color-mix(in srgb,var(--c) 26%,var(--surface));color:color-mix(in srgb,var(--c) 45%,#fff)}}
-[data-theme="dark"][data-estilo="premium"] .tile,[data-theme="dark"][data-estilo="premium"] .tile-mini{background:color-mix(in srgb,var(--c) 26%,var(--surface));color:color-mix(in srgb,var(--c) 45%,#fff)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"])[data-estilo="premium"] .tile,:root:not([data-theme="light"])[data-estilo="premium"] .tile-mini{background:color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 42%,var(--surface));color:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,color-mix(in srgb,var(--c) 50%,#fff) 45%,transparent)}}
+[data-theme="dark"][data-estilo="premium"] .tile,[data-theme="dark"][data-estilo="premium"] .tile-mini{background:color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 42%,var(--surface));color:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,color-mix(in srgb,var(--c) 50%,#fff) 45%,transparent)}
+html[data-estilo="premium"] .card.destaque .tile.tile,html[data-estilo="premium"] .hoje-card .tile.tile{background:#ffffff2e;color:#fff;box-shadow:none}
 [data-estilo="premium"] .plano .tile{color:#fff}
 [data-estilo="premium"] .lista .plano>.tile{background:var(--grad);color:#fff}
 [data-estilo="premium"] .lista .plano.feito>.tile{background:var(--ok)}
