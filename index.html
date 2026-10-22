@@ -591,6 +591,28 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 @keyframes mv-pisca{from{opacity:.45}to{opacity:1}}
 @keyframes mv-folheia{0%,15%{transform:none}55%,100%{transform:scaleX(-1)}}
 @keyframes mv-sobe-l{0%{transform:translateY(16px);opacity:0}30%{opacity:1}100%{transform:translateY(-8px);opacity:0}}
+.motiva-banner.meta{background:linear-gradient(135deg,color-mix(in srgb,#ffc53d 22%,var(--surface)),color-mix(in srgb,#3bb273 14%,var(--surface)));border-color:color-mix(in srgb,#ffc53d 40%,var(--line))}
+.mt-selo{display:inline-block;padding:3px 12px;border-radius:99px;background:color-mix(in srgb,#ffc53d 30%,var(--surface));color:var(--fg);font-size:.78rem;font-weight:700;letter-spacing:.02em}
+.mt-alvo{transform-origin:50% 50%;animation:mt-treme .5s .55s ease-out both}
+.mt-flecha{animation:mt-voa .55s cubic-bezier(.3,.8,.4,1) both}
+.mt-onda{transform-origin:50% 50%;animation:mt-onda 1.2s .55s ease-out both}
+.mt-medalha{transform-origin:50% 0;animation:mt-cai .8s cubic-bezier(.2,1.4,.4,1) both,mt-balanca 2.4s .8s ease-in-out infinite}
+.mt-reflexo{animation:mt-brilha 2s 1s ease-in-out infinite}
+.mv .mt-fogo{transform-box:view-box;transform-origin:0 0}
+.mt-fogo>g{transform-origin:0 0;transform-box:view-box;animation:mt-explode 1.75s ease-out infinite;animation-delay:inherit}
+.mt-circ{stroke-dasharray:277;animation:mt-traca .8s ease-out both}
+.mt-check{stroke-dasharray:70;animation:mt-traca2 .45s .7s ease-out both}
+.mt-escalador{animation:mt-sobe 1.4s cubic-bezier(.3,.9,.4,1) both}
+@keyframes mt-voa{from{transform:translate(70px,-36px);opacity:0}to{transform:none;opacity:1}}
+@keyframes mt-treme{0%{transform:none}30%{transform:rotate(-4deg) scale(1.04)}60%{transform:rotate(3deg)}100%{transform:none}}
+@keyframes mt-onda{from{transform:scale(.6);opacity:1}to{transform:scale(1.25);opacity:0}}
+@keyframes mt-cai{from{transform:translateY(-70px)}to{transform:none}}
+@keyframes mt-balanca{0%,100%{transform:rotate(0)}25%{transform:rotate(5deg)}75%{transform:rotate(-5deg)}}
+@keyframes mt-brilha{0%,70%,100%{opacity:0}80%{opacity:.9}}
+@keyframes mt-explode{0%{transform:scale(.2);opacity:0}15%{opacity:1}70%{transform:scale(1.15);opacity:1}100%{transform:scale(1.3);opacity:0}}
+@keyframes mt-traca{from{stroke-dashoffset:277}to{stroke-dashoffset:0}}
+@keyframes mt-traca2{from{stroke-dashoffset:70}to{stroke-dashoffset:0}}
+@keyframes mt-sobe{from{transform:translate(-44px,70px)}to{transform:none}}
 @keyframes mv-some{to{opacity:0}}
 @keyframes mv-acende{0%{transform:scale(0);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
 @keyframes mv-sobe{0%{transform:translateY(0) scale(1);opacity:0}20%{opacity:1}100%{transform:translateY(-46px) scale(.3);opacity:0}}
@@ -1814,11 +1836,41 @@ function mostrarMotiva(){const o=ofensivaPerdida();if(!o)return;const v=motivaVa
  const el=document.createElement("div");el.className="festa motiva";el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label",v.msg[0]);
  el.innerHTML=`<div class="festa-card">${v.anim}<h2>${esc(v.msg[0])}</h2><p class="frase">${esc(v.msg[1])}</p><p class="mv-info">${o.seq>1?`Sua última ofensiva foi de ${o.seq} dias. `:""}Faz ${nDias(o.fora)} que você não estuda.</p><div class="botoes"><button class="botao cheio" data-acao="motiva-ir">Reacender a chama</button><button class="botao" data-acao="festa-fechar">Agora não</button></div></div>`;
  document.body.appendChild(el);syncVoltar();try{el.querySelector('[data-acao="motiva-ir"]').focus({preventScroll:true})}catch(e){}}
+
+/* ---------- comemoração da meta diária de questões ---------- */
+let metaNova=false;
+const nQ=n=>n===1?"1 questão":n+" questões";
+const MOTIVA_META=[
+ m=>["Meta do dia batida!",`${nQ(m)} hoje. É assim, um dia de cada vez, que a aprovação chega.`],
+ m=>["Na mosca!",`Você acertou em cheio a meta de ${nQ(m)}. Pode comemorar!`],
+ m=>["Dever cumprido","A meta de hoje está garantida. O que vier agora é bônus para a sua nota."],
+ m=>["Você é fera!",`${nQ(m)} hoje, missão cumprida. Seu eu do dia da prova vai agradecer.`],
+ m=>["Mais um degrau rumo à OAB","Meta batida! Quem estuda todo dia chega mais longe do que quem estuda muito de vez em quando."],
+ m=>["Mandou bem demais!","Meta diária cumprida. Se quiser ir além, revise as que errou: é onde mais se aprende."],
+ m=>["Esse é o ritmo de quem passa",`Hoje você fez ${m===1?"a questão":`as ${m} questões`} da meta. Amanhã tem mais, e a chama agradece.`],
+ m=>["Disciplina gera resultado","Você se comprometeu e cumpriu. Sinta orgulho disso e descanse a cabeça um pouco."]
+];
+const META_ANIM=[
+ ()=>`<svg class="mv" viewBox="0 0 160 120" aria-hidden="true"><g class="mt-alvo"><circle cx="70" cy="62" r="40" fill="#e5484d"/><circle cx="70" cy="62" r="30" fill="#fff"/><circle cx="70" cy="62" r="20" fill="#e5484d"/><circle cx="70" cy="62" r="10" fill="#ffc53d"/></g><g class="mt-flecha"><path d="M72 60l64-34" stroke="var(--fg)" stroke-width="4" stroke-linecap="round"/><path d="M128 22l14-4-4 14-6-2z" fill="#3bb273"/><path d="M134 24l8-10M138 28l10-6" stroke="#3bb273" stroke-width="4" stroke-linecap="round"/></g><g class="mt-onda" fill="none" stroke="#ffc53d" stroke-width="3"><circle cx="70" cy="62" r="46"/></g></svg>`,
+ ()=>`<svg class="mv" viewBox="0 0 160 120" aria-hidden="true"><g class="mt-medalha"><path d="M62 2h14l12 40H74zM98 2H84L72 42h14z" fill="var(--m1)"/><path d="M76 2h8l-4 40z" fill="var(--m2)"/><circle cx="80" cy="72" r="30" fill="#f2b632"/><circle cx="80" cy="72" r="22" fill="#ffd96a" stroke="#d99a12" stroke-width="3"/><path d="M80 58l4.2 8.6 9.4 1.4-6.8 6.6 1.6 9.4L80 79.6l-8.4 4.4 1.6-9.4-6.8-6.6 9.4-1.4z" fill="#d99a12"/></g><path class="mt-reflexo" d="M64 60l10-10" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/></svg>`,
+ ()=>`<svg class="mv" viewBox="0 0 160 120" aria-hidden="true">${[[46,44,"#e5484d"],[112,36,"#3bb273"],[82,70,"var(--m1)"],[126,84,"#ffc53d"],[34,90,"var(--m2)"]].map(([x,y,c],i)=>`<g class="mt-fogo" style="animation-delay:${i*.35}s" transform="translate(${x} ${y})"><g stroke="${c}" stroke-width="3.5" stroke-linecap="round">${seq(8,j=>`<path d="M0 -9v-9" transform="rotate(${j*45})"/>`)}</g><circle r="4" fill="${c}"/></g>`).join("")}</svg>`,
+ ()=>`<svg class="mv" viewBox="0 0 160 120" aria-hidden="true"><circle class="mt-circ" cx="80" cy="60" r="44" fill="none" stroke="#3bb273" stroke-width="8" stroke-linecap="round" transform="rotate(-90 80 60)"/><path class="mt-check" d="M60 61l14 14 28-30" fill="none" stroke="#3bb273" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><g fill="#ffc53d"><path class="mv-cint" d="M24 26l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><path class="mv-cint c2" d="M136 86l2.5 5.5 5.5 2.5-5.5 2.5-2.5 5.5-2.5-5.5-5.5-2.5 5.5-2.5z"/></g></svg>`,
+ ()=>`<svg class="mv" viewBox="0 0 160 120" aria-hidden="true"><path d="M8 112l52-70 20 26 18-22 54 66z" fill="var(--m1)" opacity=".9"/><path d="M60 42l-10 14h8l6-6 6 8 6-8z" fill="#fff"/><path d="M98 46l-8 10h6l4-4 4 5 4-5z" fill="#fff" opacity=".9"/><g class="mt-escalador"><circle cx="60" cy="18" r="5" fill="var(--fg)"/><path d="M60 23v12M60 27l-7 5M60 27l7-6M60 35l-5 7M60 35l5 7" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/></g><path d="M74 44V14" stroke="var(--fg)" stroke-width="2.5"/><path class="mv-bandeira" d="M75 14h22l-6 7 6 7H75z" fill="#e5484d"/></svg>`
+];
+function metaVariante(m){const k=semente(m)+((S.dias&&S.dias[hojeStr()]&&S.dias[hojeStr()].q)||0)%3;return {msg:MOTIVA_META[k%MOTIVA_META.length](m),anim:META_ANIM[(k>>>2)%META_ANIM.length]()}}
+function mostrarMeta(){const m=metaDia();const v=metaVariante(m);
+ const velho=document.querySelector(".festa");if(velho)velho.remove();
+ const el=document.createElement("div");el.className="festa motiva meta-festa";el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label",v.msg[0]);
+ el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card"><span class="mt-selo">Meta diária</span>${v.anim}<h2>${esc(v.msg[0])}</h2><p class="frase">${esc(v.msg[1])}</p><p class="mv-info">Sua sequência e o histórico estão em Metas e desempenho.</p><div class="botoes"><button class="botao cheio" data-acao="festa-fechar">Continuar</button><button class="botao" data-acao="meta-ver">Ver minhas metas</button></div></div>`;
+ document.body.appendChild(el);if(animOn())confete(el.querySelector("canvas"));syncVoltar();anunciar(v.msg[0])}
+function metaBanner(){const m=metaDia();const q=((S.dias||{})[hojeStr()]||{}).q||0;if(q<m)return "";const v=metaVariante(m);
+ return `<section class="motiva-banner meta" aria-label="Meta de hoje cumprida">${v.anim}<div><b>${esc(v.msg[0])}</b><p>${esc(v.msg[1])}</p><small>Meta de hoje: ${q} de ${nQ(m)}</small></div></section>`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
 const inicioDia=t=>{const d=new Date(t||Date.now());d.setHours(0,0,0,0);return d.getTime()};
 const temAtiv=x=>!!x&&((x.q||0)+(x.c||0)+(x.p||0))>0;
-function marcarDia(campo,n){S.dias=S.dias||{};const k=hojeStr();const x=S.dias[k]=S.dias[k]||{q:0,c:0,p:0};x[campo]=(x[campo]||0)+(n||1);
+function marcarDia(campo,n){S.dias=S.dias||{};const k=hojeStr();const x=S.dias[k]=S.dias[k]||{q:0,c:0,p:0};const antes=x.q||0;x[campo]=(x[campo]||0)+(n||1);
+ if(campo==="q"){const m=metaDia();if(antes<m&&x.q>=m)metaNova=true}
  const ks=Object.keys(S.dias).sort();if(ks.length>400)ks.slice(0,ks.length-400).forEach(z=>delete S.dias[z])}
 function sequencia(){const D=S.dias||{};let n=0;const d=new Date();if(!temAtiv(D[hojeStr(d)]))d.setDate(d.getDate()-1);while(temAtiv(D[hojeStr(d.getTime())])){n++;d.setDate(d.getDate()-1)}return n}
 /* configurações do estudante: período atual, data da prova (opcional) e ritmo */
@@ -1896,7 +1948,7 @@ function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeSt
  const pm=OAB.concat(["ied","tge","soc","psc","crim","masc"]).map(m=>{const st=statMat(porM[m]||[]);return {m,st,p:st.v?Math.round(st.o*100/st.v):null}}).filter(x=>x.st.v).sort((a,b)=>a.p-b.p);
  const L=[];Object.keys(porM).forEach(m=>fracos(m).forEach(x=>L.push([m,x])));L.sort((a,b)=>a[1].pct-b[1].pct||b[1].v-a[1].v);
  return topo("Metas e desempenho","Sequência, meta diária, acertos e pontos fracos",{menu:true})+
- `<main class="wrap">${capaTela("trofeu","Seu progresso","Cada dia de estudo conta. Veja onde você mais acerta e o que treinar.")}
+ `<main class="wrap">${metaBanner()}${capaTela("trofeu","Seu progresso","Cada dia de estudo conta. Veja onde você mais acerta e o que treinar.")}
  <div class="hoje-stats">
   <div class="hs hs-meta">${anel(hoje.q||0,meta,`${hoje.q||0} de ${meta} questões hoje`)}<div><b>${hoje.q||0}<small>/${meta}</small></b><span>questões hoje</span></div></div>
   <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
@@ -2281,6 +2333,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(rota.tela==="quiz")iniciarRelogio();
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
   acompanharLeitura();realcarPagina();animarTela(telaNova);syncVoltar();
+  if(metaNova){metaNova=false;setTimeout(mostrarMeta,900)}
 }
 
 /* ---------- botão voltar do celular ----------
@@ -2640,6 +2693,7 @@ document.addEventListener("click",e=>{
     case "ls-resp":lsResponder(+b.dataset.v);break;
     case "ls-prox":if(lsSess&&lsSess.resp[lsSess.i]!==undefined){lsSess.i++;render();topoTela()}break;
     case "ls-sair":lsSess=null;{const f=pilha.length&&pilha[pilha.length-1].tela==="leiseca";if(f)voltar();else raiz({tela:"leiseca"})}break;
+    case "meta-ver":{const f=document.querySelector(".festa");if(f)f.remove();raiz({tela:"metas"});break}
     case "motiva-ir":{const f=document.querySelector(".festa");if(f)f.remove();raiz({tela:"hoje"});setTimeout(()=>{const l=document.querySelector(".plano-lista");if(l)l.scrollIntoView({behavior:animOn()?"smooth":"auto",block:"start"})},60);break}
     case "festa-fechar":{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();break}
     case "fonte":{S.cfg=S.cfg||{};S.cfg.fonte=Math.max(-1,Math.min(2,(S.cfg.fonte||0)+(+b.dataset.v)));salvar();rota.manterScroll=true;render();break}
