@@ -29,6 +29,11 @@ Por isso, os direitos reais têm características próprias:
 
 ::ilus casa|Posse é o fato de ter a coisa; propriedade é o direito sobre ela.
 
+?? Qual é a diferença entre direito pessoal e direito real? | O direito pessoal liga duas pessoas e vale entre as partes; o direito real liga uma pessoa a uma coisa e deve ser respeitado por todos.
+?? O que é a sequela dos direitos reais? | O direito real acompanha a coisa nas mãos de quem quer que ela esteja, como a hipoteca que continua gravando o imóvel vendido.
+?? As partes podem criar um novo direito real por contrato? | Não. Os direitos reais são taxativos: só existem os previstos em lei (art. 1.225).
+?? A locação é direito real? | Não. É contrato que gera direito pessoal; só obriga o comprador do imóvel se houver cláusula de vigência registrada na matrícula (art. 8º da Lei 8.245/1991).
+
 # Posse
 ## Conceito: a teoria objetiva
 Existem duas grandes teorias sobre a posse:
@@ -331,6 +336,8 @@ A lei também prevê outras exceções: a impenhorabilidade não vale, por exemp
 
 > Na prova: posse (classificações, ações possessórias e efeitos da boa-fé), usucapião (prazos e áreas), aquisição pelo registro, condomínio edilício, pacto comissório e bem de família são os temas mais frequentes.
 
+!! Bem de família legal (Lei 8.009/1990): **automático**; protege também **solteiro** (Súmula 364) e o único imóvel **alugado** cuja renda sustenta a família (Súmula 486). **Não** protege contra: **fiança de locação** (Súmula 549), **pensão alimentícia**, **IPTU e condomínio** do próprio imóvel e **hipoteca** dada sobre ele. Voluntário: até **1/3** do patrimônio líquido.
+
 ?? O único imóvel de uma pessoa solteira que mora sozinha é protegido como bem de família? | Sim. A Súmula 364 do STJ estende a impenhorabilidade ao imóvel de pessoas solteiras, separadas e viúvas.
 ?? O imóvel residencial do fiador de um contrato de locação pode ser penhorado? | Sim, seja a locação residencial ou comercial (Súmula 549 do STJ; STF, Tema 1.127).
 
@@ -383,6 +390,8 @@ O juiz das garantias é o juiz responsável pelo **controle da legalidade da inv
 O STF, ao julgar as ações sobre o tema (ADI 6.298 e outras), considerou o instituto constitucional, determinou sua implantação pelos tribunais e fixou que a competência do juiz das garantias **cessa com o oferecimento da denúncia**. A partir daí, o processo segue com o juiz da instrução e julgamento.
 
 ::ilus lupa|O inquérito investiga; a ação penal acusa; a prova convence o juiz.
+
+!! Processo penal = Constituição aplicada. **Acusatório** (acusar, defender e julgar separados; art. 3º-A). Princípios: **presunção de inocência**, **contraditório e ampla defesa**, **provas ilícitas não**, **não autoincriminação**, **juiz natural**, **duração razoável**. Lei processual: **tempus regit actum**; norma **mista** benéfica **retroage**. Juiz das garantias até a **denúncia**.
 
 ?? O que significa dizer que o processo penal tem estrutura acusatória? | Que as funções de acusar, defender e julgar são separadas, e o juiz, imparcial, não pode tomar a iniciativa na investigação nem substituir o órgão de acusação na produção de provas (art. 3º-A do CPP).
 ?? Uma lei processual nova, que só muda a forma de intimação, aplica-se aos processos já em curso? | Sim, desde logo, preservando os atos já praticados (art. 2º do CPP, tempus regit actum).
@@ -775,6 +784,11 @@ O Direito do Trabalho nasceu, no fim do século XIX e início do século XX, jus
 
 > Lembre: salvo indicação em contrário, os artigos citados nesta apostila são da **CLT**. Quando o artigo for da Constituição ou de outra lei, o diploma é indicado.
 
+!! Direito do Trabalho = **proteção** para compensar a **desigualdade**: o empregado depende do salário e é **subordinado**. Por isso, muitas normas são **imperativas** (valem mesmo contra o combinado). Fontes principais: **CLT** (com a Reforma de 2017) e **art. 7º** da Constituição.
+
+?? Por que o Direito do Trabalho tem normas imperativas? | Para corrigir a desigualdade entre empregado e empregador; se as partes fossem totalmente livres, o empregador, mais forte, imporia as regras.
+?? Quais são as principais fontes do Direito do Trabalho no Brasil? | A CLT (Decreto-Lei 5.452/1943), alterada pela Reforma Trabalhista (Lei 13.467/2017), e o art. 7º da Constituição.
+
 # Princípios do Direito do Trabalho
 ## Princípio da proteção
 É o princípio central, do qual os demais decorrem. Ele se desdobra em três regras:
@@ -797,6 +811,8 @@ Presume-se que o contrato de trabalho é por **prazo indeterminado**, porque é 
 
 ## Inalterabilidade contratual lesiva
 As condições do contrato só podem ser alteradas por **mútuo consentimento** e **desde que não causem prejuízo** ao empregado (art. 468). Esse princípio é estudado em detalhe no tópico sobre a alteração do contrato.
+
+!! Princípios: **Proteção** (in dubio pro operario **só para normas**; norma **mais favorável**; condição **mais benéfica**), **Primazia da realidade**, **Irrenunciabilidade** (salvo o **hipersuficiente**), **Continuidade** (ônus do empregador provar o fim, Súmula 212) e **Inalterabilidade lesiva** (art. 468).
 
 ?? O princípio in dubio pro operario serve para resolver a dúvida sobre os fatos? | Não. Ele vale para a interpretação de normas. A dúvida sobre fatos é resolvida pelas regras do ônus da prova.
 ?? Uma empresa contrata um trabalhador como "autônomo", mas ele cumpre horário e recebe ordens diárias. O que prevalece? | A realidade. Pelo princípio da primazia da realidade e pelo art. 9º da CLT, reconhece-se o vínculo de emprego.
@@ -1309,6 +1325,8 @@ A greve é a suspensão coletiva, temporária e pacífica, total ou parcial, da 
 
 !! Greve: "**48 horas comum, 72 horas essencial**".
 
+> Exemplo: a convenção coletiva dos comerciários da cidade fixa um piso salarial e um intervalo de 1 hora. Uma rede de lojas firma com o sindicato um acordo coletivo que reduz o intervalo para 30 minutos nas jornadas acima de 6 horas. Prevalece o **acordo** (art. 620), e a redução é válida (art. 611-A, III). Mas uma cláusula que reduzisse o adicional de hora extra para 30% seria **nula** (art. 611-B).
+
 ?? O acordo coletivo da empresa prevê condição menos favorável que a convenção da categoria. Qual prevalece? | O acordo coletivo, que sempre prevalece sobre a convenção (art. 620 da CLT).
 ?? Uma convenção coletiva pode reduzir o adicional de hora extra para 30%? | Não. O adicional mínimo de 50% está entre os direitos do art. 611-B, que não podem ser suprimidos nem reduzidos.
 ?? Qual é a antecedência mínima para comunicar uma greve em hospital? | 72 horas, aos empregadores e aos usuários, por se tratar de atividade essencial (art. 13 da Lei 7.783/1989).
@@ -1374,6 +1392,12 @@ O princípio central do CDC é o **reconhecimento da vulnerabilidade do consumid
 
 > Lembre: salvo indicação em contrário, os artigos citados nesta apostila são do **CDC**. Quando o artigo for de outra lei, o diploma é indicado.
 
+!! CDC = norma de **ordem pública** (vale contra o contrato; o juiz aplica de ofício, salvo cláusulas bancárias, Súmula 381). Vulnerabilidade **T-J-F-I**: **T**écnica, **J**urídica, **F**ática, **I**nformacional; é **presumida**. **Hipossuficiência** é processual e caso a caso (inversão do ônus da prova).
+
+?? Qual é o princípio central do CDC? | O reconhecimento da vulnerabilidade do consumidor no mercado de consumo (art. 4º, I).
+?? Qual é a diferença entre vulnerabilidade e hipossuficiência? | A vulnerabilidade é conceito de direito material, presumido para todo consumidor. A hipossuficiência é conceito processual, verificado caso a caso, que pode justificar a inversão do ônus da prova.
+?? Quais são as espécies de vulnerabilidade do consumidor? | Técnica, jurídica (ou científica), fática (ou econômica) e informacional.
+
 # A relação de consumo
 Para saber se o CDC se aplica a um caso, é preciso identificar os três elementos da **relação de consumo**: um **consumidor**, um **fornecedor** e um **produto ou serviço**. Faltando qualquer deles, aplica-se o Código Civil.
 
@@ -1404,6 +1428,8 @@ A remuneração pode ser **indireta**. O estacionamento "gratuito" de um shoppin
 - Os **serviços públicos** remunerados por tarifa (água, energia, telefonia, transporte coletivo) também se submetem ao CDC. Os órgãos públicos e suas concessionárias são obrigados a fornecer serviços **adequados, eficientes, seguros e, quanto aos essenciais, contínuos** (art. 22).
 
 ::ilus carrinho|O CDC protege a parte vulnerável da relação de consumo.
+
+!! Relação de consumo = **consumidor + fornecedor + produto ou serviço**. STJ: **finalismo mitigado** (quem usa na atividade só é consumidor se for **vulnerável**). Equiparados: **coletividade** (art. 2º, par. ún.), **vítimas** do evento (art. 17, bystander) e **expostos às práticas** (art. 29). Fornecedor exige **habitualidade**.
 
 ?? Uma empresa que compra um software para uso em sua atividade pode ser considerada consumidora? | Em regra não, pela teoria finalista. Mas o STJ, pela teoria finalista mitigada, admite a aplicação do CDC se a empresa demonstrar vulnerabilidade técnica, jurídica ou econômica.
 ?? Um pedestre atingido pela explosão do botijão de gás vendido ao vizinho pode invocar o CDC? | Sim. Ele é consumidor por equiparação, como vítima do evento danoso (art. 17), o chamado bystander.
@@ -1551,6 +1577,9 @@ O §5º consagra a chamada **teoria menor**: basta que a empresa **não tenha pa
 
 !! Desconsideração: **Código Civil** = **teoria maior** (exige abuso: desvio de finalidade ou confusão patrimonial). **CDC** = **teoria menor** (basta a falta de patrimônio).
 
+?? Qual teoria da desconsideração o CDC adota no art. 28, §5º? | A teoria menor: basta que a personalidade jurídica seja obstáculo ao ressarcimento do consumidor, sem precisar provar fraude ou confusão patrimonial.
+?? Qual teoria da desconsideração o Código Civil adota? | A teoria maior (art. 50): exige abuso da personalidade, por desvio de finalidade ou confusão patrimonial.
+
 # Oferta e publicidade
 ## A força vinculante da oferta
 Toda informação ou publicidade, **suficientemente precisa**, veiculada por qualquer forma ou meio de comunicação com relação a produtos e serviços oferecidos ou apresentados, **obriga o fornecedor** que a fizer veicular ou dela se utilizar e **integra o contrato** que vier a ser celebrado (art. 30). Em outras palavras: **o que foi anunciado tem que ser cumprido**.
@@ -1610,6 +1639,8 @@ Os cadastros de inadimplentes (SPC, Serasa) são lícitos, mas sujeitos a regras
 - O consumidor que encontrar inexatidão em seus dados pode exigir a **correção**, devendo o arquivista, em **5 dias úteis**, comunicar a alteração aos destinatários das informações incorretas (art. 43, §3º).
 - Depois do **pagamento** da dívida, cabe ao **credor** pedir a exclusão do nome do consumidor no prazo de **5 dias úteis** (Súmula 548 do STJ).
 - Da anotação irregular em cadastro de proteção ao crédito **não cabe indenização por dano moral quando preexistente legítima inscrição**, ressalvado o direito ao cancelamento (Súmula 385 do STJ). Quem já tinha o nome legitimamente "sujo" não sofre abalo de crédito com uma inscrição a mais.
+
+!! Práticas abusivas (rol **exemplificativo**): venda **casada**, envio **sem pedido** (= amostra grátis; cartão não pedido gera **dano moral**), serviço **sem orçamento** (válido por **10 dias**). Cobrança indevida **paga** = devolução em **dobro do excesso**. Cadastro: aviso **prévio** pelo **mantenedor**, máximo **5 anos**, exclusão pelo **credor** em **5 dias úteis** após o pagamento.
 
 ?? Quem deve notificar o consumidor antes da inscrição no cadastro de inadimplentes? | O órgão mantenedor do cadastro (Súmula 359 do STJ), por escrito (art. 43, §2º).
 ?? O consumidor foi cobrado indevidamente, mas não pagou. Ele tem direito à repetição em dobro? | Não. A dobra do art. 42, parágrafo único, exige pagamento do valor indevido. A cobrança abusiva pode, porém, gerar outras consequências, como dano moral.
@@ -1705,6 +1736,11 @@ Isso significa que a ação coletiva **nunca prejudica** o consumidor individual
 
 > Na prova: Consumidor tem duas questões na OAB. As mais comuns tratam de fato x vício, responsabilidade do comerciante, prazos (30, 90 e 5 anos), direito de arrependimento, repetição em dobro, cadastros e súmulas do STJ.
 
+?? A improcedência de uma ação coletiva impede o consumidor de propor sua ação individual? | Não. A ação coletiva nunca prejudica o consumidor individual, que pode propor sua própria ação.
+?? O shopping responde pelo furto de veículo em seu estacionamento gratuito? | Sim (Súmula 130 do STJ).
+?? O juiz pode reconhecer de ofício a abusividade de cláusula em contrato bancário? | Não (Súmula 381 do STJ).
+?? O CDC se aplica aos planos de saúde de autogestão? | Não. Aplica-se aos planos de saúde, salvo os administrados por entidades de autogestão (Súmula 608 do STJ).
+
 ::mapa Direito do Consumidor
 * Base: vulnerabilidade presumida; normas de ordem pública; vulnerabilidade x hipossuficiência
 * Relação: consumidor final; finalismo mitigado; equiparados (coletividade, bystander, expostos); fornecedor habitual; remuneração indireta
@@ -1725,6 +1761,13 @@ Vivemos em um mundo em que pessoas, empresas, mercadorias e informações atrave
 Uma diferença fundamental entre o Direito Internacional Público e o Direito interno é a **ausência de um poder central** acima dos Estados. Não existe um "governo mundial", nem um parlamento que faça leis para todos, nem uma polícia internacional que obrigue os Estados a cumprir as normas. Por isso, o Direito Internacional se baseia, em grande medida, no **consentimento** dos Estados: eles se obrigam porque aceitaram se obrigar, por tratado ou por costume. Esse é o princípio da **igualdade soberana** dos Estados (art. 2º, 1, da Carta da ONU).
 
 ::ilus globo|O Direito Internacional organiza as relações que atravessam fronteiras.
+
+> Exemplo: um brasileiro e uma francesa se casam em Lisboa e depois vêm morar no Brasil. Saber **qual lei rege** o regime de bens do casal é questão de **Direito Internacional Privado**. Já saber se o Brasil deve cumprir um tratado de cooperação judiciária que assinou com a França é questão de **Direito Internacional Público**.
+
+!! **Público** = Estados, organizações internacionais e indivíduos (tratados, ONU, imunidades). **Privado** = qual **lei** e qual **juiz** para relações privadas com elemento estrangeiro. Sem governo mundial: a base é o **consentimento** e a **igualdade soberana** dos Estados.
+
+?? Qual é a diferença entre Direito Internacional Público e Privado? | O Público regula as relações entre Estados, organizações internacionais e indivíduos. O Privado resolve conflitos de leis no espaço em relações privadas com elemento estrangeiro.
+?? Por que o Direito Internacional Público se baseia no consentimento dos Estados? | Porque não existe poder central acima dos Estados: eles se obrigam porque aceitaram se obrigar, por tratado ou por costume (igualdade soberana, art. 2º, 1, da Carta da ONU).
 
 # Fontes do Direito Internacional Público
 ## O art. 38 do Estatuto da Corte Internacional de Justiça
@@ -1872,6 +1915,13 @@ Segundo a **Lei 8.617/1993**, que segue a Convenção das Nações Unidas sobre 
 - **Alto-mar:** além da zona econômica exclusiva, é livre para todos os Estados.
 
 !! Mar = "**12-24-200**": território, zona contígua, zona econômica exclusiva.
+
+> Exemplo: um navio pesqueiro estrangeiro pesca a 150 milhas da costa brasileira sem autorização. Ele está na **zona econômica exclusiva**, onde o Brasil tem direitos de soberania sobre os recursos naturais: a pesca é ilícita. Se apenas navegasse por ali, sem explorar recursos, estaria exercendo a **liberdade de navegação**, que os outros Estados mantêm nessa zona.
+
+?? Qual é a largura do mar territorial brasileiro? | 12 milhas marítimas contadas da linha de base (Lei 8.617/1993).
+?? O que é a passagem inocente? | O direito dos navios de todas as nacionalidades de atravessar o mar territorial de forma contínua e rápida, sem prejuízo à paz, à boa ordem e à segurança do Brasil.
+?? O que o Brasil pode fazer na zona contígua? | Tomar medidas de fiscalização para evitar e reprimir infrações às leis aduaneiras, fiscais, de imigração e sanitárias (de 12 a 24 milhas).
+?? Outros Estados podem navegar na zona econômica exclusiva brasileira? | Sim. Mantêm as liberdades de navegação e sobrevoo; o Brasil tem direitos de soberania sobre os recursos naturais.
 
 # Nacionalidade e migração
 ## Nacionalidade

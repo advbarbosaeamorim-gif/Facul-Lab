@@ -243,6 +243,8 @@ O **contrato preliminar** (ou promessa de contrato, ou pré-contrato) é aquele 
 
 > Atenção: o registro do contrato preliminar serve para dar **eficácia contra terceiros**. Entre as próprias partes, o registro **não é necessário**: segundo a **Súmula 239 do STJ**, o direito à adjudicação compulsória não se condiciona ao registro do compromisso de compra e venda no cartório de imóveis.
 
+!! Contrato preliminar: mesmos requisitos do definitivo, **menos a forma** (art. 462). Sem cláusula de arrependimento, qualquer parte **exige o definitivo** (art. 463); se a outra não assina, o **juiz supre** a vontade (art. 464; adjudicação compulsória, que **não depende de registro**, Súmula 239 do STJ).
+
 ?? O contrato preliminar precisa ter a mesma forma do contrato definitivo? | Não. Deve conter todos os requisitos essenciais, exceto quanto à forma (art. 462).
 ?? O promitente comprador precisa registrar o compromisso de compra e venda para pedir a adjudicação compulsória? | Não (Súmula 239 do STJ). O registro serve para dar eficácia contra terceiros.
 
@@ -704,6 +706,11 @@ Decorar artigo por artigo cansa e não fixa. A técnica mais eficiente tem três
 
 > Atenção: a Parte Especial muda com frequência. Em 2024, a **Lei 14.994** transformou o feminicídio em crime autônomo. Em 2025, a **Lei 15.280** aumentou as penas dos crimes sexuais contra vulnerável. Em 2026, a **Lei 15.358** (marco legal do combate ao crime organizado) criou formas agravadas para crimes cometidos por organização criminosa ultraviolenta ou milícia, a **Lei 15.384** criou o **vicaricídio** e a **Lei 15.397** aumentou as penas de furto, roubo e receptação e acabou com a exigência de representação no estelionato. Sempre confira a data do material que você está estudando.
 
+!! Crimes em espécie em três passos: **Bem jurídico** (o título do Código) → **Verbo** (subtrair, constranger, obter mediante fraude) → **Caso concreto**. E sempre confira a **data** do material: a Parte Especial muda muito.
+
+?? Qual é a técnica mais eficiente para estudar os crimes em espécie? | Agrupar os crimes pelo bem jurídico, guardar o verbo de cada tipo e aplicar a casos concretos.
+?? Que verbos distinguem furto, extorsão e estelionato? | Subtrair (furto), constranger (extorsão) e obter vantagem mediante fraude (estelionato).
+
 # Crimes contra a vida
 ## Homicídio (art. 121)
 ### Homicídio simples
@@ -880,6 +887,11 @@ Esses crimes punem a **exposição a perigo**, mesmo que não haja dano efetivo.
 
 > Atenção: na omissão de socorro, qualquer pessoa que possa ajudar sem risco tem o dever de agir. Se o agente tinha o **dever jurídico** de evitar o resultado (o **garantidor**, como o salva-vidas ou o pai), ele não responde por omissão de socorro, mas pelo **próprio resultado** (homicídio, por exemplo), por omissão imprópria (art. 13, §2º).
 
+?? Que tipo de crime é a omissão de socorro? | Crime omissivo próprio, em que o próprio tipo descreve a omissão (art. 135).
+?? O garantidor que deixa de agir responde por omissão de socorro? | Não. Responde pelo próprio resultado (como homicídio), por omissão imprópria (art. 13, §2º).
+?? Qual é a pena do abandono de incapaz e dos maus-tratos desde a Lei 15.163/2025? | Reclusão de 2 a 5 anos; 3 a 7 se resulta lesão grave; 8 a 14 se resulta morte.
+?? Exigir cheque-caução como condição para atendimento médico de emergência é crime? | Sim, condicionamento de atendimento médico-hospitalar emergencial (art. 135-A).
+
 # Crimes contra a honra
 ## As três figuras
 A honra pode ser vista sob dois aspectos: a **honra objetiva** (a **reputação**, o que os outros pensam de alguém) e a **honra subjetiva** (a **autoestima**, o que a pessoa pensa de si mesma). Os três crimes contra a honra se distinguem por isso e pelo conteúdo da ofensa:
@@ -950,6 +962,8 @@ No caso de ofensa a funcionário público em razão de suas funções, a **Súmu
 ## Violação de domicílio e invasão de dispositivo informático
 - **Violação de domicílio** (art. 150): entrar ou permanecer, clandestina ou astuciosamente, ou contra a vontade expressa ou tácita de quem de direito, em casa alheia ou em suas dependências.
 - **Invasão de dispositivo informático** (art. 154-A): invadir dispositivo informático de uso alheio, conectado ou não à rede de computadores, com o fim de obter, adulterar ou destruir dados ou informações sem autorização expressa ou tácita do usuário, ou de instalar vulnerabilidades para obter vantagem ilícita. Pena de reclusão de 1 a 4 anos e multa (redação da Lei 14.155/2021).
+
+!! Liberdade individual por verbo: **constranger** (146, subsidiário), **intimidar** de forma repetida (146-A, bullying), **ameaçar** (147; contra a mulher = **dobro** e incondicionada), **perseguir** reiteradamente (147-A, stalking), **causar dano emocional à mulher** (147-B), **privar** da liberdade (148, **permanente**), **reduzir a condição de escravo** (149, basta condição degradante).
 
 ?? A ameaça contra a mulher por razões da condição do sexo feminino depende de representação? | Não. Nesse caso, a pena é dobrada e a ação é incondicionada (art. 147, §§1º e 2º).
 ?? O que é o crime de perseguição? | Perseguir alguém reiteradamente, por qualquer meio, ameaçando sua integridade, restringindo sua locomoção ou invadindo sua liberdade ou privacidade (art. 147-A), o chamado stalking.
@@ -1213,6 +1227,8 @@ Por razões de **política criminal** (preservar a harmonia familiar), a lei pre
 ## Ação penal
 Após a **Lei 13.718/2018**, nos crimes contra a liberdade sexual e nos crimes sexuais contra vulnerável, a ação penal é **pública incondicionada** (art. 225). Os processos em que se apuram crimes contra a dignidade sexual correm em **segredo de justiça** (art. 234-B). Mas, desde a **Lei 15.035/2024**, a partir da **condenação em primeira instância** por estupro (213), registro não autorizado da intimidade sexual (216-B), estupro de vulnerável (217-A), exploração sexual de vulnerável (218-B) e crimes ligados à prostituição (227 a 230), o sistema de consulta processual torna **públicos o nome completo do réu, seu CPF e a tipificação do crime**, salvo decisão fundamentada do juiz. Se o réu for absolvido em grau de recurso, o sigilo é restabelecido, e o réu condenado passa a ser **monitorado por dispositivo eletrônico** (art. 234-B, §§1º a 3º).
 
+> Atenção: para distinguir os crimes sexuais, olhe o **meio**. Houve **violência ou grave ameaça**? Estupro (art. 213). A vítima é **menor de 14** ou não podia resistir? Estupro de vulnerável (art. 217-A), mesmo com "consentimento". Houve **engano**? Violação sexual mediante fraude (art. 215). Foi um ato **sem anuência**, mas sem violência, como no ônibus? Importunação sexual (art. 215-A).
+
 ?? O consentimento de uma adolescente de 13 anos afasta o estupro de vulnerável? | Não. O consentimento, a experiência sexual anterior e o relacionamento com o agente são irrelevantes (Súmula 593 do STJ; art. 217-A, §5º).
 ?? Qual crime pratica quem, no ônibus, se esfrega em uma passageira sem violência e sem o consentimento dela? | Importunação sexual (art. 215-A).
 ?? Qual é a ação penal nos crimes contra a liberdade sexual? | Pública incondicionada (art. 225, desde a Lei 13.718/2018).
@@ -1420,7 +1436,21 @@ Outras regras:
 ?? A perda do cargo na condenação por tortura precisa ser motivada? | Não. É efeito automático da condenação, pelo dobro do prazo da pena (art. 1º, §5º, da Lei 9.455/1997).
 
 ## Crimes hediondos (Lei 8.072/1990)
-Os crimes hediondos são **insuscetíveis de anistia, graça, indulto e fiança** (art. 2º da Lei 8.072/1990 e art. 5º, XLIII, da Constituição). Entre eles estão: o **homicídio qualificado** e o praticado em atividade típica de grupo de extermínio; o **feminicídio** e, desde 2026, o **vicaricídio**; a **lesão corporal gravíssima ou seguida de morte** contra agentes de segurança e membros do sistema de justiça ou nas dependências de instituição de ensino; o **latrocínio**; a **extorsão qualificada pela morte** e a extorsão com restrição da liberdade; a **extorsão mediante sequestro**; o **estupro** e o **estupro de vulnerável**; a **exploração sexual de vulnerável** (art. 218-B); o induzimento ao suicídio ou à automutilação pela **internet**; o **sequestro contra menor de 18 anos**; o **tráfico de pessoas contra criança ou adolescente**; o **genocídio**. São **equiparados** a hediondos (pela Constituição) a **tortura**, o **tráfico de drogas** e o **terrorismo** ("**TTT**").
+Os crimes hediondos são **insuscetíveis de anistia, graça, indulto e fiança** (art. 2º da Lei 8.072/1990 e art. 5º, XLIII, da Constituição). Entre eles estão:
+- o **homicídio qualificado** e o praticado em atividade típica de grupo de extermínio;
+- o **feminicídio** e, desde 2026, o **vicaricídio**;
+- a **lesão corporal gravíssima ou seguida de morte** contra agentes de segurança e membros do sistema de justiça ou nas dependências de instituição de ensino;
+- o **latrocínio**;
+- a **extorsão qualificada pela morte** e a extorsão com restrição da liberdade;
+- a **extorsão mediante sequestro**;
+- o **estupro** e o **estupro de vulnerável**;
+- a **exploração sexual de vulnerável** (art. 218-B);
+- o induzimento ao suicídio ou à automutilação pela **internet**;
+- o **sequestro contra menor de 18 anos**;
+- o **tráfico de pessoas contra criança ou adolescente**;
+- o **genocídio**.
+
+São **equiparados** a hediondos (pela Constituição) a **tortura**, o **tráfico de drogas** e o **terrorismo** ("**TTT**").
 
 > Na prova: as bancas pedem para enquadrar uma história no crime certo. Leia o caso procurando o verbo: houve violência? A vítima entregou enganada ou obrigada? O agente já tinha a posse? O funcionário exigiu ou pediu? A resposta ao verbo resolve a maioria das questões. E atenção às mudanças recentes: o feminicídio autônomo (Lei 14.994/2024), as novas penas de furto, roubo, latrocínio e receptação e a ação incondicionada no estelionato (Lei 15.397/2026).
 
@@ -2169,6 +2199,8 @@ A tutela coletiva no Brasil é formada por um conjunto de leis que se completam,
 
 !! ACP: legitimados = **MP, Defensoria, entes federativos, administração indireta e associação com 1 ano**; inquérito civil **só do MP** e **facultativo**; foro do **local do dano** (competência **absoluta**); **não** serve para **tributos, contribuição previdenciária e FGTS**; coisa julgada **sem limite territorial** (Tema 1.075).
 
+> Exemplo: uma escola aumenta ilegalmente a mensalidade de todos os alunos. Pedir que o aumento seja anulado para todos é defender direito **coletivo em sentido estrito** (grupo determinável, objeto indivisível). Pedir a devolução do que cada família pagou a mais é defender direitos **individuais homogêneos** (divisível, origem comum). As duas pretensões podem ir na mesma ação civil pública, proposta, por exemplo, pelo MP ou pela Defensoria.
+
 ?? A associação criada há 6 meses pode propor ação civil pública? | Em regra, não (exige 1 ano de constituição), mas o juiz pode dispensar o requisito diante de manifesto interesse social (art. 5º, §4º, da Lei 7.347/1985).
 ?? Cabe ação civil pública para questionar a cobrança de um tributo? | Não (art. 1º, parágrafo único, da Lei 7.347/1985).
 ?? Qual é a diferença entre direitos difusos e individuais homogêneos? | Nos difusos, os titulares são indeterminados e o objeto é indivisível; nos individuais homogêneos, os titulares são determinados e o objeto é divisível, com origem comum (art. 81 do CDC).
@@ -2206,6 +2238,10 @@ O Direito Administrativo se apoia em dois pilares, que formam o chamado **regime
 !! Regime jurídico-administrativo = **prerrogativas** (supremacia) + **sujeições** (indisponibilidade). "O Estado pode mais que o particular, mas também deve mais."
 
 ::ilus estado|A Administração Pública atua com poderes especiais, mas sempre limitada pela lei.
+
+?? O que é o regime jurídico-administrativo? | O conjunto formado pela supremacia do interesse público (prerrogativas da Administração) e pela indisponibilidade do interesse público (sujeições e limites).
+?? A função administrativa é exclusiva do Poder Executivo? | Não. O Legislativo e o Judiciário também administram, por exemplo, ao fazer concursos, comprar material ou punir seus servidores.
+?? Qual é a diferença entre Administração Pública em sentido subjetivo e objetivo? | O sentido subjetivo designa os órgãos e entidades que administram; o objetivo, a própria atividade de administrar.
 
 # Princípios
 ## Os princípios expressos do art. 37
@@ -2835,6 +2871,8 @@ O STF decidiu, no **Tema 1.199** (2022), que:
 
 !! Improbidade hoje = "**D-8-3**": só com **D**olo, prescreve em **8** anos (intercorrente em 4), **3** tipos de ato. Revogação da forma culposa **não** atinge a **coisa julgada** (Tema 1.199).
 
+> Exemplo: um prefeito contrata, sem licitação e fora das hipóteses legais, a empresa do cunhado por um preço acima do mercado. Se ficar provado o **dolo** de lesar o erário, há ato de **prejuízo ao erário** (art. 10), com suspensão dos direitos políticos de até 12 anos. Se o prefeito tivesse apenas errado na interpretação de uma norma controvertida, sem intenção ilícita, **não haveria improbidade** (art. 1º, §§2º e 8º).
+
 ?? Ainda existe improbidade culposa? | Não. Desde a Lei 14.230/2021, todos os atos de improbidade exigem dolo.
 ?? Qual é o prazo prescricional da ação de improbidade? | 8 anos, contados da ocorrência do fato (art. 23), com prescrição intercorrente de 4 anos após a interrupção.
 ?? Quem condenado por improbidade culposa, com trânsito em julgado antes de 2021, pode pedir a revisão com base na nova lei? | Não. A revogação da modalidade culposa não retroage para atingir a coisa julgada (STF, Tema 1.199).
@@ -3295,6 +3333,15 @@ Alguns contratos são típicos da atividade empresarial e aparecem com frequênc
 - **Franquia** (Lei 13.966/2019): o franqueador autoriza o franqueado a usar sua **marca** e outros objetos de propriedade intelectual, associados ao direito de produção ou distribuição de produtos ou serviços e ao uso de métodos e sistemas de implantação e administração de negócio. A franquia **não caracteriza relação de consumo** nem **vínculo empregatício** em relação ao franqueado ou a seus empregados, ainda que durante o período de treinamento (art. 1º da Lei 13.966/2019). O franqueador deve fornecer ao interessado a **Circular de Oferta de Franquia** no mínimo **10 dias antes** da assinatura do contrato ou do pagamento de qualquer taxa (art. 2º, §1º, da Lei 13.966/2019); se não o fizer, o franqueado pode arguir a **anulabilidade** ou a **nulidade** do contrato e exigir a devolução das quantias pagas.
 - **Representação comercial** (Lei 4.886/1965): o representante, pessoa física ou jurídica, sem relação de emprego, desempenha a mediação para a realização de negócios mercantis em favor de uma ou mais pessoas. Na rescisão sem justo motivo pelo representado, o representante tem direito a **indenização** de, no mínimo, **1/12 do total da retribuição** auferida durante o tempo em que exerceu a representação (art. 27, j, da Lei 4.886/1965).
 - **Alienação fiduciária em garantia** (Decreto-Lei 911/1969): o devedor transfere ao credor a **propriedade resolúvel** de um bem (normalmente um veículo), ficando com a posse direta. Se não pagar, o credor pode pedir a **busca e apreensão** do bem. Segundo o STJ, após a execução da liminar de busca e apreensão, o devedor só pode purgar a mora pagando a **integralidade da dívida** (parcelas vencidas e vincendas) no prazo de **5 dias** (Tema 722).
+
+> Exemplo: Paula financia um carro com alienação fiduciária e deixa de pagar as parcelas. O banco obtém a liminar de **busca e apreensão**. Depois de cumprida a liminar, Paula só recupera o carro se pagar, em **5 dias**, a **integralidade da dívida**, incluindo as parcelas que ainda iam vencer (STJ, Tema 722); pagar só as atrasadas não basta.
+
+!! Contratos empresariais: **Franquia** = marca + método, **sem** relação de consumo e **sem** vínculo de emprego; Circular de Oferta **10 dias antes**. **Representação** = indenização mínima de **1/12** do que recebeu. **Alienação fiduciária** = propriedade resolúvel do credor; purgação da mora com a **dívida inteira em 5 dias**.
+
+?? A franquia gera relação de consumo ou vínculo empregatício com o franqueado? | Não. A Lei 13.966/2019 afasta expressamente as duas coisas, inclusive durante o treinamento (art. 1º).
+?? Com que antecedência o franqueador deve entregar a Circular de Oferta de Franquia? | No mínimo 10 dias antes da assinatura do contrato ou do pagamento de qualquer taxa (art. 2º, §1º, da Lei 13.966/2019).
+?? Qual é a indenização mínima do representante comercial na rescisão sem justo motivo? | 1/12 do total da retribuição auferida durante a representação (art. 27, j, da Lei 4.886/1965).
+?? Na alienação fiduciária, como o devedor purga a mora depois da busca e apreensão? | Pagando a integralidade da dívida, parcelas vencidas e vincendas, em 5 dias (STJ, Tema 722).
 
 # Recuperação judicial e falência (Lei 11.101/2005)
 ## Visão geral

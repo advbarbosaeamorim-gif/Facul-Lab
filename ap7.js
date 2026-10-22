@@ -339,6 +339,8 @@ As unidades de conservação dividem-se em **dois grupos** (art. 7º):
 - **As unidades de conservação, exceto Área de Proteção Ambiental e Reserva Particular do Patrimônio Natural, devem possuir uma zona de amortecimento** e, quando conveniente, corredores ecológicos (art. 25). A zona de amortecimento é o entorno da unidade, onde as atividades humanas estão sujeitas a normas e restrições específicas.
 - **Compensação ambiental:** nos casos de licenciamento de empreendimentos de **significativo impacto ambiental**, com fundamento em EIA/RIMA, o empreendedor é obrigado a **apoiar a implantação e manutenção de unidade de conservação do grupo de Proteção Integral** (art. 36). O STF declarou **inconstitucional** a fixação de um **valor mínimo de 0,5%** dos custos totais do empreendimento, determinando que o montante seja fixado **proporcionalmente ao impacto** ambiental, após estudo em que se assegurem o contraditório e a ampla defesa (ADI 3.378).
 
+> Exemplo: o Governador cria por **decreto** um Parque Estadual, depois de estudos técnicos e consulta pública. Anos depois, quer reduzir a área do parque para passar uma rodovia. Não pode fazer isso por decreto nem por medida provisória: a **redução exige lei específica** (art. 22, §7º; ADI 4.717). Já transformar uma APA vizinha em Parque, aumentando a proteção, pode ser feito por ato do mesmo nível do que a criou.
+
 ?? O Parque Nacional é de proteção integral ou de uso sustentável? | De proteção integral (art. 8º, III, da Lei 9.985/2000).
 ?? Uma unidade de conservação pode ser criada por decreto? | Sim, por ato do Poder Público (art. 22). Mas sua redução ou extinção só por lei específica (§7º).
 ?? A criação de uma Reserva Biológica exige consulta pública? | Não (art. 22, §4º).
@@ -409,6 +411,8 @@ As fontes principais são:
 A competência para legislar sobre direito financeiro e orçamento é **concorrente** entre a União, os Estados e o DF (art. 24, I e II): a União edita **normas gerais**, e os Estados as suplementam. Os Municípios legislam sobre seus próprios orçamentos, observadas as normas gerais.
 
 ::ilus moedas|O orçamento planeja de onde vem e para onde vai o dinheiro público.
+
+!! **Tributário** = Fisco x contribuinte (cobrar o tributo). **Financeiro** = o dinheiro público **depois que entra**: receita, despesa, orçamento, dívida e controle. Fontes: **CF** (arts. 70-75 e 163-169), **Lei 4.320/1964** (recebida como **lei complementar**), **LRF** (LC 101/2000) e **LC 200/2023**. Competência **concorrente**.
 
 ?? Qual é a diferença entre Direito Financeiro e Direito Tributário? | O Tributário regula a relação entre Fisco e contribuinte (a cobrança dos tributos); o Financeiro regula a atividade financeira do Estado como um todo: receitas, despesas, orçamento, dívida e controle.
 ?? A Lei 4.320/1964 é lei ordinária ou complementar? | Foi editada como lei ordinária, mas recepcionada pela Constituição de 1988 com status de lei complementar.
@@ -669,6 +673,8 @@ A **Lei 10.028/2000** acrescentou ao Código Penal os **crimes contra as finanç
 ## Regime Fiscal Sustentável (LC 200/2023)
 O **Teto de Gastos** (EC 95/2016), que congelava as despesas primárias da União em termos reais, foi substituído pelo **Regime Fiscal Sustentável**, instituído pela **LC 200/2023**, por determinação da EC 126/2022. Nele, as despesas primárias da União podem crescer acima da inflação, mas dentro de **limites** atrelados ao crescimento da **receita**, e o governo deve perseguir **metas de resultado primário** fixadas na LDO. Se as metas não forem cumpridas, aplicam-se **gatilhos** de contenção de despesas.
 
+> Exemplo: um Município tem receita corrente líquida de R$ 100 milhões. O limite de pessoal do **Executivo** é de 54%, ou seja, R$ 54 milhões. Ao chegar a R$ 48,6 milhões (**90%** do limite), o Tribunal de Contas emite **alerta**. Ao passar de R$ 51,3 milhões (**95%**), aplicam-se as vedações do **limite prudencial**: nada de aumentos, novos cargos ou horas extras, salvo as exceções legais.
+
 ?? Qual é o limite de despesa com pessoal dos Municípios e como ele se divide? | 60% da RCL: 6% para o Legislativo (com o Tribunal de Contas do Município, se houver) e 54% para o Executivo (arts. 19 e 20 da LC 101/2000).
 ?? O que acontece quando a despesa com pessoal ultrapassa 95% do limite? | Aplicam-se as vedações do limite prudencial: proibição de aumentos, criação de cargos, contratações e horas extras, com exceções (art. 22, parágrafo único).
 ?? Em quanto tempo o excesso de despesa com pessoal deve ser eliminado? | Nos 2 quadrimestres seguintes, sendo pelo menos 1/3 no primeiro (art. 23).
@@ -704,6 +710,8 @@ As obrigações definidas em lei como de **pequeno valor** **não se submetem** 
 O regime de precatórios foi alterado várias vezes, especialmente pelas **EC 113 e 114/2021** e pela **EC 136/2025**. Desde agosto de 2025, a atualização dos precatórios é feita pelo **IPCA**, acrescido de juros, limitada à **Selic**. A EC 136/2025 também retirou os precatórios federais do limite de despesas primárias a partir de 2026 e estabeleceu limites de pagamento anual para Estados e Municípios conforme o tamanho de seu estoque de precatórios em relação à receita corrente líquida.
 
 - O **Presidente do Tribunal** que, por ato comissivo ou omissivo, retardar ou tentar frustrar a liquidação regular de precatórios incorrerá em **crime de responsabilidade** (art. 100, §7º). Em caso de **preterimento do direito de precedência** (alguém furou a fila) ou de não alocação orçamentária do valor necessário, o Presidente do Tribunal pode autorizar o **sequestro** da quantia respectiva (art. 100, §6º).
+
+> Exemplo: um precatório alimentício apresentado ao Tribunal em **15 de janeiro de 2026** entra no orçamento de 2027 e deve ser pago até 31 de dezembro de 2027, sem juros de mora nesse período (SV 17). Se fosse apresentado em **10 de fevereiro de 2026**, depois do prazo, só entraria no orçamento de 2028. Se a credora tiver 60 anos ou mais, recebe antes, com **superpreferência**, até o triplo do valor da RPV.
 
 ?? Até que data o precatório deve ser apresentado para entrar no orçamento seguinte? | Até 1º de fevereiro, desde a EC 136/2025 (art. 100, §5º).
 ?? Incidem juros de mora no período entre a apresentação e o pagamento do precatório no prazo constitucional? | Não (Súmula Vinculante 17).
@@ -749,6 +757,8 @@ Nos Estados, os **Tribunais de Contas** são integrados por **7 Conselheiros** (
 - **É vedada a criação de Tribunais, Conselhos ou órgãos de Contas Municipais** (art. 31, §4º). Os que já existiam em 1988 (os Tribunais de Contas dos Municípios de **São Paulo** e do **Rio de Janeiro**) foram mantidos. Os Estados podiam criar um Tribunal ou Conselho de Contas **dos Municípios** (órgão estadual que fiscaliza todos os Municípios do Estado), como existe na Bahia, em Goiás e no Pará, e o STF chegou a admitir que um Estado extinguisse o seu (ADI 5.763, Ceará). Desde a **EC 139/2026**, porém, é **vedada a extinção, a criação ou a instalação** desses tribunais e conselhos (arts. 31, §1º, e 75): os que existem permanecem, e não se criam novos.
 
 !! **P**refeito: a **Câmara** julga as contas (de governo e de gestão), e só **2/3** dos vereadores derrubam o parecer do Tribunal de Contas. Novos tribunais de contas **municipais**: **proibidos**. E, desde a EC 139/2026, os tribunais e conselhos de contas **dos Municípios** existentes não podem ser extintos, nem novos podem ser criados.
+
+> Exemplo: o TCU encontra superfaturamento em um **contrato** do Ministério da Saúde. Ele não pode sustá-lo de imediato: comunica o **Congresso**, que tem a competência para a sustação. Se Congresso e Executivo não agirem em **90 dias**, o TCU decide. Se a ilegalidade estivesse em um **ato** (uma nomeação, por exemplo), o próprio TCU poderia sustá-lo depois de dar prazo para a correção.
 
 ?? Quem julga as contas do Presidente da República? | O Congresso Nacional (art. 49, IX); o TCU apenas emite parecer prévio em 60 dias (art. 71, I).
 ?? O TCU pode sustar diretamente um contrato administrativo ilegal? | Não, de início: a sustação de contrato cabe ao Congresso; o TCU só decide se o Congresso ou o Executivo não agirem em 90 dias (art. 71, §§1º e 2º).
@@ -887,6 +897,10 @@ O sistema previdenciário brasileiro tem três regimes:
 > Atenção: **o Código de Defesa do Consumidor é aplicável às entidades abertas de previdência complementar, não incidindo nos contratos previdenciários celebrados com entidades fechadas** (Súmula 563 do STJ).
 
 !! **RGPS** = INSS, iniciativa privada, **obrigatório**. **RPPS** = servidores **efetivos**. **Complementar** = **facultativo** (aberta: CDC sim; fechada: CDC não).
+
+?? Quais são os três regimes previdenciários brasileiros? | O Regime Geral (RGPS, administrado pelo INSS), os Regimes Próprios dos servidores efetivos (RPPS) e a previdência complementar.
+?? A previdência complementar é obrigatória? | Não. É facultativa e organizada de forma autônoma em relação ao RGPS (art. 202 da Constituição).
+?? O CDC se aplica à previdência complementar? | Às entidades abertas, sim; às fechadas (fundos de pensão), não (Súmula 563 do STJ).
 
 # Segurados e dependentes
 ## Segurados obrigatórios
@@ -1068,6 +1082,8 @@ Consequências do acidente do trabalho:
 
 !! Incapacidade: **15 primeiros dias** pagos pela **empresa**; INSS a partir do **16º dia**. **Auxílio-acidente** = **indenização** (50%, pode ser menor que o mínimo, **sem carência**, **não** acumula com aposentadoria). **Estabilidade acidentária** = **12 meses** após a alta.
 
+> Exemplo: Ana, empregada de uma loja, quebra a perna no caminho para o trabalho e fica afastada 40 dias. É **acidente de trajeto**, equiparado ao acidente do trabalho. A loja paga os **15 primeiros dias**; o INSS paga o auxílio por incapacidade temporária acidentário a partir do **16º dia**, **sem carência**. Ao voltar, Ana tem **12 meses de estabilidade**. Se ficar com sequela que reduza sua capacidade, recebe também o **auxílio-acidente** (50%) enquanto continua trabalhando.
+
 ?? Quem paga os primeiros 15 dias de afastamento do empregado doente? | A empresa; o INSS paga a partir do 16º dia (art. 60, §3º).
 ?? O acidente no caminho de casa para o trabalho é acidente do trabalho? | Sim, é acidente de trajeto, equiparado ao acidente do trabalho (art. 21, IV, d).
 ?? O auxílio-acidente pode ser inferior ao salário mínimo? | Sim, porque tem natureza indenizatória e não substitui a renda.
@@ -1184,6 +1200,8 @@ O **regime próprio de previdência social dos servidores titulares de cargos ef
 - **As contribuições do empregador, os benefícios e as condições contratuais previstas nos estatutos, regulamentos e planos de benefícios das entidades de previdência privada não integram o contrato de trabalho dos participantes** (art. 202, §2º, da Constituição).
 
 > Na prova: são duas questões de Previdenciário na OAB. Caem muito a seguridade (tripé, princípios, contrapartida, BPC), os segurados (categorias e facultativo), os dependentes (classes e exclusão), o período de graça, a carência e as hipóteses sem carência, as aposentadorias após a EC 103/2019 (idade, cálculo, professor, especial e Temas 555 e 709), os benefícios por incapacidade (15 dias pela empresa; auxílio-acidente), a pensão por morte (cotas e duração), o auxílio-reclusão, a decadência e a prescrição, o prévio requerimento (Tema 350) e a competência.
+
+!! Servidor da **União** (EC 103/2019): **62 (mulher) / 65 (homem)**, **25** de contribuição, **10** no serviço público, **5** no cargo. **Compulsória aos 75**. **Abono de permanência** para quem fica. Teto do RGPS se houver previdência complementar (**Funpresp**). Tempo privado e público se **somam** (contagem recíproca).
 
 ?? Qual é a idade de aposentadoria compulsória do servidor público? | 75 anos (art. 40, §1º, II, da Constituição; LC 152/2015).
 ?? O tempo de contribuição ao INSS pode ser contado para a aposentadoria no serviço público? | Sim, pela contagem recíproca, com compensação financeira (art. 201, §9º, da Constituição).
@@ -1365,6 +1383,8 @@ A Justiça Eleitoral **não tem quadro próprio de juízes**: seus membros vêm 
 ## Funções
 A Justiça Eleitoral exerce, além da função **jurisdicional**, funções **administrativas** (organiza o alistamento, as eleições, a apuração), **normativas** (edita resoluções) e **consultivas**: o TSE responde a **consultas** sobre matéria eleitoral feitas, **em tese**, por autoridade com jurisdição federal ou órgão nacional de partido (art. 23, XII, do Código Eleitoral). A consulta **não** pode tratar de caso concreto.
 
+> Exemplo: o TSE nega um mandado de segurança impetrado por um partido: cabe **recurso ordinário** ao STF. Se o TSE decidir contra a Constituição, cabe **recurso extraordinário**. Nos demais casos, a decisão do TSE é **irrecorrível** (art. 121, §3º, da Constituição).
+
 ?? Qual é a composição do TSE? | No mínimo 7 membros: 3 do STF, 2 do STJ e 2 advogados nomeados pelo Presidente da República (art. 119 da Constituição).
 ?? Quanto tempo um juiz serve no TRE? | No mínimo 2 anos e nunca mais de 2 biênios consecutivos (art. 121, §2º, da Constituição).
 ?? Qual Justiça julga a corrupção passiva conexa a caixa dois eleitoral? | A Justiça Eleitoral (STF, Inq 4.435).
@@ -1460,6 +1480,12 @@ Os artigos deste tema são da **Lei 9.504/1997**. As eleições ocorrem, simulta
 - As condições de elegibilidade e as causas de inelegibilidade são aferidas no momento do **pedido de registro**, mas a Justiça Eleitoral pode reconhecer **alterações supervenientes** (fáticas ou jurídicas) que **afastem** a inelegibilidade, desde que ocorram **até a diplomação** (art. 26-D da LC 64/1990, incluído pela LC 219/2025, que revogou a regra antiga do art. 11, §10, da Lei 9.504/1997).
 - **Substituição:** é facultado ao partido substituir o candidato que for considerado **inelegível**, **renunciar**, **falecer** ou tiver o registro indeferido ou cancelado, devendo o pedido ser feito em até **10 dias** do fato e, nas eleições proporcionais, até **20 dias antes** do pleito, salvo em caso de falecimento (art. 13).
 
+?? Quando ocorrem o primeiro e o segundo turno das eleições? | No primeiro domingo de outubro e no último domingo de outubro do ano eleitoral.
+?? Qual é o prazo das convenções partidárias e do pedido de registro? | Convenções de 20 de julho a 5 de agosto; registro até as 19h de 15 de agosto (arts. 8º e 11 da Lei 9.504/1997).
+?? Qual é a cota de gênero nas candidaturas proporcionais? | Mínimo de 30% e máximo de 70% para candidaturas de cada sexo (art. 10, §3º, da Lei 9.504/1997).
+?? Qual é a consequência da fraude à cota de gênero? | Cassação do DRAP do partido e dos diplomas de todos os candidatos vinculados, com nulidade dos votos do partido (Súmula 73 do TSE).
+?? Em quanto tempo o partido pode pedir a substituição de candidato? | Em até 10 dias do fato e, nas proporcionais, até 20 dias antes do pleito, salvo falecimento (art. 13 da Lei 9.504/1997).
+
 # Propaganda e financiamento
 ## Propaganda eleitoral
 Os artigos deste tema são da **Lei 9.504/1997**.
@@ -1484,6 +1510,8 @@ Os artigos deste tema são da **Lei 9.504/1997**.
 - **Mulheres e pessoas negras:** os partidos devem destinar no mínimo **30%** do FEFC e do fundo partidário às **candidaturas femininas**, proporcionalmente ao número de candidatas (art. 17, §8º, da Constituição, incluído pela EC 117/2022), e **30%** às **candidaturas de pessoas pretas e pardas** (EC 133/2024).
 
 !! Financiamento: empresa **não** doa (ADI 4.650); pessoa física até **10% dos rendimentos** do ano anterior; candidato até **10% do limite** de gastos; **30%** dos fundos para **mulheres** e **30%** para **pessoas negras**.
+
+> Exemplo: em julho, uma pré-candidata publica nas redes um vídeo falando de seus projetos para a saúde, sem pedir votos: é **pré-campanha lícita** (art. 36-A). Se terminasse o vídeo com "no dia da eleição, conto com seu voto", haveria **pedido explícito de voto** e propaganda **antecipada**, sujeita a multa. Depois de 15 de agosto, ela pode fazer propaganda, mas sem outdoor, showmício ou brindes.
 
 ?? A partir de quando a propaganda eleitoral é permitida? | Após 15 de agosto do ano da eleição (art. 36 da Lei 9.504/1997).
 ?? Um pré-candidato pode dar entrevista exaltando suas qualidades antes de agosto? | Sim, desde que não haja pedido explícito de voto (art. 36-A da Lei 9.504/1997).
@@ -1549,6 +1577,8 @@ Os artigos deste tema são do **Código Eleitoral**.
 - Os **embargos de declaração** são opostos em **3 dias** e **interrompem** o prazo para a interposição de recursos (art. 275).
 
 !! Eleitoral é a matéria do **3**: recurso em **3** dias; embargos em **3** dias; RCED em **3** dias; condutas vedadas nos **3** meses antes.
+
+> Exemplo: durante a campanha, um candidato a prefeito distribui cestas básicas em troca de votos. Até a **diplomação**, cabe a representação por **captação ilícita de sufrágio** (art. 41-A) ou a **AIJE** por abuso de poder. Depois de diplomado, ainda cabe a **AIME** em **15 dias**, por corrupção, que tramita em **segredo de justiça**. Cassado o prefeito com trânsito em julgado, haverá **novas eleições**.
 
 ?? Qual é o prazo da AIRC e quem pode propô-la? | 5 dias da publicação do pedido de registro; qualquer candidato, partido, coligação ou o Ministério Público (art. 3º da LC 64/1990). O eleitor não pode.
 ?? Até quando pode ser ajuizada a AIJE? | Até a diplomação.

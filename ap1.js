@@ -240,6 +240,8 @@ Os métodos **não se excluem**: o bom intérprete usa todos eles em conjunto.
 
 > Atenção: **interpretação extensiva não é analogia**. Na interpretação extensiva **existe norma** para o caso, e o intérprete apenas revela seu alcance real. Na analogia **não existe norma** para o caso, e se usa a de um caso parecido.
 
+!! Métodos de interpretação = "**GLoSHiT**": **G**ramatical, **Ló**gico, **S**istemático, **Hi**stórico, **T**eleológico. Resultado: **D**eclara, **E**stende, **R**estringe. Origem: **A**utêntica, **J**udicial, **D**outrinária.
+
 ?? Qual método de interpretação o art. 5º da LINDB adota? | O teleológico: o juiz deve atender aos fins sociais da lei e às exigências do bem comum.
 ?? Qual é a diferença entre interpretação extensiva e analogia? | Na interpretação extensiva existe norma para o caso e o intérprete amplia seu alcance. Na analogia não existe norma, e aplica-se a de um caso semelhante.
 
@@ -327,6 +329,8 @@ A classificação mais usada é:
 
 !! Fato jurídico em degraus: **natureza** (fato em sentido estrito) → **vontade com efeito da lei** (ato em sentido estrito) → **vontade que escolhe os efeitos** (negócio jurídico) → **vontade contra o Direito** (ato ilícito).
 
+> Exemplo: Ana compra um carro de Bruno. Os **sujeitos** são Ana e Bruno; o **objeto** é o carro (e o preço); o **fato propulsor** é o contrato de compra e venda; a **proteção jurídica** permite que Ana vá ao Judiciário se o carro não for entregue. Como as partes escolheram preço e prazo, o contrato é um **negócio jurídico**.
+
 ?? Quais são os elementos da relação jurídica? | Sujeitos (ativo e passivo), objeto, fato propulsor e proteção jurídica.
 ?? Qual é a diferença entre ato jurídico em sentido estrito e negócio jurídico? | No ato em sentido estrito, os efeitos são definidos pela lei. No negócio jurídico, a vontade das partes escolhe os efeitos, dentro dos limites legais.
 
@@ -386,6 +390,12 @@ Pode haver **nação sem Estado**: os curdos, por exemplo, formam uma nação co
 
 ::ilus estado|O Estado reúne povo, território e um poder soberano organizado.
 
+!! **N**ação = **N**ós (sentimento de pertencimento). **E**stado = **E**strutura (povo + território + soberania). **G**overno = **G**ente que dirige agora (passa; o Estado fica).
+
+?? Qual é a diferença entre nação e Estado? | Nação é conceito sociológico e cultural (grupo unido por sentimento de pertencimento). Estado é conceito jurídico e político (organização com poder soberano sobre um povo em um território).
+?? Dê um exemplo de nação sem Estado. | Os curdos, espalhados entre Turquia, Iraque, Irã e Síria.
+?? Quais escolhas da Teoria do Estado a Constituição de 1988 fez? | Federação, república, presidencialismo e democracia semidireta.
+
 # Elementos do Estado
 Na doutrina clássica, o Estado tem **três elementos constitutivos**: **povo, território e soberania** (ou governo soberano). Alguns autores acrescentam um quarto elemento, a **finalidade**: o Estado existe para alcançar o **bem comum**. Sem qualquer dos três primeiros elementos, não há Estado: um povo sem território é uma nação dispersa; um território sem povo é uma terra vazia; um povo em um território sem poder soberano é uma colônia ou uma província.
 
@@ -438,6 +448,14 @@ Para os contratualistas, o Estado é uma **criação artificial**, que nasce de 
 ## Teoria marxista
 Para **Marx e Engels**, o Estado não é natural nem fruto de um acordo livre. Ele surge com a **divisão da sociedade em classes** (com a propriedade privada) e funciona como **instrumento de dominação da classe dominante** sobre as demais. O Estado moderno seria "um comitê para gerir os negócios comuns de toda a burguesia". Em uma sociedade sem classes, o Estado tenderia a desaparecer.
 
+> Atenção: o "estado de natureza" dos contratualistas **não é um fato histórico** que se possa datar, mas um **raciocínio hipotético** para explicar e justificar o poder político. Questões que tratam o contrato social como acontecimento real costumam estar erradas.
+
+!! Origem do Estado: **Aristóteles = NATUREZA** (família → aldeia → cidade; animal político); **Contratualistas = ACORDO** (contrato social, criação artificial); **Marx e Engels = CLASSES** (instrumento de dominação; tende a desaparecer).
+
+?? Para Aristóteles, como surge a pólis? | Naturalmente, como desenvolvimento das associações humanas: família, aldeia e cidade, que é autossuficiente.
+?? Para os contratualistas, o que dá origem ao Estado? | Um acordo de vontades entre os indivíduos, o contrato social, que os tira do estado de natureza.
+?? Para Marx e Engels, qual é a função do Estado? | Ser instrumento de dominação da classe dominante; em uma sociedade sem classes, ele tenderia a desaparecer.
+
 # Os contratualistas
 Os três autores mais cobrados partem do estado de natureza e chegam a conclusões muito diferentes sobre que tipo de Estado é necessário.
 
@@ -481,6 +499,11 @@ Weber também perguntou: por que as pessoas obedecem? Ele distinguiu três **tip
 !! Dominação em Weber = "**LTC**": **L**egal (regras), **T**radicional (costume), **C**arismática (líder).
 
 > Exemplo: um servidor público cumpre a ordem do seu chefe porque ela está prevista em lei, e não por gostar dele (dominação legal-racional). Um povo segue um líder revolucionário por acreditar em sua missão quase sobre-humana (carismática). Uma comunidade obedece ao chefe da família mais antiga porque sempre foi assim (tradicional).
+
+?? O que Maquiavel fez de inovador em O Príncipe? | Separou a política da moral religiosa, descrevendo como os governantes efetivamente agiam para conquistar e manter o poder.
+?? O que são virtù e fortuna em Maquiavel? | Virtù é a capacidade de agir com habilidade e energia conforme a necessidade; fortuna é o acaso, as circunstâncias.
+?? Como Weber define o Estado moderno? | A comunidade humana que reivindica com êxito o monopólio do uso legítimo da força física dentro de um território.
+?? Quais são os três tipos puros de dominação legítima em Weber? | Legal-racional (regras impessoais), tradicional (costume) e carismática (qualidades extraordinárias do líder).
 
 # Formas de Estado
 A forma de Estado diz **como o poder político se distribui no território**: se há um único centro de poder ou vários.
@@ -565,6 +588,8 @@ O sistema eleitoral é o conjunto de regras que transforma votos em mandatos. No
 
 ## Partidos políticos
 Os partidos são **pessoas jurídicas de direito privado** que organizam as correntes de opinião e apresentam candidatos. No Brasil, a **filiação partidária** é condição de elegibilidade (art. 14, §3º, V, da Constituição): não há candidaturas avulsas. O **pluralismo político** é fundamento da República (art. 1º, V).
+
+> Exemplo: em 2005, o Estatuto do Desarmamento **já tinha aprovado** a proibição do comércio de armas, e o povo foi chamado a dizer se a confirmava: por isso foi um **referendo**, e a proibição foi rejeitada. Em 1993, o povo escolheu a forma e o sistema de governo **antes** de qualquer mudança: foi um **plebiscito**.
 
 ?? Qual é a diferença entre plebiscito e referendo? | O plebiscito é anterior ao ato (o povo autoriza); o referendo é posterior (o povo confirma ou rejeita).
 ?? Que modelo de democracia o Brasil adota? | A democracia semidireta, que combina representação com instrumentos de participação direta (plebiscito, referendo e iniciativa popular).
@@ -671,6 +696,12 @@ A expressão latina **_ubi societas, ibi jus_** ("onde há sociedade, há direit
 
 ::ilus rede|A sociologia enxerga o Direito dentro da rede de relações sociais.
 
+!! **Dogmática** pergunta "o que diz a norma?"; **Sociologia** pergunta "o que acontece na prática?". _Ubi societas, ibi jus_: onde há sociedade, há direito, e a relação é de mão dupla (o Direito **reflete** e **provoca** mudanças).
+
+?? Qual é a diferença entre a dogmática jurídica e a Sociologia Jurídica? | A dogmática estuda a norma (o que ela diz e como aplicá-la). A Sociologia Jurídica estuda o Direito como fato social: por que a norma existe, quem atinge e o que acontece na prática.
+?? O que significa ubi societas, ibi jus? | Onde há sociedade, há direito: toda convivência humana produz regras.
+?? Dê um exemplo de lei que buscou provocar mudança social. | A Lei Maria da Penha (2006), que buscou mudar comportamentos ainda tolerados por parte da sociedade.
+
 # Os fundadores
 ## Auguste Comte e o positivismo
 **Auguste Comte** (século XIX, França) é considerado o fundador da sociologia; foi ele quem criou a palavra. Defendia o **método positivista**: a sociedade deveria ser estudada com base na **observação dos fatos**, como nas ciências naturais, deixando de lado especulações religiosas ou filosóficas.
@@ -760,6 +791,13 @@ A **mais-valia** é o **valor produzido pelo trabalhador além do que ele recebe
 ## Law in books e law in action
 O jurista norte-americano **Roscoe Pound** popularizou a distinção entre o **direito nos livros** (_law in books_) e o **direito em ação** (_law in action_): a diferença entre o que a norma prescreve e o que de fato acontece. Essa distância é o grande objeto de estudo da sociologia jurídica.
 
+> Exemplo: o Código Civil exige forma e registro para certos negócios, mas, em muitas comunidades, imóveis são vendidos por um simples recibo assinado diante de testemunhas, e todos respeitam o acordo. Para Ehrlich, essa regra que de fato organiza o grupo é **direito vivo**; para Pound, é a distância entre o **law in books** e o **law in action**.
+
+!! **E**hrlich = **E**stá na sociedade (direito vivo). **P**ound = **P**apel x **P**rática (law in books x law in action).
+
+?? O que é o direito vivo para Eugen Ehrlich? | As regras que de fato organizam a vida dos grupos sociais, muitas vezes diferentes do que está nos códigos.
+?? Qual distinção Roscoe Pound popularizou? | Entre o direito nos livros (law in books) e o direito em ação (law in action): o que a norma prescreve e o que de fato acontece.
+
 # Controle social
 Controle social é o **conjunto de mecanismos pelos quais a sociedade induz seus membros a seguir as normas** e reage a quem as descumpre. Toda sociedade precisa de algum controle, ou a convivência seria impossível. Ele pode ser:
 - **informal:** exercido pela **família**, pela **escola**, pela **religião**, pela **vizinhança**, pelos amigos e pela **opinião pública**. Suas sanções são a reprovação, o afastamento, a fofoca, a perda de prestígio;
@@ -790,6 +828,8 @@ Além do controle social, o Direito exerce outras funções na sociedade:
 
 Fala-se em **legislação simbólica** quando a lei é editada para dar uma **resposta política aparente** a um problema, sem condições reais de ser cumprida ou de resolver a questão. É a lei feita "para a televisão": cria um crime novo ou aumenta penas depois de um caso de grande repercussão, sem alterar as causas do problema.
 
+> Exemplo: um adolescente deixa de colar na prova porque teme decepcionar os pais e ser malvisto pelos colegas, e não por medo de uma punição oficial. É o **controle informal** funcionando antes de qualquer sanção do Direito.
+
 ?? Qual é a diferença entre controle social formal e informal? | O informal é exercido por família, escola, religião, vizinhança e opinião pública, com sanções difusas. O formal é exercido por instituições oficiais (polícia, Judiciário) com sanções organizadas, como o Direito.
 ?? Na tipologia de Merton, como se chama a adaptação de quem aceita as metas de sucesso mas usa meios ilegítimos? | Inovação.
 ?? O que é legislação simbólica? | A lei editada para dar uma resposta política aparente, sem condições reais de ser cumprida ou de resolver o problema.
@@ -806,6 +846,11 @@ Por que algumas leis "pegam" e outras não? A sociologia aponta vários fatores:
 
 > Exemplo: a lei que proíbe o uso do celular ao volante é válida e vigente. Saber **quantos motoristas realmente obedecem**, e por quê, é uma pergunta de eficácia social, objeto da sociologia jurídica. A experiência mostra que a obediência aumenta quando há fiscalização frequente e campanhas que mudam a percepção do risco.
 
+!! Por que a lei "pega": **C-A-F-C-L** — **C**onhecimento, **A**desão aos valores, **F**iscalização, **C**ondições materiais e **L**egitimidade.
+
+?? O que é a efetividade (eficácia social) de uma norma? | O cumprimento real da norma pelos destinatários e a realização dos seus objetivos.
+?? Cite fatores que influenciam a eficácia social de uma lei. | O conhecimento da norma, a adesão aos valores que ela protege, a fiscalização e a probabilidade de sanção, as condições materiais para cumpri-la e a legitimidade de quem a cria e aplica.
+
 # Pluralismo jurídico
 A visão tradicional, chamada **monismo jurídico**, afirma que **só o Estado produz Direito**. O **pluralismo jurídico** contesta essa ideia: **o Estado não é a única fonte de normas jurídicas**, e no mesmo espaço podem **coexistir diferentes ordens normativas**, às vezes em conflito com o direito oficial.
 
@@ -816,6 +861,10 @@ Outros exemplos de pluralismo jurídico:
 - as normas de **comunidades tradicionais**, como quilombolas e povos ribeirinhos;
 - as regras de **ordens religiosas** e de grandes organizações privadas;
 - de forma preocupante, as "leis" impostas por **organizações criminosas** e milícias em territórios onde o Estado é ausente.
+
+> Atenção: **monismo** jurídico = só o Estado produz Direito. **Pluralismo** jurídico = várias ordens normativas convivem no mesmo espaço. Reconhecer o pluralismo não significa aprovar todas essas ordens: as "leis" de milícias são um exemplo preocupante.
+
+!! **Mono** = um só (Estado). **Plural** = vários (Pasárgada, indígenas, quilombolas, ordens religiosas e, de forma preocupante, milícias). Pasárgada = **Boaventura**.
 
 ?? O que afirma o pluralismo jurídico? | Que o Estado não é a única fonte de normas jurídicas e que, no mesmo espaço, podem coexistir várias ordens normativas.
 ?? O que Boaventura de Sousa Santos estudou em Pasárgada? | O direito informal de uma favela do Rio, em que a associação de moradores registrava negócios e resolvia conflitos com regras próprias, paralelas ao direito oficial.
@@ -835,6 +884,8 @@ Ter direitos no papel não adianta se as pessoas não conseguem reivindicá-los.
 ## Litigiosidade contida
 **Kazuo Watanabe** chamou de **litigiosidade contida** os conflitos que **não chegam ao Judiciário** por descrença, custo, demora ou desconhecimento dos direitos e que, por isso, podem "explodir" de outras formas, inclusive com violência. Os Juizados Especiais foram pensados, em parte, para trazer esses conflitos para dentro do sistema de justiça. Watanabe também defende que o acesso à justiça não é só acesso ao Judiciário, mas **acesso à ordem jurídica justa**, o que inclui os meios consensuais.
 
+> Exemplo: um consumidor é cobrado em R$ 15 a mais na conta de telefone, assim como outros 2 milhões de clientes. Sozinho, ele não processa a empresa (2ª onda: interesse fragmentado, resolvido pela ação coletiva). Se quisesse agir sozinho, poderia ir ao Juizado Especial, sem custas e sem advogado em primeiro grau nas causas de até 20 salários mínimos (3ª onda).
+
 ?? Qual obstáculo a 2ª onda de acesso à justiça buscou superar? | O obstáculo organizacional: a dificuldade de defender interesses difusos e coletivos, que levou às ações coletivas.
 ?? O que é litigiosidade contida? | Os conflitos que não chegam ao Judiciário por descrença, custo ou desconhecimento e que podem se manifestar de outras formas, inclusive violentas.
 
@@ -847,6 +898,12 @@ Ter direitos no papel não adianta se as pessoas não conseguem reivindicá-los.
 
 !! Luhmann = **autopoiese** e código **lícito/ilícito**. Bourdieu = **campo jurídico** e **violência simbólica**. Marshall = **civis → políticos → sociais**.
 
+> Exemplo: um cliente sai de uma audiência sem entender o que foi decidido, porque o juiz e os advogados falaram em "preclusão", "litispendência" e "trânsito em julgado". Para **Bourdieu**, essa linguagem técnica é parte da **violência simbólica** do campo jurídico, que afasta os leigos.
+
+?? O que Habermas entende pela tensão entre facticidade e validade no Direito? | O Direito combina a coerção do Estado (facticidade) com a legitimidade que vem de um procedimento democrático em que os cidadãos se veem como autores das leis (validade).
+?? Em que ordem T. H. Marshall viu a cidadania se desenvolver na Inglaterra? | Direitos civis (século XVIII), políticos (século XIX) e sociais (século XX).
+?? O que é o campo jurídico para Bourdieu? | O espaço social de disputa pelo monopólio de dizer o direito, entre juízes, advogados, promotores e professores.
+
 # Temas atuais
 - **Judicialização da política:** a crescente **decisão de questões políticas e sociais pelo Judiciário** (casamento entre pessoas do mesmo sexo, pesquisas com células-tronco, fornecimento de medicamentos). Decorre, em parte, da Constituição analítica, que trata de muitos temas, e do amplo acesso ao controle de constitucionalidade. Distingue-se do **ativismo judicial**, que é uma postura do juiz de interpretar a Constituição de forma expansiva.
 - **Racismo institucional:** o funcionamento de instituições (escolas, polícias, empresas, o próprio sistema de justiça) que produz **resultados desiguais** para grupos raciais, **mesmo sem intenção individual** de discriminar. O conceito de **racismo estrutural** vai além: o racismo seria parte da própria estrutura da sociedade, reproduzido pelas instituições e pelas práticas cotidianas.
@@ -855,6 +912,8 @@ Ter direitos no papel não adianta se as pessoas não conseguem reivindicá-los.
 - **Pesquisa empírica em Direito:** a coleta de **dados da realidade**, como entrevistas, observação de audiências e estatísticas dos tribunais, para entender como o Direito funciona na prática. Os relatórios "Justiça em Números", do CNJ, são uma fonte importante.
 
 > Na prova: as bancas cobram principalmente Durkheim (fato social, solidariedade, anomia, crime normal), Weber (tipos de ação e de dominação, tipo ideal), Marx (infraestrutura e superestrutura), as ondas de acesso à justiça, o pluralismo jurídico (Pasárgada) e a diferença entre controle social formal e informal.
+
+!! **Judicialização** = o tema **chega** ao Judiciário (fenômeno). **Ativismo** = o juiz **expande** a interpretação (postura). Racismo **institucional** = resultado desigual sem intenção; **estrutural** = parte da própria estrutura social. Mobilidade **vertical** sobe ou desce; **horizontal** muda sem mudar de posição.
 
 ?? O que significa dizer que o Direito é um sistema autopoiético em Luhmann? | Que ele se reproduz a partir de seus próprios elementos, operando com o código lícito/ilícito, e tem a função de estabilizar expectativas normativas.
 ?? O que Bourdieu chama de violência simbólica no campo jurídico? | A imposição de significados como naturais por meio da linguagem técnica, dos rituais e das vestes forenses, que afastam os leigos.
@@ -880,6 +939,13 @@ Para o estudante de Direito, essa matéria não é um "enfeite". Ela ajuda a ent
 O jeito mais eficiente de estudar é **ligar cada autor a um conceito-chave** e a um **exemplo do cotidiano**. As provas costumam dar a definição e pedir o nome do conceito, ou o inverso. Ao longo da apostila, cada conceito vem acompanhado de uma situação concreta para ajudar a fixar.
 
 ::ilus mente|Cada autor oferece uma lente diferente para olhar a sociedade atual.
+
+> Exemplo: a Lei Geral de Proteção de Dados (Lei 13.709/2018) só faz sentido em uma **sociedade em rede**, em que dados pessoais circulam e valem dinheiro. Entender o autor que descreve essa sociedade ajuda a entender por que a lei surgiu.
+
+!! Para estudar esta matéria: **autor → conceito-chave → exemplo do cotidiano**. As provas dão a definição e pedem o conceito, ou o inverso.
+
+?? O que o pensamento social contemporâneo tenta explicar? | A sociedade de hoje e o que mudou desde a segunda metade do século XX: globalização, consumo, tecnologia, riscos, desigualdades e novas formas de poder.
+?? Dê um exemplo de lei ligada a um tema do pensamento social contemporâneo. | A proteção de dados pessoais responde à sociedade em rede; o princípio da precaução, no Direito Ambiental, responde à sociedade de risco.
 
 # Modernidade e suas transformações
 Os autores desta parte discutem se ainda vivemos na **modernidade** (a época iniciada com o Iluminismo, a ciência e a Revolução Industrial) ou se entramos em algo diferente, que alguns chamam de **pós-modernidade** e outros de **modernidade tardia**, **reflexiva** ou **líquida**.
@@ -949,6 +1015,8 @@ A filósofa **Hannah Arendt**, judia alemã que fugiu do nazismo, produziu algum
 
 ::compara Poder em três autores|Foucault: disciplina e vigilância (panóptico); biopoder sobre a vida das populações; poder espalhado em micropoderes; saber e poder unidos|Arendt: totalitarismo pelo terror e pela ideologia; banalidade do mal (Eichmann); ação política como liberdade; direito a ter direitos|Agamben: estado de exceção como regra; suspensão de direitos em nome da emergência; homo sacer (vida nua)
 
+!! **F**oucault = **F**iscal invisível (panóptico, disciplina, biopoder, saber-poder). **A**gamben = **A**bre exceção que vira regra (homo sacer). **A**rendt = **A**dolf Eichmann (banalidade do mal; labor, trabalho e ação; direito a ter direitos).
+
 ?? Qual é a imagem que Foucault usa para ilustrar o poder disciplinar? | O panóptico: uma torre central de onde o vigia vê todos sem ser visto, levando as pessoas a se vigiarem.
 ?? O que Arendt quis dizer com banalidade do mal? | Que grandes crimes podem ser cometidos por pessoas comuns que apenas cumprem ordens, sem refletir sobre o que fazem.
 ?? Para Agamben, qual é a tendência do estado de exceção nas democracias contemporâneas? | Tornar-se paradigma de governo, com medidas excepcionais que se tornam permanentes.
@@ -1014,6 +1082,8 @@ Os chamados "**intérpretes do Brasil**" tentaram explicar a formação da socie
 
 > Exemplo: a Súmula Vinculante 13 do STF, que proíbe o nepotismo na Administração Pública, pode ser lida como uma resposta jurídica ao patrimonialismo descrito por Faoro e à cordialidade descrita por Sérgio Buarque.
 
+!! Intérpretes do Brasil: **Freyre = MISTURA** (miscigenação; mito da democracia racial); **Buarque = CORAÇÃO** (homem cordial); **Faoro = DONO** (patrimonialismo, estamento); **Florestan = EXCLUSÃO** (negro após a abolição); **Darcy = POVO NOVO** (três matrizes).
+
 ?? O que significa o "homem cordial" de Sérgio Buarque de Holanda? | Alguém que age pelo coração, misturando o pessoal e o afetivo com o público, o que dificulta regras impessoais. Não significa pessoa gentil.
 ?? Qual conceito de Faoro descreve a confusão entre o público e o privado? | O patrimonialismo.
 ?? Qual autor contestou o mito da democracia racial com base em pesquisa sobre a situação do negro após a abolição? | Florestan Fernandes.
@@ -1059,6 +1129,13 @@ A Filosofia do Direito não decora artigos; ela examina os **fundamentos**. Mas 
 Na OAB, a Filosofia do Direito tem **duas questões** por prova e costuma cobrar a **ideia central** de cada autor, muitas vezes com um trecho da obra. A técnica que mais funciona é **ligar cada autor a uma palavra-chave** e entender o **problema** que ele tentava resolver.
 
 ::ilus balanca|A pergunta central da filosofia do direito: o que torna uma decisão justa?
+
+> Exemplo: uma lei proíbe que se dê comida a pessoas em situação de rua em praças públicas. As outras matérias perguntam se a lei é válida e como aplicá-la. A Filosofia do Direito pergunta se ela é **justa** e se um cidadão teria o dever de obedecê-la.
+
+!! As três perguntas da Filosofia do Direito: **O QUÊ** (o que é o Direito?), **JUSTO** (o que é justiça?) e **POR QUÊ** (por que obedecer às leis?). Na prova: **autor + palavra-chave**.
+
+?? Quais são as três perguntas centrais da Filosofia do Direito? | O que é o Direito, o que é justiça e por que devemos obedecer às leis.
+?? Qual é a técnica mais eficiente para estudar Filosofia do Direito para a OAB? | Ligar cada autor a uma palavra-chave e entender o problema que ele tentava resolver.
 
 # Filosofia antiga
 ## Os sofistas e Sócrates
@@ -1110,6 +1187,14 @@ Os contratualistas, estudados em Teoria do Estado, reaparecem aqui como filósof
 - **Locke:** os homens têm direitos naturais (**vida, liberdade e propriedade**) e instituem o governo para preservá-los. Se o governo os violar, o povo pode resistir.
 - **Rousseau:** em _Discurso sobre a Origem da Desigualdade_, sustentou que a desigualdade entre os homens tem origem na **instituição da propriedade privada**: "o primeiro que, tendo cercado um terreno, lembrou-se de dizer 'isto é meu' e encontrou pessoas simples o bastante para acreditar nele foi o verdadeiro fundador da sociedade civil".
 
+> Atenção: no jusnaturalismo **racionalista**, o fundamento do direito natural é a **razão humana**, e não Deus. Por isso a frase de Grócio: o direito natural valeria **mesmo que Deus não existisse**.
+
+!! Contratualistas por uma palavra: **Hobbes = PAZ** (guerra de todos contra todos; sem Estado não há justiça), **Locke = PROPRIEDADE** (vida, liberdade e propriedade; direito de resistência), **Rousseau = CERCA** (a propriedade privada origina a desigualdade).
+
+?? O que caracteriza o jusnaturalismo racionalista? | O direito natural passa a se fundamentar na razão humana, e não em Deus ou na natureza do cosmos.
+?? Qual é a tese de Grócio sobre o direito natural? | Ele valeria mesmo que Deus não existisse, porque decorre da natureza racional e social do homem.
+?? Para Rousseau, qual é a origem da desigualdade entre os homens? | A instituição da propriedade privada.
+
 # Kant
 **Immanuel Kant** (século XVIII) é um dos autores mais importantes da filosofia moral e jurídica. Para ele, a moralidade não depende das consequências da ação nem da busca da felicidade, mas da **razão** e do **dever**.
 
@@ -1144,6 +1229,8 @@ O **utilitarismo** julga as ações pelas suas **consequências**. Para **Jeremy
 > Exemplo: um utilitarista avaliaria uma lei de vacinação obrigatória perguntando se ela produz mais bem-estar total (menos doenças e mortes) do que mal-estar (restrição da liberdade de alguns). Mill aceitaria a obrigatoriedade porque a doença de quem não se vacina pode causar dano a terceiros.
 
 > Atenção: a crítica mais comum ao utilitarismo é que ele pode justificar o sacrifício de uma minoria em benefício da maioria. Kant e Rawls criticaram essa consequência, defendendo direitos que não podem ser violados nem em nome do bem-estar geral.
+
+!! **B**entham = **B**alança de prazeres e dores (maior felicidade para o maior número). **M**ill = **M**eu corpo, minhas regras, salvo **dano a terceiros** (princípio do dano).
 
 ?? O que diz o princípio do dano de Mill? | Que a única razão legítima para interferir na liberdade de alguém contra sua vontade é evitar dano a terceiros.
 
@@ -1253,6 +1340,8 @@ Os **comunitaristas**, como **Michael Sandel**, criticam o liberalismo de Rawls 
 ## Amartya Sen: as capacidades
 O economista indiano **Amartya Sen** propõe que a justiça seja avaliada não pela renda ou pelos bens que as pessoas têm, mas pela ampliação das suas **capacidades**: as liberdades reais de **ser e fazer** aquilo que valorizam (estar bem nutrido, ter saúde, ser alfabetizado, participar da vida política). Duas pessoas com a mesma renda podem ter capacidades muito diferentes (uma pessoa com deficiência precisa de mais recursos para ter a mesma mobilidade). O Índice de Desenvolvimento Humano (IDH) foi inspirado nessa visão.
 
+!! Teorias da justiça: **Rawls = VÉU** (liberdade igual primeiro, depois diferença); **Nozick = MÍNIMO** (Estado só contra violência, roubo e fraude); **Sandel = COMUNIDADE** (contra o eu desvinculado); **Sen = CAPACIDADES** (liberdade real de ser e fazer; IDH).
+
 ?? O que é o véu de ignorância em Rawls? | A condição hipotética em que as pessoas escolhem os princípios de justiça sem saber que lugar ocuparão na sociedade, o que garante a imparcialidade da escolha.
 ?? O que diz o princípio da diferença de Rawls? | Que as desigualdades sociais e econômicas só são justas se trouxerem o maior benefício possível aos menos favorecidos.
 ?? Qual é o modelo de Estado defendido por Nozick? | O Estado mínimo, limitado à proteção contra violência, roubo e fraude e ao cumprimento dos contratos.
@@ -1265,6 +1354,12 @@ O economista indiano **Amartya Sen** propõe que a justiça seja avaliada não p
 
 !! Hermenêutica e argumentação: **G**adamer = **G**ente sempre tem pré-compreensões; **P**erelman = **P**ersuadir o auditório; **V**iehweg = **V**ai pelo problema (tópica).
 
+> Exemplo: diante de um caso sobre um contrato abusivo, o jurista que usa a **tópica** não parte de um sistema fechado, mas de lugares comuns aceitos, como a **boa-fé** e a **vedação do enriquecimento sem causa**, para chegar à solução do problema concreto.
+
+?? O que é o círculo hermenêutico em Gadamer? | O movimento em que compreendemos as partes pelo todo e o todo pelas partes.
+?? Para Perelman, qual é o objetivo da argumentação jurídica? | Persuadir um auditório, buscando sua adesão por argumentos razoáveis, e não demonstrar como na matemática.
+?? Como se estrutura o silogismo jurídico? | Premissa maior (a norma), premissa menor (o fato) e conclusão (a decisão).
+
 # Críticas e outras perspectivas
 - **Evguiéni Pachukanis:** jurista soviético que relacionou a **forma jurídica** à **forma mercantil**. O **sujeito de direito** (alguém livre e igual, capaz de contratar) nasce da **troca de mercadorias** no capitalismo: para trocar mercadorias, as pessoas precisam se reconhecer como proprietárias livres e iguais. Por isso, o Direito seria uma forma histórica ligada ao capitalismo.
 - **Friedrich Nietzsche:** em _Genealogia da Moral_, sustenta que os valores morais têm **origem histórica** e estão ligados a **relações de poder**, e não a uma origem divina ou natural. Investigar a "genealogia" dos valores é perguntar quem os criou e a quem eles servem.
@@ -1272,6 +1367,8 @@ O economista indiano **Amartya Sen** propõe que a justiça seja avaliada não p
 - **Ética das virtudes:** retomando Aristóteles, enfatiza o **caráter** e as disposições do agente (ser justo, prudente, corajoso), mais do que regras abstratas (Kant) ou consequências (utilitarismo).
 
 > Na prova: as bancas pedem a ideia central. Treine assim: leia o nome do autor e diga em voz alta a palavra-chave dele. Se travar, volte ao mapa mental. Atenção especial a Aristóteles (justiça distributiva e comutativa, equidade), Kant (imperativo categórico), Kelsen (teoria pura, norma fundamental), Hart (regra de reconhecimento), Dworkin (princípios, Hércules), Alexy (ponderação) e Rawls (véu de ignorância).
+
+!! Críticas em quatro nomes: **P**achukanis = **P**reço (forma jurídica nasce da forma mercantil); **N**ietzsche = **N**ascimento dos valores (genealogia e poder); **R**eale = **R**ecebe três dimensões (fato, valor e norma); **V**irtudes = **V**ale o caráter do agente.
 
 ?? Para Gadamer, existe intérprete neutro? | Não. A compreensão sempre parte de pré-compreensões e tradições, em uma fusão de horizontes entre o texto e o intérprete.
 ?? O que é a tópica de Viehweg? | Uma técnica de pensar por problemas, a partir de lugares comuns (topoi) aceitos, e não de um sistema fechado.
@@ -1468,6 +1565,8 @@ As estatísticas oficiais de criminalidade (boletins de ocorrência, processos, 
 - **Reincidência:** a reincidência elevada é frequentemente associada aos **efeitos estigmatizantes e dessocializadores** da prisão (o etiquetamento e a prisonização), à falta de políticas para egressos e à ausência de oportunidades de trabalho.
 
 > Na prova: caem com frequência a diferença entre as escolas Clássica e Positiva, as teorias de consenso (Chicago, anomia, associação diferencial, subculturas), o etiquetamento (desvio primário e secundário), as cifras oculta e dourada, os níveis de prevenção e os níveis de vitimização.
+
+!! Criminologia no Brasil em cinco palavras: **Gênero** (Maria da Penha, art. 5º), **Idade** (ECA, medidas socioeducativas), **Droga** (art. 28 sem prisão; RE 635.659: até 40 g ou 6 plantas), **Cela** (ADPF 347, estado de coisas inconstitucional), **Volta** (reincidência e etiquetamento).
 
 ?? O que o STF reconheceu na ADPF 347? | O estado de coisas inconstitucional do sistema prisional brasileiro.
 ?? Qual é a consequência jurídica do porte de drogas para consumo pessoal no art. 28 da Lei 11.343/2006? | Não há pena privativa de liberdade; aplicam-se advertência, prestação de serviços à comunidade e medida educativa.

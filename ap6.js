@@ -517,6 +517,8 @@ Detalhes cobrados:
 - **Rompimento:** sobrevindo **descendente sucessível ao testador, que não o tinha ou não o conhecia quando testou**, **rompe-se o testamento** em todas as suas disposições, se esse descendente sobreviver ao testador (art. 1.973). A lei presume que o testador, se soubesse do filho, teria disposto de outra forma.
 - **Caducidade:** o testamento (ou a disposição) perde a eficácia por fato posterior, como a **morte do herdeiro ou legatário antes do testador**.
 
+> Exemplo: Antônio, viúvo e sem filhos, faz testamento particular deixando tudo para um sobrinho. Anos depois, descobre que tem uma filha, que sobrevive a ele. O testamento **rompe-se** em todas as suas disposições (art. 1.973), e a herança segue a ordem legal. Se a filha já fosse conhecida e Antônio quisesse beneficiar o sobrinho, só poderia dispor da **metade disponível**, porque a legítima da filha não entra no testamento.
+
 ?? Qual é a idade mínima para fazer testamento? Precisa de assistência? | 16 anos, sem necessidade de assistência (art. 1.860, parágrafo único).
 ?? Marido e mulher podem fazer um único testamento juntos? | Não. O testamento conjuntivo é proibido (art. 1.863).
 ?? Qual testamento o cego pode fazer? | Somente o público (art. 1.867).
@@ -857,6 +859,8 @@ O **interrogatório** é feito **por último** porque é, sobretudo, um **meio d
 ## O rito sumário
 O rito sumário é semelhante ao ordinário, mas mais concentrado: a audiência deve ser realizada em até **30 dias** (art. 531), e podem ser arroladas até **5 testemunhas** por parte (art. 532).
 
+> Exemplo: Pedro é denunciado por furto simples (reclusão de 1 a 4 anos). Como a pena máxima é de **4 anos**, segue o rito **ordinário**. Recebida a denúncia, ele tem **10 dias** para a resposta à acusação, com até **8 testemunhas**. Se ficar evidente que o fato é atípico (o bem era dele), o juiz o **absolve sumariamente**. Caso contrário, na audiência, ele será o **último** a falar, no interrogatório.
+
 ?? Cabe recurso contra a decisão que recebe a denúncia? | Não. O meio de impugnação é o habeas corpus. Contra a rejeição cabe recurso em sentido estrito (art. 581, I).
 ?? O inimputável pode ser absolvido sumariamente no rito comum? | Não. A inimputabilidade é ressalvada no art. 397, II, porque exige instrução para a medida de segurança.
 ?? Qual é o último ato da audiência de instrução no processo penal? | O interrogatório do acusado (art. 400).
@@ -1136,6 +1140,8 @@ Súmulas do STF que limitam o habeas corpus:
 - **Não cabe habeas corpus quando já extinta a pena privativa de liberdade** (Súmula 695).
 - **Não compete ao STF conhecer de habeas corpus impetrado contra decisão do relator que, em habeas corpus requerido a tribunal superior, indefere a liminar** (Súmula 691). O STF flexibiliza essa súmula em casos de flagrante ilegalidade.
 
+> Exemplo: Rita foi condenada por roubo com base no reconhecimento de uma testemunha. Anos depois, a testemunha confessa que mentiu e surgem imagens de câmera mostrando Rita em outra cidade no dia do crime. Mesmo que a pena já tenha sido cumprida, Rita pode pedir **revisão criminal** com base em **novas provas de inocência** (art. 621, III), e pode pedir **indenização** pelos prejuízos (art. 630).
+
 ?? A revisão criminal pode ser usada pela acusação para condenar um réu absolvido? | Não. Só existe em favor do réu.
 ?? Até quando pode ser pedida a revisão criminal? | A qualquer tempo, antes ou depois da extinção da pena, e até após a morte do condenado (arts. 622 e 623).
 ?? Quem pode impetrar habeas corpus? Precisa de advogado? | Qualquer pessoa, em seu favor ou de outrem, e o MP; não precisa de advogado (art. 654).
@@ -1201,6 +1207,12 @@ O Direito do Trabalho parte da ideia de que o empregado é a parte **mais fraca*
 > Atenção: muitas regras do processo do trabalho foram alteradas pela **Reforma Trabalhista** (Lei 13.467/2017), que entrou em vigor em **11 de novembro de 2017**. Fique atento à data das questões e dos materiais que você usar.
 
 ::ilus trabalho|O processo do trabalho é simples, oral e busca a conciliação em todas as fases.
+
+!! Processo do trabalho = "**O-C-C-I-J-I**": **O**ralidade, **C**oncentração (audiência única), **C**onciliação (proposta **duas vezes**), **I**nformalidade, **J**us postulandi (sem advogado) e **I**rrecorribilidade imediata das interlocutórias. CLT omissa? **CPC subsidiário** (art. 769).
+
+?? Quais são os principais princípios do processo do trabalho? | Oralidade, concentração, conciliação, informalidade e simplicidade, jus postulandi e irrecorribilidade imediata das decisões interlocutórias.
+?? Quantas vezes o juiz do trabalho deve propor a conciliação na audiência? | Pelo menos duas vezes.
+?? Quando se aplica o CPC ao processo do trabalho? | Quando a CLT for omissa, naquilo em que não for incompatível com as normas do processo do trabalho (art. 769 da CLT; art. 15 do CPC).
 
 # A Justiça do Trabalho e sua competência
 ## Organização
@@ -1377,6 +1389,8 @@ Nas causas sujeitas ao procedimento sumaríssimo, somente será admitido **recur
 
 !! Sumaríssimo = "**40 SM, 15 dias, 2 testemunhas, sem edital, sem ente público**". Revista só por **súmula do TST**, **súmula vinculante** ou **violação direta da Constituição**.
 
+> Exemplo: uma ex-empregada cobra R$ 30 mil de horas extras de um restaurante. Supondo um salário mínimo de R$ 1.500 na data do ajuizamento, o limite do rito é de R$ 60 mil. Como o valor não passa de **40 salários mínimos**, segue o **sumaríssimo**: o pedido deve ser **líquido**, cada parte leva até **2 testemunhas** e não há citação por edital. Se a ré fosse uma **autarquia**, o rito seria o **ordinário**.
+
 ?? Qual é o valor máximo da causa no procedimento sumaríssimo trabalhista? | 40 salários mínimos (art. 852-A).
 ?? Cabe citação por edital no procedimento sumaríssimo? | Não (art. 852-B, II).
 ?? Uma autarquia pode ser parte no procedimento sumaríssimo? | Não. A Administração direta, autárquica e fundacional está excluída (art. 852-A, parágrafo único).
@@ -1389,6 +1403,13 @@ Nas causas sujeitas ao procedimento sumaríssimo, somente será admitido **recur
 - **Prescrição intercorrente:** ocorre a prescrição intercorrente no processo do trabalho no prazo de **2 anos** (art. 11-A). A fluência do prazo inicia-se quando o **exequente deixa de cumprir determinação judicial no curso da execução** (§1º). Pode ser requerida ou declarada **de ofício** em qualquer grau de jurisdição (§2º).
 
 !! Prescrição: **5 anos** para trás, ajuizando em até **2 anos** do fim do contrato. Intercorrente: **2 anos**, contados do descumprimento de determinação judicial na **execução**. Recesso: **20/12 a 20/1**.
+
+> Exemplo: Bruno trabalhou de 2015 a 10 de março de 2024, quando foi dispensado. Ele tem até **10 de março de 2026** para ajuizar a reclamação. Se ajuizar em 1º de março de 2026, poderá cobrar os créditos dos **5 anos anteriores ao ajuizamento** (de março de 2021 em diante). As horas extras de 2018, por exemplo, já estarão prescritas.
+
+?? Como se contam os prazos no processo do trabalho? | Em dias úteis, excluindo o dia do começo e incluindo o do vencimento (art. 775 da CLT).
+?? Em que período os prazos processuais trabalhistas ficam suspensos? | De 20 de dezembro a 20 de janeiro, inclusive (art. 775-A da CLT).
+?? Qual é a prescrição trabalhista? | 5 anos para os créditos, até o limite de 2 anos após a extinção do contrato (art. 7º, XXIX, da Constituição).
+?? Qual é o prazo da prescrição intercorrente no processo do trabalho? | 2 anos, contados do descumprimento de determinação judicial pelo exequente na execução (art. 11-A da CLT).
 
 # Recursos
 ## Regras gerais
@@ -1807,6 +1828,8 @@ Efeitos da solidariedade (art. 125):
 - a **isenção ou remissão** de crédito **exonera todos** os obrigados, **salvo se outorgada pessoalmente** a um deles;
 - a **interrupção da prescrição**, em favor ou contra um dos obrigados, **favorece ou prejudica aos demais**.
 
+!! Obrigação **principal** = **pagar** (tributo ou multa). **Acessória** = **fazer ou não fazer** (nota, declaração) e **não depende** da principal; descumprida, vira **multa**. Sujeito passivo: **contribuinte** (relação pessoal e direta) ou **responsável** (por lei). Contrato particular **não** se opõe ao Fisco. Solidariedade **sem benefício de ordem**.
+
 ?? A empresa irregular, sem registro, deve pagar tributos? | Sim. A capacidade tributária passiva independe de a pessoa jurídica estar regularmente constituída (art. 126).
 ?? O contrato de aluguel que obriga o inquilino a pagar o IPTU pode ser oposto ao Município? | Não. As convenções particulares não podem ser opostas à Fazenda (art. 123).
 ?? A solidariedade tributária admite benefício de ordem? | Não (art. 124, parágrafo único).
@@ -2132,6 +2155,8 @@ O **acolhimento** (institucional, em abrigos, ou familiar, em famílias acolhedo
 
 !! **Guarda** = **revogável**, convive com o poder familiar dos pais. **Tutela** = exige **perda ou suspensão** do poder familiar. **Adoção** = **irrevogável**, rompe os vínculos biológicos.
 
+> Exemplo: Lucas, de 13 anos, vive com a avó desde que os pais o deixaram. Para regularizar a situação, a avó pede a **guarda**, que pode ser revogada e não retira o poder familiar dos pais. Se os pais perderem o poder familiar, cabe **tutela**. Em qualquer caso, como Lucas tem mais de 12 anos, seu **consentimento** será colhido em audiência (art. 28, §2º). A **adoção** pela avó não é possível, porque os ascendentes não podem adotar (art. 42, §1º).
+
 ?? Um adolescente de 14 anos precisa consentir para ser colocado em família substituta? | Sim, em audiência, por ser maior de 12 anos (art. 28, §2º).
 ?? Irmãos podem ser separados na adoção? | Em regra, não; devem ser colocados na mesma família, salvo risco de abuso ou situação excepcional (art. 28, §4º).
 ?? A guarda pode ser revogada? | Sim, a qualquer tempo, por ato judicial fundamentado, ouvido o MP (art. 35).
@@ -2378,6 +2403,8 @@ A **remissão** é uma espécie de **perdão** que permite encerrar ou suspender
 
 ## Ministério Público
 **A falta de intervenção do Ministério Público acarreta a nulidade do feito**, que será declarada de ofício pelo juiz ou a requerimento de qualquer interessado (art. 204). Nos processos que envolvem interesses de crianças e adolescentes, a atuação do MP é obrigatória.
+
+> Atenção: no ECA, o MP e a Fazenda **não** têm prazo em dobro, e os prazos correm em **dias corridos** (art. 152, §2º), ao contrário do CPC, que conta em dias úteis e dá prazo em dobro a esses entes. Questões que misturam as duas regras são frequentes.
 
 ?? Qual é o foro competente para a ação de guarda? | O do domicílio dos pais ou responsável (art. 147), em princípio o do detentor da guarda (Súmula 383 do STJ).
 ?? Os prazos no ECA são contados em dias úteis? | Não. São contados em dias corridos, sem prazo em dobro para o MP e a Fazenda (art. 152, §2º).
