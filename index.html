@@ -629,6 +629,66 @@ html[data-anim="on"] .busca:focus-within>svg{transform:rotate(-12deg) scale(1.15
 @keyframes b-marca{to{background-size:100% 100%}}
 @keyframes b-procura{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-8px) rotate(-4deg)}75%{transform:translateX(8px) rotate(4deg)}}
 @media (prefers-reduced-motion:reduce){.b-ent,mark.b-mark,.busca-vazia .ilu,.anim-q svg{animation:none!important;background-size:100% 100%!important}}
+
+/* ---------- modo avançado: provas da faculdade ---------- */
+.pv-lista{display:grid;gap:12px}
+@media (min-width:760px){.pv-lista{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}}
+.pv{position:relative;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:16px;padding:14px;overflow:hidden}
+.pv::after{content:"";position:absolute;inset:auto -30px -40px auto;width:120px;height:120px;border-radius:50%;background:color-mix(in srgb,var(--c) 10%,transparent);pointer-events:none}
+.pv>*{position:relative;z-index:1}
+.pv-topo{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center}
+.pv-topo b{display:block;line-height:1.25}
+.pv-quando{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+.pv-anel{position:relative;width:58px;height:58px}.pv-anel .anel{width:58px;height:58px}.pv-anel .anel-v{stroke:var(--c)}
+.pv-anel span{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}.pv-anel b{font-size:.9rem}.pv-anel small{font-size:.58rem;color:var(--muted)}
+.pv-contagem{display:flex;align-items:flex-end;gap:4px;margin:10px 0 2px}
+.pv-contagem span{display:grid;place-items:center;width:30px;height:38px;border-radius:8px;background:color-mix(in srgb,var(--c) 14%,var(--surface));color:var(--fg);font:700 1.35rem/1 var(--f-display);box-shadow:inset 0 -3px 0 color-mix(in srgb,var(--c) 30%,transparent)}
+.pv-contagem em{font-style:normal;color:var(--muted);font-size:.85rem;margin:0 0 4px 4px}
+html[data-anim="on"] .pv-contagem span{animation:cal-cai .5s cubic-bezier(.2,1.2,.4,1) both;animation-delay:calc(.15s + var(--i)*.12s);transform-origin:50% 0}
+.pv-etapa{margin:8px 0 0;font-size:.9rem;line-height:1.45}
+.pv-chip{display:inline-block;margin-right:6px;padding:1px 9px;border-radius:99px;font-size:.75rem;font-weight:700;background:var(--surface-2);color:var(--fg)}
+.pv-chip.base{background:color-mix(in srgb,#3bb273 20%,var(--surface))}.pv-chip.treino{background:color-mix(in srgb,#2e86ab 20%,var(--surface))}
+.pv-chip.reta{background:color-mix(in srgb,#ff8a1f 25%,var(--surface))}.pv-chip.hoje{background:#e5484d;color:#fff}
+.pv-urg{border-color:color-mix(in srgb,#ff8a1f 50%,var(--line))}
+html[data-anim="on"] .pv-urg .pv-chip{animation:pv-pulsa 1.6s ease-in-out infinite}
+.pv-passou{opacity:.7}
+.pv-barras{display:grid;gap:8px;margin-top:12px}
+.pv-barras>div{display:grid;grid-template-columns:1fr auto;gap:2px 8px;font-size:.85rem}.pv-barras span{color:var(--muted)}
+.pv-bar{grid-column:1/-1;display:block;height:8px;border-radius:99px;background:var(--trilho);overflow:hidden}
+.pv-bar>i{display:block;height:100%;border-radius:inherit;background:var(--c)}.pv-bar.ok>i{background:var(--ok)}.pv-bar.lei>i{background:var(--toga-txt)}
+html[data-anim="on"] .pv-bar>i{animation:pv-enche .9s cubic-bezier(.2,.8,.3,1) both .25s;transform-origin:0 50%}
+.pv-datas{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pv-datas li{padding:4px 10px;border-radius:10px;background:var(--surface-2);font-size:.8rem}.pv-datas li.passou{opacity:.55;text-decoration:line-through}.pv-datas li.hoje{background:#e5484d;color:#fff}
+.pv-datas small{color:inherit;opacity:.75}
+.pv-acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pv-acoes .botao{flex:1 1 auto;margin:0;min-height:42px;font-size:.88rem}
+.pv-ir{background:var(--c)!important;border-color:var(--c)!important;color:#fff!important}
+.pv-vazio{width:100%;text-align:left}
+.pv-config{display:grid;gap:10px;margin-top:12px}
+.pv-cfg{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);transition:opacity .28s,transform .28s}
+.pv-cfg.pv-sai{opacity:0;transform:translateX(30px) scale(.96)}
+html[data-anim="on"] .pv-cfg.pv-nova{animation:ent-pop .55s cubic-bezier(.2,1.4,.4,1) both}
+.pv-chips{list-style:none;margin:6px 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pv-chips li{display:flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:99px;background:color-mix(in srgb,var(--c) 14%,var(--surface));font-size:.82rem}
+.icone.mini{width:26px;height:26px;min-width:26px;padding:0}.icone.mini svg{width:14px;height:14px}
+.pv-cfg-in{min-width:0}
+.pv-add-data{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:6px;align-items:center}
+.pv-add-data input,.pv-add-data select,.pv-form input,.pv-form select{width:100%;box-sizing:border-box}
+.pv-add-data .botao{grid-column:1/-1;width:100%}
+.pv-form-l input,.pv-form-l select,.pv-form .campo select{width:100%;min-width:0}
+.pv-add-data input,.pv-add-data select,.pv-form select,.campo select{padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;min-width:0}
+.pv-add-data .botao{margin:0;padding:8px 12px;min-height:0}
+.pv-form{display:grid;gap:10px;padding:14px;border-radius:14px;border:1px dashed var(--line);background:var(--surface-2)}
+.pv-form-l{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pv-form .botao{margin:0}
+.pv-erro{margin:0;color:var(--erro);min-height:0}
+.pv-como{margin-top:4px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.pv-como summary{cursor:pointer;font-weight:700}.pv-como ul{margin:8px 0 0;padding-left:18px;font-size:.9rem;line-height:1.5}
+.treme{animation:treme .45s}
+[data-estilo="premium"] .pv,[data-estilo="premium"] .pv-cfg{border-radius:22px;border-left-width:0;box-shadow:inset 5px 0 0 var(--c),0 10px 24px -18px color-mix(in srgb,var(--c) 60%,transparent)}
+@keyframes pv-pulsa{50%{transform:scale(1.08)}}
+@keyframes pv-enche{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.pv *,.pv-cfg{animation:none!important;transition:none!important}}
 @keyframes mv-some{to{opacity:0}}
 @keyframes mv-acende{0%{transform:scale(0);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
 @keyframes mv-sobe{0%{transform:translateY(0) scale(1);opacity:0}20%{opacity:1}100%{transform:translateY(-46px) scale(.3);opacity:0}}
@@ -1881,6 +1941,82 @@ function mostrarMeta(){const m=metaDia();const v=metaVariante(m);
  document.body.appendChild(el);if(animOn())confete(el.querySelector("canvas"));syncVoltar();anunciar(v.msg[0])}
 function metaBanner(){const m=metaDia();const q=((S.dias||{})[hojeStr()]||{}).q||0;if(q<m)return "";const v=metaVariante(m);
  return `<section class="motiva-banner meta" aria-label="Meta de hoje cumprida">${v.anim}<div><b>${esc(v.msg[0])}</b><p>${esc(v.msg[1])}</p><small>Meta de hoje: ${q} de ${nQ(m)}</small></div></section>`}
+
+/* ---------- modo avançado: provas da faculdade ----------
+   Cada prova = uma matéria da faculdade + uma ou mais datas (P1, P2, substitutiva…).
+   O app mede o preparo de cada uma (questões feitas, acerto e leitura da apostila) e
+   distribui o estudo até cada data, dando prioridade à prova mais próxima e menos preparada. */
+const ROTULOS_PROVA=["P1","P2","P3","Substitutiva","Exame final","Trabalho","Outra"];
+const avOn=()=>!!(S.cfg&&S.cfg.av);
+const provasFac=()=>((S.cfg&&S.cfg.provasFac)||[]).filter(x=>DISC[x.d]);
+const diasAte=dt=>Math.round((inicioDia(new Date(dt+"T12:00:00").getTime())-inicioDia())/864e5);
+const dataCurta=dt=>{const d=new Date(dt+"T12:00:00");return new Intl.DateTimeFormat("pt-BR",{weekday:"short",day:"numeric",month:"short"}).format(d).replace(/\./g,"")};
+const quandoTxt=n=>n===0?"é hoje":n===1?"amanhã":n<0?"já passou":`em ${n} dias`;
+function etapaProva(n){return n===0?{k:"hoje",nome:"Dia da prova",txt:"Revisão leve: resumo e as questões que você errou. Nada de conteúdo novo."}
+ :n<=3?{k:"reta",nome:"Reta final",txt:"Refaça as erradas e leia o resumo. Questões novas só para manter o ritmo."}
+ :n<=14?{k:"treino",nome:"Treino",txt:"Muitas questões e revisão dos pontos fracos. Termine a leitura dos temas que faltam."}
+ :{k:"base",nome:"Base",txt:"Leia os temas da apostila com calma e fixe com os cartões. Questões em ritmo leve."}}
+function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0;const h0=inicioDia();
+ ids.forEach(id=>{const s=S.stats[id];if(!s)return;if(s.u)o++;else e++;if(s.t&&s.t>=h0)hoje++});
+ const feitas=o+e,n=ids.length;const i=periodoDe(p.d);let temas=0,lidos=0;
+ if(i>=0&&apOk(i)&&window.APOSTILA[i].mat[p.d]){temas=paginas(p.d).secs.length;lidos=S.lidos&&S.lidos[p.d]?temas:Math.min(temas,(S.apPg&&S.apPg[p.d])||0)}
+ else if(S.lidos&&S.lidos[p.d]){temas=1;lidos=1}
+ const cob=n?feitas/n:0,ac=feitas?o/feitas:0,lei=temas?lidos/temas:0;
+ const preparo=Math.round(100*(.35*cob+.35*(feitas>=5?ac:ac*feitas/5)+.30*lei));
+ const datas=(p.datas||[]).map(x=>({...x,n:diasAte(x.dt)})).sort((a,b)=>a.n-b.n);const prox=datas.find(x=>x.n>=0)||null;
+ let alvo=0;if(prox){const falta=Math.max(0,n-feitas)+e;alvo=prox.n===0?Math.min(10,Math.max(e,5)):Math.min(40,Math.max(5,Math.ceil(falta/Math.max(1,prox.n))))}
+ const urg=prox?(100-preparo+10)/(prox.n+1):0;
+ return {p,ids,n,o,e,feitas,hoje,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
+function provasAtivas(){return provasFac().map(estadoProva).filter(x=>x.prox).sort((a,b)=>b.urg-a.urg)}
+function proxSimDisc(d){const n=nFac(d);for(let i=0;i<n;i++){const k=`fac:${d}:${i}`;if(livreSim(k))return k}return null}
+/* meta diária: soma o que cada prova pede (as próximas 3 semanas), sem baixar da meta normal */
+function metaProvas(){if(!avOn())return 0;return Math.min(100,provasAtivas().filter(x=>x.prox.n<=21).reduce((s,x)=>s+x.alvo,0))}
+/* cartão de uma prova (Hoje e Metas) */
+function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=proxSimDisc(x.p.d);const ok=x.hoje>=x.alvo&&x.alvo>0;
+ return `<article class="pv${urg?" pv-urg":""}${x.prox?"":" pv-passou"}" style="--c:${f.cor}">
+  <div class="pv-topo">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${esc(nomeCurto(f.nome))}</b><span class="pv-quando">${x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · ${dataCurta(x.prox.dt)}`:"Todas as datas já passaram"}</span></div>
+   <div class="pv-anel">${anel(x.preparo,100,`Preparo de ${x.preparo}%`)}<span><b>${x.preparo}%</b><small>preparo</small></span></div></div>
+  ${x.prox&&x.prox.n<=99?`<div class="pv-contagem" aria-hidden="true">${String(Math.max(0,x.prox.n)).padStart(2,"0").split("").map((c,i)=>`<span style="--i:${i}">${c}</span>`).join("")}<em>${x.prox.n===1?"dia":"dias"}</em></div>`:""}
+  ${x.etapa?`<p class="pv-etapa"><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${esc(x.etapa.txt)}</p>`:""}
+  ${completo?`<div class="pv-barras">
+   <div><span>Questões feitas</span><b>${x.feitas} de ${x.n}</b><i class="pv-bar"><i style="width:${x.n?x.feitas*100/x.n:0}%"></i></i></div>
+   <div><span>Acerto</span><b>${x.acerto===null?"—":x.acerto+"%"}</b><i class="pv-bar ok"><i style="width:${x.acerto||0}%"></i></i></div>
+   <div><span>Leitura da apostila</span><b>${x.temas?`${x.lidos} de ${x.temas} temas`:"—"}</b><i class="pv-bar lei"><i style="width:${x.temas?x.lidos*100/x.temas:0}%"></i></i></div></div>
+   ${x.datas.length>1?`<ol class="pv-datas">${x.datas.map(dd=>`<li class="${dd.n<0?"passou":dd.n===0?"hoje":""}"><b>${esc(dd.r||"Prova")}</b> ${dataCurta(dd.dt)} <small>${quandoTxt(dd.n)}</small></li>`).join("")}</ol>`:""}`:""}
+  ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:`Hoje: ${x.alvo} ${x.alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
+ </article>`}
+function blocoProvasHoje(){if(!avOn())return "";const L=provasAtivas();
+ if(!L.length)return `<div class="secao" role="heading" aria-level="2">Suas provas</div><button class="card pv-vazio" data-acao="ir-raiz" data-tela="config">${tile("var(--lacre)","calendario")}<b>Cadastre suas provas da faculdade</b><small>Escolha a matéria e o dia de cada prova. O plano de hoje passa a se organizar por elas.</small></button>`;
+ return `<div class="secao-linha"><div class="secao" role="heading" aria-level="2">Suas provas</div><span class="contador">${L.length} pela frente</span></div>
+  <p class="nota" style="margin-top:0">Em ordem de prioridade: a mais próxima e menos preparada vem primeiro.</p><div class="pv-lista">${L.slice(0,3).map(x=>cartaoProva(x,false)).join("")}</div>`}
+/* itens do plano de hoje que vêm das provas */
+function itensProvas(){if(!avOn())return "";const L=provasAtivas().slice(0,2);let h="";
+ L.forEach(x=>{const f=infoDisc(x.p.d);const nome=esc(nomeCurto(f.nome));const k=proxSimDisc(x.p.d);const pz=`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)}`;
+  h+=itemPlano(x.hoje>=x.alvo,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${x.p.d}"`,f.cor,"alvo",`${nome}: ${x.alvo} ${x.alvo===1?"questão":"questões"}`,`${pz} · ${x.hoje} feita${x.hoje===1?"":"s"} hoje`);
+  if(x.prox.n<=3){const i=periodoDe(x.p.d);if(i>=0)h+=itemPlano(false,"resumo",`data-p="${i}"`,f.cor,"recibo",`${nome}: ler o resumo`,`${pz} · revise o essencial antes da prova`)}
+  else{const t=proximoTema([x.p.d]);if(t)h+=itemPlano(false,"abrir-tema",`data-d="${t.d}" data-k="${t.pg}"`,f.cor,"livro",`${nome}: ${esc(t.tit)}`,`${pz} · tema ${t.pg} de ${x.temas||"?"}`)}
+  const fr=assuntoMaisFraco([x.p.d]);if(fr&&x.prox.n<=14)h+=itemPlano(false,"treinar-ass",`data-sc="${fr.sc}" data-a="${esc(encodeURIComponent(fr.a))}"`,"var(--erro)","exc",`${nome}: ponto fraco em ${esc(fr.a)}`,`${fr.pct}% de acerto em ${fr.v} questões`)});
+ return h}
+/* Configurações: cadastro das provas */
+function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAtual();
+ const opts=PERIODOS.slice(0,9).map((ds,i)=>`<optgroup label="${i+1}º período">${ds.map(d=>`<option value="${d}"${per===i&&d===PERIODOS[i][0]?" selected":""}>${esc(infoDisc(d).nome)}</option>`).join("")}</optgroup>`).join("");
+ return `<div class="secao" role="heading" aria-level="2">Modo avançado: provas da faculdade</div>
+ <p class="nota" style="margin-top:0">Cadastre cada prova com a matéria e o dia (pode ter mais de um, como P1 e P2). O app mede seu preparo em cada uma e monta o plano de hoje para chegar bem em todas.</p>
+ <div class="opcoes"><button data-acao="av-modo" data-v="0" aria-pressed="${!on}">Desligado</button><button data-acao="av-modo" data-v="1" aria-pressed="${on}">Ligado</button></div>
+ ${on?`<div class="pv-config">${L.length?L.map(p=>{const f=infoDisc(p.d);const ds=(p.datas||[]).slice().sort((a,b)=>a.dt.localeCompare(b.dt));
+   return `<div class="pv-cfg${rota.novaProva===p.id?" pv-nova":""}" style="--c:${f.cor}">${tile(f.cor,f.ic)}<div class="pv-cfg-in"><b>${esc(f.nome)}</b>
+    <ul class="pv-chips">${ds.map(dd=>`<li><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
+    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div></div>
+    <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button></div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
+  <div class="pv-form"><b>Adicionar prova</b>
+   <label class="campo"><span>Matéria</span><select id="av-d">${opts}</select></label>
+   <div class="pv-form-l"><label class="campo"><span>Dia</span><input type="date" id="av-dt"></label><label class="campo"><span>Tipo</span><select id="av-r">${ROTULOS_PROVA.map(r=>`<option>${r}</option>`).join("")}</select></label></div>
+   <button class="botao cheio" data-acao="av-add">${ic("mais")} Adicionar prova</button><p class="nota pv-erro" id="av-erro" role="alert"></p></div>
+  <details class="pv-como"><summary>Como o app organiza o estudo</summary><ul>
+   <li><b>Preparo</b> de cada prova = questões feitas da matéria (35%), seu acerto nelas (35%) e temas lidos na apostila (30%).</li>
+   <li><b>Prioridade</b>: quanto mais perto a prova e menor o preparo, mais ela aparece no plano de hoje.</li>
+   <li><b>Questões por dia</b>: o que falta resolver (mais as erradas) dividido pelos dias até a prova. A meta diária soma as provas das próximas 3 semanas.</li>
+   <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
 const inicioDia=t=>{const d=new Date(t||Date.now());d.setHours(0,0,0,0);return d.getTime()};
@@ -1899,7 +2035,7 @@ const FASES={
  revisao:{nome:"Fase de revisão",txt:"Hora de treinar mais questões e atacar as matérias em que você mais erra.",meta:40,novos:10},
  reta:{nome:"Reta final",txt:"Simulados completos, revisão dos erros e resumos. Evite começar conteúdo novo e pesado.",meta:60,novos:5},
  passou:{nome:"A data da prova já passou",txt:"Atualize a data nas Configurações ou escolha estudar sem data definida.",meta:20,novos:10}};
-function metaDia(){const m=S.cfg&&S.cfg.meta;return m?+m:FASES[fase()].meta}
+function metaDia(){const m=S.cfg&&S.cfg.meta;const base=m?+m:FASES[fase()].meta;return Math.max(base,metaProvas())}
 const textoProva=()=>{const f=diasProva();return f===null?"Sem data de prova":f<0?"Data da prova já passou":f===0?"A prova é hoje":`${f} dia${f>1?"s":""} para a prova`};
 const nomePer=p=>p===null?"Período não definido":p===9?"Foco no Exame de Ordem":`${p+1}º período`;
 function discsDaMateria(m){return Object.keys(DISC).filter(d=>d!=="rev"&&(DISC[d].base===m||(DISC[d].m&&DISC[d].m.length===1&&DISC[d].m[0]===m)||(!DISC[d].base&&d===m)))}
@@ -1929,9 +2065,10 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  ${mostra?`<label class="campo" style="margin-top:12px"><span>Data da prova (1ª fase do Exame ou prova da faculdade)</span><input type="date" id="data-prova" value="${esc(p)}"></label>
  <p class="nota">Previsão divulgada para a 1ª fase do 48º Exame de Ordem: 10 de janeiro de 2027. Confira no edital antes de usar.</p>`:`<p class="nota">Sem data, o app mantém um ritmo constante, sem contagem regressiva.</p>`}
  <p class="nota">Com a data definida, o ritmo muda sozinho: <b>fase de base</b> (mais de 120 dias), <b>revisão</b> (até 120 dias) e <b>reta final</b> (últimos 30 dias).</p>
+ ${blocoProvasConfig()}
  <div class="secao" role="heading" aria-level="2">Meta diária de questões</div>
  <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${FASES[f].meta})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
- <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.</p>
+ <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.${avOn()&&metaProvas()?` Com o modo avançado, suas provas pedem <b>${metaProvas()} questões por dia</b>; a meta usa o maior dos dois valores.`:""}</p>
  <div class="secao" role="heading" aria-level="2">Estilo visual</div>
  <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="classico"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os dois estilos funcionam nos modos claro e escuro e mantêm todas as funções.</p>
@@ -1971,6 +2108,10 @@ function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeSt
   <div class="hs hs-prova">${anel(o,o+e,pctG===null?"Sem questões respondidas":`${pctG}% de acerto`)}<div><b>${pctG===null?"—":pctG+"%"}</b><span>${pctG===null?"responda questões para medir":`de acerto em ${(o+e).toLocaleString("pt-BR")} questões`}</span></div></div>
  </div>
  <p class="nota">Hoje: ${hoje.q||0} questões, ${hoje.c||0} cartões revisados e ${hoje.p||0} temas lidos. Dias com estudo registrados: ${ativos}.</p>
+ ${avOn()?(()=>{const T=provasFac().map(estadoProva).sort((a,b)=>(a.prox?a.prox.n:9999)-(b.prox?b.prox.n:9999));
+  return `<div class="secao-linha"><div class="secao" role="heading" aria-level="2">Provas da faculdade</div><span class="contador">${T.filter(x=>x.prox).length} pela frente</span></div>
+  ${T.length?`<p class="nota" style="margin-top:0">Preparo = questões feitas (35%), acerto (35%) e leitura da apostila (30%). A prova mais próxima vem primeiro.</p><div class="pv-lista">${T.map(x=>cartaoProva(x,true)).join("")}</div>`
+  :`<button class="card pv-vazio" data-acao="ir-raiz" data-tela="config">${tile("var(--lacre)","calendario")}<b>Cadastre suas provas</b><small>Em Configurações, no modo avançado, escolha a matéria e o dia de cada prova.</small></button>`}`})():""}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Últimos 7 dias</div><span class="contador">${tot7} no total · meta batida em ${bateu} de 7</span></div>
  <figure class="grafico"><div class="barras7" role="img" aria-label="Questões por dia nos últimos 7 dias: ${dias.map(z=>`${z.r} ${z.x.q||0}`).join(", ")}. Meta diária: ${meta}.">${dias.map(z=>`<div${z.hoje?' class="hoje"':""}><b>${z.x.q||0}</b><span class="b7${(z.x.q||0)>=meta?" ok":""}" style="height:${Math.max(3,Math.round((z.x.q||0)*110/mx))}px"></span><small>${z.r}</small></div>`).join("")}<i class="linha-meta" aria-hidden="true" style="bottom:${22+Math.round(meta*110/mx)}px"><span>meta ${meta}</span></i></div></figure>
  <div class="secao" role="heading" aria-level="2">Acerto por matéria</div>
@@ -2091,7 +2232,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  const sug=simSugerido();const tema=fs==="reta"?null:proximoTema(foco);const novos=novosDoFoco(foco);
  const resumoPer=per===null?null:per===9?(foco.length?periodoDe(foco[0]):null):per;
  const qOk=(hoje.q||0)>=meta,cOk=!venc&&(hoje.c||0)>0,lOk=(hoje.p||0)>0;
- let itens="";
+ let itens=itensProvas();
  itens+=itemPlano(qOk,sug?"abrir":"proximo",sug?`data-key="${sug.key}"`:"","var(--toga)","alvo",`Questões: ${hoje.q||0} de ${meta}`,sug?`Sugestão: ${esc(sug.tit)} · ${esc(sug.sub)}`:"Faça um simulado para cumprir a meta");
  if(errs)itens+=itemPlano(false,"erradas-hoje","","var(--erro)","refazer",`Revisar questões erradas: ${errs}`,fs==="reta"?"Prioridade na reta final · cada acerto adia a próxima revisão":"Revisão espaçada: cada acerto adia a próxima (3, 7, 15 e 30 dias)");
  const fr=assuntoMaisFraco(per===null||per===9?OAB:foco.filter(d=>DISC[d]));
@@ -2117,6 +2258,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
   <div class="hs hs-prova">${calProva(falta)}<div><b>${falta===null||falta<0?"—":falta}</b><span>${falta===null?"sem data de prova":falta<0?"a prova já passou":falta===1?"dia para a prova":"dias para a prova"}</span></div></div>
  </div>
  ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
+ ${blocoProvasHoje()}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Plano de hoje</div><span class="contador">${nFeito} de ${nTot} feito${nFeito===1?"":"s"}</span></div>
  <div class="lista plano-lista">${itens}</div>
  ${per!==null?`<div class="dica"><p style="margin:0"><b>${esc(F.nome)}.</b> ${esc(F.txt)} <button class="link-inline" data-acao="ir-raiz" data-tela="config">Alterar</button></p></div>`:""}
@@ -2365,7 +2507,7 @@ function quando(ts){const d=new Date(ts),h=new Date();const o=new Date(h);o.setD
   if(d.toDateString()===h.toDateString())return "Hoje<br>"+hr;if(d.toDateString()===o.toDateString())return "Ontem<br>"+hr;
   return `${new Intl.DateTimeFormat("pt-BR",{day:"2-digit",month:"short",year:"numeric"}).format(d).replace(/\s?de\s?/g," ")}<br>${hr}`}
 function res(a){let ok=0,er=0,br=0;a.qids.forEach(id=>{const r=a.resp[id];if(r===undefined)br++;else if(r===0)ok++;else er++});return {ok,er,br,pct:a.qids.length?Math.round(ok*100/a.qids.length):0}}
-function registrar(id,c){const s=S.stats[id]||{n:0,ok:0,u:0};s.n++;if(c)s.ok++;s.u=c?1:0;S.stats[id]=s;agendarQ(id,c)}
+function registrar(id,c){const s=S.stats[id]||{n:0,ok:0,u:0};s.n++;if(c)s.ok++;s.u=c?1:0;s.t=Date.now();S.stats[id]=s;agendarQ(id,c)}
 /* questão errada volta amanhã; cada acerto na revisão adia a próxima (3, 7, 15 e 30 dias); depois de 5 acertos seguidos sai da revisão */
 const PASSOS_Q=[1,3,7,15,30];
 function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date();d0.setHours(0,0,0,0);const hoje=d0.getTime();
@@ -2775,6 +2917,18 @@ document.addEventListener("click",e=>{
     case "card-virar":deck.virado=true;rota.manterScroll=true;render();efeitoCartao("vira");break;
     case "card-nota":avaliarCartao(+b.dataset.v);render();break;
     case "rev-ap":{const d=b.dataset.d;const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*864e5;salvar()}ir({tela:"ler",d,pg:999,pagina:true});break}
+    case "av-modo":S.cfg=S.cfg||{};S.cfg.av=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
+    case "av-add":{const d=$("#av-d").value,dt=$("#av-dt").value,rr=$("#av-r").value;const er=$("#av-erro");
+      if(!dt){if(er)er.textContent="Escolha o dia da prova.";const i=$("#av-dt");if(i){i.focus();i.classList.remove("treme");void i.offsetWidth;i.classList.add("treme")}break}
+      S.cfg.provasFac=S.cfg.provasFac||[];let p=S.cfg.provasFac.find(x=>x.d===d);if(!p){p={id:"p"+Date.now().toString(36),d,datas:[]};S.cfg.provasFac.push(p)}
+      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaProva=p.id;rota.manterScroll=true;render();rota.novaProva=null;
+      {const el=document.querySelector(".pv-nova");if(el){estouro(el,[infoDisc(d).cor,"#ffc53d","#3bb273","#ffffff"]);try{el.scrollIntoView({block:"nearest",behavior:animOn()?"smooth":"auto"})}catch(e){}}}anunciar("Prova adicionada");break}
+    case "av-add-data":{const id=b.dataset.id;const dt=($("#av-dt-"+id)||{}).value,rr=($("#av-r-"+id)||{}).value;const p=(S.cfg.provasFac||[]).find(x=>x.id===id);
+      if(!p)break;if(!dt){const i=$("#av-dt-"+id);if(i){i.focus();i.classList.remove("treme");void i.offsetWidth;i.classList.add("treme")}break}
+      if(!p.datas.some(x=>x.dt===dt))p.datas.push({dt,r:rr});salvar();rota.novaProva=id;rota.manterScroll=true;render();rota.novaProva=null;anunciar("Data adicionada");break}
+    case "av-del-data":{const p=(S.cfg.provasFac||[]).find(x=>x.id===b.dataset.id);if(p){p.datas=p.datas.filter(x=>!(x.dt===b.dataset.dt&&(x.r||"")===b.dataset.r));if(!p.datas.length)S.cfg.provasFac=S.cfg.provasFac.filter(x=>x!==p)}salvar();rota.manterScroll=true;render();break}
+    case "av-del":{const el=b.closest(".pv-cfg");const fim=()=>{S.cfg.provasFac=(S.cfg.provasFac||[]).filter(x=>x.id!==b.dataset.id);salvar();rota.manterScroll=true;render();anunciar("Prova removida")};
+      if(el&&animOn()){el.classList.add("pv-sai");setTimeout(fim,280)}else fim();break}
     case "meta":S.cfg=S.cfg||{};S.cfg.meta=+b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;salvar();rota.manterScroll=true;render();break;
