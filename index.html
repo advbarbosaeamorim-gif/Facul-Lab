@@ -684,6 +684,8 @@ html[data-anim="on"] .pv-cfg.pv-nova{animation:ent-pop .55s cubic-bezier(.2,1.4,
 .pv-erro{margin:0;color:var(--erro);min-height:0}
 .pv-como{margin-top:4px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .pv-como summary{cursor:pointer;font-weight:700}.pv-como ul{margin:8px 0 0;padding-left:18px;font-size:.9rem;line-height:1.5}
+.pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
+html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
 .pv-notas summary{cursor:pointer;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:6px}.pv-notas summary .i{width:16px;height:16px;color:var(--c)}
 .pv-nts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
@@ -2000,6 +2002,7 @@ function metaProvas(){if(!avOn())return 0;return Math.min(100,provasAtivas().fil
    vai para o exame final (toda a matéria, de 0 a 100) e passa se (N1 + N2 + exame) ÷ 2 for 50 ou mais.
    Abaixo de 40, reprovação. A substitutiva é só para quem faltou: entra no lugar da N1 ou da N2 que ficou sem nota. */
 const NOTA_REGRA={dir:70,ex:40,fim:50};
+const notasOn=()=>!!(S.cfg&&S.cfg.notas);
 const fmtNota=v=>(Math.round(v*10)/10).toLocaleString("pt-BR");
 function situacaoNotas(p){const N=p.notas||{};const le=k=>N[k]===""||N[k]==null||isNaN(+N[k])?null:+N[k];
  const v1=le("v1")||50,v2=le("v2")||(100-v1>0?100-v1:50);const lim=(x,m)=>x===null?null:Math.max(0,Math.min(m,x));
@@ -2039,12 +2042,12 @@ function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.pro
    <div class="pv-anel">${anel(x.preparo,100,`Preparo de ${x.preparo}%`)}<span><b>${x.preparo}%</b><small>preparo</small></span></div></div>
   ${x.prox&&x.prox.n<=99?`<div class="pv-contagem" aria-hidden="true">${String(Math.max(0,x.prox.n)).padStart(2,"0").split("").map((c,i)=>`<span style="--i:${i}">${c}</span>`).join("")}<em>${x.prox.n===1?"dia":"dias"}</em></div>`:""}
   ${x.etapa?`<p class="pv-etapa"><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${esc(x.etapa.txt)}${/exame final/i.test(x.prox.r||"")?" O exame final cobre toda a matéria.":""}</p>`:""}
-  ${!completo&&x.prox?(()=>{const s=situacaoNotas(x.p);return s.est==="parcial"||s.est==="exame"?`<p class="pv-meta-nota">${ic("alvo")} ${esc(s.titulo)}</p>`:""})():""}
+  ${!completo&&x.prox&&notasOn()?(()=>{const s=situacaoNotas(x.p);return s.est==="parcial"||s.est==="exame"?`<p class="pv-meta-nota">${ic("alvo")} ${esc(s.titulo)}</p>`:""})():""}
   ${completo?`<div class="pv-barras">
    <div><span>Questões feitas</span><b>${x.feitas} de ${x.n}</b><i class="pv-bar"><i style="width:${x.n?x.feitas*100/x.n:0}%"></i></i></div>
    <div><span>Acerto</span><b>${x.acerto===null?"—":x.acerto+"%"}</b><i class="pv-bar ok"><i style="width:${x.acerto||0}%"></i></i></div>
    <div><span>Leitura da apostila</span><b>${x.temas?`${x.lidos} de ${x.temas} temas`:"—"}</b><i class="pv-bar lei"><i style="width:${x.temas?x.lidos*100/x.temas:0}%"></i></i></div></div>
-   ${situacaoNotas(x.p).est!=="vazio"?resultadoNotas({...x.p,id:x.p.id+"-m"}):""}
+   ${notasOn()&&situacaoNotas(x.p).est!=="vazio"?resultadoNotas({...x.p,id:x.p.id+"-m"}):""}
    ${x.datas.length>1?`<ol class="pv-datas">${x.datas.map(dd=>`<li class="${dd.n<0?"passou":dd.n===0?"hoje":""}"><b>${esc(dd.r||"Prova")}</b> ${dataCurta(dd.dt)} <small>${quandoTxt(dd.n)}</small></li>`).join("")}</ol>`:""}`:""}
   ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:`Hoje: ${x.alvo} ${x.alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
  </article>`}
@@ -2064,12 +2067,14 @@ function itensProvas(){if(!avOn())return "";const L=provasAtivas().slice(0,2);le
 function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAtual();
  const opts=PERIODOS.slice(0,9).map((ds,i)=>`<optgroup label="${i+1}º período">${ds.map(d=>`<option value="${d}"${per===i&&d===PERIODOS[i][0]?" selected":""}>${esc(infoDisc(d).nome)}</option>`).join("")}</optgroup>`).join("");
  return `<div class="secao" role="heading" aria-level="2">Modo avançado: provas da faculdade</div>
- <p class="nota" style="margin-top:0">Cadastre cada prova com a matéria e o dia (pode ter mais de um, como P1 e P2). O app mede seu preparo em cada uma e monta o plano de hoje para chegar bem em todas.</p>
+ <p class="nota" style="margin-top:0">Cadastre cada prova com a matéria e o dia (pode ter mais de um, como N1 e N2). O app mede seu preparo em cada uma e monta o plano de hoje para chegar bem em todas.</p>
  <div class="opcoes"><button data-acao="av-modo" data-v="0" aria-pressed="${!on}">Desligado</button><button data-acao="av-modo" data-v="1" aria-pressed="${on}">Ligado</button></div>
+ ${on?`<div class="pv-notas-tg"><b>Notas e média</b><span class="nota">Opcional. Lance N1, N2, substitutiva e exame final para o app calcular quanto falta para passar.</span>
+  <div class="opcoes"><button data-acao="av-notas" data-v="0" aria-pressed="${!notasOn()}">Desligado</button><button data-acao="av-notas" data-v="1" aria-pressed="${notasOn()}">Ligado</button></div></div>`:""}
  ${on?`<div class="pv-config">${L.length?L.map(p=>{const f=infoDisc(p.d);const ds=(p.datas||[]).slice().sort((a,b)=>a.dt.localeCompare(b.dt));
    return `<div class="pv-cfg${rota.novaProva===p.id?" pv-nova":""}" style="--c:${f.cor}">${tile(f.cor,f.ic)}<div class="pv-cfg-in"><b>${esc(f.nome)}</b>
     <ul class="pv-chips">${ds.map(dd=>`<li><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
-    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div>${blocoNotas(p)}</div>
+    <div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${ROTULOS_PROVA.map((r,k)=>`<option${k===Math.min(ds.length,ROTULOS_PROVA.length-1)?" selected":""}>${r}</option>`).join("")}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Data</button></div>${notasOn()?blocoNotas(p):""}</div>
     <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button></div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
   <div class="pv-form"><b>Adicionar prova</b>
    <label class="campo"><span>Matéria</span><select id="av-d">${opts}</select></label>
@@ -2079,7 +2084,7 @@ function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAt
    <li><b>Preparo</b> de cada prova = questões feitas da matéria (35%), seu acerto nelas (35%) e temas lidos na apostila (30%).</li>
    <li><b>Prioridade</b>: quanto mais perto a prova e menor o preparo, mais ela aparece no plano de hoje.</li>
    <li><b>Questões por dia</b>: o que falta resolver (mais as erradas) dividido pelos dias até a prova. A meta diária soma as provas das próximas 3 semanas.</li>
-   <li><b>Notas (Afya Unigranrio)</b>: N1 + N2 somam até 100. Com 70 ou mais, aprovação direta. De 40 a 69,9, exame final (toda a matéria), e passa quem tiver (N1 + N2 + exame) ÷ 2 de 50 ou mais. A substitutiva é para quem faltou e entra no lugar da N1 ou da N2 sem nota. Confira sempre o manual do aluno da sua unidade.</li>
+   <li><b>Notas (Afya Unigranrio, opcional)</b>: N1 + N2 somam até 100. Com 70 ou mais, aprovação direta. De 40 a 69,9, exame final (toda a matéria), e passa quem tiver (N1 + N2 + exame) ÷ 2 de 50 ou mais. A substitutiva é para quem faltou e entra no lugar da N1 ou da N2 sem nota. Confira sempre o manual do aluno da sua unidade.</li>
    <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
@@ -2982,6 +2987,8 @@ document.addEventListener("click",e=>{
     case "card-nota":avaliarCartao(+b.dataset.v);render();break;
     case "rev-ap":{const d=b.dataset.d;const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*864e5;salvar()}ir({tela:"ler",d,pg:999,pagina:true});break}
     case "av-modo":S.cfg=S.cfg||{};S.cfg.av=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
+    case "av-notas":S.cfg=S.cfg||{};S.cfg.notas=b.dataset.v==="1";salvar();rota.manterScroll=true;render();anunciar(S.cfg.notas?"Notas e média ligadas":"Notas e média desligadas");
+      if(S.cfg.notas){const el=document.querySelector(".pv-notas");if(el)estouro(el,["#ffc53d","#3bb273","#2e86ab","#ffffff"])}break;
     case "av-add":{const d=$("#av-d").value,dt=$("#av-dt").value,rr=$("#av-r").value;const er=$("#av-erro");
       if(!dt){if(er)er.textContent="Escolha o dia da prova.";const i=$("#av-dt");if(i){i.focus();i.classList.remove("treme");void i.offsetWidth;i.classList.add("treme")}break}
       S.cfg.provasFac=S.cfg.provasFac||[];let p=S.cfg.provasFac.find(x=>x.d===d);if(!p){p={id:"p"+Date.now().toString(36),d,datas:[]};S.cfg.provasFac.push(p)}
