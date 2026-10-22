@@ -613,6 +613,22 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 @keyframes mt-traca{from{stroke-dashoffset:277}to{stroke-dashoffset:0}}
 @keyframes mt-traca2{from{stroke-dashoffset:70}to{stroke-dashoffset:0}}
 @keyframes mt-sobe{from{transform:translate(-44px,70px)}to{transform:none}}
+
+/* ---------- busca: sugestão e animações ---------- */
+.quis-dizer{display:flex;gap:10px;align-items:flex-start;margin:6px 0 10px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,#ffc53d 18%,var(--surface));border:1px solid color-mix(in srgb,#ffc53d 45%,var(--line));font-size:.95rem}
+.quis-dizer svg{flex:none;width:22px;height:22px;color:#d99a12;margin-top:1px}
+.quis-dizer .link-inline{font-size:inherit}
+[data-estilo="premium"] .quis-dizer{border-radius:18px}
+html[data-anim="on"] .anim-q svg{animation:q-acende 1.4s ease-in-out 2}
+html[data-anim="on"] .b-ent{animation:ent-sobe .42s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i,0)*45ms)}
+html[data-anim="on"] mark.b-mark{background-size:0 100%;animation:b-marca .5s ease-out both;animation-delay:calc(220ms + var(--i,0)*40ms);background-image:linear-gradient(var(--mark-bg,#ffe066),var(--mark-bg,#ffe066));background-repeat:no-repeat;background-color:transparent}
+html[data-anim="on"] .busca-vazia .ilu{animation:b-procura 2.4s ease-in-out infinite}
+html[data-anim="on"] .busca .ic,html[data-anim="on"] .busca>svg{transition:transform .3s}
+html[data-anim="on"] .busca:focus-within>svg{transform:rotate(-12deg) scale(1.15)}
+@keyframes q-acende{0%,100%{transform:none;filter:none}50%{transform:scale(1.2) rotate(-8deg);filter:drop-shadow(0 0 6px #ffc53d)}}
+@keyframes b-marca{to{background-size:100% 100%}}
+@keyframes b-procura{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-8px) rotate(-4deg)}75%{transform:translateX(8px) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.b-ent,mark.b-mark,.busca-vazia .ilu,.anim-q svg{animation:none!important;background-size:100% 100%!important}}
 @keyframes mv-some{to{opacity:0}}
 @keyframes mv-acende{0%{transform:scale(0);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
 @keyframes mv-sobe{0%{transform:translateY(0) scale(1);opacity:0}20%{opacity:1}100%{transform:translateY(-46px) scale(.3);opacity:0}}
@@ -2136,50 +2152,139 @@ function telaProgresso(){
 
 /* ---------- busca nas apostilas ---------- */
 const limpo=t=>String(t).replace(/\*\*|==/g,"").replace(/^(::\S+|!!|\?\?|>|#+|\* )\s?/gm,"").replace(/\s\|\s/g," — ").replace(/\|/g," ");
-function realce(txt,q){const nt=semAcento(txt),nq=semAcento(q);let h="",i=0,p=nt.indexOf(nq);while(p>=0&&nq){h+=esc(txt.slice(i,p))+"<mark>"+esc(txt.slice(p,p+nq.length))+"</mark>";i=p+nq.length;p=nt.indexOf(nq,i)}return h+esc(txt.slice(i))}
+/* ---------- busca inteligente ----------
+   A consulta vira um "casador": aceita acentos, plural e singular, "art."/"artigo"/"art 8º",
+   e siglas de leis e tribunais ("CF" = "Constituição Federal"). Primeiro procura a expressão inteira;
+   se nada aparece, procura todas as palavras em qualquer ordem; só então sugere uma correção. */
+const SIGLAS=[["constituicao federal","constituicao da republica","constituicao de 1988","cf/88","cf 88","crfb/88","crfb","cf"],["codigo civil","cc/02","cc"],["codigo de processo civil","cpc/15","cpc"],["codigo penal","cp"],["codigo de processo penal","cpp"],["consolidacao das leis do trabalho","clt"],["codigo de defesa do consumidor","cdc"],["estatuto da crianca e do adolescente","eca"],["codigo tributario nacional","ctn"],["lei de execucao penal","lep"],["supremo tribunal federal","stf"],["superior tribunal de justica","stj"],["tribunal superior do trabalho","tst"],["ordem dos advogados do brasil","oab"],["ministerio publico","mp"],["habeas corpus","hc"],["mandado de seguranca","ms"],["acao direta de inconstitucionalidade","adi"],["arguicao de descumprimento de preceito fundamental","adpf"],["juizados especiais criminais","jecrim"],["lei de introducao as normas do direito brasileiro","lindb"]];
+const PARADA=new Set("a o e de da do das dos em na no nas nos um uma por com que ao aos as os se sua seu para pela pelo".split(" "));
+const escRe=t=>t.replace(/[.*+?^${}()|[\]\\\/]/g,"\\$&");
+const SEP="[^a-z0-9§]+";
+function variantesPalavra(w){if(/^\d+$/.test(w))return `(?<![0-9])${w}(?:\\s*[º°o](?![a-z]))?(?![0-9])`;
+ let r;if(/oes$|aos$|aes$/.test(w))r=w.slice(0,-3)+"(?:ao|oes|aos|aes)";else if(/ao$/.test(w))r=w.slice(0,-2)+"(?:ao|oes|aos|aes)";
+ else if(/ais$/.test(w))r=w.slice(0,-3)+"(?:al|ais)";else if(/al$/.test(w)&&w.length>4)r=w.slice(0,-2)+"(?:al|ais)";
+ else if(/eis$/.test(w))r=w.slice(0,-3)+"(?:el|eis)";else if(/res$|zes$/.test(w))r=w.slice(0,-2)+"(?:es)?";else if(/[rz]$/.test(w)&&w.length>3)r=w+"(?:es)?";
+ else if(/s$/.test(w)&&w.length>3)r=w.slice(0,-1)+"s?";else r=w.length>2?w+"s?":w;
+ return `(?<![a-z0-9])${r}(?![a-z0-9])`}
+function partesConsulta(nq){const t=nq.replace(/[“”"']/g," ").replace(/(\d)\s*[º°]/g,"$1").replace(/\b(arts?|artigos?)\.?\s*(\d)/g,"art $2").replace(/§\s*/g,"§ ").split(/[^a-z0-9§\/]+/).filter(Boolean);
+ const out=[];for(let i=0;i<t.length;i++){const w=t[i];
+  /* artigo, parágrafo e inciso seguidos de número */
+  if(/^(art|arts|artigo|artigos)$/.test(w)&&/^\d+$/.test(t[i+1]||"")){out.push({re:`(?<![a-z])art(?:igo)?s?\\.?\\s*${t[i+1]}(?:\\s*[º°o](?![a-z]))?(?![0-9])`,w:"art "+t[i+1],fixo:1,tipo:"art"});i++;continue}
+  if(/^(§|par|paragrafo)$/.test(w)&&/^\d+$/.test(t[i+1]||"")){out.push({re:`(?:§|par(?:agrafo)?\\.?)\\s*${t[i+1]}(?:\\s*[º°o](?![a-z]))?(?![0-9])`,w:"§ "+t[i+1],fixo:1});i++;continue}
+  /* siglas e nomes de leis e tribunais: o trecho mais longo que bater */
+  let achou=null;for(const g of SIGLAS)for(const v of g){const vt=v.split(/[^a-z0-9\/]+/);if(vt.every((x,k)=>t[i+k]===x)&&(!achou||vt.length>achou.n))achou={g,n:vt.length}}
+  if(achou){const alts=[...achou.g].sort((a,b)=>b.length-a.length).map(v=>v.split(" ").map(escRe).join(SEP));out.push({re:`(?<![a-z0-9])(?:${alts.join("|")})(?![a-z0-9])`,w:t.slice(i,i+achou.n).join(" "),fixo:1,tipo:"lei"});i+=achou.n-1;continue}
+  out.push({re:variantesPalavra(escRe(w)),w,parada:PARADA.has(w)})}
+ /* "art. 8 da CF": o artigo e a lei precisam estar perto um do outro, em qualquer ordem, para não misturar leis diferentes */
+ const ia=out.findIndex(x=>x.tipo==="art"),il=out.findIndex(x=>x.tipo==="lei");
+ if(ia>=0&&il>=0){const A=out[ia],L=out[il];const j={re:`(?:${A.re}.{0,45}?${L.re}|${L.re}.{0,30}?${A.re})`,w:A.w+" "+L.w,fixo:1,tipo:"artlei"};
+  const lo=Math.min(ia,il),hi=Math.max(ia,il);return out.slice(0,lo).concat([j],out.slice(hi+1),out.slice(lo+1,hi).filter(x=>!x.parada))}
+ return out}
+const CASA_CACHE={};
+/* modo "frase": a consulta inteira, em ordem; modo "todas": cada palavra importante em qualquer lugar */
+function casador(q,modo){modo=modo||"frase";const k=modo+"\u0001"+q;if(CASA_CACHE[k])return CASA_CACHE[k];
+ const nq=semAcento(String(q).trim());const ps=partesConsulta(nq);let m;
+ if(!ps.length)m={vazio:true,idx:()=>-1,conta:()=>0,marcas:()=>[]};
+ else if(modo==="frase"){const re=new RegExp(ps.map(x=>x.re).join(SEP),"g");
+  m={idx:nt=>{re.lastIndex=0;const r=re.exec(nt);return r?r.index:-1},conta:nt=>{re.lastIndex=0;let c=0;while(c<99&&re.exec(nt))c++;return c},
+   marcas:nt=>{re.lastIndex=0;const o=[];let r;while((r=re.exec(nt))&&o.length<200){if(!r[0].length){re.lastIndex++;continue}o.push([r.index,r.index+r[0].length])}return o}}}
+ else{const imp=ps.filter(x=>!x.parada);const usa=imp.length?imp:ps;const res=usa.map(x=>new RegExp(x.re,"g"));
+  m={idx:nt=>{let p0=-1;for(const re of res){re.lastIndex=0;const r=re.exec(nt);if(!r)return -1;if(p0<0)p0=r.index}return p0},
+   conta:nt=>{let mn=99;for(const re of res){re.lastIndex=0;let c=0;while(c<99&&re.exec(nt))c++;mn=Math.min(mn,c);if(!mn)break}return mn},
+   marcas:nt=>{const o=[];for(const re of res){re.lastIndex=0;let r;while((r=re.exec(nt))&&o.length<200){if(!r[0].length){re.lastIndex++;continue}o.push([r.index,r.index+r[0].length])}}return o.sort((a,b)=>a[0]-b[0]).filter((x,i,a)=>!i||x[0]>=a[i-1][1])}}}
+ m.q=q;m.modo=modo;return CASA_CACHE[k]=m}
+function realce(txt,q){const m=typeof q==="string"?casador(q,"todas"):q;const nt=semAcento(txt);let h="",i=0;
+ for(const [a,b] of m.marcas(nt)){h+=esc(txt.slice(i,a))+"<mark>"+esc(txt.slice(a,b))+"</mark>";i=b}return h+esc(txt.slice(i))}
+/* ---------- "Você quis dizer…": vocabulário do próprio conteúdo ---------- */
+let VOCAB=null,VOCAB_N=-1,CORPUS="",FORMA=new Map();
+function vocabulario(){const n=PERIODOS.filter((_,i)=>apOk(i)).length;if(VOCAB&&VOCAB_N===n)return VOCAB;
+ const partes=[];QS.forEach(x=>partes.push(x.q,x.a,(x.o||[]).join(" "),x.e||""));
+ PERIODOS.forEach((ds,i)=>{if(!apOk(i))return;ds.forEach(d=>{const t=window.APOSTILA[i].mat[d];if(t)partes.push(limpo(t))})});
+ (window.RESUMOS||[]).forEach(R=>{if(R)Object.keys(R).forEach(d=>{const x=R[d];partes.push(typeof x==="string"?x:x.join(" "))})});
+ LS.forEach(x=>partes.push(x.t,x.ref));
+ const todo=partes.join(" ");CORPUS=" "+semAcento(todo).replace(/[^a-z0-9]+/g," ")+" ";const V=new Map();
+ const F=new Map();(todo.toLowerCase().match(/[a-zà-öø-ÿ]{3,}/g)||[]).forEach(w=>{const k=semAcento(w);if(k===w)return;const x=F.get(k)||{};x[w]=(x[w]||0)+1;F.set(k,x)});
+ FORMA=new Map();F.forEach((x,k)=>FORMA.set(k,Object.keys(x).sort((a,b)=>x[b]-x[a])[0]));
+ CORPUS.split(" ").forEach(w=>{if(w.length>=3&&!/\d/.test(w))V.set(w,(V.get(w)||0)+1)});
+ VOCAB=V;VOCAB_N=n;return V}
+/* distância de edição com troca de letras vizinhas (Damerau), parando cedo quando passa do limite */
+function distancia(a,b,lim){if(Math.abs(a.length-b.length)>lim)return lim+1;const m=a.length,n=b.length;let p2=null,p=Array.from({length:n+1},(_,j)=>j);
+ for(let i=1;i<=m;i++){const c=[i];let mn=i;for(let j=1;j<=n;j++){let v=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));
+  if(p2&&i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])v=Math.min(v,p2[j-2]+1);c[j]=v;if(v<mn)mn=v}if(mn>lim)return lim+1;p2=p;p=c}return p[n]}
+function candidatos(w,V){const lim=w.length<=4?1:w.length<=7?2:3;const out=[];
+ V.forEach((c,v)=>{if(c<2||v===w||Math.abs(v.length-w.length)>lim)return;const d=distancia(w,v,lim);if(d<=lim)out.push({v,d:d+(v[0]===w[0]?0:.6),c})});
+ return out.sort((x,y)=>x.d-y.d||y.c-x.c).slice(0,4)}
+function sugestao(q,forcar){const V=vocabulario();const nq=semAcento(q).trim();const ws=nq.split(/[^a-z0-9§]+/).filter(Boolean);if(!ws.length)return null;
+ const fixos=new Set();partesConsulta(nq).forEach(x=>{if(x.fixo)x.w.split(" ").forEach(z=>fixos.add(z))});
+ /* "forcar": as palavras existem, mas a expressão não; tenta trocas pequenas que formem uma expressão do conteúdo */
+ const opc=ws.map(w=>{if(w.length<3||/\d/.test(w)||PARADA.has(w)||fixos.has(w))return [{v:w,d:0,c:V.get(w)||1}];
+  if((V.get(w)||0)>=2)return forcar&&w.length>=4?[{v:w,d:0,c:V.get(w)}].concat(candidatos(w,V).slice(0,3)):[{v:w,d:0,c:V.get(w)}];const c=candidatos(w,V);return c.length?c:[{v:w,d:0,c:0}]});
+ if(opc.every((o,i)=>o.length===1&&o[0].v===ws[i]))return null;
+ /* combina as opções e prefere a frase que aparece no conteúdo; depois, a mais próxima do que foi digitado */
+ let comb=[[]];opc.forEach(o=>{const nv=[];comb.forEach(c=>o.forEach(x=>{if(nv.length<96)nv.push(c.concat([x]))}));comb=nv});
+ let melhor=null;comb.forEach(c=>{const fr=c.map(x=>x.v).join(" ");if(fr===nq)return;const d=c.reduce((s,x)=>s+x.d,0);const desc=c.some(x=>!x.c);
+  let n=0,p=CORPUS.indexOf(" "+fr+" ");while(p>=0&&n<50){n++;p=CORPUS.indexOf(" "+fr+" ",p+1)}
+  const sc=(n?1000+Math.log(1+n)*40:0)-d*120+c.reduce((s,x)=>s+Math.log(1+x.c),0)-(desc?500:0);
+  if(!melhor||sc>melhor.sc)melhor={fr,sc,n,d}});
+ /* só sugere com boa confiança: a frase existe no conteúdo, ou cada palavra é uma correção curta e comum */
+ if(!melhor||melhor.sc<0||(!melhor.n&&ws.length>1&&melhor.d>ws.length)||(forcar&&(!melhor.n||melhor.d>2)))return null;
+ return melhor.fr.split(" ").map(w=>FORMA.get(w)||w).join(" ")}
 /* ---------- busca global: apostilas, questões, resumos e lei seca ---------- */
 const FILTROS_BUSCA=[["tudo","Tudo"],["ap","Apostilas"],["q","Questões"],["res","Resumos"],["ls","Lei seca"]];
-function trecho(txt,nt,nq,p0,q){const a=Math.max(0,p0-70);const tr=p0>=0?txt.slice(a,p0+q.length+100):txt.slice(0,160);return `${a?"…":""}${realce(tr,q)}…`}
-function buscaAp(q,nq){const out=[];
+function trecho(txt,nt,nq,p0,m){const a=Math.max(0,p0-70);const tr=p0>=0?txt.slice(a,p0+String(m.q).length+110):txt.slice(0,160);return `${a?"…":""}${realce(tr,m)}…`}
+function buscaAp(m){const out=[];
  PERIODOS.forEach((ds,i)=>ds.forEach(d=>{if(!(window.APOSTILA&&window.APOSTILA[i]&&window.APOSTILA[i].mat[d]))return;const P=paginas(d);
-  P.secs.forEach((s,k)=>{const txt=limpo(s.corpo).replace(/\s+/g," ");const nt=semAcento(txt);let c=0,pos=nt.indexOf(nq);const p0=pos;while(pos>=0&&c<99){c++;pos=nt.indexOf(nq,pos+nq.length)}
-   const tt=semAcento(s.tit).includes(nq);if(c||tt)out.push({d,k:k+1,tit:s.tit,c,tt,txt,p0})})}));
+  P.secs.forEach((s,k)=>{const txt=s.lp||(s.lp=limpo(s.corpo).replace(/\s+/g," "));const nt=s.lnt||(s.lnt=semAcento(txt));const p0=m.idx(nt);const c=p0>=0?m.conta(nt):0;
+   const tt=m.idx(semAcento(s.tit))>=0;if(c||tt)out.push({d,k:k+1,tit:s.tit,c,tt,txt,p0})})}));
  return out.sort((a,b)=>(b.tt-a.tt)||(b.c-a.c))}
-function buscaQ(q,nq){const out=[];QS.forEach(x=>{const campos=[x.q,x.a,(x.o||[]).join(" "),x.e||"",x.f||""];const t=semAcento(campos.join(" \u0001 "));const p=t.indexOf(nq);if(p<0)return;
-  const naQ=semAcento(x.q).indexOf(nq);const sc=(semAcento(x.a).includes(nq)?3:0)+(naQ>=0?2:0)+1;out.push({x,sc,naQ})});return out.sort((a,b)=>b.sc-a.sc)}
-function buscaRes(q,nq){const out=[];(window.RESUMOS||[]).forEach((R,i)=>{if(!R)return;Object.keys(R).forEach(d=>{if(!DISC[d])return;const x=R[d];const txt=limpo(typeof x==="string"?x:x.join(" ")).replace(/\s+/g," ");const nt=semAcento(txt);const p0=nt.indexOf(nq);
-  if(p0>=0||semAcento(infoDisc(d).nome).includes(nq))out.push({i,d,txt,p0})})});return out}
-function buscaLs(q,nq){return LS.filter(x=>semAcento(x.t+" "+x.ref).includes(nq))}
+function buscaQ(m){const out=[];QS.forEach(x=>{const t=x.nt||(x.nt=semAcento([x.q,x.a,(x.o||[]).join(" "),x.e||"",x.f||""].join(" \u0001 ")));if(m.idx(t)<0)return;
+  const naQ=m.idx(semAcento(x.q));const sc=(m.idx(semAcento(x.a))>=0?3:0)+(naQ>=0?2:0)+1;out.push({x,sc,naQ})});return out.sort((a,b)=>b.sc-a.sc)}
+function buscaRes(m){const out=[];(window.RESUMOS||[]).forEach((R,i)=>{if(!R)return;Object.keys(R).forEach(d=>{if(!DISC[d])return;const x=R[d];const txt=limpo(typeof x==="string"?x:x.join(" ")).replace(/\s+/g," ");const nt=semAcento(txt);const p0=m.idx(nt);
+  if(p0>=0||m.idx(semAcento(infoDisc(d).nome))>=0)out.push({i,d,txt,p0})})});return out}
+function buscaLs(m){return LS.filter(x=>m.idx(semAcento(x.t+" "+x.ref))>=0)}
 function itemQBusca(r,q){const x=r.x,M=META[x.m];const ord=permFixa([0,1,2,3].map(String),"b-"+x.id).map(Number);
  return `<details class="rev res-q"><summary><span class="tile-mini" style="--c:${M.cor}">${ic(M.ic)}</span><span class="rq"><span class="rotulo">${esc(nomeCurto(M.nome))} · ${realce(x.a,q)}</span><br>${realce(x.q,q)}</span></summary>
   <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${realce(x.o[oi],q)}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}</p>`).join("")}
   <p style="margin-top:10px">${realce(x.e||"",q)}</p>${x.f?`<p class="fund">${esc(x.f)}</p>`:""}
   <div class="acoes-linha"><button class="link-tema" data-acao="treinar-ass" data-sc="${x.m}" data-a="${esc(encodeURIComponent(grupoDe(x)))}">${ic("alvo")} Treinar este assunto</button>${candidatosQ(x).length?`<button class="link-tema" data-acao="estudar" data-q="${x.id}">${ic("livro")} Estudar na apostila</button>`:""}</div></div></details>`}
+function procurar(m,f){return {ap:(f==="tudo"||f==="ap")?buscaAp(m):[],q:(f==="tudo"||f==="q")?buscaQ(m):[],res:(f==="tudo"||f==="res")?buscaRes(m):[],ls:(f==="tudo"||f==="ls")?buscaLs(m):[]}}
+const totalR=R=>R.ap.length+R.q.length+R.res.length+R.ls.length;
 function resultadosBusca(q,f){q=String(q||"").trim();f=f||"tudo";
- if(q.length<3)return vazio("lupa","Busque em todo o conteúdo","Digite pelo menos 3 letras. A busca ignora acentos e maiúsculas e procura nas apostilas, nas questões (enunciado, alternativas e comentário), nos resumos e na lei seca. Exemplos: “legítima defesa”, “art. 312”, “usucapião”.");
- const nq=semAcento(q);const todas=PERIODOS.every((_,i)=>apOk(i));
- const R={ap:(f==="tudo"||f==="ap")?buscaAp(q,nq):[],q:(f==="tudo"||f==="q")?buscaQ(q,nq):[],res:(f==="tudo"||f==="res")?buscaRes(q,nq):[],ls:(f==="tudo"||f==="ls")?buscaLs(q,nq):[]};
+ if(q.length<3&&!partesConsulta(semAcento(q)).some(x=>x.fixo))return vazio("lupa","Busque em todo o conteúdo","Digite pelo menos 3 letras. A busca ignora acentos e maiúsculas e procura nas apostilas, nas questões (enunciado, alternativas e comentário), nos resumos e na lei seca. Exemplos: “legítima defesa”, “art. 312”, “usucapião”.");
+ const todas=PERIODOS.every((_,i)=>apOk(i));
+ /* 1) a expressão exata (com variações de acento, plural, artigo e sigla); 2) todas as palavras em qualquer ordem;
+    3) com erro de digitação, a correção mais provável, só quando ela de fato aparece no conteúdo */
+ let m=casador(q,"frase"),R=procurar(m,f),aviso="";
+ if(!totalR(R)){const m2=casador(q,"todas");if(m2.modo&&partesConsulta(semAcento(q)).filter(x=>!x.parada).length>1){const R2=procurar(m2,f);if(totalR(R2)){m=m2;R=R2;aviso=`<p class="nota busca-aviso">Nenhum trecho com a expressão exata. Mostrando onde aparecem todas as palavras.</p>`}}}
+ const sug=todas||f==="q"||f==="ls"?(sugestao(q)||(m.modo!=="frase"||!totalR(R)?sugestao(q,true):null)):null;let mS=null,RS=null;
+ if(sug){mS=casador(sug,"frase");RS=procurar(mS,f);if(!totalR(RS)){const m3=casador(sug,"todas");RS=procurar(m3,f);mS=m3}}
+ if(!totalR(R)&&sug&&totalR(RS)){aviso=`<p class="quis-dizer anim-q" role="status">${ic("lampada")}<span>Mostrando resultados para <b>${esc(sug)}</b>. Você digitou “${esc(q)}”.</span></p>`;m=mS;R=RS;q=sug}
+ else if(sug&&(totalR(RS)>totalR(R)*3||m.modo!=="frase"))aviso=`<p class="quis-dizer anim-q">${ic("lampada")}<span>Você quis dizer <button class="link-inline" data-acao="busca-sug" data-v="${esc(sug)}"><b>${esc(sug)}</b></button>?</span></p>`+aviso;
  const lim=f==="tudo"?{ap:8,q:6,res:4,ls:4}:{ap:60,q:40,res:40,ls:40};
- const tot=R.ap.length+R.q.length+R.res.length+R.ls.length;
- if(!tot)return (todas||f==="q"||f==="ls"?"":`<p class="nota">Carregando as apostilas…</p>`)+vazio("lupa",`Nada encontrado para “${esc(q)}”`,"Tente uma palavra mais curta, o número do artigo (por exemplo, “art. 5”) ou um sinônimo. Se estiver filtrando, volte para <b>Tudo</b>.");
+ const tot=totalR(R);
+ if(!tot)return (todas||f==="q"||f==="ls"?"":`<p class="nota">Carregando as apostilas…</p>`)+vazio("lupa",`Nada encontrado para “${esc(q)}”`,"Tente uma palavra mais curta, o número do artigo (por exemplo, “art. 5”) ou um sinônimo. Se estiver filtrando, volte para <b>Tudo</b>.").replace('class="vazio-ilu"','class="vazio-ilu busca-vazia"');
  const mais=(k,n)=>f==="tudo"&&n>lim[k]?`<button class="ver-mais" data-acao="busca-f" data-v="${k}">Ver os ${n} resultados ${ic("prox")}</button>`:"";
- let h=`<p class="nota" role="status">${tot} resultado${tot>1?"s":""} para “${esc(q)}”</p>`;
- if(R.ap.length||(!todas&&(f==="tudo"||f==="ap")))h+=`<div class="secao" role="heading" aria-level="2">Apostilas <span class="n">${R.ap.length}</span></div>${todas?"":`<p class="nota">Carregando as apostilas de todos os períodos…</p>`}<div class="lista">${R.ap.slice(0,lim.ap).map(r=>{const fi=infoDisc(r.d);
-  return `<button class="item res-busca" data-acao="abrir-tema" data-d="${r.d}" data-k="${r.k}" data-q="${esc(q)}">${tile(fi.cor,fi.ic)}<span style="min-width:0"><span class="item-tit">${realce(r.tit,q)}</span><br><span class="item-sub">${esc(nomeCurto(fi.nome))} · Tema ${r.k}${r.c?` · ${r.c} ocorrência${r.c>1?"s":""}`:""}</span><span class="trecho">${trecho(r.txt,null,nq,r.p0,q)}</span></span></button>`}).join("")}</div>${mais("ap",R.ap.length)}`;
- if(R.q.length)h+=`<div class="secao" role="heading" aria-level="2">Questões <span class="n">${R.q.length}</span></div><p class="nota" style="margin-top:0">Toque para ver as alternativas, o gabarito e o comentário.</p><div class="revisao">${R.q.slice(0,lim.q).map(r=>itemQBusca(r,q)).join("")}</div>${mais("q",R.q.length)}`;
- if(R.res.length)h+=`<div class="secao" role="heading" aria-level="2">Resumos <span class="n">${R.res.length}</span></div><div class="lista">${R.res.slice(0,lim.res).map(r=>{const fi=infoDisc(r.d);
-  return `<button class="item res-busca" data-acao="resumo" data-p="${r.i}" data-q="${esc(q)}">${tile(fi.cor,"recibo")}<span style="min-width:0"><span class="item-tit">${esc(nomeCurto(fi.nome))}</span><br><span class="item-sub">Resumo do ${r.i+1}º período</span>${r.p0>=0?`<span class="trecho">${trecho(r.txt,null,nq,r.p0,q)}</span>`:""}</span></button>`}).join("")}</div>${mais("res",R.res.length)}`;
- if(R.ls.length)h+=`<div class="secao" role="heading" aria-level="2">Lei seca <span class="n">${R.ls.length}</span></div><div class="alts ls-lista">${R.ls.slice(0,lim.ls).map(x=>`<details><summary><span>${realce(x.ref,q)}</span><small>${esc(nomeCurto(META[x.m].nome))}</small></summary><p>${realce(x.t,q)}</p></details>`).join("")}</div>${mais("ls",R.ls.length)}`;
+ let h=aviso+`<p class="nota" role="status">${tot} resultado${tot>1?"s":""} para “${esc(q)}”</p>`;
+ if(R.ap.length||(!todas&&(f==="tudo"||f==="ap")))h+=`<div class="secao" role="heading" aria-level="2">Apostilas <span class="n">${R.ap.length}</span></div>${todas?"":`<p class="nota">Carregando as apostilas de todos os períodos…</p>`}<div class="lista res-anim">${R.ap.slice(0,lim.ap).map(r=>{const fi=infoDisc(r.d);
+  return `<button class="item res-busca" data-acao="abrir-tema" data-d="${r.d}" data-k="${r.k}" data-q="${esc(q)}">${tile(fi.cor,fi.ic)}<span style="min-width:0"><span class="item-tit">${realce(r.tit,m)}</span><br><span class="item-sub">${esc(nomeCurto(fi.nome))} · Tema ${r.k}${r.c?` · ${r.c} ocorrência${r.c>1?"s":""}`:""}</span><span class="trecho">${trecho(r.txt,null,null,r.p0,m)}</span></span></button>`}).join("")}</div>${mais("ap",R.ap.length)}`;
+ if(R.q.length)h+=`<div class="secao" role="heading" aria-level="2">Questões <span class="n">${R.q.length}</span></div><p class="nota" style="margin-top:0">Toque para ver as alternativas, o gabarito e o comentário.</p><div class="revisao res-anim">${R.q.slice(0,lim.q).map(r=>itemQBusca(r,m)).join("")}</div>${mais("q",R.q.length)}`;
+ if(R.res.length)h+=`<div class="secao" role="heading" aria-level="2">Resumos <span class="n">${R.res.length}</span></div><div class="lista res-anim">${R.res.slice(0,lim.res).map(r=>{const fi=infoDisc(r.d);
+  return `<button class="item res-busca" data-acao="resumo" data-p="${r.i}" data-q="${esc(q)}">${tile(fi.cor,"recibo")}<span style="min-width:0"><span class="item-tit">${esc(nomeCurto(fi.nome))}</span><br><span class="item-sub">Resumo do ${r.i+1}º período</span>${r.p0>=0?`<span class="trecho">${trecho(r.txt,null,null,r.p0,m)}</span>`:""}</span></button>`}).join("")}</div>${mais("res",R.res.length)}`;
+ if(R.ls.length)h+=`<div class="secao" role="heading" aria-level="2">Lei seca <span class="n">${R.ls.length}</span></div><div class="alts ls-lista res-anim">${R.ls.slice(0,lim.ls).map(x=>`<details><summary><span>${realce(x.ref,m)}</span><small>${esc(nomeCurto(META[x.m].nome))}</small></summary><p>${realce(x.t,m)}</p></details>`).join("")}</div>${mais("ls",R.ls.length)}`;
  return h}
+/* resultados entram em cascata; as marcas acendem em seguida */
+function animarBusca(){if(!animOn())return;const box=document.getElementById("res-busca");if(!box)return;let i=0;
+ box.querySelectorAll(".quis-dizer,.busca-aviso,.res-anim>*,.secao,.ver-mais").forEach(el=>{if(i>18)return;el.style.setProperty("--i",i++);el.classList.add("b-ent")});
+ box.querySelectorAll("mark").forEach((mk,k)=>{if(k<40){mk.style.setProperty("--i",Math.min(k,12));mk.classList.add("b-mark")}})}
 function telaBusca(){const q=rota.q||"";const f=rota.bf||"tudo";const todas=PERIODOS.every((_,i)=>apOk(i));if(!todas)carregarTodas().then(()=>reRenderSe("busca"));
  const chips=`<div class="chips" role="group" aria-label="Onde buscar">${FILTROS_BUSCA.map(([k,n])=>`<button data-acao="busca-f" data-v="${k}" aria-pressed="${f===k}">${n}</button>`).join("")}</div>`;
  return topo("Buscar","Apostilas, questões, resumos e lei seca",{menu:true,extra:chips})+
  `<main class="wrap">${capaTela("lupa","Encontre qualquer assunto","Uma palavra, um instituto ou um artigo de lei.")}<div class="busca">${ic("lupa")}<label class="sr" for="q-busca">Buscar no conteúdo</label><input type="search" id="q-busca" name="busca" placeholder="Palavra, expressão ou artigo…" value="${esc(q)}" autocomplete="off" spellcheck="false" enterkeyhint="search"></div>
  <div id="res-busca">${resultadosBusca(q,f)}</div></main>`}
-function realcarPagina(){if((rota.tela!=="ler"&&rota.tela!=="resumo")||!rota.q)return;const nq=semAcento(rota.q);if(nq.length<3)return;
+function realcarPagina(){if((rota.tela!=="ler"&&rota.tela!=="resumo")||!rota.q)return;if(semAcento(rota.q).trim().length<3)return;const mq=casador(rota.q,"todas");
  const arts=document.querySelectorAll("main article.texto, main .tema-ban h3, main .resumo-folha");let primeiro=null;
  arts.forEach(art=>{const w=document.createTreeWalker(art,NodeFilter.SHOW_TEXT);const nos=[];while(w.nextNode())nos.push(w.currentNode);
-  nos.forEach(n=>{const t=n.nodeValue;const nt=semAcento(t);if(nt.indexOf(nq)<0)return;const sp=document.createElement("span");sp.innerHTML=realce(t,rota.q);sp.querySelectorAll("mark").forEach(m=>{m.className="achado";if(!primeiro)primeiro=m});n.parentNode.replaceChild(sp,n)})});
+  nos.forEach(n=>{const t=n.nodeValue;const nt=semAcento(t);if(!mq.marcas(nt).length)return;const sp=document.createElement("span");sp.innerHTML=realce(t,mq);sp.querySelectorAll("mark").forEach(m=>{m.className="achado";if(!primeiro)primeiro=m});n.parentNode.replaceChild(sp,n)})});
  if(primeiro)setTimeout(()=>{try{primeiro.scrollIntoView({block:"center"})}catch(e){}},60)}
 
 /* ---------- favoritos e anotações ---------- */
@@ -2334,6 +2439,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
   acompanharLeitura();realcarPagina();animarTela(telaNova);syncVoltar();
   if(metaNova){metaNova=false;setTimeout(mostrarMeta,900)}
+  if(rota.tela==="busca"&&telaNova)animarBusca();
 }
 
 /* ---------- botão voltar do celular ----------
@@ -2686,6 +2792,7 @@ document.addEventListener("click",e=>{
     case "cards-foco":{let ds=discsFoco();if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),FASES[fase()].novos,"Cartões novos · "+nomePer(perAtual()));break}
     case "lida":{const d=b.dataset.d;S.lidos=S.lidos||{};S.revAp=S.revAp||{};if(S.lidos[d]){delete S.lidos[d];delete S.revAp[d]}else{S.lidos[d]=Date.now();S.revAp[d]={n:0,prox:inicioDia()+864e5}}salvar();rota.manterScroll=true;render();break}
     case "resumo":ir({tela:"resumo",p:+b.dataset.p,k:0,q:b.dataset.q||null});break;
+    case "busca-sug":{const el=document.getElementById("q-busca");if(el){el.value=b.dataset.v;rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()}break}
     case "busca-f":rota.bf=b.dataset.v;{const el=document.getElementById("q-busca");if(el)rota.q=el.value}rota.manterScroll=b.closest(".chips")?true:false;render();{const el=document.getElementById("q-busca");if(el&&!b.closest(".chips"))try{el.focus({preventScroll:true})}catch(e){}}break;
     case "res-mat":rota.k=+b.dataset.k;render();topoTela();break;
     case "ls-filtro":rota.lsm=b.dataset.v;rota.manterScroll=true;render();break;
@@ -2737,7 +2844,7 @@ document.addEventListener("change",e=>{if(e.target.id==="corrFinal"){S.cfg.corrF
 let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
   if(el.dataset&&el.dataset.nota){clearTimeout(tNota);tNota=setTimeout(()=>{S.notas=S.notas||{};const v=el.value.trim();if(v)S.notas[el.dataset.nota]=el.value;else delete S.notas[el.dataset.nota];salvar()},500)}
-  if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf)},250)}});
+  if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){const fs=document.querySelector(".festa");if(fs){fs.remove();return}if(repQ){repQ=null;rota.manterScroll=true;render()}else if(gaveta){gaveta=false;rota.manterScroll=true;render();const b=document.querySelector('[data-acao="gaveta"]');if(b)b.focus()}else if(folha){folha=false;rota.manterScroll=true;render()}return}
   if(rota.tela!=="quiz"||folha)return;
