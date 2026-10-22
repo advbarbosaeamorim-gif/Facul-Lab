@@ -1497,7 +1497,7 @@ Em Processo Civil I, acompanhamos o processo até a sentença. Mas a sentença n
 
 > Lembre: salvo indicação em contrário, os artigos citados nesta apostila são do **Código de Processo Civil** (Lei 13.105/2015).
 
-> Atenção: a **remessa necessária** (art. 496), estudada em Processo Civil I, **não é recurso**: falta-lhe a voluntariedade, o prazo e a legitimidade de uma parte que recorra. É uma **condição de eficácia** da sentença contra a Fazenda Pública.
+> Atenção: a **remessa necessária** (art. 496), estudada em Processo Civil I, **não é recurso**: falta-lhe a voluntariedade, o prazo e a legitimidade de uma parte que recorra. É uma **condição de eficácia** da sentença contra a Fazenda Pública. Também **não são recursos** a **ação rescisória** e a **reclamação**, que são ações autônomas e não constam do rol do art. 994.
 
 ## O rol de recursos
 São cabíveis os seguintes recursos (art. 994):
@@ -1516,6 +1516,20 @@ São cabíveis os seguintes recursos (art. 994):
 Cada recurso tem seu **cabimento** próprio, e a primeira pergunta a fazer é sempre: **qual é a natureza da decisão** que se quer impugnar?
 
 ::fluxo Qual recurso cabe?|Despacho (sem conteúdo decisório): irrecorrível (art. 1.001)|Decisão interlocutória do juiz: agravo de instrumento, se estiver no rol do art. 1.015; se não estiver, impugna-se em preliminar de apelação|Sentença: apelação|Decisão monocrática do relator: agravo interno|Qualquer decisão com obscuridade, contradição, omissão ou erro material: embargos de declaração|Acórdão de TJ ou TRF: recurso especial (lei federal) e/ou recurso extraordinário (Constituição)
+
+### Quadro comparativo dos recursos
+|Recurso|Cabe contra|Prazo|Onde se interpõe|Efeito suspensivo|
+|Apelação (arts. 1.009 a 1.014)|Sentença|15 dias|No juízo de 1º grau, que remete ao tribunal sem juízo de admissibilidade|Em regra, sim (art. 1.012), com exceções legais|
+|Agravo de instrumento (arts. 1.015 a 1.020)|Interlocutórias do rol do art. 1.015 e casos de urgência (taxatividade mitigada)|15 dias|Diretamente no tribunal|Não automático; o relator pode conceder (art. 1.019, I)|
+|Agravo interno (art. 1.021)|Decisão monocrática do relator|15 dias|Ao relator, que pode se retratar; julga o colegiado|Não automático; multa de 1% a 5% se manifestamente inadmissível ou improcedente|
+|Embargos de declaração (arts. 1.022 a 1.026)|Qualquer decisão com obscuridade, contradição, omissão ou erro material|5 dias|Ao próprio órgão que decidiu|Em regra, não; interrompem o prazo dos outros recursos|
+|Recurso ordinário (arts. 1.027 e 1.028)|Hipóteses constitucionais de competência do STF e do STJ|15 dias|No tribunal de origem, julgado pelo STF ou STJ|Não automático; reexame amplo de fatos e direito|
+|Recurso especial (art. 105, III, CF)|Acórdão de tribunal que contraria lei federal|15 dias|Na presidência ou vice-presidência do tribunal de origem|Não automático; exige prequestionamento e relevância da questão federal; sem reexame de provas|
+|Recurso extraordinário (art. 102, III, CF)|Decisão de única ou última instância que contraria a Constituição|15 dias|Na presidência ou vice-presidência do tribunal de origem|Não automático; exige repercussão geral e prequestionamento|
+|Agravo em REsp ou RE (art. 1.042)|Decisão que inadmite REsp ou RE, salvo inadmissão fundada em precedente qualificado|15 dias|No tribunal de origem, que remete ao tribunal superior|Não automático; não confundir com o agravo interno do art. 1.030, §2º|
+|Embargos de divergência (arts. 1.043 e 1.044)|Acórdão de órgão fracionário do STF ou STJ que diverge de outro órgão do mesmo tribunal|15 dias|No próprio tribunal superior|Não automático; exige demonstração analítica da divergência|
+
+> Lembre: todos os prazos contam em **dias úteis** (arts. 219 e 1.003, §5º). Podem recorrer a **parte vencida**, o **terceiro prejudicado** e o **Ministério Público** (art. 996). O **recurso adesivo** (art. 997) não é um recurso a mais do rol: é uma forma de interpor apelação, REsp ou RE no prazo das contrarrazões.
 
 ## Princípios
 - **Taxatividade:** só existem os recursos **previstos em lei federal** (a competência para legislar sobre processo é da União, art. 22, I, da Constituição). As partes não podem criar recursos por contrato, nem os regimentos internos podem criá-los.
@@ -1702,6 +1716,7 @@ Recebido o agravo de instrumento no tribunal, o relator, no prazo de 5 dias (art
 # Agravo interno e embargos de declaração
 ## Agravo interno
 **Contra decisão proferida pelo relator caberá agravo interno para o respectivo órgão colegiado** (art. 1.021). Ele serve para levar ao colegiado (a turma, a câmara) a decisão que o relator tomou sozinho.
+- Na petição de agravo interno, o recorrente **impugnará especificadamente os fundamentos da decisão agravada** (art. 1.021, §1º). Não basta repetir as razões do recurso anterior.
 - O agravo é dirigido ao **relator**, que intimará o agravado para se manifestar em **15 dias**. Se não houver retratação, o relator levará o recurso a julgamento pelo órgão colegiado (art. 1.021, §2º).
 - É **vedado ao relator limitar-se à reprodução dos fundamentos da decisão agravada** para julgar improcedente o agravo interno (art. 1.021, §3º).
 - Quando o agravo interno for declarado **manifestamente inadmissível ou improcedente em votação unânime**, o órgão colegiado, em decisão fundamentada, condenará o agravante a pagar ao agravado **multa fixada entre 1% e 5%** do valor atualizado da causa (art. 1.021, §4º). A interposição de qualquer outro recurso ficará condicionada ao **depósito prévio** do valor da multa, à exceção da **Fazenda Pública** e do beneficiário de **gratuidade da justiça**, que farão o pagamento ao final (art. 1.021, §5º).
@@ -1794,6 +1809,7 @@ O recurso especial e o extraordinário são interpostos perante o **presidente o
 
 ## Embargos de divergência
 É embargável o acórdão de **órgão fracionário** que, em **recurso extraordinário ou em recurso especial**, **divergir do julgamento de qualquer outro órgão do mesmo tribunal** (art. 1.043). Os embargos de divergência servem para **uniformizar a jurisprudência interna** do STJ ou do STF: se a 3ª Turma do STJ decide de um modo e a 4ª Turma decide de outro, os embargos levam a questão à Seção ou à Corte Especial.
+- O prazo é de **15 dias**. O embargante deve **provar a divergência** com certidão, cópia ou citação do repositório oficial e **mencionar as circunstâncias que identificam ou assemelham os casos confrontados** (art. 1.043, §4º). É o chamado **cotejo analítico**: sem mostrar que os casos são semelhantes e foram decididos de forma diferente, os embargos não são admitidos.
 
 ## Recursos repetitivos
 Sempre que houver **multiplicidade de recursos extraordinários ou especiais com fundamento em idêntica questão de direito**, haverá afetação para julgamento como **recursos repetitivos** (art. 1.036).
