@@ -1069,6 +1069,98 @@ html[data-anim="off"] .mv *{animation:none!important}
 .flash.desliza{animation:desliza .35s cubic-bezier(.2,.8,.2,1)}
 .estouro{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:60;animation:estoura .75s cubic-bezier(.2,.8,.3,1) forwards}
 @keyframes estoura{from{transform:translate(0,0) rotate(0) scale(1);opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.4);opacity:0}}
+/* ---------- tour "Como funciona" ---------- */
+html.tour-on,html.tour-on body{overflow:hidden}
+.tour{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;background:var(--bg);color:var(--fg);padding-top:env(safe-area-inset-top,0px)}
+.tour-topo,.tour-base>div,.tour-passo{width:100%;max-width:560px;margin:0 auto;box-sizing:border-box}
+.tour-topo{display:flex;align-items:center;gap:14px;padding:12px 16px 4px}
+.tour-pontos{display:flex;gap:5px;flex:1;min-width:0}
+.tour-pontos button{position:relative;flex:1;min-width:0;height:6px;padding:0;border:0;border-radius:3px;background:var(--trilho);transition:background-color .3s,flex-grow .3s}
+.tour-pontos button::after{content:"";position:absolute;inset:-12px 0}
+.tour-pontos button.feito{background:color-mix(in srgb,var(--toga) 55%,var(--trilho))}
+.tour-pontos button[aria-current]{flex-grow:2.4;background:var(--toga)}
+.tour-pular{display:flex;align-items:center;gap:2px;border:0;background:none;color:var(--toga-txt);font-weight:700;font-size:.95rem;padding:8px 2px;flex:none}
+.tour-pular svg.i{width:18px;height:18px}
+.tour-corpo{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.tour-passo{padding:4px 16px 24px}
+.tour-ilu .ilu{max-width:210px;margin:0 auto}
+.tour-cont{margin:4px 0 2px;text-align:center;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tour h2{margin:0 0 6px;text-align:center;font-family:var(--f-display);font-size:1.55rem;line-height:1.2;outline:none}
+.tour-txt{margin:0 auto 16px;text-align:center;color:var(--muted);line-height:1.5;max-width:46ch}
+.tour-centro{text-align:center}
+.tour-sub{margin:16px 0 8px}
+.tour-base{border-top:1px solid var(--line);background:var(--surface);padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px))}
+.tour-base>div{display:flex;gap:10px;padding:0 16px}
+.tour-base .botao{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 14px}
+.tour-base .linha{width:auto;flex:none}
+.tour-base .cheio{flex:1}
+.tour .botoes .botao{display:flex;align-items:center;justify-content:center;gap:8px}
+.tour-res{display:flex;gap:8px;align-items:flex-start;margin:12px 0 0;padding:11px 13px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:.93rem;line-height:1.45}
+.tour-res svg.i{flex:none;width:18px;height:18px;margin-top:1px;color:var(--ok)}
+.tour-res.vazio{justify-content:center;color:var(--muted);background:transparent;border-style:dashed}
+.tour-res.err svg.i{color:var(--erro)}
+.tour-chama{border-color:color-mix(in srgb,#ff8a1f 40%,var(--line));background:color-mix(in srgb,#ff8a1f 12%,var(--surface))}
+.tour-chama svg.i{color:#ff8a1f}
+.tour-oi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.tour-oi-chip{display:flex;align-items:center;gap:8px;padding:10px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:.9rem}
+.tour-oi-chip .tile-mini{margin:0}
+.tour-per{justify-content:center}
+.tour-per button{min-width:56px}
+.tour-per .tour-per-oab{flex-basis:100%}
+.tour-plano .item{grid-template-columns:52px minmax(0,1fr)}
+.tour-enun{font-weight:700;margin:0 0 10px;line-height:1.45}
+.tour-com{margin-top:10px;padding:12px 14px;border-radius:12px;border-left:4px solid var(--ok);background:var(--ok-bg);font-size:.93rem;line-height:1.5}
+.tour-com.err{border-left-color:var(--erro);background:var(--erro-bg)}
+.tour-link{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--toga-txt);font-weight:700;padding:12px 0 0}
+.tour-flash{min-height:0}
+.tour-ls,.tour-metas{padding:16px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.tour-ls p{font-family:var(--f-read);font-size:1.08rem;line-height:1.7;margin:6px 0 12px}
+.tour-ls-ref{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.tour-lacuna{display:inline-block;min-width:6ch;padding:0 6px;border-bottom:2px dashed var(--toga-txt);font-weight:700;text-align:center}
+.tour-lacuna.ok{border-bottom-style:solid;border-color:var(--ok);color:var(--ok);background:var(--ok-bg);border-radius:4px 4px 0 0}
+.tour-lacuna.err{border-color:var(--erro);color:var(--erro);text-decoration:line-through}
+.tour-semana{list-style:none;display:flex;gap:4px;padding:0;margin:0 0 10px}
+.tour-semana li{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--muted);font-size:.75rem;font-weight:700}
+.tour-semana i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--trilho);color:var(--neutro)}
+.tour-semana li.on i{background:linear-gradient(160deg,#ffb347,#ff6a1f);color:#fff;box-shadow:0 4px 12px -4px #ff6a1f}
+.tour-semana li.on small{color:var(--fg)}
+.tour-seq{text-align:center;margin:0}.tour-seq b{font-family:var(--f-display);font-size:1.7rem;margin-right:4px}
+.tour-metas .botoes{margin-top:12px}
+.tour-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tour-menu button{display:flex;align-items:center;gap:8px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:inherit;font-weight:700;text-align:left;font-size:.9rem}
+.tour-menu button[aria-pressed="true"]{border-color:var(--toga-borda);background:color-mix(in srgb,var(--toga) 10%,var(--surface));box-shadow:inset 0 0 0 1px var(--toga-borda)}
+.tour-menu svg.i,.tour-res .i{flex:none}
+.tour-menu svg.i{color:var(--toga-txt)}
+.tour-resumo{margin-bottom:14px}
+.tour-resumo .item-data{color:var(--toga-txt);font-weight:700}
+.tour-cta{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;margin:0 0 14px;padding:10px 14px 10px 8px;border-radius:var(--r);border:1px solid var(--line);border-left:4px solid var(--nv2);background:var(--surface);color:inherit;text-align:left}
+.tour-cta .ilu{width:84px}
+.tour-cta b{display:block;font-family:var(--f-display);font-size:1.08rem}
+.tour-cta small{display:block;color:var(--muted);font-size:.86rem;line-height:1.4;margin-top:2px}
+.tour-cta>svg.i{color:var(--toga-txt)}
+[data-estilo="premium"] .tour h2{font-weight:800;letter-spacing:-.025em}
+[data-estilo="premium"] .tour-pontos button[aria-current]{background:var(--grad)}
+[data-estilo="premium"] .tour-pontos button.feito{background:color-mix(in srgb,var(--p1) 45%,var(--trilho))}
+[data-estilo="premium"] .tour-res,[data-estilo="premium"] .tour-ls,[data-estilo="premium"] .tour-metas,[data-estilo="premium"] .tour-oi-chip,[data-estilo="premium"] .tour-menu button{border-radius:18px}
+[data-estilo="premium"] .tour-base{background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(10px)}
+[data-estilo="premium"] .tour-cta{border:0;border-radius:24px;background:var(--grad-suave),var(--surface);box-shadow:var(--sombra)}
+html[data-anim="on"] .tour-passo.entra-d{animation:tour-d .42s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"] .tour-passo.entra-e{animation:tour-e .42s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"] .tour-passo.entra-d .tour-ilu .ilu,html[data-anim="on"] .tour-passo.entra-e .tour-ilu .ilu{animation:ent-pop .6s cubic-bezier(.2,1.4,.4,1) both .08s}
+html[data-anim="on"] .tour-ilu{animation:tour-flutua 4.5s ease-in-out infinite .8s}
+html[data-anim="on"] .tour-oi-chip{animation:pv-res-in .45s ease-out both;animation-delay:calc(.3s + var(--k)*.08s)}
+html[data-anim="on"] .tour-res.novo,html[data-anim="on"] .tour-com.novo{animation:pv-res-in .4s ease-out both}
+html[data-anim="on"] .tour-lacuna.novo{animation:ent-pop .45s cubic-bezier(.2,1.6,.4,1) both}
+html[data-anim="on"] .tour-lacuna.err.novo{animation:treme .45s ease}
+html[data-anim="on"] .tour-semana li.novo i{animation:ent-pop .55s cubic-bezier(.2,1.6,.4,1) both}
+html[data-anim="on"] .tour-semana li.on i svg,html[data-anim="on"] .tour-chama svg.i{animation:tour-chama 1.4s ease-in-out infinite;transform-origin:50% 90%}
+html[data-anim="on"] .tour-plano .item.feito .tile{animation:ent-pop .5s cubic-bezier(.3,1.4,.5,1) backwards}
+html[data-anim="on"] .tour-cta .ilu{animation:tour-flutua 4.5s ease-in-out infinite}
+@keyframes tour-d{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes tour-e{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes tour-flutua{50%{transform:translateY(-6px)}}
+@keyframes tour-chama{50%{transform:scale(1.14) rotate(-5deg)}}
+@media (prefers-reduced-motion:reduce){.tour *,.tour-cta *{animation:none!important;transition:none!important}}
 html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *::after{animation:none!important;transition:none!important}
 </style>
 <style id="estilo-premium">
@@ -2376,6 +2468,8 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Setas para passar as questões</div>
  <div class="cores">${[["baixo","Embaixo","Barra fixa no rodapé","baixo"],["acima","Acima","Logo abaixo das alternativas","cima"]].map(([k,n,d,i])=>`<button data-acao="cfg-setas" data-v="${k}" aria-pressed="${(setasAcima()?"acima":"baixo")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Essas escolhas valem para todos os simulados e listas de questões. A correção também pode ser trocada na tela de início de cada simulado.</p>
+ <div class="secao" role="heading" aria-level="2">Ajuda</div>
+ ${tourCta()}
  <div class="dica" style="margin-top:18px"><p style="margin:0"><b>${esc(nomePer(per))} · ${esc(FASES[f].nome)}.</b> ${esc(FASES[f].txt)}</p></div>
  <div class="botoes"><button class="botao cheio" data-acao="ir-raiz" data-tela="hoje">Ver o plano de hoje</button></div></main>`}
 function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeStr()]||{q:0,c:0,p:0};const seq=sequencia();const falta=diasProva();
@@ -2877,9 +2971,10 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
    o app mantém uma entrada extra no histórico. O voltar do sistema consome essa entrada e o app volta
    um passo; em Hoje, sem nada aberto, a entrada some e o próximo voltar sai do app normalmente. */
 let guardaVoltar=false;
-function podeVoltar(){return !!(gaveta||repQ||folha||document.querySelector(".festa")||pilha.length||rota.tela!=="hoje")}
+function podeVoltar(){return !!(tourI>=0||gaveta||repQ||folha||document.querySelector(".festa")||pilha.length||rota.tela!=="hoje")}
 function syncVoltar(){try{if(podeVoltar()){if(!guardaVoltar){history.pushState({fl:1},"");guardaVoltar=true}}else if(guardaVoltar){guardaVoltar=false;history.back()}}catch(e){}}
 function voltarSistema(){
+  if(tourI>=0){if(tourI>0)tourIr(tourI-1);else tourFechar();return}
   const fs=document.querySelector(".festa");if(fs){fs.remove();return}
   if(repQ){repQ=null;rota.manterScroll=true;render();return}
   if(gaveta){gaveta=false;rota.manterScroll=true;render();return}
@@ -2960,7 +3055,7 @@ function telaGaveta(){
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
    <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
    <button data-acao="erradas" ${errs?"":"disabled"} style="${errs?"":"opacity:.5"}">${ic("refazer")}<span>Refazer questões erradas${errs?` (${errs})`:""}</span></button>
-   <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
+   <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
 /* ---------- OAB ---------- */
 function telaOab(){
@@ -3183,13 +3278,108 @@ function telaQuem(){let feitas=0;Object.keys(S.stats).forEach(k=>{if(QMAP[k])fei
  </main>`}
 function telaSobre(){const nO=OAB.reduce((s,m)=>s+(porM[m]||[]).length,0);
   return topo("Como funciona","",{menu:true})+
-  `<main class="wrap"><div class="dica"><p style="margin:0 0 8px"><b>Simulados OAB.</b> São 30 provas fixas de 80 questões, com a mesma distribuição de matérias da 1ª fase: 8 de Ética, 6 de Civil, Processo Civil, Constitucional, Penal e Processo Penal, e assim por diante. Você tem 5 horas e precisa de 50% para aprovação.</p>
+  `<main class="wrap">${tourCta()}<div class="dica"><p style="margin:0 0 8px"><b>Simulados OAB.</b> São 30 provas fixas de 80 questões, com a mesma distribuição de matérias da 1ª fase: 8 de Ética, 6 de Civil, Processo Civil, Constitucional, Penal e Processo Penal, e assim por diante. Você tem 5 horas e precisa de 50% para aprovação.</p>
   <p style="margin:0 0 8px"><b>Banco atual.</b> ${nO} questões das matérias da OAB e ${QS.length-nO} de disciplinas da faculdade. Como 30 provas de 80 somam 2.400 posições, cada questão aparece, em média, em ${String(Math.round(2400/nO*10)/10).replace(".",",")} simulados diferentes. Conforme o banco crescer, os simulados ficam mais variados automaticamente.</p>
   <p style="margin:0 0 8px"><b>Questões.</b> São inéditas, no estilo da FGV, sobre os temas que mais caem. Cada uma traz comentário, o dispositivo legal ou precedente e a explicação de por que cada alternativa errada está errada. Se desconfiar de algum gabarito, use <b>Reportar erro nesta questão</b>.</p>
   <p style="margin:0 0 8px"><b>Lei seca.</b> ${LS.length} dispositivos mais cobrados, com o texto literal conferido no Planalto, para treinar em dois formatos: complete o artigo e certo ou errado.</p>
   <p style="margin:0"><b>A cada tentativa</b> a ordem das alternativas muda. Nos simulados por matéria e da faculdade, a ordem das questões também muda.</p></div>
   <div class="secao" role="heading" aria-level="2">Banco por matéria</div><div class="desemp">${OAB.concat(["ied","tge","soc","psc","crim","masc"]).map(m=>`<div class="linha">${tile(META[m].cor,META[m].ic)}<span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${(porM[m]||[]).length}</b></div>`).join("")}</div>
   <p class="sinc">${esc(statusSinc)}</p></main>`}
+
+/* ---------- tour "Como funciona" ----------
+   Abre sozinho na primeira entrada (até S.cfg.tour ficar marcado) e pode ser refeito pelo menu, pela tela Como funciona
+   e por Configurações. Cada passo tem ilustração e uma demonstração para tocar; o período e o visual escolhidos aqui já valem no app.
+   Ao terminar ou pular, o app oferece os lembretes no celular (window.lbConvite, quando existir). */
+const TOUR_V=1;
+let tourI=-1,tourDir=1,tourD={};
+const TOUR_Q={p:"Na 1ª fase do Exame de Ordem, quantas questões você precisa acertar para ser aprovado?",alts:["30 das 80 questões","40 das 80 questões","48 das 80 questões","56 das 80 questões"],c:1,
+ com:"A aprovação na 1ª fase pede metade da prova: 40 acertos em 80 questões. Os simulados OAB do app seguem a mesma regra, com 5 horas de prova."};
+const TOUR_MENU=[["alvo","Hoje","O plano do dia, montado para o seu momento: questões, cartões e leitura."],["livro","Faculdade","Apostilas, resumos, cartões e questões do 1º ao 10º período."],["carro","Simulados OAB","30 provas de 80 questões, com a mesma distribuição de matérias da 1ª fase e cronômetro."],["grade","Por matéria","Simulados de uma matéria só, para atacar o ponto fraco."],["recibo","Lei seca","Os artigos mais cobrados, para completar o texto e julgar certo ou errado."],["lupa","Buscar em tudo","Ache qualquer tema nas apostilas, nas questões e nos cartões."],["marcador","Favoritos","Guarde questões e temas e escreva suas próprias anotações."],["refazer","Refazer erradas","As questões que você errou voltam para revisão, até você acertar."]];
+const TOUR=[
+ {ilu:"estudo",cor:"var(--nv2)",tit:"Bem-vindo ao Facul Lab",txt:()=>"Em um minuto você conhece tudo o que o app faz. Os exemplos de cada passo funcionam de verdade: toque neles.",demo:tourDemoOi},
+ {ilu:"capelo",cor:"var(--nv6)",tit:"Em que momento você está?",txt:()=>"Escolha seu período. A tela Hoje usa essa escolha para sugerir as matérias, os cartões e os simulados certos para você.",demo:tourDemoPer},
+ {ilu:"checklist",cor:"var(--nv1)",tit:"Hoje: seu plano do dia",txt:()=>"Sempre que você abre o app, a tela Hoje monta um plano curto. Cumpra os itens e o dia fica completo. Experimente tocar:",demo:tourDemoHoje},
+ {ilu:"alvo",cor:"var(--nv5)",tit:"Questões que ensinam",txt:()=>`São ${QS.length.toLocaleString("pt-BR")} questões no estilo da FGV. Depois de responder, você vê o comentário, a base legal e por que as outras alternativas estão erradas. Responda esta:`,demo:tourDemoQ},
+ {ilu:"cartas",cor:"var(--nv6)",tit:"Cartões de memorização",txt:()=>"Leia a pergunta, tente lembrar de cabeça e só depois vire. Conforme você responde, o app traz cada cartão de volta na hora certa.",demo:tourDemoCard},
+ {ilu:"livros",cor:"var(--nv7)",tit:"Apostilas e lei seca",txt:()=>"Cada período tem apostilas com exemplos, ilustrações, simuladores e um teste no fim de cada tema. Na lei seca, você treina o texto literal da lei. Complete o artigo:",demo:tourDemoLs},
+ {ilu:"chama",cor:"var(--nv4)",tit:"Metas, ofensiva e progresso",txt:()=>"Cumpra a meta diária para manter a chama acesa. Em Metas e desempenho e em Progresso geral você acompanha sua evolução em cada matéria.",demo:tourDemoMetas},
+ {ilu:"lupa",cor:"var(--nv2)",tit:"Tudo a um toque no menu",txt:()=>"O botão de menu, no canto de cima da tela, leva a todas as partes do app. Toque em cada uma para ver o que faz:",demo:tourDemoMenu},
+ {ilu:"engrenagem",cor:"var(--nv3)",tit:"Do seu jeito",txt:()=>"Escolha o visual agora. A mudança aparece na hora, e dá para trocar depois em Configurações.",demo:tourDemoVisual},
+ {ilu:"trofeu",cor:"var(--nv3)",tit:"Tudo pronto!",txt:()=>"Você já conhece o caminho. Comece pelo plano de hoje: um pouco por dia, todo dia, até a aprovação.",demo:tourDemoFim}];
+const tourNv=()=>tourD.novo?" novo":"";
+function tourDemoOi(){const F=[["alvo","var(--toga)","Plano de hoje"],["ok","var(--ok)","Questões comentadas"],["cartas","var(--lacre)","Cartões"],["livro","var(--nv2)","Apostilas"],["recibo","var(--nv7)","Lei seca"],["chama","#ff8a1f","Metas e ofensiva"]];
+ return `<div class="tour-oi">${F.map(([i,c,t],k)=>`<span class="tour-oi-chip" style="--k:${k}">${tile(c,i,"tile-mini")}${t}</span>`).join("")}</div>
+ <p class="nota tour-centro">Deslize para o lado ou use os botões de baixo. Se preferir, toque em <b>Pular</b> e vá direto para o app.</p>`}
+function tourDemoPer(){const per=perAtual();
+ return `<div class="opcoes tour-per">${PERIODOS.slice(0,9).map((_,i)=>`<button data-acao="tour-per" data-v="${i}" aria-pressed="${per===i}">${i+1}º</button>`).join("")}<button class="tour-per-oab" data-acao="tour-per" data-v="9" aria-pressed="${per===9}">10º período ou formado</button></div>
+ <p class="tour-res${per===null?" vazio":tourNv()}" aria-live="polite">${per===null?"Toque no seu período. Dá para mudar depois em Configurações.":per===9?`${ic("ok")}<span>Foco no Exame de Ordem: a tela Hoje vai priorizar os simulados e as matérias da OAB.</span>`:`${ic("ok")}<span>Pronto! A tela Hoje vai sugerir as matérias do ${per+1}º período.</span>`}</p>`}
+function tourDemoHoje(){const f=tourD.plano||{};const it=[["alvo","var(--toga)","Questões: 20 de 20","Um simulado curto para cumprir a meta"],["cartas","var(--lacre)","Cartões para revisar","Os que chegaram no dia de revisão"],["livro","var(--nv2)","Ler um tema da apostila","Com exemplos e um teste no fim"]];
+ const n=it.filter((_,i)=>f[i]).length;
+ return `<div class="lista plano-lista tour-plano">${it.map(([icn,cor,t,s],i)=>`<button class="item plano${f[i]?" feito":""}" data-acao="tour-plano" data-v="${i}" aria-pressed="${!!f[i]}">${tile(f[i]?"var(--ok)":cor,f[i]?"ok":icn)}<span style="min-width:0"><span class="item-tit">${t}</span><br><span class="item-sub">${s}</span></span></button>`).join("")}</div>
+ <p class="tour-res${n===3?" tour-chama":n?"":" vazio"}${tourNv()}" aria-live="polite">${n===3?`${ic("chama")}<span><b>Dia cumprido!</b> Sua ofensiva acende e cresce a cada dia seguido de estudo.</span>`:`${n} de 3 feitos. Toque nos itens para marcar.`}</p>`}
+function tourDemoQ(){const q=TOUR_Q,r=tourD.q,feito=r!==undefined;
+ return `<div class="tour-q"><p class="tour-enun">${q.p}</p><div class="lista">${q.alts.map((a,i)=>{const cl=feito?(i===q.c?" certa":i===r?" errada":""):"";const an=feito&&tourD.novo&&i===r?(i===q.c?" anim-ok":" anim-err"):"";
+  return `<button class="alt${cl}${an}" data-acao="tour-q" data-v="${i}"${feito?" disabled":""}><span class="letra">${"ABCD"[i]}</span><span>${a}</span></button>`}).join("")}</div>
+ ${feito?`<div class="tour-com${r===q.c?"":" err"}${tourNv()}" aria-live="polite"><b>${r===q.c?"Acertou!":"Não foi dessa vez."}</b> ${q.com}</div><button class="tour-link" data-acao="tour-q-de-novo">${ic("refazer")} Responder de novo</button>`:""}</div>`}
+function tourDemoCard(){const v=tourD.virado,n=tourD.nota;const lab=k=>k===0?"volta nesta sessão":txtIv(proxIv(null,k).iv);
+ return `<div class="flash tour-flash${v&&tourD.novo==="vira"?" vira":""}" style="--c:var(--nv6)"><p class="flash-q">Na revisão espaçada, quando um cartão volta para você?</p>${v?`<div class="flash-r">Depende de como você lembrou: o que você erra volta logo; o que você acerta demora cada vez mais para voltar, até ficar firme na memória.</div>`:""}</div>
+ ${v?`<p class="nota-q">Como foi lembrar a resposta?</p><div class="notas-flash" role="group">${[["Errei","f-er"],["Difícil",""],["Acertei",""],["Fácil","f-ok"]].map(([t,c],k)=>`<button class="botao linha ${c}" data-acao="tour-card-nota" data-v="${k}" aria-pressed="${n===k}">${t}<small>${lab(k)}</small></button>`).join("")}</div>
+  ${n!==undefined?`<p class="tour-res${tourNv()}" aria-live="polite">${ic("calendario")}<span>${n===0?"Este cartão volta ainda nesta sessão, até você acertar.":`Este cartão volta ${lab(n)}. O app guarda a data e avisa na tela Hoje.`}</span></p>`:""}`
+  :`<div class="botoes"><button class="botao cheio" data-acao="tour-card-virar">${ic("cartas")} Virar o cartão</button></div>`}`}
+function tourDemoLs(){const r=tourD.ls,ok=r==="iguais";
+ return `<div class="tour-ls"><span class="tour-ls-ref">Constituição Federal, art. 5º, caput</span>
+ <p>“Todos são <span class="tour-lacuna${r?(ok?" ok":" err"):""}${tourNv()}">${r?esc(r):"&nbsp;"}</span> perante a lei, sem distinção de qualquer natureza…”</p>
+ <div class="opcoes">${["livres","iguais","soberanos"].map(o=>`<button data-acao="tour-ls" data-v="${o}" aria-pressed="${r===o}"${ok?" disabled":""}>${o}</button>`).join("")}</div></div>
+ ${r?`<p class="tour-res${ok?"":" err"}${tourNv()}" aria-live="polite">${ic(ok?"ok":"x")}<span>${ok?"Isso! É o texto literal da Constituição, conferido no Planalto.":"Não é essa. Tente outra palavra."}</span></p>`:""}`}
+function tourDemoMetas(){const n=tourD.dias||0;
+ return `<div class="tour-metas"><ol class="tour-semana" aria-label="Dias de estudo nesta semana">${["D","S","T","Q","Q","S","S"].map((d,i)=>`<li class="${i<n?"on":""}${i===n-1&&tourD.novo?" novo":""}"><i>${ic("chama")}</i><small>${d}</small></li>`).join("")}</ol>
+ <p class="tour-seq" aria-live="polite"><b>${n}</b> ${n===1?"dia":"dias"} de ofensiva</p>
+ <div class="botoes"><button class="botao cheio" data-acao="tour-dia"${n>=7?" disabled":""}>${n>=7?"Semana completa!":`${ic("mais")} Estudar mais um dia`}</button></div></div>
+ ${n>=7?`<p class="tour-res tour-chama${tourNv()}">${ic("estrela")}<span><b>Uma semana inteira!</b> No app, cada meta cumprida vira festa, e a chama mostra quantos dias seguidos você estudou.</span></p>`:""}`}
+function tourDemoMenu(){const s=tourD.menu;
+ return `<div class="tour-menu">${TOUR_MENU.map(([icn,n],i)=>`<button data-acao="tour-menu" data-v="${i}" aria-pressed="${s===i}">${ic(icn)}<span>${n}</span></button>`).join("")}</div>
+ <p class="tour-res${s===undefined?" vazio":tourNv()}" aria-live="polite">${s===undefined?"Toque em uma parte do menu.":`${ic(TOUR_MENU[s][0])}<span><b>${TOUR_MENU[s][1]}.</b> ${TOUR_MENU[s][2]}</span>`}</p>`}
+function tourDemoVisual(){const e=estiloAtual(),an=(S.cfg&&S.cfg.anim)||"on";
+ return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="classico"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
+ ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${PALETAS.map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`:""}
+ <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
+function tourDemoFim(){const per=perAtual();const pl=PALETAS.find(x=>x[0]===paletaAtual());
+ const L=[["capelo","Seu momento",per===null?"Ainda não escolhido":nomePer(per),1],["eng","Visual",estiloAtual()==="premium"?`Premium · ${pl[1]}`:"Clássico",8],[(S.cfg&&S.cfg.anim)==="off"?"pausa":"chama","Animações",(S.cfg&&S.cfg.anim)==="off"?"Desligadas":"Ligadas",8]];
+ return `<div class="lista tour-resumo">${L.map(([i,t,v,k])=>`<button class="item" data-acao="tour-ir" data-v="${k}">${tile("var(--toga)",i==="capelo"?"livro":i)}<span style="min-width:0"><span class="item-sub">${t}</span><br><span class="item-tit">${esc(v)}</span></span><span class="item-data">Trocar</span></button>`).join("")}</div>
+ <p class="nota tour-centro">Quer ver o tour de novo? Ele fica no menu, em <b>Tour pelo app</b>, e em Configurações.</p>`}
+function tourHtml(){const P=TOUR[tourI],n=TOUR.length,ult=tourI===n-1;const cor=estiloAtual()==="premium"?"var(--p2)":P.cor;
+ return `<div class="tour-topo"><div class="tour-pontos" role="group" aria-label="Passos do tour">${TOUR.map((x,i)=>`<button data-acao="tour-ir" data-v="${i}" aria-label="Passo ${i+1}: ${esc(x.tit)}"${i===tourI?' aria-current="step"':""}${i<tourI?' class="feito"':""}></button>`).join("")}</div>
+  ${ult?"":`<button class="tour-pular" data-acao="tour-pular">Pular ${ic("prox")}</button>`}</div>
+ <div class="tour-corpo"><div class="tour-passo${tourD.entra?` entra-${tourDir>0?"d":"e"}`:""}">
+  <div class="tour-ilu">${ilustra(P.ilu,cor)}</div>
+  <p class="tour-cont">${tourI+1} de ${n}</p><h2 id="tour-tit" tabindex="-1">${P.tit}</h2><p class="tour-txt">${P.txt()}</p>
+  <div class="tour-demo">${P.demo()}</div></div></div>
+ <div class="tour-base"><div><button class="botao linha" data-acao="tour-ant"${tourI?"":" disabled"} aria-label="Passo anterior">${ic("ant")}</button>
+  ${ult?`<button class="botao cheio" data-acao="tour-fim">Começar a estudar ${ic("prox")}</button>`:`<button class="botao cheio" data-acao="tour-prox">${tourI?"Próximo":"Começar o tour"} ${ic("prox")}</button>`}</div></div>`}
+function tourRender(entra){let el=document.getElementById("tour");
+ const f=document.activeElement&&document.activeElement.closest?document.activeElement.closest("#tour [data-acao]"):null;const fa=f&&f.dataset.acao,fv=f&&f.dataset.v;
+ const sc=el?el.querySelector(".tour-corpo").scrollTop:0;
+ if(!el){el=document.createElement("div");el.id="tour";el.className="tour";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-labelledby","tour-tit");
+  document.body.appendChild(el);document.documentElement.classList.add("tour-on");const a=$("#app");if(a)a.inert=true;tourToque(el)}
+ tourD.entra=!!entra&&animOn();el.innerHTML=tourHtml();tourD.novo=false;tourD.entra=false;
+ const c=el.querySelector(".tour-corpo");
+ if(entra){c.scrollTop=0;const t=el.querySelector("#tour-tit");try{t.focus({preventScroll:true})}catch(e){}}
+ else{c.scrollTop=sc;const nv=el.querySelectorAll(".tour-demo .novo,.tour-demo .vira~*");if(nv.length)try{nv[nv.length-1].scrollIntoView({block:"nearest",behavior:animOn()?"smooth":"auto"})}catch(e){}
+  if(fa){const b=el.querySelector(`[data-acao="${fa}"]${fv!==undefined?`[data-v="${fv}"]`:""}`);try{(b&&!b.disabled?b:el.querySelector("#tour-tit")).focus({preventScroll:true})}catch(e){}}}
+ syncVoltar()}
+function tourAbrir(){gaveta=false;tourI=0;tourDir=1;tourD={};rota.manterScroll=true;render();tourRender(true)}
+function tourIr(i){if(i<0||i>=TOUR.length||i===tourI)return;tourDir=i>tourI?1:-1;tourI=i;tourRender(true)}
+function tourFechar(destino){const el=document.getElementById("tour");if(el)el.remove();document.documentElement.classList.remove("tour-on");const a=$("#app");if(a)a.inert=false;
+ tourI=-1;tourD={};S.cfg=S.cfg||{};S.cfg.tour=TOUR_V;salvar();
+ if(destino)raiz({tela:destino});else{rota.manterScroll=true;render()}
+ setTimeout(()=>{try{window.lbConvite&&window.lbConvite()}catch(e){}},400)}
+/* deslizar para o lado troca de passo */
+function tourToque(el){let x0=null,y0=0;
+ el.addEventListener("touchstart",e=>{const t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
+ el.addEventListener("touchend",e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+  if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.5)tourIr(tourI+(dx<0?1:-1))},{passive:true})}
+/* chamada para o tour nas telas Como funciona e Configurações */
+function tourCta(){return `<button class="tour-cta" data-acao="tour">${ilustra("estudo","var(--nv2)")}<span><b>Tour pelo app</b><small>Um passo a passo interativo de um minuto, com tudo o que o Facul Lab faz.</small></span>${ic("prox")}</button>`}
 
 /* ---------- eventos ---------- */
 document.addEventListener("click",e=>{
@@ -3199,6 +3389,25 @@ document.addEventListener("click",e=>{
   switch(a){
     case "gaveta":gaveta=true;rota.manterScroll=true;render();break;
     case "fechar-gaveta":gaveta=false;rota.manterScroll=true;render();break;
+    case "tour":tourAbrir();break;
+    case "tour-pular":tourFechar();break;
+    case "tour-fim":tourFechar("hoje");break;
+    case "tour-prox":tourIr(tourI+1);break;
+    case "tour-ant":tourIr(tourI-1);break;
+    case "tour-ir":tourIr(+b.dataset.v);break;
+    case "tour-per":S.cfg=S.cfg||{};S.cfg.per=+b.dataset.v;periodo=Math.min(9,+b.dataset.v);salvar();tourD.novo=true;rota.manterScroll=true;render();tourRender();break;
+    case "tour-plano":{const P=tourD.plano=tourD.plano||{};P[b.dataset.v]=!P[b.dataset.v];tourD.novo=true;tourRender();
+      if([0,1,2].every(k=>P[k]))estouro(document.querySelector("#tour .tour-res"),["#ff8a1f","#ffc53d","#3bb273","#ffffff"]);break}
+    case "tour-q":tourD.q=+b.dataset.v;tourD.novo=true;tourRender();if(tourD.q===TOUR_Q.c)estouro(document.querySelector("#tour .alt.certa"),["#3bb273","#ffc53d","#ffffff"]);break;
+    case "tour-q-de-novo":delete tourD.q;tourRender();{const a=document.querySelector("#tour .alt");if(a)a.focus({preventScroll:true})}break;
+    case "tour-card-virar":tourD.virado=true;tourD.novo="vira";tourRender();{const n=document.querySelector('#tour [data-acao="tour-card-nota"]');if(n)n.focus({preventScroll:true})}break;
+    case "tour-card-nota":tourD.nota=+b.dataset.v;tourD.novo=true;tourRender();break;
+    case "tour-ls":tourD.ls=b.dataset.v;tourD.novo=true;tourRender();if(tourD.ls==="iguais")estouro(document.querySelector("#tour .tour-lacuna"),["#3bb273","#ffc53d","#ffffff"]);break;
+    case "tour-dia":tourD.dias=Math.min(7,(tourD.dias||0)+1);tourD.novo=true;tourRender();estouro(document.querySelector("#tour .tour-semana li.novo"),["#ff8a1f","#ffc53d","#ffffff"]);break;
+    case "tour-menu":tourD.menu=+b.dataset.v;tourD.novo=true;tourRender();break;
+    case "tour-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
+    case "tour-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();break;
+    case "tour-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();break;
     case "treinar-ass":gaveta=false;ir({tela:"pre",key:`ass:${b.dataset.sc}:${b.dataset.a}`});break;
     case "reportar":repQ=b.dataset.q;repMot="";rota.manterScroll=true;render();setTimeout(()=>{const t=document.getElementById("rep-txt");if(t&&!(S.rep&&S.rep[repQ]))t.blur()},0);break;
     case "rep-mot":repMot=b.dataset.v;document.querySelectorAll('[data-acao="rep-mot"]').forEach(x=>x.setAttribute("aria-pressed",String(x===b)));{const ok=document.getElementById("rep-ok");if(ok)ok.disabled=false}break;
@@ -3328,6 +3537,7 @@ document.addEventListener("input",e=>{const el=e.target;
   if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
 document.addEventListener("input",e=>{const f=e.target.closest&&e.target.closest(".calc");if(f)calcAtualiza(f)});
 document.addEventListener("keydown",e=>{
+  if(tourI>=0){if(e.key==="Escape")tourFechar();else if(e.key==="ArrowRight")tourIr(tourI+1);else if(e.key==="ArrowLeft")tourIr(tourI-1);return}
   if(e.key==="Escape"){const fs=document.querySelector(".festa");if(fs){fs.remove();return}if(repQ){repQ=null;rota.manterScroll=true;render()}else if(gaveta){gaveta=false;rota.manterScroll=true;render();const b=document.querySelector('[data-acao="gaveta"]');if(b)b.focus()}else if(folha){folha=false;rota.manterScroll=true;render()}return}
   if(rota.tela!=="quiz"||folha)return;
   if(e.key==="ArrowRight"){const b=$('[data-acao="prox"]');b&&!b.disabled&&b.click()}
@@ -3338,8 +3548,10 @@ document.addEventListener("visibilitychange",()=>{if(rota.tela!=="quiz"||!sessao
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
+/* na primeira entrada, o tour "Como funciona" (com opção de pular) */
+if(!(S.cfg&&S.cfg.tour))tourAbrir();
 /* recado de motivação na primeira abertura do dia, se a ofensiva se perdeu */
-try{if(ofensivaPerdida()&&localStorage.getItem("faculLab.motiva")!==hojeStr()){localStorage.setItem("faculLab.motiva",hojeStr());setTimeout(mostrarMotiva,500)}}catch(e){}
+try{if(tourI<0&&ofensivaPerdida()&&localStorage.getItem("faculLab.motiva")!==hojeStr()){localStorage.setItem("faculLab.motiva",hojeStr());setTimeout(mostrarMotiva,500)}}catch(e){}
 })();
 </script>
 
