@@ -2,6 +2,10 @@
 
 App de estudo para Direito: simulados por período (1º ao 10º) e para o Exame da OAB, apostilas, resumos, lei seca e flashcards.
 
+No ar: https://facul-lab.netlify.app (oficial, com lembretes) e https://advbarbosaeamorim-gif.github.io/Facul-Lab/.
+
+**Publicar no Netlify:** merges na main não publicam sozinhos (economia de créditos). Só publica quando a mensagem do commit ou o título do PR tiver `[publicar]`.
+
 É um PWA em HTML, CSS e JavaScript puro, sem etapa de build. Para rodar localmente, sirva a pasta com qualquer servidor estático, por exemplo:
 
 ```
