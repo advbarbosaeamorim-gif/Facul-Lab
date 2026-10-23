@@ -1721,6 +1721,64 @@ html[data-anim="on"] .of-palco.bate .of-carimbo{animation-name:of-bate2}
 html[data-anim="on"] .ovo-fundo .festa-card{animation:pulo .5s cubic-bezier(.2,1.4,.4,1),om-treme .3s .45s ease-out}
 @keyframes of-bate{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(2.6);opacity:0}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
 @keyframes of-bate2{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(2.6);opacity:0}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
+/* datas do Direito: cena e recado do dia no Hoje */
+.dh-palco{position:relative;max-width:260px;margin:8px auto 0}
+.dh-svg{display:block;width:100%;height:auto;overflow:visible}
+.dh-palco .od-pag{position:absolute;right:-6px;top:-4px;width:62px;margin:0;border-radius:12px}
+.dh-palco .od-mes{font-size:.66rem;padding:3px 0}.dh-palco .od-dia{font-size:1.7rem;padding:2px 0 5px}
+.dh-mastro{fill:#8a8f99}
+.dh-pano{transform-box:view-box;transform-origin:63px 57px}
+html[data-anim="on"] .dh-pano{animation:dh-sobe 1.1s .2s cubic-bezier(.2,1.2,.4,1) both,dh-tremula 2.4s 1.3s ease-in-out infinite}
+@keyframes dh-sobe{0%{transform:translateY(60px) scaleY(.2);opacity:0}100%{transform:none;opacity:1}}
+@keyframes dh-tremula{0%,100%{transform:skewY(0) scaleX(1)}25%{transform:skewY(2.5deg) scaleX(.97)}75%{transform:skewY(-2deg) scaleX(.99)}}
+.dh-elo-e ellipse,.dh-elo-d ellipse{fill:none;stroke:#8a8f99;stroke-width:7}
+.dh-raio path{stroke:#f2b632;stroke-width:3.5;stroke-linecap:round;fill:none}
+html[data-anim="on"] .dh-elo-e{animation:dh-elo-e 1s .5s cubic-bezier(.2,1.3,.4,1) both}
+html[data-anim="on"] .dh-elo-d{animation:dh-elo-d 1s .5s cubic-bezier(.2,1.3,.4,1) both}
+.dh-elo-e{transform:translate(-14px,6px) rotate(-8deg)}.dh-elo-d{transform:translate(14px,6px) rotate(8deg)}
+.dh-elo-e,.dh-elo-d{transform-box:view-box;transform-origin:111px 76px}
+@keyframes dh-elo-e{0%{transform:none}100%{transform:translate(-14px,6px) rotate(-8deg)}}
+@keyframes dh-elo-d{0%{transform:none}100%{transform:translate(14px,6px) rotate(8deg)}}
+html[data-anim="on"] .dh-raio{animation:dh-raio 1.6s .7s ease-out infinite}
+@keyframes dh-raio{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+.dh-capa{fill:var(--toga)}[data-estilo="premium"] .dh-capa{fill:var(--p1)}
+.dh-pag-e path,.dh-pag-d path{fill:#fffdf6;stroke:#d8cfb8;stroke-width:1.2}
+.dh-linhas{stroke:#b9ae94;stroke-width:2;fill:none;stroke-linecap:round}
+.dh-pag-e{transform-box:view-box;transform-origin:110px 90px}.dh-pag-d{transform-box:view-box;transform-origin:110px 90px}
+html[data-anim="on"] .dh-pag-e{animation:dh-abre-e .9s .2s cubic-bezier(.3,1.2,.5,1) both}
+html[data-anim="on"] .dh-pag-d{animation:dh-abre-d .9s .2s cubic-bezier(.3,1.2,.5,1) both}
+html[data-anim="on"] .dh-livro .dh-linhas{animation:dh-aparece .4s .9s both}
+@keyframes dh-abre-e{0%{transform:scaleX(0)}100%{transform:none}}
+@keyframes dh-abre-d{0%{transform:scaleX(0)}100%{transform:none}}
+@keyframes dh-aparece{0%{opacity:0}100%{opacity:1}}
+.dh-base{fill:#8a8f99}.dh-braco rect{fill:var(--toga)}[data-estilo="premium"] .dh-braco rect{fill:var(--p1)}
+.dh-prato path:not(.dh-ouro){stroke:#8a8f99;stroke-width:1.6;fill:none}.dh-ouro{fill:#f2b632}
+.dh-braco{transform-box:view-box;transform-origin:110px 35px}
+html[data-anim="on"] .dh-braco{animation:dh-balanca 3s ease-in-out infinite}
+@keyframes dh-balanca{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.dh-chao{fill:#c9a66b}
+.dh-arvore{transform-box:view-box;transform-origin:110px 124px}
+html[data-anim="on"] .dh-arvore{animation:dh-cresce 1.1s .2s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes dh-cresce{0%{transform:scale(0)}100%{transform:scale(1)}}
+.dh-licao{text-align:left}
+.dh-licao small{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--toga-txt)}
+[data-estilo="premium"] .dh-licao small{color:var(--p1)}
+.dh-licao small .i{width:15px;height:15px}
+.dh-licao p{margin:6px 0 4px;color:var(--fg)}
+.dh-licao em{font-style:normal;font-size:.8rem;font-weight:700;color:var(--muted)}
+.dh-banner{position:relative;margin:12px 0 4px;padding:16px;border-radius:20px;background:var(--surface);border:2px solid #f6c453;box-shadow:0 14px 30px -20px #b07a10}
+html[data-anim="on"] .dh-banner{animation:dh-entra .6s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes dh-entra{0%{opacity:0;transform:translateY(16px) scale(.97)}100%{opacity:1;transform:none}}
+.dh-topo{display:flex;gap:12px;align-items:center}
+.dh-mini{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;width:50px;height:54px;border-radius:12px;background:#f6c453;color:#3a2a00;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;line-height:1}
+.dh-mini b{font-size:1.4rem;letter-spacing:0;font-family:var(--f-display)}
+.dh-topo small{font-size:.74rem;font-weight:700;color:var(--muted)}
+.dh-topo h3{margin:2px 0 0;font:800 1.2rem/1.2 var(--f-display)}
+.dh-banner>p{margin:10px 0;color:var(--muted);line-height:1.45}
+.dh-banner .dh-licao{background:var(--surface-2);border-radius:14px;padding:11px 13px}
+.dh-abre{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:#f6c453;color:#3a2a00;letter-spacing:.02em;text-transform:none;padding:12px}
+.dh-abre .i{width:18px;height:18px}
+.dh-some{display:block;text-align:center;font-size:.74rem;color:var(--muted);margin-top:8px}
 </style>
 
 <div class="app" id="app"></div>
@@ -3991,7 +4049,7 @@ const OVOS=[
  {id:"chama",ic:"chama",nome:"Chama da Justiça",dica:"Atice a chama da ofensiva cinco vezes seguidas."},
  {id:"habeas",ic:"escudo",nome:"Habeas corpus",dica:"Chacoalhe o celular. No computador, digite habeas."},
  {id:"coruja",ic:"lua",nome:"Coruja da madrugada",dica:"Abra o Hoje entre meia-noite e cinco da manhã."},
- {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app em 13 de maio, 11 de agosto, 5 de outubro ou 10 de dezembro."},
+ {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app numa data marcante do Direito ou da história do Brasil, como 15 de novembro."},
  {id:"fundo",ic:"pasta",nome:"Fim dos autos",dica:"Chegou ao fim de uma tela? Continue puxando para cima, com vontade."}
 ];
 function ovosAchados(){return OVOS.filter(o=>(S.ovos||{})[o.id]).length}
@@ -4092,19 +4150,51 @@ function ovoCoruja(rever){const h=new Date().getHours();
  <h2>Corujão do Direito</h2><p class="frase">${h<5&&!rever?`Estudando a esta hora? Que dedicação!`:"Você encontrou a coruja da madrugada."}</p>
  <p class="ovo-nota"><b>Dica da coruja:</b> é durante o sono que o cérebro consolida o que você estudou. Feche com uns cartões de revisão e vá dormir: amanhã a matéria vai estar mais firme.</p>${ovoBotoes()}`,{rever,titulo:"Coruja da madrugada"});ovoSomDepois("coruja",700)}
 
-/* 7. Datas do Direito: um selo no Hoje nos dias especiais */
+/* 7. Datas do Direito: nos dias marcantes da Justiça e da história, uma cena ao abrir o app (uma vez por dia)
+   e um recado no Hoje que só existe naquele dia, com uma lição da matéria ligada à data.
+   Cada data: [dia, mês, nome, matéria, cena, história(ano), lição, fundamento]. Cenas: br, mg (bandeiras), corrente, livro, balanca, folha. */
 const OVO_DATAS={
- "05-13":[13,"mai","Lei Áurea",()=>"Em 13 de maio de 1888, a Lei Áurea (Lei nº 3.353) declarou extinta a escravidão no Brasil. O Direito também é instrumento de liberdade, e a luta por igualdade continua."],
- "08-11":[11,"ago","Dia do Advogado",()=>"Em 11 de agosto de 1827 foram criados os dois primeiros cursos de Direito do Brasil, em São Paulo e em Olinda. Por isso hoje é o Dia do Advogado e do estudante de Direito. Parabéns pelo caminho que você escolheu!"],
- "10-05":[5,"out","Aniversário da Constituição",y=>`Em 5 de outubro de 1988 foi promulgada a Constituição Federal, a "Constituição Cidadã", nas palavras de Ulysses Guimarães. Hoje ela completa ${y-1988} anos.`],
- "12-10":[10,"dez","Dia dos Direitos Humanos",()=>`Em 10 de dezembro de 1948, a ONU proclamou a Declaração Universal dos Direitos Humanos: "Todos os seres humanos nascem livres e iguais em dignidade e em direitos" (art. 1º).`]
+ "02-24":[24,"fev","Primeira Constituição da República","Direito Constitucional","livro",y=>`Em 24 de fevereiro de 1891 foi promulgada a primeira Constituição da República, ${y-1891} anos atrás.`,"Ela trouxe o federalismo (as antigas províncias viraram estados), o presidencialismo e separou o Estado da Igreja. Hoje a forma federativa é cláusula pétrea.","Art. 60, § 4º, I, da CF"],
+ "03-08":[8,"mar","Dia Internacional da Mulher","Direito Constitucional","balanca",()=>"O 8 de março lembra a luta das mulheres por direitos políticos, trabalhistas e sociais.","A Constituição diz que homens e mulheres são iguais em direitos e obrigações. A igualdade é a regra; diferenças de tratamento só valem quando a própria Constituição ou uma razão legítima as justificam.","Art. 5º, I, da CF"],
+ "03-15":[15,"mar","Dia do Consumidor","Direito do Consumidor","livro",()=>"15 de março é o Dia Mundial dos Direitos do Consumidor.","Comprou fora da loja (internet, telefone)? Você pode desistir em até 7 dias, contados da assinatura ou do recebimento do produto, e receber de volta tudo o que pagou, com correção.","Art. 49 do CDC"],
+ "03-25":[25,"mar","Constituição do Império","História do Direito","livro",y=>`Em 25 de março de 1824, D. Pedro I outorgou a primeira Constituição do Brasil, ${y-1824} anos atrás.`,"Foi a nossa Constituição mais duradoura (65 anos). Além do Executivo, do Legislativo e do Judiciário, ela tinha um quarto poder, o Moderador, exercido pelo Imperador.","Constituição de 1824, art. 98"],
+ "04-21":[21,"abr","Tiradentes","Direito Penal","mg",y=>`Em 21 de abril de 1792, Tiradentes, líder da Inconfidência Mineira, foi enforcado no Rio de Janeiro. Lá se vão ${y-1792} anos.`,"Hoje a Constituição proíbe a pena de morte, salvo em caso de guerra declarada. Também não pode haver pena perpétua, de trabalhos forçados, de banimento nem cruel.","Art. 5º, XLVII, da CF"],
+ "05-01":[1,"mai","Dia do Trabalho","Direito do Trabalho","livro",y=>`Em 1º de maio de 1943, Getúlio Vargas assinou a CLT (Decreto-Lei nº 5.452). São ${y-1943} anos de Consolidação das Leis do Trabalho.`,"A jornada normal não pode passar de 8 horas por dia e 44 por semana. A hora extra vale, no mínimo, 50% a mais que a hora normal.","Art. 7º, XIII e XVI, da CF"],
+ "05-13":[13,"mai","Lei Áurea","Direito Penal","corrente",y=>`Em 13 de maio de 1888, a Lei Áurea (Lei nº 3.353) declarou extinta a escravidão no Brasil, ${y-1888} anos atrás.`,"A Constituição de 1988 fez do racismo crime inafiançável e imprescritível, sujeito a reclusão. A Lei nº 7.716/1989 define esses crimes.","Art. 5º, XLII, da CF"],
+ "06-05":[5,"jun","Dia do Meio Ambiente","Direito Ambiental","folha",()=>"5 de junho é o Dia Mundial do Meio Ambiente, criado pela ONU em 1972.","Todos têm direito ao meio ambiente ecologicamente equilibrado, e o dever de defendê-lo é do Poder Público e da coletividade, para as presentes e futuras gerações.","Art. 225 da CF"],
+ "07-13":[13,"jul","Aniversário do ECA","Direito da Criança e do Adolescente","livro",y=>`Em 13 de julho de 1990 nasceu o Estatuto da Criança e do Adolescente (Lei nº 8.069). Hoje ele faz ${y-1990} anos.`,"Para o ECA, criança é quem tem até 12 anos incompletos; adolescente, quem tem entre 12 e 18 anos. A proteção é integral e com prioridade absoluta.","Art. 2º do ECA e art. 227 da CF"],
+ "08-07":[7,"ago","Lei Maria da Penha","Direito Penal","balanca",y=>`Em 7 de agosto de 2006 foi sancionada a Lei Maria da Penha (Lei nº 11.340), ${y-2006} anos atrás.`,"A lei cria mecanismos contra a violência doméstica e familiar contra a mulher, que pode ser física, psicológica, sexual, patrimonial ou moral. As medidas protetivas de urgência podem ser concedidas pelo juiz.","Arts. 5º, 7º e 22 da Lei nº 11.340/2006"],
+ "08-11":[11,"ago","Dia do Advogado","Ética Profissional","balanca",()=>"Em 11 de agosto de 1827 foram criados os dois primeiros cursos de Direito do Brasil, em São Paulo e em Olinda. Por isso hoje é o Dia do Advogado e do estudante de Direito. Parabéns pelo caminho que você escolheu!","O advogado é indispensável à administração da justiça e é inviolável por seus atos e manifestações no exercício da profissão, nos limites da lei.","Art. 133 da CF e art. 2º do Estatuto da Advocacia"],
+ "09-07":[7,"set","Independência do Brasil","Direito Constitucional","br",y=>`Em 7 de setembro de 1822, o Brasil se declarou independente de Portugal. São ${y-1822} anos.`,"A soberania é o primeiro dos fundamentos da República: o Brasil não se submete a outro Estado e decide sozinho sobre seus assuntos internos.","Art. 1º, I, da CF"],
+ "09-11":[11,"set","Aniversário do CDC","Direito do Consumidor","livro",y=>`Em 11 de setembro de 1990 foi sancionado o Código de Defesa do Consumidor (Lei nº 8.078). Hoje ele faz ${y-1990} anos.`,"Quando a alegação do consumidor é verossímil ou ele é hipossuficiente, o juiz pode inverter o ônus da prova a favor dele.","Art. 6º, VIII, do CDC"],
+ "10-05":[5,"out","Aniversário da Constituição","Direito Constitucional","livro",y=>`Em 5 de outubro de 1988 foi promulgada a Constituição Federal, a "Constituição Cidadã", nas palavras de Ulysses Guimarães. Hoje ela completa ${y-1988} anos.`,"Nem emenda constitucional pode abolir as cláusulas pétreas: a forma federativa, o voto direto, secreto, universal e periódico, a separação dos Poderes e os direitos e garantias individuais.","Art. 60, § 4º, da CF"],
+ "11-15":[15,"nov","Proclamação da República","Direito Constitucional","br",y=>`Em 15 de novembro de 1889, o Marechal Deodoro da Fonseca proclamou a República e o Império chegou ao fim. São ${y-1889} anos de República.`,"República é a forma de governo; presidencialismo, o sistema. Em 1993, um plebiscito previsto na própria Constituição perguntou ao povo se queria monarquia ou parlamentarismo, e venceram a República e o presidencialismo.","Art. 1º da CF e art. 2º do ADCT"],
+ "11-20":[20,"nov","Dia da Consciência Negra","Direito Penal","corrente",()=>"20 de novembro lembra Zumbi dos Palmares, morto nesse dia em 1695. Desde 2024 a data é feriado nacional.","Desde a Lei nº 14.532/2023, a injúria racial é tratada como crime de racismo, com pena de reclusão de 2 a 5 anos, e também passou a ser inafiançável e imprescritível.","Art. 2º-A da Lei nº 7.716/1989"],
+ "12-08":[8,"dez","Dia da Justiça","Organização do Judiciário","balanca",()=>"8 de dezembro é o Dia da Justiça, feriado forense na Justiça Federal.","O STF é o guardião da Constituição. Abaixo dele estão o STJ, que uniformiza a interpretação da lei federal, e os tribunais e juízes das justiças comum e especializadas.","Arts. 92, 102 e 105 da CF"],
+ "12-10":[10,"dez","Dia dos Direitos Humanos","Direitos Humanos","balanca",()=>`Em 10 de dezembro de 1948, a ONU proclamou a Declaração Universal dos Direitos Humanos: "Todos os seres humanos nascem livres e iguais em dignidade e em direitos" (art. 1º).`,"Tratados de direitos humanos aprovados em cada Casa do Congresso, em dois turnos, por três quintos dos votos, equivalem a emendas constitucionais.","Art. 5º, § 3º, da CF"]
 };
-function ovoDataHoje(){const d=new Date();return OVO_DATAS[p2(d.getMonth()+1)+"-"+p2(d.getDate())]?p2(d.getMonth()+1)+"-"+p2(d.getDate()):null}
-function ovoData(rever){const d=new Date();let k=ovoDataHoje(),prox=false;
- if(!k){const ks=Object.keys(OVO_DATAS).sort(),hj=p2(d.getMonth()+1)+"-"+p2(d.getDate());k=ks.find(x=>x>hj)||ks[0];prox=true}
+const DH_MES=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+const dhChave=d=>p2(d.getMonth()+1)+"-"+p2(d.getDate());
+function ovoDataHoje(){const k=dhChave(new Date());return OVO_DATAS[k]?k:null}
+function ovoDataProx(){const ks=Object.keys(OVO_DATAS).sort(),hj=dhChave(new Date());return ks.find(x=>x>hj)||ks[0]}
+const DH_CENA={
+ br:`<g class="dh-mastro"><rect x="58" y="14" width="5" height="122" rx="2.5"/><circle cx="60.5" cy="13" r="5"/></g><g class="dh-pano"><rect x="63" y="20" width="110" height="74" rx="3" fill="#1f9a48"/><path d="M118 28l46 29-46 29-46-29z" fill="#f7d117"/><circle cx="118" cy="57" r="17" fill="#1d3f8f"/><path d="M101 54q17-6 34 4" stroke="#fff" stroke-width="3.2" fill="none"/></g>`,
+ mg:`<g class="dh-mastro"><rect x="58" y="14" width="5" height="122" rx="2.5"/><circle cx="60.5" cy="13" r="5"/></g><g class="dh-pano"><rect x="63" y="20" width="110" height="74" rx="3" fill="#fff" stroke="#d9d9d9"/><path d="M118 34l20 34h-40z" fill="#c8102e"/><text x="118" y="86" text-anchor="middle" font-size="6.4" font-weight="700" fill="#555">LIBERTAS QUAE SERA TAMEN</text></g>`,
+ corrente:`<g class="dh-elo-e"><ellipse cx="62" cy="76" rx="22" ry="13"/><ellipse cx="94" cy="76" rx="22" ry="13"/></g><g class="dh-elo-d"><ellipse cx="128" cy="76" rx="22" ry="13"/><ellipse cx="160" cy="76" rx="22" ry="13"/></g><g class="dh-raio"><path d="M111 40v14M111 98v14M90 48l6 10M132 48l-6 10M90 104l6-10M132 104l-6-10"/></g>`,
+ livro:`<g class="dh-raio"><path d="M110 18v14M70 30l8 10M150 30l-8 10M50 62h14M156 62h14"/></g><path class="dh-capa" d="M44 120V58q33-8 66 6 33-14 66-6v62q-33-8-66 6-33-14-66-6z"/><g class="dh-pag-e"><path d="M50 116V60q30-6 58 6v56q-28-12-58-6z"/></g><g class="dh-pag-d"><path d="M170 116V60q-30-6-58 6v56q28-12 58-6z"/></g><path class="dh-linhas" d="M60 76q20-3 40 4M60 88q20-3 40 4M60 100q20-3 40 4M120 80q20-7 40-4M120 92q20-7 40-4M120 104q20-7 40-4"/>`,
+ balanca:`<rect class="dh-base" x="107" y="34" width="6" height="88" rx="3"/><path class="dh-base" d="M86 128h48l-6-10h-36z"/><g class="dh-braco"><rect x="44" y="32" width="132" height="6" rx="3"/><g class="dh-prato"><path d="M54 38l-14 40M54 38l14 40" /><path class="dh-ouro" d="M32 78h44a22 9 0 0 1-44 0z"/></g><g class="dh-prato"><path d="M166 38l-14 40M166 38l14 40"/><path class="dh-ouro" d="M144 78h44a22 9 0 0 1-44 0z"/></g></g><circle class="dh-ouro" cx="110" cy="34" r="8"/>`,
+ folha:`<path class="dh-chao" d="M40 126q70-14 140 0z"/><g class="dh-arvore"><rect x="106" y="70" width="8" height="54" rx="3" fill="#8a5a2b"/><circle cx="110" cy="58" r="30" fill="#3f9a52"/><circle cx="88" cy="70" r="18" fill="#4fb062"/><circle cx="132" cy="70" r="18" fill="#4fb062"/><circle cx="110" cy="40" r="16" fill="#5cc06f"/></g><g class="dh-raio"><path d="M170 30v10M165 35h10M48 40v8M44 44h8"/></g>`
+};
+function ovoData(rever){const d=new Date();let k=ovoDataHoje(),prox=false;if(!k){k=ovoDataProx();prox=true}
  const x=OVO_DATAS[k];
- ovoCena("data","ovo-data",`<div class="od-pag" aria-hidden="true"><span class="od-mes">${x[1]}</span><span class="od-dia">${x[0]}</span></div>
- <h2>${prox?`Próxima data: ${esc(x[2])}`:`Hoje é ${esc(x[2])}!`}</h2><p class="ovo-nota">${esc(x[3](d.getFullYear()))}</p>${ovoBotoes()}`,{rever,titulo:x[2],confete:!prox})}
+ ovoCena("data","ovo-data dh-"+x[4],`<div class="dh-palco" aria-hidden="true"><svg class="dh-svg" viewBox="0 0 220 140">${DH_CENA[x[4]]}</svg><div class="od-pag"><span class="od-mes">${x[1]}</span><span class="od-dia">${x[0]}</span></div></div>
+ <h2>${prox?`Próxima data: ${esc(x[2])}`:esc(x[2])}</h2><p class="frase">${esc(x[5](d.getFullYear()))}</p>
+ <div class="ovo-nota dh-licao"><small>${ic("livro")} Lição do dia · ${esc(x[3])}</small><p>${esc(x[6])}</p><em>${esc(x[7])}</em></div>${ovoBotoes()}`,{rever,titulo:x[2],confete:!prox})}
+/* recado do dia no Hoje: some à meia-noite */
+function dhBanner(k){const x=OVO_DATAS[k],d=new Date();
+ return `<section class="dh-banner" aria-label="Hoje na história"><div class="dh-topo"><span class="dh-mini"><b>${x[0]}</b>${x[1]}</span><div><small>Hoje na história · ${d.getDate()} de ${DH_MES[d.getMonth()]}</small><h3>${esc(x[2])}</h3></div></div>
+ <p>${esc(x[5](d.getFullYear()))}</p><div class="dh-licao"><small>${ic("livro")} Lição do dia · ${esc(x[3])}</small><p>${esc(x[6])}</p><em>${esc(x[7])}</em></div>
+ <button class="botao dh-abre" data-ovo="data">${ic("estrela")} Ver a surpresa do dia</button><span class="dh-some">Este recado só aparece hoje</span></section>`}
 
 /* 8. Fim dos autos: no fim de qualquer tela, puxar com força para cima (no computador, continuar rolando a roda do mouse) */
 const OF_SVG=`<svg class="of-svg" viewBox="0 0 230 150" aria-hidden="true"><rect class="of-folha" x="52" y="14" width="128" height="124" rx="6" transform="rotate(5 116 76)"/><rect class="of-folha" x="48" y="12" width="128" height="124" rx="6" transform="rotate(-3 112 74)"/>
@@ -4179,9 +4269,9 @@ let ovoRoda=0,tOvoRoda=null;
 window.addEventListener("wheel",e=>{if(e.deltaY<=0||e.ctrlKey||!ovoPodePuxar(e.target)||!ovoNoFim()){if(ovoRoda){ovoRoda=0;ovoPuxaSolta(false)}return}
  ovoRoda+=Math.min(e.deltaY*(e.deltaMode===1?16:1),120);const h=Math.max(0,ovoRoda-900)*.11;if(h)ovoPuxa(h);
  clearTimeout(tOvoRoda);tOvoRoda=setTimeout(()=>{const ok=h>=96;ovoRoda=0;ovoPuxaSolta(ok)},350)},{passive:true});
-/* enfeites do Hoje depois de cada render: coruja de madrugada, selo das datas e brilho dourado nos marcos da ofensiva */
-function ovoEnfeita(){if(rota.tela!=="hoje")return;const hero=document.querySelector(".hoje-hero");if(!hero||hero.querySelector(".ovo-coruja,.ovo-dt"))return;
- const k=ovoDataHoje();if(k){const x=OVO_DATAS[k],txt=hero.querySelector(".hh-txt");if(txt)txt.insertAdjacentHTML("afterbegin",`<button class="ovo-dt" data-ovo="data">${ic("calendario")}<span>${esc(x[2])}! Toque aqui</span></button>`)}
+/* enfeites do Hoje depois de cada render: coruja de madrugada, recado das datas e brilho dourado nos marcos da ofensiva */
+function ovoEnfeita(){if(rota.tela!=="hoje")return;const hero=document.querySelector(".hoje-hero");if(!hero||document.querySelector(".hoje .dh-banner,.hoje-hero .ovo-coruja,.hoje-hero .ovo-dt"))return;
+ const k=ovoDataHoje();if(k)hero.insertAdjacentHTML("beforebegin",dhBanner(k));
  if(new Date().getHours()<5)hero.insertAdjacentHTML("beforeend",`<button class="ovo-coruja" data-ovo="coruja" aria-label="Uma coruja apareceu. Toque nela">${OVO_CORUJA}</button>`);
  const seq=sequencia(),cv=document.querySelector(".hoje .chama-viva");if(cv&&OVO_MARCOS.includes(seq))cv.classList.add("ovo-marco")}
 try{new MutationObserver(ovoEnfeita).observe($("#app"),{childList:true})}catch(e){}
@@ -4192,8 +4282,10 @@ render();
 if(/netlify\.app$/.test(location.hostname))document.documentElement.classList.add("np");
 /* na primeira entrada, o tour "Como funciona" (com opção de pular) */
 if(!(S.cfg&&S.cfg.tour))tourAbrir();
+/* datas do Direito: na primeira abertura do dia, a cena da data (no lugar do recado de motivação, que continua no Hoje) */
+let dhAbriu=false;try{if(tourI<0&&ovoDataHoje()&&localStorage.getItem("faculLab.data")!==hojeStr()){localStorage.setItem("faculLab.data",hojeStr());dhAbriu=true;setTimeout(()=>{if(!document.querySelector(".festa,#tour"))ovoData()},700)}}catch(e){}
 /* recado de motivação na primeira abertura do dia, se a ofensiva se perdeu */
-try{if(tourI<0&&ofensivaPerdida()&&localStorage.getItem("faculLab.motiva")!==hojeStr()){localStorage.setItem("faculLab.motiva",hojeStr());setTimeout(mostrarMotiva,500)}}catch(e){}
+try{if(tourI<0&&!dhAbriu&&ofensivaPerdida()&&localStorage.getItem("faculLab.motiva")!==hojeStr()){localStorage.setItem("faculLab.motiva",hojeStr());setTimeout(mostrarMotiva,500)}}catch(e){}
 /* primeira entrada sem o tour: convite para os lembretes (com o tour, ele aparece quando o tour termina ou é pulado) */
 try{if(tourI<0&&!localStorage.getItem("faculLab.lbConvite")&&lbPodeConvidar())setTimeout(()=>{if(tourI<0&&!document.querySelector(".festa,#tour"))lbConvite()},1500)}catch(e){}
 })();
