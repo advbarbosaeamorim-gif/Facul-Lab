@@ -789,6 +789,15 @@ html[data-anim="on"] .lb-card.lb-novo .lb-corpo{animation:lb-toca .9s ease-in-ou
 .lb-aviso{margin:8px 0 0;padding:10px 12px;border-radius:12px;font-size:.86rem;line-height:1.4;background:color-mix(in srgb,var(--lacre) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--lacre) 40%,var(--line))}
 .lb-hora{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .lb-hora input{font:inherit;font-weight:700;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:inherit}
+.lb-exemplos{position:relative;height:62px;margin:0 0 10px;overflow:hidden}
+.lb-ex{position:absolute;inset:0;display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 20px -14px rgba(0,0,0,.4);opacity:0}
+.lb-ex:first-child{opacity:1}
+.lb-ex b{display:block;font-size:.88rem}.lb-ex small{color:var(--muted);font-size:.78rem}
+.lb-ex-ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff}.lb-ex-ic .i{width:20px;height:20px}
+html[data-anim="on"] .lb-ex{opacity:0;animation:lb-ex 12s ease-in-out infinite;animation-delay:calc(var(--k)*3s)}
+@keyframes lb-ex{0%{opacity:0;transform:translateY(24px)}4%,22%{opacity:1;transform:none}26%,100%{opacity:0;transform:translateY(-24px)}}
+.lb-convite .festa-card{text-align:center}.lb-convite .lb-exemplos{text-align:left;margin:14px 0 4px}
+.lb-grande{display:inline-grid;grid-template-columns:1fr;border:0;background:none;padding:0;margin:0 auto}.lb-grande .lb-sino{width:96px;height:96px}
 .lb-teste{margin-top:12px}.lb-teste .botao{display:flex;align-items:center;justify-content:center;gap:8px;text-transform:none;letter-spacing:0;color:inherit}.lb-teste .i{width:20px;height:20px}.lb-res{font-weight:700;color:var(--fg)}
 html[data-anim="on"] .lb-opcoes{animation:pv-res-in .4s ease-out both}
 @media (max-width:360px){.lb-card{grid-template-columns:1fr}.lb-sino{justify-self:center}}
@@ -2359,13 +2368,12 @@ function blocoRitmo(){const r=ritmoAtual();const m=S.cfg&&S.cfg.meta;
  <div class="opcoes ritmos">${RITMOS.map(([k,n])=>`<button data-acao="cfg-ritmo" data-v="${k}" aria-pressed="${r[0]===k}">${n}</button>`).join("")}</div>
  <p class="nota">O ritmo vale para a meta automática, para os cartões novos e para as questões de cada prova da faculdade no modo avançado.${m?" Como você fixou a meta diária abaixo, ela continua valendo; volte para Automática para o ritmo ajustar as questões também.":""}</p>`}
 /* ---------- lembretes no celular (Web Push) ----------
-   O servidor (Netlify Functions) não conhece o progresso: o app manda só o horário, o fuso, os tipos de lembrete,
-   o último dia com estudo, a ofensiva, as questões desse dia, a meta e as próximas provas. */
+   Uma vez por dia, num horário-surpresa entre 9h e 21h, o servidor (Netlify Functions) escolhe um recado.
+   Ele não conhece o progresso: o app manda só o fuso, o último dia com estudo, a ofensiva, as questões desse dia,
+   a meta e as próximas provas. */
 const LB_API="/api/lembretes";
-const LB_TIPOS=[["fogo","Foguinho da ofensiva","Se você ainda não estudou no dia","chama"],["meta","Meta diária","Quantas questões faltam para bater a meta","alvo"],["prova","Provas chegando","7, 3 e 1 dia antes, e no dia da prova","calendario"]];
-const LB_HORAS=["08:00","12:00","18:00","20:00","22:00"];
 let lbStatus="",lbUlt="",tLb=null,lbTeste="";
-const lbCfg=()=>{const c=(S.cfg&&S.cfg.notif)||{};return {on:!!c.on,hora:c.hora||"20:00",tipos:Object.assign({fogo:true,meta:true,prova:true},c.tipos||{})}};
+const lbCfg=()=>({on:!!(S.cfg&&S.cfg.notif&&S.cfg.notif.on)});
 const lbIos=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)&&!(window.navigator.standalone||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches));
 function lbSuporte(){if("serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window)return "";return lbIos()?"ios":"sem-suporte"}
 function lbEstado(){const D=S.dias||{};const ks=Object.keys(D).filter(k=>temAtiv(D[k])).sort();const ult=ks[ks.length-1]||"";const L=[];
@@ -2379,7 +2387,7 @@ async function lbInscricao(criar){const reg=await navigator.serviceWorker.ready;
  return sub}
 async function lbEnviar(acao,forcar){const c=lbCfg();if(!c.on)return;const sub=await lbInscricao(false);if(!sub)return;
  let tz="America/Sao_Paulo";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||tz}catch(e){}
- const corpo=JSON.stringify({acao,sub:sub.toJSON(),tz,hora:c.hora,tipos:c.tipos,estado:lbEstado()});
+ const corpo=JSON.stringify({acao,sub:sub.toJSON(),tz,estado:lbEstado()});
  if(acao==="salvar"&&!forcar&&corpo===lbUlt)return;
  const r=await fetch(LB_API,{method:"POST",headers:{"content-type":"application/json"},body:corpo,keepalive:corpo.length<60000});
  if(!r.ok)throw new Error(r.status===410?"inscricao":"servidor");if(acao==="salvar")lbUlt=corpo}
@@ -2392,12 +2400,12 @@ async function lbLigar(){const sup=lbSuporte();if(sup){lbStatus=sup;rota.manterS
  lbStatus="ligando";rota.manterScroll=true;render();
  try{await lbInscricao(true);lbGuardar({on:true});await lbEnviar("salvar",true);lbStatus="";
   rota.manterScroll=true;render();const el=document.querySelector(".lb-card");if(el&&animOn()){el.classList.add("lb-novo");estouro(el.querySelector(".lb-sino"),["#ffc53d","#ff8a1f","#3bb273","#ffffff"])}
-  anunciar("Lembretes ligados para as "+lbCfg().hora)}
+  anunciar("Lembretes ligados");lbTestar(true)}
  catch(e){lbGuardar({on:false});lbStatus=e.message==="sem-servidor"?"sem-servidor":"erro";rota.manterScroll=true;render()}}
 async function lbDesligar(){lbGuardar({on:false});lbStatus="";lbTeste="";rota.manterScroll=true;render();anunciar("Lembretes desligados");
  try{const sub=await lbInscricao(false);if(sub){const endpoint=sub.endpoint;await sub.unsubscribe();await fetch(LB_API,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({acao:"remover",endpoint})})}}catch(e){}}
-async function lbTestar(){lbTeste="enviando";rota.manterScroll=true;render();
- try{await lbEnviar("teste");lbTeste="ok"}catch(e){lbTeste=e.message==="inscricao"?"inscricao":"erro";if(lbTeste==="inscricao")lbGuardar({on:false})}rota.manterScroll=true;render()}
+async function lbTestar(boasVindas){lbTeste=boasVindas?"":"enviando";if(!boasVindas){rota.manterScroll=true;render()}
+ try{await lbEnviar("teste");lbTeste=boasVindas?"":"ok"}catch(e){lbTeste=e.message==="inscricao"?"inscricao":"erro";if(lbTeste==="inscricao")lbGuardar({on:false})}rota.manterScroll=true;render()}
 const LB_AVISOS={
  "sem-suporte":"Este navegador não aceita lembretes. No Android, use o Chrome; no computador, Chrome, Edge ou Firefox.",
  ios:"No iPhone, os lembretes só funcionam com o app instalado: toque em Compartilhar, depois em Adicionar à Tela de Início, e abra o Facul Lab pelo ícone.",
@@ -2405,23 +2413,30 @@ const LB_AVISOS={
  "sem-servidor":"Os lembretes precisam do servidor do app, que fica no endereço simuladolab8.netlify.app. Abra o Facul Lab por lá (e instale na tela inicial) para ativar.",
  erro:"Não deu para ativar agora. Confira a internet e tente de novo em instantes.",
  ligando:"Preparando seus lembretes…"};
-const LB_TESTE={enviando:"Enviando um lembrete de teste…",ok:"Lembrete enviado! Confira a barra de notificações do aparelho.",erro:"O teste não saiu. Confira a internet e tente de novo.",inscricao:"Este aparelho perdeu a inscrição. Ligue os lembretes de novo."};
-function blocoLembretes(){const c=lbCfg();const on=c.on;
- const sino=`<svg class="lb-sino" viewBox="0 0 64 64" aria-hidden="true"><g class="lb-ondas"><path d="M10 26a22 22 0 0 1 7-13"/><path d="M54 26a22 22 0 0 0-7-13"/></g><g class="lb-corpo"><path d="M32 7a4 4 0 0 1 4 4v1.6c7 1.8 11 7.8 11 15v9.4l5 7H12l5-7v-9.4c0-7.2 4-13.2 11-15V11a4 4 0 0 1 4-4z"/><circle class="lb-badalo" cx="32" cy="50" r="5" stroke="none"/></g><text class="lb-zz" x="46" y="14">z</text><text class="lb-zz" x="53" y="7" style="animation-delay:.6s">z</text></svg>`;
- const tit=on?`Lembrete todo dia às ${c.hora.replace(":","h")}`:"Lembretes desligados";
- const txt=on?"O Facul Lab te chama mesmo com o app fechado, e só quando faz sentido: no máximo uma vez por dia.":"Ligue para receber um aviso no celular na hora que você escolher, mesmo com o app fechado.";
+const LB_TESTE={enviando:"Enviando um lembrete de exemplo…",ok:"Lembrete enviado! Confira a barra de notificações do aparelho.",erro:"O teste não saiu. Confira a internet e tente de novo.",inscricao:"Este aparelho perdeu a inscrição. Ligue os lembretes de novo."};
+const LB_SINO=`<svg class="lb-sino" viewBox="0 0 64 64" aria-hidden="true"><g class="lb-ondas"><path d="M10 26a22 22 0 0 1 7-13"/><path d="M54 26a22 22 0 0 0-7-13"/></g><g class="lb-corpo"><path d="M32 7a4 4 0 0 1 4 4v1.6c7 1.8 11 7.8 11 15v9.4l5 7H12l5-7v-9.4c0-7.2 4-13.2 11-15V11a4 4 0 0 1 4-4z"/><circle class="lb-badalo" cx="32" cy="50" r="5" stroke="none"/></g><text class="lb-zz" x="46" y="14">z</text><text class="lb-zz" x="53" y="7" style="animation-delay:.6s">z</text></svg>`;
+/* exemplos que giram no cartão: o mesmo tipo de recado que chega no celular */
+const LB_EXEMPLOS=[["chama","#ff8a1f","Não perca seu foguinho!","Uma questão hoje mantém a chama acesa."],["alvo","#e5484d","Faltam 6 questões para a meta","Termine e veja a comemoração!"],["calendario","#4b3f99","A N1 é daqui a 3 dias","Reta final: questões e revisão das erradas."],["cartas","#2a9d6a","Uma pausa que vale ponto","Vire uns cartões entre uma tarefa e outra."]];
+const lbExemplos=()=>`<div class="lb-exemplos" aria-hidden="true">${LB_EXEMPLOS.map(([i,c,t,d],k)=>`<div class="lb-ex" style="--k:${k}"><span class="lb-ex-ic" style="background:${c}">${ic(i)}</span><span><b>${t}</b><small>${d}</small></span></div>`).join("")}</div>`;
+function blocoLembretes(){const on=lbCfg().on;
+ const tit=on?"Lembretes ligados":"Quer uma ajudinha para não esquecer?";
+ const txt=on?"Uma vez por dia, num horário-surpresa entre 9h e 21h, o Facul Lab te chama, mesmo com o app fechado. Se você já estudou e bateu a meta, ele fica quietinho.":"Ative os lembretes e o app te chama uma vez por dia, num horário-surpresa, com recados e ilustrações diferentes: ofensiva, meta e provas chegando.";
  return `<div class="secao" role="heading" aria-level="2">Lembretes no celular</div>
- <div class="lb-card ${on?"lb-on":"lb-off"}">${sino}<div class="lb-txt"><b>${tit}</b><p>${txt}</p></div></div>
- <div class="cores">${[["1","Ligados","Aviso no horário escolhido","sino"],["0","Desligados","Nenhuma notificação","pausa"]].map(([k,n,d,i])=>`<button data-acao="notif" data-v="${k}" aria-pressed="${(on?"1":"0")===k}"${lbStatus==="ligando"?" disabled":""}><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="lb-card ${on?"lb-on":"lb-off"}">${LB_SINO}<div class="lb-txt"><b>${tit}</b><p>${txt}</p></div></div>
+ ${lbExemplos()}
+ <div class="cores">${[["1","Ligados","Um recado por dia","sino"],["0","Desligados","Nenhuma notificação","pausa"]].map(([k,n,d,i])=>`<button data-acao="notif" data-v="${k}" aria-pressed="${(on?"1":"0")===k}"${lbStatus==="ligando"?" disabled":""}><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  ${lbStatus&&LB_AVISOS[lbStatus]?`<p class="lb-aviso" role="status">${LB_AVISOS[lbStatus]}</p>`:""}
- ${on?`<div class="lb-opcoes"><p class="nota" style="margin:12px 0 6px"><b>Em que horário?</b></p>
-  <div class="lb-hora"><div class="opcoes">${LB_HORAS.map(h=>`<button data-acao="notif-hora" data-v="${h}" aria-pressed="${c.hora===h}">${h.replace(":00","h")}</button>`).join("")}</div>
-  <label class="campo" style="margin:0"><span class="sr">Outro horário</span><input type="time" id="notif-hora" value="${esc(c.hora)}" aria-label="Outro horário"></label></div>
-  <p class="nota" style="margin:12px 0 6px"><b>Do que lembrar?</b> Se nada fizer sentido no dia (você já estudou e bateu a meta), o app fica quietinho.</p>
-  <div class="cores uma">${LB_TIPOS.filter(t=>t[0]!=="prova"||avOn()||(S.cfg&&S.cfg.prova)).map(([k,n,d,i])=>`<button data-acao="notif-tipo" data-v="${k}" aria-pressed="${!!c.tipos[k]}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
-  <div class="botoes lb-teste"><button class="botao linha" data-acao="notif-teste"${lbTeste==="enviando"?" disabled":""}>${ic("sino")} Enviar um lembrete de teste</button></div>
-  ${lbTeste?`<p class="nota lb-res" role="status">${LB_TESTE[lbTeste]}</p>`:""}</div>`:""}
- <p class="nota">Seu progresso continua só neste aparelho. Para escolher o recado, o app envia ao servidor apenas o horário, o último dia em que você estudou, a ofensiva, a meta e as datas das provas.</p>`}
+ ${on?`<div class="botoes lb-teste"><button class="botao linha" data-acao="notif-teste"${lbTeste==="enviando"?" disabled":""}>${ic("sino")} Ver um exemplo agora</button></div>
+  ${lbTeste?`<p class="nota lb-res" role="status">${LB_TESTE[lbTeste]}</p>`:""}`:""}
+ <p class="nota">Seu progresso continua só neste aparelho. Para escolher o recado, o app envia ao servidor apenas o último dia em que você estudou, a ofensiva, a meta e as datas das provas.</p>`}
+/* convite para ligar os lembretes: na primeira entrada no app (uma vez por aparelho) e,
+   se existir, ao fim do tour de boas-vindas, que pode chamar window.lbConvite() */
+function lbPodeConvidar(){return !/github\.io$/.test(location.hostname)&&!lbCfg().on&&!lbSuporte()&&window.Notification&&Notification.permission!=="denied"}
+function lbConvite(){try{localStorage.setItem("faculLab.lbConvite","1")}catch(e){}if(!lbPodeConvidar()||document.querySelector(".festa"))return false;
+ const el=document.createElement("div");el.className="festa lb-convite";el.setAttribute("role","dialog");el.setAttribute("aria-label","Ativar lembretes");
+ el.innerHTML=`<div class="festa-card"><div class="lb-card lb-on lb-grande">${LB_SINO}</div><h2>Posso te lembrar de estudar?</h2><p class="frase">Uma vez por dia, num horário-surpresa, um recado diferente: a ofensiva, a meta ou a prova chegando. Mesmo com o app fechado.</p>${lbExemplos()}<div class="botoes"><button class="botao cheio" data-acao="lb-convite-sim">Ativar lembretes</button><button class="botao" data-acao="festa-fechar">Agora não</button></div><p class="nota" style="margin:10px 0 0">Dá para mudar quando quiser em Configurações.</p></div>`;
+ document.body.appendChild(el);syncVoltar();return true}
+window.lbConvite=lbConvite;
 function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData||!!rota.tipoData;
  const ambos=per!==null&&per>=8;const tipo=rota.tipoData||(p?(ambos&&avOn()?"ambas":"oab"):(avOn()&&provasFac().length?"fac":null));
  const comOab=tipo==="oab"||tipo==="ambas",comFac=tipo==="fac"||tipo==="ambas";
@@ -3340,8 +3355,7 @@ document.addEventListener("click",e=>{
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
     case "chama":faiscas(b);break;
     case "notif":if(b.dataset.v==="1")lbLigar();else lbDesligar();break;
-    case "notif-hora":lbGuardar({hora:b.dataset.v});lbTeste="";lbEnviar("salvar",true).catch(()=>{});rota.manterScroll=true;render();anunciar("Lembrete às "+b.dataset.v);break;
-    case "notif-tipo":{const t=Object.assign({},lbCfg().tipos);t[b.dataset.v]=!t[b.dataset.v];lbGuardar({tipos:t});lbEnviar("salvar",true).catch(()=>{});rota.manterScroll=true;render();break}
+    case "lb-convite-sim":{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();lbLigar().then(()=>{if(lbCfg().on){const c=document.querySelector(".lb-card");if(!c)anunciar("Lembretes ligados! Você recebe um recado por dia.")}else if(lbStatus&&rota.tela!=="config")raiz({tela:"config"})});break}
     case "notif-teste":lbTestar();break;
     case "cal-vira":b.classList.toggle("virado");break;
     case "cfg-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();break;
@@ -3415,7 +3429,6 @@ document.addEventListener("change",e=>{if(e.target.id==="corrFinal"){S.cfg.corrF
    if(box){box.outerHTML=resultadoNotas(p);const nb=document.getElementById("pv-res-"+p.id);
     if(nb&&animOn())nb.classList.add("pv-novo");
     if(nb&&s.est==="aprovado"&&antes!=="aprovado"){estouro(nb,[infoDisc(p.d).cor,"#ffc53d","#3bb273","#ffffff"]);anunciar(s.titulo)}}}
-  if(e.target.id==="notif-hora"&&/^\d{2}:\d{2}$/.test(e.target.value)){lbGuardar({hora:e.target.value});lbTeste="";lbEnviar("salvar",true).catch(()=>{});rota.manterScroll=true;render()}
   if(e.target.id==="data-prova"){S.cfg=S.cfg||{};S.cfg.prova=e.target.value||"";salvar();rota.manterScroll=true;render()}});
 let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
@@ -3437,6 +3450,8 @@ if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
 /* recado de motivação na primeira abertura do dia, se a ofensiva se perdeu */
 try{if(ofensivaPerdida()&&localStorage.getItem("faculLab.motiva")!==hojeStr()){localStorage.setItem("faculLab.motiva",hojeStr());setTimeout(mostrarMotiva,500)}}catch(e){}
+/* primeira entrada: convite para os lembretes (o tour de boas-vindas, quando aberto, chama lbConvite() ao terminar) */
+try{if(!localStorage.getItem("faculLab.lbConvite")&&lbPodeConvidar())setTimeout(()=>{if(!document.querySelector(".festa,.tour"))lbConvite()},1500)}catch(e){}
 })();
 </script>
 

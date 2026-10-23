@@ -1,6 +1,6 @@
 /* Lembretes do Facul Lab (Web Push).
-   O servidor não conhece o progresso do estudante: o app envia só o horário escolhido, o fuso,
-   o último dia com estudo, a ofensiva, a meta e as próximas provas. Cada aparelho é uma entrada
+   O servidor não conhece o progresso do estudante: o app envia só o fuso, o último dia com estudo,
+   a ofensiva, as questões desse dia, a meta e as próximas provas. Cada aparelho é uma entrada
    no Netlify Blobs, com a chave tirada do endereço da inscrição (sem conta, sem e-mail). */
 import { getStore } from "@netlify/blobs";
 import webpush from "web-push";
@@ -28,10 +28,7 @@ export async function vapid() {
   }
   webpush.setVapidDetails(env.VAPID_SUBJECT || "mailto:lembretes@faculab.app", vapidCache.publicKey, vapidCache.privateKey);
   return vapidCache;
-}
-
-const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
-const HORA_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+}const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
 const txt = (v, n) => String(v || "").replace(/[\u0000-\u001f]/g, "").slice(0, n);
 const num = (v, max) => Math.max(0, Math.min(max, Math.round(+v || 0)));
 
@@ -43,14 +40,11 @@ export function limpar(corpo) {
   if (typeof k.p256dh !== "string" || typeof k.auth !== "string" || k.p256dh.length > 200 || k.auth.length > 100) return null;
   const tz = txt(corpo.tz, 64);
   try { new Intl.DateTimeFormat("pt-BR", { timeZone: tz || "America/Sao_Paulo" }); } catch (e) { return null; }
-  const t = corpo.tipos || {};
   const e = corpo.estado || {};
   const provas = (Array.isArray(e.provas) ? e.provas : []).filter(p => p && DIA_RE.test(p.dt)).slice(0, 20).map(p => ({ dt: p.dt, nome: txt(p.nome, 80) }));
   return {
     sub: { endpoint: sub.endpoint, keys: { p256dh: k.p256dh, auth: k.auth } },
     tz: tz || "America/Sao_Paulo",
-    hora: HORA_RE.test(corpo.hora) ? corpo.hora : "20:00",
-    tipos: { fogo: t.fogo !== false, meta: t.meta !== false, prova: t.prova !== false },
     estado: {
       ult: DIA_RE.test(e.ult) ? e.ult : "",
       seq: num(e.seq, 5000),
@@ -67,49 +61,79 @@ export function agoraEm(tz, quando = new Date()) {
     .formatToParts(quando).map(x => [x.type, x.value]));
   return { dia: `${p.year}-${p.month}-${p.day}`, min: (+p.hour) * 60 + (+p.minute) };
 }
+
+/* Horário-surpresa do dia, entre 9h e 21h: muda todo dia e é diferente para cada aparelho. */
+const INICIO = 9 * 60, FIM = 21 * 60;
+const hashN = t => createHash("sha256").update(t).digest().readUInt32BE(0);
+export const alvoDoDia = (chave, dia) => INICIO + hashN(chave + "|" + dia) % (FIM - INICIO);
+
 const diasEntre = (a, b) => Math.round((Date.parse(b + "T12:00:00Z") - Date.parse(a + "T12:00:00Z")) / 864e5);
 const nDias = n => n === 1 ? "1 dia" : n + " dias";
-const sorteia = (L, semente) => L[Math.abs(semente) % L.length];
+const periodo = min => min < 12 * 60 ? "manha" : min < 18 * 60 ? "tarde" : "noite";
+const sorteia = (L, semente) => L[semente % L.length];
+const cap = t => t[0].toUpperCase() + t.slice(1);
+/* ilustrações das notificações (em lembretes/, na raiz do site) */
+const IMG = n => `./lembretes/${n}.png`;
 
-/* Escolhe o recado do dia. Uma notificação por dia, no máximo, com a prova próxima em primeiro lugar. */
-export function recado(reg, dia) {
-  const e = reg.estado || {}, t = reg.tipos || {};
-  const semente = +dia.replace(/-/g, "");
+/* Recados: cada um tem título, texto e ilustração. Variam com a hora do dia e com a situação. */
+const FOGO = {
+  manha: s => [
+    { title: "Bom dia! Sua chama acordou com você", body: `São ${nDias(s)} de ofensiva. Que tal começar o dia com cinco questões?`, img: "chama" },
+    { title: "Café, apostila e ofensiva", body: `Seus ${nDias(s)} seguidos merecem continuar. Um tema da apostila já conta.`, img: "cafe" },
+    { title: "Manhã é ótima para aprender", body: `O cérebro está descansado. Mantenha a ofensiva de ${nDias(s)} com uns minutos de estudo.`, img: "livro" }],
+  tarde: s => [
+    { title: "Não perca seu foguinho!", body: `Você está com ${nDias(s)} de ofensiva. Uma questão ou um cartão hoje mantém a chama acesa.`, img: "chama" },
+    { title: `${nDias(s)} seguidos: não pare agora`, body: "Dez minutos bastam. Responda algumas questões e a ofensiva continua.", img: "foguete" },
+    { title: "Uma pausa que vale ponto", body: `Entre uma tarefa e outra, vire uns cartões. A ofensiva de ${nDias(s)} agradece.`, img: "cartas" }],
+  noite: s => [
+    { title: "Sua chama está esperando", body: `O dia está acabando e a ofensiva de ${nDias(s)} depende de você. Bora?`, img: "lua" },
+    { title: "Ainda dá tempo!", body: `Cinco questões antes de dormir e seus ${nDias(s)} de ofensiva continuam.`, img: "chama" },
+    { title: "Último chamado do dia", body: "Revise alguns cartões no sofá mesmo. O que importa é não deixar a chama apagar.", img: "cartas" }]
+};
+const VOLTA = {
+  manha: [
+    { title: "Bom dia, futuro advogado!", body: "Uma questão hoje já acende uma nova ofensiva. O plano do dia está pronto.", img: "balanca" },
+    { title: "Hoje é um ótimo dia para recomeçar", body: "Todo aprovado já recomeçou um dia. Dez minutos de manhã fazem diferença.", img: "cafe" }],
+  tarde: [
+    { title: "Bora acender a chama?", body: "Responda uma questão, vire um cartão ou leia uma página. A ofensiva começa agora.", img: "chama" },
+    { title: "O que você aprendeu não foi embora", body: "Voltar é o que separa quem passa de quem desiste. Que tal um tema rapidinho?", img: "livro" }],
+  noite: [
+    { title: "Que tal fechar o dia estudando?", body: "Poucas questões antes de dormir já contam. Amanhã a chama cresce.", img: "lua" },
+    { title: "Seu plano de hoje está esperando", body: "Um tema da apostila, alguns cartões e poucas questões. Vamos?", img: "balanca" }]
+};
+const META = (f, q, m) => [
+  { title: `Faltam ${f} ${f === 1 ? "questão" : "questões"} para a meta`, body: `Você já fez ${q} de ${m} hoje. Termine e veja a comemoração!`, img: "alvo" },
+  { title: "Você está quase lá!", body: `Mais ${f} ${f === 1 ? "questão" : "questões"} e a meta de hoje está batida.`, img: "trofeu" },
+  { title: "A meta está logo ali", body: `${q} de ${m} questões feitas. Cada uma conta para a prova.`, img: "alvo" }];
+
+/* Escolhe o recado do dia: prova próxima primeiro, depois a ofensiva e, por fim, a meta.
+   Se a pessoa já estudou e bateu a meta, não manda nada. */
+export function recado(reg, dia, min = 15 * 60) {
+  const e = reg.estado || {};
+  const semente = hashN(dia + "|" + (reg.sub && reg.sub.endpoint || ""));
+  const per = periodo(min);
   const estudouHoje = e.ult === dia;
   const qHoje = estudouHoje ? e.q || 0 : 0;
   const ontem = e.ult && diasEntre(e.ult, dia) === 1;
   const seq = estudouHoje || ontem ? e.seq || 0 : 0;
+  const com = m => ({ title: m.title, body: m.body, image: IMG(m.img), tag: "facul-lab", url: "./" });
 
-  if (t.prova) {
-    const prox = (e.provas || []).map(p => ({ ...p, n: diasEntre(dia, p.dt) })).filter(p => p.n >= 0 && p.n <= 7).sort((a, b) => a.n - b.n)[0];
-    if (prox && [0, 1, 3, 7].includes(prox.n)) {
-      const nome = prox.nome || "a prova";
-      const quando = prox.n === 0 ? "é hoje" : prox.n === 1 ? "é amanhã" : `é daqui a ${prox.n} dias`;
-      const corpo = prox.n === 0 ? "Respire fundo e confie no que você estudou. Uma revisão leve dos resumos já ajuda."
-        : prox.n === 1 ? "Revise os erros e os resumos, sem começar matéria nova. E durma bem!"
-        : prox.n === 3 ? "Reta final: priorize questões e a revisão das que você errou."
-        : "Ainda dá tempo de ler a apostila e treinar questões. O plano de hoje já está pronto.";
-      return { title: `${nome[0].toUpperCase() + nome.slice(1)} ${quando}`, body: corpo, tag: "prova", url: "./" };
-    }
+  const prox = (e.provas || []).map(p => ({ ...p, n: diasEntre(dia, p.dt) })).filter(p => p.n >= 0 && p.n <= 7).sort((a, b) => a.n - b.n)[0];
+  if (prox && [0, 1, 2, 3, 5, 7].includes(prox.n)) {
+    const nome = cap(prox.nome || "a prova");
+    const quando = prox.n === 0 ? "é hoje" : prox.n === 1 ? "é amanhã" : `é daqui a ${prox.n} dias`;
+    const corpo = prox.n === 0 ? sorteia(["Respire fundo e confie no que você estudou. Uma revisão leve dos resumos já ajuda.", "Você se preparou para isso. Leia os resumos com calma e boa prova!"], semente)
+      : prox.n === 1 ? sorteia(["Revise os erros e os resumos, sem começar matéria nova. E durma bem!", "Hoje é dia de revisão leve: erradas, resumos e uma boa noite de sono."], semente)
+      : prox.n <= 3 ? sorteia(["Reta final: priorize questões e a revisão das que você errou.", "Hora de treinar questões da matéria e revisar os cartões."], semente)
+      : "Ainda dá tempo de ler a apostila e treinar questões. O plano de hoje já está pronto.";
+    if (!(estudouHoje && prox.n > 1 && qHoje >= (e.meta || 1))) return com({ title: `${nome} ${quando}`, body: corpo, img: prox.n <= 1 ? "calendario" : sorteia(["calendario", "balanca", "livro"], semente) });
   }
-  if (t.fogo && !estudouHoje) {
-    if (seq > 0) return { ...sorteia([
-      { title: "Não perca seu foguinho!", body: `Você está com ${nDias(seq)} de ofensiva. Uma questão ou um cartão hoje mantém a chama acesa.` },
-      { title: `${nDias(seq)} seguidos: não pare agora`, body: "Dez minutos bastam. Responda algumas questões e a ofensiva continua." },
-      { title: "Sua chama está esperando", body: `O dia está acabando e a ofensiva de ${nDias(seq)} depende de você.` }
-    ], semente), tag: "fogo", url: "./" };
-    return { ...sorteia([
-      { title: "Bora acender a chama?", body: "Uma questão hoje já começa uma nova ofensiva. O plano do dia está pronto para você." },
-      { title: "Recomeçar também é avançar", body: "Todo aprovado já recomeçou um dia. Que tal dez minutos de estudo agora?" },
-      { title: "Seu plano de hoje está esperando", body: "Um tema da apostila, alguns cartões e poucas questões. Vamos?" }
-    ], semente), tag: "fogo", url: "./" };
-  }
-  if (t.meta && e.meta && qHoje < e.meta) {
-    const falta = e.meta - qHoje;
-    return { title: `Faltam ${falta} ${falta === 1 ? "questão" : "questões"} para a meta`, body: `Você já fez ${qHoje} de ${e.meta} hoje. Termine e veja a comemoração!`, tag: "meta", url: "./" };
-  }
+  if (!estudouHoje) return com(seq > 0 ? sorteia(FOGO[per](seq), semente) : sorteia(VOLTA[per], semente));
+  if (e.meta && qHoje < e.meta) { const f = e.meta - qHoje; return com(sorteia(META(f, qHoje, e.meta), semente)); }
   return null;
 }
+
+
 
 export async function enviar(reg, msg) {
   await vapid();

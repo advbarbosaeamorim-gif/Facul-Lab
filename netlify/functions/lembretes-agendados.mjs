@@ -1,8 +1,8 @@
-/* Roda a cada 15 minutos: para cada aparelho que chegou ao horário escolhido (no fuso dele)
-   e ainda não recebeu nada hoje, escolhe o recado do dia e envia. Só roda no site publicado. */
-import { loja, agoraEm, recado, enviar, inscricaoMorta } from "../lib/lembretes.mjs";
+/* Roda a cada 15 minutos: para cada aparelho que chegou ao horário-surpresa do dia (entre 9h e 21h,
+   no fuso dele) e ainda não recebeu nada hoje, escolhe o recado e envia. Só roda no site publicado. */
+import { loja, agoraEm, alvoDoDia, recado, enviar, inscricaoMorta } from "../lib/lembretes.mjs";
 
-const JANELA = 3 * 60; // depois de 3 horas do horário, o lembrete do dia já não faz sentido
+const JANELA = 3 * 60; // se a rodada atrasar mais de 3 horas, o lembrete do dia já não faz sentido
 
 export default async () => {
   const s = loja();
@@ -13,10 +13,9 @@ export default async () => {
       const reg = await s.get(key, { type: "json" });
       if (!reg || !reg.sub) continue;
       const { dia, min } = agoraEm(reg.tz);
-      const [h, m] = reg.hora.split(":").map(Number);
-      const alvo = h * 60 + m;
+      const alvo = alvoDoDia(key, dia);
       if (reg.env === dia || min < alvo || min >= alvo + JANELA) continue;
-      const msg = recado(reg, dia);
+      const msg = recado(reg, dia, min);
       if (msg) {
         try { await enviar(reg, msg); enviados++; }
         catch (err) {
