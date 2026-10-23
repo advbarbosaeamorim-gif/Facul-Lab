@@ -72,75 +72,73 @@ const nDias = n => n === 1 ? "1 dia" : n + " dias";
 const periodo = min => min < 12 * 60 ? "manha" : min < 18 * 60 ? "tarde" : "noite";
 const sorteia = (L, semente) => L[semente % L.length];
 const cap = t => t[0].toUpperCase() + t.slice(1);
-/* ilustrações das notificações (em lembretes/, na raiz do site) */
+/* ilustrações das notificações (em lembretes/, na raiz do site): a quadrada vai como ícone ao lado do texto
+   e a larga aparece quando a pessoa expande o recado */
 const IMG = n => `./lembretes/${n}.png`;
+const ICONE = n => `./lembretes/ic-${n}.png`;
 
-/* Recados: cada um tem título, texto e ilustração. Variam com a hora do dia e com a situação. */
+/* Recados curtos, para caber sem expandir no celular: título até 28 caracteres e texto até 56. */
+export const LIMITE = { title: 28, body: 56 };
 const FOGO = {
   manha: s => [
-    { title: "Bom dia! Sua chama acordou com você", body: `São ${nDias(s)} de ofensiva. Que tal começar o dia com cinco questões?`, img: "chama" },
-    { title: "Café, apostila e ofensiva", body: `Seus ${nDias(s)} seguidos merecem continuar. Um tema da apostila já conta.`, img: "cafe" },
-    { title: "Manhã é ótima para aprender", body: `O cérebro está descansado. Mantenha a ofensiva de ${nDias(s)} com uns minutos de estudo.`, img: "livro" }],
+    { title: "Bom dia! A chama acordou", body: `${nDias(s)} de ofensiva. Começa o dia com 5 questões?`, img: "chama" },
+    { title: "Café, apostila e ofensiva", body: `${nDias(s)} seguidos. Um tema da apostila já conta.`, img: "cafe" },
+    { title: "Manhã boa para aprender", body: `Uns minutos de estudo mantêm ${nDias(s)} de ofensiva.`, img: "livro" }],
   tarde: s => [
-    { title: "Não perca seu foguinho!", body: `Você está com ${nDias(s)} de ofensiva. Uma questão ou um cartão hoje mantém a chama acesa.`, img: "chama" },
-    { title: `${nDias(s)} seguidos: não pare agora`, body: "Dez minutos bastam. Responda algumas questões e a ofensiva continua.", img: "foguete" },
-    { title: "Uma pausa que vale ponto", body: `Entre uma tarefa e outra, vire uns cartões. A ofensiva de ${nDias(s)} agradece.`, img: "cartas" }],
+    { title: "Não perca seu foguinho!", body: `${nDias(s)} de ofensiva. Uma questão mantém a chama.`, img: "chama" },
+    { title: "Não pare agora!", body: `${nDias(s)} seguidos. Dez minutos bastam hoje.`, img: "foguete" },
+    { title: "Uma pausa que vale ponto", body: `Vire uns cartões e salve ${nDias(s)} de ofensiva.`, img: "cartas" }],
   noite: s => [
-    { title: "Sua chama está esperando", body: `O dia está acabando e a ofensiva de ${nDias(s)} depende de você. Bora?`, img: "lua" },
-    { title: "Ainda dá tempo!", body: `Cinco questões antes de dormir e seus ${nDias(s)} de ofensiva continuam.`, img: "chama" },
-    { title: "Último chamado do dia", body: "Revise alguns cartões no sofá mesmo. O que importa é não deixar a chama apagar.", img: "cartas" }]
+    { title: "Sua chama está esperando", body: `O dia acaba logo. Salve ${nDias(s)} de ofensiva!`, img: "lua" },
+    { title: "Ainda dá tempo!", body: `5 questões antes de dormir e ${nDias(s)} continuam.`, img: "chama" },
+    { title: "Último chamado do dia", body: "Uns cartões no sofá mesmo. Não deixe a chama apagar.", img: "cartas" }]
 };
 const VOLTA = {
   manha: [
-    { title: "Bom dia, futuro advogado!", body: "Uma questão hoje já acende uma nova ofensiva. O plano do dia está pronto.", img: "balanca" },
-    { title: "Hoje é um ótimo dia para recomeçar", body: "Todo aprovado já recomeçou um dia. Dez minutos de manhã fazem diferença.", img: "cafe" }],
+    { title: "Bom dia, futuro advogado!", body: "Uma questão hoje já acende uma nova ofensiva.", img: "balanca" },
+    { title: "Ótimo dia para recomeçar", body: "Todo aprovado já recomeçou um dia. Bora?", img: "cafe" }],
   tarde: [
-    { title: "Bora acender a chama?", body: "Responda uma questão, vire um cartão ou leia uma página. A ofensiva começa agora.", img: "chama" },
-    { title: "O que você aprendeu não foi embora", body: "Voltar é o que separa quem passa de quem desiste. Que tal um tema rapidinho?", img: "livro" }],
+    { title: "Bora acender a chama?", body: "Uma questão, um cartão ou uma página. Começa agora.", img: "chama" },
+    { title: "O que aprendeu não sumiu", body: "Voltar é o que separa quem passa. Um tema rapidinho?", img: "livro" }],
   noite: [
-    { title: "Que tal fechar o dia estudando?", body: "Poucas questões antes de dormir já contam. Amanhã a chama cresce.", img: "lua" },
-    { title: "Seu plano de hoje está esperando", body: "Um tema da apostila, alguns cartões e poucas questões. Vamos?", img: "balanca" }]
+    { title: "Fechar o dia estudando?", body: "Poucas questões antes de dormir já contam.", img: "lua" },
+    { title: "Seu plano está esperando", body: "Um tema, uns cartões e poucas questões. Vamos?", img: "balanca" }]
 };
+const qs = n => n + (n === 1 ? " questão" : " questões");
 const META = (f, q, m) => [
-  { title: `Faltam ${f} ${f === 1 ? "questão" : "questões"} para a meta`, body: `Você já fez ${q} de ${m} hoje. Termine e veja a comemoração!`, img: "alvo" },
-  { title: "Você está quase lá!", body: `Mais ${f} ${f === 1 ? "questão" : "questões"} e a meta de hoje está batida.`, img: "trofeu" },
-  { title: "A meta está logo ali", body: `${q} de ${m} questões feitas. Cada uma conta para a prova.`, img: "alvo" }];
+  { title: `Faltam ${qs(f)}!`, body: `Você fez ${q} de ${m} hoje. Termine e comemore!`, img: "alvo" },
+  { title: "Você está quase lá!", body: `Mais ${qs(f)} e a meta de hoje está batida.`, img: "trofeu" },
+  { title: "A meta está logo ali", body: `${q} de ${m} feitas. Cada uma conta para a prova.`, img: "alvo" }];
 
-/* Inspiração: versículos sobre estudo e sabedoria (NVI) e frases de motivação. */
+/* Inspiração: versículos curtos sobre estudo e sabedoria (NVI) e frases de motivação. */
 const VERSOS = [
-  ["O conselho da sabedoria é: procure obter sabedoria; use tudo que você possui para adquirir entendimento.", "Provérbios 4:7"],
-  ["O coração do que tem discernimento adquire conhecimento; os ouvidos dos sábios saem à sua procura.", "Provérbios 18:15"],
-  ["Procure apresentar-se a Deus aprovado, como obreiro que não tem do que se envergonhar.", "2 Timóteo 2:15"],
-  ["Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens.", "Colossenses 3:23"],
-  ["E não nos cansemos de fazer o bem, pois no tempo próprio colheremos, se não desanimarmos.", "Gálatas 6:9"],
-  ["Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos.", "Provérbios 16:3"],
-  ["Se algum de vocês tem falta de sabedoria, peça-a a Deus, que a todos dá livremente, de boa vontade; e lhe será concedida.", "Tiago 1:5"],
-  ["Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.", "Josué 1:9"],
   ["Tudo posso naquele que me fortalece.", "Filipenses 4:13"],
-  ["O preguiçoso deseja e nada consegue, mas os desejos do diligente são amplamente satisfeitos.", "Provérbios 13:4"],
   ["Os planos bem elaborados levam à fartura.", "Provérbios 21:5"],
-  ["Aqueles que esperam no Senhor renovam as suas forças. Correm e não ficam exaustos, andam e não se cansam.", "Isaías 40:31"],
-  ["Instrua o homem sábio, e ele será ainda mais sábio; ensine o homem justo, e ele aumentará o seu saber.", "Provérbios 9:9"],
-  ["Ensina-nos a contar os nossos dias para que o nosso coração alcance sabedoria.", "Salmos 90:12"],
-  ["Pois o Senhor é quem dá sabedoria; de sua boca procedem o conhecimento e o discernimento.", "Provérbios 2:6"]
+  ["Consagre ao Senhor tudo o que você faz.", "Provérbios 16:3"],
+  ["Seja forte e corajoso! Não se apavore nem desanime.", "Josué 1:9"],
+  ["O conselho da sabedoria é: procure obter sabedoria.", "Provérbios 4:7"],
+  ["Tudo o que fizerem, façam de todo o coração.", "Colossenses 3:23"],
+  ["No tempo próprio colheremos, se não desanimarmos.", "Gálatas 6:9"],
+  ["O Senhor é quem dá sabedoria.", "Provérbios 2:6"],
+  ["Aqueles que esperam no Senhor renovam as suas forças.", "Isaías 40:31"],
+  ["Os desejos do diligente são amplamente satisfeitos.", "Provérbios 13:4"]
 ];
 const FRASES = [
-  ["Constância vence talento", "Um pouco todo dia leva mais longe do que muito de vez em quando."],
-  ["A carteira da OAB se conquista assim", "Uma questão de cada vez, um dia de cada vez. Hoje também conta."],
-  ["Seu eu do futuro agradece", "Cada tema que você estuda hoje é um ponto a mais no dia da prova."],
-  ["Errar aqui é acertar lá", "Toda questão errada no app é uma que você não erra na prova."],
-  ["Dificuldade é sinal de crescimento", "Se a matéria parece pesada, é porque você está aprendendo de verdade."],
-  ["Disciplina é liberdade", "Quem estuda com constância chega na prova tranquilo."],
-  ["Você não precisa de motivação, precisa de rotina", "Abra o app, faça o primeiro passo e o resto vem."],
-  ["Grandes advogados também começaram do zero", "Todo mundo que passou já esteve exatamente onde você está."]
+  ["Constância vence talento", "Um pouco por dia leva mais longe que muito às vezes."],
+  ["A OAB se conquista assim", "Uma questão de cada vez, um dia de cada vez."],
+  ["Seu eu do futuro agradece", "Cada tema de hoje é um ponto a mais no dia da prova."],
+  ["Errar aqui é acertar lá", "Cada erro no app é um acerto garantido na prova."],
+  ["Difícil é sinal de avanço", "Se a matéria pesa, é porque você está aprendendo."],
+  ["Disciplina é liberdade", "Quem estuda com constância chega tranquilo na prova."],
+  ["Rotina vence motivação", "Abra o app, dê o primeiro passo e o resto vem."],
+  ["Todo advogado começou assim", "Quem passou já esteve exatamente onde você está."]
 ];
-/* o lembrete de inspiração termina com um empurrãozinho que depende da situação do dia */
-function inspira(semente, convite) {
-  const usaVerso = (semente >> 3) % 2 === 0;
-  if (usaVerso) { const [v, ref] = VERSOS[semente % VERSOS.length]; return { title: "Uma palavra para os seus estudos", body: `“${v}” (${ref}, NVI)${convite ? " " + convite : ""}`, img: "luz" }; }
+function inspira(semente) {
+  if ((semente >> 3) % 2 === 0) { const [v, ref] = VERSOS[semente % VERSOS.length]; return { title: ref, body: `“${v}”`, img: "luz" }; }
   const [t, f] = FRASES[semente % FRASES.length];
-  return { title: t, body: f + (convite ? " " + convite : ""), img: "montanha" };
+  return { title: t, body: f, img: "montanha" };
 }
+const curto = (t, n) => t.length <= n ? t : t.slice(0, n - 1).trimEnd() + "…";
 
 /* Escolhe o recado do dia: prova próxima primeiro; em cerca de 1 a cada 3 dias, um versículo ou uma frase de
    motivação; senão a ofensiva ou a meta. Se a pessoa já estudou e bateu a meta, recebe só a inspiração do dia. */
@@ -154,26 +152,21 @@ export function recado(reg, dia, min = 15 * 60) {
   const qHoje = estudouHoje ? e.q || 0 : 0;
   const ontem = e.ult && diasEntre(e.ult, dia) === 1;
   const seq = estudouHoje || ontem ? e.seq || 0 : 0;
-  const com = m => ({ title: m.title, body: m.body, image: IMG(m.img), tag: "facul-lab", url: "./" });
+  const com = m => ({ title: curto(m.title, LIMITE.title), body: curto(m.body, LIMITE.body), icon: ICONE(m.img), image: IMG(m.img), tag: "facul-lab", url: "./" });
 
   const prox = (e.provas || []).map(p => ({ ...p, n: diasEntre(dia, p.dt) })).filter(p => p.n >= 0 && p.n <= 7).sort((a, b) => a.n - b.n)[0];
   if (prox && [0, 1, 2, 3, 5, 7].includes(prox.n)) {
     const nome = cap(prox.nome || "a prova");
-    const quando = prox.n === 0 ? "é hoje" : prox.n === 1 ? "é amanhã" : `é daqui a ${prox.n} dias`;
-    const corpo = prox.n === 0 ? sorteia(["Respire fundo e confie no que você estudou. Uma revisão leve dos resumos já ajuda.", "Você se preparou para isso. Leia os resumos com calma e boa prova!"], escolha)
-      : prox.n === 1 ? sorteia(["Revise os erros e os resumos, sem começar matéria nova. E durma bem!", "Hoje é dia de revisão leve: erradas, resumos e uma boa noite de sono."], escolha)
-      : prox.n <= 3 ? sorteia(["Reta final: priorize questões e a revisão das que você errou.", "Hora de treinar questões da matéria e revisar os cartões."], escolha)
-      : "Ainda dá tempo de ler a apostila e treinar questões. O plano de hoje já está pronto.";
-    if (!(estudouHoje && prox.n > 1 && qHoje >= (e.meta || 1))) return com({ title: `${nome} ${quando}`, body: corpo, img: prox.n <= 1 ? "calendario" : sorteia(["calendario", "balanca", "livro"], escolha) });
+    const title = prox.n === 0 ? "Hoje é dia de prova!" : prox.n === 1 ? "Prova amanhã!" : `Prova em ${prox.n} dias`;
+    const dica = prox.n === 0 ? "Boa prova!" : prox.n === 1 ? "Revise e durma bem." : prox.n <= 3 ? "Foque nas erradas." : "Bora treinar!";
+    if (!(estudouHoje && prox.n > 1 && qHoje >= (e.meta || 1))) return com({ title, body: (nome + ". " + dica).length <= LIMITE.body ? `${nome}. ${dica}` : nome, img: prox.n <= 1 ? "calendario" : sorteia(["calendario", "balanca", "livro"], escolha) });
   }
   const falta = e.meta && qHoje < e.meta ? e.meta - qHoje : 0;
-  if (semente % 3 === 0) return com(inspira(escolha, !estudouHoje ? (seq > 0 ? `Mantenha sua ofensiva de ${nDias(seq)}!` : "Que tal estudar um pouco hoje?") : falta ? `Faltam ${falta} questões para a meta.` : ""));
+  if (semente % 3 === 0) return com(inspira(escolha));
   if (!estudouHoje) return com(seq > 0 ? sorteia(FOGO[per](seq), escolha) : sorteia(VOLTA[per], escolha));
   if (falta) return com(sorteia(META(falta, qHoje, e.meta), escolha));
-  return com(inspira(escolha, "Meta de hoje batida, parabéns!"));
+  return com(inspira(escolha));
 }
-
-
 
 export async function enviar(reg, msg) {
   await vapid();

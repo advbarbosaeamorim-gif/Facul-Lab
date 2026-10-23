@@ -27,7 +27,7 @@ export default async req => {
 
     if (corpo.acao === "teste") {
       try {
-        await enviar(reg, { title: "Lembretes ligados!", body: "Uma vez por dia, em um horário-surpresa, o Facul Lab te chama para estudar. Até já!", image: "./lembretes/balanca.png", tag: "facul-lab", url: "./" });
+        await enviar(reg, { title: "Lembretes ligados!", body: "Um recado por dia, num horário-surpresa. Até já!", icon: "./lembretes/ic-balanca.png", image: "./lembretes/balanca.png", tag: "facul-lab", url: "./" });
       } catch (err) {
         if (inscricaoMorta(err)) { await s.delete(chave); return resp({ erro: "inscricao" }, 410); }
         throw err;

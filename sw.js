@@ -44,7 +44,7 @@ self.addEventListener('push', e => {
   try { d = e.data ? e.data.json() : {}; } catch (err) { d = { body: e.data && e.data.text() }; }
   e.waitUntil(self.registration.showNotification(d.title || 'Facul Lab', {
     body: d.body || 'Seu plano de estudo de hoje está pronto.',
-    icon: './icon-192.png',
+    icon: d.icon ? new URL(d.icon, self.registration.scope).href : './icon-192.png',
     badge: './lembretes/selo.png',
     image: d.image ? new URL(d.image, self.registration.scope).href : undefined,
     tag: d.tag || 'facul-lab',
