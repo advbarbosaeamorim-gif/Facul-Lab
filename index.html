@@ -3905,7 +3905,7 @@ document.addEventListener("visibilitychange",()=>{if(rota.tela!=="quiz"||!sessao
 
 /* ---------- segredos do app (easter eggs) ----------
    Sete segredos: cada um abre uma cena animada com um pouco de Direito. Os encontrados ficam em S.ovos ({id: dia})
-   e aparecem em Sobre o Facul Lab, onde dá para rever. Cada descoberta dispara o evento "fl-ovo" (detail: {id, novo}).
+   e aparecem em Sobre o Facul Lab, onde dá para rever. Cada descoberta toca um som (se ligado) e dispara o evento "fl-ovo" (detail: {id, novo}).
    Os gatilhos ficam em ouvintes próprios (toques, segurar, teclado, chacoalhar), sem mexer no clique principal. */
 const OVOS=[
  {id:"balanca",ic:"balanca",nome:"Equilíbrio da Justiça",dica:"A balança do logo guarda um segredo. Toque nela várias vezes seguidas."},
@@ -3927,7 +3927,8 @@ function ovoCena(id,cls,html,opt){opt=opt||{};const novo=opt.rever?false:ovoAcho
  document.body.appendChild(el);
  /* o menu fecha depois que a cena já está na página, para o voltar do celular continuar valendo para ela */
  if(gaveta){gaveta=false;rota.manterScroll=true;render()}
- if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();return el}
+ if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();ovoSom(novo?"aprovado":"fim");return el}
+function ovoSom(n){if(typeof som=="function")som(n)}
 function ovoConfete(){const c=document.querySelector(".festa.ovo canvas");if(c&&animOn())confete(c)}
 const ovoBotoes=(extra)=>`<div class="botoes ovo-bts">${extra||""}<button class="botao${extra?"":" cheio"}" data-acao="festa-fechar">Fechar</button></div>`;
 
@@ -3956,7 +3957,7 @@ function ovoBalAtualiza(){const el=document.querySelector(".ovo-bal");if(!el||!o
  msg.className="ob-msg"+(ok?" ok":R>L?" err":"");
  msg.textContent=ok?"Equilíbrio perfeito!":R>L?`Pesou demais: sobram ${R-L} kg. Tire um peso.`:R?`Faltam ${L-R} kg.`:"Toque nos pesos para colocar no prato.";
  el.querySelectorAll('[data-ovo="bal-p"]').forEach(b=>b.disabled=ok);el.querySelector('[data-ovo="bal-tira"]').disabled=ok||!R;
- el.querySelector(".ob-fim").hidden=!ok;if(ok)setTimeout(ovoConfete,350)}
+ el.querySelector(".ob-fim").hidden=!ok;if(ok)setTimeout(()=>{ovoConfete();ovoSom("gabarito")},350)}
 
 /* 2. Brocardo secreto: 5 toques rápidos na ilustração do Hoje */
 const BROCARDOS=[
@@ -4039,10 +4040,10 @@ function ovoReanima(el,cls){if(!el)return;el.classList.remove(cls);void el.getBo
 document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
  const b=t.closest("[data-ovo]");
  if(b){const a=b.dataset.ovo,c=b.closest(".festa");
-  if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoBalAtualiza()}
+  if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoSom("toque");ovoBalAtualiza()}
   else if(a==="bal-tira"&&ovoBal){ovoBal.R.pop();ovoBalAtualiza()}
   else if(a==="bal-de-novo")ovoBalanca(true);
-  else if(a==="broc-vira")b.classList.toggle("virada");
+  else if(a==="broc-vira"){b.classList.toggle("virada");ovoSom("vira")}
   else if(a==="broc-outro"){const p=c.querySelector(".obr-palco");p.innerHTML=ovoBrocHtml();ovoReanima(p,"troca")}
   else if(a==="mart-bate")ovoReanima(c.querySelector(".om-palco"),"bate");
   else if(a==="hc-solta")ovoReanima(c.querySelector(".oh-palco"),"solta");
