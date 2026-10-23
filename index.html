@@ -769,6 +769,21 @@ html[data-anim="on"] .rt-vel.rt-novo .rt-ag{animation:rt-balanca .9s cubic-bezie
 html[data-anim="on"] .ritmo .rt-txt{animation:pv-res-in .4s ease-out both}
 @keyframes rt-balanca{0%{transform:rotate(-90deg)}}
 @media (max-width:360px){.ritmo{grid-template-columns:1fr}.rt-vel{justify-self:center}}
+.dp-tipo .opcoes .i{width:16px;height:16px;margin-right:2px;vertical-align:-3px}
+.dp-fac{display:flex;gap:10px;align-items:center;width:100%;margin-top:12px;padding:12px 14px;border-radius:14px;border:1px dashed color-mix(in srgb,var(--lacre) 55%,var(--line));background:color-mix(in srgb,var(--lacre) 8%,var(--surface));color:var(--fg);text-align:left;font:inherit;cursor:pointer}
+.dp-fac>.i{flex:none;width:22px;height:22px;color:var(--lacre)}.dp-fac b{display:block;font-size:.92rem}.dp-fac small{color:var(--muted);font-size:.8rem}
+html[data-anim="on"] .dp-fac{animation:pv-res-in .4s ease-out both}html[data-anim="on"] .dp-fac>.i{animation:dp-desce 1.3s ease-in-out infinite}
+html[data-anim="on"] .dp-campo{animation:pv-res-in .4s ease-out both}
+@keyframes dp-desce{50%{transform:translateY(4px)}}
+.av-sec{scroll-margin-top:84px;border-radius:var(--r);transition:box-shadow .4s,background .4s}
+.av-destaque{padding:2px 12px 12px;margin:14px -12px 0;background:color-mix(in srgb,var(--lacre) 7%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--lacre) 45%,transparent)}
+html[data-anim="on"] .av-destaque{animation:av-brilha 2.2s ease-in-out infinite}
+html[data-anim="on"] .av-destaque [data-acao="av-modo"][data-v="1"]{animation:pv-pulsa 1.4s ease-in-out infinite}
+html[data-anim="on"] .av-abre{animation:av-abre .7s cubic-bezier(.2,1.2,.4,1) both;transform-origin:50% 0}
+@keyframes av-brilha{50%{box-shadow:0 0 0 5px color-mix(in srgb,var(--lacre) 22%,transparent)}}
+@keyframes av-abre{0%{opacity:0;transform:scaleY(.6) translateY(-12px)}100%{opacity:1;transform:none}}
+[data-estilo="premium"] .dp-fac{border-color:color-mix(in srgb,var(--p1) 55%,var(--line));background:color-mix(in srgb,var(--p1) 8%,var(--surface))}[data-estilo="premium"] .dp-fac>.i{color:var(--p1)}
+[data-estilo="premium"] .av-destaque{background:color-mix(in srgb,var(--p1) 7%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--p1) 45%,transparent);border-radius:22px}
 .pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
 html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
@@ -2243,9 +2258,9 @@ function itensProvas(){if(!avOn())return "";const L=provasAtivas().slice(0,2);le
   const fr=assuntoMaisFraco([x.p.d]);if(fr&&x.prox.n<=14)h+=itemPlano(false,"treinar-ass",`data-sc="${fr.sc}" data-a="${esc(encodeURIComponent(fr.a))}"`,"var(--erro)","exc",`${nome}: ponto fraco em ${esc(fr.a)}`,`${fr.pct}% de acerto em ${fr.v} questões`)});
  return h}
 /* Configurações: cadastro das provas */
-function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAtual();
+function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const per=perAtual();
  const opts=PERIODOS.slice(0,9).map((ds,i)=>`<optgroup label="${i+1}º período">${ds.map(d=>`<option value="${d}"${per===i&&d===PERIODOS[i][0]?" selected":""}>${esc(infoDisc(d).nome)}</option>`).join("")}</optgroup>`).join("");
- return `<div class="secao" role="heading" aria-level="2">Modo avançado: provas da faculdade</div>
+ return `<section id="sec-av" class="av-sec${destaque&&!on?" av-destaque":""}${rota.abreAv?" av-abre":""}"><div class="secao" role="heading" aria-level="2">Modo avançado: provas da faculdade</div>
  <p class="nota" style="margin-top:0">Cadastre cada prova com a matéria e o dia (pode ter mais de um, como N1 e N2). O app mede seu preparo em cada uma e monta o plano de hoje para chegar bem em todas.</p>
  <div class="opcoes"><button data-acao="av-modo" data-v="0" aria-pressed="${!on}">Desligado</button><button data-acao="av-modo" data-v="1" aria-pressed="${on}">Ligado</button></div>
  ${on?`<div class="pv-notas-tg"><b>Notas e média</b><span class="nota">Opcional. Lance N1, N2, substitutiva e exame final para o app calcular quanto falta para passar.</span>
@@ -2264,7 +2279,7 @@ function blocoProvasConfig(){const on=avOn();const L=provasFac();const per=perAt
    <li><b>Prioridade</b>: quanto mais perto a prova e menor o preparo, mais ela aparece no plano de hoje.</li>
    <li><b>Questões por dia</b>: o que falta resolver (mais as erradas) dividido pelos dias até a prova. A meta diária soma as provas das próximas 3 semanas.</li>
    <li><b>Notas (Afya Unigranrio, opcional)</b>: N1 + N2 somam até 100. Com 70 ou mais, aprovação direta. De 40 a 69,9, exame final (toda a matéria), e passa quem tiver (N1 + N2 + exame) ÷ 2 de 50 ou mais. A substitutiva é para quem faltou e entra no lugar da N1 ou da N2 sem nota. Confira sempre o manual do aluno da sua unidade.</li>
-   <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}`}
+   <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}</section>`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
 const inicioDia=t=>{const d=new Date(t||Date.now());d.setHours(0,0,0,0);return d.getTime()};
@@ -2319,7 +2334,9 @@ function blocoRitmo(){const r=ritmoAtual();const m=S.cfg&&S.cfg.meta;
   <div class="rt-txt"><b>${r[1]}</b><p>${r[2]}</p><small>Hoje isso dá <b>${metaDia()} questões</b>${m?" (sua meta fixa)":""}${avOn()&&metaProvas()?`, sendo ${metaProvas()} para as provas da faculdade,`:""} e até <b>${novosFase()} cartões novos</b>.</small></div></div>
  <div class="opcoes ritmos">${RITMOS.map(([k,n])=>`<button data-acao="cfg-ritmo" data-v="${k}" aria-pressed="${r[0]===k}">${n}</button>`).join("")}</div>
  <p class="nota">O ritmo vale para a meta automática, para os cartões novos e para as questões de cada prova da faculdade no modo avançado.${m?" Como você fixou a meta diária abaixo, ela continua valendo; volte para Automática para o ritmo ajustar as questões também.":""}</p>`}
-function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData;
+function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData||!!rota.tipoData;
+ const ambos=per!==null&&per>=8;const tipo=rota.tipoData||(p?(ambos&&avOn()?"ambas":"oab"):(avOn()&&provasFac().length?"fac":null));
+ const comOab=tipo==="oab"||tipo==="ambas",comFac=tipo==="fac"||tipo==="ambas";
  return topo("Configurações","Seu período, a prova, as questões e a aparência do app",{menu:true})+
  `<main class="wrap">${capaTela("checklist","Do seu jeito","Período, data da prova, meta diária e a aparência do app.")}<div class="secao" role="heading" aria-level="2">Em que momento você está?</div>
  <p class="nota" style="margin-top:0">A tela Hoje usa essa escolha para sugerir os temas, os cartões e os simulados certos para você.</p>
@@ -2327,10 +2344,14 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="opcoes" style="margin-top:8px"><button data-acao="cfg-per" data-v="9" aria-pressed="${per===9}">10º período ou formado: foco no Exame de Ordem</button></div>
  <div class="secao" role="heading" aria-level="2">Data da prova</div>
  <div class="opcoes"><button data-acao="cfg-prova" data-v="" aria-pressed="${!mostra}">Sem data definida</button><button data-acao="cfg-prova-data" aria-pressed="${mostra}">Escolher uma data</button></div>
- ${mostra?`<label class="campo" style="margin-top:12px"><span>Data da prova (1ª fase do Exame ou prova da faculdade)</span><input type="date" id="data-prova" value="${esc(p)}"></label>
- <p class="nota">Previsão divulgada para a 1ª fase do 48º Exame de Ordem: 10 de janeiro de 2027. Confira no edital antes de usar.</p>`:`<p class="nota">Sem data, o app mantém um ritmo constante, sem contagem regressiva.</p>`}
+ ${mostra?`<div class="dp-tipo"><p class="nota" style="margin:12px 0 6px"><b>Que prova é essa?</b></p>
+  <div class="opcoes"><button data-acao="cfg-tipo-prova" data-v="fac" aria-pressed="${tipo==="fac"}">${ic("livro")} Faculdade</button><button data-acao="cfg-tipo-prova" data-v="oab" aria-pressed="${tipo==="oab"}">${ic("balanca")} OAB</button>${ambos?`<button data-acao="cfg-tipo-prova" data-v="ambas" aria-pressed="${tipo==="ambas"}">${ic("livro")}${ic("balanca")} Faculdade e OAB</button>`:""}</div>
+  ${ambos?"":`<p class="nota" style="margin-top:6px">No 9º e no 10º período (ou já formado) dá para definir a OAB e as provas da faculdade juntas.</p>`}</div>
+ ${comOab?`<label class="campo dp-campo" style="margin-top:12px"><span>Data da 1ª fase do Exame de Ordem</span><input type="date" id="data-prova" value="${esc(p)}"></label>
+ <p class="nota">Previsão divulgada para a 1ª fase do 48º Exame de Ordem: 10 de janeiro de 2027. Confira no edital antes de usar.</p>`:""}
+ ${comFac?`<button class="dp-fac" data-acao="ir-avancado">${ic("baixo")}<span><b>${avOn()?"Suas provas da faculdade estão logo abaixo":"Provas da faculdade ficam no modo avançado"}</b><small>${avOn()?"Cadastre cada matéria e o dia de cada prova.":"Logo abaixo. Ligue se quiser cadastrar cada matéria e o dia de cada prova."}</small></span></button>`:""}`:`<p class="nota">Sem data, o app mantém um ritmo constante, sem contagem regressiva.</p>`}
  <p class="nota">Com a data definida, o ritmo muda sozinho: <b>fase de base</b> (mais de 120 dias), <b>revisão</b> (até 120 dias) e <b>reta final</b> (últimos 30 dias).</p>
- ${blocoProvasConfig()}
+ ${blocoProvasConfig(comFac)}
  ${blocoRitmo()}
  <div class="secao" role="heading" aria-level="2">Meta diária de questões</div>
  <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${metaFase()})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
@@ -3235,7 +3256,11 @@ document.addEventListener("click",e=>{
     case "cfg-corr":S.cfg=S.cfg||{};S.cfg.corrFinal=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
     case "cfg-setas":S.cfg=S.cfg||{};S.cfg.setas=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-per":S.cfg=S.cfg||{};S.cfg.per=+b.dataset.v;periodo=Math.min(9,+b.dataset.v);salvar();rota.manterScroll=true;render();break;
-    case "cfg-prova":S.cfg=S.cfg||{};S.cfg.prova="";rota.escolherData=false;salvar();rota.manterScroll=true;render();break;
+    case "cfg-prova":S.cfg=S.cfg||{};S.cfg.prova="";rota.escolherData=false;rota.tipoData=null;salvar();rota.manterScroll=true;render();break;
+    case "cfg-tipo-prova":{const v=b.dataset.v;rota.tipoData=v;rota.escolherData=true;rota.abreAv=v!=="oab";rota.manterScroll=true;render();rota.abreAv=false;
+      if(v==="oab"){const el=document.getElementById("data-prova");if(el)try{el.focus();el.showPicker&&el.showPicker()}catch(e){}}
+      else{const sec=document.getElementById("sec-av");if(sec)setTimeout(()=>{try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(e){}},v==="ambas"?500:150)}break}
+    case "ir-avancado":{const sec=document.getElementById("sec-av");if(sec){sec.classList.remove("av-abre");void sec.offsetWidth;sec.classList.add("av-abre");try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(e){}}break}
     case "cfg-prova-data":rota.escolherData=true;rota.manterScroll=true;render();{const el=document.getElementById("data-prova");if(el)try{el.focus();el.showPicker&&el.showPicker()}catch(e){}}break;
     case "cards-foco":{let ds=discsFoco();if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),novosFase(),"Cartões novos · "+nomePer(perAtual()));break}
     case "lida":{const d=b.dataset.d;S.lidos=S.lidos||{};S.revAp=S.revAp||{};if(S.lidos[d]){delete S.lidos[d];delete S.revAp[d]}else{S.lidos[d]=Date.now();S.revAp[d]={n:0,prox:inicioDia()+864e5}}salvar();rota.manterScroll=true;render();break}
