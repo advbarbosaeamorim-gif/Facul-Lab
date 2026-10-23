@@ -1102,6 +1102,12 @@ html[data-anim="off"] .mv *{animation:none!important}
 .flash.desliza{animation:desliza .35s cubic-bezier(.2,.8,.2,1)}
 .estouro{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:60;animation:estoura .75s cubic-bezier(.2,.8,.3,1) forwards}
 @keyframes estoura{from{transform:translate(0,0) rotate(0) scale(1);opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.4);opacity:0}}
+/* prévias do Netlify (deploy-preview-N--…): o selo "Powered by Netlify" fica no rodapé; os botões fixos sobem acima dele */
+html.np .tour-base{padding-bottom:calc(10px + var(--np) + env(safe-area-inset-bottom,0px))}
+html.np .nav{padding-bottom:calc(var(--np) + env(safe-area-inset-bottom,0px))}
+html.np .fab{bottom:calc(24px + var(--np) + env(safe-area-inset-bottom,0px))}
+html.np #app{padding-bottom:var(--np)}
+html.np{--np:68px}
 /* ---------- tour "Como funciona" ---------- */
 html.tour-on,html.tour-on body{overflow:hidden}
 .tour{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;background:var(--bg);color:var(--fg);padding-top:env(safe-area-inset-top,0px)}
@@ -3660,6 +3666,8 @@ document.addEventListener("visibilitychange",()=>{if(rota.tela!=="quiz"||!sessao
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
+/* nas prévias do Netlify, espaço para o selo que fica no rodapé */
+if(/--/.test(location.hostname)&&/netlify\.app$/.test(location.hostname))document.documentElement.classList.add("np");
 /* na primeira entrada, o tour "Como funciona" (com opção de pular) */
 if(!(S.cfg&&S.cfg.tour))tourAbrir();
 /* recado de motivação na primeira abertura do dia, se a ofensiva se perdeu */
