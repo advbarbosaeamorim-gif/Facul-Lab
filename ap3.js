@@ -1246,6 +1246,9 @@ Dosimetria é o **cálculo da pena** pelo juiz. O Código adota o **critério tr
 
 > Atenção: as **qualificadoras** não entram em nenhuma das três fases: elas mudam o **ponto de partida**. O homicídio simples tem pena de 6 a 20 anos; o homicídio qualificado, de 12 a 30. Se o crime é qualificado, a dosimetria começa já com os limites de 12 a 30 anos.
 
+::ilus escada|Três degraus: cada fase parte do resultado da anterior.
+Antes de subir o primeiro degrau, o juiz identifica **de onde parte**: do tipo com as suas **elementares** (o crime simples) ou do tipo **qualificado**. Só então começa a contar.
+
 ## 1ª fase: circunstâncias judiciais (art. 59)
 O juiz fixa a **pena-base** analisando oito circunstâncias, sempre **dentro dos limites** mínimo e máximo do tipo:
 1. **culpabilidade:** o grau de reprovabilidade da conduta (planejamento minucioso, frieza);
@@ -1294,6 +1297,17 @@ No **concurso de pessoas**, a pena será agravada em relação ao agente que **p
 
 !! Reincidência = **novo crime DEPOIS do trânsito** + **até 5 anos** do fim da pena anterior.
 
+**E as contravenções?**
+A Lei das Contravenções Penais completa a regra: verifica-se a reincidência quando o agente pratica uma **contravenção** depois de passar em julgado a sentença que o tenha condenado, no Brasil ou no estrangeiro, por qualquer **crime**, ou, no Brasil, por motivo de **contravenção** (art. 7º da LCP). Repare na combinação que ficou de fora:
+
+|Condenação anterior|Novo fato|É reincidente?|
+|Crime|Crime|Sim (art. 63 do CP)|
+|Crime|Contravenção|Sim (art. 7º da LCP)|
+|Contravenção|Contravenção|Sim (art. 7º da LCP)|
+|Contravenção|Crime|**Não**: nenhuma lei prevê; pode haver maus antecedentes|
+
+::calc reinc|Simulador: é reincidente? E o que isso muda?
+
 ### Atenuantes
 São circunstâncias que **sempre atenuam a pena** (art. 65):
 - ser o agente **menor de 21 anos, na data do fato**, ou **maior de 70 anos, na data da sentença**, salvo se o crime envolver **violência sexual contra a mulher** (exceção incluída pela Lei 15.160/2025);
@@ -1323,8 +1337,32 @@ No concurso de causas de aumento ou de diminuição previstas na **parte especia
 
 > Exemplo completo de dosimetria: Carlos comete um furto simples (pena de 1 a 6 anos, desde a Lei 15.397/2026). **1ª fase:** as circunstâncias judiciais são neutras; pena-base de 1 ano. **2ª fase:** ele é reincidente (agravante), mas confessou (atenuante); as duas se compensam; a pena continua em 1 ano. Ainda que só houvesse a confissão, a pena não poderia descer abaixo de 1 ano (Súmula 231). **3ª fase:** o crime foi tentado; aplica-se a redução de 1/3 a 2/3 (art. 14, parágrafo único); com a redução de 1/2, a pena definitiva fica em 6 meses, abaixo do mínimo, o que é permitido nesta fase.
 
+::calc dosi|Simulador: calcule a pena nas três fases
+
 !! As três fases: **1ª** = art. 59, **dentro** dos limites; **2ª** = agravantes e atenuantes, **dentro** dos limites (Súmula 231); **3ª** = frações, **pode sair** dos limites.
 
+## A ordem de preponderância: cada fato pesa uma vez só
+::ilus balanca|O mesmo fato não entra duas vezes na balança.
+Muitas vezes **o mesmo fato** se encaixa em mais de uma categoria. O motivo torpe, por exemplo, é qualificadora do homicídio (art. 121, §2º, I) e também agravante genérica (art. 61, II, a). Usar o mesmo fato duas vezes para aumentar a pena seria punir duas vezes pela mesma coisa (_bis in idem_). Por isso, o fato é usado **uma única vez**, na categoria **mais forte** em que se encaixa. A ordem, da mais forte para a mais fraca, é esta:
+
+::piramide Ordem de preponderância|1º Elementar|2º Qualificadora|3º Causas de aumento e de diminuição|4º Agravantes e atenuantes|5º Circunstâncias judiciais
+
+1. **Elementar:** se o fato já faz parte do **tipo**, ele já está "pago" na pena prevista. A violência no roubo é elementar (art. 157, caput): o juiz não pode aumentar a pena-base só porque houve violência, salvo se ela for muito além do normal para o crime.
+2. **Qualificadora:** se o fato qualifica o crime, ele muda os limites da pena e não pode voltar como agravante. É o que o próprio art. 61 diz: as agravantes valem "**quando não constituem ou qualificam o crime**".
+3. **Causa de aumento ou de diminuição:** se o fato é majorante ou minorante, é usado na 3ª fase. Matar uma pessoa **maior de 60 anos** é causa de aumento do homicídio doloso (art. 121, §4º); por isso, a mesma idade não pode ser usada também como agravante (art. 61, II, h).
+4. **Agravante ou atenuante:** usada na 2ª fase, se o fato não foi usado antes.
+5. **Circunstância judicial:** é a categoria **residual** da 1ª fase. Só entra o que não coube em nenhuma das anteriores. Por isso a reincidência, que é agravante, não pode servir também como mau antecedente (Súmula 241 do STJ).
+
+> Atenção: não confunda a ordem de **preponderância** com a ordem de **cálculo**. No cálculo, o juiz parte do tipo (elementares ou qualificadora) e segue 1ª, 2ª e 3ª fases: circunstâncias judiciais, depois agravantes e atenuantes, depois causas de aumento e de diminuição. Na preponderância, depois da elementar e da qualificadora, a lista vem **de trás para a frente**: causas, agravantes, circunstâncias judiciais.
+
+> Exemplo: Paulo mata a vítima por **motivo torpe** e com emprego de **veneno**. As duas são qualificadoras do homicídio (art. 121, §2º, I e III). Segundo o STJ, **uma** delas qualifica o crime (pena de 12 a 30 anos) e a **outra** desce um degrau: como o veneno também está no rol das agravantes (art. 61, II, d), ele é usado na 2ª fase. Se a qualificadora que sobrou não estivesse no rol das agravantes, ela seria considerada na 1ª fase, como circunstância judicial. Em nenhum caso o mesmo fato é usado duas vezes.
+
+!! Preponderância = "**E-Q-C-A-J**": **E**lementar, **Q**ualificadora, **C**ausas de aumento e de diminuição, **A**gravantes e atenuantes, circunstâncias **J**udiciais. O fato fica na **primeira** categoria em que couber.
+
+?? O motivo torpe qualificou o homicídio. O juiz pode usá-lo de novo como agravante? | Não. O fato fica na categoria mais forte (a qualificadora); as agravantes só valem quando não constituem ou qualificam o crime (art. 61).
+?? Qual é a ordem de preponderância? | Elementar, qualificadora, causas de aumento e de diminuição, agravantes e atenuantes e, por último, circunstâncias judiciais.
+?? Homicídio com duas qualificadoras: o que acontece com a segunda? | Uma qualifica o crime; a outra é usada como agravante, se estiver no art. 61, ou, se não estiver, como circunstância judicial na 1ª fase (STJ).
+?? Quem tem condenação anterior por contravenção e comete um crime é reincidente? | Não. Nem o art. 63 do CP nem o art. 7º da LCP preveem essa combinação; pode haver maus antecedentes.
 ?? É possível usar uma ação penal em curso para aumentar a pena-base? | Não. A Súmula 444 do STJ veda a utilização de inquéritos e ações penais em curso para agravar a pena-base.
 ?? Uma atenuante pode levar a pena abaixo do mínimo legal? | Não, na 2ª fase (Súmula 231 do STJ). Só as causas de diminuição, na 3ª fase, permitem isso.
 ?? O agente comete um segundo crime antes do trânsito em julgado da condenação pelo primeiro. Ele é reincidente? | Não. A reincidência exige que o novo crime seja praticado depois do trânsito em julgado da condenação anterior (art. 63).
@@ -1507,6 +1545,8 @@ O que afasta a substituição é a reincidência **em crime doloso**, ou seja, *
 |Culposo|Culposo|Não|
 
 > Exemplo: lesão corporal culposa (transitada em julgado) e, depois, homicídio culposo no trânsito: o réu é reincidente, mas em crime **culposo**, e pode receber a substituição.
+
+> Lembre: no quadro, a professora escreveu assim, com **D** para doloso, **C** para culposo e **TJ** para trânsito em julgado. **D(TJ) + furto doloso = RD** (reincidente em crime doloso). **D(TJ) + D = RD**. **C(TJ) + D = R** (reincidente, mas não em crime doloso, então a substituição continua possível). E, se o furto vier depois de outro **furto**, além de RD ele é reincidente **específico**: aí nem o art. 44, §3º, permite a substituição.
 
 ### A exceção do reincidente (art. 44, §3º)
 Mesmo reincidente em crime doloso, o juiz **poderá** substituir se, em face da condenação anterior, a medida for **socialmente recomendável** e a reincidência **não** se tiver operado em virtude da prática do **mesmo crime** (a chamada reincidência **específica**).

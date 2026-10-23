@@ -1699,12 +1699,53 @@ function ilustra(nome,cor){if(estiloAtual()==="premium"){const corpo=ILU[nome];i
 function capaTela(ilu,tit,txt){return estiloAtual()==="premium"?`<div class="capa-tela"><div><b>${tit}</b><p>${txt}</p></div>${ilustra(ilu,"var(--p2)")}</div>`:""}
 /* estado vazio: ilustração, o que aconteceu e o próximo passo */
 function vazio(ilu,tit,txt,acoes,cor){return `<div class="vazio-ilu">${ilustra(ilu,cor||"var(--toga-txt)")}<p class="v-tit">${tit}</p>${txt?`<p class="v-txt">${txt}</p>`:""}${acoes?`<div class="vazio-acoes">${acoes}</div>`:""}</div>`}
-/* simuladores interativos das apostilas: ::calc prd (cabe a substituição?) e ::calc conv (conversão em prisão) */
+/* simuladores interativos das apostilas: ::calc prd (cabe a substituição?), ::calc conv (conversão em prisão),
+   ::calc dosi (dosimetria trifásica) e ::calc reinc (é reincidente?) */
 const CALC_DEF={
  prd:{a:2,m:0,d:0,tipo:"doloso",viol:"nao",reinc:"nao",circ:"sim"},
- conv:{pm:7,pd:0,cm:1,cd:0}};
+ conv:{pm:7,pd:0,cm:1,cd:0},
+ dosi:{mina:4,maxa:10,circ:2,ag:1,at:1,aum:"1/3",dim:"0"},
+ reinc:{ant:"doloso",quando:"depois",prazo:"ate5",novo:"doloso",mesmo:"nao"}};
+const FRACAO={"0":0,"1/6":1/6,"1/5":1/5,"1/4":1/4,"1/3":1/3,"1/2":1/2,"2/3":2/3};
+function calcDosimetria(v){
+ const min=Math.max(0,+v.mina||0)*360,max=Math.max(0,+v.maxa||0)*360;
+ if(!min||max<=min)return {ok:null,tit:"Informe a pena mínima e uma pena máxima maior que ela",it:[]};
+ const nc=Math.min(8,Math.max(0,Math.floor(+v.circ||0))),ag=Math.max(0,Math.floor(+v.ag||0)),at=Math.max(0,Math.floor(+v.at||0));
+ const base=Math.floor(min+nc*(max-min)/8),it=[];
+ it.push(`**Ponto de partida:** o tipo prevê de ${calcTempo(min)} a ${calcTempo(max)}. Se houvesse qualificadora, os limites já seriam outros.`);
+ it.push(nc?`**1ª fase (art. 59):** ${nc} circunstância${nc>1?"s desfavoráveis":" desfavorável"} × 1/8 do intervalo = pena-base de **${calcTempo(base)}**.`:`**1ª fase (art. 59):** nenhuma circunstância desfavorável, a pena-base fica no mínimo: **${calcTempo(base)}**.`);
+ const saldo=ag-at;let inter=Math.floor(base+saldo*base/6),trava="";
+ if(inter<min){inter=min;trava=" Mas a atenuante não leva a pena abaixo do mínimo (Súmula 231 do STJ): ela **para no mínimo**."}
+ if(inter>max){inter=max;trava=" Mas a agravante não leva a pena acima do máximo: ela **para no máximo**."}
+ const par=Math.min(ag,at),comp=par?(par>1?` ${par} agravantes e ${par} atenuantes se compensam (art. 67).`:" Uma agravante e uma atenuante se compensam (art. 67)."):"";
+ it.push(saldo?`**2ª fase (arts. 61 a 66):** ${ag} agravante${ag!==1?"s":""} e ${at} atenuante${at!==1?"s":""}.${comp} ${Math.abs(saldo)>1?"Sobram":"Sobra"} ${Math.abs(saldo)} ${saldo>0?"agravante":"atenuante"}${Math.abs(saldo)>1?"s":""} × 1/6 = pena intermediária de **${calcTempo(inter)}**.${trava}`
+  :`**2ª fase (arts. 61 a 66):** ${ag?(ag>1?`as ${ag} agravantes e as ${at} atenuantes se compensam (art. 67)`:"a agravante e a atenuante se compensam (art. 67)"):"sem agravantes ou atenuantes"}; a pena intermediária continua em **${calcTempo(inter)}**.`);
+ const fa=FRACAO[v.aum]||0,fd=FRACAO[v.dim]||0;let fim=inter;
+ if(fa)fim=Math.floor(fim+fim*fa);const aposAum=fim;
+ if(fd)fim=Math.floor(fim-fim*fd);
+ const passos=[];if(fa)passos.push(`aumento de ${v.aum} → ${calcTempo(aposAum)}`);if(fd)passos.push(`diminuição de ${v.dim} → ${calcTempo(fim)}`);
+ it.push(passos.length?`**3ª fase (causas de aumento e de diminuição):** ${passos.join("; ")}.${fim>max?" Passou do máximo do tipo, e **pode**: na 3ª fase os limites ficam para trás.":fim<min?" Ficou abaixo do mínimo do tipo, e **pode**: na 3ª fase os limites ficam para trás.":""}`:"**3ª fase:** sem causas de aumento ou de diminuição.");
+ it.push("As frações de dia são desprezadas (art. 11). As frações de 1/8 e de 1/6 são critérios da jurisprudência, não números da lei.");
+ return {ok:null,tit:`Pena definitiva: ${calcTempo(fim)}`,it}}
+function calcReincidencia(v){
+ const ant=v.ant,novo=v.novo,nome={doloso:"crime doloso",culposo:"crime culposo",contr:"contravenção"};
+ const base=`Condenação anterior por **${nome[ant]}**; novo fato: **${nome[novo]}**.`;
+ if(v.quando==="antes")return {ok:true,tit:"Não é reincidente",it:[base,"O novo fato foi praticado **antes** do trânsito em julgado da condenação anterior. A reincidência exige que o novo fato venha **depois** (art. 63).","Quando a condenação anterior transitar, ela poderá pesar como **maus antecedentes** na 1ª fase (art. 59)."]};
+ if(v.prazo==="mais5")return {ok:true,tit:"Não é reincidente",it:[base,"Entre o cumprimento ou a extinção da pena anterior e o novo fato passaram **mais de 5 anos**: é o **período depurador** (art. 64, I).","A condenação antiga ainda pode pesar como **maus antecedentes** (STF, Tema 150)."]};
+ if(ant==="contr"&&novo!=="contr")return {ok:true,tit:"Não é reincidente",it:[base,"Contravenção antes e **crime** depois não gera reincidência: o art. 63 do CP fala em crime anterior, e o art. 7º da LCP só trata da contravenção posterior.","A condenação anterior pode pesar como **maus antecedentes** (art. 59)."]};
+ const lei=novo==="contr"?"art. 7º da LCP":"art. 63 do CP";
+ if(ant==="doloso"&&novo==="doloso"){const esp=v.mesmo==="sim";
+  return {ok:false,tit:esp?"Reincidente em crime doloso, e específico":"Reincidente em crime doloso",it:[base,`Novo crime depois do trânsito em julgado e dentro de 5 anos: é **reincidente** (${lei}). Como os dois crimes são dolosos, é **reincidente em crime doloso** (dolo + dolo).`,
+   "**Na dosimetria:** a reincidência agrava a pena na 2ª fase (art. 61, I) e é circunstância preponderante (art. 67).",
+   esp?"**Na substituição:** em regra, impede (art. 44, II). E, por ser pelo **mesmo crime** (reincidência específica), nem a exceção do art. 44, §3º, salva: **não cabe** a restritiva.":"**Na substituição:** em regra, impede (art. 44, II). Mas como **não** é o mesmo crime, o juiz **pode** substituir se a medida for **socialmente recomendável** (art. 44, §3º).",
+   "**No sursis:** a reincidência em crime doloso impede a suspensão condicional da pena (art. 77, I)."]}}
+ return {ok:null,tit:"Reincidente, mas não em crime doloso",it:[base,`O novo fato veio depois do trânsito em julgado e dentro de 5 anos: é **reincidente** (${lei}).`,
+  "**Na dosimetria:** continua sendo agravante na 2ª fase (art. 61, I).",
+  novo==="contr"||ant==="contr"?"**Na substituição e no sursis:** não impede, porque não há dois crimes dolosos. Contravenção não é crime doloso (arts. 44, II, e 77, I).":"**Na substituição e no sursis:** não impede, porque só a reincidência em crime **doloso** (dolo + dolo) é obstáculo (arts. 44, II, e 77, I)."]}}
 function calcTempo(dias){const a=Math.floor(dias/360),m=Math.floor(dias%360/30),d=dias%30;const p=[];if(a)p.push(a+(a>1?" anos":" ano"));if(m)p.push(m+(m>1?" meses":" mês"));if(d)p.push(d+(d>1?" dias":" dia"));return p.length?p.join(" e ").replace(/ e (?=.* e )/,", "):"0 dia"}
 function calcResultado(tipo,v){
+ if(tipo==="dosi")return calcDosimetria(v);
+ if(tipo==="reinc")return calcReincidencia(v);
  if(tipo==="conv"){const pena=(+v.pm||0)*30+(+v.pd||0),cump=Math.min(pena,(+v.cm||0)*30+(+v.cd||0));
   if(!pena)return {ok:null,tit:"Informe a pena substituída",it:[]};
   const resto=pena-cump,final=Math.max(30,resto);
@@ -1735,6 +1776,16 @@ function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
   ${sel("viol","Com violência ou grave ameaça à pessoa?",[["nao","não"],["sim","sim"]])}
   ${sel("reinc","Reincidente em crime doloso?",[["nao","não"],["outro","sim, por outro crime, e a medida é socialmente recomendável"],["mesmo","sim, pelo mesmo crime"]])}
   ${sel("circ","Circunstâncias judiciais favoráveis?",[["sim","sim"],["nao","não"]])}`
+  :tipo==="dosi"?`<p class="calc-rot">Pena prevista no tipo (em anos)</p><div class="calc-l3">${num("mina","Mínima",30)}${num("maxa","Máxima",40)}</div>
+  ${num("circ","Circunstâncias judiciais desfavoráveis (0 a 8)",8)}
+  <div class="calc-l3">${num("ag","Agravantes",9)}${num("at","Atenuantes",9)}</div>
+  ${sel("aum","Causa de aumento",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}
+  ${sel("dim","Causa de diminuição",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}`
+  :tipo==="reinc"?`${sel("ant","Condenação anterior, transitada em julgado, por",[["doloso","crime doloso"],["culposo","crime culposo"],["contr","contravenção penal"]])}
+  ${sel("quando","O novo fato foi praticado",[["depois","depois do trânsito em julgado"],["antes","antes do trânsito em julgado"]])}
+  ${sel("prazo","Do fim da pena anterior até o novo fato",[["ate5","até 5 anos"],["mais5","mais de 5 anos"]])}
+  ${sel("novo","O novo fato é",[["doloso","crime doloso"],["culposo","crime culposo"],["contr","contravenção penal"]])}
+  ${sel("mesmo","É o mesmo crime da condenação anterior?",[["nao","não"],["sim","sim"]])}`
   :`<p class="calc-rot">Pena substituída</p><div class="calc-l3">${num("pm","Meses",120)}${num("pd","Dias",29)}</div><p class="calc-rot">Tempo já cumprido da restritiva</p><div class="calc-l3">${num("cm","Meses",120)}${num("cd","Dias",29)}</div>`;
  return `<figure class="fig calc" data-calc="${tipo}"><figcaption>${ic("alvo")}${inl(tit)}</figcaption><p class="calc-dica">Mude os dados e veja a resposta mudar na hora.</p><div class="calc-in">${campos}</div>${calcSaida(tipo,v)}</figure>`}
 function calcAtualiza(f){const v={};f.querySelectorAll("[data-c]").forEach(el=>v[el.dataset.c]=el.value);
