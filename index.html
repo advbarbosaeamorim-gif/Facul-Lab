@@ -1818,6 +1818,156 @@ html[data-anim="on"] .dh-banner{animation:dh-entra .6s cubic-bezier(.2,1.3,.4,1)
 .dh-abre{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:#f6c453;color:#3a2a00;letter-spacing:.02em;text-transform:none;padding:12px}
 .dh-abre .i{width:18px;height:18px}
 .dh-some{display:block;text-align:center;font-size:.74rem;color:var(--muted);margin-top:8px}
+/* chacoalhadas da semana */
+.sc-turno{display:block;margin:8px 0 0;font-size:.76rem;font-weight:700;color:var(--muted)}
+.sc-turno .i{width:14px;height:14px;vertical-align:-2px}
+.sc-palco{max-width:270px;margin:6px auto 0}
+.sc-svg{display:block;width:100%;height:auto;overflow:visible}
+.sc-svg text{font-family:var(--f-body);text-anchor:middle;font-weight:800}
+.sc-info{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+.sc-sombra{fill:#0000001f}
+html[data-anim="on"] .ovo-saco .sc-palco{animation:sc-treme .5s ease-out}
+@keyframes sc-treme{15%{transform:translateX(-8px) rotate(-2deg)}30%{transform:translateX(7px) rotate(2deg)}45%{transform:translateX(-5px)}60%{transform:translateX(4px)}75%{transform:translateX(-2px)}}
+#sc-aviso{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:8px;max-width:min(92vw,380px);padding:10px 16px;border-radius:999px;background:var(--fg);color:var(--bg);font-size:.84rem;font-weight:600;box-shadow:0 10px 24px -10px #0008}
+#sc-aviso .i{flex:none;width:18px;height:18px}
+html[data-anim="on"] #sc-aviso{animation:sc-aviso .4s cubic-bezier(.2,1.4,.4,1)}
+#sc-aviso.sai{opacity:0;transition:opacity .4s}
+@keyframes sc-aviso{0%{transform:translate(-50%,30px);opacity:0}100%{transform:translateX(-50%);opacity:1}}
+/* dados */
+.sc-dado rect{fill:#fff;stroke:#c9ccd6;stroke-width:2}.sc-dado circle{fill:#1b1f2a}
+.sc-d2{transform-box:fill-box;transform-origin:center;transform:rotate(14deg)}
+.sc-latim{fill:var(--muted);font-size:13px;font-style:italic;font-weight:700!important}
+html[data-anim="on"] .sc-dado{transform-box:fill-box;transform-origin:center}
+html[data-anim="on"] .sc-d1{animation:sc-rola1 1s .1s cubic-bezier(.25,.9,.35,1.1) both}
+html[data-anim="on"] .sc-d2{animation:sc-rola2 1.1s .2s cubic-bezier(.25,.9,.35,1.1) both}
+html[data-anim="on"] .sc-latim{animation:dh-aparece .5s 1.2s both}
+@keyframes sc-rola1{0%{transform:translate(-130px,-50px) rotate(-620deg)}60%{transform:translate(0,-12px) rotate(-20deg)}80%{transform:translate(0,0) rotate(6deg)}100%{transform:none}}
+@keyframes sc-rola2{0%{transform:translate(120px,-60px) rotate(560deg)}60%{transform:translate(0,-14px) rotate(30deg)}80%{transform:rotate(10deg)}100%{transform:rotate(14deg)}}
+/* urna */
+.sc-urna-c{fill:#d9dce3;stroke:#a9aebb;stroke-width:2}.sc-tela{fill:#e9f4ff;stroke:#7d8596;stroke-width:1.5}.sc-urna-p{fill:#c3c7d1}
+.sc-tec{fill:#2b2f38}.sc-conf{fill:#2fa84f}.sc-conf-t{fill:#fff;font-size:6.5px}
+.sc-fim{fill:#1b1f2a;font-size:22px;opacity:1}
+html[data-anim="on"] .sc-fim{animation:sc-fim .4s 1.4s both}
+html[data-anim="on"] .sc-tec{animation:sc-tecla .25s calc(var(--k)*.07s + .2s) both}
+html[data-anim="on"] .sc-conf{animation:sc-conf .5s 1.1s both}
+@keyframes sc-fim{0%{opacity:0;transform:scale(.6)}100%{opacity:1}}
+.sc-fim{transform-box:fill-box;transform-origin:center}
+@keyframes sc-tecla{50%{fill:#f2b632}}
+@keyframes sc-conf{50%{fill:#7be38f}}
+/* cofrinho */
+.sc-pele{fill:#f4a6b8}.sc-focinho{fill:#ec8ea4}.sc-olho,.sc-olho2{fill:#5a2a36}.sc-fenda{fill:#5a2a36}
+.sc-moeda circle{fill:#f2b632;stroke:#c98a12;stroke-width:2}.sc-moeda text{fill:#8a5a00;font-size:9px}
+.sc-moeda{opacity:0}
+html[data-anim="on"] .sc-moeda{animation:sc-cai 1s calc(var(--k)*.5s + .2s) cubic-bezier(.5,0,.8,.6) both}
+html:not([data-anim="on"]) .sc-moeda:first-of-type{opacity:1}
+@keyframes sc-cai{0%{opacity:1;transform:translateY(-30px)}70%{opacity:1;transform:translateY(26px)}100%{opacity:0;transform:translateY(30px)}}
+html[data-anim="on"] .sc-porco{transform-box:fill-box;transform-origin:50% 100%;animation:sc-pula .3s 1s,sc-pula .3s 1.5s,sc-pula .3s 2s}
+@keyframes sc-pula{50%{transform:scaleY(.94)}}
+/* árvore */
+.sc-grama{fill:#7cc57f}.sc-tronco{fill:#8a5a2b}.sc-folha{fill:#3f9a52}.sc-folha2{fill:#4fb062}
+.sc-cerca path{stroke:#c08a52;stroke-width:4;stroke-linecap:round}
+.sc-placa{fill:var(--muted);font-size:9px}
+.sc-fruta{fill:#e94b3c}
+.sc-copa{transform-box:view-box;transform-origin:72px 130px}
+html[data-anim="on"] .sc-copa{animation:sc-sacode .9s ease-in-out}
+@keyframes sc-sacode{20%{transform:rotate(-5deg)}40%{transform:rotate(5deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+.sc-fruta{transform:translate(calc(70px + var(--k)*14px),64px)}
+html[data-anim="on"] .sc-fruta{animation:sc-fruta 1.2s calc(var(--k)*.2s + .5s) cubic-bezier(.4,0,.6,1) both}
+@keyframes sc-fruta{0%{transform:none}55%{transform:translate(calc(40px + var(--k)*8px),64px)}75%{transform:translate(calc(60px + var(--k)*12px),58px)}100%{transform:translate(calc(70px + var(--k)*14px),64px)}}
+/* globo de neve */
+.sc-bola{fill:#dff1ff;stroke:#a9cbe6;stroke-width:3}.sc-chao{fill:#fff}.sc-stf path,.sc-stf rect{fill:#fff;stroke:#5a6478;stroke-width:1.6}
+.sc-pe{fill:#8a5a2b}.sc-brilho-v{stroke:#fff;stroke-width:4;stroke-linecap:round;fill:none;opacity:.8}
+.sc-floco{fill:#fff;stroke:#b9d6ee;stroke-width:.6;transform:translate(var(--x),calc(30px + var(--k)*5px))}
+html[data-anim="on"] .sc-floco{animation:sc-neve 3s calc(var(--k)*-.21s) linear infinite}
+@keyframes sc-neve{0%{transform:translate(var(--x),18px)}100%{transform:translate(calc(var(--x) + 8px),118px)}}
+html[data-anim="on"] .sc-c-globo .sc-palco{animation:sc-treme .8s ease-out}
+/* garrafa */
+.sc-sol{fill:#f6c453}.sc-vidro-g{fill:#7fd1c0aa;stroke:#3a9d8a;stroke-width:2}.sc-rolha{fill:#a8733e}.sc-papel{fill:#fff7dc;stroke:#c9b27a}
+.sc-onda{fill:#4aa3df}.sc-o2{fill:#2e86de}
+.sc-garrafa{transform-box:view-box;transform-origin:110px 100px}
+html[data-anim="on"] .sc-garrafa{animation:sc-boia 2.4s ease-in-out infinite}
+html[data-anim="on"] .sc-o1{animation:sc-onda 3s linear infinite}html[data-anim="on"] .sc-o2{animation:sc-onda 2.2s linear infinite reverse}
+@keyframes sc-boia{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(8px) rotate(-6deg)}}
+@keyframes sc-onda{0%{transform:translateX(0)}100%{transform:translateX(40px)}}
+/* moeda */
+.sc-moeda-f{fill:#f2b632;stroke:#c98a12;stroke-width:3}.sc-moeda-a{fill:none;stroke:#c98a12;stroke-width:1.5}.sc-moeda-t{fill:#8a5a00;font-size:15px}
+.sc-cc{fill:var(--muted);font-size:12px}
+.sc-gira{transform-box:fill-box;transform-origin:center}
+html[data-anim="on"] .sc-voo{animation:sc-voo 1.3s .1s cubic-bezier(.3,0,.7,1) both}
+html[data-anim="on"] .sc-gira{animation:sc-gira .2s linear 6 .1s}
+html[data-anim="on"] .sc-sombra-m{transform-box:fill-box;transform-origin:center;animation:sc-sombra 1.3s .1s both}
+@keyframes sc-voo{0%{transform:translateY(40px)}50%{transform:translateY(-36px)}85%{transform:translateY(42px)}100%{transform:translateY(34px)}}
+@keyframes sc-gira{0%{transform:scaleY(1)}50%{transform:scaleY(.08)}100%{transform:scaleY(1)}}
+@keyframes sc-sombra{50%{transform:scale(.5);opacity:.4}}
+.sc-voo{transform:translateY(34px)}
+/* sino */
+.sc-cabo{fill:#8a5a2b}.sc-sino-c{fill:#f2b632;stroke:#c98a12;stroke-width:2}.sc-borda{fill:#e0a020}.sc-badalo{fill:#8a5a00}
+.sc-ondas path{stroke:var(--lacre);stroke-width:3;stroke-linecap:round;fill:none;opacity:0}
+.sc-sino-g{transform-box:view-box;transform-origin:110px 18px}
+html[data-anim="on"] .sc-sino-g{animation:sc-badala 1.4s ease-in-out}
+html[data-anim="on"] .sc-ondas path{animation:sc-ondas .45s ease-out 3}
+@keyframes sc-badala{15%{transform:rotate(18deg)}35%{transform:rotate(-16deg)}55%{transform:rotate(12deg)}75%{transform:rotate(-7deg)}90%{transform:rotate(3deg)}}
+@keyframes sc-ondas{0%{opacity:1}100%{opacity:0}}
+html:not([data-anim="on"]) .sc-ondas path{opacity:.8}
+/* bússola */
+.sc-bus-a{fill:#c98a12}.sc-bus-f{fill:#fffdf6;stroke:#e0c48a;stroke-width:2}.sc-pt{fill:#5a6478;font-size:11px}
+.sc-ag-n{fill:#e94b3c}.sc-ag-s{fill:#9aa3b5}.sc-pino{fill:#1b1f2a}
+.sc-agulha{transform-box:view-box;transform-origin:96px 76px;transform:rotate(62deg)}
+html[data-anim="on"] .sc-agulha{animation:sc-agulha 1.8s cubic-bezier(.2,.8,.3,1.15) both}
+@keyframes sc-agulha{0%{transform:rotate(0)}70%{transform:rotate(780deg)}100%{transform:rotate(782deg)}}
+.sc-casa path{fill:var(--toga)}[data-estilo="premium"] .sc-casa path{fill:var(--p1)}.sc-porta{fill:#fff}.sc-casa text{fill:var(--fg);font-size:12px}
+html[data-anim="on"] .sc-casa{animation:dh-aparece .4s 1.5s both}
+/* ampulheta */
+.sc-amp-t{fill:#8a5a2b}.sc-vidro-a{fill:#eef6ff88;stroke:#9ab4cc;stroke-width:2}.sc-areia-c,.sc-areia-b{fill:#e8b65a}.sc-fio-a{stroke:#e8b65a;stroke-width:2;stroke-dasharray:3 3}
+.sc-anos{fill:var(--toga-txt);font-size:22px}.sc-anos3{fill:var(--erro)}.sc-anos-s{fill:var(--muted);font-size:9px}
+[data-estilo="premium"] .sc-anos:not(.sc-anos3){fill:var(--p1)}
+.sc-amp{transform-box:view-box;transform-origin:110px 75px}
+.sc-areia-c{transform-box:fill-box;transform-origin:50% 100%}.sc-areia-b{transform-box:fill-box;transform-origin:50% 100%}
+html[data-anim="on"] .sc-amp{animation:sc-vira .7s cubic-bezier(.3,1.3,.5,1) both}
+html[data-anim="on"] .sc-areia-c{animation:sc-esvazia 4s .7s linear both}
+html[data-anim="on"] .sc-areia-b{animation:sc-enche 4s .7s linear both}
+html[data-anim="on"] .sc-fio-a{animation:sc-fio .3s .7s linear infinite}
+@keyframes sc-vira{0%{transform:rotate(180deg)}100%{transform:none}}
+@keyframes sc-esvazia{0%{transform:scaleY(1)}100%{transform:scaleY(.1)}}
+@keyframes sc-enche{0%{transform:scaleY(.15)}100%{transform:scaleY(1)}}
+@keyframes sc-fio{100%{stroke-dashoffset:-6}}
+/* assinaturas */
+.sc-prancha{fill:#a8733e}.sc-clip{fill:#9aa3b5}.sc-folha-p{fill:#fffdf6}.sc-tit-p{fill:#5a6478;font-size:8px}
+.sc-linha-p{stroke:#d8cfb8;stroke-width:1.2}.sc-ass{stroke:#2e5fb8;stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:100}
+html[data-anim="on"] .sc-ass{stroke-dashoffset:100;animation:sc-assina .5s calc(var(--k)*.35s + .2s) ease-out forwards}
+@keyframes sc-assina{100%{stroke-dashoffset:0}}
+.sc-selo-p circle{fill:none;stroke:var(--erro);stroke-width:3}.sc-selo-p text{fill:var(--erro);font-size:13px}
+.sc-selo-p{transform-box:fill-box;transform-origin:center;transform:rotate(-14deg)}
+html[data-anim="on"] .sc-selo-p{animation:sc-carimba .4s 1.6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes sc-carimba{0%{transform:rotate(-14deg) scale(2.4);opacity:0}100%{transform:rotate(-14deg) scale(1);opacity:1}}
+/* cubo */
+.sc-cubo-b{fill:#1b1f2a}.sc-peca{fill:var(--c1)}.sc-pod{fill:var(--muted);font-size:9px}
+.sc-cubo-g{transform-box:view-box;transform-origin:110px 62px}
+html[data-anim="on"] .sc-cubo-g{animation:sc-cubo 1.2s ease-in-out}
+html[data-anim="on"] .sc-peca{animation:sc-cor 1.4s calc(var(--k)*.05s) steps(1) both}
+@keyframes sc-cubo{25%{transform:rotate(-12deg)}50%{transform:rotate(10deg)}75%{transform:rotate(-5deg)}}
+@keyframes sc-cor{0%{fill:var(--c0)}20%{fill:var(--c1)}40%{fill:var(--c0)}70%{fill:var(--c1)}100%{fill:var(--c1)}}
+/* algemas */
+.sc-alg circle{fill:none;stroke:#8a8f99;stroke-width:8}.sc-alg-t{fill:#6b707a}.sc-corrente circle{fill:none;stroke:#8a8f99;stroke-width:3}
+.sc-clac{fill:var(--erro);font-size:20px;letter-spacing:.06em}
+.sc-alg-e{transform:translateX(-26px) rotate(-18deg)}.sc-alg-d{transform:translateX(26px) rotate(18deg)}
+.sc-alg-e,.sc-alg-d{transform-box:fill-box;transform-origin:center;transform:none}
+html[data-anim="on"] .sc-alg-e{animation:sc-alg-e .6s .2s cubic-bezier(.5,0,.3,1.6) both}
+html[data-anim="on"] .sc-alg-d{animation:sc-alg-d .6s .2s cubic-bezier(.5,0,.3,1.6) both}
+html[data-anim="on"] .sc-clac{transform-box:fill-box;transform-origin:center;animation:sc-carimba2 .4s .75s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes sc-alg-e{0%{transform:translateX(-30px) rotate(-30deg)}100%{transform:none}}
+@keyframes sc-alg-d{0%{transform:translateX(30px) rotate(30deg)}100%{transform:none}}
+@keyframes sc-carimba2{0%{transform:scale(2.4);opacity:0}100%{transform:scale(1);opacity:1}}
+/* maracas */
+.sc-mar-cabo{fill:#8a5a2b}.sc-mc1{fill:#e94b3c}.sc-mc2{fill:#3bb273}.sc-mar-faixa{stroke:#f6c453;stroke-width:5;fill:none;stroke-linecap:round}
+.sc-nota{fill:var(--toga-txt);font-size:20px;opacity:0}[data-estilo="premium"] .sc-nota{fill:var(--p1)}
+.sc-mar-e{transform-box:view-box;transform-origin:75px 130px}.sc-mar-d{transform-box:view-box;transform-origin:145px 130px}
+html[data-anim="on"] .sc-mar-e{animation:sc-chacoalha .36s ease-in-out 5}
+html[data-anim="on"] .sc-mar-d{animation:sc-chacoalha .36s .18s ease-in-out 5 reverse}
+html[data-anim="on"] .sc-nota{animation:sc-nota 1.8s calc(var(--k)*.4s + .2s) ease-out infinite}
+html:not([data-anim="on"]) .sc-nota{opacity:1}
+@keyframes sc-chacoalha{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+@keyframes sc-nota{0%{opacity:0;transform:translateY(20px)}30%{opacity:1}100%{opacity:0;transform:translateY(-40px)}}
 </style>
 
 <div class="app" id="app"></div>
@@ -4146,7 +4296,8 @@ const OVOS=[
  {id:"brocardo",ic:"livro",nome:"Brocardo secreto",dica:"A ilustração do Hoje fala latim quando recebe muitos toques rápidos."},
  {id:"martelo",ic:"martelo",nome:"Ordem no tribunal",dica:"Segure o dedo no título de qualquer tela."},
  {id:"chama",ic:"chama",nome:"Chama da Justiça",dica:"Atice a chama da ofensiva cinco vezes seguidas."},
- {id:"habeas",ic:"escudo",nome:"Habeas corpus",dica:"Chacoalhe o celular. No computador, digite habeas."},
+ {id:"sacode",ic:"relogio",nome:"Chacoalhadas da semana",dica:"Chacoalhe o celular. Cada meio dia tem uma cena diferente."},
+ {id:"habeas",ic:"escudo",nome:"Habeas corpus",dica:"Descubra as 14 chacoalhadas da semana para libertar a pombinha. No computador, digite habeas."},
  {id:"coruja",ic:"lua",nome:"Coruja da madrugada",dica:"Abra o Hoje entre meia-noite e cinco da manhã."},
  {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app numa data marcante do Direito ou da história do Brasil, como 15 de novembro."},
  {id:"fundo",ic:"pasta",nome:"Fim dos autos",dica:"Chegou ao fim de uma tela? Continue puxando para cima, com vontade."}
@@ -4306,7 +4457,7 @@ const OVO_ABRE={balanca:ovoBalanca,brocardo:ovoBrocardo,martelo:ovoMartelo,chama
 /* lista em Sobre o Facul Lab: os achados podem ser revistos; os outros mostram só a dica */
 function ovosSecao(){const n=ovosAchados();
  return `<section class="sb-bloco ovo-lista"><h3>${ic("estrela")} Segredos do Facul Lab <small>${n} de ${OVOS.length}</small></h3><p>${n===OVOS.length?"Você achou todos! Toque em um segredo para rever.":n?"Ainda há segredos escondidos pelo app. As dicas estão abaixo.":"O app esconde alguns segredos interativos. Siga as dicas para encontrar."}</p>
- <ul>${OVOS.map(o=>{const ach=(S.ovos||{})[o.id];return ach?`<li><button class="ovo-item ach" data-ovo="rever" data-id="${o.id}"><span class="sb-ic">${ic(o.ic)}</span><span><b>${esc(o.nome)}</b><small>Encontrado · toque para rever</small></span></button></li>`:`<li><div class="ovo-item"><span class="sb-ic">?</span><span><b>???</b><small>${esc(o.dica)}</small></span></div></li>`}).join("")}</ul></section>`}
+ <ul>${OVOS.map(o=>{const ach=(S.ovos||{})[o.id];return ach?`<li><button class="ovo-item ach" data-ovo="rever" data-id="${o.id}"><span class="sb-ic">${ic(o.ic)}</span><span><b>${esc(o.nome)}</b><small>${o.id==="sacode"?`${sacoN()} de ${SACO.length} cenas · toque para rever`:"Encontrado · toque para rever"}</small></span></button></li>`:`<li><div class="ovo-item"><span class="sb-ic">?</span><span><b>???</b><small>${esc(o.dica)}</small></span></div></li>`}).join("")}</ul></section>`}
 
 /* ações dentro das cenas e gatilhos por toque */
 const ovoToques={};
@@ -4323,6 +4474,7 @@ document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
   else if(a==="mart-bate"){ovoReanima(c.querySelector(".om-palco"),"bate");ovoSomDepois("martelo",animOn()?600:30)}
   else if(a==="fundo-carimba"){ovoReanima(c.querySelector(".of-palco"),"bate");ovoSomDepois("carimbo",animOn()?420:30)}
   else if(a==="hc-solta"){ovoReanima(c.querySelector(".oh-palco"),"solta");ovoSomDepois("pomba",animOn()?650:30)}
+  else if(a==="saco-pomba")ovoHabeas();
   else if(a==="rever"&&OVO_ABRE[b.dataset.id])OVO_ABRE[b.dataset.id](true);
   else if(a==="coruja")ovoCoruja();
   else if(a==="data")ovoData();
@@ -4340,15 +4492,99 @@ document.addEventListener("pointerdown",e=>{const h=e.target.closest&&e.target.c
 document.addEventListener("pointermove",e=>{if(tOvoSeg&&ovoSegXY&&Math.hypot(e.clientX-ovoSegXY[0],e.clientY-ovoSegXY[1])>12)ovoSoltou()});
 ["pointerup","pointercancel","scroll"].forEach(ev=>document.addEventListener(ev,()=>{if(tOvoSeg)ovoSoltou()},true));
 document.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest(".topo h1"))e.preventDefault()});
+/* 9. Chacoalhadas da semana: chacoalhar o celular abre uma cena; cada meio dia (0h-12h e 12h-24h) tem a sua,
+   e ela pode ser chamada no máximo 2 vezes no turno. São 14 cenas, uma por turno: a semana fecha o ciclo e ele recomeça.
+   Quem descobre as 14 liberta a pombinha do habeas corpus. As cenas vistas ficam em S.sacode ({índice: dia}). */
+const SACO=[
+ {id:"dados",nome:"A sorte está lançada",som:"sc-dados",frase:"Os dados rolaram. Em alguns contratos, a sorte faz parte do negócio.",
+  licao:"No contrato aleatório, uma das partes assume o risco de a coisa nem chegar a existir. Quem compra a safra futura paga o preço combinado mesmo que nada seja colhido, desde que o vendedor não tenha agido com dolo ou culpa.",ref:"Arts. 458 a 461 do Código Civil",
+  svg:`<ellipse class="sc-sombra" cx="110" cy="128" rx="70" ry="7"/><g class="sc-dado sc-d1"><rect x="56" y="74" width="46" height="46" rx="10"/><circle cx="68" cy="86" r="4.2"/><circle cx="90" cy="86" r="4.2"/><circle cx="79" cy="97" r="4.2"/><circle cx="68" cy="108" r="4.2"/><circle cx="90" cy="108" r="4.2"/></g><g class="sc-dado sc-d2"><rect x="118" y="80" width="42" height="42" rx="9"/><circle cx="129" cy="91" r="4"/><circle cx="139" cy="101" r="4"/><circle cx="149" cy="111" r="4"/></g><text class="sc-latim" x="110" y="40">alea iacta est</text>`},
+ {id:"urna",nome:"Voto confirmado",som:"sc-urna",frase:"Piii! A urna confirmou o seu voto.",
+  licao:"O voto é direto, secreto, universal e periódico, e nem emenda constitucional pode mudar isso. É obrigatório dos 18 aos 70 anos e facultativo para quem tem 16 ou 17, para quem tem mais de 70 e para os analfabetos.",ref:"Art. 14, § 1º, e art. 60, § 4º, II, da CF",
+  svg:`<rect class="sc-urna-c" x="40" y="34" width="140" height="94" rx="10"/><rect class="sc-tela" x="52" y="46" width="62" height="44" rx="4"/><text class="sc-fim" x="83" y="75">FIM</text><g class="sc-teclas">${[0,1,2,3].map(r=>[0,1,2].map(c=>`<rect class="sc-tec" style="--k:${r*3+c}" x="${126+c*16}" y="${46+r*13}" width="12" height="9" rx="2"/>`).join("")).join("")}</g><rect class="sc-conf" x="126" y="100" width="44" height="14" rx="3"/><text class="sc-conf-t" x="148" y="110">CONFIRMA</text><rect class="sc-urna-p" x="52" y="98" width="62" height="18" rx="3"/>`},
+ {id:"cofre",nome:"Cofrinho do Fisco",som:"sc-moedas",frase:"Plim, plim! Cada moedinha que cai lembra um tributo.",
+  licao:"Tributo é prestação em dinheiro, obrigatória, criada por lei, cobrada por atividade administrativa vinculada e que não é castigo por ato ilícito. Por isso a multa não é tributo: ela é sanção.",ref:"Art. 3º do CTN",
+  svg:`<ellipse class="sc-sombra" cx="112" cy="132" rx="58" ry="6"/><g class="sc-porco"><rect class="sc-pele" x="72" y="112" width="12" height="18" rx="4"/><rect class="sc-pele" x="132" y="112" width="12" height="18" rx="4"/><ellipse class="sc-pele" cx="110" cy="96" rx="50" ry="34"/><path class="sc-pele" d="M84 70l-6-16 18 10z"/><ellipse class="sc-focinho" cx="158" cy="98" rx="10" ry="12"/><circle cx="156" cy="94" r="2" class="sc-olho2"/><circle cx="156" cy="102" r="2" class="sc-olho2"/><circle cx="140" cy="84" r="3.4" class="sc-olho"/><rect class="sc-fenda" x="98" y="63" width="26" height="5" rx="2.5"/></g>${[0,1,2].map(i=>`<g class="sc-moeda" style="--k:${i}"><circle cx="111" cy="40" r="11"/><text x="111" y="44">R$</text></g>`).join("")}`},
+ {id:"arvore",nome:"Frutos do vizinho",som:"sc-arvore",frase:"A árvore balançou e as frutas caíram do outro lado da cerca. De quem são?",
+  licao:"Os frutos caídos da árvore do vizinho pertencem ao dono do terreno onde caíram, se for propriedade particular. E galhos e raízes que invadem o seu terreno podem ser cortados por você, até a linha da divisa.",ref:"Arts. 1.283 e 1.284 do Código Civil",
+  svg:`<path class="sc-grama" d="M10 128h200v16H10z"/><g class="sc-cerca"><path d="M134 92v40M150 92v40M166 92v40M182 92v40M198 92v40M128 104h76M128 120h76"/></g><text class="sc-placa" x="72" y="142">seu vizinho</text><text class="sc-placa" x="166" y="142">você</text><g class="sc-copa"><rect x="66" y="64" width="12" height="66" rx="4" class="sc-tronco"/><circle cx="72" cy="52" r="34" class="sc-folha"/><circle cx="104" cy="60" r="22" class="sc-folha2"/><circle cx="46" cy="62" r="20" class="sc-folha2"/></g>${[[96,58,0],[110,66,1],[84,44,2]].map(([x,y,i])=>`<circle class="sc-fruta" style="--k:${i}" cx="${x}" cy="${y}" r="6"/>`).join("")}`},
+ {id:"globo",nome:"Neve no Supremo",som:"sc-neve",frase:"Uma nevasca de ideias sobre o STF.",
+  licao:"O STF tem 11 ministros, brasileiros natos com mais de 35 e menos de 70 anos, de notável saber jurídico e reputação ilibada. O Presidente da República os nomeia depois que o Senado aprova a escolha por maioria absoluta.",ref:"Art. 101 e art. 12, § 3º, IV, da CF",
+  svg:`<defs><clipPath id="sc-vidro"><circle cx="110" cy="70" r="52"/></clipPath></defs><circle class="sc-bola" cx="110" cy="70" r="52"/><g clip-path="url(#sc-vidro)"><path class="sc-chao" d="M50 100q60-12 120 0v30H50z"/><g class="sc-stf"><path d="M76 72h68l-34-16z"/><rect x="78" y="72" width="64" height="4"/><path d="M83 78v18M93 78v18M103 78v18M117 78v18M127 78v18M137 78v18"/><rect x="74" y="96" width="72" height="5"/></g>${Array.from({length:14},(_,i)=>`<circle class="sc-floco" style="--k:${i};--x:${62+((i*37)%96)}px" cx="0" cy="0" r="${1.6+(i%3)*.7}"/>`).join("")}</g><path class="sc-brilho-v" d="M80 36q-12 14-12 32"/><path class="sc-pe" d="M70 118h80l-8 18H78z"/>`},
+ {id:"garrafa",nome:"Mensagem na garrafa",som:"sc-mar",frase:"Uma garrafa chegou à praia. Achou, é seu? Nem sempre!",
+  licao:"Quem acha coisa alheia perdida deve devolvê-la ao dono. Quem devolve tem direito a recompensa de pelo menos 5% do valor da coisa, mais as despesas que teve para conservá-la e transportá-la.",ref:"Arts. 1.233 e 1.234 do Código Civil",
+  svg:`<circle class="sc-sol" cx="176" cy="30" r="14"/><g class="sc-garrafa"><path class="sc-vidro-g" d="M78 86l52-30 10 4 10-6 6 10-8 6v10l-50 30a14 14 0 0 1-20-24z"/><path class="sc-rolha" d="M150 54l6 10 6-4-6-10z"/><rect class="sc-papel" x="92" y="84" width="34" height="14" rx="3" transform="rotate(-30 109 91)"/></g><path class="sc-onda sc-o1" d="M-20 110q20-10 40 0t40 0 40 0 40 0 40 0 40 0 40 0v40H-20z"/><path class="sc-onda sc-o2" d="M-40 122q20-10 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0v40H-40z"/>`},
+ {id:"moeda",nome:"Cara ou coroa",som:"sc-giro",frase:"A moeda girou no ar. Mas aposta não vira dívida na Justiça.",
+  licao:"Dívida de jogo ou de aposta não obriga a pagar: quem perde não pode ser cobrado em juízo. Mas quem pagou por vontade própria também não pode pedir o dinheiro de volta, salvo se houve dolo ou se quem perdeu é menor ou interdito.",ref:"Art. 814 do Código Civil",
+  svg:`<ellipse class="sc-sombra sc-sombra-m" cx="110" cy="130" rx="26" ry="5"/><g class="sc-voo"><g class="sc-gira"><circle class="sc-moeda-f" cx="110" cy="70" r="26"/><circle class="sc-moeda-a" cx="110" cy="70" r="20"/><text class="sc-moeda-t" x="110" y="77">R$1</text></g></g><text class="sc-cc sc-cara" x="44" y="80">cara?</text><text class="sc-cc sc-coroa" x="176" y="80">coroa?</text>`},
+ {id:"sino",nome:"Sineta do plenário",som:"sc-sino",frase:"Dlem, dlem! A sessão vai começar a votação.",
+  licao:"Lei ordinária é aprovada por maioria simples, presente a maioria absoluta dos membros da Casa. Lei complementar exige maioria absoluta. Emenda à Constituição precisa de três quintos dos votos, em dois turnos, em cada Casa do Congresso.",ref:"Arts. 47, 69 e 60, § 2º, da CF",
+  svg:`<g class="sc-ondas"><path d="M52 60q-10 14 0 28M40 52q-18 22 0 44M168 60q10 14 0 28M180 52q18 22 0 44"/></g><g class="sc-sino-g"><rect class="sc-cabo" x="104" y="14" width="12" height="22" rx="4"/><path class="sc-sino-c" d="M110 34c-22 0-32 18-32 40 0 14-6 22-12 28h88c-6-6-12-14-12-28 0-22-10-40-32-40z"/><rect class="sc-borda" x="62" y="100" width="96" height="8" rx="4"/><circle class="sc-badalo" cx="110" cy="114" r="7"/></g>`},
+ {id:"bussola",nome:"Para onde vai a ação?",som:"sc-bussola",frase:"A bússola girou e apontou para a casa do réu.",
+  licao:"Regra geral, a ação fundada em direito pessoal ou em direito real sobre bens móveis é proposta no foro do domicílio do réu. Se ele tiver mais de um domicílio, pode ser demandado em qualquer deles.",ref:"Art. 46 do CPC",
+  svg:`<circle class="sc-bus-a" cx="96" cy="76" r="52"/><circle class="sc-bus-f" cx="96" cy="76" r="44"/><text class="sc-pt" x="96" y="44">N</text><text class="sc-pt" x="96" y="116">S</text><text class="sc-pt" x="60" y="80">O</text><text class="sc-pt" x="132" y="80">L</text><g class="sc-agulha"><path class="sc-ag-n" d="M96 76l-7 0 7-34 7 34z"/><path class="sc-ag-s" d="M96 76l-7 0 7 34 7-34z"/><circle cx="96" cy="76" r="4" class="sc-pino"/></g><g class="sc-casa"><path d="M160 46l20-16 20 16v24h-40z"/><rect x="175" y="56" width="10" height="14" class="sc-porta"/><text x="180" y="86">réu</text></g>`},
+ {id:"ampulheta",nome:"Ampulheta da prescrição",som:"sc-areia",frase:"A areia não para de cair, e o prazo também não.",
+  licao:"Quando a lei não fixa prazo menor, a prescrição ocorre em 10 anos. Já a pretensão de reparação civil, como pedir indenização por um dano, prescreve em 3 anos.",ref:"Arts. 205 e 206, § 3º, V, do Código Civil",
+  svg:`<g class="sc-amp"><rect class="sc-amp-t" x="70" y="16" width="80" height="9" rx="4"/><rect class="sc-amp-t" x="70" y="125" width="80" height="9" rx="4"/><path class="sc-vidro-a" d="M80 25h60c0 30-22 38-22 50s22 20 22 50H80c0-30 22-38 22-50s-22-20-22-50z"/><path class="sc-areia-c" d="M86 32h48c-3 18-16 28-24 38-8-10-21-20-24-38z"/><path class="sc-areia-b" d="M84 125c4-16 14-22 26-24 12 2 22 8 26 24z"/><path class="sc-fio-a" d="M110 70v44"/></g><text class="sc-anos" x="178" y="62">10</text><text class="sc-anos-s" x="178" y="76">anos</text><text class="sc-anos sc-anos3" x="42" y="62">3</text><text class="sc-anos-s" x="42" y="76">anos</text>`},
+ {id:"assinaturas",nome:"Lei de iniciativa popular",som:"sc-papel",frase:"As assinaturas não param de chegar!",
+  licao:"O povo pode apresentar projeto de lei à Câmara com assinaturas de pelo menos 1% do eleitorado nacional, distribuídas por pelo menos 5 estados, com no mínimo 0,3% dos eleitores de cada um. A Lei da Ficha Limpa nasceu de um projeto assim.",ref:"Art. 61, § 2º, da CF",
+  svg:`<rect class="sc-prancha" x="58" y="14" width="104" height="124" rx="8"/><rect class="sc-clip" x="92" y="8" width="36" height="14" rx="4"/><rect class="sc-folha-p" x="66" y="26" width="88" height="104" rx="4"/><text class="sc-tit-p" x="110" y="40">PROJETO DE LEI</text>${[0,1,2,3].map(i=>`<path class="sc-ass" style="--k:${i}" pathLength="100" d="M74 ${58+i*18}c6-8 10 6 16-2s8-6 12 0 10-8 14 0 8 2 14-4"/><path class="sc-linha-p" d="M74 ${62+i*18}h72"/>`).join("")}<g class="sc-selo-p"><circle cx="156" cy="116" r="18"/><text x="156" y="121">1%</text></g>`},
+ {id:"cubo",nome:"Cubo dos Três Poderes",som:"sc-cubo",frase:"Girou, girou, e cada cor encontrou o seu lugar.",
+  licao:"Legislativo, Executivo e Judiciário são Poderes da União independentes e harmônicos entre si. Cada um tem funções típicas e algumas atípicas: o Judiciário, por exemplo, também administra seus próprios servidores.",ref:"Art. 2º da CF",
+  svg:`<g class="sc-cubo-g"><rect class="sc-cubo-b" x="66" y="18" width="88" height="88" rx="10"/>${Array.from({length:9},(_,i)=>{const r=Math.floor(i/3),c=i%3,ini=["#e94b3c","#f2b632","#2e86de","#3bb273","#f2b632","#e94b3c","#2e86de","#3bb273","#e94b3c"][i],fim=["#2e86de","#f2b632","#3bb273"][c];return `<rect class="sc-peca" style="--k:${i};--c0:${ini};--c1:${fim}" x="${72+c*28}" y="${24+r*28}" width="24" height="24" rx="4"/>`}).join("")}</g><text class="sc-pod" x="84" y="126">Legislativo</text><text class="sc-pod" x="110" y="140">Executivo</text><text class="sc-pod" x="136" y="126">Judiciário</text>`},
+ {id:"algemas",nome:"Flagrante!",som:"sc-algema",frase:"Clac! As algemas se fecharam.",
+  licao:"Qualquer pessoa do povo pode prender quem estiver em flagrante delito; já as autoridades policiais e seus agentes têm o dever de prender. As algemas só podem ser usadas em caso de resistência, receio de fuga ou perigo, com justificativa por escrito.",ref:"Art. 301 do CPP e Súmula Vinculante 11",
+  svg:`<g class="sc-alg sc-alg-e"><circle cx="70" cy="80" r="30"/><rect x="94" y="74" width="12" height="12" rx="3" class="sc-alg-t"/></g><g class="sc-corrente"><circle cx="112" cy="80" r="5"/><circle cx="122" cy="80" r="5"/></g><g class="sc-alg sc-alg-d"><circle cx="164" cy="80" r="30"/><rect x="128" y="74" width="12" height="12" rx="3" class="sc-alg-t"/></g><text class="sc-clac" x="110" y="34">CLAC!</text>`},
+ {id:"maracas",nome:"Batucada em domínio público",som:"sc-maracas",frase:"Chacoalhou, virou samba!",
+  licao:"Os direitos patrimoniais do autor duram a vida inteira dele e mais 70 anos, contados de 1º de janeiro do ano seguinte à sua morte. Depois a obra cai em domínio público e pode ser usada livremente, mas o crédito ao autor continua obrigatório.",ref:"Arts. 24 e 41 da Lei nº 9.610/1998",
+  svg:`<g class="sc-mar-e"><rect class="sc-mar-cabo" x="70" y="82" width="10" height="50" rx="4"/><ellipse class="sc-mar-cab sc-mc1" cx="75" cy="62" rx="22" ry="27"/><path class="sc-mar-faixa" d="M55 58q20 10 40 0"/></g><g class="sc-mar-d"><rect class="sc-mar-cabo" x="140" y="82" width="10" height="50" rx="4"/><ellipse class="sc-mar-cab sc-mc2" cx="145" cy="62" rx="22" ry="27"/><path class="sc-mar-faixa" d="M125 58q20 10 40 0"/></g>${[0,1,2].map(i=>`<text class="sc-nota" style="--k:${i}" x="${100+i*14}" y="60">${i===1?"♫":"♪"}</text>`).join("")}`}
+];
+/* sons das cenas, feitos com os mesmos instrumentos do app */
+Object.assign(SONS,{
+ "sc-dados":a=>{const t=a.currentTime+.01;[0,.13,.22,.4,.47].forEach((d,i)=>baque(a,t+d,180-i*10,.22));kalimba(a,t+.6,N.G5,.06,1)},
+ "sc-urna":a=>{const t=a.currentTime+.01;[N.C6,N.D6,N.E6,N.D6,N.E6].forEach((f,i)=>kalimba(a,t+i*.09,f,.07,.4,.2));kalimba(a,t+.5,N.E6,.08,1.2)},
+ "sc-moedas":a=>{const t=a.currentTime+.01;[0,.5,1].forEach(d=>{kalimba(a,t+.35+d,N.E6,.06,.6);kalimba(a,t+.39+d,N.A5,.05,.5);estalos(a,t+.35+d,3,.08,.06)})},
+ "sc-arvore":a=>{const t=a.currentTime+.01;ruido(a,t,.9,{f1:2600,f2:900,Q:.6,vol:.16,pico:.3,eco:.3});[.55,.75,.95].forEach((d,i)=>baque(a,t+d,140+i*20,.24))},
+ "sc-neve":a=>{const t=a.currentTime+.05;[N.E5,N.G5,N.C6,N.E6,N.D6,N.C6].forEach((f,i)=>kalimba(a,t+i*.18,f,.05,1.6,.7))},
+ "sc-mar":a=>{const t=a.currentTime+.01;ruido(a,t,1.4,{tipo:"lowpass",f1:300,f2:900,Q:.6,vol:.24,pico:.5,eco:.4});bolha(a,t+.6,500,.2);bolha(a,t+.8,640,.18)},
+ "sc-giro":a=>{const t=a.currentTime+.01;kalimba(a,t,N.A5,.07,.4);for(let i=0;i<6;i++)kalimba(a,t+.1+i*.08,N.E6,.03,.15,.1);baque(a,t+.8,160,.3);kalimba(a,t+.82,N.C6,.06,.9)},
+ "sc-sino":a=>{const t=a.currentTime+.01;[0,.45,.9].forEach(d=>{kalimba(a,t+d,N.C6,.1,2,.6);kalimba(a,t+d,N.G5,.05,1.6,.6);marimba(a,t+d,N.C5,.06,1)})},
+ "sc-bussola":a=>{const t=a.currentTime+.01;for(let i=0;i<10;i++)bolha(a,t+i*.07*(1+i*.12),700,.08);kalimba(a,t+1.2,N.G5,.07,1.2)},
+ "sc-areia":a=>{const t=a.currentTime+.01;ruido(a,t+.3,1.6,{tipo:"highpass",f1:3000,f2:5000,Q:.5,vol:.07,pico:.3,eco:.2});marimba(a,t,N.E4,.12,.6)},
+ "sc-papel":a=>{const t=a.currentTime+.01;[0,.35,.7,1.05].forEach(d=>papel(a,t+d,.18,.2));baque(a,t+1.45,100,.36)},
+ "sc-cubo":a=>{const t=a.currentTime+.01;[0,.18,.36,.6,.78].forEach(d=>baque(a,t+d,260,.16));rolado(a,t+1.05,[N.C5,N.E5,N.G5],.08,.12,.9)},
+ "sc-algema":a=>{const t=a.currentTime+.01;estalos(a,t,6,.35,.12);baque(a,t+.55,220,.3);ruido(a,t+.55,.06,{tipo:"highpass",f1:3500,Q:.8,vol:.25,pico:.05})},
+ "sc-maracas":a=>{const t=a.currentTime+.01;[0,.18,.27,.45,.63,.72,.9,1.08].forEach(d=>ruido(a,t+d,.07,{tipo:"highpass",f1:4000,Q:.6,vol:.16,pico:.2,eco:.1}));[N.G4,N.C5,N.E5,N.G5].forEach((f,i)=>marimba(a,t+.2+i*.22,f,.12,.5))}
+});
+const SACO_CH="faculLab.sacode";
+const sacoTurno=()=>{const d=new Date();return {dia:hojeStr(),tarde:d.getHours()>=12,i:((Math.round(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/864e5)*2+(d.getHours()>=12?1:0))%SACO.length+SACO.length)%SACO.length}};
+function sacoN(){return Object.keys(S.sacode||{}).filter(k=>SACO[+k]).length}
+function sacoUsos(){const t=sacoTurno(),p=t.dia+(t.tarde?"b":"a");let o={};try{o=JSON.parse(localStorage.getItem(SACO_CH)||"{}")}catch(e){}return o.p===p?o:{p,n:0}}
+function sacoGuarda(o){try{localStorage.setItem(SACO_CH,JSON.stringify(o))}catch(e){}}
+function ovoSacode(rever,idx){const t=sacoTurno(),i=idx===undefined?t.i:idx,x=SACO[i];
+ S.sacode=S.sacode||{};const nova=!S.sacode[i];if(!rever&&nova){S.sacode[i]=hojeStr();salvar()}
+ const n=sacoN(),usos=sacoUsos(),resta=Math.max(0,2-usos.n),todas=n>=SACO.length;
+ const info=rever?`Cena ${i+1} de ${SACO.length}. Ela volta toda semana neste mesmo turno.`:resta?`Dá para chacoalhar mais 1 vez neste turno. ${t.tarde?"À meia-noite":"Ao meio-dia"} chega uma cena nova.`:`Esta foi a última chacoalhada deste turno. ${t.tarde?"À meia-noite":"Ao meio-dia"} chega uma cena nova.`;
+ ovoCena("sacode","ovo-saco sc-c-"+x.id,`<span class="sc-turno">${ic("relogio")} Chacoalhada ${t.tarde&&!rever?"da tarde":!rever?"da manhã":"da semana"} · ${n} de ${SACO.length} descobertas${nova&&!rever?" · nova!":""}</span>
+ <div class="sc-palco" aria-hidden="true"><svg class="sc-svg" viewBox="0 0 220 150">${x.svg}</svg></div>
+ <h2>${esc(x.nome)}</h2><p class="frase">${esc(x.frase)}</p><div class="ovo-nota dh-licao"><small>${ic("livro")} Lição da chacoalhada</small><p>${esc(x.licao)}</p><em>${esc(x.ref)}</em></div>
+ <p class="sc-info">${info}</p>${ovoBotoes(todas?`<button class="botao" data-ovo="saco-pomba">Libertar a pombinha</button>`:"")}`,{rever,titulo:x.nome,confete:nova&&!rever});
+ ovoSomDepois(x.som,450)}
+OVO_ABRE.sacode=r=>{const t=sacoTurno();if((S.sacode||{})[t.i])return ovoSacode(r,t.i);const ks=Object.keys(S.sacode||{}).filter(k=>SACO[+k]);ovoSacode(r,ks.length?+ks[Math.floor(Math.random()*ks.length)]:t.i)};
+/* aviso discreto quando o turno já usou as duas chacoalhadas (aparece uma vez por turno) */
+function sacoAviso(txt){const v=$("#sc-aviso");if(v)v.remove();const el=document.createElement("div");el.id="sc-aviso";el.setAttribute("role","status");el.innerHTML=`${ic("relogio")}<span>${esc(txt)}</span>`;document.body.appendChild(el);setTimeout(()=>el.classList.add("sai"),3200);setTimeout(()=>el.remove(),3700)}
+function sacoChacoalhou(){const o=sacoUsos();
+ if(o.n>=2){if(o.n===2){o.n=3;sacoGuarda(o);sacoAviso(`Você já viu a chacoalhada deste turno. ${sacoTurno().tarde?"À meia-noite":"Ao meio-dia"} tem cena nova!`)}return}
+ o.n++;sacoGuarda(o);ovoSacode()}
 /* digitar "habeas" fora de um campo de texto */
 let ovoTec="";
 document.addEventListener("keydown",e=>{if(e.ctrlKey||e.metaKey||e.altKey||!e.key||e.key.length!==1)return;const el=document.activeElement;if(el&&(el.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)))return;
  ovoTec=(ovoTec+e.key.toLowerCase()).slice(-12);if(ovoTec.endsWith("habeas")){ovoTec="";ovoHabeas()}});
-/* chacoalhar o celular: três trancos fortes em pouco mais de um segundo (fora da prova e de janelas abertas) */
+/* chacoalhar o celular (chacoalhadas da semana): três trancos fortes em pouco mais de um segundo (fora da prova e de janelas abertas) */
 let ovoSac=[];
 window.addEventListener("devicemotion",e=>{const a=e.accelerationIncludingGravity;if(!a||a.x===null)return;if(Math.hypot(a.x||0,a.y||0,a.z||0)<27)return;
  const t=Date.now();if(ovoSac.length&&t-ovoSac[ovoSac.length-1]<180)return;ovoSac=ovoSac.filter(x=>t-x<1400);ovoSac.push(t);
- if(ovoSac.length>=3){ovoSac=[];if(rota.tela!=="quiz"&&tourI<0&&!document.querySelector(".festa"))ovoHabeas()}});
+ if(ovoSac.length>=3){ovoSac=[];if(rota.tela!=="quiz"&&tourI<0&&!document.querySelector(".festa"))sacoChacoalhou()}});
 /* puxar para cima no fim da tela: uma aba sobe do rodapé acompanhando o dedo; passou do ponto, soltou, abre o segredo */
 let ovoPx=null;
 function ovoNoFim(){const d=document.documentElement;return window.innerHeight+window.scrollY>=d.scrollHeight-4}
