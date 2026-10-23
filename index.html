@@ -518,7 +518,7 @@ mark.achado{background:#ffd54a;color:#111;border-radius:3px;padding:0 2px}
 .cores .amostra{width:28px;height:28px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
 .cores small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
 .cores.uma{grid-template-columns:1fr}
-.cores.tres{grid-template-columns:repeat(3,1fr)} .cores.tres button{flex-direction:column;align-items:center;text-align:center;gap:6px;padding:12px 6px} .cores.tres button[aria-pressed="true"]{padding:11px 5px}
+.cores.tres{grid-template-columns:repeat(3,1fr)} .cores.tres.quatro{grid-template-columns:repeat(2,1fr)} .cores.tres button{flex-direction:column;align-items:center;text-align:center;gap:6px;padding:12px 6px} .cores.tres button[aria-pressed="true"]{padding:11px 5px}
 .cores .ico-op{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);font-size:.9rem}
 .cores button[aria-pressed="true"] .ico-op{background:var(--toga);color:var(--toga-fg);border-color:var(--toga)}
 .nav-q{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;margin-top:12px}
@@ -1332,6 +1332,12 @@ html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *:
 [data-theme="dark"][data-estilo="premium"] .tile,[data-theme="dark"][data-estilo="premium"] .tile-mini{background:color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 42%,var(--surface));color:#fff;box-shadow:inset 0 0 0 1px color-mix(in srgb,color-mix(in srgb,var(--c) 50%,#fff) 45%,transparent)}
 html[data-estilo="premium"] .card.destaque .tile.tile,html[data-estilo="premium"] .hoje-card .tile.tile{background:#ffffff2e;color:#fff;box-shadow:none}
 [data-estilo="premium"] .plano .tile{color:#fff}
+/* ícones de progresso (Progresso geral, matérias, desempenho): cheios e vivos, com a cor de cada matéria */
+:root[data-estilo="premium"] :is(.metrica,.assunto,.desemp) .tile.tile{background:linear-gradient(140deg,color-mix(in srgb,var(--c) 62%,#fff),var(--c) 78%);color:#fff;box-shadow:0 8px 16px -9px color-mix(in srgb,var(--c) 85%,transparent),inset 0 1px 0 #ffffff40}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"])[data-estilo="premium"] :is(.metrica,.assunto,.desemp) .tile.tile{background:linear-gradient(140deg,color-mix(in srgb,var(--c) 70%,#fff),color-mix(in srgb,var(--c) 96%,#fff));color:#fff;box-shadow:0 8px 18px -8px color-mix(in srgb,var(--c) 70%,#000),inset 0 1px 0 #ffffff4d}}
+:root[data-theme="dark"][data-estilo="premium"] :is(.metrica,.assunto,.desemp) .tile.tile{background:linear-gradient(140deg,color-mix(in srgb,var(--c) 70%,#fff),color-mix(in srgb,var(--c) 96%,#fff));color:#fff;box-shadow:0 8px 18px -8px color-mix(in srgb,var(--c) 70%,#000),inset 0 1px 0 #ffffff4d}
+/* a cor "toga" fica cinza no escuro: no Premium, esses ícones usam a cor da paleta */
+html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!important}
 [data-estilo="premium"] .lista .plano>.tile{background:var(--grad);color:#fff}
 [data-estilo="premium"] .lista .plano.feito>.tile{background:var(--ok)}
 [data-estilo="premium"] .lista{background:none;border:0;box-shadow:none;display:grid;gap:10px;border-radius:0}
@@ -1699,6 +1705,22 @@ html[data-anim="on"] .ovo-dt{animation:ovo-dt 2.4s ease-in-out infinite}
 .ovo-item .sb-ic .i{width:20px;height:20px}
 .ovo-item b{display:block;font-size:.92rem}.ovo-item small{display:block;color:var(--muted);font-size:.8rem;line-height:1.35}
 @media (prefers-reduced-motion:reduce){.ovo *{animation:none!important}}
+/* fim dos autos: puxar para cima no fim da tela */
+#ovo-puxa{position:fixed;left:50%;bottom:0;z-index:45;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:12px 18px calc(14px + env(safe-area-inset-bottom,0px));border-radius:20px 20px 0 0;background:var(--surface);border:1px solid var(--line);border-bottom:0;box-shadow:0 -10px 30px rgba(0,0,0,.18);color:var(--fg);font-weight:700;font-size:.9rem;white-space:nowrap;pointer-events:none;transform:translate(-50%,100%)}
+#ovo-puxa .op-ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--lacre) 16%,transparent);color:var(--lacre);transition:transform .25s cubic-bezier(.2,1.6,.4,1)}
+#ovo-puxa small{display:block;font-weight:600;color:var(--muted);font-size:.74rem}
+#ovo-puxa.pronto .op-ic{background:var(--lacre);color:#fff;transform:rotate(-12deg) scale(1.12)}
+#ovo-puxa.solta{transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+[data-estilo="premium"] #ovo-puxa .op-ic{background:var(--grad-suave);color:var(--p1-txt)}[data-estilo="premium"] #ovo-puxa.pronto .op-ic{background:var(--grad);color:#fff}
+.of-palco{position:relative;max-width:230px;height:150px;margin:4px auto 0}
+.of-svg{display:block;width:100%;height:100%;overflow:visible}
+.of-folha{fill:var(--papel,#fff);stroke:var(--line);stroke-width:2}.of-capa{fill:#e3b866}.of-capa2{fill:#cf9f45}.of-linha{stroke:#b9c0cc;stroke-width:3;stroke-linecap:round}.of-etq{fill:#fff7e3;stroke:#b98a35;stroke-width:1.5}
+.of-carimbo{position:absolute;left:50%;top:56%;padding:6px 10px;border:3px double var(--erro);border-radius:8px;color:var(--erro);background:color-mix(in srgb,var(--surface) 55%,transparent);font:800 .92rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.05em;text-align:center;transform:translate(-50%,-50%) rotate(-10deg)}
+html[data-anim="on"] .of-carimbo{animation:of-bate .45s .35s cubic-bezier(.2,1.5,.4,1) both}
+html[data-anim="on"] .of-palco.bate .of-carimbo{animation-name:of-bate2}
+html[data-anim="on"] .ovo-fundo .festa-card{animation:pulo .5s cubic-bezier(.2,1.4,.4,1),om-treme .3s .45s ease-out}
+@keyframes of-bate{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(2.6);opacity:0}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
+@keyframes of-bate2{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(2.6);opacity:0}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1);opacity:1}}
 </style>
 
 <div class="app" id="app"></div>
@@ -1802,6 +1824,7 @@ const P={
  seta:'<path d="M5 12h14M13 6l6 6-6 6"/>',
  som:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>',
  mudo:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/>',
+ nota:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
  vibra:'<rect x="8" y="3" width="8" height="18" rx="2"/><path d="M4 8v8M20 8v8M11 17h2"/>',
  sino:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',
  calendario:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
@@ -2763,7 +2786,7 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="cores">${[["on","Ligadas","Movimento nas telas, na chama e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="cfg-anim" data-v="${k}" aria-pressed="${((S.cfg&&S.cfg.anim)||"on")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Se o sistema estiver com movimento reduzido, o app respeita essa escolha.</p>
  <div class="secao" role="heading" aria-level="2">Sons e vibração</div>
- <div class="cores tres">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="cfg-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="cfg-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os sons seguem o volume de mídia do aparelho, e no iPhone o modo silencioso também os cala. A vibração funciona em celulares Android. Toque em uma opção para ouvir como fica.</p>
  <div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
@@ -2905,41 +2928,95 @@ function efeitoResposta(certo){if(!animOn())return;const ok=document.querySelect
  else{const sel=document.querySelector('#app .alt[aria-checked="true"]');if(sel)sel.classList.add("anim-ok")}}
 function efeitoCartao(cls){if(!animOn())return;const f=document.querySelector("#app .flash");if(f){f.classList.remove("vira","desliza");void f.offsetWidth;f.classList.add(cls)}}
 /* ---------- sons e vibração ----------
-   Tudo gerado na hora pelo Web Audio (nenhum arquivo para baixar, funciona offline): notas curtas e suaves.
-   S.cfg.som: "on" (sons + vibração), "vib" (só vibração) ou "off". O erro tem um som macio, para não punir. */
+   Tudo gerado na hora pelo Web Audio (nenhum arquivo para baixar, funciona offline), mas imitando instrumentos de verdade:
+   marimba de madeira, kalimba, um "coral" macio de fundo, papel, fogo e madeira batendo. Tudo passa por uma sala com eco curto
+   (reverb) e um filtro que corta o agudo áspero, e cada nota varia um pouquinho de altura e força, como tocada à mão.
+   S.cfg.som: "on" (som + vibração), "som" (só som), "vib" (só vibração) ou "off". O erro tem um som macio, para não punir. */
 let AC=null,ofensivaNova=false;
 const somModo=()=>(S.cfg&&S.cfg.som)||"on";
-const SOM_OP=[["on","Ligados","Som ao acertar, errar, gabaritar e bater a meta","som"],["vib","Só vibrar","Sem som, só um toque no celular","vibra"],["off","Desligados","Silêncio total","mudo"]];
+const somTocaSom=()=>{const m=somModo();return m==="on"||m==="som"},somVibra=()=>{const m=somModo();return m==="on"||m==="vib"};
+const SOM_OP=[["on","Som e vibração","Sons suaves e um toque no celular","som"],["som","Só som","Sons, sem vibrar","nota"],["vib","Só vibrar","Sem som, só um toque no celular","vibra"],["off","Desligados","Silêncio total","mudo"]];
 function audio(){if(AC)return AC;const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;
  try{if(navigator.audioSession)navigator.audioSession.type="ambient"}catch(e){}/* no iPhone, respeita o modo silencioso e não para a música */
- try{AC=new C();const m=AC.createDynamicsCompressor();m.connect(AC.destination);AC.saida=m}catch(e){AC=null}return AC}
-function tom(a,t,f,dur,o){o=o||{};const g=a.createGain(),os=a.createOscillator();os.type=o.tipo||"sine";os.frequency.setValueAtTime(f,t);if(o.f2)os.frequency.exponentialRampToValueAtTime(o.f2,t+dur*.8);
- const v=o.vol||.2;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+(o.ataque||.01));g.gain.exponentialRampToValueAtTime(.0001,t+dur);
- os.connect(g);g.connect(a.saida);os.start(t);os.stop(t+dur+.05)}
-function sopro(a,t,dur,f1,f2,vol){const n=Math.floor(a.sampleRate*dur),b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
- const s=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain();s.buffer=b;fl.type="bandpass";fl.Q.value=1.4;fl.frequency.setValueAtTime(f1,t);fl.frequency.exponentialRampToValueAtTime(f2,t+dur);
- g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+dur*.35);g.gain.exponentialRampToValueAtTime(.0001,t+dur);s.connect(fl);fl.connect(g);g.connect(a.saida);s.start(t);s.stop(t+dur+.05)}
-const brilho=(a,t,n)=>{for(let i=0;i<n;i++)tom(a,t+i*.07+Math.random()*.03,1800+Math.random()*1600,.22,{vol:.035})};
-const acorde=(a,t,fs,dur,vol)=>fs.forEach(f=>{tom(a,t,f,dur,{tipo:"triangle",vol:vol||.07,ataque:.02});tom(a,t,f*2,dur*.7,{vol:(vol||.07)*.3})});
-const arpejo=(a,t,fs,passo,dur,vol)=>fs.forEach((f,i)=>{tom(a,t+i*passo,f,dur,{tipo:"triangle",vol:vol||.14});tom(a,t+i*passo,f*2,dur*.6,{vol:(vol||.14)*.35})});
+ try{AC=new C();const comp=AC.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=3;comp.connect(AC.destination);
+  /* corta o chiado agudo: o que deixa um som "de robô" é o agudo puro e reto */
+  const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=5200;lp.Q.value=.5;lp.connect(comp);
+  /* sala pequena: um eco curto e escuro, que deixa tudo mais quente */
+  const sr=AC.sampleRate,n=Math.floor(sr*1.7),ir=AC.createBuffer(2,n,sr);
+  for(let c=0;c<2;c++){const d=ir.getChannelData(c);let y=0;for(let i=0;i<n;i++){y+=.22*((Math.random()*2-1)-y);d[i]=y*Math.pow(1-i/n,3.2)*(i<sr*.012?i/(sr*.012):1)}}
+  const rv=AC.createConvolver();rv.buffer=ir;const molhado=AC.createGain();molhado.gain.value=.5;rv.connect(molhado);molhado.connect(lp);
+  AC.saida=lp;AC.eco=rv;
+  const nb=AC.createBuffer(1,sr,sr),nd=nb.getChannelData(0);for(let i=0;i<sr;i++)nd[i]=Math.random()*2-1;AC.ruido=nb}catch(e){AC=null}return AC}
+const varia=(x,p)=>x*(1+(Math.random()*2-1)*p);
+/* cada voz vai seca para a saída e um pouco para o eco */
+function voz(a,eco){const g=a.createGain();g.connect(a.saida);if(eco){const e=a.createGain();e.gain.value=eco;g.connect(e);e.connect(a.eco)}return g}
+function parcial(a,t,f,v,dec,dest,ataque,tipo){const o=a.createOscillator(),g=a.createGain();o.type=tipo||"sine";o.frequency.setValueAtTime(f,t);
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v,t+(ataque||.004));g.gain.exponentialRampToValueAtTime(.0001,t+dec);o.connect(g);g.connect(dest);o.start(t);o.stop(t+dec+.05)}
+/* marimba: madeira macia, o parcial alto some rápido e fica só o corpo da nota */
+function marimba(a,t,f,vol,dec,eco){f=varia(f,.004);vol=varia(vol,.08);dec=dec||.7;const d=voz(a,eco===undefined?.35:eco);
+ parcial(a,t,f,vol,dec,d,.003);parcial(a,t,f*3.93,vol*.16,dec*.18,d,.002);parcial(a,t,f*9.2,vol*.04,dec*.06,d,.001);
+ ruidoCurto(a,t,.018,f*2,vol*.25,d)}
+/* kalimba / sininho de madeira: nota redonda com um brilho que se apaga devagar */
+function kalimba(a,t,f,vol,dec,eco){f=varia(f,.004);vol=varia(vol,.08);dec=dec||1.2;const d=voz(a,eco===undefined?.5:eco);
+ parcial(a,t,f,vol,dec,d,.006);parcial(a,t,f*1.004,vol*.35,dec*.8,d,.006);parcial(a,t,f*5.4,vol*.06,dec*.12,d,.002);parcial(a,t,f*2,vol*.08,dec*.5,d,.008)}
+/* coral macio de fundo: duas cordas levemente desafinadas, filtradas, que entram e saem devagar */
+function coral(a,t,fs,dur,vol){const d=voz(a,.6),lp=a.createBiquadFilter();lp.type="lowpass";lp.frequency.setValueAtTime(700,t);lp.frequency.linearRampToValueAtTime(1500,t+dur*.4);lp.frequency.linearRampToValueAtTime(600,t+dur);lp.Q.value=.6;lp.connect(d);
+ const g=a.createGain();g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+Math.min(.25,dur*.3));g.gain.setValueAtTime(vol,t+dur*.55);g.gain.exponentialRampToValueAtTime(.0001,t+dur);g.connect(lp);
+ fs.forEach(f=>[-7,7].forEach(c=>{const o=a.createOscillator();o.type="sawtooth";o.frequency.value=f;o.detune.value=c+Math.random()*4;o.connect(g);o.start(t);o.stop(t+dur+.05)}))}
+/* ruído filtrado: papel, sopro, fogo, batida de madeira */
+function ruido(a,t,dur,o){const s=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain(),d=o.dest||voz(a,o.eco||.25);s.buffer=a.ruido;s.loop=true;
+ fl.type=o.tipo||"bandpass";fl.Q.value=o.Q||1;fl.frequency.setValueAtTime(o.f1,t);if(o.f2)fl.frequency.exponentialRampToValueAtTime(o.f2,t+dur);
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(o.vol,t+dur*(o.pico||.3));g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+ s.connect(fl);fl.connect(g);g.connect(d);s.start(t,Math.random()*.5);s.stop(t+dur+.05)}
+function ruidoCurto(a,t,dur,f,vol,dest){ruido(a,t,dur,{f1:Math.min(f,4000),Q:.8,vol,pico:.08,dest})}
+/* bolhinha: um "plop" curto e redondo */
+function bolha(a,t,f,vol){f=varia(f,.04);const d=voz(a,.2),o=a.createOscillator(),g=a.createGain();o.type="sine";o.frequency.setValueAtTime(f*.55,t);o.frequency.exponentialRampToValueAtTime(f,t+.035);
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.12);o.connect(g);g.connect(d);o.start(t);o.stop(t+.15)}
+/* madeira batendo (martelo, carimbo): um baque grave com um estalo */
+function baque(a,t,f,vol){const d=voz(a,.3),o=a.createOscillator(),g=a.createGain();o.type="sine";o.frequency.setValueAtTime(f*1.8,t);o.frequency.exponentialRampToValueAtTime(f,t+.05);
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.003);g.gain.exponentialRampToValueAtTime(.0001,t+.28);o.connect(g);g.connect(d);o.start(t);o.stop(t+.3);
+ ruido(a,t,.06,{f1:1100,Q:1.2,vol:vol*.7,pico:.05,dest:d})}
+/* estalos de lenha */
+function estalos(a,t,n,dur,vol){for(let i=0;i<n;i++)ruido(a,t+Math.random()*dur,.02+Math.random()*.03,{tipo:"highpass",f1:1800+Math.random()*1500,Q:.7,vol:vol*(.5+Math.random()*.5),pico:.05,eco:.2})}
+/* papel virando */
+function papel(a,t,dur,vol){ruido(a,t,dur,{f1:3200,f2:1100,Q:.9,vol,pico:.35,eco:.2});ruido(a,t+dur*.45,dur*.6,{f1:1800,f2:700,Q:1.2,vol:vol*.6,pico:.2,eco:.2})}
+const rolado=(a,t,fs,passo,vol,dec,inst)=>fs.forEach((f,i)=>(inst||marimba)(a,t+i*passo+Math.random()*.012,f,vol,dec));
+/* notas (Hz) */
+const N={G3:196,A3:220,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,G5:783.99,A5:880,C6:1046.5,D6:1174.7,E6:1318.5};
 const SONS={
- acerto:a=>{const t=a.currentTime;tom(a,t,659.25,.22,{tipo:"triangle",vol:.16});tom(a,t+.085,987.77,.45,{tipo:"triangle",vol:.17});tom(a,t+.085,1975.5,.3,{vol:.04})},
- erro:a=>{const t=a.currentTime;tom(a,t,311.13,.24,{tipo:"triangle",vol:.15,f2:277.18});tom(a,t+.13,233.08,.4,{tipo:"triangle",vol:.13,f2:220})},
- toque:a=>tom(a,a.currentTime,880,.07,{vol:.07}),
- vira:a=>sopro(a,a.currentTime,.18,2200,700,.12),
- fim:a=>{const t=a.currentTime;arpejo(a,t,[523.25,659.25,783.99],.1,.5)},
- aprovado:a=>{const t=a.currentTime;arpejo(a,t,[523.25,659.25,783.99],.09,.4);acorde(a,t+.3,[523.25,659.25,1046.5],.8);brilho(a,t+.35,3)},
- gabarito:a=>{const t=a.currentTime;arpejo(a,t,[392,523.25,659.25,783.99],.075,.3,.13);acorde(a,t+.32,[523.25,659.25,783.99,1046.5],1.3,.07);brilho(a,t+.4,8)},
- meta:a=>{const t=a.currentTime;tom(a,t,783.99,.16,{tipo:"triangle",vol:.14});tom(a,t+.11,783.99,.16,{tipo:"triangle",vol:.14});acorde(a,t+.24,[1046.5,1318.5,783.99],1,.08);brilho(a,t+.3,6)},
- chama:a=>{const t=a.currentTime;sopro(a,t,.55,300,2600,.13);tom(a,t+.05,392,.5,{vol:.08,f2:784})}
+ acerto:a=>{const t=a.currentTime+.01;marimba(a,t,N.G4,.2,.55);marimba(a,t+.075,N.D5,.22,.85);kalimba(a,t+.075,N.G5,.05,1.1)},
+ erro:a=>{const t=a.currentTime+.01;marimba(a,t,N.D4,.15,.35,.25);marimba(a,t+.12,N.A3,.15,.5,.25)},
+ toque:a=>bolha(a,a.currentTime+.005,560,.24),
+ vira:a=>papel(a,a.currentTime+.005,.2,.26),
+ mes:a=>{const t=a.currentTime+.005;papel(a,t,.24,.24);marimba(a,t+.26,N.E4,.1,.25,.2)},
+ fim:a=>{const t=a.currentTime+.01;rolado(a,t,[N.C4,N.E4,N.G4,N.C5],.1,.17,.9)},
+ aprovado:a=>{const t=a.currentTime+.01;rolado(a,t,[N.C5,N.E5,N.G5],.09,.17,.9);coral(a,t+.2,[N.C4,N.E4,N.G4],1.5,.03);kalimba(a,t+.32,N.C6,.07,1.5)},
+ gabarito:a=>{const t=a.currentTime+.01;rolado(a,t,[N.G4,N.C5,N.E5,N.G5,N.C6],.075,.16,.9);coral(a,t+.25,[N.C4,N.G4,N.E5,N.D5],2.2,.028);
+  [N.E6,N.C6,N.G5,N.E6].forEach((f,i)=>kalimba(a,t+.45+i*.16,f,.045,1.4))},
+ meta:a=>{const t=a.currentTime+.01;[N.E5,N.G5,N.A5,N.C6].forEach((f,i)=>kalimba(a,t+i*.11,f,.11,1.3));coral(a,t+.3,[N.F4,N.A4,N.C5],1.6,.03)},
+ chama:a=>{const t=a.currentTime+.01;ruido(a,t,.7,{tipo:"lowpass",f1:220,f2:1400,Q:.8,vol:.22,pico:.5,eco:.3});estalos(a,t+.1,7,.7,.09);marimba(a,t+.25,N.G4,.12,.7);marimba(a,t+.34,N.D5,.12,.9)},
+ fogo:a=>{const t=a.currentTime+.005;ruido(a,t,.38,{tipo:"lowpass",f1:260,f2:1100,Q:.8,vol:.28,pico:.4,eco:.25});estalos(a,t+.05,4,.35,.12)},
+ segredo:a=>{const t=a.currentTime+.01;[N.C5,N.D5,N.E5,N.G5,N.A5,N.C6].forEach((f,i)=>kalimba(a,t+i*.07,f,.08,1.3));coral(a,t+.15,[N.C4,N.G4,N.E5],1.8,.026)},
+ abre:a=>{const t=a.currentTime+.01;kalimba(a,t,N.G5,.08,1.1);kalimba(a,t+.1,N.C6,.07,1.3)},
+ peso:a=>{const t=a.currentTime+.005;baque(a,t,170,.26);kalimba(a,t+.01,varia(N.A5,.03),.04,.5)},
+ tira:a=>bolha(a,a.currentTime+.005,380,.22),
+ martelo:a=>{const t=a.currentTime+.01;baque(a,t,120,.3);baque(a,t+.16,110,.22)},
+ carimbo:a=>{const t=a.currentTime+.01;baque(a,t,90,.42);ruido(a,t+.02,.12,{tipo:"lowpass",f1:600,Q:.7,vol:.18,pico:.1})},
+ pomba:a=>{const t=a.currentTime+.01;for(let i=0;i<5;i++)ruido(a,t+i*.085,.07,{f1:1300,f2:700,Q:.8,vol:.12*(1-i*.12),pico:.3,eco:.2});rolado(a,t+.35,[N.E5,N.G5,N.C6],.09,.07,1.2,kalimba)},
+ coruja:a=>{const t=a.currentTime+.05,d=voz(a,.5);[[0,.32,415],[.42,.6,392]].forEach(([dt,dur,f])=>{const o=a.createOscillator(),lfo=a.createOscillator(),lg=a.createGain(),g=a.createGain(),lp=a.createBiquadFilter();
+  o.type="triangle";o.frequency.setValueAtTime(f*1.04,t+dt);o.frequency.exponentialRampToValueAtTime(f*.96,t+dt+dur);lfo.frequency.value=5.5;lg.gain.value=5;lfo.connect(lg);lg.connect(o.frequency);
+  lp.type="lowpass";lp.frequency.value=900;g.gain.setValueAtTime(.0001,t+dt);g.gain.linearRampToValueAtTime(.16,t+dt+.07);g.gain.exponentialRampToValueAtTime(.0001,t+dt+dur);
+  o.connect(lp);lp.connect(g);g.connect(d);o.start(t+dt);lfo.start(t+dt);o.stop(t+dt+dur+.05);lfo.stop(t+dt+dur+.05)})},
+ puxa:a=>bolha(a,a.currentTime+.005,320,.2)
 };
-const VIBRA={acerto:18,erro:[40,60,40],toque:8,fim:60,aprovado:[50,50,90],gabarito:[60,60,60,60,160],meta:[80,60,160],chama:[30,40,30,40,60]};
-function som(nome){const m=somModo();if(m==="off"||document.hidden)return;
- if(VIBRA[nome]&&navigator.vibrate){try{navigator.vibrate(VIBRA[nome])}catch(e){}}
- if(m!=="on"||!SONS[nome])return;const a=audio();if(!a)return;
+const VIBRA={acerto:18,erro:[40,60,40],toque:8,vira:8,mes:10,fim:60,aprovado:[50,50,90],gabarito:[60,60,60,60,160],meta:[80,60,160],chama:[30,40,30,40,60],fogo:[12,30,12],
+ segredo:[20,40,20,40,60],abre:15,peso:12,tira:8,martelo:[35,120,30],carimbo:45,pomba:[10,30,10,30,10],coruja:[20,180,30],puxa:6};
+function som(nome){if(document.hidden)return;
+ if(somVibra()&&VIBRA[nome]&&navigator.vibrate){try{navigator.vibrate(VIBRA[nome])}catch(e){}}
+ if(!somTocaSom()||!SONS[nome])return;const a=audio();if(!a)return;
  try{if(a.state==="suspended")a.resume();SONS[nome](a)}catch(e){}}
 /* o navegador só libera o áudio depois de um toque na tela */
-document.addEventListener("pointerdown",()=>{if(somModo()!=="on")return;const a=audio();if(a&&a.state==="suspended")a.resume().catch(()=>{})},{passive:true,capture:true});
+document.addEventListener("pointerdown",()=>{if(!somTocaSom())return;const a=audio();if(a&&a.state==="suspended")a.resume().catch(()=>{})},{passive:true,capture:true});
 document.addEventListener("pointerdown",e=>{if(!animOn())return;const el=e.target.closest(".card,.item,.botao,.alt,.opcoes button,.cores button,.estilos button,.paletas button");if(!el||el.disabled)return;
  const r=el.getBoundingClientRect();const t=Math.max(r.width,r.height)*2.2;const o=document.createElement("span");o.className="onda";o.style.width=o.style.height=t+"px";o.style.left=(e.clientX-r.left-t/2)+"px";o.style.top=(e.clientY-r.top-t/2)+"px";
  el.classList.add("onda-host");el.appendChild(o);setTimeout(()=>o.remove(),650)},{passive:true});
@@ -3692,7 +3769,7 @@ function tourDemoVisual(){const e=estiloAtual(),an=(S.cfg&&S.cfg.anim)||"on";
  return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${PALETAS.map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`:""}
  <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
- <p class="nota tour-sub"><b>Sons e vibração</b></p><div class="cores tres">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="tour-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
+ <p class="nota tour-sub"><b>Sons e vibração</b></p><div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="tour-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
 function tourDemoFim(){const per=perAtual();const pl=PALETAS.find(x=>x[0]===paletaAtual());
  const L=[["capelo","Seu momento",per===null?"Ainda não escolhido":nomePer(per),1],["eng","Visual",estiloAtual()==="premium"?`Premium · ${pl[1]}`:"Clássico",8],[(S.cfg&&S.cfg.anim)==="off"?"pausa":"chama","Animações",(S.cfg&&S.cfg.anim)==="off"?"Desligadas":"Ligadas",8],[SOM_OP.find(x=>x[0]===somModo())[3],"Sons",SOM_OP.find(x=>x[0]===somModo())[1],8]];
  return `<div class="lista tour-resumo">${L.map(([i,t,v,k])=>`<button class="item" data-acao="tour-ir" data-v="${k}">${tile("var(--toga)",i==="capelo"?"livro":i)}<span style="min-width:0"><span class="item-sub">${t}</span><br><span class="item-tit">${esc(v)}</span></span><span class="item-data">Trocar</span></button>`).join("")}</div>
@@ -3808,11 +3885,11 @@ document.addEventListener("click",e=>{
     case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
-    case "chama":faiscas(b);break;
+    case "chama":faiscas(b);som(b.classList.contains("apagada")?"toque":"fogo");break;
     case "notif":if(b.dataset.v==="1")lbLigar();else lbDesligar();break;
     case "lb-convite-sim":{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();lbLigar().then(()=>{if(lbCfg().on){const c=document.querySelector(".lb-card");if(!c)anunciar("Lembretes ligados! Você recebe um recado por dia.")}else if(lbStatus&&rota.tela!=="config")raiz({tela:"config"})});break}
     case "notif-teste":lbTestar();break;
-    case "cal-vira":b.classList.toggle("virado");break;
+    case "cal-vira":b.classList.toggle("virado");som("mes");break;
     case "cfg-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-som":S.cfg=S.cfg||{};S.cfg.som=b.dataset.v;salvar();rota.manterScroll=true;render();som("acerto");break;
     case "cfg-tema":S.cfg=S.cfg||{};S.cfg.tema=b.dataset.v;salvar();rota.manterScroll=true;render();break;
@@ -3904,7 +3981,7 @@ if(lbCfg().on&&!lbSuporte())setTimeout(()=>lbEnviar("salvar",true).catch(()=>{})
 document.addEventListener("visibilitychange",()=>{if(rota.tela!=="quiz"||!sessao)return;if(document.hidden){pararRelogio();salvar()}else iniciarRelogio()});
 
 /* ---------- segredos do app (easter eggs) ----------
-   Sete segredos: cada um abre uma cena animada com um pouco de Direito. Os encontrados ficam em S.ovos ({id: dia})
+   Oito segredos: cada um abre uma cena animada com um pouco de Direito. Os encontrados ficam em S.ovos ({id: dia})
    e aparecem em Sobre o Facul Lab, onde dá para rever. Cada descoberta toca um som (se ligado) e dispara o evento "fl-ovo" (detail: {id, novo}).
    Os gatilhos ficam em ouvintes próprios (toques, segurar, teclado, chacoalhar), sem mexer no clique principal. */
 const OVOS=[
@@ -3914,7 +3991,8 @@ const OVOS=[
  {id:"chama",ic:"chama",nome:"Chama da Justiça",dica:"Atice a chama da ofensiva cinco vezes seguidas."},
  {id:"habeas",ic:"escudo",nome:"Habeas corpus",dica:"Chacoalhe o celular. No computador, digite habeas."},
  {id:"coruja",ic:"lua",nome:"Coruja da madrugada",dica:"Abra o Hoje entre meia-noite e cinco da manhã."},
- {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app em 13 de maio, 11 de agosto, 5 de outubro ou 10 de dezembro."}
+ {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app em 13 de maio, 11 de agosto, 5 de outubro ou 10 de dezembro."},
+ {id:"fundo",ic:"pasta",nome:"Fim dos autos",dica:"Chegou ao fim de uma tela? Continue puxando para cima, com vontade."}
 ];
 function ovosAchados(){return OVOS.filter(o=>(S.ovos||{})[o.id]).length}
 function ovoAchou(id){S.ovos=S.ovos||{};const novo=!S.ovos[id];if(novo){S.ovos[id]=hojeStr();salvar()}
@@ -3927,8 +4005,9 @@ function ovoCena(id,cls,html,opt){opt=opt||{};const novo=opt.rever?false:ovoAcho
  document.body.appendChild(el);
  /* o menu fecha depois que a cena já está na página, para o voltar do celular continuar valendo para ela */
  if(gaveta){gaveta=false;rota.manterScroll=true;render()}
- if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();ovoSom(novo?"aprovado":"fim");return el}
+ if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();ovoSom(novo?"segredo":"abre");return el}
 function ovoSom(n){if(typeof som=="function")som(n)}
+function ovoSomDepois(n,ms){setTimeout(()=>{if(document.querySelector(".festa.ovo"))ovoSom(n)},ms)}
 function ovoConfete(){const c=document.querySelector(".festa.ovo canvas");if(c&&animOn())confete(c)}
 const ovoBotoes=(extra)=>`<div class="botoes ovo-bts">${extra||""}<button class="botao${extra?"":" cheio"}" data-acao="festa-fechar">Fechar</button></div>`;
 
@@ -3982,12 +4061,12 @@ const BROCARDOS=[
 let ovoBrocI=-1;
 function ovoBrocHtml(){let i;do{i=Math.floor(Math.random()*BROCARDOS.length)}while(i===ovoBrocI&&BROCARDOS.length>1);ovoBrocI=i;const b=BROCARDOS[i];
  return `<button class="obr-carta" data-ovo="broc-vira" aria-label="Virar a carta: ${esc(b[0])}"><span class="obr-in"><span class="obr-f"><small>Latim jurídico</small><b>${esc(b[0])}</b><em>Toque para traduzir</em></span><span class="obr-v"><b>${esc(b[1])}</b><span>${esc(b[2])}</span></span></span></button>`}
-function ovoBrocardo(rever){ovoCena("brocardo","ovo-broc",`<h2>Brocardo secreto</h2><p class="frase">Os brocardos são frases curtas, quase sempre em latim, que resumem princípios do Direito. Caem em prova e enfeitam qualquer petição.</p><div class="obr-palco">${ovoBrocHtml()}</div>${ovoBotoes(`<button class="botao" data-ovo="broc-outro">Outro brocardo</button>`)}`,{rever,titulo:"Brocardo secreto"})}
+function ovoBrocardo(rever){ovoCena("brocardo","ovo-broc",`<h2>Brocardo secreto</h2><p class="frase">Os brocardos são frases curtas, quase sempre em latim, que resumem princípios do Direito. Caem em prova e enfeitam qualquer petição.</p><div class="obr-palco">${ovoBrocHtml()}</div>${ovoBotoes(`<button class="botao" data-ovo="broc-outro">Outro brocardo</button>`)}`,{rever,titulo:"Brocardo secreto"});ovoSomDepois("vira",450)}
 
 /* 3. Ordem no tribunal: segurar o título de qualquer tela */
 function ovoMartelo(rever){ovoCena("martelo","ovo-mart",`<div class="om-palco" aria-hidden="true"><svg class="om-svg" viewBox="0 0 220 150"><ellipse class="om-sombra" cx="96" cy="136" rx="62" ry="7"/><path class="om-bloco" d="M44 118h104v14a6 6 0 0 1-6 6H50a6 6 0 0 1-6-6z"/><ellipse class="om-bloco-t" cx="96" cy="118" rx="52" ry="7"/><g class="om-onda"><path d="M30 104q-10-12 0-24M162 104q10-12 0-24M18 110q-16-20 0-40M174 110q16-20 0-40"/></g>
  <g class="om-mart"><rect class="om-cabo" x="104" y="54" width="96" height="9" rx="4.5"/><rect class="om-cab" x="62" y="34" width="46" height="50" rx="9"/><rect class="om-faixa" x="62" y="44" width="46" height="6"/><rect class="om-faixa" x="62" y="68" width="46" height="6"/></g></svg><span class="om-carimbo">Ordem!</span></div>
- <h2>Ordem no tribunal!</h2><p class="frase">Silêncio no plenário: agora é hora de estudar.</p><p class="ovo-nota"><b>Curiosidade:</b> o martelo é tradição dos tribunais dos Estados Unidos. No Brasil ele é raro: os tribunais costumam pedir ordem com uma campainha, como a do presidente no plenário do STF.</p>${ovoBotoes(`<button class="botao" data-ovo="mart-bate">Bater de novo</button>`)}`,{rever,titulo:"Ordem no tribunal"})}
+ <h2>Ordem no tribunal!</h2><p class="frase">Silêncio no plenário: agora é hora de estudar.</p><p class="ovo-nota"><b>Curiosidade:</b> o martelo é tradição dos tribunais dos Estados Unidos. No Brasil ele é raro: os tribunais costumam pedir ordem com uma campainha, como a do presidente no plenário do STF.</p>${ovoBotoes(`<button class="botao" data-ovo="mart-bate">Bater de novo</button>`)}`,{rever,titulo:"Ordem no tribunal"});ovoSomDepois("martelo",animOn()?600:80)}
 
 /* 4. Chama da Justiça: 5 toques seguidos na chama da ofensiva. Nos dias de marco, a chama ganha um brilho dourado no Hoje. */
 const OVO_MARCOS=[3,7,15,30,50,100,180,365];
@@ -3999,19 +4078,19 @@ function ovoChama(rever){const seq=sequencia(),rec=ovoRecorde(),prox=OVO_MARCOS.
  ovoCena("chama","ovo-chama"+(marco?" marco":""),`<div class="oc-palco">${chamaViva(seq)}<i></i><i></i><i></i><i></i><i></i><i></i></div>
  <h2>${marco?`Marco de ${seq} dias!`:t}</h2><p class="frase">${esc(f)}</p>
  <div class="oc-nums"><span><b>${seq}</b>agora</span><span><b>${rec}</b>seu recorde</span><span><b>${prox||"∞"}</b>${prox?`próximo marco · faltam ${prox-seq}`:"você passou de todos"}</span></div>
- <p class="ovo-nota"><b>Por que todo dia?</b> A memória fixa melhor o que é revisto aos poucos, em dias diferentes, do que numa maratona na véspera. É o efeito do espaçamento.</p>${ovoBotoes()}`,{rever,titulo:"Chama da Justiça",confete:marco})}
+ <p class="ovo-nota"><b>Por que todo dia?</b> A memória fixa melhor o que é revisto aos poucos, em dias diferentes, do que numa maratona na véspera. É o efeito do espaçamento.</p>${ovoBotoes()}`,{rever,titulo:"Chama da Justiça",confete:marco});ovoSomDepois("fogo",300)}
 
 /* 5. Habeas corpus: chacoalhar o celular (ou digitar "habeas" no computador) */
 function ovoHabeas(rever){ovoCena("habeas","ovo-hc",`<div class="oh-palco" aria-hidden="true"><svg class="oh-svg" viewBox="0 0 220 160"><g class="oh-gaiola"><path class="oh-arco" d="M60 128V70a50 50 0 0 1 100 0v58"/><path class="oh-barra" d="M80 128V40M100 128V24M120 128V24M140 128V40"/><rect class="oh-aro" x="52" y="126" width="116" height="10" rx="4"/><circle class="oh-aro" cx="110" cy="16" r="6"/><g class="oh-porta"><rect x="60" y="62" width="40" height="64" rx="3"/><path d="M70 62v64M80 62v64M90 62v64"/></g></g>
  <g class="oh-pomba"><g class="oh-voa"><path class="oh-asa-t" d="M110 92c-8-14-22-18-30-16 8 6 14 14 16 22z"/><ellipse class="oh-corpo" cx="110" cy="100" rx="20" ry="11"/><circle class="oh-corpo" cx="128" cy="92" r="8"/><path class="oh-bico" d="M135 91l7 2-7 3z"/><circle class="oh-olho" cx="130" cy="90" r="1.6"/><path class="oh-corpo" d="M90 100l-14-6 4 10z"/><path class="oh-asa" d="M108 96c-6-18-20-26-30-26 6 10 12 22 14 32z"/><path class="oh-ramo" d="M136 98c6 4 12 4 16 2M142 99c1-4 4-5 6-5M147 100c1 3 4 4 6 3"/></g></g></svg></div>
- <h2>Habeas corpus concedido!</h2><p class="frase">A pombinha está livre. Ninguém fica preso por ilegalidade ou abuso de poder.</p><p class="ovo-nota"><b>Habeas corpus</b> (do latim, "que tenhas o corpo") protege a liberdade de locomoção (art. 5º, LXVIII, da CF). <b>Curiosidade:</b> qualquer pessoa pode impetrá-lo, mesmo sem advogado (art. 654 do CPP).</p>${ovoBotoes(`<button class="botao" data-ovo="hc-solta">Soltar de novo</button>`)}`,{rever,titulo:"Habeas corpus"})}
+ <h2>Habeas corpus concedido!</h2><p class="frase">A pombinha está livre. Ninguém fica preso por ilegalidade ou abuso de poder.</p><p class="ovo-nota"><b>Habeas corpus</b> (do latim, "que tenhas o corpo") protege a liberdade de locomoção (art. 5º, LXVIII, da CF). <b>Curiosidade:</b> qualquer pessoa pode impetrá-lo, mesmo sem advogado (art. 654 do CPP).</p>${ovoBotoes(`<button class="botao" data-ovo="hc-solta">Soltar de novo</button>`)}`,{rever,titulo:"Habeas corpus"});ovoSomDepois("pomba",animOn()?650:80)}
 
 /* 6. Coruja da madrugada: aparece no Hoje entre 0h e 5h */
 const OVO_CORUJA=`<svg viewBox="0 0 64 64" aria-hidden="true"><path class="ocj-orelha" d="M14 14l6 10M50 14l-6 10"/><ellipse class="ocj-corpo" cx="32" cy="38" rx="20" ry="22"/><ellipse class="ocj-barriga" cx="32" cy="44" rx="12" ry="13"/><circle class="ocj-olho" cx="23" cy="30" r="8"/><circle class="ocj-olho" cx="41" cy="30" r="8"/><circle class="ocj-pupila" cx="24" cy="30" r="3.4"/><circle class="ocj-pupila" cx="42" cy="30" r="3.4"/><g class="ocj-palp"><path d="M15 30a8 8 0 0 1 16 0z"/><path d="M33 30a8 8 0 0 1 16 0z"/></g><path class="ocj-bico" d="M29 36h6l-3 5z"/><path class="ocj-pe" d="M25 59v3M29 59v3M35 59v3M39 59v3"/></svg>`;
 function ovoCoruja(rever){const h=new Date().getHours();
  ovoCena("coruja","ovo-coruja",`<div class="ocj-palco" aria-hidden="true"><span class="ocj-lua"></span><span class="ocj-est"></span><span class="ocj-est"></span><span class="ocj-est"></span>${OVO_CORUJA}</div>
  <h2>Corujão do Direito</h2><p class="frase">${h<5&&!rever?`Estudando a esta hora? Que dedicação!`:"Você encontrou a coruja da madrugada."}</p>
- <p class="ovo-nota"><b>Dica da coruja:</b> é durante o sono que o cérebro consolida o que você estudou. Feche com uns cartões de revisão e vá dormir: amanhã a matéria vai estar mais firme.</p>${ovoBotoes()}`,{rever,titulo:"Coruja da madrugada"})}
+ <p class="ovo-nota"><b>Dica da coruja:</b> é durante o sono que o cérebro consolida o que você estudou. Feche com uns cartões de revisão e vá dormir: amanhã a matéria vai estar mais firme.</p>${ovoBotoes()}`,{rever,titulo:"Coruja da madrugada"});ovoSomDepois("coruja",700)}
 
 /* 7. Datas do Direito: um selo no Hoje nos dias especiais */
 const OVO_DATAS={
@@ -4027,7 +4106,14 @@ function ovoData(rever){const d=new Date();let k=ovoDataHoje(),prox=false;
  ovoCena("data","ovo-data",`<div class="od-pag" aria-hidden="true"><span class="od-mes">${x[1]}</span><span class="od-dia">${x[0]}</span></div>
  <h2>${prox?`Próxima data: ${esc(x[2])}`:`Hoje é ${esc(x[2])}!`}</h2><p class="ovo-nota">${esc(x[3](d.getFullYear()))}</p>${ovoBotoes()}`,{rever,titulo:x[2],confete:!prox})}
 
-const OVO_ABRE={balanca:ovoBalanca,brocardo:ovoBrocardo,martelo:ovoMartelo,chama:ovoChama,habeas:ovoHabeas,coruja:ovoCoruja,data:ovoData};
+/* 8. Fim dos autos: no fim de qualquer tela, puxar com força para cima (no computador, continuar rolando a roda do mouse) */
+const OF_SVG=`<svg class="of-svg" viewBox="0 0 230 150" aria-hidden="true"><rect class="of-folha" x="52" y="14" width="128" height="124" rx="6" transform="rotate(5 116 76)"/><rect class="of-folha" x="48" y="12" width="128" height="124" rx="6" transform="rotate(-3 112 74)"/>
+ <path class="of-capa2" d="M40 22h50l8 10h92v110H40z"/><path class="of-capa" d="M40 36h150v106H40z"/><rect class="of-etq" x="62" y="48" width="106" height="22" rx="4"/><path class="of-linha" d="M72 59h56M62 92h96M62 108h80M62 124h90"/></svg>`;
+function ovoFundo(rever){ovoCena("fundo","ovo-fundo",`<div class="of-palco">${OF_SVG}<span class="of-carimbo">Transitado<br>em julgado</span></div>
+ <h2>Fim dos autos!</h2><p class="frase">Você puxou até onde não dava mais. Daqui não cabe recurso: a decisão transitou em julgado.</p>
+ <p class="ovo-nota"><b>Coisa julgada</b> é a autoridade que torna imutável e indiscutível a decisão de mérito da qual não cabe mais recurso (art. 502 do CPC). Nem lei nova pode prejudicá-la (art. 5º, XXXVI, da CF). <b>Mas atenção:</b> ainda existe a ação rescisória, em até 2 anos do trânsito em julgado (art. 975 do CPC), e no processo penal a revisão criminal a favor do condenado pode ser pedida a qualquer tempo (art. 622 do CPP).</p>${ovoBotoes(`<button class="botao" data-ovo="fundo-carimba">Carimbar de novo</button>`)}`,{rever,titulo:"Fim dos autos"});
+ ovoSomDepois("carimbo",animOn()?420:60)}
+const OVO_ABRE={balanca:ovoBalanca,brocardo:ovoBrocardo,martelo:ovoMartelo,chama:ovoChama,habeas:ovoHabeas,coruja:ovoCoruja,data:ovoData,fundo:ovoFundo};
 /* lista em Sobre o Facul Lab: os achados podem ser revistos; os outros mostram só a dica */
 function ovosSecao(){const n=ovosAchados();
  return `<section class="sb-bloco ovo-lista"><h3>${ic("estrela")} Segredos do Facul Lab <small>${n} de ${OVOS.length}</small></h3><p>${n===OVOS.length?"Você achou todos! Toque em um segredo para rever.":n?"Ainda há segredos escondidos pelo app. As dicas estão abaixo.":"O app esconde alguns segredos interativos. Siga as dicas para encontrar."}</p>
@@ -4040,13 +4126,14 @@ function ovoReanima(el,cls){if(!el)return;el.classList.remove(cls);void el.getBo
 document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
  const b=t.closest("[data-ovo]");
  if(b){const a=b.dataset.ovo,c=b.closest(".festa");
-  if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoSom("toque");ovoBalAtualiza()}
-  else if(a==="bal-tira"&&ovoBal){ovoBal.R.pop();ovoBalAtualiza()}
+  if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoSom("peso");ovoBalAtualiza()}
+  else if(a==="bal-tira"&&ovoBal){ovoBal.R.pop();ovoSom("tira");ovoBalAtualiza()}
   else if(a==="bal-de-novo")ovoBalanca(true);
   else if(a==="broc-vira"){b.classList.toggle("virada");ovoSom("vira")}
-  else if(a==="broc-outro"){const p=c.querySelector(".obr-palco");p.innerHTML=ovoBrocHtml();ovoReanima(p,"troca")}
-  else if(a==="mart-bate")ovoReanima(c.querySelector(".om-palco"),"bate");
-  else if(a==="hc-solta")ovoReanima(c.querySelector(".oh-palco"),"solta");
+  else if(a==="broc-outro"){const p=c.querySelector(".obr-palco");p.innerHTML=ovoBrocHtml();ovoReanima(p,"troca");ovoSom("vira")}
+  else if(a==="mart-bate"){ovoReanima(c.querySelector(".om-palco"),"bate");ovoSomDepois("martelo",animOn()?600:30)}
+  else if(a==="fundo-carimba"){ovoReanima(c.querySelector(".of-palco"),"bate");ovoSomDepois("carimbo",animOn()?420:30)}
+  else if(a==="hc-solta"){ovoReanima(c.querySelector(".oh-palco"),"solta");ovoSomDepois("pomba",animOn()?650:30)}
   else if(a==="rever"&&OVO_ABRE[b.dataset.id])OVO_ABRE[b.dataset.id](true);
   else if(a==="coruja")ovoCoruja();
   else if(a==="data")ovoData();
@@ -4073,6 +4160,25 @@ let ovoSac=[];
 window.addEventListener("devicemotion",e=>{const a=e.accelerationIncludingGravity;if(!a||a.x===null)return;if(Math.hypot(a.x||0,a.y||0,a.z||0)<27)return;
  const t=Date.now();if(ovoSac.length&&t-ovoSac[ovoSac.length-1]<180)return;ovoSac=ovoSac.filter(x=>t-x<1400);ovoSac.push(t);
  if(ovoSac.length>=3){ovoSac=[];if(rota.tela!=="quiz"&&tourI<0&&!document.querySelector(".festa"))ovoHabeas()}});
+/* puxar para cima no fim da tela: uma aba sobe do rodapé acompanhando o dedo; passou do ponto, soltou, abre o segredo */
+let ovoPx=null;
+function ovoNoFim(){const d=document.documentElement;return window.innerHeight+window.scrollY>=d.scrollHeight-4}
+function ovoPuxaEl(){let el=$("#ovo-puxa");if(!el){el=document.createElement("div");el.id="ovo-puxa";el.setAttribute("aria-hidden","true");document.body.appendChild(el)}return el}
+function ovoPuxa(h){const el=ovoPuxaEl(),pronto=h>=96;el.classList.remove("solta");
+ if(pronto!==el.classList.contains("pronto")||!el.innerHTML){el.classList.toggle("pronto",pronto);el.innerHTML=`<span class="op-ic">${ic("pasta")}</span><span>${pronto?"Solte para carimbar":"Fim dos autos…"}<small>${pronto?"Daqui não cabe recurso":"Continue puxando"}</small></span>`;if(pronto)som("puxa")}
+ el.style.transform=`translate(-50%,calc(100% - ${Math.min(h,130)}px))`;return pronto}
+function ovoPuxaSolta(abrir){const el=$("#ovo-puxa");if(!el)return;el.classList.add("solta");el.style.transform="";const pr=el.classList.contains("pronto");el.classList.remove("pronto");setTimeout(()=>{if(!el.classList.contains("pronto"))el.innerHTML=""},400);if(abrir&&pr)setTimeout(()=>ovoFundo(),120)}
+const ovoPodePuxar=t=>!(t&&t.closest&&t.closest(".festa,#tour,.gaveta,.folha,.camada,.folha-camada,input,textarea,select"))&&!document.querySelector(".festa,#tour")&&!gaveta&&tourI<0;
+document.addEventListener("touchstart",e=>{ovoPx=null;if(e.touches.length!==1||!ovoPodePuxar(e.target)||!ovoNoFim())return;ovoPx={y:e.touches[0].clientY,x:e.touches[0].clientX,h:0}},{passive:true});
+document.addEventListener("touchmove",e=>{if(!ovoPx)return;const t=e.touches[0],dy=ovoPx.y-t.clientY;
+ if(!ovoNoFim()||Math.abs(t.clientX-ovoPx.x)>Math.max(60,dy)){if(ovoPx.h)ovoPuxaSolta(false);ovoPx=null;return}
+ const h=dy>30?(dy-30)*.42:0;if(h||ovoPx.h){ovoPx.h=h;ovoPuxa(h)}},{passive:true});
+["touchend","touchcancel"].forEach(ev=>document.addEventListener(ev,e=>{if(!ovoPx)return;const ok=ev==="touchend"&&ovoPx.h>=96;if(ovoPx.h)ovoPuxaSolta(ok);ovoPx=null},{passive:true}));
+/* no computador: continuar rolando para baixo quando a tela já acabou */
+let ovoRoda=0,tOvoRoda=null;
+window.addEventListener("wheel",e=>{if(e.deltaY<=0||e.ctrlKey||!ovoPodePuxar(e.target)||!ovoNoFim()){if(ovoRoda){ovoRoda=0;ovoPuxaSolta(false)}return}
+ ovoRoda+=Math.min(e.deltaY*(e.deltaMode===1?16:1),120);const h=Math.max(0,ovoRoda-900)*.11;if(h)ovoPuxa(h);
+ clearTimeout(tOvoRoda);tOvoRoda=setTimeout(()=>{const ok=h>=96;ovoRoda=0;ovoPuxaSolta(ok)},350)},{passive:true});
 /* enfeites do Hoje depois de cada render: coruja de madrugada, selo das datas e brilho dourado nos marcos da ofensiva */
 function ovoEnfeita(){if(rota.tela!=="hoje")return;const hero=document.querySelector(".hoje-hero");if(!hero||hero.querySelector(".ovo-coruja,.ovo-dt"))return;
  const k=ovoDataHoje();if(k){const x=OVO_DATAS[k],txt=hero.querySelector(".hh-txt");if(txt)txt.insertAdjacentHTML("afterbegin",`<button class="ovo-dt" data-ovo="data">${ic("calendario")}<span>${esc(x[2])}! Toque aqui</span></button>`)}
