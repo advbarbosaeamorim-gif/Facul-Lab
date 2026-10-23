@@ -1,6 +1,10 @@
 # O app continua estático (sem build). As funções em netlify/functions cuidam dos lembretes no celular.
 [build]
   publish = "."
+  # Economia de créditos: cada publicação em produção gasta créditos. Merges comuns na main NÃO
+  # publicam; só publica quando o commit (ou o título do PR mergeado) tiver [publicar].
+  # Prévias dos PRs continuam normais. (exit 0 = pular, exit 1 = publicar)
+  ignore = "if [ \"$CONTEXT\" != \"production\" ]; then exit 1; fi; git log -1 --pretty=%B | grep -qi '\\[publicar\\]' && exit 1 || exit 0"
 
 [functions]
   directory = "netlify/functions"
