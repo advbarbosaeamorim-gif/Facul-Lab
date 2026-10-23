@@ -985,6 +985,38 @@ html[data-anim="off"] .mv *{animation:none!important}
 .secao-linha .secao{flex:1 1 auto;margin:0}
 .contador{font-size:.82rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .plano-lista+.dica{margin-top:12px}
+/* plano de hoje com prioridade às provas */
+.pp-intro{margin-bottom:12px}
+.pp-etapa{display:flex;gap:12px;align-items:flex-start;margin:6px 0 10px}
+.pp-etapa b{display:block;font-family:var(--f-display);font-size:1.02rem}
+.pp-etapa small{display:block;color:var(--muted);font-size:.86rem;line-height:1.45;margin-top:2px}
+.plano-lista+.pp-etapa{margin-top:22px}
+.pp-num{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--toga);color:var(--toga-fg,#fff);font-weight:800;font-size:.85rem}
+.pp-agenda{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(68px,1fr);gap:8px;overflow-x:auto;padding:4px 2px 8px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.pp-dia{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--fg);scroll-snap-align:start;min-height:104px;transition:border-color .15s,transform .15s}
+.pp-dia[aria-pressed="true"]{border-color:var(--toga-borda);box-shadow:0 0 0 2px color-mix(in srgb,var(--toga-borda) 35%,transparent)}
+.pp-dsem{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.pp-dia.hoje .pp-dsem{color:var(--toga-txt)}
+.pp-dnum{font-family:var(--f-display);font-weight:800;font-size:1.25rem;line-height:1}
+.pp-bolas{display:flex;flex-wrap:wrap;justify-content:center;gap:3px;margin-top:4px}
+.pp-bola{min-width:24px;height:22px;padding:0 5px;border-radius:99px;background:var(--c);color:#fff;font-style:normal;font-size:.6rem;font-weight:800;display:grid;place-items:center;letter-spacing:-.02em}
+.pp-bola.leve{height:17px;min-width:18px;font-size:.52rem;opacity:.55}
+.pp-folga{font-style:normal;font-size:.7rem;color:var(--muted)}
+.pp-flag{display:inline-flex;align-items:center;gap:3px;margin-top:3px;padding:1px 6px;border-radius:99px;background:#e5484d;color:#fff;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.pp-flag svg.i{width:11px;height:11px}
+.pp-det{margin:2px 0 4px;font-size:.88rem;color:var(--fg);min-height:1.4em}
+.pp-grupo{margin-bottom:12px}
+.pp-cab{display:flex;align-items:center;gap:12px;padding:12px 16px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border-left:4px solid var(--c)}
+.pp-cab b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.pp-cab small{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+.pp-prep{margin-left:auto;font-weight:800;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}
+.pp-leve{margin-bottom:12px}
+html[data-anim="on"] .pp-dia{animation:pp-sobe .45s cubic-bezier(.3,1.3,.5,1) backwards;animation-delay:calc(var(--i)*55ms)}
+html[data-anim="on"] .pp-dia:active{transform:scale(.95)}
+html[data-anim="on"] .pp-dia[aria-pressed="true"] .pp-bola{animation:pp-pula .5s cubic-bezier(.3,1.6,.5,1)}
+html[data-anim="on"] .pp-dia.tem-prova .pp-flag{animation:pv-pulsa 1.6s ease-in-out infinite}
+@keyframes pp-sobe{from{opacity:0;transform:translateY(10px)}}
+@keyframes pp-pula{40%{transform:translateY(-5px) scale(1.12)}}
 .atalhos .card small{line-height:1.35}
 /* busca */
 .tile-mini{width:26px;height:26px;border-radius:7px;display:inline-grid;place-items:center;background:var(--c);color:#fff;flex:none;margin-top:2px}
@@ -1341,6 +1373,13 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .lista .plano>.tile{background:var(--grad);color:#fff}
 [data-estilo="premium"] .lista .plano.feito>.tile{background:var(--ok)}
 [data-estilo="premium"] .lista{background:none;border:0;box-shadow:none;display:grid;gap:10px;border-radius:0}
+[data-estilo="premium"] .pp-cab{border-radius:20px;border-left:0;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 22%,var(--surface)),var(--surface));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+[data-estilo="premium"] .pp-cab .pp-prep{background:var(--c);color:#fff;border-radius:99px;padding:3px 10px}
+[data-estilo="premium"] .pp-dia{border-radius:18px}
+[data-estilo="premium"] .pp-dia[aria-pressed="true"]{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 10px 18px -10px color-mix(in srgb,var(--p1) 80%,transparent)}
+[data-estilo="premium"] .pp-dia[aria-pressed="true"] .pp-dsem,[data-estilo="premium"] .pp-dia[aria-pressed="true"] .pp-folga{color:#fff}
+[data-estilo="premium"] .pp-dia[aria-pressed="true"] .pp-bola{box-shadow:0 0 0 2px #fff}
+[data-estilo="premium"] .pp-num{background:var(--grad);color:#fff}
 [data-estilo="premium"] .item{background:var(--surface);border:1px solid var(--line)!important;border-radius:22px;box-shadow:var(--sombra);padding:14px 16px;grid-template-columns:48px minmax(0,1fr) auto}
 [data-estilo="premium"] .item:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))!important}
 [data-estilo="premium"] .item.ass{grid-template-columns:minmax(0,1fr) auto}
@@ -2428,7 +2467,7 @@ function telaLer(){const d=rota.d,i=periodoDe(d),f=infoDisc(d);if(!apOk(i))retur
  const A=window.APOSTILA[i],t=A.mat&&A.mat[d];if(!t)return topo(f.nome,"",{})+`<main class="wrap">${vazio("livros","Apostila em preparação","Enquanto o texto não fica pronto, treine com os simulados desta matéria: cada questão traz comentário e fundamento legal.",`<button class="botao cheio" data-acao="disc" data-d="${d}">Ver os simulados</button>`,f.cor)}</main>`;
  const P=paginas(d);const N=P.secs.length;const tudo=S.cfg&&S.cfg.apTudo&&!rota.pagina;
  const pg=Math.max(0,Math.min(N+1,rota.pg||0));rota.pg=pg;
- if(!tudo&&pg>0){S.apPg=S.apPg||{};if((S.apPg[d]||0)<pg){S.apPg[d]=pg;salvar()}}
+ if(!tudo&&pg>0){S.apPg=S.apPg||{};S.apT=S.apT||{};const ad=(S.apPg[d]||0)<pg,nd=S.apT[d]!==hojeStr();if(ad)S.apPg[d]=pg;if(nd)S.apT[d]=hojeStr();if(ad||nd)salvar()}
  const fonte=(S.cfg&&S.cfg.fonte)||0;
  const dir=`<button class="icone" data-acao="fonte" data-v="-1" aria-label="Diminuir letra">A−</button><button class="icone" data-acao="fonte" data-v="1" aria-label="Aumentar letra">A+</button>`;
  const corpo=tudo?tudoAp(d,f,P,i):pg===0?capaAp(d,f,P):pg<=N?paginaTema(d,f,P,pg):fimAp(d,f,P,i);
@@ -2578,8 +2617,8 @@ function etapaProva(n){return n===0?{k:"hoje",nome:"Dia da prova",txt:"Revisão 
  :n<=3?{k:"reta",nome:"Reta final",txt:"Refaça as erradas e leia o resumo. Questões novas só para manter o ritmo."}
  :n<=14?{k:"treino",nome:"Treino",txt:"Muitas questões e revisão dos pontos fracos. Termine a leitura dos temas que faltam."}
  :{k:"base",nome:"Base",txt:"Leia os temas da apostila com calma e fixe com os cartões. Questões em ritmo leve."}}
-function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0;const h0=inicioDia();
- ids.forEach(id=>{const s=S.stats[id];if(!s)return;if(s.u)o++;else e++;if(s.t&&s.t>=h0)hoje++});
+function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0,ult=0;const h0=inicioDia();
+ ids.forEach(id=>{const s=S.stats[id];if(!s)return;if(s.u)o++;else e++;if(s.t&&s.t>=h0)hoje++;if(s.t>ult)ult=s.t});
  const feitas=o+e,n=ids.length;const i=periodoDe(p.d);let temas=0,lidos=0;
  if(i>=0&&apOk(i)&&window.APOSTILA[i].mat[p.d]){temas=paginas(p.d).secs.length;lidos=S.lidos&&S.lidos[p.d]?temas:Math.min(temas,(S.apPg&&S.apPg[p.d])||0)}
  else if(S.lidos&&S.lidos[p.d]){temas=1;lidos=1}
@@ -2589,11 +2628,9 @@ function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0;const h0=inici
  let alvo=0;if(prox){const falta=Math.max(0,n-feitas)+e;alvo=prox.n===0?Math.min(10,Math.max(e,5)):Math.min(40,Math.max(5,Math.ceil(falta/Math.max(1,prox.n))))}
  if(alvo)alvo=Math.max(3,Math.round(alvo*fatorRitmo()));
  const urg=prox?(100-preparo+10)/(prox.n+1):0;
- return {p,ids,n,o,e,feitas,hoje,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
+ return {p,ids,n,o,e,feitas,hoje,ult,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
 function provasAtivas(){return provasFac().map(estadoProva).filter(x=>x.prox).sort((a,b)=>b.urg-a.urg)}
 function proxSimDisc(d){const n=nFac(d);for(let i=0;i<n;i++){const k=`fac:${d}:${i}`;if(livreSim(k))return k}return null}
-/* meta diária: soma o que cada prova pede (as próximas 3 semanas), sem baixar da meta normal */
-function metaProvas(){if(!avOn())return 0;return Math.min(100,provasAtivas().filter(x=>x.prox.n<=21).reduce((s,x)=>s+x.alvo,0))}
 /* ---------- notas no formato Afya Unigranrio ----------
    N1 + N2 somam até 100 pontos. Com 70 ou mais, aprovação direta. De 40 a 69,9 a pessoa
    vai para o exame final (toda a matéria, de 0 a 100) e passa se (N1 + N2 + exame) ÷ 2 for 50 ou mais.
@@ -2633,7 +2670,7 @@ function blocoNotas(p){const N=p.notas||{};const s=situacaoNotas(p);const camp=(
   ${resultadoNotas(p)}
   <p class="pv-vale">Quanto vale cada prova: N1 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v1).replace(",",".")}" data-nota="v1" data-id="${p.id}" aria-label="Pontos da N1"> · N2 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v2).replace(",",".")}" data-nota="v2" data-id="${p.id}" aria-label="Pontos da N2"> <small>(somam 100)</small></p></details>`}
 /* cartão de uma prova (Hoje e Metas) */
-function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=proxSimDisc(x.p.d);const ok=x.hoje>=x.alvo&&x.alvo>0;
+function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=proxSimDisc(x.p.d);const alvo=x.alvoHoje===undefined?x.alvo:x.alvoHoje;const ok=x.hoje>=alvo&&alvo>0;
  return `<article class="pv${urg?" pv-urg":""}${x.prox?"":" pv-passou"}" style="--c:${f.cor}">
   <div class="pv-topo">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${esc(nomeCurto(f.nome))}</b><span class="pv-quando">${x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · ${dataCurta(x.prox.dt)}`:"Todas as datas já passaram"}</span></div>
    <div class="pv-anel">${anel(x.preparo,100,`Preparo de ${x.preparo}%`)}<span><b>${x.preparo}%</b><small>preparo</small></span></div></div>
@@ -2646,20 +2683,76 @@ function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.pro
    <div><span>Leitura da apostila</span><b>${x.temas?`${x.lidos} de ${x.temas} temas`:"—"}</b><i class="pv-bar lei"><i style="width:${x.temas?x.lidos*100/x.temas:0}%"></i></i></div></div>
    ${notasOn()&&situacaoNotas(x.p).est!=="vazio"?resultadoNotas({...x.p,id:x.p.id+"-m"}):""}
    ${x.datas.length>1?`<ol class="pv-datas">${x.datas.map(dd=>`<li class="${dd.n<0?"passou":dd.n===0?"hoje":""}"><b>${esc(dd.r||"Prova")}</b> ${dataCurta(dd.dt)} <small>${quandoTxt(dd.n)}</small></li>`).join("")}</ol>`:""}`:""}
-  ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:`Hoje: ${x.alvo} ${x.alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
+  ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:!alvo?"Descansa hoje no rodízio · treinar mesmo assim":`Hoje: ${alvo} ${alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
  </article>`}
-function blocoProvasHoje(){if(!avOn())return "";const L=provasAtivas();
+function blocoProvasHoje(P){if(!avOn())return "";const L=P?P.L:provasAtivas();
  if(!L.length)return `<div class="secao" role="heading" aria-level="2">Suas provas</div><button class="card pv-vazio" data-acao="ir-raiz" data-tela="config">${tile("var(--lacre)","calendario")}<b>Cadastre suas provas da faculdade</b><small>Escolha a matéria e o dia de cada prova. O plano de hoje passa a se organizar por elas.</small></button>`;
  return `<div class="secao-linha"><div class="secao" role="heading" aria-level="2">Suas provas</div><span class="contador">${L.length} pela frente</span></div>
   <p class="nota" style="margin-top:0">Em ordem de prioridade: a mais próxima e menos preparada vem primeiro.</p><div class="pv-lista">${L.slice(0,3).map(x=>cartaoProva(x,false)).join("")}</div>`}
-/* itens do plano de hoje que vêm das provas */
-function itensProvas(){if(!avOn())return "";const L=provasAtivas().slice(0,2);let h="";
- L.forEach(x=>{const f=infoDisc(x.p.d);const nome=esc(nomeCurto(f.nome));const k=proxSimDisc(x.p.d);const pz=`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)}`;
-  h+=itemPlano(x.hoje>=x.alvo,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${x.p.d}"`,f.cor,"alvo",`${nome}: ${x.alvo} ${x.alvo===1?"questão":"questões"}`,`${pz} · ${x.hoje} feita${x.hoje===1?"":"s"} hoje`);
-  if(x.prox.n<=3){const i=periodoDe(x.p.d);if(i>=0)h+=itemPlano(false,"resumo",`data-p="${i}"`,f.cor,"recibo",`${nome}: ler o resumo`,`${pz} · revise o essencial antes da prova`)}
-  else{const t=proximoTema([x.p.d]);if(t)h+=itemPlano(false,"abrir-tema",`data-d="${t.d}" data-k="${t.pg}"`,f.cor,"livro",`${nome}: ${esc(t.tit)}`,`${pz} · tema ${t.pg} de ${x.temas||"?"}`)}
-  const fr=assuntoMaisFraco([x.p.d]);if(fr&&x.prox.n<=14)h+=itemPlano(false,"treinar-ass",`data-sc="${fr.sc}" data-a="${esc(encodeURIComponent(fr.a))}"`,"var(--erro)","exc",`${nome}: ponto fraco em ${esc(fr.a)}`,`${fr.pct}% de acerto em ${fr.v} questões`)});
- return h}
+/* ---------- plano das provas: quais provas entram no estudo de hoje ----------
+   Cada ritmo tem "vagas" por dia (leve 1, automático e moderado 2, intenso 3). Se as provas cabem nas vagas,
+   todas entram todo dia. Se não cabem, o app reveza: simula os próximos dias dando a cada prova um crédito
+   que cresce com a falta de preparo e com a proximidade da data; a cada dia entram as de maior crédito
+   (e o crédito delas zera). Prova em até 2 dias entra sempre. A primeira que ficou de fora entra "um pouco",
+   só com algumas questões, para a matéria não esfriar. A escolha de hoje fica guardada até virar o dia. */
+const vagasProvas=()=>({leve:1,intenso:3}[S.cfg&&S.cfg.ritmo]||2);
+const siglaDisc=d=>d.charAt(0).toUpperCase()+d.slice(1);
+function planoProvas(){if(!avOn())return null;const L=provasAtivas();if(!L.length)return null;
+ const K=vagasProvas(),H=Math.min(60,Math.max(...L.map(x=>x.prox.n))+1),h0=inicioDia();
+ const sig=L.map(x=>x.p.id+"@"+x.prox.dt).sort().join(",")+"|"+K;const memo=S.planoPv&&S.planoPv.dia===hojeStr()&&S.planoPv.sig===sig?S.planoPv:null;
+ const cred={};L.forEach(x=>{const sem=x.ult?Math.round((h0-inicioDia(x.ult))/864e5):7;cred[x.p.id]=Math.min(7,Math.max(0,sem))*.15});
+ const D=[];
+ for(let t=0;t<H;t++){const V=L.filter(x=>x.prox.n>=t);if(!V.length){D.push({t,ch:[],leve:[],provas:[]});continue}
+  V.forEach(x=>{cred[x.p.id]+=(110-x.preparo)/100*(1+3/(x.prox.n-t+1))});
+  let ch,leve;
+  if(t===0&&memo){ch=V.filter(x=>memo.ch.includes(x.p.id));leve=V.filter(x=>memo.leve.includes(x.p.id))}
+  else{const obrig=V.filter(x=>x.prox.n-t<=2);const resto=V.filter(x=>!obrig.includes(x)).sort((a,b)=>cred[b.p.id]-cred[a.p.id]||a.prox.n-b.prox.n);
+   ch=obrig.concat(resto).slice(0,Math.max(K,obrig.length));leve=V.filter(x=>!ch.includes(x)).sort((a,b)=>cred[b.p.id]-cred[a.p.id]).slice(0,1)}
+  ch.forEach(x=>cred[x.p.id]=0);leve.forEach(x=>cred[x.p.id]/=2);
+  D.push({t,ch:ch.map(x=>x.p.id),leve:leve.map(x=>x.p.id),provas:V.filter(x=>x.prox.n===t).map(x=>x.p.id)})}
+ if(!memo)S.planoPv={dia:hojeStr(),sig,ch:D[0].ch,leve:D[0].leve};
+ /* com rodízio, cada prova estuda menos dias: as questões e os temas de cada dia sobem na mesma proporção */
+ L.forEach(x=>{const dias=D.slice(0,x.prox.n+1).filter(d=>d.ch.includes(x.p.id)).length;x.diasEst=Math.max(1,dias);
+  x.modo=D[0].ch.includes(x.p.id)?"cheio":D[0].leve.includes(x.p.id)?"leve":"";
+  x.alvoHoje=x.modo==="cheio"?Math.min(40,Math.max(x.alvo,Math.ceil(x.alvo*(x.prox.n+1)/x.diasEst))):x.modo==="leve"?Math.min(5,x.alvo):0;
+  x.temasDia=x.temas>x.lidos?Math.ceil((x.temas-x.lidos)/Math.max(1,x.diasEst-(D[x.prox.n]&&D[x.prox.n].ch.includes(x.p.id)?1:0))):0});
+ const hoje=L.filter(x=>x.modo==="cheio").sort((a,b)=>a.prox.n-b.prox.n||b.urg-a.urg);
+ return {L,K,D,hoje,leve:L.filter(x=>x.modo==="leve"),fora:L.filter(x=>!x.modo)}}
+/* meta diária: soma as questões das provas que entram hoje, sem baixar da meta normal */
+function metaProvas(){const P=planoProvas();return P?Math.min(100,P.L.reduce((s,x)=>s+(x.prox.n<=21?x.alvoHoje:0),0)):0}
+const listaE=a=>a.length<2?a.join(""):a.slice(0,-1).join(", ")+" e "+a[a.length-1];
+const leuHoje=d=>!!(S.apT&&S.apT[d]===hojeStr());
+function cartoesHojeDisc(d){const i=periodoDe(d);if(i<0||!apOk(i))return null;const x=infoDeck(d);if(!x.cs.length)return null;const h0=inicioDia();
+ const fez=x.cs.some(c=>{const s=estC(c.id);return s&&s.t>=h0});return {...x,fez,ok:!x.venc&&(fez||!x.novos)}}
+/* bloco de uma prova no plano de hoje: questões, cartões e leitura da mesma matéria */
+function grupoProva(x){const f=infoDisc(x.p.d),d=x.p.d,nome=esc(nomeCurto(f.nome)),k=proxSimDisc(d),n=x.prox.n,rot=esc(x.prox.r||"Prova");
+ const pz=n===0?`${rot} é hoje`:`${rot} ${quandoTxt(n)}`;let h="";
+ h+=itemPlano(x.hoje>=x.alvoHoje,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${d}"`,f.cor,"alvo",`Questões: ${Math.min(x.hoje,x.alvoHoje)} de ${x.alvoHoje}`,n===0?"Só para aquecer: nada de conteúdo novo hoje":x.diasEst<n+1?`Você estuda ${nome} em ${x.diasEst} dos ${n+1} dias até a ${rot}, então hoje rende mais`:"Todo dia um pouco: você chega com a matéria inteira treinada");
+ const C=cartoesHojeDisc(d);
+ if(C&&n>0)h+=itemPlano(C.ok,"cards-disc",`data-d="${d}"`,"var(--lacre)","cartas",C.venc?`Cartões para revisar: ${C.venc}`:C.novos&&!C.fez?`Cartões novos: ${Math.min(C.novos,novosFase())}`:"Cartões da matéria",C.venc?"Chegaram no dia de revisão. Depois vêm os novos":C.fez?"Você já revisou cartões desta matéria hoje":C.novos?`Perguntas da apostila de ${nome} · fixam o que você leu`:"Todos em dia. Volte quando chegarem na revisão",!C.venc&&!C.novos&&!C.fez);
+ if(n<=3){const i=periodoDe(d);if(i>=0)h+=itemPlano(false,"resumo",`data-p="${i}"`,f.cor,"recibo",`Ler o resumo de ${nome}`,n===0?"Uma passada leve no essencial antes de sair de casa":"Reta final: revise o essencial em vez de conteúdo novo")}
+ else{const t=proximoTema([d]);const lido=leuHoje(d);
+  if(t)h+=itemPlano(lido,"abrir-tema",`data-d="${t.d}" data-k="${t.pg}"`,f.cor,"livro",`Ler: ${esc(t.tit)}`,`Tema ${t.pg} de ${x.temas||"?"}${lido?" · você já leu hoje, continue se quiser":x.temasDia>1?` · ${x.temasDia} temas por dia para terminar antes da ${rot}`:" · da apostila desta matéria"}`);
+  else if(x.temas)h+=itemPlano(true,"ap",`data-p="${periodoDe(d)}"`,"var(--ok)","livro","Apostila lida até o fim","Agora é treinar com questões e cartões")}
+ const fr=n<=14?assuntoMaisFraco([d]):null;
+ if(fr)h+=itemPlano(false,"treinar-ass",`data-sc="${fr.sc}" data-a="${esc(encodeURIComponent(fr.a))}"`,"var(--erro)","exc",`Ponto fraco: ${esc(fr.a)}`,`${fr.pct}% de acerto em ${fr.v} questões`);
+ return `<div class="lista plano-lista pp-grupo" style="--c:${f.cor}"><div class="pp-cab">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${nome}</b><small><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${pz} · ${dataCurta(x.prox.dt)}</small></div><span class="pp-prep" title="Preparo">${x.preparo}%</span></div>${h}</div>`}
+/* agenda dos próximos dias: mostra como o app reveza as provas */
+function agendaPP(P){const nd=Math.min(7,P.D.length);const sel=Math.min(nd-1,rota.ppDia||0);const M={};P.L.forEach(x=>M[x.p.id]=x);
+ const fmt=new Intl.DateTimeFormat("pt-BR",{weekday:"short"});
+ const dias=P.D.slice(0,nd).map(d=>{const dt=new Date(inicioDia()+d.t*864e5+12*36e5);
+  const bolas=d.ch.map(id=>`<i class="pp-bola" style="--c:${infoDisc(M[id].p.d).cor}">${siglaDisc(M[id].p.d)}</i>`).join("")+d.leve.map(id=>`<i class="pp-bola leve" style="--c:${infoDisc(M[id].p.d).cor}">${siglaDisc(M[id].p.d)}</i>`).join("");
+  return `<button class="pp-dia${d.t===0?" hoje":""}${d.provas.length?" tem-prova":""}" data-acao="pp-dia" data-v="${d.t}" aria-pressed="${d.t===sel}" style="--i:${d.t}"><span class="pp-dsem">${d.t===0?"hoje":d.t===1?"amanhã":fmt.format(dt).replace(".","")}</span><span class="pp-dnum">${dt.getDate()}</span><span class="pp-bolas">${bolas||`<i class="pp-folga">livre</i>`}</span>${d.provas.length?`<span class="pp-flag">${ic("alvo")}prova</span>`:""}</button>`}).join("");
+ const d=P.D[sel];const nm=id=>nomeCurto(infoDisc(M[id].p.d).nome);
+ const det=d.provas.length?`Dia de ${listaE(d.provas.map(id=>`${M[id].prox.r||"prova"} de ${nm(id)}`))}. Boa prova!`+(d.ch.filter(id=>!d.provas.includes(id)).length?` Depois, ${listaE(d.ch.filter(id=>!d.provas.includes(id)).map(nm))}.`:""):
+  d.ch.length?`${d.t===0?"Hoje":d.t===1?"Amanhã":"Neste dia"}: ${listaE(d.ch.map(nm))} com tudo${d.leve.length?`, e ${listaE(d.leve.map(nm))} só um pouco`:""}.`:"Sem prova pela frente neste dia: só as matérias do período.";
+ return `<div class="pp-agenda" role="group" aria-label="Como o app reparte as provas nos próximos dias">${dias}</div><p class="pp-det" aria-live="polite">${esc(det)}</p>`}
+function explicaPP(P){const n=P.L.length,K=P.K,nm=x=>nomeCurto(infoDisc(x.p.d).nome);const r=ritmoAtual()[1].toLowerCase();
+ if(n===1)return `Com uma prova só pela frente, ela vem primeiro todos os dias. Depois, as outras matérias do período.`;
+ if(!P.fora.length&&!P.leve.length)return `Com ${n} provas pela frente, dá para estudar ${n===2?"as duas":"todas"} hoje. A mais próxima vem primeiro e, depois, as outras matérias do período.`;
+ return `Com ${n} provas, estudar tudo todo dia cansa e rende pouco. No ritmo ${r} cabem ${K} por dia, então o app reveza: hoje ${listaE(P.hoje.map(nm))} com tudo${P.leve.length?`, ${listaE(P.leve.map(nm))} só um pouco`:""}, e ${P.fora.length===1?"a outra volta":"as outras voltam"} nos próximos dias. Prova a 2 dias ou menos entra sempre.`}
+function itensProvaLeve(x){const f=infoDisc(x.p.d),k=proxSimDisc(x.p.d);
+ return itemPlano(x.hoje>=x.alvoHoje,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${x.p.d}"`,f.cor,"alvo",`Um pouco de ${esc(nomeCurto(f.nome))}: ${x.alvoHoje} questões`,`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · só para a matéria não esfriar`)}
 /* Configurações: cadastro das provas */
 function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const per=perAtual();
  const opts=PERIODOS.slice(0,9).map((ds,i)=>`<optgroup label="${i+1}º período">${ds.map(d=>`<option value="${d}"${per===i&&d===PERIODOS[i][0]?" selected":""}>${esc(infoDisc(d).nome)}</option>`).join("")}</optgroup>`).join("");
@@ -2935,7 +3028,7 @@ function avaliarCartao(nota){const c=deck.q[deck.pos];S.cards=S.cards||{};const 
  else{/* pequena variação nos intervalos longos evita que muitos cartões vençam no mesmo dia */
   let iv=r.iv;if(iv>=7)iv=Math.max(1,iv+Math.round(iv*0.06*(Math.random()*2-1)));s.iv=iv;s.b=INTERV.findIndex(x=>x>=iv);if(s.b<0)s.b=INTERV.length-1;
   s.due=inicioDia(agora)+iv*DIA;if(!c.rep)deck.ok++}
- s.n=(s.n||0)+1;S.cards[c.id]=s;marcarDia("c");salvar();deck.pos++;deck.virado=false;anunciar(nota===0?"O cartão volta ainda nesta sessão":"Próxima revisão "+txtIv(s.iv))}
+ s.n=(s.n||0)+1;s.t=agora;S.cards[c.id]=s;marcarDia("c");salvar();deck.pos++;deck.virado=false;anunciar(nota===0?"O cartão volta ainda nesta sessão":"Próxima revisão "+txtIv(s.iv))}
 
 /* ---------- revisão das apostilas lidas e tela "Revisar hoje" ---------- */
 const INTERV_AP=[1,7,15,30,60];
@@ -3085,11 +3178,13 @@ document.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||!animOn(
 document.addEventListener("click",e=>{const ilu=e.target.closest&&e.target.closest(".hoje-hero .ilu,.capa-tela .ilu,.vazio-ilu .ilu");if(!ilu||!animOn())return;ilu.classList.remove("pula");void ilu.getBoundingClientRect();ilu.classList.add("pula");setTimeout(()=>ilu.classList.remove("pula"),650)});
 function dataHoje(){const t=new Intl.DateTimeFormat("pt-BR",{weekday:"long",day:"numeric",month:"long"}).format(new Date());return t.charAt(0).toUpperCase()+t.slice(1)}
 function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaVencidos(),aps=apsVencidas(),errs=errosHoje().length;const seq=sequencia();const meta=metaDia();const hoje=(S.dias&&S.dias[hojeStr()])||{};const falta=diasProva();
- const foco=discsFoco();const precisa=[...new Set(foco.map(periodoDe).filter(i=>i>=0&&!apOk(i)))];if(precisa.length)Promise.all(precisa.map(carregarApP)).then(()=>reRenderSe("hoje"));
+ const PP=planoProvas();const dsPv=PP?[...PP.hoje,...PP.leve].map(x=>x.p.d):[];
+ const foco0=discsFoco(),foco=foco0.filter(d=>!dsPv.includes(d));const precisa=[...new Set(foco0.concat(dsPv).map(periodoDe).filter(i=>i>=0&&!apOk(i)))];if(precisa.length)Promise.all(precisa.map(carregarApP)).then(()=>reRenderSe("hoje"));
  const sug=simSugerido();const tema=fs==="reta"?null:proximoTema(foco);const novos=novosDoFoco(foco);
  const resumoPer=per===null?null:per===9?(foco.length?periodoDe(foco[0]):null):per;
  const qOk=(hoje.q||0)>=meta,cOk=!venc&&(hoje.c||0)>0,lOk=(hoje.p||0)>0;
- let itens=itensProvas();
+ const pv=PP?PP.hoje.map(grupoProva).join("")+(PP.leve.length?`<div class="lista plano-lista pp-leve">${PP.leve.map(itensProvaLeve).join("")}</div>`:""):"";
+ let itens="";
  itens+=itemPlano(qOk,sug?"abrir":"proximo",sug?`data-key="${sug.key}"`:"","var(--toga)","alvo",`Questões: ${hoje.q||0} de ${meta}`,sug?`Sugestão: ${esc(sug.tit)} · ${esc(sug.sub)}`:"Faça um simulado para cumprir a meta");
  if(errs)itens+=itemPlano(false,"erradas-hoje","","var(--erro)","refazer",`Revisar questões erradas: ${errs}`,fs==="reta"?"Prioridade na reta final · cada acerto adia a próxima revisão":"Revisão espaçada: cada acerto adia a próxima (3, 7, 15 e 30 dias)");
  const fr=assuntoMaisFraco(per===null||per===9?OAB:foco.filter(d=>DISC[d]));
@@ -3099,7 +3194,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  else if(tema)itens+=itemPlano(lOk,"abrir-tema",`data-d="${tema.d}" data-k="${tema.pg}"`,infoDisc(tema.d).cor,"livro",`Ler: ${esc(tema.tit)}`,`${esc(nomeCurto(infoDisc(tema.d).nome))} · tema ${tema.pg}${lOk?" · você já leu hoje":""}`);
  else if(per!==null&&!precisa.length)itens+=itemPlano(true,"ap",`data-p="${per===9?9:per}"`,"var(--ok)","livro","Apostilas do seu foco concluídas","Revise pelos mapas mentais quando eles aparecerem aqui");
  itens+=aps.map(d=>{const f=infoDisc(d);const n=S.revAp[d].n;return itemPlano(false,"rev-ap",`data-d="${d}"`,f.cor,f.ic,`Rever o mapa mental: ${esc(nomeCurto(f.nome))}`,`${n+1}ª revisão da apostila lida`)}).join("");
- const nTot=(itens.match(/class="item plano/g)||[]).length,nFeito=(itens.match(/class="item plano feito/g)||[]).length;const pend=nTot-nFeito;
+ const nTot=((pv+itens).match(/class="item plano/g)||[]).length,nFeito=((pv+itens).match(/class="item plano feito/g)||[]).length;const pend=nTot-nFeito;
  const tudo=qOk&&(cOk||!venc)&&!errs&&!aps.length;
  const titulo=tudo?"Plano de hoje cumprido":pend===1?"Falta 1 tarefa para hoje":`${pend} tarefas para hoje`;
  const linha=tudo?"Você fechou o dia. Se quiser ir além, revise um mapa mental ou adiante cartões novos.":(hoje.q||0)<meta?`Faltam ${meta-(hoje.q||0)} questões para a meta de ${meta}.`:"Meta de questões batida. Agora, revise o que está pendente.";
@@ -3115,8 +3210,10 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
   ${(()=>{const px=provaProx(),fx=px?px.n:null;return `<div class="hs hs-prova">${calProva(px)}<div><b>${fx===null||fx<0?"—":fx}</b><span>${fx===null?"sem data de prova":fx<0?"a prova já passou":(fx===1?"dia para ":"dias para ")+(px.nome?`a <em class="hs-qual">${esc(px.nome)}</em>`:"a prova")}</span></div></div>`})()}
  </div>
  ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
- ${blocoProvasHoje()}
+ ${blocoProvasHoje(PP)}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Plano de hoje</div><span class="contador">${nFeito} de ${nTot} feito${nFeito===1?"":"s"}</span></div>
+ ${PP?`<div class="pp-intro"><p class="pp-etapa"><span class="pp-num">1</span><span><b>Prioridade: suas provas</b><small>${esc(explicaPP(PP))}</small></span></p>${PP.L.length>=2?agendaPP(PP):""}</div>${pv}
+ <p class="pp-etapa"><span class="pp-num">2</span><span><b>Depois: ${per===9?"seu foco na OAB":per===null?"o restante do dia":"as outras matérias do período"}</b><small>Com a prova em dia, siga com a meta, as revisões e o resto do período.</small></span></p>`:""}
  <div class="lista plano-lista">${itens}</div>
  ${per!==null?`<div class="dica"><p style="margin:0"><b>${esc(F.nome)}.</b> ${esc(F.txt)} <button class="link-inline" data-acao="ir-raiz" data-tela="config">Alterar</button></p></div>`:""}
  <div class="secao" role="heading" aria-level="2">Atalhos</div><div class="grade-mat atalhos">
@@ -3961,7 +4058,9 @@ document.addEventListener("click",e=>{
       else{const sec=document.getElementById("sec-av");if(sec)setTimeout(()=>{try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(e){}},v==="ambas"?500:150)}break}
     case "ir-avancado":{const sec=document.getElementById("sec-av");if(sec){sec.classList.remove("av-abre");void sec.offsetWidth;sec.classList.add("av-abre");try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(e){}}break}
     case "cfg-prova-data":rota.escolherData=true;rota.manterScroll=true;render();{const el=document.getElementById("data-prova");if(el)try{el.focus();el.showPicker&&el.showPicker()}catch(e){}}break;
-    case "cards-foco":{let ds=discsFoco();if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),novosFase(),"Cartões novos · "+nomePer(perAtual()));break}
+    case "cards-disc":{const d=b.dataset.d;iniciarDeck([d],novosFase(),"Cartões · "+nomeCurto(infoDisc(d).nome));break}
+    case "pp-dia":rota.ppDia=+b.dataset.v;som("toque");rota.manterScroll=true;render();break;
+    case "cards-foco":{const PP=planoProvas(),fora=PP?[...PP.hoje,...PP.leve].map(x=>x.p.d):[];let ds=discsFoco().filter(d=>!fora.includes(d));if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),novosFase(),"Cartões novos · "+nomePer(perAtual()));break}
     case "lida":{const d=b.dataset.d;S.lidos=S.lidos||{};S.revAp=S.revAp||{};if(S.lidos[d]){delete S.lidos[d];delete S.revAp[d]}else{S.lidos[d]=Date.now();S.revAp[d]={n:0,prox:inicioDia()+864e5}}salvar();rota.manterScroll=true;render();break}
     case "resumo":ir({tela:"resumo",p:+b.dataset.p,k:0,q:b.dataset.q||null});break;
     case "busca-sug":{const el=document.getElementById("q-busca");if(el){el.value=b.dataset.v;rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()}break}
