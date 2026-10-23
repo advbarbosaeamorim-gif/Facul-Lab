@@ -757,6 +757,7 @@ html[data-anim="on"] .sb-tr-v{animation:sb-trilha 2.4s cubic-bezier(.4,0,.2,1) b
 [data-estilo="premium"] .sb-bloco,[data-estilo="premium"] .sb-num{border-radius:22px}
 [data-estilo="premium"] .sb-bloco h3 .i,[data-estilo="premium"] .sb-num b,[data-estilo="premium"] .sb-ic,[data-estilo="premium"] .sb-nota .i{color:var(--p1)}
 [data-estilo="premium"] .sb-tr-v{stroke:var(--p1)}[data-estilo="premium"] .sb-ic{background:color-mix(in srgb,var(--p1) 14%,var(--surface))}
+.hs-qual{font-style:normal;font-weight:700;color:var(--fg)}
 .pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
 html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
@@ -2271,7 +2272,12 @@ const FASES={
  reta:{nome:"Reta final",txt:"Simulados completos, revisão dos erros e resumos. Evite começar conteúdo novo e pesado.",meta:60,novos:5},
  passou:{nome:"A data da prova já passou",txt:"Atualize a data nas Configurações ou escolha estudar sem data definida.",meta:20,novos:10}};
 function metaDia(){const m=S.cfg&&S.cfg.meta;const base=m?+m:FASES[fase()].meta;return Math.max(base,metaProvas())}
-const textoProva=()=>{const f=diasProva();return f===null?"Sem data de prova":f<0?"Data da prova já passou":f===0?"A prova é hoje":`${f} dia${f>1?"s":""} para a prova`};
+/* prova mais próxima para o calendário: a data manual (Configurações) e, com o modo avançado,
+   cada data das provas da faculdade. Quando uma passa, entra a seguinte. */
+function provaProx(){const L=[];const p=S.cfg&&S.cfg.prova;const n0=diasProva();if(p&&n0!==null)L.push({dt:p,n:n0,nome:"",manual:true});
+ if(avOn())provasFac().forEach(x=>(x.datas||[]).forEach(d=>{const n=diasAte(d.dt);if(n>=0)L.push({dt:d.dt,n,nome:`${d.r||"Prova"} de ${nomeCurto(infoDisc(x.d).nome)}`})}));
+ const fut=L.filter(x=>x.n>=0).sort((a,b)=>a.n-b.n||(a.manual?-1:1));return fut[0]||L[0]||null}
+const textoProva=()=>{const x=provaProx();const f=x?x.n:null;return f===null?"Sem data de prova":f<0?"Data da prova já passou":f===0?`${x.nome||"A prova"} é hoje`:`${f} dia${f>1?"s":""} para ${x.nome?"a "+x.nome:"a prova"}`};
 const nomePer=p=>p===null?"Período não definido":p===9?"Foco no Exame de Ordem":`${p+1}º período`;
 function discsDaMateria(m){return Object.keys(DISC).filter(d=>d!=="rev"&&(DISC[d].base===m||(DISC[d].m&&DISC[d].m.length===1&&DISC[d].m[0]===m)||(!DISC[d].base&&d===m)))}
 function materiaMaisFraca(){let pior=null,pp=101;OAB.forEach(m=>{const s=statMat(porM[m]||[]);if(s.v<5)return;const p=Math.round(s.o*100/s.v);if(p<pp){pp=p;pior=m}});
@@ -2428,10 +2434,10 @@ function chamaViva(seq){const on=seq>0;const nv=seq>=30?" n3":seq>=7?" n2":"";
  <g class="cv-mei"><path fill="url(#cv-g2)" d="M32 78c-10 0-17-7-17-16 0-8 5-13 9-18 1 4 3 7 6 8 0-7 3-13 9-17-1 7 2 11 5 16 3 4 5 8 5 13 0 8-7 14-17 14z"/></g>
  <g class="cv-int"><path fill="url(#cv-g3)" d="M32 78c-5 0-9-4-9-9 0-5 3-8 6-11 1 3 2 4 4 5 1-3 2-6 5-8 0 4 1 6 2 9 1 2 1 4 1 6 0 5-4 8-9 8z"/></g></svg></button>`}
 const MESES_C=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
-function calProva(falta){const p=S.cfg&&S.cfg.prova;
+function calProva(x){const p=x&&x.dt,falta=x?x.n:null;
  if(!p||falta===null)return `<button class="cal-prova vazio" data-acao="ir-raiz" data-tela="config" aria-label="Definir a data da prova nas configurações"><span class="cal-in"><span class="cal-pag"><span class="cal-mes">prova</span><span class="cal-dia">?</span><span class="cal-sem">definir</span></span></span></button>`;
  const d=new Date(p+"T12:00:00");const sem=new Intl.DateTimeFormat("pt-BR",{weekday:"short"}).format(d).replace(".","");const ok=falta>=0;const semanas=falta>=14;
- return `<button class="cal-prova" data-acao="cal-vira" aria-label="Prova em ${d.getDate()} de ${new Intl.DateTimeFormat("pt-BR",{month:"long"}).format(d)}. Toque para virar o calendário"><span class="cal-in"><span class="cal-pag cal-frente"><span class="cal-mes">${MESES_C[d.getMonth()]}</span><span class="cal-dia">${d.getDate()}</span><span class="cal-sem">${sem}</span></span><span class="cal-pag cal-verso"><span class="cal-mes">faltam</span><span class="cal-dia">${ok?(semanas?Math.floor(falta/7):falta):"0"}</span><span class="cal-sem">${ok?(semanas?"semanas":falta===1?"dia":"dias"):"passou"}</span></span></span></button>`}
+ return `<button class="cal-prova" data-acao="cal-vira" aria-label="${esc(x.nome||"Prova")} em ${d.getDate()} de ${new Intl.DateTimeFormat("pt-BR",{month:"long"}).format(d)}. Toque para virar o calendário"><span class="cal-in"><span class="cal-pag cal-frente"><span class="cal-mes">${MESES_C[d.getMonth()]}</span><span class="cal-dia">${d.getDate()}</span><span class="cal-sem">${sem}</span></span><span class="cal-pag cal-verso"><span class="cal-mes">faltam</span><span class="cal-dia">${ok?(semanas?Math.floor(falta/7):falta):"0"}</span><span class="cal-sem">${ok?(semanas?"semanas":falta===1?"dia":"dias"):"passou"}</span></span></span></button>`}
 /* ---------- animações e efeitos interativos ---------- */
 function animOn(){if(S.cfg&&S.cfg.anim==="off")return false;try{return !(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}catch(e){return true}}
 function contar(el){const t=el.firstChild;if(!t||t.nodeType!==3)return;const m=t.nodeValue.match(/^(\d+)(%?)$/);if(!m)return;const fim=+m[1];if(fim<2)return;const t0=performance.now(),dur=750;
@@ -2491,7 +2497,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  <div class="hoje-stats">
   <div class="hs hs-meta">${anel(hoje.q||0,meta,`${hoje.q||0} de ${meta} questões hoje`)}<div><b>${hoje.q||0}<small>/${meta}</small></b><span>questões hoje</span></div></div>
   <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
-  <div class="hs hs-prova">${calProva(falta)}<div><b>${falta===null||falta<0?"—":falta}</b><span>${falta===null?"sem data de prova":falta<0?"a prova já passou":falta===1?"dia para a prova":"dias para a prova"}</span></div></div>
+  ${(()=>{const px=provaProx(),fx=px?px.n:null;return `<div class="hs hs-prova">${calProva(px)}<div><b>${fx===null||fx<0?"—":fx}</b><span>${fx===null?"sem data de prova":fx<0?"a prova já passou":(fx===1?"dia para ":"dias para ")+(px.nome?`a <em class="hs-qual">${esc(px.nome)}</em>`:"a prova")}</span></div></div>`})()}
  </div>
  ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
  ${blocoProvasHoje()}
