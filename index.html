@@ -1525,6 +1525,181 @@ html[data-estilo="premium"] .card.destaque .tile.tile,html[data-estilo="premium"
 [data-estilo="premium"] .vazio-ilu .ilu{max-width:200px}
 [data-estilo="premium"] .v-tit{font-weight:800;letter-spacing:-.025em}
 </style>
+<style id="estilo-ovos">
+/* ---------- segredos do app (easter eggs): cenas, enfeites do Hoje e lista em Sobre o Facul Lab ---------- */
+.ovo .festa-card{max-height:calc(100dvh - 40px);overflow:auto}
+.ovo-selo{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;padding:4px 11px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.ovo-selo .i{width:14px;height:14px}
+.ovo-selo.novo{background:#f6c453;color:#3a2a00}
+html[data-anim="on"] .ovo-selo.novo{animation:ovo-selo 1s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes ovo-selo{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+.ovo h2{margin:10px 0 4px}
+.ovo-nota{font-size:.88rem;line-height:1.45;color:var(--muted);margin:12px 0 0;text-align:left;background:var(--surface-2);border-radius:14px;padding:11px 13px}
+.ovo-nota b{color:var(--fg)}
+.ovo .ovo-bts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:14px}
+.ovo .ovo-bts .botao{padding:13px 10px;font-size:.82rem}
+html[data-anim="on"] .ovo-tic{animation:ovo-tic .35s ease-out}
+@keyframes ovo-tic{30%{transform:rotate(-10deg) scale(1.08)}65%{transform:rotate(8deg)}}
+
+/* balança */
+.ob-palco{margin:6px auto 0;max-width:300px}
+.ob-svg{display:block;width:100%;height:auto;overflow:visible}
+.ob-base{fill:var(--muted)}
+.ob-viga{fill:var(--toga)}
+.ob-ponta,.ob-pino{fill:#f2b632}
+.ob-fio{stroke:var(--muted);stroke-width:1.6;fill:none}
+.ob-prato-f{fill:#f2b632}
+.ob-carga rect{fill:var(--toga)}.ob-carga text{fill:#fff;font:700 10px var(--f-body);text-anchor:middle}
+.ob-peso rect{fill:var(--lacre)}.ob-peso text{fill:#fff;font:700 8px var(--f-body);text-anchor:middle}
+[data-estilo="premium"] .ob-viga,[data-estilo="premium"] .ob-carga rect{fill:var(--p1)}
+[data-estilo="premium"] .ob-peso rect{fill:var(--p2)}
+.ob-braco{transform-box:view-box;transform-origin:120px 40px}
+html[data-anim="on"] .ob-braco,html[data-anim="on"] .ob-prato{transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.ob-brilho{stroke:#f2b632;stroke-width:3;stroke-linecap:round;fill:none;opacity:0}
+.ovo-bal.certo .ob-viga{fill:var(--ok)}
+.ovo-bal.certo .ob-brilho{opacity:1}
+html[data-anim="on"] .ovo-bal.certo .ob-brilho{animation:ob-brilho 1.2s ease-out infinite}
+@keyframes ob-brilho{0%{opacity:0;transform:translateY(6px)}40%{opacity:1}100%{opacity:0;transform:translateY(-4px)}}
+.ob-msg{min-height:1.4em;font-weight:700;margin:4px 0 8px}
+.ob-msg.ok{color:var(--ok)}.ob-msg.err{color:var(--erro)}
+html[data-anim="on"] .ob-msg.ok{animation:pulo .5s cubic-bezier(.2,1.4,.4,1)}
+.ob-pesos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.ob-pesos .botao{padding:11px 0;font-size:.82rem;letter-spacing:0;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--fg)}
+.ob-pesos .botao .i{width:18px;height:18px;vertical-align:middle}
+.ob-pesos .botao:disabled{opacity:.45}
+
+/* brocardo */
+.obr-palco{perspective:900px;margin:12px 0 0}
+.obr-carta{all:unset;display:block;width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.obr-carta:focus-visible{outline:3px solid var(--toga-borda);outline-offset:3px;border-radius:18px}
+.obr-in{position:relative;display:grid;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
+.obr-carta.virada .obr-in{transform:rotateY(180deg)}
+html[data-anim="off"] .obr-in{transition:none}
+.obr-f,.obr-v{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:150px;padding:18px;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-sizing:border-box}
+.obr-f{background:var(--toga);color:#fff}
+.obr-f small{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.obr-f b{font-family:var(--f-display);font-size:1.45rem;line-height:1.15;font-style:italic}
+.obr-f em{font-style:normal;font-size:.8rem;opacity:.8}
+.obr-v{transform:rotateY(180deg);background:var(--surface-2);color:var(--fg);text-align:left}
+.obr-v b{font-size:1.1rem}.obr-v span{color:var(--muted);font-size:.92rem;line-height:1.45}
+[data-estilo="premium"] .obr-f{background:var(--grad)}
+html[data-anim="on"] .obr-palco.troca{animation:obr-troca .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes obr-troca{0%{transform:translateX(40px) rotate(4deg);opacity:0}100%{transform:none;opacity:1}}
+
+/* martelo */
+.om-palco{position:relative;max-width:240px;margin:0 auto}
+.om-svg{display:block;width:100%;height:auto;overflow:visible}
+.om-sombra{fill:#00000022}
+.om-bloco{fill:#8a5a2b}.om-bloco-t{fill:#a8733e}
+.om-cab{fill:#7a4a22}.om-cabo{fill:#9a6332}.om-faixa{fill:#f2b632}
+.om-mart{transform-box:view-box;transform-origin:196px 58px;transform:rotate(-12deg)}
+.om-onda path{stroke:var(--lacre);stroke-width:3;stroke-linecap:round;fill:none;opacity:0}
+.om-carimbo{position:absolute;right:-4px;top:4px;padding:4px 12px;border:3px solid var(--erro);color:var(--erro);border-radius:8px;font:800 1.2rem var(--f-display);text-transform:uppercase;letter-spacing:.06em;transform:rotate(-12deg)}
+html[data-anim="on"] .om-mart{animation:om-bate 1.1s cubic-bezier(.5,0,.6,1) both}
+html[data-anim="on"] .om-onda path{animation:om-onda .8s .55s ease-out both}
+html[data-anim="on"] .om-carimbo{animation:om-carimbo .5s .6s cubic-bezier(.2,1.6,.4,1) both}
+html[data-anim="on"] .ovo-mart .festa-card{animation:pulo .5s cubic-bezier(.2,1.4,.4,1),om-treme .35s .55s ease-out}
+html[data-anim="on"] .om-palco.bate .om-mart{animation-name:om-bate2}
+html[data-anim="on"] .om-palco.bate .om-onda path{animation-name:om-onda2}
+html[data-anim="on"] .om-palco.bate .om-carimbo{animation-name:om-carimbo2}
+@keyframes om-bate{0%{transform:rotate(-12deg)}45%{transform:rotate(-38deg)}58%{transform:rotate(18deg)}70%{transform:rotate(8deg)}100%{transform:rotate(-12deg)}}
+@keyframes om-bate2{0%{transform:rotate(-12deg)}45%{transform:rotate(-38deg)}58%{transform:rotate(18deg)}70%{transform:rotate(8deg)}100%{transform:rotate(-12deg)}}
+@keyframes om-onda{0%{opacity:1;transform:scale(.7)}100%{opacity:0;transform:scale(1.3)}}
+@keyframes om-onda2{0%{opacity:1;transform:scale(.7)}100%{opacity:0;transform:scale(1.3)}}
+.om-onda{transform-box:view-box;transform-origin:96px 100px}.om-onda path{transform-box:view-box;transform-origin:96px 100px}
+@keyframes om-carimbo{0%{transform:rotate(-12deg) scale(2.4);opacity:0}100%{transform:rotate(-12deg) scale(1);opacity:1}}
+@keyframes om-carimbo2{0%{transform:rotate(-12deg) scale(2.4);opacity:0}100%{transform:rotate(-12deg) scale(1);opacity:1}}
+@keyframes om-treme{20%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}60%{transform:translate(-3px,1px)}80%{transform:translate(2px,0)}}
+.topo h1{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html[data-anim="on"] .topo h1.ovo-segura{animation:ovo-segura .8s ease-in both}
+@keyframes ovo-segura{100%{transform:scale(.94);opacity:.7}}
+
+/* chama */
+.oc-palco{position:relative;width:120px;height:150px;margin:6px auto 0}
+.oc-palco .chama-viva{width:120px;height:150px}
+.oc-palco .chama-viva svg{width:100%;height:100%}
+.oc-palco i{position:absolute;left:50%;bottom:22px;width:7px;height:7px;border-radius:50%;background:#ffb21a;opacity:0;pointer-events:none}
+html[data-anim="on"] .oc-palco i{animation:oc-faisca 1.8s ease-out infinite}
+.oc-palco i:nth-of-type(1){--x:-46px;animation-delay:.1s}.oc-palco i:nth-of-type(2){--x:40px;animation-delay:.4s}.oc-palco i:nth-of-type(3){--x:-22px;animation-delay:.7s;background:#ff6b1a}
+.oc-palco i:nth-of-type(4){--x:56px;animation-delay:1s}.oc-palco i:nth-of-type(5){--x:-60px;animation-delay:1.3s;background:#ffd65a}.oc-palco i:nth-of-type(6){--x:18px;animation-delay:1.55s;background:#ff6b1a}
+@keyframes oc-faisca{0%{opacity:0;transform:translate(-50%,0) scale(1)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),-130px) scale(.3)}}
+.ovo-chama.marco .oc-palco{filter:drop-shadow(0 0 18px #f6c453)}
+.oc-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.oc-nums span{display:flex;flex-direction:column;gap:2px;background:var(--surface-2);border-radius:14px;padding:10px 6px;font-size:.74rem;color:var(--muted);line-height:1.25}
+.oc-nums b{font-size:1.45rem;color:var(--fg);font-family:var(--f-display)}
+.hoje .chama-viva.ovo-marco{border-radius:50%;box-shadow:0 0 0 3px #f6c45399,0 0 22px #f6c453aa}
+html[data-anim="on"] .hoje .chama-viva.ovo-marco{animation:oc-marco 2s ease-in-out infinite}
+@keyframes oc-marco{50%{box-shadow:0 0 0 6px #f6c45355,0 0 30px #f6c453cc}}
+
+/* habeas corpus */
+.oh-palco{max-width:250px;margin:0 auto;overflow:visible}
+.oh-svg{display:block;width:100%;height:auto;overflow:visible}
+.oh-arco,.oh-barra{stroke:var(--muted);stroke-width:3;fill:none;stroke-linecap:round}
+.oh-aro{fill:var(--muted)}
+.oh-porta rect{fill:var(--surface);stroke:var(--muted);stroke-width:3}.oh-porta path{stroke:var(--muted);stroke-width:2}
+.oh-porta{transform-box:view-box;transform-origin:60px 94px;transform:rotateY(70deg)}
+.oh-corpo{fill:#fff;stroke:#9aa3b5;stroke-width:1.2}.oh-asa,.oh-asa-t{fill:#eef2f8;stroke:#9aa3b5;stroke-width:1.2}
+.oh-bico{fill:#f2a01b}.oh-olho{fill:#1b1f2a}.oh-ramo{stroke:#3f9a52;stroke-width:2.2;fill:none;stroke-linecap:round}
+.oh-pomba{transform:translate(70px,-60px) scale(.9)}
+.oh-asa,.oh-asa-t{transform-box:fill-box;transform-origin:90% 90%}
+html[data-anim="on"] .oh-porta{animation:oh-porta .5s .2s ease-out both}
+html[data-anim="on"] .oh-pomba{animation:oh-voa 2.2s .5s cubic-bezier(.4,0,.3,1) both}
+html[data-anim="on"] .oh-asa{animation:oh-bate .22s ease-in-out infinite alternate}
+html[data-anim="on"] .oh-asa-t{animation:oh-bate .22s .11s ease-in-out infinite alternate}
+html[data-anim="on"] .oh-palco.solta .oh-porta{animation-name:oh-porta2}
+html[data-anim="on"] .oh-palco.solta .oh-pomba{animation-name:oh-voa2}
+@keyframes oh-porta{0%{transform:rotateY(0)}100%{transform:rotateY(70deg)}}
+@keyframes oh-porta2{0%{transform:rotateY(0)}100%{transform:rotateY(70deg)}}
+@keyframes oh-voa{0%{transform:translate(0,8px) scale(.8)}25%{transform:translate(-50px,0) scale(.85)}60%{transform:translate(20px,-90px) scale(1)}80%{transform:translate(90px,-60px) scale(.95)}100%{transform:translate(70px,-60px) scale(.9)}}
+@keyframes oh-voa2{0%{transform:translate(0,8px) scale(.8)}25%{transform:translate(-50px,0) scale(.85)}60%{transform:translate(20px,-90px) scale(1)}80%{transform:translate(90px,-60px) scale(.95)}100%{transform:translate(70px,-60px) scale(.9)}}
+@keyframes oh-bate{0%{transform:rotate(-14deg)}100%{transform:rotate(22deg)}}
+
+/* coruja */
+.ocj-orelha{stroke:#6b4423;stroke-width:5;stroke-linecap:round}
+.ocj-corpo{fill:#8a5a2f}.ocj-barriga{fill:#d9b98c}.ocj-olho{fill:#fff6dc;stroke:#6b4423;stroke-width:1.5}.ocj-pupila{fill:#1b1f2a}
+.ocj-palp path{fill:#8a5a2f;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
+.ocj-bico{fill:#f2a01b}.ocj-pe{stroke:#f2a01b;stroke-width:2;stroke-linecap:round}
+html[data-anim="on"] .ocj-palp path{animation:ocj-pisca 4s 1s infinite}
+@keyframes ocj-pisca{0%,90%,100%{transform:scaleY(0)}94%{transform:scaleY(1)}}
+.ocj-palco{position:relative;height:150px;margin:4px -20px 0;background:linear-gradient(#1a2347,#2d3b6e);border-radius:18px 18px 0 0;overflow:hidden}
+.ocj-palco svg{position:absolute;left:50%;bottom:-4px;width:110px;transform:translateX(-50%)}
+.ocj-lua{position:absolute;right:28px;top:18px;width:38px;height:38px;border-radius:50%;box-shadow:-9px 6px 0 0 #f6e7a8}
+.ocj-est{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;left:22%;top:26%}
+.ocj-est:nth-of-type(3){left:38%;top:12%}.ocj-est:nth-of-type(4){left:70%;top:58%}
+html[data-anim="on"] .ocj-est{animation:ocj-brilha 2s ease-in-out infinite}html[data-anim="on"] .ocj-est:nth-of-type(3){animation-delay:.7s}html[data-anim="on"] .ocj-est:nth-of-type(4){animation-delay:1.3s}
+@keyframes ocj-brilha{50%{opacity:.2;transform:scale(.5)}}
+html[data-anim="on"] .ocj-palco svg{animation:ocj-sobe .8s .2s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes ocj-sobe{0%{transform:translate(-50%,100%)}100%{transform:translate(-50%,0)}}
+.ovo-coruja .festa-card{padding-top:16px}
+.hoje-hero>.ovo-coruja{all:unset;position:absolute;z-index:2;right:58px;bottom:-6px;width:46px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hoje-hero{position:relative}
+.hoje-hero>.ovo-coruja svg{display:block;width:100%}
+html[data-anim="on"] .hoje-hero>.ovo-coruja{animation:ocj-espia 6s ease-in-out infinite}
+@keyframes ocj-espia{0%,100%{transform:translateY(55%)}20%,70%{transform:translateY(0)}}
+
+/* datas */
+.od-pag{display:flex;flex-direction:column;width:96px;margin:14px auto 0;border-radius:16px;overflow:hidden;background:var(--surface);box-shadow:0 10px 24px -10px #0006;border:1px solid var(--line)}
+.od-mes{background:var(--erro);color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;padding:5px 0}
+.od-dia{font:800 2.6rem/1.2 var(--f-display);color:var(--fg);padding:4px 0 8px}
+[data-estilo="premium"] .od-mes{background:var(--grad)}
+html[data-anim="on"] .od-pag{animation:od-vira .9s cubic-bezier(.2,1.4,.4,1) both;transform-origin:50% 0}
+@keyframes od-vira{0%{transform:perspective(400px) rotateX(-100deg);opacity:0}100%{transform:none;opacity:1}}
+.ovo-dt{all:unset;display:inline-flex;white-space:nowrap;align-items:center;gap:6px;margin:0 0 10px;padding:6px 12px;border-radius:999px;background:#f6c453;color:#3a2a00;font-size:.8rem;font-weight:700;cursor:pointer}
+.ovo-dt .i{width:16px;height:16px}
+html[data-anim="on"] .ovo-dt{animation:ovo-dt 2.4s ease-in-out infinite}
+@keyframes ovo-dt{0%,100%{transform:none}8%{transform:rotate(-4deg) scale(1.05)}16%{transform:rotate(3deg)}24%{transform:none}}
+
+/* lista em Sobre o Facul Lab */
+.ovo-lista h3 small{margin-left:auto;font-size:.78rem;font-weight:700;color:var(--muted)}
+.ovo-lista ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.ovo-item{all:unset;box-sizing:border-box;display:flex;gap:12px;align-items:center;width:100%;padding:10px 12px;border-radius:14px;background:var(--surface-2)}
+.ovo-item.ach{cursor:pointer}
+.ovo-item .sb-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--surface);color:var(--muted);font-weight:800}
+.ovo-item.ach .sb-ic{background:#f6c453;color:#3a2a00}
+.ovo-item .sb-ic .i{width:20px;height:20px}
+.ovo-item b{display:block;font-size:.92rem}.ovo-item small{display:block;color:var(--muted);font-size:.8rem;line-height:1.35}
+@media (prefers-reduced-motion:reduce){.ovo *{animation:none!important}}
+</style>
 
 <div class="app" id="app"></div>
 <div id="aviso-vivo" class="sr" role="status" aria-live="polite"></div>
@@ -3446,6 +3621,7 @@ function telaQuem(){let feitas=0;Object.keys(S.stats).forEach(k=>{if(QMAP[k])fei
   ${feitas?`<section class="sb-voce"><b>E você já começou a sua parte.</b><p>${feitas.toLocaleString("pt-BR")} ${feitas===1?"questão respondida":"questões respondidas"}${dias?` em ${dias} ${dias===1?"dia":"dias"} de estudo`:""}. Cada uma é um passo nesse caminho.</p></section>`:""}
   <section class="sb-bloco sb-obj"><h3>${ic("balanca")} Meu objetivo</h3><p>Meu objetivo é passar na OAB e me tornar advogado. Se o Facul Lab também ajudar outros estudantes com pouco tempo ou dificuldade de foco, ele terá cumprido o seu papel.</p>
    <div class="sb-trilha" aria-hidden="true"><span>1º período</span><svg viewBox="0 0 300 40" preserveAspectRatio="none"><path class="sb-tr-base" d="M6 30 C70 0 120 40 170 18 S260 6 294 14"/><path class="sb-tr-v" pathLength="100" d="M6 30 C70 0 120 40 170 18 S260 6 294 14"/></svg><span>OAB</span></div></section>
+  ${ovosSecao()}
   <p class="sb-ass">Bons estudos!<span>Nicolas Amorim</span></p>
   <button class="botao cheio sb-cta" data-acao="ir-raiz" data-tela="hoje">${ic("alvo")} Bora estudar hoje</button>
  </main>`}
@@ -3726,6 +3902,182 @@ document.addEventListener("keydown",e=>{
 document.addEventListener("visibilitychange",()=>{if(document.hidden&&lbCfg().on){clearTimeout(tLb);lbEnviar("salvar").catch(()=>{})}});
 if(lbCfg().on&&!lbSuporte())setTimeout(()=>lbEnviar("salvar",true).catch(()=>{}),2500);
 document.addEventListener("visibilitychange",()=>{if(rota.tela!=="quiz"||!sessao)return;if(document.hidden){pararRelogio();salvar()}else iniciarRelogio()});
+
+/* ---------- segredos do app (easter eggs) ----------
+   Sete segredos: cada um abre uma cena animada com um pouco de Direito. Os encontrados ficam em S.ovos ({id: dia})
+   e aparecem em Sobre o Facul Lab, onde dá para rever. Cada descoberta dispara o evento "fl-ovo" (detail: {id, novo}).
+   Os gatilhos ficam em ouvintes próprios (toques, segurar, teclado, chacoalhar), sem mexer no clique principal. */
+const OVOS=[
+ {id:"balanca",ic:"balanca",nome:"Equilíbrio da Justiça",dica:"A balança do logo guarda um segredo. Toque nela várias vezes seguidas."},
+ {id:"brocardo",ic:"livro",nome:"Brocardo secreto",dica:"A ilustração do Hoje fala latim quando recebe muitos toques rápidos."},
+ {id:"martelo",ic:"martelo",nome:"Ordem no tribunal",dica:"Segure o dedo no título de qualquer tela."},
+ {id:"chama",ic:"chama",nome:"Chama da Justiça",dica:"Atice a chama da ofensiva cinco vezes seguidas."},
+ {id:"habeas",ic:"escudo",nome:"Habeas corpus",dica:"Chacoalhe o celular. No computador, digite habeas."},
+ {id:"coruja",ic:"lua",nome:"Coruja da madrugada",dica:"Abra o Hoje entre meia-noite e cinco da manhã."},
+ {id:"data",ic:"calendario",nome:"Datas do Direito",dica:"Abra o app em 13 de maio, 11 de agosto, 5 de outubro ou 10 de dezembro."}
+];
+function ovosAchados(){return OVOS.filter(o=>(S.ovos||{})[o.id]).length}
+function ovoAchou(id){S.ovos=S.ovos||{};const novo=!S.ovos[id];if(novo){S.ovos[id]=hojeStr();salvar()}
+ try{document.dispatchEvent(new CustomEvent("fl-ovo",{detail:{id,novo}}))}catch(e){}return novo}
+function ovoCena(id,cls,html,opt){opt=opt||{};const novo=opt.rever?false:ovoAchou(id);
+ const velho=document.querySelector(".festa");if(velho)velho.remove();
+ const el=document.createElement("div");el.className="festa ovo "+cls;el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label",opt.titulo||"Segredo");
+ const n=ovosAchados();
+ el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card"><span class="ovo-selo${novo?" novo":""}">${ic("estrela")} ${novo?"Segredo encontrado!":"Segredo"} · ${n} de ${OVOS.length}</span>${html}</div>`;
+ document.body.appendChild(el);
+ /* o menu fecha depois que a cena já está na página, para o voltar do celular continuar valendo para ela */
+ if(gaveta){gaveta=false;rota.manterScroll=true;render()}
+ if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();return el}
+function ovoConfete(){const c=document.querySelector(".festa.ovo canvas");if(c&&animOn())confete(c)}
+const ovoBotoes=(extra)=>`<div class="botoes ovo-bts">${extra||""}<button class="botao${extra?"":" cheio"}" data-acao="festa-fechar">Fechar</button></div>`;
+
+/* 1. Equilíbrio da Justiça: 7 toques na balança do logo (Sobre o Facul Lab ou topo do menu) */
+let ovoBal=null;
+const OB_SVG=`<svg class="ob-svg" viewBox="0 0 240 190" aria-hidden="true">
+ <path class="ob-base" d="M92 182h56l-8-14h-40z"/><rect class="ob-base" x="116" y="40" width="8" height="130" rx="3"/>
+ <g class="ob-prato ob-e"><path class="ob-fio" d="M40 40L18 110M40 40L62 110"/><g class="ob-carga"></g><path class="ob-prato-f" d="M10 110h60a30 11 0 0 1-60 0z"/></g>
+ <g class="ob-prato ob-d"><path class="ob-fio" d="M200 40l-22 70M200 40l22 70"/><g class="ob-pilha"></g><path class="ob-prato-f" d="M170 110h60a30 11 0 0 1-60 0z"/></g>
+ <g class="ob-braco"><rect class="ob-viga" x="28" y="36" width="184" height="8" rx="4"/><circle class="ob-ponta" cx="40" cy="40" r="5"/><circle class="ob-ponta" cx="200" cy="40" r="5"/></g>
+ <circle class="ob-pino" cx="120" cy="40" r="10"/><path class="ob-brilho" d="M120 6v10M100 12l5 8M140 12l-5 8"/></svg>`;
+function ovoBalanca(rever){ovoBal={L:6+Math.floor(Math.random()*9),R:[]};
+ ovoCena("balanca","ovo-bal",`<h2>Equilíbrio da Justiça</h2><p class="frase">O prato da esquerda tem <b>${ovoBal.L} kg</b> de provas. Coloque pesos no da direita até a balança ficar reta.</p>
+ <div class="ob-palco">${OB_SVG}</div><p class="ob-msg" aria-live="polite"></p>
+ <div class="ob-pesos">${[1,2,3,5].map(p=>`<button class="botao" data-ovo="bal-p" data-v="${p}">${p} kg</button>`).join("")}<button class="botao" data-ovo="bal-tira" aria-label="Tirar o último peso">${ic("refazer")}</button></div>
+ <div class="ob-fim" hidden><p class="ovo-nota"><b>Suum cuique tribuere</b>: dar a cada um o que é seu, na definição de justiça de Ulpiano. A balança, símbolo da Justiça, lembra que as duas partes devem ser pesadas com a mesma medida.</p></div>
+ ${ovoBotoes(`<button class="botao" data-ovo="bal-de-novo">Jogar de novo</button>`)}`,{rever,titulo:"Equilíbrio da Justiça"});
+ ovoBalAtualiza()}
+function ovoBalAtualiza(){const el=document.querySelector(".ovo-bal");if(!el||!ovoBal)return;const L=ovoBal.L,R=ovoBal.R.reduce((s,x)=>s+x,0);
+ const th=Math.max(-16,Math.min(16,(R-L)*2.4)),rad=th*Math.PI/180,dy=80*Math.sin(rad),dx=80*(1-Math.cos(rad));
+ el.querySelector(".ob-braco").style.transform=`rotate(${th}deg)`;
+ el.querySelector(".ob-e").style.transform=`translate(${dx}px,${-dy}px)`;el.querySelector(".ob-d").style.transform=`translate(${-dx}px,${dy}px)`;
+ el.querySelector(".ob-carga").innerHTML=`<rect x="22" y="${110-26}" width="36" height="26" rx="4"/><text x="40" y="${110-9}">${L} kg</text>`;
+ let y=110;el.querySelector(".ob-pilha").innerHTML=ovoBal.R.slice(0,9).map(p=>{const h=6+p*2.4,w=16+p*4;y-=h+1;return `<g class="ob-peso"><rect x="${200-w/2}" y="${y}" width="${w}" height="${h}" rx="2.5"/>${h>=10?`<text x="200" y="${y+h/2+3.4}">${p}</text>`:""}</g>`}).join("");
+ const ok=R===L,msg=el.querySelector(".ob-msg");el.classList.toggle("certo",ok);
+ msg.className="ob-msg"+(ok?" ok":R>L?" err":"");
+ msg.textContent=ok?"Equilíbrio perfeito!":R>L?`Pesou demais: sobram ${R-L} kg. Tire um peso.`:R?`Faltam ${L-R} kg.`:"Toque nos pesos para colocar no prato.";
+ el.querySelectorAll('[data-ovo="bal-p"]').forEach(b=>b.disabled=ok);el.querySelector('[data-ovo="bal-tira"]').disabled=ok||!R;
+ el.querySelector(".ob-fim").hidden=!ok;if(ok)setTimeout(ovoConfete,350)}
+
+/* 2. Brocardo secreto: 5 toques rápidos na ilustração do Hoje */
+const BROCARDOS=[
+ ["In dubio pro reo","Na dúvida, a favor do réu.","Se a prova não basta para condenar, o juiz absolve (art. 386, VII, do CPP)."],
+ ["Nullum crimen, nulla poena sine praevia lege","Não há crime nem pena sem lei anterior.","É o princípio da legalidade penal: art. 5º, XXXIX, da CF e art. 1º do Código Penal."],
+ ["Pacta sunt servanda","Os pactos devem ser cumpridos.","O contrato faz lei entre as partes, sempre temperado pela boa-fé e pela função social."],
+ ["Ne bis in idem","Não duas vezes pela mesma coisa.","Ninguém pode ser processado nem punido duas vezes pelo mesmo fato."],
+ ["Dormientibus non succurrit ius","O Direito não socorre aos que dormem.","É a ideia por trás da prescrição e da decadência: quem demora demais perde a chance."],
+ ["Iura novit curia","O juiz conhece o Direito.","As partes provam os fatos; aplicar a norma certa é tarefa do juiz."],
+ ["Da mihi factum, dabo tibi ius","Dá-me os fatos, e eu te darei o Direito.","Parente do iura novit curia: na petição, o que mais importa é narrar bem os fatos."],
+ ["Tempus regit actum","O tempo rege o ato.","O ato segue a lei do seu tempo. No processo, a lei nova vale para os atos seguintes (art. 14 do CPC)."],
+ ["Nemo potest venire contra factum proprium","Ninguém pode agir contra o próprio comportamento.","É a proibição do comportamento contraditório, uma das faces da boa-fé objetiva."],
+ ["Lex posterior derogat priori","A lei posterior revoga a anterior.","Critério cronológico para resolver conflito de normas (art. 2º, § 1º, da LINDB)."],
+ ["Lex specialis derogat generali","A lei especial prevalece sobre a geral.","Critério da especialidade: a regra feita para o caso específico vence a regra geral."],
+ ["Nemo tenetur se detegere","Ninguém é obrigado a produzir prova contra si.","Daí o direito ao silêncio do preso e do acusado (art. 5º, LXIII, da CF)."],
+ ["Ubi societas, ibi ius","Onde há sociedade, há Direito.","Toda convivência humana precisa de regras: o Direito nasce com a sociedade."],
+ ["Ignorantia legis neminem excusat","A ignorância da lei não escusa ninguém.","Ninguém deixa de cumprir a lei alegando que não a conhece (art. 3º da LINDB)."],
+ ["Dura lex, sed lex","A lei é dura, mas é a lei.","Mesmo quando severa, a lei vigente deve ser cumprida até ser mudada pelo caminho próprio."],
+ ["Accessorium sequitur principale","O acessório segue o principal.","Regra clássica do Direito Civil: o destino do bem acessório acompanha o do principal."],
+ ["Res iudicata pro veritate habetur","A coisa julgada é tida como verdade.","Decisão de mérito da qual não cabe mais recurso fica imutável, para dar segurança jurídica."]
+];
+let ovoBrocI=-1;
+function ovoBrocHtml(){let i;do{i=Math.floor(Math.random()*BROCARDOS.length)}while(i===ovoBrocI&&BROCARDOS.length>1);ovoBrocI=i;const b=BROCARDOS[i];
+ return `<button class="obr-carta" data-ovo="broc-vira" aria-label="Virar a carta: ${esc(b[0])}"><span class="obr-in"><span class="obr-f"><small>Latim jurídico</small><b>${esc(b[0])}</b><em>Toque para traduzir</em></span><span class="obr-v"><b>${esc(b[1])}</b><span>${esc(b[2])}</span></span></span></button>`}
+function ovoBrocardo(rever){ovoCena("brocardo","ovo-broc",`<h2>Brocardo secreto</h2><p class="frase">Os brocardos são frases curtas, quase sempre em latim, que resumem princípios do Direito. Caem em prova e enfeitam qualquer petição.</p><div class="obr-palco">${ovoBrocHtml()}</div>${ovoBotoes(`<button class="botao" data-ovo="broc-outro">Outro brocardo</button>`)}`,{rever,titulo:"Brocardo secreto"})}
+
+/* 3. Ordem no tribunal: segurar o título de qualquer tela */
+function ovoMartelo(rever){ovoCena("martelo","ovo-mart",`<div class="om-palco" aria-hidden="true"><svg class="om-svg" viewBox="0 0 220 150"><ellipse class="om-sombra" cx="96" cy="136" rx="62" ry="7"/><path class="om-bloco" d="M44 118h104v14a6 6 0 0 1-6 6H50a6 6 0 0 1-6-6z"/><ellipse class="om-bloco-t" cx="96" cy="118" rx="52" ry="7"/><g class="om-onda"><path d="M30 104q-10-12 0-24M162 104q10-12 0-24M18 110q-16-20 0-40M174 110q16-20 0-40"/></g>
+ <g class="om-mart"><rect class="om-cabo" x="104" y="54" width="96" height="9" rx="4.5"/><rect class="om-cab" x="62" y="34" width="46" height="50" rx="9"/><rect class="om-faixa" x="62" y="44" width="46" height="6"/><rect class="om-faixa" x="62" y="68" width="46" height="6"/></g></svg><span class="om-carimbo">Ordem!</span></div>
+ <h2>Ordem no tribunal!</h2><p class="frase">Silêncio no plenário: agora é hora de estudar.</p><p class="ovo-nota"><b>Curiosidade:</b> o martelo é tradição dos tribunais dos Estados Unidos. No Brasil ele é raro: os tribunais costumam pedir ordem com uma campainha, como a do presidente no plenário do STF.</p>${ovoBotoes(`<button class="botao" data-ovo="mart-bate">Bater de novo</button>`)}`,{rever,titulo:"Ordem no tribunal"})}
+
+/* 4. Chama da Justiça: 5 toques seguidos na chama da ofensiva. Nos dias de marco, a chama ganha um brilho dourado no Hoje. */
+const OVO_MARCOS=[3,7,15,30,50,100,180,365];
+function ovoRecorde(){const D=S.dias||{};let best=0,run=0,prev=null;
+ Object.keys(D).filter(k=>temAtiv(D[k])).sort().forEach(k=>{const t=new Date(k+"T12:00:00").getTime();run=prev!==null&&Math.round((t-prev)/864e5)===1?run+1:1;prev=t;if(run>best)best=run});
+ return Math.max(best,sequencia())}
+function ovoChama(rever){const seq=sequencia(),rec=ovoRecorde(),prox=OVO_MARCOS.find(m=>m>seq),marco=OVO_MARCOS.includes(seq);
+ const [t,f]=seq===0?["Faísca guardada","A chama está apagada, mas a faísca é você. Uma questão hoje já acende tudo de novo."]:seq>=100?["Lenda da ofensiva",`${seq} dias seguidos. Pouca gente chega aqui: isso já é quem você é.`]:seq>=30?["Fogo de mês inteiro",`${seq} dias seguidos. Estudar virou parte do seu dia, como escovar os dentes.`]:seq>=7?["Semana de fogo",`${seq} dias seguidos. A chama já aguenta vento.`]:["Chama acesa",`${seq} ${seq===1?"dia":"dias seguidos"}. Cada dia de estudo joga mais lenha na fogueira.`];
+ ovoCena("chama","ovo-chama"+(marco?" marco":""),`<div class="oc-palco">${chamaViva(seq)}<i></i><i></i><i></i><i></i><i></i><i></i></div>
+ <h2>${marco?`Marco de ${seq} dias!`:t}</h2><p class="frase">${esc(f)}</p>
+ <div class="oc-nums"><span><b>${seq}</b>agora</span><span><b>${rec}</b>seu recorde</span><span><b>${prox||"∞"}</b>${prox?`próximo marco · faltam ${prox-seq}`:"você passou de todos"}</span></div>
+ <p class="ovo-nota"><b>Por que todo dia?</b> A memória fixa melhor o que é revisto aos poucos, em dias diferentes, do que numa maratona na véspera. É o efeito do espaçamento.</p>${ovoBotoes()}`,{rever,titulo:"Chama da Justiça",confete:marco})}
+
+/* 5. Habeas corpus: chacoalhar o celular (ou digitar "habeas" no computador) */
+function ovoHabeas(rever){ovoCena("habeas","ovo-hc",`<div class="oh-palco" aria-hidden="true"><svg class="oh-svg" viewBox="0 0 220 160"><g class="oh-gaiola"><path class="oh-arco" d="M60 128V70a50 50 0 0 1 100 0v58"/><path class="oh-barra" d="M80 128V40M100 128V24M120 128V24M140 128V40"/><rect class="oh-aro" x="52" y="126" width="116" height="10" rx="4"/><circle class="oh-aro" cx="110" cy="16" r="6"/><g class="oh-porta"><rect x="60" y="62" width="40" height="64" rx="3"/><path d="M70 62v64M80 62v64M90 62v64"/></g></g>
+ <g class="oh-pomba"><g class="oh-voa"><path class="oh-asa-t" d="M110 92c-8-14-22-18-30-16 8 6 14 14 16 22z"/><ellipse class="oh-corpo" cx="110" cy="100" rx="20" ry="11"/><circle class="oh-corpo" cx="128" cy="92" r="8"/><path class="oh-bico" d="M135 91l7 2-7 3z"/><circle class="oh-olho" cx="130" cy="90" r="1.6"/><path class="oh-corpo" d="M90 100l-14-6 4 10z"/><path class="oh-asa" d="M108 96c-6-18-20-26-30-26 6 10 12 22 14 32z"/><path class="oh-ramo" d="M136 98c6 4 12 4 16 2M142 99c1-4 4-5 6-5M147 100c1 3 4 4 6 3"/></g></g></svg></div>
+ <h2>Habeas corpus concedido!</h2><p class="frase">A pombinha está livre. Ninguém fica preso por ilegalidade ou abuso de poder.</p><p class="ovo-nota"><b>Habeas corpus</b> (do latim, "que tenhas o corpo") protege a liberdade de locomoção (art. 5º, LXVIII, da CF). <b>Curiosidade:</b> qualquer pessoa pode impetrá-lo, mesmo sem advogado (art. 654 do CPP).</p>${ovoBotoes(`<button class="botao" data-ovo="hc-solta">Soltar de novo</button>`)}`,{rever,titulo:"Habeas corpus"})}
+
+/* 6. Coruja da madrugada: aparece no Hoje entre 0h e 5h */
+const OVO_CORUJA=`<svg viewBox="0 0 64 64" aria-hidden="true"><path class="ocj-orelha" d="M14 14l6 10M50 14l-6 10"/><ellipse class="ocj-corpo" cx="32" cy="38" rx="20" ry="22"/><ellipse class="ocj-barriga" cx="32" cy="44" rx="12" ry="13"/><circle class="ocj-olho" cx="23" cy="30" r="8"/><circle class="ocj-olho" cx="41" cy="30" r="8"/><circle class="ocj-pupila" cx="24" cy="30" r="3.4"/><circle class="ocj-pupila" cx="42" cy="30" r="3.4"/><g class="ocj-palp"><path d="M15 30a8 8 0 0 1 16 0z"/><path d="M33 30a8 8 0 0 1 16 0z"/></g><path class="ocj-bico" d="M29 36h6l-3 5z"/><path class="ocj-pe" d="M25 59v3M29 59v3M35 59v3M39 59v3"/></svg>`;
+function ovoCoruja(rever){const h=new Date().getHours();
+ ovoCena("coruja","ovo-coruja",`<div class="ocj-palco" aria-hidden="true"><span class="ocj-lua"></span><span class="ocj-est"></span><span class="ocj-est"></span><span class="ocj-est"></span>${OVO_CORUJA}</div>
+ <h2>Corujão do Direito</h2><p class="frase">${h<5&&!rever?`Estudando a esta hora? Que dedicação!`:"Você encontrou a coruja da madrugada."}</p>
+ <p class="ovo-nota"><b>Dica da coruja:</b> é durante o sono que o cérebro consolida o que você estudou. Feche com uns cartões de revisão e vá dormir: amanhã a matéria vai estar mais firme.</p>${ovoBotoes()}`,{rever,titulo:"Coruja da madrugada"})}
+
+/* 7. Datas do Direito: um selo no Hoje nos dias especiais */
+const OVO_DATAS={
+ "05-13":[13,"mai","Lei Áurea",()=>"Em 13 de maio de 1888, a Lei Áurea (Lei nº 3.353) declarou extinta a escravidão no Brasil. O Direito também é instrumento de liberdade, e a luta por igualdade continua."],
+ "08-11":[11,"ago","Dia do Advogado",()=>"Em 11 de agosto de 1827 foram criados os dois primeiros cursos de Direito do Brasil, em São Paulo e em Olinda. Por isso hoje é o Dia do Advogado e do estudante de Direito. Parabéns pelo caminho que você escolheu!"],
+ "10-05":[5,"out","Aniversário da Constituição",y=>`Em 5 de outubro de 1988 foi promulgada a Constituição Federal, a "Constituição Cidadã", nas palavras de Ulysses Guimarães. Hoje ela completa ${y-1988} anos.`],
+ "12-10":[10,"dez","Dia dos Direitos Humanos",()=>`Em 10 de dezembro de 1948, a ONU proclamou a Declaração Universal dos Direitos Humanos: "Todos os seres humanos nascem livres e iguais em dignidade e em direitos" (art. 1º).`]
+};
+function ovoDataHoje(){const d=new Date();return OVO_DATAS[p2(d.getMonth()+1)+"-"+p2(d.getDate())]?p2(d.getMonth()+1)+"-"+p2(d.getDate()):null}
+function ovoData(rever){const d=new Date();let k=ovoDataHoje(),prox=false;
+ if(!k){const ks=Object.keys(OVO_DATAS).sort(),hj=p2(d.getMonth()+1)+"-"+p2(d.getDate());k=ks.find(x=>x>hj)||ks[0];prox=true}
+ const x=OVO_DATAS[k];
+ ovoCena("data","ovo-data",`<div class="od-pag" aria-hidden="true"><span class="od-mes">${x[1]}</span><span class="od-dia">${x[0]}</span></div>
+ <h2>${prox?`Próxima data: ${esc(x[2])}`:`Hoje é ${esc(x[2])}!`}</h2><p class="ovo-nota">${esc(x[3](d.getFullYear()))}</p>${ovoBotoes()}`,{rever,titulo:x[2],confete:!prox})}
+
+const OVO_ABRE={balanca:ovoBalanca,brocardo:ovoBrocardo,martelo:ovoMartelo,chama:ovoChama,habeas:ovoHabeas,coruja:ovoCoruja,data:ovoData};
+/* lista em Sobre o Facul Lab: os achados podem ser revistos; os outros mostram só a dica */
+function ovosSecao(){const n=ovosAchados();
+ return `<section class="sb-bloco ovo-lista"><h3>${ic("estrela")} Segredos do Facul Lab <small>${n} de ${OVOS.length}</small></h3><p>${n===OVOS.length?"Você achou todos! Toque em um segredo para rever.":n?"Ainda há segredos escondidos pelo app. As dicas estão abaixo.":"O app esconde alguns segredos interativos. Siga as dicas para encontrar."}</p>
+ <ul>${OVOS.map(o=>{const ach=(S.ovos||{})[o.id];return ach?`<li><button class="ovo-item ach" data-ovo="rever" data-id="${o.id}"><span class="sb-ic">${ic(o.ic)}</span><span><b>${esc(o.nome)}</b><small>Encontrado · toque para rever</small></span></button></li>`:`<li><div class="ovo-item"><span class="sb-ic">?</span><span><b>???</b><small>${esc(o.dica)}</small></span></div></li>`}).join("")}</ul></section>`}
+
+/* ações dentro das cenas e gatilhos por toque */
+const ovoToques={};
+function ovoConta(k,n,ms){const t=Date.now(),a=(ovoToques[k]||[]).filter(x=>t-x<ms);a.push(t);ovoToques[k]=a;if(a.length>=n){ovoToques[k]=[];return true}return false}
+function ovoReanima(el,cls){if(!el)return;el.classList.remove(cls);void el.getBoundingClientRect();el.classList.add(cls)}
+document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
+ const b=t.closest("[data-ovo]");
+ if(b){const a=b.dataset.ovo,c=b.closest(".festa");
+  if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoBalAtualiza()}
+  else if(a==="bal-tira"&&ovoBal){ovoBal.R.pop();ovoBalAtualiza()}
+  else if(a==="bal-de-novo")ovoBalanca(true);
+  else if(a==="broc-vira")b.classList.toggle("virada");
+  else if(a==="broc-outro"){const p=c.querySelector(".obr-palco");p.innerHTML=ovoBrocHtml();ovoReanima(p,"troca")}
+  else if(a==="mart-bate")ovoReanima(c.querySelector(".om-palco"),"bate");
+  else if(a==="hc-solta")ovoReanima(c.querySelector(".oh-palco"),"solta");
+  else if(a==="rever"&&OVO_ABRE[b.dataset.id])OVO_ABRE[b.dataset.id](true);
+  else if(a==="coruja")ovoCoruja();
+  else if(a==="data")ovoData();
+  return}
+ if(t.closest(".festa,#tour"))return;
+ const logo=t.closest(".sb-logo,.gaveta-topo .marca");
+ if(logo){ovoReanima(logo,"ovo-tic");if(ovoConta("bal",7,4000))setTimeout(()=>ovoBalanca(),200);return}
+ if(t.closest(".hoje-hero .ilu")){if(ovoConta("broc",5,3000))setTimeout(()=>ovoBrocardo(),350);return}
+ if(t.closest(".chama-viva")&&ovoConta("chama",5,3500))setTimeout(()=>ovoChama(),400)});
+/* segurar o título */
+let tOvoSeg=null,ovoSegXY=null;
+function ovoSoltou(){clearTimeout(tOvoSeg);tOvoSeg=null;document.querySelectorAll(".ovo-segura").forEach(x=>x.classList.remove("ovo-segura"))}
+document.addEventListener("pointerdown",e=>{const h=e.target.closest&&e.target.closest(".topo h1");if(!h||document.querySelector(".festa,#tour"))return;
+ ovoSoltou();ovoSegXY=[e.clientX,e.clientY];h.classList.add("ovo-segura");tOvoSeg=setTimeout(()=>{ovoSoltou();ovoMartelo()},800)});
+document.addEventListener("pointermove",e=>{if(tOvoSeg&&ovoSegXY&&Math.hypot(e.clientX-ovoSegXY[0],e.clientY-ovoSegXY[1])>12)ovoSoltou()});
+["pointerup","pointercancel","scroll"].forEach(ev=>document.addEventListener(ev,()=>{if(tOvoSeg)ovoSoltou()},true));
+document.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest(".topo h1"))e.preventDefault()});
+/* digitar "habeas" fora de um campo de texto */
+let ovoTec="";
+document.addEventListener("keydown",e=>{if(e.ctrlKey||e.metaKey||e.altKey||!e.key||e.key.length!==1)return;const el=document.activeElement;if(el&&(el.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)))return;
+ ovoTec=(ovoTec+e.key.toLowerCase()).slice(-12);if(ovoTec.endsWith("habeas")){ovoTec="";ovoHabeas()}});
+/* chacoalhar o celular: três trancos fortes em pouco mais de um segundo (fora da prova e de janelas abertas) */
+let ovoSac=[];
+window.addEventListener("devicemotion",e=>{const a=e.accelerationIncludingGravity;if(!a||a.x===null)return;if(Math.hypot(a.x||0,a.y||0,a.z||0)<27)return;
+ const t=Date.now();if(ovoSac.length&&t-ovoSac[ovoSac.length-1]<180)return;ovoSac=ovoSac.filter(x=>t-x<1400);ovoSac.push(t);
+ if(ovoSac.length>=3){ovoSac=[];if(rota.tela!=="quiz"&&tourI<0&&!document.querySelector(".festa"))ovoHabeas()}});
+/* enfeites do Hoje depois de cada render: coruja de madrugada, selo das datas e brilho dourado nos marcos da ofensiva */
+function ovoEnfeita(){if(rota.tela!=="hoje")return;const hero=document.querySelector(".hoje-hero");if(!hero||hero.querySelector(".ovo-coruja,.ovo-dt"))return;
+ const k=ovoDataHoje();if(k){const x=OVO_DATAS[k],txt=hero.querySelector(".hh-txt");if(txt)txt.insertAdjacentHTML("afterbegin",`<button class="ovo-dt" data-ovo="data">${ic("calendario")}<span>${esc(x[2])}! Toque aqui</span></button>`)}
+ if(new Date().getHours()<5)hero.insertAdjacentHTML("beforeend",`<button class="ovo-coruja" data-ovo="coruja" aria-label="Uma coruja apareceu. Toque nela">${OVO_CORUJA}</button>`);
+ const seq=sequencia(),cv=document.querySelector(".hoje .chama-viva");if(cv&&OVO_MARCOS.includes(seq))cv.classList.add("ovo-marco")}
+try{new MutationObserver(ovoEnfeita).observe($("#app"),{childList:true})}catch(e){}
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
