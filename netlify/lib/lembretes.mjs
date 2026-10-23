@@ -106,11 +106,49 @@ const META = (f, q, m) => [
   { title: "Você está quase lá!", body: `Mais ${f} ${f === 1 ? "questão" : "questões"} e a meta de hoje está batida.`, img: "trofeu" },
   { title: "A meta está logo ali", body: `${q} de ${m} questões feitas. Cada uma conta para a prova.`, img: "alvo" }];
 
-/* Escolhe o recado do dia: prova próxima primeiro, depois a ofensiva e, por fim, a meta.
-   Se a pessoa já estudou e bateu a meta, não manda nada. */
+/* Inspiração: versículos sobre estudo e sabedoria (NVI) e frases de motivação. */
+const VERSOS = [
+  ["O conselho da sabedoria é: procure obter sabedoria; use tudo que você possui para adquirir entendimento.", "Provérbios 4:7"],
+  ["O coração do que tem discernimento adquire conhecimento; os ouvidos dos sábios saem à sua procura.", "Provérbios 18:15"],
+  ["Procure apresentar-se a Deus aprovado, como obreiro que não tem do que se envergonhar.", "2 Timóteo 2:15"],
+  ["Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens.", "Colossenses 3:23"],
+  ["E não nos cansemos de fazer o bem, pois no tempo próprio colheremos, se não desanimarmos.", "Gálatas 6:9"],
+  ["Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos.", "Provérbios 16:3"],
+  ["Se algum de vocês tem falta de sabedoria, peça-a a Deus, que a todos dá livremente, de boa vontade; e lhe será concedida.", "Tiago 1:5"],
+  ["Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.", "Josué 1:9"],
+  ["Tudo posso naquele que me fortalece.", "Filipenses 4:13"],
+  ["O preguiçoso deseja e nada consegue, mas os desejos do diligente são amplamente satisfeitos.", "Provérbios 13:4"],
+  ["Os planos bem elaborados levam à fartura.", "Provérbios 21:5"],
+  ["Aqueles que esperam no Senhor renovam as suas forças. Correm e não ficam exaustos, andam e não se cansam.", "Isaías 40:31"],
+  ["Instrua o homem sábio, e ele será ainda mais sábio; ensine o homem justo, e ele aumentará o seu saber.", "Provérbios 9:9"],
+  ["Ensina-nos a contar os nossos dias para que o nosso coração alcance sabedoria.", "Salmos 90:12"],
+  ["Pois o Senhor é quem dá sabedoria; de sua boca procedem o conhecimento e o discernimento.", "Provérbios 2:6"]
+];
+const FRASES = [
+  ["Constância vence talento", "Um pouco todo dia leva mais longe do que muito de vez em quando."],
+  ["A carteira da OAB se conquista assim", "Uma questão de cada vez, um dia de cada vez. Hoje também conta."],
+  ["Seu eu do futuro agradece", "Cada tema que você estuda hoje é um ponto a mais no dia da prova."],
+  ["Errar aqui é acertar lá", "Toda questão errada no app é uma que você não erra na prova."],
+  ["Dificuldade é sinal de crescimento", "Se a matéria parece pesada, é porque você está aprendendo de verdade."],
+  ["Disciplina é liberdade", "Quem estuda com constância chega na prova tranquilo."],
+  ["Você não precisa de motivação, precisa de rotina", "Abra o app, faça o primeiro passo e o resto vem."],
+  ["Grandes advogados também começaram do zero", "Todo mundo que passou já esteve exatamente onde você está."]
+];
+/* o lembrete de inspiração termina com um empurrãozinho que depende da situação do dia */
+function inspira(semente, convite) {
+  const usaVerso = (semente >> 3) % 2 === 0;
+  if (usaVerso) { const [v, ref] = VERSOS[semente % VERSOS.length]; return { title: "Uma palavra para os seus estudos", body: `“${v}” (${ref}, NVI)${convite ? " " + convite : ""}`, img: "luz" }; }
+  const [t, f] = FRASES[semente % FRASES.length];
+  return { title: t, body: f + (convite ? " " + convite : ""), img: "montanha" };
+}
+
+/* Escolhe o recado do dia: prova próxima primeiro; em cerca de 1 a cada 3 dias, um versículo ou uma frase de
+   motivação; senão a ofensiva ou a meta. Se a pessoa já estudou e bateu a meta, recebe só a inspiração do dia. */
 export function recado(reg, dia, min = 15 * 60) {
   const e = reg.estado || {};
-  const semente = hashN(dia + "|" + (reg.sub && reg.sub.endpoint || ""));
+  const ep = reg.sub && reg.sub.endpoint || "";
+  const semente = hashN(dia + "|" + ep); // decide o tipo do recado
+  const escolha = hashN("r|" + dia + "|" + ep); // decide qual texto, sem depender do tipo
   const per = periodo(min);
   const estudouHoje = e.ult === dia;
   const qHoje = estudouHoje ? e.q || 0 : 0;
@@ -122,15 +160,17 @@ export function recado(reg, dia, min = 15 * 60) {
   if (prox && [0, 1, 2, 3, 5, 7].includes(prox.n)) {
     const nome = cap(prox.nome || "a prova");
     const quando = prox.n === 0 ? "é hoje" : prox.n === 1 ? "é amanhã" : `é daqui a ${prox.n} dias`;
-    const corpo = prox.n === 0 ? sorteia(["Respire fundo e confie no que você estudou. Uma revisão leve dos resumos já ajuda.", "Você se preparou para isso. Leia os resumos com calma e boa prova!"], semente)
-      : prox.n === 1 ? sorteia(["Revise os erros e os resumos, sem começar matéria nova. E durma bem!", "Hoje é dia de revisão leve: erradas, resumos e uma boa noite de sono."], semente)
-      : prox.n <= 3 ? sorteia(["Reta final: priorize questões e a revisão das que você errou.", "Hora de treinar questões da matéria e revisar os cartões."], semente)
+    const corpo = prox.n === 0 ? sorteia(["Respire fundo e confie no que você estudou. Uma revisão leve dos resumos já ajuda.", "Você se preparou para isso. Leia os resumos com calma e boa prova!"], escolha)
+      : prox.n === 1 ? sorteia(["Revise os erros e os resumos, sem começar matéria nova. E durma bem!", "Hoje é dia de revisão leve: erradas, resumos e uma boa noite de sono."], escolha)
+      : prox.n <= 3 ? sorteia(["Reta final: priorize questões e a revisão das que você errou.", "Hora de treinar questões da matéria e revisar os cartões."], escolha)
       : "Ainda dá tempo de ler a apostila e treinar questões. O plano de hoje já está pronto.";
-    if (!(estudouHoje && prox.n > 1 && qHoje >= (e.meta || 1))) return com({ title: `${nome} ${quando}`, body: corpo, img: prox.n <= 1 ? "calendario" : sorteia(["calendario", "balanca", "livro"], semente) });
+    if (!(estudouHoje && prox.n > 1 && qHoje >= (e.meta || 1))) return com({ title: `${nome} ${quando}`, body: corpo, img: prox.n <= 1 ? "calendario" : sorteia(["calendario", "balanca", "livro"], escolha) });
   }
-  if (!estudouHoje) return com(seq > 0 ? sorteia(FOGO[per](seq), semente) : sorteia(VOLTA[per], semente));
-  if (e.meta && qHoje < e.meta) { const f = e.meta - qHoje; return com(sorteia(META(f, qHoje, e.meta), semente)); }
-  return null;
+  const falta = e.meta && qHoje < e.meta ? e.meta - qHoje : 0;
+  if (semente % 3 === 0) return com(inspira(escolha, !estudouHoje ? (seq > 0 ? `Mantenha sua ofensiva de ${nDias(seq)}!` : "Que tal estudar um pouco hoje?") : falta ? `Faltam ${falta} questões para a meta.` : ""));
+  if (!estudouHoje) return com(seq > 0 ? sorteia(FOGO[per](seq), escolha) : sorteia(VOLTA[per], escolha));
+  if (falta) return com(sorteia(META(falta, qHoje, e.meta), escolha));
+  return com(inspira(escolha, "Meta de hoje batida, parabéns!"));
 }
 
 

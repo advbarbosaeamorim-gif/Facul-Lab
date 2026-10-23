@@ -794,8 +794,8 @@ html[data-anim="on"] .lb-card.lb-novo .lb-corpo{animation:lb-toca .9s ease-in-ou
 .lb-ex:first-child{opacity:1}
 .lb-ex b{display:block;font-size:.88rem}.lb-ex small{color:var(--muted);font-size:.78rem}
 .lb-ex-ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff}.lb-ex-ic .i{width:20px;height:20px}
-html[data-anim="on"] .lb-ex{opacity:0;animation:lb-ex 12s ease-in-out infinite;animation-delay:calc(var(--k)*3s)}
-@keyframes lb-ex{0%{opacity:0;transform:translateY(24px)}4%,22%{opacity:1;transform:none}26%,100%{opacity:0;transform:translateY(-24px)}}
+html[data-anim="on"] .lb-ex{opacity:0;animation:lb-ex 15s ease-in-out infinite;animation-delay:calc(var(--k)*3s)}
+@keyframes lb-ex{0%{opacity:0;transform:translateY(24px)}3%,17%{opacity:1;transform:none}20%,100%{opacity:0;transform:translateY(-24px)}}
 .lb-convite .festa-card{text-align:center}.lb-convite .lb-exemplos{text-align:left;margin:14px 0 4px}
 .lb-grande{display:inline-grid;grid-template-columns:1fr;border:0;background:none;padding:0;margin:0 auto}.lb-grande .lb-sino{width:96px;height:96px}
 .lb-teste{margin-top:12px}.lb-teste .botao{display:flex;align-items:center;justify-content:center;gap:8px;text-transform:none;letter-spacing:0;color:inherit}.lb-teste .i{width:20px;height:20px}.lb-res{font-weight:700;color:var(--fg)}
@@ -2416,11 +2416,11 @@ const LB_AVISOS={
 const LB_TESTE={enviando:"Enviando um lembrete de exemplo…",ok:"Lembrete enviado! Confira a barra de notificações do aparelho.",erro:"O teste não saiu. Confira a internet e tente de novo.",inscricao:"Este aparelho perdeu a inscrição. Ligue os lembretes de novo."};
 const LB_SINO=`<svg class="lb-sino" viewBox="0 0 64 64" aria-hidden="true"><g class="lb-ondas"><path d="M10 26a22 22 0 0 1 7-13"/><path d="M54 26a22 22 0 0 0-7-13"/></g><g class="lb-corpo"><path d="M32 7a4 4 0 0 1 4 4v1.6c7 1.8 11 7.8 11 15v9.4l5 7H12l5-7v-9.4c0-7.2 4-13.2 11-15V11a4 4 0 0 1 4-4z"/><circle class="lb-badalo" cx="32" cy="50" r="5" stroke="none"/></g><text class="lb-zz" x="46" y="14">z</text><text class="lb-zz" x="53" y="7" style="animation-delay:.6s">z</text></svg>`;
 /* exemplos que giram no cartão: o mesmo tipo de recado que chega no celular */
-const LB_EXEMPLOS=[["chama","#ff8a1f","Não perca seu foguinho!","Uma questão hoje mantém a chama acesa."],["alvo","#e5484d","Faltam 6 questões para a meta","Termine e veja a comemoração!"],["calendario","#4b3f99","A N1 é daqui a 3 dias","Reta final: questões e revisão das erradas."],["cartas","#2a9d6a","Uma pausa que vale ponto","Vire uns cartões entre uma tarefa e outra."]];
+const LB_EXEMPLOS=[["chama","#ff8a1f","Não perca seu foguinho!","Uma questão hoje mantém a chama acesa."],["alvo","#e5484d","Faltam 6 questões para a meta","Termine e veja a comemoração!"],["calendario","#4b3f99","A N1 é daqui a 3 dias","Reta final: questões e revisão das erradas."],["cartas","#2a9d6a","Uma pausa que vale ponto","Vire uns cartões entre uma tarefa e outra."],["livro","#d9922c","Uma palavra para os seus estudos","“Tudo posso naquele que me fortalece.” (Filipenses 4:13)"]];
 const lbExemplos=()=>`<div class="lb-exemplos" aria-hidden="true">${LB_EXEMPLOS.map(([i,c,t,d],k)=>`<div class="lb-ex" style="--k:${k}"><span class="lb-ex-ic" style="background:${c}">${ic(i)}</span><span><b>${t}</b><small>${d}</small></span></div>`).join("")}</div>`;
 function blocoLembretes(){const on=lbCfg().on;
  const tit=on?"Lembretes ligados":"Quer uma ajudinha para não esquecer?";
- const txt=on?"Uma vez por dia, num horário-surpresa entre 9h e 21h, o Facul Lab te chama, mesmo com o app fechado. Se você já estudou e bateu a meta, ele fica quietinho.":"Ative os lembretes e o app te chama uma vez por dia, num horário-surpresa, com recados e ilustrações diferentes: ofensiva, meta e provas chegando.";
+ const txt=on?"Uma vez por dia, num horário-surpresa entre 9h e 21h, o Facul Lab te chama, mesmo com o app fechado: a ofensiva, a meta, a prova chegando, uma motivação ou um versículo para os estudos.":"Ative os lembretes e o app te chama uma vez por dia, num horário-surpresa, com recados e ilustrações diferentes: ofensiva, meta, provas chegando, motivação e versículos.";
  return `<div class="secao" role="heading" aria-level="2">Lembretes no celular</div>
  <div class="lb-card ${on?"lb-on":"lb-off"}">${LB_SINO}<div class="lb-txt"><b>${tit}</b><p>${txt}</p></div></div>
  ${lbExemplos()}
@@ -2434,7 +2434,7 @@ function blocoLembretes(){const on=lbCfg().on;
 function lbPodeConvidar(){return !/github\.io$/.test(location.hostname)&&!lbCfg().on&&!lbSuporte()&&window.Notification&&Notification.permission!=="denied"}
 function lbConvite(){try{localStorage.setItem("faculLab.lbConvite","1")}catch(e){}if(!lbPodeConvidar()||document.querySelector(".festa"))return false;
  const el=document.createElement("div");el.className="festa lb-convite";el.setAttribute("role","dialog");el.setAttribute("aria-label","Ativar lembretes");
- el.innerHTML=`<div class="festa-card"><div class="lb-card lb-on lb-grande">${LB_SINO}</div><h2>Posso te lembrar de estudar?</h2><p class="frase">Uma vez por dia, num horário-surpresa, um recado diferente: a ofensiva, a meta ou a prova chegando. Mesmo com o app fechado.</p>${lbExemplos()}<div class="botoes"><button class="botao cheio" data-acao="lb-convite-sim">Ativar lembretes</button><button class="botao" data-acao="festa-fechar">Agora não</button></div><p class="nota" style="margin:10px 0 0">Dá para mudar quando quiser em Configurações.</p></div>`;
+ el.innerHTML=`<div class="festa-card"><div class="lb-card lb-on lb-grande">${LB_SINO}</div><h2>Posso te lembrar de estudar?</h2><p class="frase">Uma vez por dia, num horário-surpresa, um recado diferente: a ofensiva, a meta, a prova chegando, uma motivação ou um versículo. Mesmo com o app fechado.</p>${lbExemplos()}<div class="botoes"><button class="botao cheio" data-acao="lb-convite-sim">Ativar lembretes</button><button class="botao" data-acao="festa-fechar">Agora não</button></div><p class="nota" style="margin:10px 0 0">Dá para mudar quando quiser em Configurações.</p></div>`;
  document.body.appendChild(el);syncVoltar();return true}
 window.lbConvite=lbConvite;
 function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData||!!rota.tipoData;
