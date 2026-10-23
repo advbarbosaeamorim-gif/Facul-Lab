@@ -1,5 +1,7 @@
-/* Troque CACHE_NAME a cada atualização de conteúdo para que os aparelhos baixem a versão nova. */
-const CACHE_NAME = 'facul-lab-v36';
+/* Os arquivos do app vêm da rede primeiro, então conteúdo novo chega sem trocar CACHE_NAME.
+   NÃO mude CACHE_NAME nos PRs (é isso que fazia os PRs colidirem). Só mude se a lista CORE
+   mudar ou o formato do cache precisar ser apagado, e faça isso depois de mergear na main. */
+const CACHE_NAME = 'facul-lab-v37';
 const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',
   "./ap1.js","./ap10.js","./ap2.js","./ap3.js","./ap4.js","./ap5.js","./ap6.js","./ap7.js","./ap8.js","./ap9.js",
   "./assuntos.js","./base.js","./explicacoes.js",
@@ -15,26 +17,25 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
-/* Página: rede primeiro (pega atualizações), cache se estiver offline.
-   Demais arquivos e fontes: cache primeiro, e o que vier da rede é guardado para uso offline. */
+/* Página e arquivos do próprio app: rede primeiro (pega atualizações na hora), cache se estiver
+   offline ou se a rede demorar mais de 4 s. Fontes e outros sites: cache primeiro. */
+const guarda = (chave, resp) => {
+  if (resp.ok || resp.type === 'opaque') { const copia = resp.clone(); caches.open(CACHE_NAME).then(c => c.put(chave, copia)); }
+  return resp;
+};
+const redePrimeiro = (req, chave) => new Promise(ok => {
+  let feito = false;
+  const doCache = () => caches.match(chave).then(r => r || caches.match(req));
+  const t = setTimeout(() => doCache().then(r => { if (r && !feito) { feito = true; ok(r); } }), 4000);
+  fetch(req, { cache: 'no-cache' }).then(resp => { guarda(chave, resp); if (!feito) { feito = true; clearTimeout(t); ok(resp); } })
+    .catch(() => doCache().then(r => { if (!feito) { feito = true; clearTimeout(t); ok(r || Response.error()); } }));
+});
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).then(r => {
-      const copia = r.clone();
-      caches.open(CACHE_NAME).then(c => c.put('./index.html', copia));
-      return r;
-    }).catch(() => caches.match('./index.html')));
-    return;
-  }
-  e.respondWith(caches.match(req).then(r => r || fetch(req).then(resp => {
-    if (resp.ok || resp.type === 'opaque') {
-      const copia = resp.clone();
-      caches.open(CACHE_NAME).then(c => c.put(req, copia));
-    }
-    return resp;
-  })));
+  if (req.mode === 'navigate') { e.respondWith(redePrimeiro(req, './index.html')); return; }
+  if (new URL(req.url).origin === self.location.origin) { e.respondWith(redePrimeiro(req, req)); return; }
+  e.respondWith(caches.match(req).then(r => r || fetch(req).then(resp => guarda(req, resp))));
 });
 
 /* Lembretes no celular (Web Push): chegam mesmo com o app fechado. */

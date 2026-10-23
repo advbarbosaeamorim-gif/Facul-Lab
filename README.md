@@ -8,4 +8,4 @@ App de estudo para Direito: simulados por período (1º ao 10º) e para o Exame 
 python3 -m http.server 8000
 ```
 
-Ao atualizar conteúdo, troque `CACHE_NAME` em `sw.js` para que os aparelhos baixem a versão nova.
+Os arquivos do app são buscados na rede primeiro pelo `sw.js` (cache só offline), então atualizações de conteúdo chegam sozinhas. **Não troque `CACHE_NAME` nos PRs**: só quando a lista `CORE` mudar, e depois de mergear na main.
