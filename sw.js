@@ -1,5 +1,5 @@
 /* Troque CACHE_NAME a cada atualização de conteúdo para que os aparelhos baixem a versão nova. */
-const CACHE_NAME = 'facul-lab-v31';
+const CACHE_NAME = 'facul-lab-v34';
 const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',
   "./ap1.js","./ap10.js","./ap2.js","./ap3.js","./ap4.js","./ap5.js","./ap6.js","./ap7.js","./ap8.js","./ap9.js",
   "./assuntos.js","./base.js","./explicacoes.js",
