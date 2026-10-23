@@ -758,6 +758,17 @@ html[data-anim="on"] .sb-tr-v{animation:sb-trilha 2.4s cubic-bezier(.4,0,.2,1) b
 [data-estilo="premium"] .sb-bloco h3 .i,[data-estilo="premium"] .sb-num b,[data-estilo="premium"] .sb-ic,[data-estilo="premium"] .sb-nota .i{color:var(--p1)}
 [data-estilo="premium"] .sb-tr-v{stroke:var(--p1)}[data-estilo="premium"] .sb-ic{background:color-mix(in srgb,var(--p1) 14%,var(--surface))}
 .hs-qual{font-style:normal;font-weight:700;color:var(--fg)}
+.ritmo{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);margin-bottom:10px}
+.rt-vel{width:110px;height:64px;overflow:visible}
+.rt-vel path{fill:none;stroke-width:9;stroke-linecap:round}.rt-arco{stroke:var(--trilho)}
+.rt-z1{stroke:#3bb273}.rt-z2{stroke:#ffc53d}.rt-z3{stroke:#e5484d}
+.rt-ag{transform-origin:60px 62px;transition:transform .9s cubic-bezier(.3,1.6,.5,1)}.rt-ag path{fill:var(--fg);stroke:none}
+.rt-eixo{fill:var(--fg)}
+.rt-txt b{font:700 1.05rem/1.2 var(--f-display)}.rt-txt p{margin:2px 0 4px;font-size:.88rem;line-height:1.4}.rt-txt small{display:block;color:var(--muted);font-size:.8rem;line-height:1.4}.rt-txt small b{font:inherit;font-weight:700;color:var(--fg)}
+html[data-anim="on"] .rt-vel.rt-novo .rt-ag{animation:rt-balanca .9s cubic-bezier(.3,1.6,.5,1)}
+html[data-anim="on"] .ritmo .rt-txt{animation:pv-res-in .4s ease-out both}
+@keyframes rt-balanca{0%{transform:rotate(-90deg)}}
+@media (max-width:360px){.ritmo{grid-template-columns:1fr}.rt-vel{justify-self:center}}
 .pv-notas-tg{display:grid;gap:4px;margin-top:12px}.pv-notas-tg .nota{margin:0}.pv-notas-tg .opcoes{margin-top:4px}
 html[data-anim="on"] .pv-notas{animation:pv-res-in .4s ease-out both}
 .pv-notas{margin-top:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2)}
@@ -2158,6 +2169,7 @@ function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0;const h0=inici
  const preparo=Math.round(100*(.35*cob+.35*(feitas>=5?ac:ac*feitas/5)+.30*lei));
  const datas=(p.datas||[]).map(x=>({...x,n:diasAte(x.dt)})).sort((a,b)=>a.n-b.n);const prox=datas.find(x=>x.n>=0)||null;
  let alvo=0;if(prox){const falta=Math.max(0,n-feitas)+e;alvo=prox.n===0?Math.min(10,Math.max(e,5)):Math.min(40,Math.max(5,Math.ceil(falta/Math.max(1,prox.n))))}
+ if(alvo)alvo=Math.max(3,Math.round(alvo*fatorRitmo()));
  const urg=prox?(100-preparo+10)/(prox.n+1):0;
  return {p,ids,n,o,e,feitas,hoje,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
 function provasAtivas(){return provasFac().map(estadoProva).filter(x=>x.prox).sort((a,b)=>b.urg-a.urg)}
@@ -2271,7 +2283,13 @@ const FASES={
  revisao:{nome:"Fase de revisão",txt:"Hora de treinar mais questões e atacar as matérias em que você mais erra.",meta:40,novos:10},
  reta:{nome:"Reta final",txt:"Simulados completos, revisão dos erros e resumos. Evite começar conteúdo novo e pesado.",meta:60,novos:5},
  passou:{nome:"A data da prova já passou",txt:"Atualize a data nas Configurações ou escolha estudar sem data definida.",meta:20,novos:10}};
-function metaDia(){const m=S.cfg&&S.cfg.meta;const base=m?+m:FASES[fase()].meta;return Math.max(base,metaProvas())}
+/* ritmo de estudo até a prova: multiplica a meta automática, as questões das provas da faculdade e os cartões novos */
+const RITMOS=[["auto","Automático","O app decide: mais leve longe da prova e mais forte perto dela.",1,-60],["leve","Leve","Para semanas puxadas de trabalho. Cerca de 40% menos questões e cartões novos.",.6,-55],["moderado","Moderado","Passo firme e constante, um pouco abaixo do automático.",.85,0],["intenso","Intenso","Para quem tem tempo e quer acelerar. Cerca de 40% a mais.",1.4,55]];
+const ritmoAtual=()=>RITMOS.find(r=>r[0]===(S.cfg&&S.cfg.ritmo))||RITMOS[0];
+const fatorRitmo=()=>ritmoAtual()[3];
+const metaFase=()=>Math.max(5,Math.round(FASES[fase()].meta*fatorRitmo()));
+const novosFase=()=>Math.max(3,Math.round(FASES[fase()].novos*fatorRitmo()));
+function metaDia(){const m=S.cfg&&S.cfg.meta;const base=m?+m:metaFase();return Math.max(base,metaProvas())}
 /* prova mais próxima para o calendário: a data manual (Configurações) e, com o modo avançado,
    cada data das provas da faculdade. Quando uma passa, entra a seguinte. */
 function provaProx(){const L=[];const p=S.cfg&&S.cfg.prova;const n0=diasProva();if(p&&n0!==null)L.push({dt:p,n:n0,nome:"",manual:true});
@@ -2294,7 +2312,13 @@ function simSugerido(){const per=perAtual(),fs=fase();
 function discsFoco(){const per=perAtual();if(per===null)return [];if(per===9)return discsDaMateria(materiaMaisFraca().m);return PERIODOS[per].slice()}
 function proximoTema(ds){for(const d of ds){const i=periodoDe(d);if(i<0||!apOk(i))continue;const A=window.APOSTILA[i];if(!(A.mat&&A.mat[d])||(S.lidos&&S.lidos[d]))continue;
   const P=paginas(d);if(!P.secs.length)continue;const pg=Math.min(((S.apPg&&S.apPg[d])||0)+1,P.secs.length);return {d,pg,tit:P.secs[pg-1].tit}}return null}
-function novosDoFoco(ds){let n=0;ds.forEach(d=>{const i=periodoDe(d);if(i>=0&&apOk(i))cartoesDe(d).forEach(c=>{if(!estC(c.id))n++})});return Math.min(n,FASES[fase()].novos)}
+function novosDoFoco(ds){let n=0;ds.forEach(d=>{const i=periodoDe(d);if(i>=0&&apOk(i))cartoesDe(d).forEach(c=>{if(!estC(c.id))n++})});return Math.min(n,novosFase())}
+function blocoRitmo(){const r=ritmoAtual();const m=S.cfg&&S.cfg.meta;
+ return `<div class="secao" role="heading" aria-level="2">Ritmo de estudo até a prova</div>
+ <div class="ritmo"><svg class="rt-vel" viewBox="0 0 120 70" aria-hidden="true"><path class="rt-arco" d="M12 62a48 48 0 0 1 96 0"/><path class="rt-z rt-z1" d="M12 62a48 48 0 0 1 14-34"/><path class="rt-z rt-z2" d="M30 22a48 48 0 0 1 60 0"/><path class="rt-z rt-z3" d="M94 28a48 48 0 0 1 14 34"/><g class="rt-ag" style="transform:rotate(${r[0]==="auto"?({base:-35,revisao:10,reta:50}[fase()]||-20):r[4]}deg)"><path d="M60 62L57 60 60 20 63 60z"/></g><circle cx="60" cy="62" r="6" class="rt-eixo"/></svg>
+  <div class="rt-txt"><b>${r[1]}</b><p>${r[2]}</p><small>Hoje isso dá <b>${metaDia()} questões</b>${m?" (sua meta fixa)":""}${avOn()&&metaProvas()?`, sendo ${metaProvas()} para as provas da faculdade,`:""} e até <b>${novosFase()} cartões novos</b>.</small></div></div>
+ <div class="opcoes ritmos">${RITMOS.map(([k,n])=>`<button data-acao="cfg-ritmo" data-v="${k}" aria-pressed="${r[0]===k}">${n}</button>`).join("")}</div>
+ <p class="nota">O ritmo vale para a meta automática, para os cartões novos e para as questões de cada prova da faculdade no modo avançado.${m?" Como você fixou a meta diária abaixo, ela continua valendo; volte para Automática para o ritmo ajustar as questões também.":""}</p>`}
 function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData;
  return topo("Configurações","Seu período, a prova, as questões e a aparência do app",{menu:true})+
  `<main class="wrap">${capaTela("checklist","Do seu jeito","Período, data da prova, meta diária e a aparência do app.")}<div class="secao" role="heading" aria-level="2">Em que momento você está?</div>
@@ -2307,8 +2331,9 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <p class="nota">Previsão divulgada para a 1ª fase do 48º Exame de Ordem: 10 de janeiro de 2027. Confira no edital antes de usar.</p>`:`<p class="nota">Sem data, o app mantém um ritmo constante, sem contagem regressiva.</p>`}
  <p class="nota">Com a data definida, o ritmo muda sozinho: <b>fase de base</b> (mais de 120 dias), <b>revisão</b> (até 120 dias) e <b>reta final</b> (últimos 30 dias).</p>
  ${blocoProvasConfig()}
+ ${blocoRitmo()}
  <div class="secao" role="heading" aria-level="2">Meta diária de questões</div>
- <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${FASES[f].meta})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
+ <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${metaFase()})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
  <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.${avOn()&&metaProvas()?` Com o modo avançado, suas provas pedem <b>${metaProvas()} questões por dia</b>; a meta usa o maior dos dois valores.`:""}</p>
  <div class="secao" role="heading" aria-level="2">Estilo visual</div>
  <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="classico"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
@@ -3196,6 +3221,8 @@ document.addEventListener("click",e=>{
     case "av-del-data":{const p=(S.cfg.provasFac||[]).find(x=>x.id===b.dataset.id);if(p){p.datas=p.datas.filter(x=>!(x.dt===b.dataset.dt&&(x.r||"")===b.dataset.r));if(!p.datas.length)S.cfg.provasFac=S.cfg.provasFac.filter(x=>x!==p)}salvar();rota.manterScroll=true;render();break}
     case "av-del":{const el=b.closest(".pv-cfg");const fim=()=>{S.cfg.provasFac=(S.cfg.provasFac||[]).filter(x=>x.id!==b.dataset.id);salvar();rota.manterScroll=true;render();anunciar("Prova removida")};
       if(el&&animOn()){el.classList.add("pv-sai");setTimeout(fim,280)}else fim();break}
+    case "cfg-ritmo":{S.cfg=S.cfg||{};S.cfg.ritmo=b.dataset.v==="auto"?"":b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Ritmo "+ritmoAtual()[1]);
+      const v=document.querySelector(".rt-vel");if(v&&animOn()){v.classList.add("rt-novo");if(b.dataset.v==="intenso")estouro(v,["#e5484d","#ffc53d","#ff8a1f","#ffffff"])}break}
     case "meta":S.cfg=S.cfg||{};S.cfg.meta=+b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;salvar();rota.manterScroll=true;render();break;
@@ -3210,7 +3237,7 @@ document.addEventListener("click",e=>{
     case "cfg-per":S.cfg=S.cfg||{};S.cfg.per=+b.dataset.v;periodo=Math.min(9,+b.dataset.v);salvar();rota.manterScroll=true;render();break;
     case "cfg-prova":S.cfg=S.cfg||{};S.cfg.prova="";rota.escolherData=false;salvar();rota.manterScroll=true;render();break;
     case "cfg-prova-data":rota.escolherData=true;rota.manterScroll=true;render();{const el=document.getElementById("data-prova");if(el)try{el.focus();el.showPicker&&el.showPicker()}catch(e){}}break;
-    case "cards-foco":{let ds=discsFoco();if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),FASES[fase()].novos,"Cartões novos · "+nomePer(perAtual()));break}
+    case "cards-foco":{let ds=discsFoco();if(!ds.length)ds=PERIODOS[periodo].slice();iniciarDeck(ds.filter(d=>DISC[d]),novosFase(),"Cartões novos · "+nomePer(perAtual()));break}
     case "lida":{const d=b.dataset.d;S.lidos=S.lidos||{};S.revAp=S.revAp||{};if(S.lidos[d]){delete S.lidos[d];delete S.revAp[d]}else{S.lidos[d]=Date.now();S.revAp[d]={n:0,prox:inicioDia()+864e5}}salvar();rota.manterScroll=true;render();break}
     case "resumo":ir({tela:"resumo",p:+b.dataset.p,k:0,q:b.dataset.q||null});break;
     case "busca-sug":{const el=document.getElementById("q-busca");if(el){el.value=b.dataset.v;rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()}break}
