@@ -1622,6 +1622,9 @@ const P={
  cartas:'<rect x="7" y="4" width="13" height="16" rx="2"/><path d="M4 7.5v10A2.5 2.5 0 0 0 6.5 20"/><path d="M11 10a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.6M13.5 16.5h.01"/>',
  marcador:'<path d="M6 3h12v18l-6-4-6 4z"/>',
  seta:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ som:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>',
+ mudo:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/>',
+ vibra:'<rect x="8" y="3" width="8" height="18" rx="2"/><path d="M4 8v8M20 8v8M11 17h2"/>',
  sino:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',
  calendario:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
 };
@@ -2298,7 +2301,7 @@ function mostrarMeta(){const m=metaDia();const v=metaVariante(m);
  const velho=document.querySelector(".festa");if(velho)velho.remove();
  const el=document.createElement("div");el.className="festa motiva meta-festa";el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label",v.msg[0]);
  el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card"><span class="mt-selo">Meta diária</span>${v.anim}<h2>${esc(v.msg[0])}</h2><p class="frase">${esc(v.msg[1])}</p><p class="mv-info">Sua sequência e o histórico estão em Metas e desempenho.</p><div class="botoes"><button class="botao cheio" data-acao="festa-fechar">Continuar</button><button class="botao" data-acao="meta-ver">Ver minhas metas</button></div></div>`;
- document.body.appendChild(el);if(animOn())confete(el.querySelector("canvas"));syncVoltar();anunciar(v.msg[0])}
+ document.body.appendChild(el);if(animOn())confete(el.querySelector("canvas"));som("meta");syncVoltar();anunciar(v.msg[0])}
 function metaBanner(){const m=metaDia();const q=((S.dias||{})[hojeStr()]||{}).q||0;if(q<m)return "";const v=metaVariante(m);
  return `<section class="motiva-banner meta" aria-label="Meta de hoje cumprida">${v.anim}<div><b>${esc(v.msg[0])}</b><p>${esc(v.msg[1])}</p><small>Meta de hoje: ${q} de ${nQ(m)}</small></div></section>`}
 
@@ -2425,7 +2428,7 @@ function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const p
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
 const inicioDia=t=>{const d=new Date(t||Date.now());d.setHours(0,0,0,0);return d.getTime()};
 const temAtiv=x=>!!x&&((x.q||0)+(x.c||0)+(x.p||0))>0;
-function marcarDia(campo,n){S.dias=S.dias||{};const k=hojeStr();const x=S.dias[k]=S.dias[k]||{q:0,c:0,p:0};const antes=x.q||0;x[campo]=(x[campo]||0)+(n||1);
+function marcarDia(campo,n){S.dias=S.dias||{};const k=hojeStr();const x=S.dias[k]=S.dias[k]||{q:0,c:0,p:0};const antes=x.q||0;if(!temAtiv(x))ofensivaNova=true;x[campo]=(x[campo]||0)+(n||1);
  if(campo==="q"){const m=metaDia();if(antes<m&&x.q>=m)metaNova=true}
  const ks=Object.keys(S.dias).sort();if(ks.length>400)ks.slice(0,ks.length-400).forEach(z=>delete S.dias[z])}
 function sequencia(){const D=S.dias||{};let n=0;const d=new Date();if(!temAtiv(D[hojeStr(d)]))d.setDate(d.getDate()-1);while(temAtiv(D[hojeStr(d.getTime())])){n++;d.setDate(d.getDate()-1)}return n}
@@ -2581,6 +2584,9 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Animações</div>
  <div class="cores">${[["on","Ligadas","Movimento nas telas, na chama e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="cfg-anim" data-v="${k}" aria-pressed="${((S.cfg&&S.cfg.anim)||"on")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Se o sistema estiver com movimento reduzido, o app respeita essa escolha.</p>
+ <div class="secao" role="heading" aria-level="2">Sons e vibração</div>
+ <div class="cores tres">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="cfg-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <p class="nota">Os sons seguem o volume de mídia do aparelho, e no iPhone o modo silencioso também os cala. A vibração funciona em celulares Android. Toque em uma opção para ouvir como fica.</p>
  <div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Quando ver a correção</div>
@@ -2720,6 +2726,42 @@ function efeitoResposta(certo){if(!animOn())return;const ok=document.querySelect
  if(certo&&ok){ok.classList.add("anim-ok");estouro(ok,["#3bb273","#f2b632","#2e86ab","#ffffff"])}else if(er){er.classList.add("anim-err");if(ok)ok.classList.add("anim-ok")}
  else{const sel=document.querySelector('#app .alt[aria-checked="true"]');if(sel)sel.classList.add("anim-ok")}}
 function efeitoCartao(cls){if(!animOn())return;const f=document.querySelector("#app .flash");if(f){f.classList.remove("vira","desliza");void f.offsetWidth;f.classList.add(cls)}}
+/* ---------- sons e vibração ----------
+   Tudo gerado na hora pelo Web Audio (nenhum arquivo para baixar, funciona offline): notas curtas e suaves.
+   S.cfg.som: "on" (sons + vibração), "vib" (só vibração) ou "off". O erro tem um som macio, para não punir. */
+let AC=null,ofensivaNova=false;
+const somModo=()=>(S.cfg&&S.cfg.som)||"on";
+const SOM_OP=[["on","Ligados","Som ao acertar, errar, gabaritar e bater a meta","som"],["vib","Só vibrar","Sem som, só um toque no celular","vibra"],["off","Desligados","Silêncio total","mudo"]];
+function audio(){if(AC)return AC;const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;
+ try{if(navigator.audioSession)navigator.audioSession.type="ambient"}catch(e){}/* no iPhone, respeita o modo silencioso e não para a música */
+ try{AC=new C();const m=AC.createDynamicsCompressor();m.connect(AC.destination);AC.saida=m}catch(e){AC=null}return AC}
+function tom(a,t,f,dur,o){o=o||{};const g=a.createGain(),os=a.createOscillator();os.type=o.tipo||"sine";os.frequency.setValueAtTime(f,t);if(o.f2)os.frequency.exponentialRampToValueAtTime(o.f2,t+dur*.8);
+ const v=o.vol||.2;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+(o.ataque||.01));g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+ os.connect(g);g.connect(a.saida);os.start(t);os.stop(t+dur+.05)}
+function sopro(a,t,dur,f1,f2,vol){const n=Math.floor(a.sampleRate*dur),b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
+ const s=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain();s.buffer=b;fl.type="bandpass";fl.Q.value=1.4;fl.frequency.setValueAtTime(f1,t);fl.frequency.exponentialRampToValueAtTime(f2,t+dur);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+dur*.35);g.gain.exponentialRampToValueAtTime(.0001,t+dur);s.connect(fl);fl.connect(g);g.connect(a.saida);s.start(t);s.stop(t+dur+.05)}
+const brilho=(a,t,n)=>{for(let i=0;i<n;i++)tom(a,t+i*.07+Math.random()*.03,1800+Math.random()*1600,.22,{vol:.035})};
+const acorde=(a,t,fs,dur,vol)=>fs.forEach(f=>{tom(a,t,f,dur,{tipo:"triangle",vol:vol||.07,ataque:.02});tom(a,t,f*2,dur*.7,{vol:(vol||.07)*.3})});
+const arpejo=(a,t,fs,passo,dur,vol)=>fs.forEach((f,i)=>{tom(a,t+i*passo,f,dur,{tipo:"triangle",vol:vol||.14});tom(a,t+i*passo,f*2,dur*.6,{vol:(vol||.14)*.35})});
+const SONS={
+ acerto:a=>{const t=a.currentTime;tom(a,t,659.25,.22,{tipo:"triangle",vol:.16});tom(a,t+.085,987.77,.45,{tipo:"triangle",vol:.17});tom(a,t+.085,1975.5,.3,{vol:.04})},
+ erro:a=>{const t=a.currentTime;tom(a,t,311.13,.24,{tipo:"triangle",vol:.15,f2:277.18});tom(a,t+.13,233.08,.4,{tipo:"triangle",vol:.13,f2:220})},
+ toque:a=>tom(a,a.currentTime,880,.07,{vol:.07}),
+ vira:a=>sopro(a,a.currentTime,.18,2200,700,.12),
+ fim:a=>{const t=a.currentTime;arpejo(a,t,[523.25,659.25,783.99],.1,.5)},
+ aprovado:a=>{const t=a.currentTime;arpejo(a,t,[523.25,659.25,783.99],.09,.4);acorde(a,t+.3,[523.25,659.25,1046.5],.8);brilho(a,t+.35,3)},
+ gabarito:a=>{const t=a.currentTime;arpejo(a,t,[392,523.25,659.25,783.99],.075,.3,.13);acorde(a,t+.32,[523.25,659.25,783.99,1046.5],1.3,.07);brilho(a,t+.4,8)},
+ meta:a=>{const t=a.currentTime;tom(a,t,783.99,.16,{tipo:"triangle",vol:.14});tom(a,t+.11,783.99,.16,{tipo:"triangle",vol:.14});acorde(a,t+.24,[1046.5,1318.5,783.99],1,.08);brilho(a,t+.3,6)},
+ chama:a=>{const t=a.currentTime;sopro(a,t,.55,300,2600,.13);tom(a,t+.05,392,.5,{vol:.08,f2:784})}
+};
+const VIBRA={acerto:18,erro:[40,60,40],toque:8,fim:60,aprovado:[50,50,90],gabarito:[60,60,60,60,160],meta:[80,60,160],chama:[30,40,30,40,60]};
+function som(nome){const m=somModo();if(m==="off"||document.hidden)return;
+ if(VIBRA[nome]&&navigator.vibrate){try{navigator.vibrate(VIBRA[nome])}catch(e){}}
+ if(m!=="on"||!SONS[nome])return;const a=audio();if(!a)return;
+ try{if(a.state==="suspended")a.resume();SONS[nome](a)}catch(e){}}
+/* o navegador só libera o áudio depois de um toque na tela */
+document.addEventListener("pointerdown",()=>{if(somModo()!=="on")return;const a=audio();if(a&&a.state==="suspended")a.resume().catch(()=>{})},{passive:true,capture:true});
 document.addEventListener("pointerdown",e=>{if(!animOn())return;const el=e.target.closest(".card,.item,.botao,.alt,.opcoes button,.cores button,.estilos button,.paletas button");if(!el||el.disabled)return;
  const r=el.getBoundingClientRect();const t=Math.max(r.width,r.height)*2.2;const o=document.createElement("span");o.className="onda";o.style.width=o.style.height=t+"px";o.style.left=(e.clientX-r.left-t/2)+"px";o.style.top=(e.clientY-r.top-t/2)+"px";
  el.classList.add("onda-host");el.appendChild(o);setTimeout(()=>o.remove(),650)},{passive:true});
@@ -2968,7 +3010,7 @@ function mostrarFesta(a){const v=versoDaChave(a.key);const fr=MOTIVA[Math.floor(
  const velho=document.querySelector(".festa");if(velho)velho.remove();
  const el=document.createElement("div");el.className="festa";el.dataset.acao="festa-fechar";el.setAttribute("role","dialog");el.setAttribute("aria-label","Gabarito perfeito");
  el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card">${TROFEU}<h2>Gabaritou!</h2><p class="frase">${esc(fr)}</p>${versoCard(v,"Para celebrar")}<button class="botao cheio" data-acao="festa-fechar" style="width:100%">Continuar</button></div>`;
- document.body.appendChild(el);confete(el.querySelector("canvas"));syncVoltar()}
+ document.body.appendChild(el);confete(el.querySelector("canvas"));som("gabarito");syncVoltar()}
 /* ---------- estado ---------- */
 const CHAVE="simuladoOAB.v2";
 function novoEstado(){return {v:2,atualizado:0,hist:[],stats:{},cfg:{corrFinal:true},lidos:{}}}
@@ -3089,6 +3131,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
   acompanharLeitura();realcarPagina();animarTela(telaNova);syncVoltar();
   if(metaNova){metaNova=false;setTimeout(mostrarMeta,900)}
+  if(ofensivaNova){ofensivaNova=false;setTimeout(()=>som("chama"),450)}
   if(rota.tela==="busca"&&telaNova)animarBusca();
 }
 
@@ -3169,7 +3212,7 @@ function telaLsFim(){const s=lsSess,n=s.itens.length;
 function lsResponder(v){const s=lsSess;if(!s||s.resp[s.i]!==undefined)return;const it=s.itens[s.i];const ok=it.modo==="lac"?v===0:((v===1)===it.certo);
  s.resp[s.i]=v;if(ok)s.ok++;S.ls=S.ls||{};const z=S.ls[it.id]=S.ls[it.id]||{a:0,e:0,u:0};
  if(ok){z.a=z.u===1?z.a+1:1;z.u=1}else{z.e=(z.e||0)+1;z.a=0;z.u=0}z.d=Date.now();
- marcarDia("q");salvar();rota.manterScroll=true;render()}
+ marcarDia("q");salvar();rota.manterScroll=true;render();som(ok?"acerto":"erro")}
 
 /* ---------- gaveta ---------- */
 function telaGaveta(){
@@ -3318,7 +3361,7 @@ function comecar(key){const s=sim(key);if(!s||!s.qids.length)return;
 
 /* ---------- prova ---------- */
 function responderQ(o){const s=sessao,id=s.qids[idx];if(!s.corrFinal&&s.resp[id]!==undefined)return;
-  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal)efeitoResposta(o===0);else efeitoResposta(null)}
+  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
 function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   if(!q){return topo("Questão indisponível","",{voltarAcao:"pausar"})+`<main class="wrap">${vazio("carimbo","Questão retirada do banco","Ela foi removida depois de uma revisão. Passe para a próxima: a sua nota considera só as questões disponíveis.")}</main>`+navQuiz()}
   const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
@@ -3357,7 +3400,7 @@ function finalizar(){pararRelogio();const a=sessao;a.status="concluido";a.fim=Da
   a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0)});
   sessao=null;folha=false;confirmar=null;salvar();
   const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id};render();
-  if(res(a).pct===100)setTimeout(()=>mostrarFesta(a),250)}
+  {const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
 function pausar(){pararRelogio();if(sessao){sessao.pos=idx;salvar()}sessao=null;folha=false;confirmar=null;
   pilha=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");rota=pilha.pop()||{tela:"oab",aba:"historico"};render()}
 
@@ -3468,9 +3511,10 @@ function tourDemoMenu(){const s=tourD.menu;
 function tourDemoVisual(){const e=estiloAtual(),an=(S.cfg&&S.cfg.anim)||"on";
  return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${PALETAS.map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`:""}
- <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
+ <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <p class="nota tour-sub"><b>Sons e vibração</b></p><div class="cores tres">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="tour-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
 function tourDemoFim(){const per=perAtual();const pl=PALETAS.find(x=>x[0]===paletaAtual());
- const L=[["capelo","Seu momento",per===null?"Ainda não escolhido":nomePer(per),1],["eng","Visual",estiloAtual()==="premium"?`Premium · ${pl[1]}`:"Clássico",8],[(S.cfg&&S.cfg.anim)==="off"?"pausa":"chama","Animações",(S.cfg&&S.cfg.anim)==="off"?"Desligadas":"Ligadas",8]];
+ const L=[["capelo","Seu momento",per===null?"Ainda não escolhido":nomePer(per),1],["eng","Visual",estiloAtual()==="premium"?`Premium · ${pl[1]}`:"Clássico",8],[(S.cfg&&S.cfg.anim)==="off"?"pausa":"chama","Animações",(S.cfg&&S.cfg.anim)==="off"?"Desligadas":"Ligadas",8],[SOM_OP.find(x=>x[0]===somModo())[3],"Sons",SOM_OP.find(x=>x[0]===somModo())[1],8]];
  return `<div class="lista tour-resumo">${L.map(([i,t,v,k])=>`<button class="item" data-acao="tour-ir" data-v="${k}">${tile("var(--toga)",i==="capelo"?"livro":i)}<span style="min-width:0"><span class="item-sub">${t}</span><br><span class="item-tit">${esc(v)}</span></span><span class="item-data">Trocar</span></button>`).join("")}</div>
  <p class="nota tour-centro">Quer ver o tour de novo? Ele fica no menu, em <b>Tour pelo app</b>, e em Configurações.</p>`}
 function tourHtml(){const P=TOUR[tourI],n=TOUR.length,ult=tourI===n-1;const cor=estiloAtual()==="premium"?"var(--p2)":P.cor;
@@ -3524,15 +3568,16 @@ document.addEventListener("click",e=>{
     case "tour-per":S.cfg=S.cfg||{};S.cfg.per=+b.dataset.v;periodo=Math.min(9,+b.dataset.v);salvar();tourD.novo=true;rota.manterScroll=true;render();tourRender();break;
     case "tour-plano":{const P=tourD.plano=tourD.plano||{};P[b.dataset.v]=!P[b.dataset.v];tourD.novo=true;tourRender();
       if([0,1,2].every(k=>P[k]))estouro(document.querySelector("#tour .tour-res"),["#ff8a1f","#ffc53d","#3bb273","#ffffff"]);break}
-    case "tour-q":tourD.q=+b.dataset.v;tourD.novo=true;tourRender();if(tourD.q===TOUR_Q.c)estouro(document.querySelector("#tour .alt.certa"),["#3bb273","#ffc53d","#ffffff"]);break;
+    case "tour-q":tourD.q=+b.dataset.v;tourD.novo=true;tourRender();som(tourD.q===TOUR_Q.c?"acerto":"erro");if(tourD.q===TOUR_Q.c)estouro(document.querySelector("#tour .alt.certa"),["#3bb273","#ffc53d","#ffffff"]);break;
     case "tour-q-de-novo":delete tourD.q;tourRender();{const a=document.querySelector("#tour .alt");if(a)a.focus({preventScroll:true})}break;
-    case "tour-card-virar":tourD.virado=true;tourD.novo="vira";tourRender();{const n=document.querySelector('#tour [data-acao="tour-card-nota"]');if(n)n.focus({preventScroll:true})}break;
+    case "tour-card-virar":tourD.virado=true;tourD.novo="vira";tourRender();som("vira");{const n=document.querySelector('#tour [data-acao="tour-card-nota"]');if(n)n.focus({preventScroll:true})}break;
     case "tour-card-nota":tourD.nota=+b.dataset.v;tourD.novo=true;tourRender();break;
-    case "tour-ls":tourD.ls=b.dataset.v;tourD.novo=true;tourRender();if(tourD.ls==="iguais")estouro(document.querySelector("#tour .tour-lacuna"),["#3bb273","#ffc53d","#ffffff"]);break;
-    case "tour-dia":tourD.dias=Math.min(7,(tourD.dias||0)+1);tourD.novo=true;tourRender();estouro(document.querySelector("#tour .tour-semana li.novo"),["#ff8a1f","#ffc53d","#ffffff"]);break;
+    case "tour-ls":tourD.ls=b.dataset.v;tourD.novo=true;tourRender();som(tourD.ls==="iguais"?"acerto":"erro");if(tourD.ls==="iguais")estouro(document.querySelector("#tour .tour-lacuna"),["#3bb273","#ffc53d","#ffffff"]);break;
+    case "tour-dia":tourD.dias=Math.min(7,(tourD.dias||0)+1);tourD.novo=true;tourRender();som(tourD.dias===7?"meta":"chama");estouro(document.querySelector("#tour .tour-semana li.novo"),["#ff8a1f","#ffc53d","#ffffff"]);break;
     case "tour-menu":tourD.menu=+b.dataset.v;tourD.novo=true;tourRender();break;
     case "tour-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
     case "tour-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();break;
+    case "tour-som":S.cfg=S.cfg||{};S.cfg.som=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();som("acerto");break;
     case "tour-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();tourRender();break;
     case "treinar-ass":gaveta=false;ir({tela:"pre",key:`ass:${b.dataset.sc}:${b.dataset.a}`});break;
     case "reportar":repQ=b.dataset.q;repMot="";rota.manterScroll=true;render();setTimeout(()=>{const t=document.getElementById("rep-txt");if(t&&!(S.rep&&S.rep[repQ]))t.blur()},0);break;
@@ -3560,8 +3605,8 @@ document.addEventListener("click",e=>{
     case "cards-per":rota.p=+b.dataset.p;rota.manterScroll=true;render();break;
     case "cards-disc":{const d=b.dataset.d;iniciarDeck([d],15,"Cartões · "+nomeCurto(infoDisc(d).nome));break}
     case "cards-venc":{const ds=[...new Set(Object.keys(S.cards||{}).filter(id=>S.cards[id].due<=Date.now()).map(id=>id.split(":")[0]))].filter(d=>DISC[d]);iniciarDeck(ds,0,"Revisão de hoje");break}
-    case "card-virar":deck.virado=true;rota.manterScroll=true;render();efeitoCartao("vira");break;
-    case "card-nota":avaliarCartao(+b.dataset.v);render();break;
+    case "card-virar":deck.virado=true;rota.manterScroll=true;render();efeitoCartao("vira");som("vira");break;
+    case "card-nota":{const n=+b.dataset.v;avaliarCartao(n);render();som(deck&&deck.pos>=deck.q.length?(deck.er?"fim":"aprovado"):n===0?"erro":"acerto");break}
     case "rev-ap":{const d=b.dataset.d;const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*864e5;salvar()}ir({tela:"ler",d,pg:999,pagina:true});break}
     case "av-modo":S.cfg=S.cfg||{};S.cfg.av=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
     case "av-notas":S.cfg=S.cfg||{};S.cfg.notas=b.dataset.v==="1";salvar();rota.manterScroll=true;render();anunciar(S.cfg.notas?"Notas e média ligadas":"Notas e média desligadas");
@@ -3589,6 +3634,7 @@ document.addEventListener("click",e=>{
     case "notif-teste":lbTestar();break;
     case "cal-vira":b.classList.toggle("virado");break;
     case "cfg-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();break;
+    case "cfg-som":S.cfg=S.cfg||{};S.cfg.som=b.dataset.v;salvar();rota.manterScroll=true;render();som("acerto");break;
     case "cfg-tema":S.cfg=S.cfg||{};S.cfg.tema=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-modoq":S.cfg=S.cfg||{};S.cfg.modoQ=b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-corr":S.cfg=S.cfg||{};S.cfg.corrFinal=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
@@ -3609,7 +3655,7 @@ document.addEventListener("click",e=>{
     case "ls-filtro":rota.lsm=b.dataset.v;rota.manterScroll=true;render();break;
     case "ls-iniciar":lsIniciar(b.dataset.modo);break;
     case "ls-resp":lsResponder(+b.dataset.v);break;
-    case "ls-prox":if(lsSess&&lsSess.resp[lsSess.i]!==undefined){lsSess.i++;render();topoTela()}break;
+    case "ls-prox":if(lsSess&&lsSess.resp[lsSess.i]!==undefined){lsSess.i++;render();topoTela();if(lsSess&&lsSess.i>=lsSess.itens.length)som(lsSess.ok===lsSess.itens.length?"gabarito":lsSess.ok*2>=lsSess.itens.length?"aprovado":"fim")}break;
     case "ls-sair":lsSess=null;{const f=pilha.length&&pilha[pilha.length-1].tela==="leiseca";if(f)voltar();else raiz({tela:"leiseca"})}break;
     case "meta-ver":{const f=document.querySelector(".festa");if(f)f.remove();raiz({tela:"metas"});break}
     case "motiva-ir":{const f=document.querySelector(".festa");if(f)f.remove();raiz({tela:"hoje"});setTimeout(()=>{const l=document.querySelector(".plano-lista");if(l)l.scrollIntoView({behavior:animOn()?"smooth":"auto",block:"start"})},60);break}
