@@ -1413,6 +1413,7 @@ O caput do art. 44 revela três características que caem muito em prova:
 !! As três características = "**A-S-P**": **A**utônoma (ou uma, ou outra), **S**ubstitutiva (primeiro calcula, depois troca), **P**recária (descumpriu, volta a prisão).
 
 ## Quanto tempo dura a restritiva (art. 55)
+::ilus relogio|Algumas restritivas acompanham o relógio da pena; outras se cumprem de uma vez.
 A limitação de fim de semana, a prestação de serviços à comunidade e a interdição temporária de direitos têm a **mesma duração** da pena privativa de liberdade substituída, ressalvado o cumprimento em menor tempo da prestação de serviços (art. 55 c/c art. 46, §4º). Assim, 1 ano de reclusão vira 1 ano de limitação de fim de semana; 2 anos de reclusão viram 2 anos de interdição.
 
 Já a **prestação pecuniária** e a **perda de bens e valores** **não guardam relação com o tempo** da pena. Uma vez cumpridas (pago o valor, entregue o bem), devem ser declaradas **extintas**, ainda que no mesmo dia.
@@ -1428,6 +1429,7 @@ Já a **prestação pecuniária** e a **perda de bens e valores** **não guardam
 
 ## Cada espécie em detalhe
 ### Prestação pecuniária (art. 45, §§1º e 2º)
+::ilus moedas|Prestação pecuniária: dinheiro para a vítima, e não para o Estado.
 - É o pagamento **em dinheiro** à **vítima**, a seus **dependentes** ou a **entidade pública ou privada com destinação social**, de valor fixado pelo juiz entre **1 e 360 salários mínimos**.
 - O valor pago é **deduzido** de eventual condenação em ação de reparação civil, **se coincidentes os beneficiários**.
 - Em dinheiro, ela **independe da aceitação** do beneficiário. Se houver **aceitação do beneficiário**, pode consistir em **prestação de outra natureza**, como a entrega de cestas básicas a uma entidade assistencial (art. 45, §2º).
@@ -1455,6 +1457,7 @@ A privativa de liberdade, a restritiva e a **multa** (mesmo depois de virar dív
 > Exemplo: o réu morre deixando herança de R$ 20 mil e dois filhos. Se ele devia R$ 10 mil de **reparação do dano**, a dívida sai da herança e cada filho recebe R$ 5 mil. Se a reparação fosse de R$ 30 mil, os filhos nada recebem, mas também **não pagam nada** do próprio bolso: a cobrança para no limite da herança. Se, em vez disso, ele devesse R$ 10 mil de **multa**, cada filho recebe R$ 10 mil, porque a multa se extingue com a morte.
 
 ### Prestação de serviços à comunidade ou a entidades públicas (art. 46)
+::ilus trabalho|Tarefas gratuitas, 1 hora por dia de condenação, sem atrapalhar o emprego.
 - Só é aplicável às condenações **superiores a 6 meses**: a pena em concreto precisa ser de, no mínimo, **6 meses e 1 dia**. Condenado a exatamente 6 meses, o réu **não** pode receber essa espécie (pode receber outra restritiva ou multa).
 - Consiste na atribuição de **tarefas gratuitas** ao condenado (§1º), em entidades assistenciais, hospitais, escolas, orfanatos e estabelecimentos congêneres, em programas comunitários ou estatais (§2º).
 - As tarefas são atribuídas conforme as **aptidões do condenado**, à razão de **1 hora de tarefa por dia de condenação**, fixadas de modo a **não prejudicar a jornada normal de trabalho** (§3º). Na prática, 1 hora por dia = **7 horas semanais**.
@@ -1475,6 +1478,7 @@ A privativa de liberdade, a restritiva e a **multa** (mesmo depois de virar dív
 As duas primeiras se aplicam aos crimes cometidos no exercício da profissão, atividade, ofício, cargo ou função, sempre que houver **violação dos deveres** que lhes são inerentes (art. 56); a suspensão da habilitação para dirigir se aplica aos **crimes culposos de trânsito** (art. 57).
 
 ### Limitação de fim de semana (art. 48)
+::ilus casa|Sábado e domingo, 5 horas por dia, na casa de albergado.
 - É a obrigação de permanecer, aos **sábados e domingos**, por **5 horas diárias**, em **casa de albergado** ou outro estabelecimento adequado.
 - Durante a permanência, podem ser ministrados ao condenado **cursos e palestras** ou atribuídas **atividades educativas** (parágrafo único).
 - Tem a **mesma duração** da pena substituída: 3 anos de PPL = 3 anos de limitação de fim de semana.
@@ -1490,6 +1494,8 @@ O roteiro, para conferir na prova:
 2. Crime **sem violência ou grave ameaça à pessoa** (exigência para o crime doloso).
 3. Réu **não reincidente em crime doloso** (art. 44, II), com a exceção do §3º.
 4. **Circunstâncias favoráveis** (art. 44, III): é o **requisito subjetivo**.
+
+::calc prd|Simulador: cabe a substituição?
 
 ### Reincidência: só a dolosa impede
 O que afasta a substituição é a reincidência **em crime doloso**, ou seja, **dolo + dolo**. A condenação anterior por crime **culposo** não impede o benefício.
@@ -1530,6 +1536,7 @@ O art. 60, §2º, mais antigo (Lei 7.209/1984), também prevê a substituição 
 > Exemplo: pena de 9 meses por furto simples, réu primário e circunstâncias favoráveis. O juiz fixa o regime aberto e, depois, como a pena não passa de 1 ano, pode substituí-la por **multa** (vicariante) **ou** por **uma** restritiva, inclusive a prestação de serviços à comunidade (a pena é superior a 6 meses).
 
 ## Conversão: as hipóteses e os cálculos
+::ilus cadeado|Descumpriu a restritiva sem justificativa? A porta da prisão volta a se abrir.
 São hipóteses de conversão da restritiva em privativa de liberdade:
 1. o **descumprimento injustificado** da restrição imposta (art. 44, §4º, do CP e art. 181 da LEP);
 2. a **superveniência de condenação** a pena privativa de liberdade por outro crime, se tornar inviável cumprir a restritiva (art. 44, §5º);
@@ -1541,6 +1548,8 @@ Comete **falta grave** o condenado à restritiva de direitos que (art. 51 da LEP
 > Exemplo: Rui foi condenado a 7 meses, substituídos por 7 meses de serviços à comunidade. Cumpriu 1 mês e deliberadamente parou. Na conversão, desconta-se o mês cumprido: restam **6 meses** de prisão.
 
 > Exemplo: se Rui tivesse cumprido 6 meses e 28 dias e parado, faltariam só 2 dias. Mas a lei manda respeitar o **saldo mínimo de 30 dias** de detenção ou reclusão: ele cumprirá **30 dias** de prisão (art. 44, §4º).
+
+::calc conv|Simulador: quanto tempo de prisão sobra na conversão?
 
 ### Nova condenação: o juiz pode deixar de converter (art. 44, §5º)
 Sobrevindo condenação a pena privativa de liberdade por outro crime, o **juiz da execução** decide sobre a conversão, **podendo deixar de aplicá-la** se for possível ao condenado cumprir a pena substitutiva anterior. Só se converte quando a nova pena **torna inviável** a restritiva.

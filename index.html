@@ -318,6 +318,18 @@ main{flex:1;padding-block:18px 120px}
 .tab th,.tab td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 .tab tr:last-child td{border-bottom:0}
 .fig{margin:18px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.calc-dica,.calc-rot{margin:0 0 8px;color:var(--muted);font-size:.92em}
+.calc-rot{margin:10px 0 6px;color:var(--fg);font-weight:600}
+.calc-in{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.calc-in label{display:grid;gap:4px;min-width:0;font-size:.92em;font-weight:600}
+.calc-l3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.calc-in input,.calc-in select{width:100%;box-sizing:border-box;min-width:0;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:inherit}
+.calc-out{margin-top:14px;padding:12px 14px;border-radius:12px;background:var(--surface-2);border-left:5px solid var(--neutro)}
+.calc-out.ok{background:var(--ok-bg);border-left-color:var(--ok)}
+.calc-out.nao{background:var(--erro-bg);border-left-color:var(--erro)}
+.calc-out ul{margin:8px 0 0;padding:0;list-style:none}
+.calc-out li{margin:4px 0}
+html[data-anim="on"] .calc-out.calc-novo{animation:pv-res-in .4s ease-out both}
 .fig>figcaption{display:flex;align-items:center;gap:6px;font-weight:700;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .fig>figcaption svg.i{width:16px;height:16px}
 .fig.ilus{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:4px 0}
@@ -1687,6 +1699,47 @@ function ilustra(nome,cor){if(estiloAtual()==="premium"){const corpo=ILU[nome];i
 function capaTela(ilu,tit,txt){return estiloAtual()==="premium"?`<div class="capa-tela"><div><b>${tit}</b><p>${txt}</p></div>${ilustra(ilu,"var(--p2)")}</div>`:""}
 /* estado vazio: ilustração, o que aconteceu e o próximo passo */
 function vazio(ilu,tit,txt,acoes,cor){return `<div class="vazio-ilu">${ilustra(ilu,cor||"var(--toga-txt)")}<p class="v-tit">${tit}</p>${txt?`<p class="v-txt">${txt}</p>`:""}${acoes?`<div class="vazio-acoes">${acoes}</div>`:""}</div>`}
+/* simuladores interativos das apostilas: ::calc prd (cabe a substituição?) e ::calc conv (conversão em prisão) */
+const CALC_DEF={
+ prd:{a:2,m:0,d:0,tipo:"doloso",viol:"nao",reinc:"nao",circ:"sim"},
+ conv:{pm:7,pd:0,cm:1,cd:0}};
+function calcTempo(dias){const a=Math.floor(dias/360),m=Math.floor(dias%360/30),d=dias%30;const p=[];if(a)p.push(a+(a>1?" anos":" ano"));if(m)p.push(m+(m>1?" meses":" mês"));if(d)p.push(d+(d>1?" dias":" dia"));return p.length?p.join(" e ").replace(/ e (?=.* e )/,", "):"0 dia"}
+function calcResultado(tipo,v){
+ if(tipo==="conv"){const pena=(+v.pm||0)*30+(+v.pd||0),cump=Math.min(pena,(+v.cm||0)*30+(+v.cd||0));
+  if(!pena)return {ok:null,tit:"Informe a pena substituída",it:[]};
+  const resto=pena-cump,final=Math.max(30,resto);
+  return {ok:null,tit:`Ele cumprirá ${resto<30?"30 dias":calcTempo(final)} de prisão`,it:[
+   `Pena substituída: **${calcTempo(pena)}**. Já cumprido da restritiva: **${calcTempo(cump)}**.`,
+   `Desconta-se o tempo cumprido: ${calcTempo(pena)} − ${calcTempo(cump)} = **${calcTempo(resto)}**.`,
+   resto<30?`Como o saldo ficou abaixo de 30 dias, vale o **saldo mínimo de 30 dias** de detenção ou reclusão (art. 44, §4º).`:`O saldo não ficou abaixo de 30 dias, então não é preciso arredondar para o mínimo (art. 44, §4º).`]}}
+ const dias=(+v.a||0)*360+(+v.m||0)*30+(+v.d||0),culp=v.tipo==="culposo",it=[];let ok=true;
+ if(!dias)return {ok:null,tit:"Informe a pena aplicada pelo juiz",it:[]};
+ if(culp)it.push("✓ Crime **culposo**: cabe a substituição **qualquer que seja a pena** (art. 44, I).");
+ else{if(dias>4*360){ok=false;it.push("✗ Crime doloso com pena **acima de 4 anos**: não cabe (art. 44, I).")}else it.push("✓ Crime doloso com pena **até 4 anos** (art. 44, I).");
+  if(v.viol==="sim"){ok=false;it.push("✗ Crime doloso **com violência ou grave ameaça** à pessoa: não cabe (art. 44, I).")}else it.push("✓ Sem violência ou grave ameaça à pessoa.")}
+ if(v.reinc==="nao")it.push("✓ Não é reincidente em crime doloso (art. 44, II).");
+ else if(v.reinc==="mesmo"){ok=false;it.push("✗ Reincidente **específico** (mesmo crime): nem a exceção do art. 44, §3º, permite.")}
+ else it.push("✓ Reincidente em crime doloso, mas **não no mesmo crime** e a medida é socialmente recomendável: cabe pela exceção (art. 44, §3º).");
+ if(v.circ==="sim")it.push("✓ Circunstâncias favoráveis (art. 44, III).");else{ok=false;it.push("✗ Circunstâncias desfavoráveis: o juiz pode negar, fundamentando (art. 44, III).")}
+ if(ok){it.push(dias<=360?"**Como substituir:** até 1 ano, por **multa** ou por **uma** restritiva (art. 44, §2º).":"**Como substituir:** acima de 1 ano, por **duas restritivas** ou por **uma restritiva + multa** (art. 44, §2º).");
+  it.push(dias>180?"**Prestação de serviços:** cabe, porque a pena é superior a 6 meses (art. 46).":"**Prestação de serviços:** não cabe, porque a pena não passa de 6 meses (art. 46). Escolha outra restritiva.");
+  if(dias>180)it.push(dias>360?`**Cumprir em menos tempo:** o réu pode, mas nunca em menos de **${calcTempo(Math.ceil(dias/2))}**, a metade (art. 46, §4º).`:"**Cumprir em menos tempo:** não pode, porque a pena não passa de 1 ano (art. 46, §4º).")}
+ return {ok,tit:ok?`Cabe a substituição de ${calcTempo(dias)} de pena`:`Não cabe a substituição de ${calcTempo(dias)} de pena`,it}}
+function calcSaida(tipo,v){const r=calcResultado(tipo,v);const cls=r.ok===null?"":r.ok?" ok":" nao";
+ return `<div class="calc-out${cls}" aria-live="polite"><b>${inl(r.tit)}</b>${r.it.length?`<ul>${r.it.map(x=>`<li>${inl(x)}</li>`).join("")}</ul>`:""}</div>`}
+function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
+ const num=(n,rot,max)=>`<label>${rot}<input type="number" inputmode="numeric" min="0" max="${max}" data-c="${n}" value="${v[n]}"></label>`;
+ const sel=(n,rot,ops)=>`<label>${rot}<select data-c="${n}">${ops.map(([k,t])=>`<option value="${k}"${v[n]===k?" selected":""}>${t}</option>`).join("")}</select></label>`;
+ const campos=tipo==="prd"?`<div class="calc-l3">${num("a","Anos",30)}${num("m","Meses",11)}${num("d","Dias",29)}</div>
+  ${sel("tipo","O crime é",[["doloso","doloso"],["culposo","culposo"]])}
+  ${sel("viol","Com violência ou grave ameaça à pessoa?",[["nao","não"],["sim","sim"]])}
+  ${sel("reinc","Reincidente em crime doloso?",[["nao","não"],["outro","sim, por outro crime, e a medida é socialmente recomendável"],["mesmo","sim, pelo mesmo crime"]])}
+  ${sel("circ","Circunstâncias judiciais favoráveis?",[["sim","sim"],["nao","não"]])}`
+  :`<p class="calc-rot">Pena substituída</p><div class="calc-l3">${num("pm","Meses",120)}${num("pd","Dias",29)}</div><p class="calc-rot">Tempo já cumprido da restritiva</p><div class="calc-l3">${num("cm","Meses",120)}${num("cd","Dias",29)}</div>`;
+ return `<figure class="fig calc" data-calc="${tipo}"><figcaption>${ic("alvo")}${inl(tit)}</figcaption><p class="calc-dica">Mude os dados e veja a resposta mudar na hora.</p><div class="calc-in">${campos}</div>${calcSaida(tipo,v)}</figure>`}
+function calcAtualiza(f){const v={};f.querySelectorAll("[data-c]").forEach(el=>v[el.dataset.c]=el.value);
+ const o=f.querySelector(".calc-out");o.outerHTML=calcSaida(f.dataset.calc,v);
+ if(animOn()){const n=f.querySelector(".calc-out");n.classList.add("calc-novo")}}
 /* marcação simples das apostilas -> HTML */
 function inl(t){return esc(t).replace(/\*\*(.+?)\*\*/g,(m,x)=>x.length<=2?`<strong>${x}</strong>`:`<strong class="${(x.match(/\S+/g)||[]).length<=7?"mk":"lg"}">${x}</strong>`).replace(/==(.+?)==/g,"<mark>$1</mark>").replace(/(^|[\s(])_(.+?)_(?=[\s.,;:!?)]|$)/g,"$1<em>$2</em>")}
 const CALL={exemplo:["Exemplo","ex","lampada"],"atenção":["Atenção","at","exc"],dica:["Dica","di","estrela"],"na prova":["Na prova","pr","alvo"],lembre:["Lembre","le","refazer"],"caso":["Caso prático","ex","balao"]};
@@ -1709,6 +1762,7 @@ function md(txt,cor){const L=String(txt).replace(/\r/g,"").split("\n");let h="",
   if(l.startsWith("# ")){const id="s"+toc.length;toc.push(l.slice(2));h+=`<h3 id="${id}">${inl(l.slice(2))}</h3>`;i++;continue}
   if(l.startsWith("::mapa ")){const c=l.slice(7);const rs=[];i++;while(i<L.length&&L[i].trim().startsWith("* ")){rs.push(L[i].trim().slice(2));i++}h+=mapaMental(c,rs);continue}
   if(l.startsWith("::ilus ")){const p=l.slice(7).split("|");h+=`<figure class="fig ilus">${ilustra(p[0].trim(),cor)}${p[1]?`<figcaption class="leg">${inl(p[1].trim())}</figcaption>`:""}</figure>`;i++;continue}
+  if(l.startsWith("::calc ")){const p=l.slice(7).split("|");h+=calcWidget(p[0].trim(),(p[1]||"").trim());i++;continue}
   if(l.startsWith("::")){const sp=l.indexOf(" ");h+=diagrama(l.slice(2,sp),l.slice(sp+1).split("|").map(x=>x.trim()));i++;continue}
   if(l.startsWith("!! ")){let it=[];while(i<L.length&&L[i].trim().startsWith("!! ")){it.push(L[i].trim().slice(3));i++}
    h+=`<aside class="memo">${ilustra("mente",cor)}<b>${ic("lampada")}Para memorizar</b>${it.map(x=>`<p>${inl(x)}</p>`).join("")}</aside>`;continue}
@@ -3163,6 +3217,7 @@ let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
   if(el.dataset&&el.dataset.nota){clearTimeout(tNota);tNota=setTimeout(()=>{S.notas=S.notas||{};const v=el.value.trim();if(v)S.notas[el.dataset.nota]=el.value;else delete S.notas[el.dataset.nota];salvar()},500)}
   if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
+document.addEventListener("input",e=>{const f=e.target.closest&&e.target.closest(".calc");if(f)calcAtualiza(f)});
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){const fs=document.querySelector(".festa");if(fs){fs.remove();return}if(repQ){repQ=null;rota.manterScroll=true;render()}else if(gaveta){gaveta=false;rota.manterScroll=true;render();const b=document.querySelector('[data-acao="gaveta"]');if(b)b.focus()}else if(folha){folha=false;rota.manterScroll=true;render()}return}
   if(rota.tela!=="quiz"||folha)return;
