@@ -1,0 +1,9 @@
+# O app continua estático (sem build). As funções em netlify/functions cuidam dos lembretes no celular.
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  # web-push é CommonJS: vai junto como módulo, sem passar pelo bundler
+  external_node_modules = ["web-push"]
