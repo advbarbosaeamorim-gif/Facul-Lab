@@ -1,5 +1,5 @@
 /* Troque CACHE_NAME a cada atualização de conteúdo para que os aparelhos baixem a versão nova. */
-const CACHE_NAME = 'facul-lab-v35';
+const CACHE_NAME = 'facul-lab-v36';
 const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',
   "./ap1.js","./ap10.js","./ap2.js","./ap3.js","./ap4.js","./ap5.js","./ap6.js","./ap7.js","./ap8.js","./ap9.js",
   "./assuntos.js","./base.js","./explicacoes.js",
@@ -44,7 +44,8 @@ self.addEventListener('push', e => {
   e.waitUntil(self.registration.showNotification(d.title || 'Facul Lab', {
     body: d.body || 'Seu plano de estudo de hoje está pronto.',
     icon: './icon-192.png',
-    badge: './icon-192.png',
+    badge: './lembretes/selo.png',
+    image: d.image ? new URL(d.image, self.registration.scope).href : undefined,
     tag: d.tag || 'facul-lab',
     renotify: true,
     lang: 'pt-BR',

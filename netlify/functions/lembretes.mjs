@@ -1,6 +1,6 @@
 /* GET: chave pública para o aparelho se inscrever.
-   POST {acao:"salvar"}: guarda ou atualiza a inscrição, o horário e o estado mínimo.
-   POST {acao:"remover"}: apaga a inscrição.  POST {acao:"teste"}: envia um lembrete agora. */
+   POST {acao:"salvar"}: guarda ou atualiza a inscrição e o estado mínimo.
+   POST {acao:"remover"}: apaga a inscrição.  POST {acao:"teste"}: envia agora o lembrete de boas-vindas. */
 import { loja, chaveDe, vapid, limpar, enviar, inscricaoMorta } from "../lib/lembretes.mjs";
 
 const resp = (dados, status = 200) => new Response(JSON.stringify(dados), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } });
@@ -27,7 +27,7 @@ export default async req => {
 
     if (corpo.acao === "teste") {
       try {
-        await enviar(reg, { title: "Tudo certo com os lembretes!", body: `É assim que o Facul Lab vai te chamar todo dia às ${reg.hora.replace(":", "h")}.`, tag: "teste", url: "./" });
+        await enviar(reg, { title: "Lembretes ligados!", body: "Uma vez por dia, em um horário-surpresa, o Facul Lab te chama para estudar. Até já!", image: "./lembretes/balanca.png", tag: "facul-lab", url: "./" });
       } catch (err) {
         if (inscricaoMorta(err)) { await s.delete(chave); return resp({ erro: "inscricao" }, 410); }
         throw err;
