@@ -166,6 +166,16 @@ main{flex:1;padding-block:18px 120px}
 .gaveta-topo svg.i{width:44px;height:44px;stroke-width:1.6}
 .gaveta-topo b{display:block;font-family:var(--f-display);font-size:1.25rem;margin-top:10px}
 .gaveta-topo small{opacity:.8}
+html[data-anim="on"] .camada.abre{animation:cam-entra .28s ease-out both}
+html[data-anim="on"] .camada.abre .gaveta{animation:gav-entra .34s cubic-bezier(.2,.9,.3,1) both}
+html[data-anim="on"] .camada.abre .gaveta nav>*{animation:gav-item .38s ease-out both}
+html[data-anim="on"] .camada.abre .gaveta nav>*:nth-child(n){animation-delay:calc(.06s + var(--gi,0)*.025s)}
+.camada.sai{animation:cam-sai .3s ease-in both}.camada.sai .gaveta{animation:gav-sai .3s cubic-bezier(.4,0,.8,.4) both}
+@keyframes cam-entra{from{background:rgba(16,8,10,0)}}
+@keyframes cam-sai{to{background:rgba(16,8,10,0)}}
+@keyframes gav-entra{from{transform:translateX(-102%)}}
+@keyframes gav-sai{to{transform:translateX(-102%)}}
+@keyframes gav-item{from{opacity:0;transform:translateX(-18px)}}
 .gaveta nav{display:flex;flex-direction:column;padding-block:8px}
 .gaveta nav button{display:flex;gap:18px;align-items:center;background:none;border:0;padding:14px 20px 14px max(20px,env(safe-area-inset-left,0px));text-align:left;font-size:1.02rem}
 .gaveta nav button:hover,.gaveta nav button[aria-current="page"]{background:var(--surface-2)}
@@ -2952,8 +2962,13 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();
   const telaNova=!rota.manterScroll;
+  /* menu lateral: desliza ao abrir e, ao fechar, a cópia antiga sai deslizando por cima da tela nova */
+  const camadaAntes=app.querySelector(".camada");
+  if(camadaAntes)camadaAntes.querySelectorAll(".abre").forEach(x=>x.classList.remove("abre"));
   app.innerHTML=`<a class="pular" href="#conteudo">Pular para o conteúdo</a>`+h;
   {const m=app.querySelector("main");if(m){m.id="conteudo";m.tabIndex=-1}}
+  {const c=app.querySelector(".camada");if(c&&!camadaAntes){c.classList.add("abre");c.querySelectorAll(".gaveta nav>*").forEach((x,i)=>x.style.setProperty("--gi",i))}
+   if(!c&&camadaAntes&&animOn()){camadaAntes.classList.remove("abre");camadaAntes.classList.add("sai");camadaAntes.setAttribute("aria-hidden","true");camadaAntes.style.pointerEvents="none";document.body.appendChild(camadaAntes);setTimeout(()=>camadaAntes.remove(),330)}}
   if(gaveta){const g=app.querySelector(".gaveta nav button");if(g&&document.activeElement&&!document.activeElement.closest(".gaveta"))try{g.focus({preventScroll:true})}catch(e){}}
   if(rota.tela==="quiz")iniciarRelogio();
   if(!rota.manterScroll)window.scrollTo(0,0);rota.manterScroll=false;
