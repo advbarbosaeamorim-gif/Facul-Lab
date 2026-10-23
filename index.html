@@ -720,6 +720,63 @@ html[data-anim="on"] .pv-chip-novo .pv-ok{animation:ent-pop .6s cubic-bezier(.2,
 .pv-mais summary::-webkit-details-marker{display:none}.pv-mais summary .i{width:15px;height:15px}
 .pv-mais[open] summary{color:var(--fg);border-style:solid;margin-bottom:8px}.pv-mais[open] summary .i{transform:rotate(45deg);transition:transform .2s}
 html[data-anim="on"] .pv-mais[open] .pv-add-data{animation:pv-res-in .3s ease-out both}
+/* o que cai na N1 e na N2 */
+.dv{margin:4px 0 8px;border-radius:14px;background:color-mix(in srgb,var(--c) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 28%,var(--line))}
+.dv summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:9px 12px;min-height:44px;box-sizing:border-box}
+.dv summary::-webkit-details-marker{display:none}.dv summary>.i{width:18px;height:18px;flex:none;color:var(--c)}
+.dv summary b{display:block;font-size:.92rem}.dv-res{display:block;color:var(--muted);font-size:.8rem;line-height:1.3}
+.dv summary::after{content:"";margin-left:auto;flex:none;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.dv[open] summary::after{transform:rotate(-135deg)}
+.dv-in{display:grid;gap:12px;padding:2px 12px 12px}
+.dv-dica{margin:0;font-size:.86rem;line-height:1.45}
+.dv{grid-column:1/-1}
+.dv-barra{position:relative;height:34px;margin:0 4px}
+.dv-segs{position:absolute;inset:6px 0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:3px}
+.dv-segs i{border-radius:6px;background:color-mix(in srgb,var(--c) 18%,var(--surface));box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 45%,transparent);transition:background .2s}
+.dv-segs i.n1{background:var(--c);box-shadow:none}
+.n2tudo .dv-segs i{background-image:repeating-linear-gradient(-45deg,transparent 0 4px,color-mix(in srgb,var(--c) 30%,transparent) 4px 7px)}
+.dv-alca{position:absolute;top:50%;left:calc(var(--k)/var(--n)*100%);width:30px;height:30px;margin:-15px 0 0 -15px;display:grid;place-items:center;border-radius:50%;background:var(--surface);color:var(--c);border:3px solid var(--c);box-shadow:0 4px 12px -4px rgba(0,0,0,.35);pointer-events:none;transition:left .2s cubic-bezier(.3,1.3,.5,1)}
+.dv-alca .i{width:14px;height:14px}
+.dv-range{position:absolute;inset:0 auto 0 -15px;width:calc(100% + 30px);height:100%;margin:0;opacity:0;cursor:grab;z-index:2;touch-action:none}
+.dv-range::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:34px}.dv-range::-moz-range-thumb{width:30px;height:34px;border:0}
+.dv-range:focus-visible~.dv-alca{outline:3px solid var(--fg);outline-offset:2px}
+.dv-rot{position:relative;height:18px;margin:-6px 4px 0;font:800 .72rem/18px var(--f-ui,inherit)}
+.dv-rot b{position:absolute;top:0;white-space:nowrap}.dv-rot .n1{right:calc(100% - var(--k)/var(--n)*100% + 20px);color:var(--c)}.dv-rot .n2{left:calc(var(--k)/var(--n)*100% + 20px);color:var(--muted)}
+.dv-lista{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.dv-tema{width:100%;display:flex;align-items:center;gap:10px;min-height:44px;margin:0;padding:6px 10px;border-radius:12px;border:1.5px solid color-mix(in srgb,var(--c) 30%,var(--line));background:var(--surface);color:var(--fg);font:inherit;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .15s}
+.dv-tema:active{transform:scale(.98)}
+.dv-tema.n1{background:color-mix(in srgb,var(--c) 12%,var(--surface));border-color:transparent}
+.dv-num{flex:none;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--c);color:var(--c);font:800 .75rem/1 var(--f-ui,inherit);background:var(--surface)}
+.dv-tema.n1 .dv-num{background:var(--c);color:#fff}
+.dv-tit{flex:1;min-width:0;font-size:.86rem;line-height:1.3}
+.dv-qual{flex:none;font:800 .66rem/1 var(--f-ui,inherit);padding:4px 7px;border-radius:99px;color:var(--c);box-shadow:inset 0 0 0 1.5px var(--c)}
+.dv-qual::before{content:"N2"}.dv-tema.n1 .dv-qual{background:var(--c);color:#fff;box-shadow:none}.dv-tema.n1 .dv-qual::before{content:"N1"}
+.n2tudo .dv-tema .dv-qual::before{content:"N2"}.n2tudo .dv-tema.n1 .dv-qual::before{content:"N1 · N2"}
+.dv-corte{display:flex;align-items:center;gap:8px;margin:4px 0;color:var(--c);font-size:.78rem;font-weight:700}
+.dv-corte::before,.dv-corte::after{content:"";flex:1;border-top:2px dashed var(--c)}
+.dv-corte span{display:inline-flex;align-items:center;gap:5px;text-align:center}.dv-corte .i{width:14px;height:14px}
+.dv-lados{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.dv-lado{display:grid;gap:3px;align-content:start;padding:10px 12px;border-radius:12px;min-width:0}
+.dv-lado.n1{background:color-mix(in srgb,var(--c) 14%,var(--surface))}
+.dv-lado.n2{background:var(--surface);border:2px solid color-mix(in srgb,var(--c) 55%,transparent)}
+.dv-lado.tudo{background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--c) 10%,var(--surface)) 0 8px,var(--surface) 8px 16px)}
+.dv-lado b{font-size:.9rem}.dv-lado small{color:var(--muted);font-size:.78rem;line-height:1.35;overflow-wrap:anywhere}
+.dv-tag{justify-self:start;padding:2px 9px;border-radius:99px;font:800 .7rem/1.4 var(--f-ui,inherit);background:var(--c);color:#fff}
+.dv-lado.n2 .dv-tag{background:var(--surface);color:var(--c);box-shadow:inset 0 0 0 2px var(--c)}
+.dv-q{display:flex;align-items:center;gap:4px}.dv-q .i{width:13px;height:13px}
+.dv-cum{margin:0}
+.dv-rodape{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.dv-rodape .nota{margin:0;font-size:.8rem;flex:1 1 180px}
+.dv-auto{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:99px;background:color-mix(in srgb,#2fa36b 15%,var(--surface));color:#1f7a4f;font-size:.8rem;font-weight:700}.dv-auto .i{width:14px;height:14px}
+.dv-meio{margin:0;padding:7px 12px;min-height:0;font-size:.85rem}
+.dv-carrega{display:flex;align-items:center;gap:6px;font-size:.82rem}.dv-carrega .i{width:15px;height:15px}
+.pv-faixa{display:inline-flex;align-items:center;gap:4px;margin-top:3px;padding:2px 8px;border-radius:99px;font-size:.75rem;font-weight:600;background:color-mix(in srgb,var(--c) 13%,var(--surface))}.pv-faixa .i{width:12px;height:12px}
+html[data-anim="on"] .dv-novo .dv-segs i{animation:dv-cresce .4s cubic-bezier(.2,1.4,.4,1) both calc(var(--i)*35ms)}
+html[data-anim="on"] .dv-novo .dv-tema{animation:pv-res-in .35s ease-out both calc(var(--i)*30ms)}
+html[data-anim="on"] .dv-novo .dv-alca{animation:ent-pop .55s cubic-bezier(.2,1.6,.4,1) both .3s}
+html[data-anim="on"] .dv-corte.pula span{animation:dv-pula .35s ease-out}
+@keyframes dv-cresce{from{transform:scaleY(.2);opacity:0}}
+@keyframes dv-pula{40%{transform:translateY(-3px) scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.dv *{animation:none!important;transition:none!important}}
 /* Sobre o Facul Lab */
 .sobre-fl{display:grid;gap:14px;padding-bottom:28px}
 .sb-hero{text-align:center;padding:26px 16px 22px;border-radius:var(--r);background:linear-gradient(160deg,color-mix(in srgb,var(--lacre) 16%,var(--surface)),var(--surface));border:1px solid var(--line);position:relative;overflow:hidden}
@@ -2051,7 +2108,7 @@ const P={
  escudo:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
  alvo:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>', voltar:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
- ant:'<path d="M15 6l-6 6 6 6"/>', prox:'<path d="M9 6l6 6-6 6"/>',
+ ant:'<path d="M15 6l-6 6 6 6"/>', prox:'<path d="M9 6l6 6-6 6"/>', tesoura:'<circle cx="6" cy="7" r="2.6"/><circle cx="6" cy="17" r="2.6"/><path d="M8.2 8.4L20 17M8.2 15.6L20 7"/>', setas:'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>',
  grade:'<rect x="4" y="4" width="4" height="4" rx="1"/><rect x="10" y="4" width="4" height="4" rx="1"/><rect x="16" y="4" width="4" height="4" rx="1"/><rect x="4" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/><rect x="16" y="10" width="4" height="4" rx="1"/><rect x="4" y="16" width="4" height="4" rx="1"/><rect x="10" y="16" width="4" height="4" rx="1"/><rect x="16" y="16" width="4" height="4" rx="1"/>',
  relogio:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/>',
  pct:'<path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/>',
@@ -2185,6 +2242,8 @@ function sim(key){
   if(p[0]==="mtodas"){const m=p[1];return {key,tipo:"mat",titulo:"Todas as questões",sub:META[m].nome,qids:(PERM[m]||[]).slice(),limite:0}}
   if(p[0]==="fac"){const d=p[1],i=+p[2],qids=(blocosFac(d)[i]||[]).slice();
     return {key,tipo:"fac",titulo:"Simulado "+String(i+1).padStart(2,"0"),sub:infoDisc(d).nome,qids,limite:0,rampa:true,nivel:nivelDe(key)}}
+  if(p[0]==="faixa"){const d=p[1],[a,b]=p[2].split("-").map(Number),i=+p[3],qids=(blocosFaixa(d,a,b)[i]||[]).slice();
+    return {key,tipo:"fac",titulo:"Simulado "+String(i+1).padStart(2,"0")+" · "+txtFaixa({ini:a,fim:b}),sub:infoDisc(d).nome,qids,limite:0,rampa:true}}
   if(p[0]==="ftodas"){const d=p[1];return {key,tipo:"fac",titulo:"Todas as questões",sub:infoDisc(d).nome,qids:idsDisc(d),limite:0}}
   if(p[0]==="per"){const i=+p[1],k=+p[2],qids=(blocosPer(i)[k]||[]).slice();
     return {key,tipo:"fac",titulo:"Simulado "+String(k+1).padStart(2,"0"),sub:`${i+1}º período · todas as disciplinas`,qids,limite:0,rampa:true,nivel:nivelDe(key)}}
@@ -2767,18 +2826,53 @@ function etapaProva(n){return n===0?{k:"hoje",nome:"Dia da prova",txt:"Revisão 
  :n<=3?{k:"reta",nome:"Reta final",txt:"Refaça as erradas e leia o resumo. Questões novas só para manter o ritmo."}
  :n<=14?{k:"treino",nome:"Treino",txt:"Muitas questões e revisão dos pontos fracos. Termine a leitura dos temas que faltam."}
  :{k:"base",nome:"Base",txt:"Leia os temas da apostila com calma e fixe com os cartões. Questões em ritmo leve."}}
-function estadoProva(p){const ids=idsDisc(p.d);let o=0,e=0,hoje=0,ult=0;const h0=inicioDia();
+/* ---------- o que cai em cada prova: a N1 vai até um tema da apostila e a N2 segue dali em diante ----------
+   Sem escolha da pessoa, a matéria é dividida ao meio. Quem tem N2 cumulativa marca "a N2 cai a matéria toda".
+   Substitutiva, exame final, trabalho e outras provas cobram a matéria inteira.
+   Cada questão entra no tema da apostila que mais fala do seu assunto (palavras do assunto, do enunciado e do comentário). */
+const PARA_TEMA=new Set("para pela pelo pelos pelas como mais quando entre sobre seus suas qual quais deve pode podem esta este essa esse isso aquele ainda apenas cada outro outra outros outras mesmo muito sendo sera serao foram fica ficar caso contra desde depois antes onde tambem porque assim todo toda todos todas nunca sempre segundo conforme alternativa correta incorreta afirmar afirmativa assinale".split(" "));
+const raizesTema=t=>semAcento(t).split(/[^a-z0-9]+/).filter(x=>x.length>=4&&!PARA_TEMA.has(x)).map(x=>x.replace(/(oes|aes|ais|eis|es|s)$/,""));
+const TEMA_ASS={};
+function temaDoAss(d){const P=paginas(d);if(TEMA_ASS[d]&&TEMA_ASS[d].P===P)return TEMA_ASS[d].m;
+ const TF=P.secs.map(s=>{const m={};raizesTema(s.corpo).forEach(k=>m[k]=(m[k]||0)+1);raizesTema(s.tit).forEach(k=>m[k]=(m[k]||0)+8);let tot=0;for(const k in m)tot+=m[k];return {m,tot}});
+ const N=TF.length,df={};TF.forEach(x=>Object.keys(x.m).forEach(k=>df[k]=(df[k]||0)+1));
+ const G={};idsDisc(d).forEach(id=>{const q=QMAP[id];if(q)(G[q.a]=G[q.a]||[]).push(q)});const m={};
+ Object.keys(G).forEach(a=>{const Pf={};const add=(s,w)=>raizesTema(s).forEach(k=>Pf[k]=(Pf[k]||0)+w);add(a,6);G[a].forEach(q=>{add(q.q,1);add(q.o[0],1);add(q.e||"",1)});
+  let best=0,bs=-1;TF.forEach((x,k)=>{let sc=0;for(const t in Pf){if(x.m[t])sc+=Math.min(Pf[t],6)*Math.log(1+x.m[t])*Math.log(1+N/df[t])}sc/=Math.sqrt(1+x.tot/400);if(sc>bs){bs=sc;best=k}});m[a]=best+1});
+ return (TEMA_ASS[d]={P,m}).m}
+const temaDaQ=(d,id)=>{const q=QMAP[id];return q?temaDoAss(d)[q.a]||0:0};
+const temOk=d=>{const i=periodoDe(d);return i>=0&&apOk(i)&&!!window.APOSTILA[i].mat[d]};
+/* a apostila chega sob demanda: quando faltar, carrega e redesenha a tela das provas */
+const AP_PV={};
+function apDaProva(d){const i=periodoDe(d);if(i<0||apOk(i)||AP_PV[i])return;AP_PV[i]=1;carregarApP(i).then(ok=>{if(ok)reRenderSe("hoje","metas","config","pre")})}
+function divisaoProva(p){if(!temOk(p.d)){apDaProva(p.d);return null}const N=paginas(p.d).secs.length;if(N<2)return null;
+ const meio=Math.ceil(N/2),esc1=p.corte>=1&&p.corte<N;return {N,corte:esc1?+p.corte:meio,meio,auto:!esc1,n2tudo:!!p.n2tudo}}
+/* faixa de temas que a prova cobra; null = a matéria toda */
+function faixaProva(p,r){const D=divisaoProva(p);if(!D)return null;
+ if(r==="N1")return {ini:1,fim:D.corte,N:D.N,r};if(r==="N2"&&!D.n2tudo)return {ini:D.corte+1,fim:D.N,N:D.N,r};return null}
+const idsFaixa=(d,a,b)=>idsDisc(d).filter(id=>{const k=temaDaQ(d,id);return k>=a&&k<=b});
+const CACHE_FX={};
+function blocosFaixa(d,a,b){if(!temOk(d))return [];const k=d+":"+a+"-"+b,P=paginas(d);if(CACHE_FX[k]&&CACHE_FX[k].P===P)return CACHE_FX[k].b;
+ return (CACHE_FX[k]={P,b:fatias(porNivel(idsFaixa(d,a,b),"fx-"+k),TAM_FAC)}).b}
+function proxSimFaixa(d,fx){const B=blocosFaixa(d,fx.ini,fx.fim);for(let i=0;i<B.length;i++){const k=`faixa:${d}:${fx.ini}-${fx.fim}:${i}`;if(livreSim(k))return k}return null}
+/* simulado da prova: só os temas que caem nela, ou a matéria toda */
+const simDaProva=x=>x.fx?proxSimFaixa(x.p.d,x.fx):proxSimDisc(x.p.d);
+const txtFaixa=fx=>fx.ini===fx.fim?`tema ${fx.ini}`:`temas ${fx.ini} a ${fx.fim}`;
+function estadoProva(p){const datas=(p.datas||[]).map(x=>({...x,n:diasAte(x.dt)})).sort((a,b)=>a.n-b.n);const prox=datas.find(x=>x.n>=0)||null;
+ const fx=prox?faixaProva(p,prox.r):null;const tudo=idsDisc(p.d);let ids=fx?tudo.filter(id=>{const k=temaDaQ(p.d,id);return k>=fx.ini&&k<=fx.fim}):tudo;if(!ids.length)ids=tudo;
+ let o=0,e=0,hoje=0,ult=0;const h0=inicioDia();
  ids.forEach(id=>{const s=S.stats[id];if(!s)return;if(s.u)o++;else e++;if(s.t&&s.t>=h0)hoje++;if(s.t>ult)ult=s.t});
  const feitas=o+e,n=ids.length;const i=periodoDe(p.d);let temas=0,lidos=0;
- if(i>=0&&apOk(i)&&window.APOSTILA[i].mat[p.d]){temas=paginas(p.d).secs.length;lidos=S.lidos&&S.lidos[p.d]?temas:Math.min(temas,(S.apPg&&S.apPg[p.d])||0)}
+ if(i>=0&&apOk(i)&&window.APOSTILA[i].mat[p.d]){const vis=(S.apPg&&S.apPg[p.d])||0;const lidaToda=!!(S.lidos&&S.lidos[p.d]);
+  if(fx){temas=fx.fim-fx.ini+1;lidos=lidaToda?temas:Math.max(0,Math.min(temas,vis-fx.ini+1))}
+  else{temas=paginas(p.d).secs.length;lidos=lidaToda?temas:Math.min(temas,vis)}}
  else if(S.lidos&&S.lidos[p.d]){temas=1;lidos=1}
  const cob=n?feitas/n:0,ac=feitas?o/feitas:0,lei=temas?lidos/temas:0;
  const preparo=Math.round(100*(.35*cob+.35*(feitas>=5?ac:ac*feitas/5)+.30*lei));
- const datas=(p.datas||[]).map(x=>({...x,n:diasAte(x.dt)})).sort((a,b)=>a.n-b.n);const prox=datas.find(x=>x.n>=0)||null;
  let alvo=0;if(prox){const falta=Math.max(0,n-feitas)+e;alvo=prox.n===0?Math.min(10,Math.max(e,5)):Math.min(40,Math.max(5,Math.ceil(falta/Math.max(1,prox.n))))}
  if(alvo)alvo=Math.max(3,Math.round(alvo*fatorRitmo()));
  const urg=prox?(100-preparo+10)/(prox.n+1):0;
- return {p,ids,n,o,e,feitas,hoje,ult,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
+ return {p,ids,n,o,e,feitas,hoje,ult,acerto:feitas?Math.round(ac*100):null,temas,lidos,preparo,datas,prox,fx,alvo,urg,etapa:prox?etapaProva(prox.n):null}}
 function provasAtivas(){return provasFac().map(estadoProva).filter(x=>x.prox).sort((a,b)=>b.urg-a.urg)}
 function proxSimDisc(d){const n=nFac(d);for(let i=0;i<n;i++){const k=`fac:${d}:${i}`;if(livreSim(k))return k}return null}
 /* ---------- notas no formato Afya Unigranrio ----------
@@ -2820,9 +2914,9 @@ function blocoNotas(p){const N=p.notas||{};const s=situacaoNotas(p);const camp=(
   ${resultadoNotas(p)}
   <p class="pv-vale">Quanto vale cada prova: N1 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v1).replace(",",".")}" data-nota="v1" data-id="${p.id}" aria-label="Pontos da N1"> · N2 <input type="number" inputmode="decimal" min="1" max="99" step="1" value="${fmtNota(s.v2).replace(",",".")}" data-nota="v2" data-id="${p.id}" aria-label="Pontos da N2"> <small>(somam 100)</small></p></details>`}
 /* cartão de uma prova (Hoje e Metas) */
-function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=proxSimDisc(x.p.d);const alvo=x.alvoHoje===undefined?x.alvo:x.alvoHoje;const ok=x.hoje>=alvo&&alvo>0;
+function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.prox.n<=3;const k=simDaProva(x);const alvo=x.alvoHoje===undefined?x.alvo:x.alvoHoje;const ok=x.hoje>=alvo&&alvo>0;
  return `<article class="pv${urg?" pv-urg":""}${x.prox?"":" pv-passou"}" style="--c:${f.cor}">
-  <div class="pv-topo">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${esc(nomeCurto(f.nome))}</b><span class="pv-quando">${x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · ${dataCurta(x.prox.dt)}`:"Todas as datas já passaram"}</span></div>
+  <div class="pv-topo">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${esc(nomeCurto(f.nome))}</b><span class="pv-quando">${x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · ${dataCurta(x.prox.dt)}`:"Todas as datas já passaram"}</span>${x.fx?`<span class="pv-faixa">${ic("livro")}Cai: ${txtFaixa(x.fx)} de ${x.fx.N}</span>`:""}</div>
    <div class="pv-anel">${anel(x.preparo,100,`Preparo de ${x.preparo}%`)}<span><b>${x.preparo}%</b><small>preparo</small></span></div></div>
   ${x.prox&&x.prox.n<=99?`<div class="pv-contagem" aria-hidden="true">${String(Math.max(0,x.prox.n)).padStart(2,"0").split("").map((c,i)=>`<span style="--i:${i}">${c}</span>`).join("")}<em>${x.prox.n===1?"dia":"dias"}</em></div>`:""}
   ${x.etapa?`<p class="pv-etapa"><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${esc(x.etapa.txt)}${/exame final/i.test(x.prox.r||"")?" O exame final cobre toda a matéria.":""}</p>`:""}
@@ -2875,18 +2969,18 @@ const leuHoje=d=>!!(S.apT&&S.apT[d]===hojeStr());
 function cartoesHojeDisc(d){const i=periodoDe(d);if(i<0||!apOk(i))return null;const x=infoDeck(d);if(!x.cs.length)return null;const h0=inicioDia();
  const fez=x.cs.some(c=>{const s=estC(c.id);return s&&s.t>=h0});return {...x,fez,ok:!x.venc&&(fez||!x.novos)}}
 /* bloco de uma prova no plano de hoje: questões, cartões e leitura da mesma matéria */
-function grupoProva(x){const f=infoDisc(x.p.d),d=x.p.d,nome=esc(nomeCurto(f.nome)),k=proxSimDisc(d),n=x.prox.n,rot=esc(x.prox.r||"Prova");
+function grupoProva(x){const f=infoDisc(x.p.d),d=x.p.d,nome=esc(nomeCurto(f.nome)),k=simDaProva(x),n=x.prox.n,rot=esc(x.prox.r||"Prova");
  const pz=n===0?`${rot} é hoje`:`${rot} ${quandoTxt(n)}`;let h="";
- h+=itemPlano(x.hoje>=x.alvoHoje,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${d}"`,f.cor,"alvo",`Questões: ${Math.min(x.hoje,x.alvoHoje)} de ${x.alvoHoje}`,n===0?"Só para aquecer: nada de conteúdo novo hoje":x.diasEst<n+1?`Você estuda ${nome} em ${x.diasEst} dos ${n+1} dias até a ${rot}, então hoje rende mais`:"Todo dia um pouco: você chega com a matéria inteira treinada");
+ h+=itemPlano(x.hoje>=x.alvoHoje,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${d}"`,f.cor,"alvo",`Questões: ${Math.min(x.hoje,x.alvoHoje)} de ${x.alvoHoje}`,n===0?"Só para aquecer: nada de conteúdo novo hoje":x.diasEst<n+1?`Você estuda ${nome} em ${x.diasEst} dos ${n+1} dias até a ${rot}, então hoje rende mais`:x.fx?`Só dos ${txtFaixa(x.fx)}, que caem na ${rot}`:"Todo dia um pouco: você chega com a matéria inteira treinada");
  const C=cartoesHojeDisc(d);
  if(C&&n>0)h+=itemPlano(C.ok,"cards-disc",`data-d="${d}"`,"var(--lacre)","cartas",C.venc?`Cartões para revisar: ${C.venc}`:C.novos&&!C.fez?`Cartões novos: ${Math.min(C.novos,novosFase())}`:"Cartões da matéria",C.venc?"Chegaram no dia de revisão. Depois vêm os novos":C.fez?"Você já revisou cartões desta matéria hoje":C.novos?`Perguntas da apostila de ${nome} · fixam o que você leu`:"Todos em dia. Volte quando chegarem na revisão",!C.venc&&!C.novos&&!C.fez);
  if(n<=3){const i=periodoDe(d);if(i>=0)h+=itemPlano(false,"resumo",`data-p="${i}"`,f.cor,"recibo",`Ler o resumo de ${nome}`,n===0?"Uma passada leve no essencial antes de sair de casa":"Reta final: revise o essencial em vez de conteúdo novo")}
- else{const t=proximoTema([d]);const lido=leuHoje(d);
-  if(t)h+=itemPlano(lido,"abrir-tema",`data-d="${t.d}" data-k="${t.pg}"`,f.cor,"livro",`Ler: ${esc(t.tit)}`,`Tema ${t.pg} de ${x.temas||"?"}${lido?" · você já leu hoje, continue se quiser":x.temasDia>1?` · ${x.temasDia} temas por dia para terminar antes da ${rot}`:" · da apostila desta matéria"}`);
-  else if(x.temas)h+=itemPlano(true,"ap",`data-p="${periodoDe(d)}"`,"var(--ok)","livro","Apostila lida até o fim","Agora é treinar com questões e cartões")}
- const fr=n<=14?assuntoMaisFraco([d]):null;
+ else{const t=x.fx?proximoTemaFaixa(d,x.fx):proximoTema([d]);const lido=leuHoje(d);
+  if(t)h+=itemPlano(lido,"abrir-tema",`data-d="${t.d}" data-k="${t.pg}"`,f.cor,"livro",`Ler: ${esc(t.tit)}`,`Tema ${t.pg} de ${x.fx?x.fx.N:x.temas||"?"}${lido?" · você já leu hoje, continue se quiser":x.temasDia>1?` · ${x.temasDia} temas por dia para terminar antes da ${rot}`:" · da apostila desta matéria"}`);
+  else if(x.temas)h+=itemPlano(true,"ap",`data-p="${periodoDe(d)}"`,"var(--ok)","livro",x.fx?`Temas da ${rot} lidos`:"Apostila lida até o fim","Agora é treinar com questões e cartões")}
+ const fr=n<=14?(x.fx?fracoDaFaixa(d,x.fx):assuntoMaisFraco([d])):null;
  if(fr)h+=itemPlano(false,"treinar-ass",`data-sc="${fr.sc}" data-a="${esc(encodeURIComponent(fr.a))}"`,"var(--erro)","exc",`Ponto fraco: ${esc(fr.a)}`,`${fr.pct}% de acerto em ${fr.v} questões`);
- return `<div class="lista plano-lista pp-grupo" style="--c:${f.cor}"><div class="pp-cab">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${nome}</b><small><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${pz} · ${dataCurta(x.prox.dt)}</small></div><span class="pp-prep" title="Preparo">${x.preparo}%</span></div>${h}</div>`}
+ return `<div class="lista plano-lista pp-grupo" style="--c:${f.cor}"><div class="pp-cab">${tile(f.cor,f.ic)}<div style="min-width:0"><b>${nome}</b><small><span class="pv-chip ${x.etapa.k}">${x.etapa.nome}</span>${pz} · ${dataCurta(x.prox.dt)}${x.fx?` · ${txtFaixa(x.fx)}`:""}</small></div><span class="pp-prep" title="Preparo">${x.preparo}%</span></div>${h}</div>`}
 /* agenda dos próximos dias: mostra como o app reveza as provas */
 function agendaPP(P){const nd=Math.min(7,P.D.length);const sel=Math.min(nd-1,rota.ppDia||0);const M={};P.L.forEach(x=>M[x.p.id]=x);
  const fmt=new Intl.DateTimeFormat("pt-BR",{weekday:"short"});
@@ -2901,9 +2995,44 @@ function explicaPP(P){const n=P.L.length,K=P.K,nm=x=>nomeCurto(infoDisc(x.p.d).n
  if(n===1)return `Com uma prova só pela frente, ela vem primeiro todos os dias. Depois, as outras matérias do período.`;
  if(!P.fora.length&&!P.leve.length)return `Com ${n} provas pela frente, dá para estudar ${n===2?"as duas":"todas"} hoje. A mais próxima vem primeiro e, depois, as outras matérias do período.`;
  return `Com ${n} provas, estudar tudo todo dia cansa e rende pouco. No ritmo ${r} cabem ${K} por dia, então o app reveza: hoje ${listaE(P.hoje.map(nm))} com tudo${P.leve.length?`, ${listaE(P.leve.map(nm))} só um pouco`:""}, e ${P.fora.length===1?"a outra volta":"as outras voltam"} nos próximos dias. Prova a 2 dias ou menos entra sempre.`}
-function itensProvaLeve(x){const f=infoDisc(x.p.d),k=proxSimDisc(x.p.d);
+function itensProvaLeve(x){const f=infoDisc(x.p.d),k=simDaProva(x);
  return itemPlano(x.hoje>=x.alvoHoje,k?"abrir":"disc",k?`data-key="${k}"`:`data-d="${x.p.d}"`,f.cor,"alvo",`Um pouco de ${esc(nomeCurto(f.nome))}: ${x.alvoHoje} questões`,`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)} · só para a matéria não esfriar`)}
 /* Configurações: cadastro das provas */
+/* configuração "o que cai em cada prova": trilha com os temas da apostila e um marcador que se arrasta entre a N1 e a N2 */
+function resumoDiv(p,D){return D.n2tudo?`N1 até o tema ${D.corte} · N2 cai a matéria toda`:`N1: temas 1 a ${D.corte} · N2: temas ${D.corte+1} a ${D.N}`+(D.auto?" · metade automática":"")}
+function ladosDiv(p,D){const P=paginas(p.d),t=k=>esc(limpo(P.secs[k-1].tit));const q1=idsFaixa(p.d,1,D.corte).length,q2=D.n2tudo?idsDisc(p.d).length:idsFaixa(p.d,D.corte+1,D.N).length;
+ const lado=(cls,tag,a,b,q,extra)=>`<div class="dv-lado ${cls}"><span class="dv-tag">${tag}</span><b>${a===b?`Tema ${a}`:`Temas ${a} a ${b}`}${extra||""}</b><small>${t(a)}${a===b?"":` → ${t(b)}`}</small><small class="dv-q">${ic("alvo")}${q} ${q===1?"questão":"questões"} para treinar</small></div>`;
+ return lado("n1","N1",1,D.corte,q1)+(D.n2tudo?lado("n2 tudo","N2",1,D.N,q2," · a matéria toda"):lado("n2","N2",D.corte+1,D.N,q2))}
+function blocoDivisao(p){if(!(p.datas||[]).some(x=>x.r==="N1"||x.r==="N2"))return "";
+ const D=divisaoProva(p);if(!D)return temOk(p.d)?"":`<p class="nota dv-carrega">${ic("livro")} Carregando os temas da apostila…</p>`;
+ const P=paginas(p.d),nome=esc(nomeCurto(infoDisc(p.d).nome)),novo=rota.abreDv===p.id?"":" dv-novo";
+ const corte=`<li class="dv-corte" aria-hidden="true"><span>${ic("tesoura")}Aqui termina a N1 · daqui para baixo é N2</span></li>`;
+ return `<details class="dv" id="dv-${p.id}"${rota.abreDv===p.id?" open":""}><summary>${ic("livro")}<span><b>O que cai na N1 e na N2</b><small class="dv-res">${resumoDiv(p,D)}</small></span></summary>
+  <div class="dv-in${D.n2tudo?" n2tudo":""}${novo}" style="--n:${D.N};--k:${D.corte}">
+   <p class="nota dv-dica">Cada bloco é um tema da apostila de ${nome}. <b>Arraste a bolinha</b> na barra ou <b>toque no tema</b> em que a N1 termina. O resto fica para a N2.${D.auto?" Por enquanto, o app dividiu a matéria ao meio.":""}</p>
+   <div class="dv-barra">
+    <span class="dv-segs" aria-hidden="true">${P.secs.map((_,k)=>`<i class="${k+1<=D.corte?"n1":""}" style="--i:${k}"></i>`).join("")}</span>
+    <input type="range" class="dv-range" min="0" max="${D.N}" step="1" value="${D.corte}" data-corte="${p.id}" aria-label="A N1 de ${nome} vai até o tema" aria-valuetext="A N1 vai até o tema ${D.corte}: ${esc(limpo(P.secs[D.corte-1].tit))}">
+    <span class="dv-alca" aria-hidden="true">${ic("setas")}</span>
+   </div>
+   <div class="dv-rot" aria-hidden="true"><b class="n1">N1</b><b class="n2">${D.n2tudo?"N2 = tudo":"N2"}</b></div>
+   <ol class="dv-lista">${P.secs.map((x,k)=>`<li><button class="dv-tema${k+1<=D.corte?" n1":""}" style="--i:${k}" data-acao="dv-tema" data-id="${p.id}" data-k="${k+1}" aria-label="Tema ${k+1}: ${esc(limpo(x.tit))}. Toque para a N1 ir até aqui"><span class="dv-num">${k+1}</span><span class="dv-tit">${esc(limpo(x.tit))}</span><span class="dv-qual"></span></button></li>${k+1===D.corte?corte:""}`).join("")}</ol>
+   <div class="dv-lados" id="dv-lados-${p.id}">${ladosDiv(p,D)}</div>
+   <div class="chave dv-cum"><p><b>A N2 cai a matéria toda</b><small>Ligue se o professor faz a N2 cumulativa, com tudo desde o tema 1</small></p>
+    <label class="switch"><input type="checkbox" data-n2tudo="${p.id}" ${D.n2tudo?"checked":""} aria-label="A N2 de ${nome} cai a matéria toda"><span></span></label></div>
+   <div class="dv-rodape">${D.auto?`<span class="dv-auto">${ic("ok")} Metade automática</span>`:`<button class="botao linha dv-meio" data-acao="dv-meio" data-id="${p.id}">Voltar para a metade</button>`}
+    <span class="nota">O app treina só os temas da prova que vem. Substitutiva e exame final cobram tudo.</span></div>
+  </div></details>`}
+/* arrastar a bolinha: pinta a barra e a lista na hora e salva quando a pessoa solta */
+function corteVivo(el,salva){const p=(S.cfg.provasFac||[]).find(x=>x.id===el.dataset.corte);if(!p)return;const N=+el.max;const v=Math.max(1,Math.min(N-1,+el.value));if(+el.value!==v)el.value=v;
+ const box=el.closest(".dv-in");box.style.setProperty("--k",v);box.querySelectorAll(".dv-segs i").forEach((b,k)=>b.classList.toggle("n1",k<v));
+ const T=[...box.querySelectorAll(".dv-tema")];T.forEach((b,k)=>b.classList.toggle("n1",k<v));const c=box.querySelector(".dv-corte");if(c&&T[v-1])T[v-1].parentNode.after(c);
+ const ant=p.corte;p.corte=v===Math.ceil(N/2)&&!p.corte?undefined:v;const D=divisaoProva(p);if(!D){p.corte=ant;return}
+ el.setAttribute("aria-valuetext",`A N1 vai até o tema ${v}: ${limpo(paginas(p.d).secs[v-1].tit)}`);
+ const L=document.getElementById("dv-lados-"+p.id);if(L&&ant!==p.corte)L.innerHTML=ladosDiv(p,D);
+ const r=el.closest(".dv").querySelector(".dv-res");if(r)r.textContent=resumoDiv(p,D);
+ if(ant!==p.corte&&!salva){som("toque");if(c&&animOn()){c.classList.remove("pula");void c.offsetWidth;c.classList.add("pula")}}
+ if(salva){salvar();rota.abreDv=p.id;rota.manterScroll=true;render();anunciar(`N1 até o tema ${v}`)}}
 function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const per=perAtual();
  const opts=PERIODOS.slice(0,9).map((ds,i)=>`<optgroup label="${i+1}º período">${ds.map(d=>`<option value="${d}"${per===i&&d===PERIODOS[i][0]?" selected":""}>${esc(infoDisc(d).nome)}</option>`).join("")}</optgroup>`).join("");
  return `<section id="sec-av" class="av-sec${destaque&&!on?" av-destaque":""}${rota.abreAv?" av-abre":""}"><div class="secao" role="heading" aria-level="2">Modo avançado: provas da faculdade</div>
@@ -2915,7 +3044,7 @@ function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const p
    return `<div class="pv-cfg${rota.novaProva===p.id?" pv-nova":""}" style="--c:${f.cor}">${tile(f.cor,f.ic)}<div class="pv-cfg-in"><b>${esc(f.nome)}</b>
     <ul class="pv-chips">${ds.map(dd=>`<li${rota.novaData===p.id+dd.dt?' class="pv-chip-novo"':""}><svg class="pv-ok" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M5.5 10.4l3 3 6-6.3"/></svg><span>${esc(dd.r||"Prova")} · ${dataCurta(dd.dt)}</span><button class="icone mini" data-acao="av-del-data" data-id="${p.id}" data-dt="${dd.dt}" data-r="${esc(dd.r||"")}" aria-label="Remover a data ${dataCurta(dd.dt)}">${ic("x")}</button></li>`).join("")}</ul>
     <details class="pv-mais"${rota.abreData===p.id?" open":""}><summary>${ic("mais")} Outra prova desta matéria</summary><div class="pv-add-data"><input type="date" id="av-dt-${p.id}" aria-label="Outra data para ${esc(f.nome)}"><select id="av-r-${p.id}" aria-label="Tipo da prova">${(()=>{const sug=ROTULOS_PROVA.find(r=>!ds.some(dd=>dd.r===r))||"Outra";return ROTULOS_PROVA.map(r=>`<option${r===sug?" selected":""}>${r}</option>`).join("")})()}</select><button class="botao" data-acao="av-add-data" data-id="${p.id}">${ic("mais")} Adicionar data</button></div></details>${notasOn()?blocoNotas(p):""}</div>
-    <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button></div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
+    <button class="icone pv-del" data-acao="av-del" data-id="${p.id}" aria-label="Remover a prova de ${esc(f.nome)}">${ic("x")}</button>${blocoDivisao(p)}</div>`}).join(""):`<p class="nota">Nenhuma prova cadastrada ainda.</p>`}
   <div class="pv-form"><b>Adicionar prova</b>
    <label class="campo"><span>Matéria</span><select id="av-d">${opts}</select></label>
    <div class="pv-form-l"><label class="campo"><span>Dia</span><input type="date" id="av-dt"></label><label class="campo"><span>Tipo</span><select id="av-r">${ROTULOS_PROVA.map(r=>`<option>${r}</option>`).join("")}</select></label></div>
@@ -2925,6 +3054,7 @@ function blocoProvasConfig(destaque){const on=avOn();const L=provasFac();const p
    <li><b>Prioridade</b>: quanto mais perto a prova e menor o preparo, mais ela aparece no plano de hoje.</li>
    <li><b>Questões por dia</b>: o que falta resolver (mais as erradas) dividido pelos dias até a prova. A meta diária soma as provas das próximas 3 semanas.</li>
    <li><b>Notas (Afya Unigranrio, opcional)</b>: N1 + N2 somam até 100. Com 70 ou mais, aprovação direta. De 40 a 69,9, exame final (toda a matéria), e passa quem tiver (N1 + N2 + exame) ÷ 2 de 50 ou mais. A substitutiva é para quem faltou e entra no lugar da N1 ou da N2 sem nota. Confira sempre o manual do aluno da sua unidade.</li>
+   <li><b>O que cai em cada prova</b>: a N1 cobre os primeiros temas da apostila e a N2 o resto. O app começa dividindo a matéria ao meio, e você ajusta em cada matéria (ou liga a N2 cumulativa). Substitutiva e exame final cobram a matéria toda.</li>
    <li><b>Etapas</b>: base (mais de 14 dias), treino (até 14), reta final (até 3) e dia da prova. Cada etapa muda o tipo de tarefa sugerida.</li></ul></details></div>`:""}</section>`}
 /* ---------- dias de estudo, metas e prova ---------- */
 const hojeStr=t=>{const d=t?new Date(t):new Date();return d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate())};
@@ -2973,6 +3103,11 @@ function simSugerido(){const per=perAtual(),fs=fase();
 function discsFoco(){const per=perAtual();if(per===null)return [];if(per===9)return discsDaMateria(materiaMaisFraca().m);return PERIODOS[per].slice()}
 function proximoTema(ds){for(const d of ds){const i=periodoDe(d);if(i<0||!apOk(i))continue;const A=window.APOSTILA[i];if(!(A.mat&&A.mat[d])||(S.lidos&&S.lidos[d]))continue;
   const P=paginas(d);if(!P.secs.length)continue;const pg=Math.min(((S.apPg&&S.apPg[d])||0)+1,P.secs.length);return {d,pg,tit:P.secs[pg-1].tit}}return null}
+/* próximo tema dentro da faixa da prova: começa no primeiro tema dela que ainda não foi lido */
+function proximoTemaFaixa(d,fx){if(!temOk(d)||(S.lidos&&S.lidos[d]))return null;const P=paginas(d);const pg=Math.max(fx.ini,((S.apPg&&S.apPg[d])||0)+1);
+ return pg<=fx.fim&&P.secs[pg-1]?{d,pg,tit:P.secs[pg-1].tit}:null}
+function fracoDaFaixa(d,fx){const g={};idsFaixa(d,fx.ini,fx.fim).forEach(id=>{const q=QMAP[id],s=S.stats[id];if(!s)return;const k=grupoDe(q);const x=g[k]=g[k]||{a:k,o:0,e:0};if(s.u)x.o++;else x.e++});
+ const L=Object.values(g).map(x=>({a:x.a,v:x.o+x.e,pct:Math.round(x.o*100/(x.o+x.e))})).filter(ehFraco).sort((a,b)=>a.pct-b.pct||b.v-a.v);return L[0]?{sc:d,...L[0]}:null}
 function novosDoFoco(ds){let n=0;ds.forEach(d=>{const i=periodoDe(d);if(i>=0&&apOk(i))cartoesDe(d).forEach(c=>{if(!estC(c.id))n++})});return Math.min(n,novosFase())}
 function blocoRitmo(){const r=ritmoAtual();const m=S.cfg&&S.cfg.meta;
  return `<div class="secao" role="heading" aria-level="2">Ritmo de estudo até a prova</div>
@@ -3900,7 +4035,8 @@ function telaDisc(){const d=rota.d,f=infoDisc(d);const n=nFac(d);const ks=[];for
   ${n>1?`<div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("ftodas:"+d)}</div>`:""}${secaoAss(d)}</main>`}
 
 /* ---------- configurar simulado ---------- */
-function telaPre(){const s=sim(rota.key);const e=estado(rota.key);
+function telaPre(){if(/^faixa:/.test(rota.key||"")){const d=rota.key.split(":")[1];if(!temOk(d)){apDaProva(d);return topo("Configurar simulado","Carregando os temas da apostila",{})+`<main class="wrap"><p class="nota">Carregando…</p></main>`}}
+  const s=sim(rota.key);const e=estado(rota.key);
   const n=s.qids.length;
   const NI=s.nivel?NIVEL_INFO[s.nivel-1]:null;
   return topo("Configurar simulado",s.titulo+" · "+s.sub,{})+
@@ -4170,6 +4306,9 @@ document.addEventListener("click",e=>{
     case "card-virar":deck.virado=true;rota.manterScroll=true;render();efeitoCartao("vira");som("vira");break;
     case "card-nota":{const n=+b.dataset.v;avaliarCartao(n);render();som(deck&&deck.pos>=deck.q.length?(deck.er?"fim":"aprovado"):n===0?"erro":"acerto");break}
     case "rev-ap":{const d=b.dataset.d;const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*864e5;salvar()}ir({tela:"ler",d,pg:999,pagina:true});break}
+    case "dv-tema":case "dv-meio":{const p=(S.cfg.provasFac||[]).find(x=>x.id===b.dataset.id);if(!p)break;const D=divisaoProva(p);if(!D)break;
+      p.corte=b.dataset.acao==="dv-meio"?undefined:Math.max(1,Math.min(D.N-1,+b.dataset.k));salvar();som("toque");rota.abreDv=p.id;rota.manterScroll=true;render();
+      anunciar(p.corte?`N1 até o tema ${p.corte}`:"Matéria dividida ao meio");{const f=document.querySelector(`#dv-${p.id} .dv-corte`);if(f&&animOn())f.classList.add("pula")}break}
     case "av-modo":S.cfg=S.cfg||{};S.cfg.av=b.dataset.v==="1";salvar();rota.manterScroll=true;render();break;
     case "av-notas":S.cfg=S.cfg||{};S.cfg.notas=b.dataset.v==="1";salvar();rota.manterScroll=true;render();anunciar(S.cfg.notas?"Notas e média ligadas":"Notas e média desligadas");
       if(S.cfg.notas){const el=document.querySelector(".pv-notas");if(el)estouro(el,["#ffc53d","#3bb273","#2e86ab","#ffffff"])}break;
@@ -4261,6 +4400,8 @@ document.addEventListener("click",e=>{
   }
 });
 document.addEventListener("change",e=>{if(e.target.id==="corrFinal"){S.cfg.corrFinal=e.target.checked;salvar();rota.manterScroll=true;render()}
+  if(e.target.dataset&&e.target.dataset.corte){corteVivo(e.target,true);return}
+  if(e.target.dataset&&e.target.dataset.n2tudo){const p=(S.cfg.provasFac||[]).find(x=>x.id===e.target.dataset.n2tudo);if(p){p.n2tudo=e.target.checked;salvar();som("toque");rota.abreDv=p.id;rota.manterScroll=true;render();anunciar(p.n2tudo?"A N2 cai a matéria toda":"A N2 cobra só os temas depois da N1")}return}
   if(e.target.dataset&&e.target.dataset.nota){const el=e.target,p=(S.cfg.provasFac||[]).find(x=>x.id===el.dataset.id);if(!p)return;
    const antes=situacaoNotas(p).est;p.notas=p.notas||{};const v=el.value.trim().replace(",",".");
    if(v===""||isNaN(+v))delete p.notas[el.dataset.nota];else p.notas[el.dataset.nota]=Math.max(0,+v);salvar();
@@ -4272,6 +4413,7 @@ document.addEventListener("change",e=>{if(e.target.id==="corrFinal"){S.cfg.corrF
   if(e.target.id==="data-prova"){S.cfg=S.cfg||{};S.cfg.prova=e.target.value||"";salvar();rota.manterScroll=true;render()}});
 let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
+  if(el.dataset&&el.dataset.corte){corteVivo(el,false);return}
   if(el.dataset&&el.dataset.nota){clearTimeout(tNota);tNota=setTimeout(()=>{S.notas=S.notas||{};const v=el.value.trim();if(v)S.notas[el.dataset.nota]=el.value;else delete S.notas[el.dataset.nota];salvar()},500)}
   if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
 document.addEventListener("input",e=>{const f=e.target.closest&&e.target.closest(".calc");if(f)calcAtualiza(f)});
