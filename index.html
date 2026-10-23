@@ -1,10 +1,13 @@
-<!doctype html><html lang="pt-BR"><head><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f5f6f7"><link rel="apple-touch-icon" href="icon-192.png"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="pt-BR"><head><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#f5f6f7"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" type="image/png" href="icon-192.png"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Facul Lab</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-<script>try{var e=JSON.parse(localStorage.getItem("simuladoOAB.v2")||"{}").cfg||{};var h=document.documentElement;h.setAttribute("data-estilo",e.estilo==="classico"?"classico":"premium");h.setAttribute("data-paleta",e.paleta||"oceano")}catch(x){document.documentElement.setAttribute("data-estilo","premium");document.documentElement.setAttribute("data-paleta","oceano")}</script>
+<script>/* o ícone (tela inicial ao instalar, aba do navegador, iPhone) acompanha o tema escolhido */
+function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+t+"-192.png";
+ if(m&&m.getAttribute("href")!=="icones/manifest-"+t+".json")m.setAttribute("href","icones/manifest-"+t+".json");if(i)i.setAttribute("href",png);if(a)a.setAttribute("href",png)}</script>
+<script>try{var e=JSON.parse(localStorage.getItem("simuladoOAB.v2")||"{}").cfg||{};var h=document.documentElement;h.setAttribute("data-estilo",e.estilo==="classico"?"classico":"premium");h.setAttribute("data-paleta",e.paleta||"oceano");if(window.iconeDoTema)iconeDoTema(e.estilo==="classico"?"c-"+(e.cor||"azul"):e.paleta||"oceano")}catch(x){document.documentElement.setAttribute("data-estilo","premium");document.documentElement.setAttribute("data-paleta","oceano")}</script>
 <style>
 /* Estilo Clássico (base): app de uma coluna no estilo de simulado de prova — barra colorida no topo, listas com selos coloridos, barra de navegação no rodapé durante a prova.
    O estilo Premium fica no bloco #estilo-premium, que redefine as cores e os componentes sobre esta base. */
@@ -3051,6 +3054,7 @@ function paletaAtual(){const c=S.cfg&&S.cfg.paleta;return PALETAS.some(x=>x[0]==
 function estiloAtual(){return (S.cfg&&S.cfg.estilo)==="classico"?"classico":"premium"}
 function aplicarCor(){const c=corAtual();const h=document.documentElement;if(c==="vinho")h.removeAttribute("data-cor");else h.setAttribute("data-cor",c);
   h.setAttribute("data-estilo",estiloAtual());h.setAttribute("data-paleta",paletaAtual());
+  try{iconeDoTema(estiloAtual()==="classico"?"c-"+corAtual():paletaAtual())}catch(e){}
   if(!document.getElementById("pg-defs"))document.body.insertAdjacentHTML("afterbegin",PG_DEFS);
   const t=S.cfg&&S.cfg.tema;if(t==="claro")h.setAttribute("data-theme","light");else if(t==="escuro")h.setAttribute("data-theme","dark");else h.removeAttribute("data-theme");
   /* a barra do sistema acompanha o topo do app */
