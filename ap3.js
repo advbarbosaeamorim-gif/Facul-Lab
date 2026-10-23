@@ -1402,6 +1402,169 @@ A pena restritiva de direitos **converte-se em privativa de liberdade** quando o
 ?? Cabe substituição em um roubo com pena de 4 anos? | Não, porque o roubo é cometido com violência ou grave ameaça à pessoa.
 ?? A partir de quanto tempo de pena é cabível a prestação de serviços à comunidade? | Nas condenações superiores a 6 meses (art. 46).
 
+## As três características das restritivas
+O caput do art. 44 revela três características que caem muito em prova:
+1. **Autonomia:** a restritiva **não é pena acessória**. Ela não se soma à prisão: ou o condenado cumpre a privativa de liberdade, **ou** cumpre a restritiva. A regra é "PPL **ou** PRD", nunca "PPL **+** PRD".
+2. **Substitutividade:** **primeiro** o juiz calcula a pena privativa de liberdade (a pena **em concreto**, fruto da dosimetria) e, **em seguida**, verifica se pode substituí-la. A restritiva substitui só a **privativa de liberdade**, e não a pena de multa. Há exceções em leis especiais, em que a restritiva é aplicada **diretamente**, sem substituir nada: a suspensão ou proibição de obter habilitação para dirigir, que pode ser imposta isolada ou cumulativamente (art. 292 do CTB), e as penas do porte de droga para consumo pessoal (art. 28 da Lei 11.343/2006).
+3. **Precariedade:** a substituição não é definitiva. Se o condenado descumprir a restritiva, ela **volta a ser** privativa de liberdade (conversão, art. 44, §4º).
+
+> Lembre: pena **em abstrato** é a que o legislador prevê no tipo (o furto, por exemplo, tem pena em abstrato de 1 a 6 anos); pena **em concreto** é a que o juiz efetivamente aplica ao final do cálculo. Os limites da substituição (4 anos, 1 ano, 6 meses) se referem sempre à pena **em concreto**.
+
+!! As três características = "**A-S-P**": **A**utônoma (ou uma, ou outra), **S**ubstitutiva (primeiro calcula, depois troca), **P**recária (descumpriu, volta a prisão).
+
+## Quanto tempo dura a restritiva (art. 55)
+A limitação de fim de semana, a prestação de serviços à comunidade e a interdição temporária de direitos têm a **mesma duração** da pena privativa de liberdade substituída, ressalvado o cumprimento em menor tempo da prestação de serviços (art. 55 c/c art. 46, §4º). Assim, 1 ano de reclusão vira 1 ano de limitação de fim de semana; 2 anos de reclusão viram 2 anos de interdição.
+
+Já a **prestação pecuniária** e a **perda de bens e valores** **não guardam relação com o tempo** da pena. Uma vez cumpridas (pago o valor, entregue o bem), devem ser declaradas **extintas**, ainda que no mesmo dia.
+
+> Exemplo: Paulo é condenado a 9 meses de reclusão, substituídos pela perda de um veículo. Ele não vai "perder o carro durante 9 meses": entregue o veículo, a pena está cumprida.
+
+|Espécie|Tem relação com o tempo da PPL?|
+|Prestação pecuniária|Não: cumprida, extingue-se|
+|Perda de bens e valores|Não: cumprida, extingue-se|
+|Limitação de fim de semana|Sim: mesma duração|
+|Prestação de serviços à comunidade|Sim, mas pode ser cumprida em menos tempo se a pena for superior a 1 ano (art. 46, §4º)|
+|Interdição temporária de direitos|Sim: mesma duração|
+
+## Cada espécie em detalhe
+### Prestação pecuniária (art. 45, §§1º e 2º)
+- É o pagamento **em dinheiro** à **vítima**, a seus **dependentes** ou a **entidade pública ou privada com destinação social**, de valor fixado pelo juiz entre **1 e 360 salários mínimos**.
+- O valor pago é **deduzido** de eventual condenação em ação de reparação civil, **se coincidentes os beneficiários**.
+- Em dinheiro, ela **independe da aceitação** do beneficiário. Se houver **aceitação do beneficiário**, pode consistir em **prestação de outra natureza**, como a entrega de cestas básicas a uma entidade assistencial (art. 45, §2º).
+- O descumprimento injustificado leva à **conversão em prisão**.
+- Não confunda com a **transação penal** (art. 76 da Lei 9.099/1995), que é um acordo com o Ministério Público antes do processo. A prestação pecuniária é **pena**, imposta na sentença condenatória.
+
+> Exemplo: a pena de 7 meses de Joana foi substituída por prestação pecuniária de R$ 10 mil à vítima. Depois, na ação indenizatória, o juiz cível fixa R$ 50 mil em favor da mesma vítima. Joana pagará só **R$ 40 mil** (R$ 50 mil menos os R$ 10 mil já pagos).
+
+::compara Prestação pecuniária x pena de multa|Prestação pecuniária: é espécie de pena restritiva de direitos; vai para a vítima, seus dependentes ou entidade com destinação social; o valor é deduzido da futura indenização, se coincidentes os beneficiários; se não for cumprida sem justificativa, converte-se em prisão|Pena de multa (originária ou substitutiva): não é pena restritiva de direitos; vai para o fundo penitenciário; nada se desconta da indenização à vítima; se não for paga, vira dívida de valor executada no juízo da execução penal e nunca se converte em prisão (art. 51)
+
+> Atenção: se o réu pagou R$ 10 mil de **multa** ao fundo penitenciário e depois a vítima obtém R$ 50 mil de indenização, ele paga os **R$ 50 mil inteiros**: o valor da multa não se abate. A multa não paga **não vira prisão em hipótese alguma**, nem mesmo a multa substitutiva da pena privativa de liberdade.
+
+### Perda de bens e valores (art. 45, §3º)
+- É a perda de bens ou valores **adquiridos licitamente** pelo condenado (títulos, ações, veículos, imóveis), como forma de cumprir a pena.
+- Se os bens forem **ilícitos** (produto ou proveito do crime), não se trata desta pena, e sim do **confisco**, efeito da condenação (art. 91, II, do CP). Exemplo: os celulares roubados encontrados na casa do réu são **produto** do crime; o carro comprado com o dinheiro da venda desses celulares é **proveito** do crime.
+- Vai para o **Fundo Penitenciário Nacional**, ressalvada a legislação especial. Repare: a multa vai para o "fundo penitenciário" (art. 49); a perda de bens, para o "Fundo Penitenciário **Nacional**".
+- O valor tem como **teto o que for maior**: o **prejuízo causado** ou o **provento obtido** pelo agente ou por terceiro, em consequência da prática do crime. Se o prejuízo foi de R$ 25 mil e o provento de R$ 40 mil, o teto é de R$ 40 mil (e vice-versa).
+- Não guarda relação com o tempo da pena: entregue o bem, a pena está cumprida.
+
+### A pena morre com o condenado
+Pelo princípio da **pessoalidade** (ou intranscendência) da pena, **nenhuma pena passará da pessoa do condenado**, mas a **obrigação de reparar o dano** e a **decretação do perdimento de bens** podem ser estendidas aos sucessores, **até o limite do patrimônio transferido** (art. 5º, XLV, da Constituição). Não confunda com o princípio da **responsabilidade subjetiva** (exigência de dolo ou culpa).
+
+A privativa de liberdade, a restritiva e a **multa** (mesmo depois de virar dívida de valor) **morrem com o condenado**: a morte do agente extingue a punibilidade (art. 107, I). A reparação do dano, não.
+
+> Exemplo: o réu morre deixando herança de R$ 20 mil e dois filhos. Se ele devia R$ 10 mil de **reparação do dano**, a dívida sai da herança e cada filho recebe R$ 5 mil. Se a reparação fosse de R$ 30 mil, os filhos nada recebem, mas também **não pagam nada** do próprio bolso: a cobrança para no limite da herança. Se, em vez disso, ele devesse R$ 10 mil de **multa**, cada filho recebe R$ 10 mil, porque a multa se extingue com a morte.
+
+### Prestação de serviços à comunidade ou a entidades públicas (art. 46)
+- Só é aplicável às condenações **superiores a 6 meses**: a pena em concreto precisa ser de, no mínimo, **6 meses e 1 dia**. Condenado a exatamente 6 meses, o réu **não** pode receber essa espécie (pode receber outra restritiva ou multa).
+- Consiste na atribuição de **tarefas gratuitas** ao condenado (§1º), em entidades assistenciais, hospitais, escolas, orfanatos e estabelecimentos congêneres, em programas comunitários ou estatais (§2º).
+- As tarefas são atribuídas conforme as **aptidões do condenado**, à razão de **1 hora de tarefa por dia de condenação**, fixadas de modo a **não prejudicar a jornada normal de trabalho** (§3º). Na prática, 1 hora por dia = **7 horas semanais**.
+- **Cumprimento em menor tempo (§4º):** se a pena substituída for **superior a 1 ano**, o condenado **pode** (é uma faculdade dele) cumprir a pena em menos tempo, **nunca inferior à metade** da pena fixada. Na prática, ele dobra a carga: 2 horas por dia = **14 horas semanais**.
+
+> Exemplo: condenado a **8 meses** de reclusão, substituídos por 8 meses de serviços. Ele cumpre 1 hora por dia e **não** pode antecipar, porque a pena não passou de 1 ano. Condenado a **1 ano** exato, também não pode. Condenado a **1 ano e 1 dia**, já pode, desde que não cumpra em menos da metade (pouco mais de 6 meses).
+
+> Na prova: o enunciado diz que o réu "cumpriu 1 ano de prestação de serviços à comunidade, à razão de 14 horas semanais". Cuidado com a leitura rápida: 14 horas semanais (2 horas por dia) indicam cumprimento **antecipado**, o que significa que a pena fixada foi de **2 anos**, e não de 1 ano. Ele cumpriu a metade da pena dobrando a carga diária (art. 46, §4º, c/c art. 55).
+
+### Interdição temporária de direitos (art. 47)
+É a proibição do exercício de determinados direitos pelo **mesmo prazo** da pena privativa substituída (2 anos de PPL = 2 anos de interdição). As espécies são:
+1. proibição do exercício de **cargo, função ou atividade pública**, bem como de **mandato eletivo**;
+2. proibição do exercício de **profissão, atividade ou ofício** que dependam de habilitação especial, de licença ou autorização do poder público;
+3. **suspensão de autorização ou de habilitação para dirigir** veículo;
+4. proibição de **frequentar determinados lugares** (Lei 9.714/1998);
+5. proibição de **inscrever-se em concurso, avaliação ou exame públicos** (Lei 12.550/2011).
+
+As duas primeiras se aplicam aos crimes cometidos no exercício da profissão, atividade, ofício, cargo ou função, sempre que houver **violação dos deveres** que lhes são inerentes (art. 56); a suspensão da habilitação para dirigir se aplica aos **crimes culposos de trânsito** (art. 57).
+
+### Limitação de fim de semana (art. 48)
+- É a obrigação de permanecer, aos **sábados e domingos**, por **5 horas diárias**, em **casa de albergado** ou outro estabelecimento adequado.
+- Durante a permanência, podem ser ministrados ao condenado **cursos e palestras** ou atribuídas **atividades educativas** (parágrafo único).
+- Tem a **mesma duração** da pena substituída: 3 anos de PPL = 3 anos de limitação de fim de semana.
+- Vantagens apontadas pela doutrina: o condenado continua junto da **família** e no seu **trabalho**, afastando-se só nos dias de repouso; tem a oportunidade de **refletir** sobre o ato; **não convive** com condenados mais perigosos; e sofre **menos rejeição social**.
+
+!! Os números das espécies: pecuniária de **1 a 360 salários mínimos**; serviços só acima de **6 meses**, **1 hora por dia**, antecipação só acima de **1 ano** e **nunca abaixo da metade**; fim de semana = **5 horas** no sábado e no domingo.
+
+## Os requisitos, aprofundados
+Os requisitos do art. 44 são **cumulativos**: todos precisam estar presentes. Mas, se o condenado os preenche, o juiz é **obrigado** a substituir. A pena alternativa não é favor, e sim **direito subjetivo** do réu.
+
+O roteiro, para conferir na prova:
+1. **Crime doloso:** pena aplicada **até 4 anos**. **Crime culposo:** **qualquer** pena (4, 5, 6, 7 anos...).
+2. Crime **sem violência ou grave ameaça à pessoa** (exigência para o crime doloso).
+3. Réu **não reincidente em crime doloso** (art. 44, II), com a exceção do §3º.
+4. **Circunstâncias favoráveis** (art. 44, III): é o **requisito subjetivo**.
+
+### Reincidência: só a dolosa impede
+O que afasta a substituição é a reincidência **em crime doloso**, ou seja, **dolo + dolo**. A condenação anterior por crime **culposo** não impede o benefício.
+
+|Crime anterior (transitado em julgado)|Novo crime|Impede a substituição?|
+|Doloso|Doloso|Sim, em regra (salvo o art. 44, §3º)|
+|Doloso|Culposo|Não|
+|Culposo|Doloso|Não|
+|Culposo|Culposo|Não|
+
+> Exemplo: lesão corporal culposa (transitada em julgado) e, depois, homicídio culposo no trânsito: o réu é reincidente, mas em crime **culposo**, e pode receber a substituição.
+
+### A exceção do reincidente (art. 44, §3º)
+Mesmo reincidente em crime doloso, o juiz **poderá** substituir se, em face da condenação anterior, a medida for **socialmente recomendável** e a reincidência **não** se tiver operado em virtude da prática do **mesmo crime** (a chamada reincidência **específica**).
+
+> Exemplo: Bruno é condenado a 3 anos e 6 meses por **furto**, com circunstâncias judiciais em sua maioria favoráveis. Se a condenação anterior também foi por **furto**, a reincidência é específica: não cabe a substituição, nem pela exceção. Se a condenação anterior foi por **estelionato**, a reincidência é em crime doloso, mas **não** no mesmo crime: sendo a medida socialmente recomendável, cabe a substituição.
+
+### O requisito subjetivo (art. 44, III)
+O juiz analisa a **culpabilidade**, os **antecedentes**, a **conduta social** e a **personalidade** do condenado, bem como os **motivos** e as **circunstâncias**. Se não indicarem que a substituição é suficiente, ele pode negá-la, **fundamentando** a decisão. Repare que o art. 44, III, não repete todas as circunstâncias do art. 59: as **consequências do crime** e o **comportamento da vítima** aparecem no art. 59 (1ª fase da dosimetria), mas não no art. 44, III.
+
+### A ordem das decisões na sentença
+::fluxo O que o juiz faz na sentença|Calcula a pena privativa de liberdade (dosimetria trifásica)|Fixa o regime inicial de cumprimento (art. 33)|Verifica os requisitos do art. 44 e substitui a pena, se cabível
+
+> Exemplo: no caso de Bruno (3 anos e 6 meses, reincidente, circunstâncias favoráveis, condenação anterior por estelionato), o juiz calcula a pena, fixa o regime inicial (o semiaberto é admitido para o reincidente com pena até 4 anos e circunstâncias favoráveis, Súmula 269 do STJ) e, só depois, substitui a privativa por restritivas.
+
+### Lesão leve e ameaça
+Em regra, o crime com violência ou grave ameaça não admite a substituição. Mas parte da jurisprudência e da doutrina admite a pena alternativa na **lesão corporal leve** (art. 129, caput) e na **ameaça** (art. 147): são infrações de **menor potencial ofensivo** que admitem até a **transação penal** (restritiva ou multa antes mesmo da ação penal, art. 76 da Lei 9.099/1995), e não faria sentido negar o benefício ao condenado que preenche os demais requisitos. Lembre que, no contexto de **violência doméstica contra a mulher**, a substituição é vedada (Súmula 588 do STJ).
+
+## A multa substitutiva (art. 44, §2º, e art. 60, §2º)
+A multa pode ser **originária** (prevista no próprio tipo penal) ou **substitutiva** (também chamada **vicariante**, aplicada no lugar da pena privativa). A multa substitutiva **não é** pena restritiva de direitos. Pelo art. 44, §2º:
+- condenação **até 1 ano**: substitui-se a PPL por **multa** ou por **uma** restritiva de direitos;
+- condenação **superior a 1 ano**: substitui-se por **duas restritivas**, ou por **uma restritiva + multa** (cumuladas).
+
+O art. 60, §2º, mais antigo (Lei 7.209/1984), também prevê a substituição por multa da pena **não superior a 6 meses**, observados os incisos II e III do art. 44, **sem exigir** que o crime seja cometido sem violência ou grave ameaça. Há duas posições:
+- **1ª corrente:** o art. 60, §2º, foi **revogado tacitamente** pelo art. 44, §2º (Lei 9.714/1998); só vale o art. 44: multa substitutiva até 1 ano, em crime sem violência ou grave ameaça.
+- **2ª corrente:** **não houve revogação**; o art. 60, §2º, continua útil para penas de **até 6 meses** em crimes **com** violência ou grave ameaça, como a lesão corporal leve e a ameaça, presentes os demais requisitos.
+
+> Exemplo: pena de 9 meses por furto simples, réu primário e circunstâncias favoráveis. O juiz fixa o regime aberto e, depois, como a pena não passa de 1 ano, pode substituí-la por **multa** (vicariante) **ou** por **uma** restritiva, inclusive a prestação de serviços à comunidade (a pena é superior a 6 meses).
+
+## Conversão: as hipóteses e os cálculos
+São hipóteses de conversão da restritiva em privativa de liberdade:
+1. o **descumprimento injustificado** da restrição imposta (art. 44, §4º, do CP e art. 181 da LEP);
+2. a **superveniência de condenação** a pena privativa de liberdade por outro crime, se tornar inviável cumprir a restritiva (art. 44, §5º);
+3. a prática de **falta grave** (art. 51 da LEP). O descumprimento injustificado (hipótese 1) está contido aqui.
+
+Comete **falta grave** o condenado à restritiva de direitos que (art. 51 da LEP): **descumprir**, injustificadamente, a restrição imposta; **retardar**, injustificadamente, o cumprimento da obrigação imposta; ou **inobservar os deveres** de obediência ao servidor e respeito a qualquer pessoa com quem deva relacionar-se e de execução do trabalho, das tarefas e das ordens recebidas (art. 39, II e V, da LEP). O art. 50 da LEP trata das faltas graves **só da privativa de liberdade**. Já o art. 52 vale para **as duas**: a prática de fato previsto como **crime doloso** constitui falta grave.
+
+### O cálculo: desconta-se o que foi cumprido, com saldo mínimo de 30 dias
+> Exemplo: Rui foi condenado a 7 meses, substituídos por 7 meses de serviços à comunidade. Cumpriu 1 mês e deliberadamente parou. Na conversão, desconta-se o mês cumprido: restam **6 meses** de prisão.
+
+> Exemplo: se Rui tivesse cumprido 6 meses e 28 dias e parado, faltariam só 2 dias. Mas a lei manda respeitar o **saldo mínimo de 30 dias** de detenção ou reclusão: ele cumprirá **30 dias** de prisão (art. 44, §4º).
+
+### Nova condenação: o juiz pode deixar de converter (art. 44, §5º)
+Sobrevindo condenação a pena privativa de liberdade por outro crime, o **juiz da execução** decide sobre a conversão, **podendo deixar de aplicá-la** se for possível ao condenado cumprir a pena substitutiva anterior. Só se converte quando a nova pena **torna inviável** a restritiva.
+- Prestação pecuniária em parcelas + nova condenação a 9 anos em regime fechado: as duas convivem; **não** se converte.
+- Prestação de serviços à comunidade + nova condenação em regime **aberto**: podem ser cumpridas ao mesmo tempo; **não** se converte.
+- Perda de bens e valores + nova condenação em regime semiaberto: uma não impede a outra; **não** se converte.
+
+> Exemplo: Lia foi condenada a 8 meses de reclusão, substituídos por 8 meses de serviços à comunidade, e já cumpriu 2 meses. Sobrevém condenação a **9 anos em regime fechado**: preso, ela não tem como prestar serviços. O juiz converte a restritiva, **abatendo** os 2 meses cumpridos (8 − 2 = 6 meses), e soma: 6 meses + 9 anos = **9 anos e 6 meses** a cumprir.
+
+!! Conversão = "**D-N-F**": **D**escumprimento injustificado, **N**ova condenação incompatível, **F**alta grave. No cálculo: **desconta** o cumprido, mas **nunca menos de 30 dias**.
+
+## Caso da OAB: a substituição para o reincidente
+> Caso: (XXVIII Exame de Ordem, 2ª fase, adaptado) Hugo, réu solto, foi condenado por **apropriação indébita majorada** a 1 ano e 6 meses de reclusão e 14 dias-multa. Foi reconhecida a **reincidência**, por condenação transitada em julgado no ano anterior por **lesão corporal dolosa** no contexto de violência doméstica. O juiz fixou o regime fechado e negou a substituição por "expressa vedação legal no caso de reincidência dolosa", embora Hugo estivesse trabalhando e cuidando de filhos menores. É possível, em recurso, buscar a substituição?
+> Resposta: **sim**. Confira os requisitos: (1) crime doloso com pena aplicada **até 4 anos** (1 ano e 6 meses): preenchido; (2) a apropriação indébita é **sem violência ou grave ameaça**: preenchido; (3) Hugo é reincidente em crime doloso (dolo + dolo), o que, em regra, veda a substituição (art. 44, II), **mas** o art. 44, §3º, a admite se a reincidência **não for específica** e a medida for **socialmente recomendável**. A condenação anterior foi por lesão corporal, e não por apropriação indébita (ele não é reincidente específico nem em crimes patrimoniais), e a medida é socialmente recomendável, pois Hugo trabalha e cuida dos filhos menores; (4) as circunstâncias são favoráveis. Logo, é cabível a substituição.
+
+?? Quais são as três características das penas restritivas de direitos? | Autonomia (não se somam à prisão), substitutividade (primeiro se calcula a PPL, depois se substitui) e precariedade (o descumprimento leva à conversão em prisão).
+?? Condenado a 9 meses, substituídos por perda de bens, o réu entrega o carro no primeiro dia. A pena está cumprida? | Sim. A perda de bens e valores e a prestação pecuniária não guardam relação com o tempo da pena e, cumpridas, são declaradas extintas.
+?? O réu condenado a exatamente 6 meses pode receber prestação de serviços à comunidade? | Não. Ela exige condenação superior a 6 meses, ou seja, de no mínimo 6 meses e 1 dia (art. 46).
+?? Condenado a 2 anos, substituídos por serviços à comunidade, em quanto tempo o réu pode cumprir a pena, no mínimo? | Em 1 ano, a metade da pena, porque a condenação foi superior a 1 ano (art. 46, §4º). Na prática, dobra a carga para 14 horas semanais.
+?? A prestação pecuniária pode ser paga em cestas básicas? | Sim, se houver aceitação do beneficiário (art. 45, §2º). Em dinheiro, independe de aceitação.
+?? Faltando 2 dias para terminar a restritiva, o réu descumpre a pena sem justificativa. Quanto tempo de prisão cumprirá? | 30 dias, porque na conversão deve ser respeitado o saldo mínimo de 30 dias de detenção ou reclusão (art. 44, §4º).
+?? O réu já condenado por lesão corporal culposa comete homicídio culposo no trânsito. A reincidência impede a substituição? | Não. Só a reincidência em crime doloso impede a substituição (art. 44, II).
+?? Quem cumpre prestação de serviços à comunidade e é condenado, por outro crime, a pena em regime aberto terá a restritiva convertida? | Não necessariamente. O juiz pode deixar de converter se for possível cumprir as duas penas ao mesmo tempo (art. 44, §5º).
+
 # Pena de multa
 A pena de multa consiste no **pagamento ao fundo penitenciário** da quantia fixada na sentença e calculada em **dias-multa** (art. 49). O cálculo tem **duas etapas**:
 1. O juiz fixa o **número de dias-multa**, no mínimo **10** e no máximo **360**, levando em conta as circunstâncias do crime (de forma semelhante à dosimetria da pena privativa).
