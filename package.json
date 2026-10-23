@@ -1,0 +1,10 @@
+{
+  "name": "facul-lab",
+  "private": true,
+  "type": "module",
+  "description": "Facul Lab: o app é estático; estas dependências servem só às funções de lembretes (Netlify Functions).",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.6",
+    "web-push": "^3.6.7"
+  }
+}

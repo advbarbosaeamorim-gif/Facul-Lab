@@ -1,5 +1,5 @@
 /* Troque CACHE_NAME a cada atualização de conteúdo para que os aparelhos baixem a versão nova. */
-const CACHE_NAME = 'facul-lab-v29';
+const CACHE_NAME = 'facul-lab-v31';
 const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',
   "./ap1.js","./ap10.js","./ap2.js","./ap3.js","./ap4.js","./ap5.js","./ap6.js","./ap7.js","./ap8.js","./ap9.js",
   "./assuntos.js","./base.js","./explicacoes.js",
@@ -35,4 +35,29 @@ self.addEventListener('fetch', e => {
     }
     return resp;
   })));
+});
+
+/* Lembretes no celular (Web Push): chegam mesmo com o app fechado. */
+self.addEventListener('push', e => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (err) { d = { body: e.data && e.data.text() }; }
+  e.waitUntil(self.registration.showNotification(d.title || 'Facul Lab', {
+    body: d.body || 'Seu plano de estudo de hoje está pronto.',
+    icon: './icon-192.png',
+    badge: './icon-192.png',
+    tag: d.tag || 'facul-lab',
+    renotify: true,
+    lang: 'pt-BR',
+    data: { url: d.url || './' }
+  }));
+});
+/* Tocar no lembrete abre o app (ou traz para frente a aba que já estiver aberta). */
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const alvo = new URL((e.notification.data && e.notification.data.url) || './', self.registration.scope).href;
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(lista => {
+    const aberta = lista.find(c => c.url.startsWith(self.registration.scope));
+    if (aberta) return aberta.focus();
+    return self.clients.openWindow(alvo);
+  }));
 });
