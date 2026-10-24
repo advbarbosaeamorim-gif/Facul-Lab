@@ -18,8 +18,8 @@ TEMAS = {
     "sol": ("#ea580c", "#e11d48"), "noite": ("#4f46e5", "#0ea5e9"), "grafite": ("#334155", "#6366f1"),
     "c-azul": ("#1d4f91", "#3a78c9"), "c-vinho": ("#7a1f33", "#b23a52"), "c-verde": ("#174d3e", "#2a8064"),
     "c-roxo": ("#553088", "#8350c4"), "c-petroleo": ("#0f5e66", "#1f9aa5"), "c-grafite": ("#33363d", "#5d636f"),
-    "rubi": ("#9f1239", "#d97706"), "tropical": ("#0d9488", "#65a30d"), "ameixa": ("#86198f", "#fb923c"), "aurora": ("#0e7490", "#8b5cf6"),
-    "c-cafe": ("#6b4a2b", "#a0743f"), "c-terracota": ("#9c4221", "#d06a3c"), "c-oliva": ("#4f5d23", "#7e9137"), "c-ouro": ("#7a5a12", "#b38a2a"),
+    "rosa": ("#db2777", "#fb7185"), "mel": ("#a16207", "#d9a406"), "lima": ("#4d7c0f", "#84cc16"), "carvao": ("#27272a", "#8b8b94"),
+    "c-telha": ("#b2471c", "#e0703f"), "c-ouro": ("#8a6500", "#c79a1c"), "c-oliva": ("#556b16", "#86a32c"), "c-rosa": ("#a3266a", "#d65497"),
 }
 
 def h2r(h): return [int(h[i:i + 2], 16) for i in (1, 3, 5)]
