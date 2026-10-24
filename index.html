@@ -2188,6 +2188,169 @@ html:not([data-anim="on"]) .sc-nota{opacity:1}
 @media (prefers-reduced-motion:reduce){.bk *,.bk-hero *,.ovo-copia *{animation:none!important;transition:none!important}.ovo-copia.certo .ca-carimbo{opacity:1;transform:translate(-50%,-50%) rotate(-14deg)}}
 [data-anim="off"] .bk *{animation:none!important;transition:none!important}
 </style>
+<style id="estilo-revisao">
+/* ---------- revisão espaçada: central, cartão do Hoje, etiqueta dos cartões e segredo Memória de elefante ---------- */
+.rv{--rv-c:var(--lacre);--rv-q:var(--nv2);--rv-m:var(--nv1)}
+.rv-hero{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:6px 18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;position:relative;overflow:hidden}
+.rv-hero .ilu{position:absolute;right:-18px;bottom:-14px;width:150px;height:auto;opacity:.22;pointer-events:none}
+.rv-medidor{background:none;border:0;padding:0;margin:0;cursor:pointer;width:100%;-webkit-tap-highlight-color:transparent;position:relative;z-index:1}
+.rv-medidor svg{display:block;width:100%;height:auto;overflow:visible}
+.rv-arco-t{fill:none;stroke:var(--trilho);stroke-width:16;stroke-linecap:round}
+.rv-arco{fill:none;stroke:url(#rv-gr);stroke-width:16;stroke-linecap:round;stroke-dashoffset:var(--off)}
+.rv-marca{stroke:var(--muted);stroke-width:2;stroke-linecap:round;opacity:.5}
+.rv-ponteiro{transform-origin:100px 100px;transform:rotate(var(--a))}
+.rv-agulha{fill:var(--fg)} .rv-eixo{fill:var(--fg)} .rv-eixo-c{fill:var(--surface)}
+html[data-anim="on"] .rv-arco{animation:rv-arco 1.2s cubic-bezier(.3,.8,.3,1) both}
+html[data-anim="on"] .rv-ponteiro{animation:rv-ponteiro 1.4s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes rv-arco{from{stroke-dashoffset:var(--tot)}}
+@keyframes rv-ponteiro{from{transform:rotate(-90deg)}}
+html[data-anim="on"] .rv-medidor.treme .rv-ponteiro{animation:rv-treme .55s ease both}
+@keyframes rv-treme{0%,100%{transform:rotate(var(--a))}25%{transform:rotate(calc(var(--a) - 14deg))}55%{transform:rotate(calc(var(--a) + 10deg))}80%{transform:rotate(calc(var(--a) - 4deg))}}
+.rv-hero-txt{position:relative;z-index:1;min-width:0}
+.rv-k{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.rv-hero h2{margin:2px 0 6px;font-size:2rem;line-height:1.05;color:var(--toga-txt);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.rv-hero h2 small{font-size:.86rem;font-weight:700;color:var(--fg);background:var(--surface-2);border-radius:999px;padding:3px 10px}
+.rv-hero-txt>p:last-child{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
+@media (max-width:520px){.rv-hero{grid-template-columns:1fr;text-align:center;padding-top:10px}.rv-medidor{max-width:220px;margin:0 auto}.rv-hero h2{justify-content:center}}
+/* para hoje */
+.rv-hoje{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rv-t{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:var(--r);padding:12px;color:var(--fg);font:inherit;cursor:pointer;min-width:0;position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.rv-t:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 20px -14px var(--c)}
+.rv-t:disabled{cursor:default;opacity:1}
+.rv-t-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
+.rv-t-ic .i{width:19px;height:19px}
+.rv-t b{font-size:1.8rem;line-height:1.1;margin-top:6px;font-variant-numeric:tabular-nums}
+.rv-t-rot{font-weight:700;font-size:.9rem}
+.rv-t small{color:var(--muted);font-size:.76rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;max-width:100%;white-space:nowrap}
+.rv-t.ok{border-top-color:var(--ok)} .rv-t.ok .rv-t-ic{background:var(--ok-bg);color:var(--ok)} .rv-t.ok b{color:var(--muted)}
+html[data-anim="on"] .rv-t:not(.ok) .rv-t-ic{animation:rv-pulsa 2.4s ease-in-out infinite}
+@keyframes rv-pulsa{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 40%,transparent)}50%{box-shadow:0 0 0 7px transparent}}
+@media (max-width:420px){.rv-hoje{gap:7px}.rv-t{padding:10px 9px}.rv-t b{font-size:1.5rem}}
+.rv-comecar{width:100%;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+.rv-comecar .i{width:18px;height:18px}
+.rv-ordem{margin:8px 2px 0;font-size:.84rem;color:var(--muted);line-height:1.4;text-align:center}
+.rv-bloco{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 14px 12px}
+/* previsão de 14 dias */
+.rv-prev{display:grid;grid-template-columns:repeat(14,1fr);gap:4px;align-items:end;height:150px}
+.rv-barra{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;background:none;border:0;padding:0;font:inherit;color:var(--muted);cursor:pointer;min-width:0;border-radius:8px}
+.rv-barra b{font-size:.7rem;font-weight:700;color:var(--fg);min-height:1em;font-variant-numeric:tabular-nums}
+.rv-col{display:flex;flex-direction:column-reverse;width:72%;max-width:22px;height:calc((100% - 46px) * var(--h) / 100);border-radius:6px 6px 3px 3px;overflow:hidden;background:var(--trilho);transform-origin:bottom}
+.rv-col i{flex-basis:0;flex-shrink:1;min-height:0}
+.rv-col .c,.rv-leg .c{background:var(--rv-c)} .rv-col .q,.rv-leg .q{background:var(--rv-q)} .rv-col .m,.rv-leg .m{background:var(--rv-m)}
+.rv-barra small{font-size:.62rem;margin-top:4px;text-transform:lowercase;white-space:nowrap}
+.rv-barra em{font-style:normal;font-size:.7rem;font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums}
+.rv-barra.hj small,.rv-barra.hj em{color:var(--toga-txt);font-weight:800}
+.rv-barra[aria-pressed="true"]{background:var(--surface-2)}
+html[data-anim="on"] .rv-col{animation:rv-sobe .8s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(var(--i) * 45ms + .15s)}
+@keyframes rv-sobe{from{transform:scaleY(0)}}
+.rv-leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 0;font-size:.78rem;color:var(--muted)}
+.rv-leg span{display:inline-flex;align-items:center;gap:6px} .rv-leg i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.rv-dia-info,.rv-cx-info{margin:10px 0 0;font-size:.88rem;line-height:1.45;background:var(--surface-2);border-radius:12px;padding:9px 12px;min-height:2.9em}
+/* caixas de força */
+.rv-caixas{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end}
+.rv-cx{background:none;border:0;padding:0;font:inherit;color:var(--fg);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.rv-pote{position:relative;display:block;width:100%;height:96px;border-radius:12px 12px 14px 14px;border:2px solid color-mix(in srgb,var(--c) 55%,var(--line));background:color-mix(in srgb,var(--c) 7%,var(--surface));overflow:hidden}
+.rv-pote i{position:absolute;left:0;right:0;bottom:0;height:var(--h);background:linear-gradient(180deg,color-mix(in srgb,var(--c) 70%,#fff),var(--c));transform-origin:bottom}
+.rv-pote b{position:absolute;inset:auto 0 6px;text-align:center;font-size:1.05rem;font-variant-numeric:tabular-nums;color:var(--fg);text-shadow:0 1px 0 color-mix(in srgb,var(--surface) 70%,transparent)}
+.rv-cx small{font-size:.7rem;line-height:1.2;text-align:center;color:var(--muted);font-weight:600;min-height:2.4em}
+.rv-cx[aria-pressed="true"] .rv-pote{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 35%,transparent)}
+.rv-cx[aria-pressed="true"] small{color:var(--fg)}
+html[data-anim="on"] .rv-pote i{animation:rv-sobe 1s cubic-bezier(.2,1.2,.4,1) both;animation-delay:calc(var(--i) * 90ms + .2s)}
+html[data-anim="on"] .rv-cx.pula .rv-pote{animation:rv-pula .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes rv-pula{40%{transform:translateY(-6px) scale(1.04)}}
+.rv-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.rv-nums span{display:flex;flex-direction:column;align-items:center;font-size:.76rem;color:var(--muted);background:var(--surface-2);border-radius:12px;padding:8px 4px}
+.rv-nums b{font-size:1.25rem;color:var(--fg);font-variant-numeric:tabular-nums}
+/* teimosos */
+.rv-teim{display:flex;gap:12px;align-items:flex-start;margin-top:14px;background:var(--erro-bg);border-radius:var(--r);padding:14px;border:1px solid color-mix(in srgb,var(--erro) 30%,transparent)}
+.rv-teim .ilu{width:84px;flex:none;height:auto}
+.rv-teim p{margin:4px 0 0;font-size:.9rem;line-height:1.45}
+.rv-teim .botoes{margin-top:10px;flex-wrap:wrap}
+/* curva do esquecimento */
+.rv-explica>p{margin:0 0 10px;line-height:1.55}
+.rv-curva{margin:0}
+.rv-curva svg{display:block;width:100%;height:auto;background:var(--surface-2);border-radius:14px}
+.rv-grade{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+.rv-eixo-t{font-size:9px;fill:var(--muted);font-family:inherit}
+.rv-fantasma{fill:none;stroke:var(--erro);stroke-width:2;stroke-dasharray:5 5;opacity:.55}
+.rv-linha{fill:none;stroke:var(--toga-txt);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.rv-cm circle{fill:var(--lacre);stroke:var(--surface);stroke-width:2}
+.rv-cm path{stroke:var(--lacre);stroke-width:1.2;stroke-dasharray:2 3;opacity:.6}
+html[data-anim="on"] .rv-cm{animation:rv-cm .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i) * 120ms + .3s);transform-box:fill-box;transform-origin:center}
+@keyframes rv-cm{from{opacity:0;transform:scale(.2)}}
+.rv-seg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+.rv-seg button{font:inherit;font-weight:800;font-size:1.05rem;display:flex;flex-direction:column;align-items:center;padding:7px 2px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.rv-seg button small{font-size:.62rem;font-weight:600;color:var(--muted)}
+.rv-seg button[aria-pressed="true"]{background:var(--toga);border-color:var(--toga);color:var(--toga-fg);transform:translateY(-2px)}
+.rv-seg button[aria-pressed="true"] small{color:inherit;opacity:.85}
+.rv-curva-txt{margin:10px 0 0;font-size:.9rem;line-height:1.45}
+.rv-regras{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rv-regras li{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.45}
+.rv-regras li>.i{flex:none;width:30px;height:30px;padding:6px;border-radius:10px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);box-sizing:border-box}
+.rv-nota{margin:12px 0 0;font-size:.84rem;color:var(--muted)}
+.rv-bt-sub{display:block;font-size:.74rem;font-weight:600;opacity:.85}
+/* cartão do Hoje */
+.rv-mini{display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 0;padding:12px 14px;text-align:left;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);cursor:pointer;position:relative;overflow:hidden}
+.rv-mini.tem{border-color:color-mix(in srgb,var(--lacre) 55%,var(--line));background:linear-gradient(100deg,color-mix(in srgb,var(--lacre) 9%,var(--surface)),var(--surface) 60%)}
+.rv-mini>.i{flex:none;width:18px;height:18px;color:var(--muted)}
+.rv-anel{position:relative;flex:none;width:48px;height:48px;display:grid;place-items:center}
+.rv-anel svg{position:absolute;inset:0;width:100%;height:100%}
+.rv-anel-t{fill:none;stroke:var(--trilho);stroke-width:5}
+.rv-anel-v{fill:none;stroke:var(--lacre);stroke-width:5;stroke-linecap:round}
+html[data-anim="on"] .rv-anel-v{animation:rv-anel 1.1s cubic-bezier(.3,.8,.3,1) both .2s}
+@keyframes rv-anel{from{stroke-dashoffset:119.4}}
+.rv-anel b{font-size:.88rem;line-height:1;font-variant-numeric:tabular-nums}.rv-anel b small{font-size:.6rem}
+.rv-mini-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.rv-mini-txt b{font-size:.98rem}.rv-mini-txt small{font-size:.8rem;color:var(--muted);line-height:1.3}
+.rv-mini-sem{flex:none;display:flex;align-items:flex-end;gap:3px;height:34px}
+.rv-mini-sem i{width:6px;height:var(--h);border-radius:3px;background:color-mix(in srgb,var(--lacre) 45%,var(--trilho));transform-origin:bottom}
+.rv-mini-sem i.hj{background:var(--lacre)}
+html[data-anim="on"] .rv-mini-sem i{animation:rv-sobe .7s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(var(--i) * 50ms + .3s)}
+@media (max-width:380px){.rv-mini-sem{display:none}}
+/* etiqueta que sobe ao avaliar um cartão e aviso de questão dominada */
+.rv-voa{position:fixed;z-index:60;transform:translate(-50%,0);pointer-events:none;font-size:.8rem;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--ok);color:#fff;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(0,0,0,.4);animation:rv-voa 1.3s cubic-bezier(.2,.8,.3,1) both}
+.rv-voa.v0{background:var(--erro)} .rv-voa.v1{background:var(--aviso);color:#1b1305} .rv-voa.v3{background:var(--nv6)}
+@keyframes rv-voa{0%{opacity:0;transform:translate(-50%,6px) scale(.7)}18%{opacity:1;transform:translate(-50%,-10px) scale(1.05)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-56px) scale(1)}}
+.rv-toast{position:fixed;left:50%;width:max-content;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:70;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-left:5px solid #f6c453;border-radius:14px;padding:10px 16px;box-shadow:0 14px 30px -14px rgba(0,0,0,.45);max-width:calc(100vw - 32px);animation:rv-toast .5s cubic-bezier(.2,1.4,.4,1) both;transition:opacity .5s,transform .5s}
+.rv-toast .i{width:24px;height:24px;color:#e0a100;flex:none}
+.rv-toast span{display:flex;flex-direction:column}.rv-toast small{color:var(--muted);font-size:.8rem}
+.rv-toast.sai{opacity:0;transform:translate(-50%,16px)}
+@keyframes rv-toast{from{opacity:0;transform:translate(-50%,30px) scale(.9)}}
+/* Premium: degradê da paleta no medidor e nos destaques */
+[data-estilo="premium"] .rv-hero{background:var(--grad-suave),var(--surface);box-shadow:var(--sombra);border-color:transparent}
+[data-estilo="premium"] .rv-hero .ilu{opacity:.9;width:130px;right:-6px;bottom:-8px}
+[data-estilo="premium"] .rv-hero h2{color:var(--p1-txt)}
+[data-estilo="premium"] .rv-t,[data-estilo="premium"] .rv-bloco,[data-estilo="premium"] .rv-mini{box-shadow:var(--sombra);border-color:transparent}
+[data-estilo="premium"] .rv-mini.tem{border-color:color-mix(in srgb,var(--lacre) 45%,transparent)}
+[data-estilo="premium"] .rv-linha{stroke:var(--p1)}
+[data-estilo="premium"] .rv-seg button[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:#fff}
+[data-estilo="premium"] .rv-anel-v{stroke:var(--p1)}
+[data-estilo="premium"] .rv-mini-sem i{background:color-mix(in srgb,var(--p1) 35%,var(--trilho))}
+[data-estilo="premium"] .rv-mini-sem i.hj{background:var(--p1)}
+[data-estilo="premium"] .rv-mini.tem{background:linear-gradient(100deg,color-mix(in srgb,var(--p1) 10%,var(--surface)),var(--surface) 65%)}
+@media (max-width:520px){[data-estilo="premium"] .rv-hero .ilu{display:none}}
+:root[data-theme="dark"] .rv-hero h2,:root[data-theme="dark"][data-estilo="premium"] .rv-hero h2{color:var(--fg)}
+:root[data-theme="dark"][data-estilo="premium"] .rv-linha{stroke:var(--p1-txt-d)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .rv-hero h2{color:var(--fg)}:root:not([data-theme="light"])[data-estilo="premium"] .rv-linha{stroke:var(--p1-txt-d)}}
+/* segredo: Memória de elefante */
+.ome-palco{position:relative;max-width:300px;margin:30px auto 0}
+.ome-svg{display:block;width:100%;height:auto}
+.ome-p{fill:#a3adc2}.ome-p2{fill:#8893aa}.ome-orelha{fill:#97a2b9}.ome-orelha-in{fill:#e8b4c4}.ome-bochecha{fill:#f2a7bb;opacity:.7}
+.ome-tromba{fill:none;stroke:#a3adc2;stroke-width:14;stroke-linecap:round}
+.ome-rabo{fill:none;stroke:#8893aa;stroke-width:4;stroke-linecap:round}
+.ome-olho{fill:#1f2433}.ome-brilho{fill:#fff}.ome-presa{fill:none;stroke:#fffaf0;stroke-width:5;stroke-linecap:round}
+.ome-sombra{fill:#000;opacity:.12}
+.ome-carta{fill:#fff8e6;stroke:#d9a441;stroke-width:2}.ome-linha{stroke:#d9a441;stroke-width:3;stroke-linecap:round;opacity:.6}
+.ome-fala{position:absolute;left:2%;top:-14px;background:var(--surface);color:var(--fg);border:2px solid var(--line);border-radius:14px;padding:5px 11px;font-weight:800;font-size:.86rem;max-width:62%;box-shadow:0 8px 18px -12px rgba(0,0,0,.4)}
+.ome-cabeca{transform-origin:84px 96px}.ome-tromba{transform-origin:56px 92px}
+html[data-anim="on"] .ovo-memoria .ome-cabeca{animation:ome-acena 2.6s ease-in-out infinite}
+html[data-anim="on"] .ovo-memoria .ome-fala{animation:ome-fala .5s cubic-bezier(.3,1.6,.5,1) both .3s}
+html[data-anim="on"] .ome-palco.nega .ome-cabeca{animation:ome-nega .7s ease both}
+html[data-anim="on"] .ome-palco.nega .ome-fala{animation:ome-fala .45s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes ome-acena{0%,100%{transform:rotate(0)}50%{transform:rotate(-4deg)}}
+@keyframes ome-nega{20%{transform:rotate(-7deg)}45%{transform:rotate(7deg)}70%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
+@keyframes ome-fala{from{opacity:0;transform:scale(.5)}}
+</style>
 
 <div class="app" id="app"></div>
 <div id="aviso-vivo" class="sr" role="status" aria-live="polite"></div>
@@ -2413,6 +2576,7 @@ function sim(key){
   if(p[0]==="ass"){const sc=p[1],a=decodeURIComponent(p[2]||"");const qids=idsEscopo(sc).filter(id=>QMAP[id]&&grupoDe(QMAP[id])===a);
     return {key,tipo:"ass",titulo:"Treino: "+a,sub:nomeCurto(nomeEscopo(sc)),qids,limite:0}}
   if(p[0]==="errhoje"){return {key,tipo:"err",titulo:"Revisão espaçada",sub:"Questões erradas que chegaram no dia de revisão",qids:errosHoje(),limite:0}}
+  if(p[0]==="teim"){return {key,tipo:"err",titulo:"Questões teimosas",sub:"As que você errou mais de uma vez",qids:rvTeimQ(),limite:0}}
   if(p[0]==="err"){return {key,tipo:"err",titulo:"Refazer erradas",sub:"Questões que você errou na última tentativa",qids:Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]),limite:0}}
   return null;
 }
@@ -3462,8 +3626,8 @@ function telaCartoes(){const i=rota.p===undefined?periodo:rota.p;rota.p=i;if(!ap
 function telaCartao(){if(!deck)return topo("Cartões","",{})+`<main class="wrap">${vazio("cartas","Nenhuma sessão aberta","Escolha uma matéria para estudar os cartões dela, ou revise os que chegaram no dia de hoje.",`<button class="botao cheio" data-acao="ir-raiz" data-tela="cartoes">Escolher cartões</button>`)}</main>`;
  if(deck.pos>=deck.q.length){const v=versoGeral(deck.tot+deck.ok);
   if(!deck.tot)return topo(deck.titulo,"Tudo em dia",{})+`<main class="wrap">${vazio("cartas","Nada para revisar agora","Todos os cartões estão em dia. Volte amanhã, ou estude cartões novos de uma matéria: eles entram na revisão espaçada a partir da primeira resposta.",`<button class="botao cheio" data-acao="ir-raiz" data-tela="cartoes">Escolher cartões novos</button>`)}</main>`;
-  return topo(deck.titulo,"Sessão concluída",{})+`<main class="wrap"><div class="placar ${deck.er?"aprov":"perf"}"><div class="pct">${deck.tot}</div><div><h2>Sessão concluída</h2><p>${deck.ok} acertos de primeira · ${deck.er} para rever</p><p>${(()=>{const now=Date.now();const am=Object.keys(S.cards||{}).filter(id=>S.cards[id].due<=inicioDia(now)+2*DIA).length;return am?`Amanhã: ${am} cartão${am>1?"es":""} para revisar.`:"Nenhum cartão marcado para amanhã."})()}</p></div></div>${versoCard(v,"Para seguir firme")}
-  <div class="botoes"><button class="botao cheio" data-acao="voltar">Voltar</button></div></main>`}
+  return topo(deck.titulo,"Sessão concluída",{})+`<main class="wrap"><div class="placar ${deck.er?"aprov":"perf"}"><div class="pct">${deck.tot}</div><div><h2>Sessão concluída</h2><p>${deck.ok} acertos de primeira · ${deck.er} para rever</p><p>${(()=>{const now=Date.now();const am=Object.keys(S.cards||{}).filter(id=>S.cards[id].due<=inicioDia(now)+2*DIA).length;return am?`Amanhã: ${am} ${am>1?"cartões":"cartão"} para revisar.`:"Nenhum cartão marcado para amanhã."})()}</p></div></div>${versoCard(v,"Para seguir firme")}
+  <div class="botoes">${rvFimDeck()}<button class="botao ${deck.rv?"linha":"cheio"}" data-acao="voltar">Voltar</button></div></main>`}
  const c=deck.q[deck.pos];const f=infoDisc(c.d);const s=estC(c.id);
  const lab=n=>n===0?"volta nesta sessão":txtIv(proxIv(s,n).iv);
  return topo(deck.titulo,`Cartão ${deck.pos+1} de ${deck.q.length}`,{extra:`<div class="progresso-leitura"><i style="width:${Math.round(deck.pos*100/deck.q.length)}%"></i></div>`})+
@@ -3659,7 +3823,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
   ${(()=>{const px=provaProx(),fx=px?px.n:null;return `<div class="hs hs-prova">${calProva(px)}<div><b>${fx===null||fx<0?"—":fx}</b><span>${fx===null?"sem data de prova":fx<0?"a prova já passou":(fx===1?"dia para ":"dias para ")+(px.nome?`a <em class="hs-qual">${esc(px.nome)}</em>`:"a prova")}</span></div></div>`})()}
  </div>
  ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
- ${blocoProvasHoje(PP)}
+ ${blocoProvasHoje(PP)}${rvHoje()}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Plano de hoje</div><span class="contador">${nFeito} de ${nTot} feito${nFeito===1?"":"s"}</span></div>
  ${PP?`<div class="pp-intro"><p class="pp-etapa"><span class="pp-num">1</span><span><b>Prioridade: suas provas</b><small>${esc(explicaPP(PP))}</small></span></p>${PP.L.length>=2?agendaPP(PP):""}</div>${pv}
  <p class="pp-etapa"><span class="pp-num">2</span><span><b>Depois: ${per===9?"seu foco na OAB":per===null?"o restante do dia":"as outras matérias do período"}</b><small>Com a prova em dia, siga com a meta, as revisões e o resto do período.</small></span></p>`:""}
@@ -3915,8 +4079,8 @@ function registrar(id,c){const s=S.stats[id]||{n:0,ok:0,u:0};s.n++;if(c)s.ok++;s
 /* questão errada volta amanhã; cada acerto na revisão adia a próxima (3, 7, 15 e 30 dias); depois de 5 acertos seguidos sai da revisão */
 const PASSOS_Q=[1,3,7,15,30];
 function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date();d0.setHours(0,0,0,0);const hoje=d0.getTime();
- if(!c){S.qrev[id]={n:0,due:hoje+864e5};return}
- if(r){r.n++;if(r.n>=PASSOS_Q.length)delete S.qrev[id];else r.due=hoje+PASSOS_Q[r.n]*864e5}}
+ if(!c){S.qrev[id]={n:0,due:hoje+864e5,lap:r?(r.lap||0)+1:0};return}
+ if(r){r.n++;if(r.n>=PASSOS_Q.length){delete S.qrev[id];rvDominou()}else r.due=hoje+PASSOS_Q[r.n]*864e5}}
 function errosHoje(){const q=S.qrev||{};const now=Date.now();return Object.keys(q).filter(id=>QMAP[id]&&q[id].due<=now)}
 const ultima=key=>S.hist.find(a=>a.key===key);
 const p2=n=>String(n).padStart(2,"0");
@@ -3974,7 +4138,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
     case "oab":h=telaOab();break; case "materias":h=telaMaterias();break; case "materia":h=telaMateria();break;
     case "faculdade":h=telaFaculdade();break; case "disc":h=telaDisc();break; case "periodo":h=telaPeriodo();break; case "pre":h=telaPre();break;
     case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break; case "quem":h=telaQuem();break;
-    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "backup":h=telaBackup();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
+    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "revisao":h=telaRevisao();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "backup":h=telaBackup();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();
@@ -4080,7 +4244,7 @@ function telaGaveta(){
   const errs=Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]).length;
   return `<div class="camada" data-acao="fechar-gaveta"><aside class="gaveta" role="dialog" aria-modal="true" aria-label="Menu">
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
-   <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("metas","barras","Metas e desempenho")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
+   <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("revisao","refazer","Revisão espaçada")}${it("metas","barras","Metas e desempenho")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
    <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
    <button data-acao="erradas" ${errs?"":"disabled"} style="${errs?"":"opacity:.5"}">${ic("refazer")}<span>Refazer questões erradas${errs?` (${errs})`:""}</span></button>
@@ -5116,6 +5280,171 @@ function caAtualiza(){const el=document.querySelector(".ovo-copia");if(!el)retur
  if(ok){el.classList.add("certo");el.querySelector(".ca-fim").hidden=false;setTimeout(()=>ovoSom("carimbo"),250);setTimeout(()=>{ovoConfete();ovoSom("gabarito")},700)}}
 OVOS.push({id:"copia",ic:"recibo",nome:"Cópia autenticada",dica:"Em Backup do progresso, o lacre do arquivo guarda um segredo. Toque nele várias vezes seguidas."});
 OVO_ABRE.copia=ovoCopia;
+/* ---------- revisão espaçada: central de revisão, força da memória e previsão ----------
+   Junta as três revisões do app: cartões (intervalo e facilidade próprios de cada um), questões erradas
+   (voltam em 1, 3, 7, 15 e 30 dias; 5 acertos seguidos e ela está dominada) e mapas mentais das apostilas lidas.
+   A memória estimada segue a curva do esquecimento: no dia marcado para a revisão, a chance de lembrar é de cerca de 90%.
+   Tudo aqui só lê S.cards, S.qrev, S.stats e S.revAp; os lotes de cartões seguem o ritmo de estudo. */
+const RV_CX=[["Recém-aprendido",0,3,"var(--nv5)","acabou de entrar ou voltou depois de um erro. Volta quase todo dia."],
+ ["Fixando",3,7,"var(--nv4)","passou pelas primeiras revisões. Volta em poucos dias."],
+ ["Firme",7,21,"var(--nv3)","você lembra depois de uma semana. As revisões começam a se espaçar."],
+ ["Sólido",21,60,"var(--nv7)","semanas sem ver e você ainda lembra. Volta mais ou menos uma vez por mês."],
+ ["Duradouro",60,1e9,"var(--nv1)","memória de longo prazo. Só aparece de vez em quando, para não enferrujar."]];
+const rvLote=()=>({leve:15,intenso:40}[S.cfg&&S.cfg.ritmo]||25);
+const rvPl=(n,s,p)=>`${n} ${n===1?s:p}`;
+function rvItens(){const L=[];const C=S.cards||{},Q=S.qrev||{};
+ Object.keys(C).forEach(id=>{if(!DISC[id.split(":")[0]])return;const s=sr(Object.assign({},C[id]));L.push({t:"c",id,due:C[id].due||0,iv:s.iv||0,ult:C[id].t||0,lap:C[id].lap||0})});
+ Object.keys(Q).forEach(id=>{if(!QMAP[id])return;const r=Q[id],st=S.stats[id]||{};L.push({t:"q",id,due:r.due||0,iv:PASSOS_Q[Math.min(r.n||0,PASSOS_Q.length-1)],ult:st.t||0,lap:r.lap||0,er:(st.n||0)-(st.ok||0)})});
+ return L}
+function rvMemoria(L){if(!L.length)return null;const now=Date.now();
+ return Math.round(L.reduce((s,x)=>s+Math.pow(.9,Math.max(0,(now-(x.ult||now))/DIA)/Math.max(.5,x.iv)),0)*100/L.length)}
+function rvPrevisao(n){const h0=inicioDia();const D=[];for(let i=0;i<n;i++)D.push({c:0,q:0,m:0,t:h0+i*DIA});
+ const add=(due,k)=>{const i=Math.max(0,Math.floor((due-h0+36e5)/DIA));if(i<n)D[i][k]++};
+ rvItens().forEach(x=>add(x.due,x.t));const A=agendaAp();Object.keys(A).forEach(d=>{if(DISC[d])add(A[d].prox,"m")});return D}
+function rvCaixas(L){const n=RV_CX.map(()=>({c:0,q:0}));L.forEach(x=>{const i=RV_CX.findIndex(b=>x.iv<b[2]);n[i<0?4:i][x.t]++});return n}
+function rvTeimQ(){const st=S.stats||{};return Object.keys(S.qrev||{}).filter(id=>QMAP[id]&&st[id]&&(st[id].n-st[id].ok)>=2)}
+function rvTeimC(){const C=S.cards||{};return Object.keys(C).filter(id=>DISC[id.split(":")[0]]&&(C[id].lap||0)>=3).sort((a,b)=>C[b].lap-C[a].lap)}
+const rvPartes=d=>[d.c&&rvPl(d.c,"cartão","cartões"),d.q&&rvPl(d.q,"questão","questões"),d.m&&rvPl(d.m,"mapa mental","mapas mentais")].filter(Boolean).join(", ").replace(/, ([^,]*)$/," e $1");
+function rvRotDia(i,t){if(i===0)return "Hoje";if(i===1)return "Amanhã";const d=new Date(t+12*36e5);const w=new Intl.DateTimeFormat("pt-BR",{weekday:"long"}).format(d);return w.charAt(0).toUpperCase()+w.slice(1)+", "+d.getDate()+"/"+(d.getMonth()+1)}
+
+/* abre uma sessão de cartões só com os ids pedidos, na ordem dada (os mais atrasados primeiro) */
+function rvDeckCom(ids,titulo,max){const pos={};ids.forEach((id,i)=>pos[id]=i);const ds=[...new Set(ids.map(id=>id.split(":")[0]))].filter(d=>DISC[d]);
+ return Promise.all([...new Set(ds.map(periodoDe))].filter(i=>i>=0).map(carregarApP)).then(()=>{const q=[];
+  ds.filter(d=>apOk(periodoDe(d))).forEach(d=>cartoesDe(d).forEach(c=>{if(c.id in pos)q.push(c)}));
+  const ord=q.sort((a,b)=>pos[a.id]-pos[b.id]).slice(0,max);
+  deck={titulo,q:emb(ord),pos:0,virado:false,ok:0,er:0,tot:ord.length,rv:true};
+  if(rota.tela==="cartao")render();else ir({tela:"cartao"})})}
+function rvCartoesHoje(){const C=S.cards||{},now=Date.now();rvDeckCom(Object.keys(C).filter(id=>C[id].due<=now).sort((a,b)=>C[a].due-C[b].due),"Revisão do dia",rvLote())}
+function rvMapa(d){const A=agendaAp();if(A[d]){A[d].n=Math.min(INTERV_AP.length-1,A[d].n+1);A[d].prox=inicioDia()+INTERV_AP[A[d].n]*DIA;salvar()}ir({tela:"ler",d,pg:999,pagina:true})}
+function rvComecar(){if(contaVencidos())return rvCartoesHoje();if(errosHoje().length)return ir({tela:"pre",key:"errhoje"});const a=apsVencidas();if(a.length)rvMapa(a[0])}
+/* fim de uma sessão da revisão: segue com o próximo lote ou com as questões */
+function rvFimDeck(){if(!deck||!deck.rv)return "";const v=contaVencidos(),e=errosHoje().length;
+ if(v)return `<button class="botao cheio" data-acao="rv-cartoes">Mais ${rvPl(Math.min(v,rvLote()),"cartão","cartões")}<small class="rv-bt-sub">${v>rvLote()?`${v} esperando, em lotes de ${rvLote()}`:"os últimos de hoje"}</small></button>`;
+ if(e)return `<button class="botao cheio" data-acao="erradas-hoje">Seguir para as questões (${e})</button>`;
+ return ""}
+
+/* questão que sai da revisão depois de 5 acertos seguidos */
+function rvDominou(){S.qdom=(S.qdom||0)+1;setTimeout(()=>{const t=document.createElement("div");t.className="rv-toast";t.setAttribute("role","status");
+ t.innerHTML=`${ic("estrela")}<span><b>Questão dominada!</b><small>5 acertos seguidos: ela saiu da revisão.</small></span>`;document.body.appendChild(t);setTimeout(()=>t.classList.add("sai"),2600);setTimeout(()=>t.remove(),3200)},350)}
+
+/* medidor de memória (semicírculo com ponteiro) e anel pequeno do Hoje */
+function rvMedidor(p){const v=p===null?0:p/100;const C=Math.PI*80;
+ const marcas=[0,.25,.5,.75,1].map(k=>{const a=Math.PI*(1-k);return `<path d="M${(100+68*Math.cos(a)).toFixed(1)} ${(100-68*Math.sin(a)).toFixed(1)}L${(100+60*Math.cos(a)).toFixed(1)} ${(100-60*Math.sin(a)).toFixed(1)}" class="rv-marca"/>`}).join("");
+ return `<svg viewBox="0 0 200 116" aria-hidden="true" focusable="false"><defs><linearGradient id="rv-gr" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e5484d"/><stop offset=".5" stop-color="#f5a524"/><stop offset="1" stop-color="#22a06b"/></linearGradient></defs>
+ <path d="M20 100A80 80 0 0 1 180 100" class="rv-arco-t"/><path d="M20 100A80 80 0 0 1 180 100" class="rv-arco" stroke-dasharray="${C.toFixed(1)}" style="--off:${(C*(1-v)).toFixed(1)};--tot:${C.toFixed(1)}"/>${marcas}
+ <g class="rv-ponteiro" style="--a:${(-90+180*v).toFixed(1)}deg"><path d="M100 100L96 98 100 30 104 98z" class="rv-agulha"/><circle cx="100" cy="100" r="9" class="rv-eixo"/><circle cx="100" cy="100" r="3.5" class="rv-eixo-c"/></g></svg>`}
+function rvAnel(p){const C=2*Math.PI*19,v=p===null?0:p/100;
+ return `<span class="rv-anel" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" class="rv-anel-t"/><circle cx="24" cy="24" r="19" class="rv-anel-v" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-v)).toFixed(1)}" transform="rotate(-90 24 24)"/></svg><b>${p===null?"—":p}<small>${p===null?"":"%"}</small></b></span>`}
+const rvTomMem=p=>p===null?"":p>=85?"Memória afiada":p>=70?"Boa, mas pedindo revisão":p>=50?"Começando a apagar":"Hora de revisar";
+
+/* curva do esquecimento interativa: revisões nos dias 1, 4, 10 e 21; cada uma deixa a queda mais lenta */
+const RV_REV=[1,4,10,21],RV_EST=[1.6,4,9,20,45];
+function rvRet(t,n){let t0=0,k=0;for(let i=0;i<n;i++)if(t>=RV_REV[i]){t0=RV_REV[i];k=i+1}return Math.exp(-(t-t0)/RV_EST[k])}
+const rvX=t=>34+t*276/30,rvY=r=>16+(1-r)*124;
+function rvCurvaD(n){let d="",ant=null;for(let s=0;s<=120;s++){const t=s/4;const r=rvRet(t,n);
+ if(ant!==null&&r>ant+.01)d+=`L${rvX(t).toFixed(1)} ${rvY(ant).toFixed(1)}`;d+=(s?"L":"M")+rvX(t).toFixed(1)+" "+rvY(r).toFixed(1);ant=r}return d}
+function rvCurvaTxt(n){const p=Math.round(rvRet(30,n)*100);
+ return n===0?`<b>Sem revisão</b>, a memória despenca nos primeiros dias. No 30º dia sobra ${p<1?"menos de 1%":`cerca de ${p}%`} do que você estudou.`
+ :`<b>Com ${rvPl(n,"revisão","revisões")}</b> (no${n>1?"s":""} dia${n>1?"s":""} ${RV_REV.slice(0,n).join(", ").replace(/, (\d+)$/," e $1")}), a curva cai cada vez mais devagar. No 30º dia você ainda lembra ${p<1?"menos de 1%":`cerca de <b>${p}%</b>`}.`}
+function rvCurvaMarcas(n){return RV_REV.slice(0,n).map((t,i)=>`<g class="rv-cm" style="--i:${i}"><circle cx="${rvX(t).toFixed(1)}" cy="${rvY(1)}" r="5.5"/><path d="M${rvX(t).toFixed(1)} ${rvY(1)+8}V140" /></g>`).join("")}
+let rvCurvaN=0;
+function rvCurva(){const n=rvCurvaN;
+ return `<figure class="rv-curva"><svg viewBox="0 0 320 166" role="img" aria-label="Curva do esquecimento">
+ ${[1,.5,0].map(r=>`<path d="M34 ${rvY(r)}H310" class="rv-grade"/><text x="28" y="${rvY(r)+4}" class="rv-eixo-t" text-anchor="end">${Math.round(r*100)}%</text>`).join("")}
+ ${[0,7,15,30].map(t=>`<text x="${rvX(t)}" y="158" class="rv-eixo-t" text-anchor="${t===30?"end":t?"middle":"start"}">${t?"dia "+t:"estudou"}</text>`).join("")}
+ <path d="${rvCurvaD(0)}" class="rv-fantasma"/><g class="rv-cms">${rvCurvaMarcas(n)}</g><path d="${rvCurvaD(n)}" class="rv-linha"/></svg>
+ <figcaption><div class="rv-seg" role="group" aria-label="Quantas revisões fazer">${[0,1,2,3,4].map(k=>`<button data-acao="rv-curva" data-n="${k}" aria-pressed="${k===n}">${k}<small>${k===1?"revisão":"revisões"}</small></button>`).join("")}</div>
+ <p class="rv-curva-txt" aria-live="polite">${rvCurvaTxt(n)}</p></figcaption></figure>`}
+function rvCurvaMuda(n){rvCurvaN=n;const f=document.querySelector(".rv-curva");if(!f)return;
+ f.querySelectorAll(".rv-seg button").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.n===n)));
+ f.querySelector(".rv-curva-txt").innerHTML=rvCurvaTxt(n);f.querySelector(".rv-cms").innerHTML=rvCurvaMarcas(n);
+ const p=f.querySelector(".rv-linha");p.setAttribute("d",rvCurvaD(n));
+ if(animOn()){const L=p.getTotalLength();p.style.transition="none";p.style.strokeDasharray=L;p.style.strokeDashoffset=L;void p.getBoundingClientRect();p.style.transition="stroke-dashoffset 1.1s cubic-bezier(.3,.7,.3,1)";p.style.strokeDashoffset=0;setTimeout(()=>{p.style.strokeDasharray="";p.style.transition=""},1200)}}
+
+function telaRevisao(){const L=rvItens(),mem=rvMemoria(L),P=rvPrevisao(14),cx=rvCaixas(L);
+ const vc=contaVencidos(),ve=errosHoje().length,aps=apsVencidas(),va=aps.length,tot=vc+ve+va;
+ const tC=rvTeimC(),tQ=rvTeimQ(),dom=(S.qdom||0)+L.filter(x=>x.iv>=60).length;
+ const mx=Math.max(1,...P.map(d=>d.c+d.q+d.m)),sem=P.slice(1,8).reduce((s,d)=>s+d.c+d.q+d.m,0);
+ const cxMax=Math.max(1,...cx.map(n=>n.c+n.q));
+ const tileH=(acao,attrs,cor,icn,n,rot,sub)=>`<button class="rv-t${n?"":" ok"}" data-acao="${acao}" ${attrs} ${n?"":"disabled"} style="--c:${cor}"><span class="rv-t-ic">${ic(n?icn:"ok")}</span><b>${n}</b><span class="rv-t-rot">${rot}</span><small>${n?sub:"em dia"}</small></button>`;
+ return topo("Revisão espaçada","Cartões, questões e mapas mentais na hora certa",{menu:!pilha.length})+
+ `<main class="wrap rv">
+ <section class="rv-hero" aria-labelledby="rv-mem">
+  <button class="rv-medidor" data-acao="rv-medidor" aria-label="${mem===null?"Memória estimada: ainda sem dados":`Memória estimada: ${mem}%`}">${rvMedidor(mem)}</button>
+  <div class="rv-hero-txt"><p class="rv-k">Memória estimada agora</p><h2 id="rv-mem">${mem===null?"Ainda vazia":mem+"%"}<small>${esc(rvTomMem(mem))}</small></h2>
+  <p>${mem===null?"Responda cartões ou erre uma questão (acontece!) e ela entra aqui. O app traz cada uma de volta na hora certa.":`Se fosse testado agora, você lembraria cerca de ${mem}% do que está em revisão. Revisar o que chegou hoje traz esse número de volta para perto de 100%.`}</p></div>
+  ${ilustra("memoria","var(--toga-txt)")}
+ </section>
+ <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Para hoje</div><span class="contador">${tot?rvPl(tot,"item","itens"):"tudo em dia"}</span></div>
+ <div class="rv-hoje">${tileH("rv-cartoes","","var(--lacre)","cartas",vc,vc===1?"cartão":"cartões",vc>rvLote()?`em lotes de ${rvLote()}`:"lembre antes de virar")}
+  ${tileH("erradas-hoje","","var(--nv2)","refazer",ve,ve===1?"questão":"questões","que você errou")}
+  ${tileH("rev-ap",va?`data-d="${aps[0]}"`:"","var(--nv1)","livro",va,va===1?"mapa mental":"mapas mentais",va?esc(nomeCurto(infoDisc(aps[0]).nome)):"")}</div>
+ ${tot?`<button class="botao cheio rv-comecar" data-acao="rv-comecar">${ic("seta")} Começar a revisão do dia</button><p class="rv-ordem">Primeiro os cartões, depois as questões e, por fim, os mapas mentais. Cada acerto empurra a próxima revisão para mais longe.</p>`
+ :vazio("trofeu",L.length?"Revisão em dia!":"Nada para revisar ainda",L.length?(P[1].c+P[1].q+P[1].m?`Amanhã chegam ${rvPartes(P[1])}. Até lá, siga com o plano de hoje.`:"Nada marcado para amanhã. Aproveite para adiantar cartões novos."):"Estude cartões de memorização ou faça um simulado. O que você errar entra na revisão sozinho.",`<button class="botao linha" data-acao="ir-raiz" data-tela="cartoes">Estudar cartões novos</button>`,"var(--ok)")}
+ <div class="secao" role="heading" aria-level="2">Próximos 14 dias</div>
+ <div class="rv-bloco"><div class="rv-prev">${P.map((d,i)=>{const t=d.c+d.q+d.m;const dt=new Date(d.t+12*36e5);
+  return `<button class="rv-barra${i?"":" hj"}" data-acao="rv-dia" data-i="${i}" aria-pressed="false" aria-label="${rvRotDia(i,d.t)}: ${t?rvPartes(d):"nada"}" style="--i:${i}"><b>${t||""}</b><span class="rv-col" style="--h:${t?Math.max(6,Math.round(t*100/mx)):0}"><i class="c" style="flex-grow:${d.c}"></i><i class="q" style="flex-grow:${d.q}"></i><i class="m" style="flex-grow:${d.m}"></i></span><small>${i?new Intl.DateTimeFormat("pt-BR",{weekday:"short"}).format(dt).slice(0,3).replace(".",""):"hoje"}</small><em>${dt.getDate()}</em></button>`}).join("")}</div>
+  <p class="rv-leg"><span><i class="c"></i>Cartões</span><span><i class="q"></i>Questões</span><span><i class="m"></i>Mapas mentais</span></p>
+  <p class="rv-dia-info" aria-live="polite">${sem?`Nos próximos 7 dias chegam ${rvPl(sem,"revisão","revisões")}. Toque num dia para ver o que vem.`:"Nenhuma revisão marcada para os próximos dias. Toque num dia para ver."}</p></div>
+ <div class="secao" role="heading" aria-level="2">Força da memória</div>
+ <div class="rv-bloco"><div class="rv-caixas">${cx.map((n,i)=>{const t=n.c+n.q;return `<button class="rv-cx" data-acao="rv-cx" data-i="${i}" aria-pressed="false" style="--c:${RV_CX[i][3]};--h:${t?Math.max(8,Math.round(t*100/cxMax)):0}%;--i:${i}"><span class="rv-pote"><i></i><b>${t}</b></span><small>${RV_CX[i][0]}</small></button>`}).join("")}</div>
+  <p class="rv-cx-info" aria-live="polite">Cada acerto passa o item para a caixa seguinte, com uma revisão mais espaçada. Um erro devolve para a primeira. Toque numa caixa.</p>
+  <div class="rv-nums"><span><b>${L.length}</b>em revisão</span><span><b>${dom}</b>dominados</span><span><b>${tC.length+tQ.length}</b>teimosos</span></div></div>
+ ${tC.length||tQ.length?`<div class="rv-teim">${ilustra("lupa","var(--erro)")}<div><b>Os teimosos</b><p>${[tC.length&&rvPl(tC.length,"cartão que você errou","cartões que você errou")+" 3 vezes ou mais",tQ.length&&rvPl(tQ.length,"questão errada","questões erradas")+" mais de uma vez"].filter(Boolean).join(" e ")}. Antes de repetir, releia o tema: entender vence decorar.</p>
+  <div class="botoes">${tC.length?`<button class="botao linha" data-acao="rv-teim-c">Cartões teimosos</button>`:""}${tQ.length?`<button class="botao linha" data-acao="rv-teim-q">Questões teimosas</button>`:""}</div></div></div>`:""}
+ <div class="secao" role="heading" aria-level="2">Por que funciona</div>
+ <div class="rv-bloco rv-explica"><p>Em 1885, o psicólogo alemão <b>Hermann Ebbinghaus</b> mediu quanto esquecemos com o tempo: a memória cai rápido nos primeiros dias e depois vai se apagando. Cada revisão feita bem quando você está quase esquecendo deixa a queda mais lenta. Toque nos números e veja:</p>
+ ${rvCurva()}
+ <ul class="rv-regras"><li style="--c:var(--lacre)">${ic("cartas")}<span><b>Cartões:</b> você diz como foi lembrar. <em>Errei</em> volta na mesma sessão; <em>Difícil</em>, <em>Acertei</em> e <em>Fácil</em> espaçam cada vez mais. Cada cartão aprende o seu ritmo.</span></li>
+ <li style="--c:var(--nv2)">${ic("refazer")}<span><b>Questões erradas:</b> voltam no dia seguinte e, a cada acerto, em 3, 7, 15 e 30 dias. Cinco acertos seguidos e ela está dominada.</span></li>
+ <li style="--c:var(--nv1)">${ic("livro")}<span><b>Mapas mentais:</b> quando você termina uma apostila, o mapa volta 1, 7, 15, 30 e 60 dias depois.</span></li></ul>
+ <p class="rv-nota">Os lotes de cartões seguem o seu <button class="link-inline" data-acao="ir-raiz" data-tela="config">ritmo de estudo</button>: ${rvLote()} por vez agora.</p></div></main>`}
+
+/* cartão do Hoje: memória estimada, o que chega hoje e a semana que vem */
+function rvHoje(){const L=rvItens(),aps=apsVencidas();if(!L.length&&!aps.length)return "";
+ const P=rvPrevisao(7),h={c:contaVencidos(),q:errosHoje().length,m:aps.length},tot=h.c+h.q+h.m,mx=Math.max(1,...P.map(d=>d.c+d.q+d.m)),mem=rvMemoria(L);
+ return `<button class="rv-mini${tot?" tem":""}" data-acao="rv-central">${rvAnel(mem)}<span class="rv-mini-txt"><b>${tot?`Revisão espaçada: ${rvPl(tot,"item","itens")}`:"Revisão espaçada em dia"}</b><small>${tot?rvPartes(h)+" chegaram hoje":P[1].c+P[1].q+P[1].m?`Amanhã: ${rvPartes(P[1])}`:"Memória estimada e próximos dias"}</small></span>
+ <span class="rv-mini-sem" aria-hidden="true">${P.map((d,i)=>{const t=d.c+d.q+d.m;return `<i class="${i?"":"hj"}" style="--h:${t?Math.max(12,Math.round(t*100/mx)):4}%;--i:${i}"></i>`}).join("")}</span>${ic("prox")}</button>`}
+
+/* ilustração da central: cartões, seta de volta e relógio */
+ILU.memoria=`<g transform="rotate(-14 98 92)"><rect x="58" y="58" width="76" height="54" rx="8" class="f-a" opacity=".55"/></g><g transform="rotate(7 122 86)"><rect x="80" y="54" width="78" height="56" rx="8" class="f-b"/></g><rect x="94" y="48" width="82" height="58" rx="9" class="f-w s-t" stroke-width="2"/><path d="M106 64h56M106 76h42M106 88h50" class="s-t" stroke-width="4" stroke-linecap="round" opacity=".35"/><path d="M66 120a56 16 0 0 0 108 2" class="s-b" fill="none" stroke-width="5" stroke-linecap="round"/><path d="M168 108l12 12-15 5z" class="f-b"/><circle cx="184" cy="46" r="21" class="f-t"/><circle cx="184" cy="46" r="15.5" class="f-w"/><path d="M184 36v10l7 5" class="s-t" stroke-width="3" stroke-linecap="round" fill="none"/>`;
+
+/* ações da revisão (ouvinte próprio, sem mexer no clique principal) */
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-acao^='rv-']");if(!b||b.disabled)return;const a=b.dataset.acao;
+ if(a==="rv-central"){gaveta=false;ir({tela:"revisao"})}
+ else if(a==="rv-comecar")rvComecar();
+ else if(a==="rv-cartoes")rvCartoesHoje();
+ else if(a==="rv-teim-c")rvDeckCom(rvTeimC(),"Cartões teimosos",20);
+ else if(a==="rv-teim-q")ir({tela:"pre",key:"teim"});
+ else if(a==="rv-curva"){rvCurvaMuda(+b.dataset.n);som("toque")}
+ else if(a==="rv-dia"){const P=rvPrevisao(14),i=+b.dataset.i,d=P[i],t=d.c+d.q+d.m;
+  document.querySelectorAll(".rv-barra").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  const el=document.querySelector(".rv-dia-info");if(el)el.innerHTML=`<b>${rvRotDia(i,d.t)}:</b> ${t?rvPartes(d)+(i===0?" (com os atrasados)":""):"nada marcado. Dia livre para conteúdo novo."}`;som("toque")}
+ else if(a==="rv-cx"){const i=+b.dataset.i,n=rvCaixas(rvItens())[i],X=RV_CX[i];
+  document.querySelectorAll(".rv-cx").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));ovoReanima(b,"pula");
+  const el=document.querySelector(".rv-cx-info");if(el)el.innerHTML=`<b>${X[0]}</b> (${X[2]>1e8?"60 dias ou mais":X[1]?`de ${X[1]} a ${X[2]-1} dias`:"até 2 dias"}): ${X[4]} ${n.c+n.q?`Aqui estão ${rvPartes(n)}.`:"Ainda vazia."}`;som("toque")}
+ else if(a==="rv-medidor"){ovoReanima(b,"treme");som("toque");if(ovoConta("rvmed",5,2500))ovoMemoria()}});
+/* ao avaliar um cartão, uma etiqueta sobe do botão dizendo quando ele volta */
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-acao="card-nota"]');if(!b||!animOn())return;
+ const sm=b.querySelector("small"),v=+b.dataset.v,r=b.getBoundingClientRect(),txt=v===0?"Volta já já":"Volta "+(sm?sm.textContent:"");
+ setTimeout(()=>{const s=document.createElement("span");s.className="rv-voa v"+v;s.textContent=txt;s.style.left=(r.left+r.width/2)+"px";s.style.top=(r.top-4)+"px";document.body.appendChild(s);setTimeout(()=>s.remove(),1400)},0)},true);
+
+/* segredo: Memória de elefante (5 toques seguidos no medidor de memória) */
+OVOS.push({id:"memoria",ic:"cartas",nome:"Memória de elefante",dica:"Na Revisão espaçada, toque várias vezes seguidas no medidor de memória."});
+const OME_FALAS=["Não esqueço!","Nem tente.","Art. 5º, XIV: informação é direito.","Tema 786 do STF, lembra?","Elefante não esquece. Você também não."];
+let omeI=0;
+const OME_SVG=`<svg class="ome-svg" viewBox="0 0 240 170" aria-hidden="true"><ellipse class="ome-sombra" cx="124" cy="160" rx="84" ry="7"/>
+ <g class="ome-corpo"><rect x="88" y="116" width="20" height="40" rx="9" class="ome-p2"/><rect x="160" y="116" width="20" height="40" rx="9" class="ome-p2"/><path class="ome-rabo" d="M188 98q16 6 12 26"/>
+ <ellipse cx="140" cy="100" rx="56" ry="42" class="ome-p"/><rect x="110" y="122" width="20" height="36" rx="9" class="ome-p"/><rect x="172" y="120" width="19" height="36" rx="9" class="ome-p"/>
+ <rect x="122" y="70" width="44" height="30" rx="5" class="ome-carta" transform="rotate(-8 144 85)"/><path d="M130 80h26M130 88h18" class="ome-linha" transform="rotate(-8 144 85)"/></g>
+ <g class="ome-cabeca"><path class="ome-tromba" d="M52 92c-14 10-16 30-6 42 6 7 15 5 13-3"/><ellipse cx="74" cy="76" rx="34" ry="32" class="ome-p"/><path d="M90 50c24-10 42 8 36 32s-24 30-38 20z" class="ome-orelha"/><path d="M96 60c14-4 22 8 18 22s-14 16-22 10z" class="ome-orelha-in"/>
+ <circle cx="64" cy="70" r="5" class="ome-olho"/><circle cx="66" cy="68" r="1.6" class="ome-brilho"/><path d="M58 98q8 8 18 1" class="ome-presa"/><ellipse cx="52" cy="80" rx="5" ry="3" class="ome-bochecha"/></g></svg>`;
+function ovoMemoria(rever){omeI=0;ovoCena("memoria","ovo-memoria",`<div class="ome-palco">${OME_SVG}<span class="ome-fala">${OME_FALAS[0]}</span></div>
+ <h2>Memória de elefante</h2><p class="frase">Dizem que o elefante nunca esquece. Com a revisão espaçada, você também não.</p>
+ <p class="ovo-nota"><b>E o direito ao esquecimento?</b> Em 2021, o STF julgou o Tema 786 (RE 1.010.606, caso Aída Curi) e decidiu que é incompatível com a Constituição um direito ao esquecimento entendido como o poder de impedir, só pela passagem do tempo, a divulgação de fatos verdadeiros e obtidos de forma lícita. Excessos continuam sendo analisados caso a caso, pela proteção da honra, da imagem e da privacidade.</p>${ovoBotoes(`<button class="botao" data-ovo="mem-esquece">Tentar fazer esquecer</button>`)}`,{rever,titulo:"Memória de elefante",confete:true})}
+OVO_ABRE.memoria=ovoMemoria;
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-ovo="mem-esquece"]');if(!b)return;const c=b.closest(".festa");if(!c)return;
+ omeI=(omeI+1)%OME_FALAS.length||1;const f=c.querySelector(".ome-fala");if(f)f.textContent=OME_FALAS[omeI];ovoReanima(c.querySelector(".ome-palco"),"nega");ovoSom("puxa")});
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
