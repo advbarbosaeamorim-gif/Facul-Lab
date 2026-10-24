@@ -1643,6 +1643,188 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .vazio-ilu .ilu{max-width:200px}
 [data-estilo="premium"] .v-tit{font-weight:800;letter-spacing:-.025em}
 </style>
+<style id="estilo-caderno">
+/* ---------- caderno de erros ---------- */
+.cad{--rc:var(--aviso);padding-bottom:40px}
+.cad-hero{position:relative;margin-top:16px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--erro);border-radius:var(--r);padding:16px 16px 14px;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:4px 10px;overflow:hidden}
+.cad-hero-txt{align-self:center}
+.cad-kicker{display:inline-flex;align-items:center;gap:6px;margin:0;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--erro)}
+.cad-kicker .i{width:16px;height:16px}
+.cad-hero h2{font-family:var(--f-display);font-size:1.4rem;line-height:1.15;margin:4px 0 6px}
+.cad-hero-txt>p:last-child{margin:0;font-size:.9rem;color:var(--muted);line-height:1.45}
+.cad-hero-ilu{align-self:center;cursor:pointer;-webkit-user-select:none;user-select:none}
+.cad-hero-ilu .ilu{width:100%;height:auto;display:block}
+.cad-ix{stroke:var(--erro);stroke-width:4;stroke-linecap:round;fill:none}
+.cad-io{stroke:var(--erro);stroke-width:2.5;fill:none;opacity:.75}
+.cad-iv{stroke:var(--ok);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.cad-borr{fill:#f08da0}
+.cad-placar{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.cad-n{--k:var(--erro);display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:10px 12px;border:1.5px solid var(--line);border-radius:calc(var(--r) - 2px);background:var(--surface);text-align:left;transition:border-color .2s,background-color .2s,transform .2s}
+.cad-n.rc{--k:var(--rc)} .cad-n.ok{--k:var(--ok)}
+.cad-n b{font-family:var(--f-mono);font-size:1.65rem;line-height:1.1;color:var(--k);font-variant-numeric:tabular-nums}
+.cad-n span{font-size:.76rem;color:var(--muted);line-height:1.25}
+.cad-n[aria-pressed="true"]{border-color:var(--k);background:color-mix(in srgb,var(--k) 9%,var(--surface))}
+.cad-n:active{transform:scale(.97)}
+.cad-trilha{grid-column:1/-1;display:flex;height:10px;border-radius:5px;background:var(--trilho);overflow:hidden;margin-top:12px}
+.cad-trilha i{display:block;height:100%}
+.cad-trilha .er{background:var(--erro)} .cad-trilha .rc{background:var(--rc)} .cad-trilha .ok{background:var(--ok)}
+.cad-leg{grid-column:1/-1;margin:6px 0 0;font-size:.84rem;color:var(--muted)}
+.cad-leg b{color:var(--fg)}
+.cad-rev{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);text-align:left}
+.cad-rev b{display:block;font-size:.95rem}
+.cad-rev small{display:block;color:var(--muted);font-size:.82rem;line-height:1.35}
+.cad-bloco{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.cad-mots{display:flex;flex-direction:column;gap:10px}
+.cad-mot,.cad-mat{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center}
+.cad-mot>b,.cad-mat>b{font-family:var(--f-mono);font-variant-numeric:tabular-nums;min-width:22px;text-align:right}
+.cad-mot-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted)}
+.cad-mot-ic .i{width:18px;height:18px}
+.cad-mot.top .cad-mot-ic{background:var(--erro-bg);color:var(--erro)}
+.cad-mot-l{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:.9rem}
+.cad-mot-l>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cad-barra{display:block;height:7px;border-radius:4px;background:var(--trilho);overflow:hidden}
+.cad-barra i{display:block;height:100%;width:var(--w);border-radius:4px;background:var(--c,var(--erro))}
+.cad-mot:not(.top) .cad-barra i{background:color-mix(in srgb,var(--erro) 55%,var(--trilho))}
+.cad-onde{display:flex;flex-direction:column;gap:4px;padding:6px}
+.cad-mat{width:100%;padding:8px;border:1.5px solid transparent;border-radius:calc(var(--r) - 4px);background:none;text-align:left}
+.cad-mat .tile{width:34px;height:34px;border-radius:9px}
+.cad-mat .tile svg.i{width:18px;height:18px}
+.cad-mat[aria-pressed="true"]{border-color:var(--toga-borda);background:var(--surface-2)}
+.cad-dica{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;padding:10px 12px;border-radius:calc(var(--r) - 4px);background:color-mix(in srgb,var(--lacre) 13%,var(--surface));font-size:.88rem;line-height:1.45}
+.cad-dica .i{color:var(--lacre);width:20px;height:20px;margin-top:1px}
+.cad-seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border-radius:calc(var(--r) - 2px);background:var(--surface-2);scroll-margin-top:80px}
+.cad-seg button{border:0;background:none;border-radius:calc(var(--r) - 5px);padding:9px 4px;font-size:.8rem;font-weight:700;color:var(--muted);line-height:1.2;transition:background-color .2s,color .2s}
+.cad-seg button small{display:block;font-family:var(--f-mono);font-size:.78rem;font-weight:500;opacity:.85}
+.cad-seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.cad-chips{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 2px;scrollbar-width:none}
+.cad-chips::-webkit-scrollbar{display:none}
+.cad-chips button{flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:.84rem;white-space:nowrap}
+.cad-chips button i{width:9px;height:9px;border-radius:50%}
+.cad-chips button[aria-pressed="true"]{background:var(--toga);border-color:var(--toga);color:var(--toga-fg);font-weight:700}
+.cad-ordem{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0 10px;font-size:.85rem;color:var(--muted)}
+.cad-ord-bts{display:flex;gap:4px}
+.cad-ord-bts button{border:0;background:none;padding:5px 9px;border-radius:999px;font-size:.82rem;color:var(--muted)}
+.cad-ord-bts button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:700}
+.cad-treinar{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.cad-desfaz{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;padding:10px 14px;border-radius:calc(var(--r) - 2px);background:var(--fg);color:var(--bg);font-size:.88rem}
+.cad-desfaz button{border:0;background:none;color:inherit;font-weight:700;text-decoration:underline;padding:4px}
+.cad-lista{display:flex;flex-direction:column;gap:10px}
+.cad-nada{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);padding:20px 0}
+.cad-mais{margin-top:12px}
+/* cartão de cada questão */
+.cad-q{--k:var(--erro);position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;scroll-margin-top:76px}
+.cad-q::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--k)}
+.cad-q.st-rc{--k:var(--rc)} .cad-q.st-ok{--k:var(--ok)}
+.cad-q-cab{display:grid;grid-template-columns:40px minmax(0,1fr) 22px;gap:12px;align-items:start;width:100%;padding:14px 12px 12px 16px;border:0;background:none;text-align:left}
+.cad-q-txt{display:flex;flex-direction:column;gap:5px;min-width:0}
+.cad-q-meta{font-size:.76rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cad-q-meta b{color:var(--fg)}
+.cad-q-enun{font-size:.95rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cad-q.aberto .cad-q-enun{display:block;font-size:1rem}
+.cad-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.cad-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.cad-tag .i{width:12px;height:12px}
+.cad-tag.st{background:color-mix(in srgb,var(--k) 15%,var(--surface));color:var(--k)}
+.cad-tag.mot{background:color-mix(in srgb,var(--lacre) 15%,var(--surface));color:var(--fg)}
+.cad-seta{align-self:center;color:var(--muted);transition:transform .25s}
+.cad-seta .i{width:20px;height:20px}
+.cad-q.aberto .cad-seta{transform:rotate(180deg)}
+.cad-corpo{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.cad-aviso{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:.86rem;color:var(--muted);font-weight:600}
+.cad-aviso .i{width:18px;height:18px}
+.cad-alts .alt{box-sizing:border-box;font-size:.95rem;padding:12px 14px}
+.cad-alts .alt .letra{width:30px;height:30px}
+.cad-gab,.cad-sua{display:inline-flex;align-items:center;gap:3px;margin-left:6px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;vertical-align:1px}
+.cad-gab{color:var(--ok)} .cad-sua{color:var(--erro)}
+.cad-gab .i,.cad-sua .i{width:13px;height:13px;stroke-width:3}
+.cad-px{display:block;margin-top:4px;font-size:.85rem;color:var(--muted);line-height:1.4}
+.cad-coment h3{display:flex;align-items:center;gap:8px;font-size:1rem}
+.cad-coment h3 .i{width:18px;height:18px;color:var(--lacre)}
+.cad-coment{border-left-color:var(--lacre)}
+.cad-pq{margin-top:14px}
+.cad-pq-t{margin:0 0 8px;font-weight:700;font-size:.92rem}
+.cad-pq-bts{display:flex;flex-wrap:wrap;gap:6px}
+.cad-pq-bts button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:.84rem;transition:background-color .2s,border-color .2s,transform .15s}
+.cad-pq-bts button .i{width:15px;height:15px;color:var(--muted)}
+.cad-pq-bts button[aria-pressed="true"]{border-color:var(--erro);background:var(--erro-bg);font-weight:700}
+.cad-pq-bts button[aria-pressed="true"] .i{color:var(--erro)}
+.cad-pq-bts button:active{transform:scale(.95)}
+.cad-nota{margin-top:14px}
+.cad-nota>span{display:flex;align-items:center;gap:6px;font-weight:700}
+.cad-nota>span .i{width:16px;height:16px;color:var(--muted)}
+.cad-acoes{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.cad-acoes .botao{display:flex;align-items:center;justify-content:center;gap:8px}
+.cad-acoes-l{display:flex;flex-wrap:wrap;gap:8px}
+.cad-acoes-l .link-tema{margin-top:0}
+.cad-tirar{border-color:var(--line)!important;color:var(--muted)!important}
+/* refazer dentro do cartão */
+.cad-res{position:relative;margin-top:12px;padding:14px 16px;border-radius:var(--r);background:var(--erro-bg);overflow:hidden}
+.cad-res.ok{background:var(--ok-bg)}
+.cad-res p{margin:0;font-size:.92rem}
+.cad-pontos{display:flex;gap:6px;margin-top:10px}
+.cad-pontos i{width:26px;height:8px;border-radius:4px;background:color-mix(in srgb,var(--fg) 14%,transparent)}
+.cad-pontos i.on{background:var(--ok)}
+.cad-carimbo{display:inline-block;margin:2px 0 10px 4px;rotate:-6deg;padding:4px 12px;border:3px solid var(--ok);border-radius:8px;color:var(--ok);font-family:var(--f-display);font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+.cad-carimbo.dom{border-color:var(--lacre);color:var(--lacre)}
+.cad-foi{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:var(--surface-2);font-size:.86rem;line-height:1.4}
+.cad-foi .i{width:18px;height:18px;color:var(--erro);margin-top:1px}
+/* animações */
+html[data-anim="on"] .cad-hero.novo .cad-trilha i{animation:cad-cresce .9s cubic-bezier(.2,.8,.3,1) both .2s}
+html[data-anim="on"] .cad-hero.novo .cad-hero-ilu .cad-ix{stroke-dasharray:30;animation:cad-risca .5s ease-out both .45s}
+html[data-anim="on"] .cad-hero.novo .cad-hero-ilu .cad-iv{stroke-dasharray:30;animation:cad-risca .5s ease-out both .8s}
+html[data-anim="on"] .cad-hero-ilu .cad-lapis{transform-box:fill-box;transform-origin:50% 100%;animation:cad-lapis 3.6s ease-in-out infinite}
+html[data-anim="on"] .cad-q.entra{animation:cad-in .45s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i)*45ms)}
+html[data-anim="on"] .cad-corpo.entra{animation:cad-abre .35s ease-out both}
+html[data-anim="on"] .cad-barra i{animation:cad-cresce .8s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"] .cad-q.fx-er{animation:treme .45s ease}
+html[data-anim="on"] .cad-q.fx-ok .cad-carimbo{animation:cad-carimba .55s cubic-bezier(.3,1.6,.5,1) both .35s}
+html[data-anim="on"] .cad-q.fx-ok .cad-pontos i.on:last-of-type{animation:cad-ponto .5s ease-out both .6s}
+html[data-anim="on"] .cad-q.fx-ok .cad-res{animation:cad-brilho 1.2s ease-out both}
+html[data-anim="on"] .cad-desfaz{animation:cad-in .3s ease-out both}
+@keyframes cad-cresce{from{width:0}}
+@keyframes cad-risca{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+@keyframes cad-lapis{0%,100%{rotate:0deg}40%{rotate:-7deg}60%{rotate:4deg}}
+@keyframes cad-in{from{opacity:0;transform:translateY(12px)}}
+@keyframes cad-abre{from{opacity:0;transform:translateY(-6px)}}
+@keyframes cad-carimba{0%{opacity:0;scale:2.4}60%{opacity:1;scale:.92}100%{scale:1}}
+@keyframes cad-ponto{0%{scale:1 1}40%{scale:1.5 1.6}100%{scale:1 1}}
+@keyframes cad-brilho{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+/* Premium: degradê suave, cantos maiores e sombra */
+[data-estilo="premium"] .cad-hero{border:0;background:var(--grad-suave),var(--surface);box-shadow:var(--sombra);padding:18px}
+[data-estilo="premium"] .cad-hero::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--erro) 18%,transparent),transparent);pointer-events:none}
+[data-estilo="premium"] .cad-kicker{letter-spacing:.04em}
+[data-estilo="premium"] .cad-hero h2{font-weight:800;font-size:1.5rem}
+[data-estilo="premium"] .cad-n{border-color:transparent;background:color-mix(in srgb,var(--surface) 80%,transparent);box-shadow:0 4px 14px -10px rgba(0,0,0,.35)}
+[data-estilo="premium"] .cad-n[aria-pressed="true"]{border-color:var(--k);background:color-mix(in srgb,var(--k) 10%,var(--surface))}
+[data-estilo="premium"] .cad-trilha i{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.25))}
+[data-estilo="premium"] .cad-q,[data-estilo="premium"] .cad-bloco,[data-estilo="premium"] .cad-rev{border-color:transparent;box-shadow:var(--sombra)}
+[data-estilo="premium"] .cad-q::before{width:5px;border-radius:0 4px 4px 0;top:14px;bottom:14px}
+[data-estilo="premium"] .cad-tag{font-weight:600}
+[data-estilo="premium"] .cad-seg button[aria-pressed="true"]{color:var(--toga-txt)}
+[data-estilo="premium"] .cad-chips button[aria-pressed="true"]{background:var(--grad);border-color:transparent}
+[data-estilo="premium"] .cad-treinar{background:var(--grad)}
+[data-estilo="premium"] .cad-carimbo{font-weight:800}
+[data-estilo="premium"] .cad-alts .alt.certa{background:var(--ok-bg);border-color:color-mix(in srgb,var(--ok) 55%,transparent)!important}
+[data-estilo="premium"] .cad-alts .alt.errada{background:var(--erro-bg);border-color:color-mix(in srgb,var(--erro) 55%,transparent)!important}
+@media (max-width:420px){.cad-hero{grid-template-columns:minmax(0,1fr) 110px}.cad-hero h2{font-size:1.25rem}.cad-n b{font-size:1.4rem}.cad-seg button{font-size:.74rem}}
+/* segredo "Errar é humano" */
+.oe-folha{display:flex;flex-direction:column;margin:14px 0 8px;padding:0 0 0 28px;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(var(--surface) 0 45px,color-mix(in srgb,var(--toga) 22%,var(--surface)) 45px 46px);border:1px solid var(--line);position:relative;text-align:left}
+.oe-folha::before{content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;background:color-mix(in srgb,var(--erro) 45%,transparent)}
+.oe-linha{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:center;min-height:46px;padding:4px 10px 4px 4px;border:0;background:none;text-align:left;overflow:hidden}
+.oe-x{color:var(--erro)} .oe-x .i{width:18px;height:18px;stroke-width:3}
+.oe-x .i+.i,.oe-linha.ok .oe-x .i:first-child{display:none} .oe-linha.ok .oe-x .i+.i{display:block}
+.oe-t{position:relative;display:grid;font-size:.86rem;line-height:1.25}
+.oe-t>*{grid-area:1/1;transition:opacity .35s,transform .35s}
+.oe-t s{color:var(--erro);text-decoration-thickness:2px}
+.oe-t b{color:var(--ok);opacity:0;transform:translateY(6px)}
+.oe-linha.ok .oe-t s{opacity:0;transform:translateY(-6px)}
+.oe-linha.ok .oe-t b{opacity:1;transform:none}
+.oe-linha.ok .oe-x{color:var(--ok)}
+.oe-borr{position:absolute;top:50%;left:-40px;width:34px;height:22px;margin-top:-11px;border-radius:5px;background:linear-gradient(90deg,#f08da0 0 62%,#9aa4b8 62% 70%,#f6c453 70%);opacity:0;pointer-events:none}
+html[data-anim="on"] .oe-linha.ok .oe-borr{animation:oe-apaga .55s ease-in-out}
+@keyframes oe-apaga{0%{opacity:1;left:-40px;rotate:-8deg}50%{rotate:8deg}100%{opacity:0;left:105%;rotate:-6deg}}
+.oe-msg{margin:4px 0 0;font-weight:700;color:var(--muted)}
+</style>
 <style id="estilo-ovos">
 /* ---------- segredos do app (easter eggs): cenas, enfeites do Hoje e lista em Sobre o Facul Lab ---------- */
 .ovo .festa-card{max-height:calc(100dvh - 40px);overflow:auto}
@@ -2267,6 +2449,7 @@ function sim(key){
   if(p[0]==="ass"){const sc=p[1],a=decodeURIComponent(p[2]||"");const qids=idsEscopo(sc).filter(id=>QMAP[id]&&grupoDe(QMAP[id])===a);
     return {key,tipo:"ass",titulo:"Treino: "+a,sub:nomeCurto(nomeEscopo(sc)),qids,limite:0}}
   if(p[0]==="errhoje"){return {key,tipo:"err",titulo:"Revisão espaçada",sub:"Questões erradas que chegaram no dia de revisão",qids:errosHoje(),limite:0}}
+  if(p[0]==="cad")return cadSim(key,p);
   if(p[0]==="err"){return {key,tipo:"err",titulo:"Refazer erradas",sub:"Questões que você errou na última tentativa",qids:Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]),limite:0}}
   return null;
 }
@@ -3521,6 +3704,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  <button class="card" data-acao="ir-raiz" data-tela="busca"><span class="at-ilu">${ilustra("lupa","var(--toga)")}</span><b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="cartoes"><span class="at-ilu">${ilustra("cartas","var(--lacre)")}</span><b>Todos os cartões</b><small>Escolha uma matéria</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="favs"><span class="at-ilu">${ilustra("marcador","var(--nv5)")}</span><b>Favoritos e anotações</b><small>Seus temas marcados</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="caderno"><span class="at-ilu">${ilustra("caderno","var(--erro)")}</span><b>Caderno de erros</b><small>${cadPendentes()?`${cadPendentes()} para refazer`:"Seus erros viram lição"}</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="metas"><span class="at-ilu">${ilustra("alvo","var(--ok)")}</span><b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="progresso"><span class="at-ilu">${ilustra("trofeu","var(--toga)")}</span><b>Progresso geral</b><small>Acertos em todas as matérias</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="config"><span class="at-ilu">${ilustra("engrenagem","var(--muted)")}</span><b>Configurações</b><small>Período, prova e aparência</small></button></div></main>`}
@@ -3763,7 +3947,7 @@ function quando(ts){const d=new Date(ts),h=new Date();const o=new Date(h);o.setD
   if(d.toDateString()===h.toDateString())return "Hoje<br>"+hr;if(d.toDateString()===o.toDateString())return "Ontem<br>"+hr;
   return `${new Intl.DateTimeFormat("pt-BR",{day:"2-digit",month:"short",year:"numeric"}).format(d).replace(/\s?de\s?/g," ")}<br>${hr}`}
 function res(a){let ok=0,er=0,br=0;a.qids.forEach(id=>{const r=a.resp[id];if(r===undefined)br++;else if(r===0)ok++;else er++});return {ok,er,br,pct:a.qids.length?Math.round(ok*100/a.qids.length):0}}
-function registrar(id,c){const s=S.stats[id]||{n:0,ok:0,u:0};s.n++;if(c)s.ok++;s.u=c?1:0;s.t=Date.now();S.stats[id]=s;agendarQ(id,c)}
+function registrar(id,c,o){const s=S.stats[id]||{n:0,ok:0,u:0};s.n++;if(c)s.ok++;s.u=c?1:0;s.t=Date.now();S.stats[id]=s;agendarQ(id,c);cadAnota(id,c,o)}
 /* questão errada volta amanhã; cada acerto na revisão adia a próxima (3, 7, 15 e 30 dias); depois de 5 acertos seguidos sai da revisão */
 const PASSOS_Q=[1,3,7,15,30];
 function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date();d0.setHours(0,0,0,0);const hoje=d0.getTime();
@@ -3826,7 +4010,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
     case "oab":h=telaOab();break; case "materias":h=telaMaterias();break; case "materia":h=telaMateria();break;
     case "faculdade":h=telaFaculdade();break; case "disc":h=telaDisc();break; case "periodo":h=telaPeriodo();break; case "pre":h=telaPre();break;
     case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break; case "quem":h=telaQuem();break;
-    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "ls-quiz":h=telaLsQuiz();break;
+    case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "caderno":h=telaCaderno();break; case "ls-quiz":h=telaLsQuiz();break;
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();
@@ -3929,13 +4113,12 @@ function lsResponder(v){const s=lsSess;if(!s||s.resp[s.i]!==undefined)return;con
 /* ---------- gaveta ---------- */
 function telaGaveta(){
   const it=(t,n,l)=>`<button data-acao="ir-raiz" data-tela="${t}"${rota.tela===t?' aria-current="page"':""}>${ic(n)}<span>${l}</span></button>`;
-  const errs=Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]).length;
   return `<div class="camada" data-acao="fechar-gaveta"><aside class="gaveta" role="dialog" aria-modal="true" aria-label="Menu">
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
    <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("metas","barras","Metas e desempenho")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
    <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
-   <button data-acao="erradas" ${errs?"":"disabled"} style="${errs?"":"opacity:.5"}">${ic("refazer")}<span>Refazer questões erradas${errs?` (${errs})`:""}</span></button>
+   ${it("caderno","caderno","Caderno de erros"+(cadPendentes()?` <span class="badge">${cadPendentes()}</span>`:""))}
    <hr>${it("config","eng","Configurações")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
 /* ---------- OAB ---------- */
@@ -4074,7 +4257,7 @@ function comecar(key){const s=sim(key);if(!s||!s.qids.length)return;
 
 /* ---------- prova ---------- */
 function responderQ(o){const s=sessao,id=s.qids[idx];if(!s.corrFinal&&s.resp[id]!==undefined)return;
-  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
+  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0,o);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
 function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   if(!q){return topo("Questão indisponível","",{voltarAcao:"pausar"})+`<main class="wrap">${vazio("carimbo","Questão retirada do banco","Ela foi removida depois de uma revisão. Passe para a próxima: a sua nota considera só as questões disponíveis.")}</main>`+navQuiz()}
   const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
@@ -4095,7 +4278,7 @@ function navQuiz(){const s=sessao;return `<nav class="nav"><div class="nav-in">
   <button data-acao="folha">${ic("grade")}<span>Finalizar</span></button>
   <button data-acao="prox" ${idx===s.qids.length-1?"disabled":""}>${ic("prox")}<span>Próximo</span></button></div></nav>`}
 function comentario(q,r,ord){const ok=r===0;
-  return `<div class="coment ${ok?"":"err"}"><h3>${r===undefined?"Em branco":ok?"Resposta correta":"Resposta incorreta"} · gabarito ${LETRAS[ord.indexOf(0)]}</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${porQue(q,r,ord)}${botaoRep(q)}</div>`}
+  return `<div class="coment ${ok?"":"err"}"><h3>${r===undefined?"Em branco":ok?"Resposta correta":"Resposta incorreta"} · gabarito ${LETRAS[ord.indexOf(0)]}</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${porQue(q,r,ord)}${ok?"":`<p class="cad-foi">${ic("caderno")}<span>Guardada no seu <b>Caderno de erros</b>, com a explicação, para refazer depois.</span></p>`}${botaoRep(q)}</div>`}
 function telaFolha(){const s=sessao,r=res(s),feitas=s.qids.length-r.br;
   return `<div class="folha-camada" data-acao="fechar-folha"><div class="folha wrap" role="dialog" aria-label="Questões do simulado">
    <h2>${esc(s.titulo)}</h2><p class="nota">${esc(s.sub)} · ${feitas} de ${s.qids.length} respondidas</p>
@@ -4110,7 +4293,7 @@ function iniciarRelogio(){if(!sessao||tick)return;ultimoTick=Date.now();
       if(rest<=0){sessao.tempo=sessao.limite;finalizar()}}else el.textContent=mmss(sessao.tempo)},1000)}
 function pararRelogio(){if(tick){clearInterval(tick);tick=null;if(sessao){sessao.tempo+=(Date.now()-ultimoTick)/1000;ultimoTick=Date.now()}}}
 function finalizar(){pararRelogio();const a=sessao;a.status="concluido";a.fim=Date.now();
-  a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0)});
+  a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0,r)});
   sessao=null;folha=false;confirmar=null;salvar();
   const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id};render();
   {const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
@@ -4125,7 +4308,7 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
   return topo("Resultado",a.titulo+" · "+(a.sub||""),{})+
   `<main class="wrap"><div class="placar ${st}"><div class="pct">${r.pct}%</div><div><h2>${esc(a.titulo)}: ${ROTULO[st]}</h2><p>${r.ok} certas · ${r.er} erradas · ${r.br} em branco · ${dur(a.tempo)}</p><p>Na 1ª fase, a aprovação exige 40 acertos em 80 (50%).</p></div></div>
   ${st==="perf"?versoCard(versoDaChave(a.key),"Gabarito perfeito · uma palavra para você"):""}
-  <div class="botoes"><button class="botao cheio" data-acao="refazer-sim" data-key="${a.key}">Refazer simulado</button>${temErr?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button>`:""}</div>
+  <div class="botoes"><button class="botao cheio" data-acao="refazer-sim" data-key="${a.key}">Refazer simulado</button>${temErr?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button><button class="botao linha" data-cad="abrir">${ic("caderno")} Abrir o caderno de erros</button>`:""}</div>
   ${Object.keys(pm).length>1?`<div class="secao" role="heading" aria-level="2">Desempenho por matéria</div><div class="desemp">${Object.keys(pm).map(m=>{const x=pm[m];const p=Math.round(x.o*100/x.n);
     return `<div class="linha">${tile(META[m].cor,META[m].ic)}<div><div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${x.o}/${x.n}</b></div><div class="trilho"><i class="f-ok" style="width:${p}%"></i><i class="f-er" style="width:${100-p}%"></i></div></div><span></span></div>`}).join("")}</div>`:""}
   <div class="secao" role="heading" aria-level="2">Correção comentada</div>
@@ -4164,6 +4347,7 @@ function telaSobre(){const nO=OAB.reduce((s,m)=>s+(porM[m]||[]).length,0);
   `<main class="wrap">${tourCta()}<div class="dica"><p style="margin:0 0 8px"><b>Simulados OAB.</b> São 30 provas fixas de 80 questões, com a mesma distribuição de matérias da 1ª fase: 8 de Ética, 6 de Civil, Processo Civil, Constitucional, Penal e Processo Penal, e assim por diante. Você tem 5 horas e precisa de 50% para aprovação.</p>
   <p style="margin:0 0 8px"><b>Banco atual.</b> ${nO} questões das matérias da OAB e ${QS.length-nO} de disciplinas da faculdade. Como 30 provas de 80 somam 2.400 posições, cada questão aparece, em média, em ${String(Math.round(2400/nO*10)/10).replace(".",",")} simulados diferentes. Conforme o banco crescer, os simulados ficam mais variados automaticamente.</p>
   <p style="margin:0 0 8px"><b>Questões.</b> São inéditas, no estilo da FGV, sobre os temas que mais caem. Cada uma traz comentário, o dispositivo legal ou precedente e a explicação de por que cada alternativa errada está errada. Se desconfiar de algum gabarito, use <b>Reportar erro nesta questão</b>.</p>
+  <p style="margin:0 0 8px"><b>Caderno de erros.</b> Toda questão que você erra vai para o caderno, com a sua resposta, o gabarito e a explicação de cada alternativa. Marque por que errou, anote o que aprendeu e refaça: depois de 3 acertos seguidos ela fica dominada.</p>
   <p style="margin:0 0 8px"><b>Lei seca.</b> ${LS.length} dispositivos mais cobrados, com o texto literal conferido no Planalto, para treinar em dois formatos: complete o artigo e certo ou errado.</p>
   <p style="margin:0"><b>A cada tentativa</b> a ordem das alternativas muda. Nos simulados por matéria e da faculdade, a ordem das questões também muda.</p></div>
   <div class="secao" role="heading" aria-level="2">Banco por matéria</div><div class="desemp">${OAB.concat(["ied","tge","soc","psc","crim","masc"]).map(m=>`<div class="linha">${tile(META[m].cor,META[m].ic)}<span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${(porM[m]||[]).length}</b></div>`).join("")}</div>
@@ -4177,7 +4361,7 @@ const TOUR_V=1;
 let tourI=-1,tourDir=1,tourD={};
 const TOUR_Q={p:"Na 1ª fase do Exame de Ordem, quantas questões você precisa acertar para ser aprovado?",alts:["30 das 80 questões","40 das 80 questões","48 das 80 questões","56 das 80 questões"],c:1,
  com:"A aprovação na 1ª fase pede metade da prova: 40 acertos em 80 questões. Os simulados OAB do app seguem a mesma regra, com 5 horas de prova."};
-const TOUR_MENU=[["alvo","Hoje","O plano do dia, montado para o seu momento: questões, cartões e leitura."],["livro","Faculdade","Apostilas, resumos, cartões e questões do 1º ao 10º período."],["carro","Simulados OAB","30 provas de 80 questões, com a mesma distribuição de matérias da 1ª fase e cronômetro."],["grade","Por matéria","Simulados de uma matéria só, para atacar o ponto fraco."],["recibo","Lei seca","Os artigos mais cobrados, para completar o texto e julgar certo ou errado."],["lupa","Buscar em tudo","Ache qualquer tema nas apostilas, nas questões e nos cartões."],["marcador","Favoritos","Guarde questões e temas e escreva suas próprias anotações."],["refazer","Refazer erradas","As questões que você errou voltam para revisão, até você acertar."]];
+const TOUR_MENU=[["alvo","Hoje","O plano do dia, montado para o seu momento: questões, cartões e leitura."],["livro","Faculdade","Apostilas, resumos, cartões e questões do 1º ao 10º período."],["carro","Simulados OAB","30 provas de 80 questões, com a mesma distribuição de matérias da 1ª fase e cronômetro."],["grade","Por matéria","Simulados de uma matéria só, para atacar o ponto fraco."],["recibo","Lei seca","Os artigos mais cobrados, para completar o texto e julgar certo ou errado."],["lupa","Buscar em tudo","Ache qualquer tema nas apostilas, nas questões e nos cartões."],["marcador","Favoritos","Guarde questões e temas e escreva suas próprias anotações."],["caderno","Caderno de erros","Cada questão que você erra fica guardada com a explicação, para refazer até dominar."]];
 const TOUR=[
  {ilu:"estudo",cor:"var(--nv2)",tit:"Bem-vindo ao Facul Lab",txt:()=>"Em um minuto você conhece tudo o que o app faz. Os exemplos de cada passo funcionam de verdade: toque neles.",demo:tourDemoOi},
  {ilu:"capelo",cor:"var(--nv6)",tit:"Em que momento você está?",txt:()=>"Escolha seu período. A tela Hoje usa essa escolha para sugerir as matérias, os cartões e os simulados certos para você.",demo:tourDemoPer},
@@ -4315,7 +4499,7 @@ document.addEventListener("click",e=>{
     case "ir-ancora":{const el=document.getElementById(b.dataset.id);if(el)try{el.scrollIntoView({block:"start"})}catch(e){};break}
     case "fav":{const k=b.dataset.key;S.fav=S.fav||{};if(S.fav[k])delete S.fav[k];else S.fav[k]=Date.now();salvar();b.classList.toggle("on",!!S.fav[k]);b.setAttribute("aria-pressed",String(!!S.fav[k]));b.querySelector("span").textContent=S.fav[k]?"Tema favoritado":"Favoritar este tema";anunciar(S.fav[k]?"Tema adicionado aos favoritos":"Tema removido dos favoritos");break}
     case "abrir-tema":ir({tela:"ler",d:b.dataset.d,pg:+b.dataset.k,q:b.dataset.q||null,pagina:true});break;
-    case "estudar":{const q=QMAP[b.dataset.q];if(!q)break;b.disabled=true;const tx=b.innerHTML;b.textContent="Procurando o tema…";temaDaQuestao(q).then(r=>{if(r&&(rota.tela==="res"||rota.tela==="busca"))ir({tela:"ler",d:r.d,pg:r.k,pagina:true});else{b.disabled=false;b.innerHTML=r?tx:"Tema não encontrado nas apostilas"}});break}
+    case "estudar":{const q=QMAP[b.dataset.q];if(!q)break;b.disabled=true;const tx=b.innerHTML;b.textContent="Procurando o tema…";temaDaQuestao(q).then(r=>{if(r&&(rota.tela==="res"||rota.tela==="busca"||rota.tela==="caderno"))ir({tela:"ler",d:r.d,pg:r.k,pagina:true});else{b.disabled=false;b.innerHTML=r?tx:"Tema não encontrado nas apostilas"}});break}
     case "cards-per":rota.p=+b.dataset.p;rota.manterScroll=true;render();break;
     case "cards-disc":{const d=b.dataset.d;iniciarDeck([d],15,"Cartões · "+nomeCurto(infoDisc(d).nome));break}
     case "cards-venc":{const ds=[...new Set(Object.keys(S.cards||{}).filter(id=>S.cards[id].due<=Date.now()).map(id=>id.split(":")[0]))].filter(d=>DISC[d]);iniciarDeck(ds,0,"Revisão de hoje");break}
@@ -4768,6 +4952,159 @@ function ovoEnfeita(){if(rota.tela!=="hoje")return;const hero=document.querySele
  if(new Date().getHours()<5)hero.insertAdjacentHTML("beforeend",`<button class="ovo-coruja" data-ovo="coruja" aria-label="Uma coruja apareceu. Toque nela">${OVO_CORUJA}</button>`);
  const seq=sequencia(),cv=document.querySelector(".hoje .chama-viva");if(cv&&OVO_MARCOS.includes(seq))cv.classList.add("ovo-marco")}
 try{new MutationObserver(ovoEnfeita).observe($("#app"),{childList:true})}catch(e){}
+
+/* ---------- caderno de erros ----------
+   Cada questão errada vai para S.cad ({id: {n: vezes que errou, r: alternativa marcada no último erro (br: deixou em branco),
+   t0/t: primeiro e último erro, s: acertos seguidos depois do erro, ta: último acerto, mot: por que errou, nota: anotação, fora: tirada do caderno}}).
+   O registro acontece em registrar(). Situação: "refazer" (a última resposta foi errada), "recuperada" (acertou depois de errar)
+   e "dominada" (3 acertos seguidos). A revisão espaçada (S.qrev) continua à parte e aparece aqui como atalho.
+   Segredo "Errar é humano": 5 toques rápidos na ilustração do caderno. */
+P.caderno='<path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6z"/><path d="M3 7h3M3 12h3M3 17h3M6 3v18"/><path d="M10.5 8.5l4 4M14.5 8.5l-4 4"/>';
+ILU.caderno=`<path d="M60 34h112a8 8 0 0 1 8 8v86a8 8 0 0 1-8 8H60z" class="f-t"/><rect x="66" y="26" width="108" height="104" rx="6" class="f-w s-t" stroke-width="2"/>`+
+ [38,52,66,80,94,108,122].map(y=>`<circle cx="66" cy="${y}" r="4.5" class="f-s s-t" stroke-width="2"/>`).join("")+
+ `<path d="M84 48h76M84 66h76M84 84h76M84 102h76M84 118h46" class="s-l" stroke-width="2.5" stroke-linecap="round"/>
+ <path d="M84 39h40M84 57h56M84 75h30M84 93h48" class="s-t" stroke-width="3" stroke-linecap="round" opacity=".28"/>
+ <path class="cad-ix" d="M146 34l10 10M156 34l-10 10"/><ellipse class="cad-io" cx="104" cy="57" rx="24" ry="8"/><path class="cad-iv" d="M146 88l5 6 10-12"/>
+ <g class="cad-lapis"><rect x="190" y="24" width="15" height="78" rx="2" class="f-b"/><rect x="190" y="18" width="15" height="9" class="f-s s-t" stroke-width="1.5"/><path class="cad-borr" d="M190 18v-6a4 4 0 0 1 4-4h7a4 4 0 0 1 4 4v6z"/><path d="M190 102l7.5 18 7.5-18z" class="f-w s-t" stroke-width="1.5"/><path d="M195.5 115.5l2 4.5 2-4.5z" class="f-t"/></g>`;
+const CAD_MOT=[["nao","Não sabia o conteúdo","livro","Volte ao tema na apostila e refaça a questão no mesmo dia: a lembrança fresca fixa melhor."],
+ ["confundi","Confundi institutos","setas","Monte um quadro com as diferenças entre os dois institutos. Diferença bem vista não se confunde mais."],
+ ["pegadinha","Caí na pegadinha","exc","Sublinhe o comando (correta, incorreta, exceto) e desconfie de palavras absolutas como sempre, nunca e somente."],
+ ["memoria","Esqueci prazo ou número","relogio","Prazo e número pedem repetição: transforme em cartão de memorização e revise em dias alternados."],
+ ["chute","Chutei","alvo","Chute certo não ensina. Leia a explicação de todas as alternativas, não só da certa."]];
+const CAD_ST={refazer:["Para refazer","er"],recuperada:["Recuperada","rc"],dominada:["Dominada","ok"]};
+const CAD_DOMINA=3;
+let cadF={st:"refazer",m:"",ord:"rec",n:20},cadAberto=null,cadEntra=null,cadRef=null,cadFx=null,cadTirada=null;
+function cadMigra(){if(S.cad)return;const c={};
+ S.hist.slice().sort((a,b)=>(a.inicio||0)-(b.inicio||0)).forEach(a=>(a.qids||[]).forEach(id=>{const r=a.resp&&a.resp[id];if(r===undefined)return;const t=a.fim||a.inicio||Date.now();
+  if(r===0){if(c[id]){c[id].s++;c[id].ta=t}}else{const x=c[id]||{n:0,t0:t};x.n++;x.t=t;x.s=0;x.r=r;c[id]=x}}));
+ Object.keys(S.stats||{}).forEach(id=>{const s=S.stats[id];if(s.u===0&&!c[id])c[id]={n:Math.max(1,(s.n||1)-(s.ok||0)),t0:s.t||Date.now(),t:s.t||Date.now(),s:0,br:1};else if(s.u===1&&c[id]&&!c[id].s)c[id].s=1});
+ Object.keys(c).forEach(id=>{if(!QMAP[id])delete c[id]});S.cad=c}
+function cadAnota(id,c,o){cadMigra();const e=S.cad[id],t=Date.now();
+ if(!c){const x=e||{n:0,t0:t};x.n++;x.t=t;x.s=0;if(o>0){x.r=o;delete x.br}else{delete x.r;x.br=1}delete x.fora;S.cad[id]=x}
+ else if(e){e.s=(e.s||0)+1;e.ta=t}}
+function cadIds(){cadMigra();return Object.keys(S.cad).filter(id=>QMAP[id]&&!S.cad[id].fora)}
+function cadEst(id){const e=S.cad[id],st=S.stats[id];const u=st?st.u:(e.s?1:0);return !u?"refazer":(e.s||0)>=CAD_DOMINA?"dominada":"recuperada"}
+function cadPendentes(){return cadIds().filter(id=>cadEst(id)==="refazer").length}
+/* a questão aberta continua na lista mesmo quando muda de situação (ex.: acertou ao refazer) */
+function cadLista(st,m,ord,fixo){const l=cadIds().filter(id=>id===fixo||(st==="todas"||cadEst(id)===st)&&(!m||QMAP[id].m===m));
+ return ord==="mais"?l.sort((a,b)=>S.cad[b].n-S.cad[a].n||S.cad[b].t-S.cad[a].t):l.sort((a,b)=>S.cad[b].t-S.cad[a].t)}
+function cadSim(key,p){const st=p[1]||"refazer",m=decodeURIComponent(p[2]||"");
+ return {key,tipo:"err",titulo:"Caderno de erros",sub:(st==="todas"?"Todas as questões":CAD_ST[st][0]+(st==="refazer"?"":"s"))+(m&&META[m]?" · "+META[m].nome:""),qids:cadLista(st,m,"rec"),limite:0}}
+function cadQuando(t){const d0=new Date();d0.setHours(0,0,0,0);const d=Math.floor((d0.getTime()-new Date(t).setHours(0,0,0,0))/864e5);
+ return d<=0?"hoje":d===1?"ontem":d<7?`há ${d} dias`:d<30?`há ${Math.floor(d/7)} semana${d<14?"":"s"}`:new Intl.DateTimeFormat("pt-BR",{day:"numeric",month:"short"}).format(new Date(t)).replace(" de ","/").replace(".","")}
+/* ordem fixa das alternativas para cada questão na explicação (o gabarito não fica sempre na letra A) */
+function cadOrd(id){let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const a=[0,1,2,3];for(let i=3;i>0;i--){h=(h*1103515245+12345)>>>0;const j=h%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+function telaCaderno(){const ids=cadIds(),novo=!rota.manterScroll;const cnt={refazer:0,recuperada:0,dominada:0},porM={},porMot={};
+ ids.forEach(id=>{const st=cadEst(id);cnt[st]++;const m=QMAP[id].m;if(st!=="dominada")porM[m]=(porM[m]||0)+1;const mo=S.cad[id].mot;if(mo)porMot[mo]=(porMot[mo]||0)+1});
+ const tot=ids.length;
+ if(!tot)return topo("Caderno de erros","Onde cada erro vira lição",{menu:true})+`<main class="wrap cad">${vazio("caderno","Seu caderno está em branco","Quando você errar uma questão, ela vem para cá com a explicação de cada alternativa e um botão para refazer. Errar no treino é o jeito mais barato de acertar na prova.",`<button class="botao cheio" data-acao="ir-raiz" data-tela="hoje">Ver o plano de hoje</button>`,"var(--erro)")}</main>`;
+ if(cadF.st!=="todas"&&!cnt[cadF.st]&&!cadAberto)cadF.st=cnt.refazer?"refazer":"todas";
+ const pct=k=>tot?Math.round(cnt[k]*100/tot):0,rec=tot?Math.round((cnt.recuperada+cnt.dominada)*100/tot):0;
+ const num=(k,l)=>`<button class="cad-n ${CAD_ST[k][1]}" data-cad="st" data-v="${k}" aria-pressed="${cadF.st===k}"><b${novo?` data-n="${cnt[k]}"`:""}>${cnt[k]}</b><span>${l}</span></button>`;
+ const hero=`<section class="cad-hero${novo?" novo":""}"><div class="cad-hero-txt"><p class="cad-kicker">${ic("caderno")} Errar faz parte</p><h2>Cada erro vira lição</h2><p>${cnt.refazer?`Refaça as questões até acertar ${CAD_DOMINA} vezes seguidas: aí ela está dominada.`:"Nenhuma questão pendente. Continue revisando as recuperadas até dominar."}</p></div>
+  <div class="cad-hero-ilu" data-cad="ilu" aria-hidden="true">${ilustra("caderno","var(--erro)")}</div>
+  <div class="cad-placar">${num("refazer","para refazer")}${num("recuperada","recuperadas")}${num("dominada","dominadas")}</div>
+  <div class="cad-trilha" role="img" aria-label="${rec}% do caderno recuperado"><i class="er" style="width:${pct("refazer")}%"></i><i class="rc" style="width:${pct("recuperada")}%"></i><i class="ok" style="width:${pct("dominada")}%"></i></div>
+  <p class="cad-leg"><b>${rec}%</b> do caderno já foi recuperado${rec>=100?". Caderno limpo!":rec>=50?". Mais da metade!":""}</p></section>`;
+ const eh=errosHoje().length;
+ const revisao=eh?`<button class="cad-rev" data-acao="erradas-hoje">${tile("var(--erro)","calendario")}<span><b>Revisão espaçada de hoje: ${eh} ${eh===1?"questão":"questões"}</b><small>Chegaram no dia de revisar. Cada acerto adia a próxima revisão.</small></span>${ic("prox")}</button>`:"";
+ const mots=Object.keys(porMot).length;const topMot=CAD_MOT.slice().sort((a,b)=>(porMot[b[0]]||0)-(porMot[a[0]]||0))[0];const maxMot=Math.max(1,...Object.values(porMot));
+ const porque=`<div class="secao" role="heading" aria-level="2">Por que você erra</div>`+(mots?`<div class="cad-bloco"><div class="cad-mots">${CAD_MOT.filter(x=>porMot[x[0]]).map(x=>`<div class="cad-mot${x===topMot?" top":""}"><span class="cad-mot-ic">${ic(x[2])}</span><span class="cad-mot-l"><span>${x[1]}</span><span class="cad-barra"><i style="--w:${Math.round(porMot[x[0]]*100/maxMot)}%"></i></span></span><b>${porMot[x[0]]}</b></div>`).join("")}</div>
+  <p class="cad-dica">${ic("lampada")}<span><b>Para o seu erro mais comum:</b> ${topMot[3]}</span></p></div>`
+  :`<div class="dica"><p style="margin:0">Abra uma questão e marque <b>por que você errou</b>: não sabia, confundiu, caiu na pegadinha, esqueceu o número ou chutou. O caderno mostra aqui o seu padrão de erro e uma dica para cada um.</p></div>`);
+ const ms=Object.keys(porM).sort((a,b)=>porM[b]-porM[a]),maxM=porM[ms[0]]||1;
+ const onde=ms.length>1?`<div class="secao" role="heading" aria-level="2">Onde você mais erra</div><div class="cad-bloco cad-onde">${ms.slice(0,5).map(m=>`<button class="cad-mat" data-cad="m" data-v="${m}" aria-pressed="${cadF.m===m}">${tile(META[m].cor,META[m].ic)}<span class="cad-mot-l"><span>${esc(META[m].nome)}</span><span class="cad-barra"><i style="--w:${Math.round(porM[m]*100/maxM)}%;--c:${META[m].cor}"></i></span></span><b>${porM[m]}</b></button>`).join("")}</div>`:"";
+ const lista=cadLista(cadF.st,cadF.m,cadF.ord,cadAberto);const mats=[...new Set(cadLista(cadF.st,"","rec").map(id=>QMAP[id].m))];
+ const seg=`<div class="cad-seg" role="group" aria-label="Situação">${["refazer","recuperada","dominada","todas"].map(k=>`<button data-cad="st" data-v="${k}" aria-pressed="${cadF.st===k}">${k==="todas"?"Todas":CAD_ST[k][0]+(k==="refazer"?"":"s")} <small>${k==="todas"?tot:cnt[k]}</small></button>`).join("")}</div>`;
+ const chips=mats.length>1||cadF.m?`<div class="cad-chips" role="group" aria-label="Matéria"><button data-cad="m" data-v="" aria-pressed="${!cadF.m}">Todas as matérias</button>${mats.map(m=>`<button data-cad="m" data-v="${m}" aria-pressed="${cadF.m===m}"><i style="background:${META[m].cor}"></i>${esc(nomeCurto(META[m].nome))}</button>`).join("")}</div>`:"";
+ const ordem=`<div class="cad-ordem"><span>${lista.length} ${lista.length===1?"questão":"questões"}</span><span class="cad-ord-bts"><button data-cad="ord" data-v="rec" aria-pressed="${cadF.ord==="rec"}">Recentes</button><button data-cad="ord" data-v="mais" aria-pressed="${cadF.ord==="mais"}">Mais erradas</button></span></div>`;
+ const treinar=lista.length>1?`<button class="botao cheio cad-treinar" data-cad="treinar">${ic("refazer")} Refazer ${lista.length===1?"esta questão":`as ${lista.length} em sequência`}</button>`:"";
+ const desf=cadTirada?`<div class="cad-desfaz" role="status"><span>Questão tirada do caderno.</span><button data-cad="desfazer">Desfazer</button></div>`:"";
+ const cards=lista.slice(0,cadF.n).map((id,i)=>cadCard(id,i,novo)).join("");
+ const out=topo("Caderno de erros",`${tot} ${tot===1?"questão":"questões"} · ${cnt.refazer} para refazer`,{menu:true})+
+ `<main class="wrap cad">${hero}${revisao}${porque}${onde}<div class="secao" role="heading" aria-level="2">Suas questões</div>${seg}${chips}${ordem}${treinar}${desf}
+ <div class="cad-lista">${cards||`<p class="cad-nada">${ic("ok")} Nada aqui com esse filtro.</p>`}</div>
+ ${lista.length>cadF.n?`<button class="botao linha cad-mais" data-cad="mais">Mostrar mais ${Math.min(20,lista.length-cadF.n)}</button>`:""}</main>`;
+ cadEntra=null;cadFx=null;return out}
+function cadCard(id,i,novo){const q=QMAP[id],e=S.cad[id],st=cadEst(id),M=META[q.m],ab=cadAberto===id;const mo=CAD_MOT.find(x=>x[0]===e.mot);
+ const fx=cadFx&&cadFx.id===id?(cadFx.ok?" fx-ok":" fx-er"):"";
+ return `<article class="cad-q st-${CAD_ST[st][1]}${ab?" aberto":""}${novo&&i<8?" entra":""}${fx}" style="--i:${i}" data-id="${id}">
+ <button class="cad-q-cab" data-cad="abre" data-id="${id}" aria-expanded="${ab}">${tile(M.cor,M.ic)}<span class="cad-q-txt"><span class="cad-q-meta"><b>${esc(M.nome)}</b> · ${esc(q.a)}</span><span class="cad-q-enun">${esc(q.q)}</span>
+  <span class="cad-tags"><span class="cad-tag st">${CAD_ST[st][0]}${st==="recuperada"?` ${e.s||1}/${CAD_DOMINA}`:""}</span><span class="cad-tag">${ic("x")}Errou ${e.n}×</span><span class="cad-tag">${cadQuando(e.t)}</span>${mo?`<span class="cad-tag mot">${ic(mo[2])}${mo[1]}</span>`:""}${e.nota?`<span class="cad-tag">${ic("nota")}Anotação</span>`:""}</span></span>
+  <span class="cad-seta">${ic("baixo")}</span></button>
+ ${ab?(cadRef&&cadRef.id===id?cadRefaz(id):cadCorpo(id)):""}</article>`}
+function cadAlts(q,ord,r,mostra,clicavel){const X=explQ(q);
+ return `<div class="alts cad-alts" role="${clicavel?"radiogroup":"list"}" aria-label="Alternativas">${ord.map((oi,p)=>{const c=mostra?(oi===0?"certa":oi===r?"errada":""):"";
+  const tag=mostra?(oi===0?`<span class="cad-gab">${ic("ok")}gabarito</span>`:oi===r?`<span class="cad-sua">${ic("x")}sua resposta</span>`:""):"";
+  const px=mostra&&oi!==0&&X?`<small class="cad-px">${esc(X[oi-1])}</small>`:"";
+  return clicavel?`<button class="alt" role="radio" aria-checked="false" data-cad="resp" data-o="${oi}"><span class="letra">${LETRAS[p]}</span><span>${esc(q.o[oi])}</span></button>`
+   :`<div class="alt ${c}" role="listitem"><span class="letra">${LETRAS[p]}</span><span>${esc(q.o[oi])}${tag}${px}</span></div>`}).join("")}</div>`}
+function cadCorpo(id){const q=QMAP[id],e=S.cad[id],st=cadEst(id);
+ return `<div class="cad-corpo${cadEntra===id?" entra":""}">
+ ${e.br?`<p class="cad-aviso">${ic("exc")} Da última vez você deixou esta questão em branco.</p>`:""}
+ ${cadAlts(q,cadOrd(id),e.br?undefined:e.r,true,false)}
+ <div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>
+ <div class="cad-pq"><p class="cad-pq-t">Por que eu errei?</p><div class="cad-pq-bts">${CAD_MOT.map(x=>`<button data-cad="mot" data-id="${id}" data-v="${x[0]}" aria-pressed="${e.mot===x[0]}">${ic(x[2])}${x[1]}</button>`).join("")}</div>
+ ${e.mot?`<p class="cad-dica">${ic("lampada")}<span>${CAD_MOT.find(x=>x[0]===e.mot)[3]}</span></p>`:""}</div>
+ <label class="campo cad-nota"><span>${ic("nota")} O que eu aprendi</span><textarea data-cad-nota="${id}" rows="2" placeholder="Com suas palavras. Ex.: na dúvida entre as duas, o prazo é de 15 dias úteis.">${esc(e.nota||"")}</textarea></label>
+ <div class="cad-acoes"><button class="botao cheio" data-cad="refazer" data-id="${id}">${ic("refazer")} ${st==="refazer"?"Refazer agora":"Refazer de novo"}</button>
+ <div class="cad-acoes-l">${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar na apostila</button>`:""}<button class="link-tema cad-tirar" data-cad="tirar" data-id="${id}">${ic("x")} Tirar do caderno</button></div></div></div>`}
+function cadRefaz(id){const q=QMAP[id],R=cadRef,e=S.cad[id],feito=R.r!==undefined;
+ let res="";if(feito){const ok=R.r===0,dom=ok&&(e.s||0)>=CAD_DOMINA;
+  res=`<div class="cad-res ${ok?"ok":"er"}">${ok?`<span class="cad-carimbo${dom?" dom":""}">${dom?"Dominada":"Recuperada"}</span>`:""}
+  <p><b>${ok?(dom?"Dominou! Essa não te pega mais.":"Acertou! Erro virou acerto."):"Ainda não foi dessa vez."}</b> ${ok?(dom?`Foram ${CAD_DOMINA} acertos seguidos.`:`Acerto ${e.s} de ${CAD_DOMINA} para dominar.`):"Tudo bem: veja a explicação e tente de novo mais tarde."}</p>
+  <div class="cad-pontos" aria-hidden="true">${Array.from({length:CAD_DOMINA},(_,k)=>`<i class="${k<(e.s||0)?"on":""}"></i>`).join("")}</div></div>`}
+ return `<div class="cad-corpo cad-refaz${cadEntra===id?" entra":""}"><p class="cad-aviso">${ic("relogio")} ${feito?"Resultado":"Sem olhar a explicação: qual é a certa?"}</p>
+ ${cadAlts(q,R.ord,R.r,feito,!feito)}${res}
+ ${feito&&R.r!==0?`<div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>`:""}
+ <div class="cad-acoes">${feito?`<button class="botao cheio" data-cad="fecha-ref" data-id="${id}">${R.r===0?"Voltar à explicação":"Ver explicação completa"}</button>${R.r!==0?`<button class="botao linha" data-cad="refazer" data-id="${id}">Tentar de novo</button>`:""}`
+  :`<button class="botao linha" data-cad="fecha-ref" data-id="${id}">Cancelar</button>`}</div></div>`}
+function cadRender(){rota.manterScroll=true;render()}
+function cadResponde(id,o){const R=cadRef;if(!R||R.id!==id||R.r!==undefined)return;R.r=o;const ok=o===0;
+ marcarDia("q");registrar(id,ok,o);salvar();cadFx={id,ok};cadRender();
+ const dom=ok&&(S.cad[id].s||0)>=CAD_DOMINA;efeitoResposta(ok);
+ if(ok){som(dom?"aprovado":"acerto");setTimeout(()=>som("carimbo"),animOn()?520:10)}else som("erro");
+ anunciar(ok?(dom?"Acertou e dominou a questão":"Acertou. Questão recuperada"):"Errou. A explicação está logo abaixo")}
+document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;const b=t.closest("[data-cad]");if(!b||b.disabled)return;
+ const a=b.dataset.cad,id=b.dataset.id;
+ switch(a){
+  case "st":cadF.st=b.dataset.v;cadF.n=20;cadAberto=null;cadRef=null;som("toque");cadRender();break;
+  case "m":cadF.m=cadF.m===b.dataset.v&&b.closest(".cad-onde")?"":b.dataset.v;cadF.n=20;cadAberto=null;cadRef=null;som("toque");cadRender();
+   if(b.closest(".cad-onde"))setTimeout(()=>{const s=document.querySelector(".cad-seg");if(s)s.scrollIntoView({behavior:animOn()?"smooth":"auto",block:"start"})},30);break;
+  case "ord":cadF.ord=b.dataset.v;som("toque");cadRender();break;
+  case "mais":cadF.n+=20;cadRender();break;
+  case "abre":{const k=b.closest(".cad-q").dataset.id;cadAberto=cadAberto===k?null:k;cadEntra=cadAberto;cadRef=null;som(cadAberto?"vira":"toque");cadRender();
+   if(cadAberto)setTimeout(()=>{const el=document.querySelector(`.cad-q[data-id="${cadAberto}"]`);if(el){const r=el.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)el.scrollIntoView({behavior:animOn()?"smooth":"auto",block:"start"})}},30);break}
+  case "mot":{const x=S.cad[id];if(!x)break;x.mot=x.mot===b.dataset.v?undefined:b.dataset.v;salvar();som("toque");cadRender();break}
+  case "refazer":cadRef={id,ord:emb([0,1,2,3])};cadAberto=id;cadEntra=id;som("vira");cadRender();break;
+  case "resp":cadResponde(b.closest(".cad-q").dataset.id,+b.dataset.o);break;
+  case "fecha-ref":cadRef=null;cadEntra=id;som("toque");cadRender();break;
+  case "tirar":{const x=S.cad[id];if(!x)break;x.fora=1;cadTirada=id;cadAberto=null;cadRef=null;salvar();som("tira");cadRender();anunciar("Questão tirada do caderno");break}
+  case "desfazer":if(cadTirada&&S.cad[cadTirada]){delete S.cad[cadTirada].fora;cadAberto=cadTirada;salvar();som("puxa")}cadTirada=null;cadRender();break;
+  case "treinar":{const p=cadF;ir({tela:"pre",key:`cad:${p.st}:${encodeURIComponent(p.m)}`});break}
+  case "abrir":ir({tela:"caderno"});break;
+  case "ilu":{const il=b.querySelector(".ilu");if(il&&animOn()){il.classList.remove("pula");void il.getBoundingClientRect();il.classList.add("pula")}som("toque");if(ovoConta("errare",5,2600))ovoErrare();break}
+ }});
+let tCadNota=null;
+document.addEventListener("input",e=>{const t=e.target;if(!t||!t.dataset||!t.dataset.cadNota)return;const x=S.cad&&S.cad[t.dataset.cadNota];if(!x)return;x.nota=t.value.slice(0,1000);clearTimeout(tCadNota);tCadNota=setTimeout(salvar,400)});
+/* números do placar contam ao abrir a tela; a mensagem de desfazer some quando o usuário sai do caderno */
+try{new MutationObserver(()=>{if(rota.tela!=="caderno"){cadTirada=null;return}document.querySelectorAll(".cad-hero.novo b[data-n]").forEach(contarBR)}).observe($("#app"),{childList:true})}catch(e){}
+
+/* segredo "Errar é humano": passar a borracha nos erros do caderno */
+const OE_LINHAS=["Prazo da apelação: 10 dias","Habeas corpus só para estrangeiro","A lei pode retroagir para punir","Contrato verbal nunca vale","Aos 16 anos o voto é obrigatório","Só a polícia prende em flagrante"];
+const OE_CERTO=["15 dias úteis (art. 1.003, § 5º, do CPC)","para qualquer pessoa (art. 5º, LXVIII, da CF)","só para beneficiar o réu (art. 5º, XL, da CF)","em regra vale (art. 107 do CC)","é facultativo até os 18 (art. 14, § 1º, II, c, da CF)","qualquer do povo pode prender (art. 301 do CPP)"];
+function ovoErrare(rever){ovoCena("errare","ovo-err",`<h2>Errar é humano</h2><p class="frase">Este caderno está cheio de erros. Passe a borracha: toque em cada linha errada para corrigir.</p>
+ <div class="oe-folha">${OE_LINHAS.map((l,i)=>`<button class="oe-linha" data-ovo="err-x" data-i="${i}" style="--i:${i}"><span class="oe-x" aria-hidden="true">${ic("x")}${ic("ok")}</span><span class="oe-t"><s>${esc(l)}</s><b>${esc(OE_CERTO[i])}</b></span><span class="oe-borr" aria-hidden="true"></span></button>`).join("")}</div>
+ <p class="oe-msg" aria-live="polite">Faltam ${OE_LINHAS.length} correções.</p>
+ <div class="oe-fim" hidden><p class="ovo-nota"><b>Errare humanum est, perseverare diabolicum.</b> Errar é humano; insistir no erro, não. A frase latina costuma ser atribuída a Sêneca. No Direito Penal o erro também tem nome: o <b>erro de tipo</b> (art. 20 do CP) e o <b>erro de proibição</b> (art. 21 do CP).</p></div>
+ ${ovoBotoes(`<button class="botao" data-ovo="err-de-novo">Sujar de novo</button>`)}`,{rever,titulo:"Errar é humano"})}
+document.addEventListener("click",e=>{const b=e.target&&e.target.closest&&e.target.closest('[data-ovo="err-x"],[data-ovo="err-de-novo"]');if(!b)return;const c=b.closest(".ovo-err");if(!c)return;
+ if(b.dataset.ovo==="err-de-novo"){c.querySelectorAll(".oe-linha").forEach(x=>{x.classList.remove("ok");x.disabled=false});c.querySelector(".oe-fim").hidden=true;c.querySelector(".oe-msg").textContent=`Faltam ${OE_LINHAS.length} correções.`;ovoSom("vira");return}
+ if(b.classList.contains("ok"))return;b.classList.add("ok");b.disabled=true;const f=OE_LINHAS.length-c.querySelectorAll(".oe-linha.ok").length;
+ c.querySelector(".oe-msg").textContent=f?`Faltam ${f} ${f===1?"correção":"correções"}.`:"Caderno passado a limpo!";ovoSom("tira");
+ if(!f){c.querySelector(".oe-fim").hidden=false;setTimeout(()=>{ovoConfete();ovoSom("gabarito")},350)}});
+OVOS.push({id:"errare",ic:"caderno",nome:"Errar é humano",dica:"No Caderno de erros, a ilustração do caderno esconde uma borracha. Toque nela várias vezes seguidas."});
+OVO_ABRE.errare=ovoErrare;
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
