@@ -2833,6 +2833,218 @@ html[data-anim="on"] .emb-ops .botao.errada{animation:om-treme .35s}
 html[data-anim="on"] .emb-palco.troca{animation:sem-pop .45s cubic-bezier(.3,1.5,.5,1)}
 @media (prefers-reduced-motion:reduce){.sem-card::after,.sem-banner::after{display:none}}
 </style>
+<style id="estilo-modo-prova">
+/* ---------- modo prova: capa, escolha da prova, contagem, barra de tempo, boletim e fiscal ---------- */
+.modo-prova,.mp-res{--mp:var(--toga);--mp-txt:var(--toga-txt)}
+@keyframes mp-pula{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+@keyframes mp-sobe{from{transform:translateY(10px);opacity:0}}
+@keyframes mp-gira{to{transform:rotate(360deg)}}
+@keyframes mp-x{from{stroke-dashoffset:10}to{stroke-dashoffset:0}}
+@keyframes mp-lapis{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(-6px,-3px) rotate(-3deg)}50%{transform:translate(-14px,2px) rotate(1deg)}75%{transform:translate(-8px,-2px) rotate(-2deg)}}
+@keyframes mp-bate{0%{transform:rotate(-14deg) scale(2.6);opacity:0}55%{transform:rotate(-14deg) scale(.92);opacity:1}75%{transform:rotate(-14deg) scale(1.05)}100%{transform:rotate(-14deg) scale(1);opacity:1}}
+@keyframes mp-treme{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@keyframes mp-pisca{50%{opacity:.35}}
+/* capa */
+.mp-hero{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:8px;align-items:center;margin-top:14px;padding:16px 16px 12px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);overflow:hidden;position:relative}
+.mp-hero b{display:block;font-family:var(--f-display);font-size:1.25rem;line-height:1.2}
+.mp-hero p{margin:6px 0 10px;color:var(--muted);font-size:.9rem;line-height:1.4}
+.mp-hero .ilu{width:150px;height:auto;display:block}
+.mp-selos{display:flex;flex-wrap:wrap;gap:6px}
+.mp-selos span{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--mp-txt)}
+.mp-selos .i{width:13px;height:13px}
+@media (max-width:420px){.mp-hero{grid-template-columns:minmax(0,1fr) 108px}.mp-hero .ilu{width:108px}}
+[data-estilo="premium"] .mp-hero{background:var(--grad);color:#fff;border:0;box-shadow:0 18px 36px -20px color-mix(in srgb,var(--p1) 80%,transparent)}
+[data-estilo="premium"] .mp-hero p{color:#ffffffd9}
+[data-estilo="premium"] .mp-selos span{background:#ffffff2e;color:#fff}
+[data-estilo="premium"] .mp-hero .ilu .p-mancha{fill:#ffffff24}
+html[data-anim="on"] .mp-hero .mp-x{stroke-dasharray:10;stroke-dashoffset:10;animation:mp-x .45s ease-out forwards;animation-delay:calc(.6s + var(--k)*.9s)}
+html[data-anim="on"] .mp-hero .mp-seg{transform-box:view-box;transform-origin:172px 62px;animation:mp-gira 6s steps(60) infinite}
+html[data-anim="on"] .mp-hero .mp-lapis{transform-box:view-box;transform-origin:150px 145px;animation:mp-lapis 3.6s ease-in-out infinite}
+/* escolha da prova */
+.mp-provas{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.mp-pv,.mp-disc{display:flex;align-items:center;gap:10px;text-align:left;color:inherit;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;min-height:56px;transition:border-color .15s,background-color .15s,transform .15s}
+.mp-pv>span:not(.tile){flex:1;min-width:0}.mp-pv b{display:block;font-size:.95rem}.mp-pv small{color:var(--muted);font-size:.78rem}
+.mp-pv-dias{font-style:normal;font-weight:800;font-size:.8rem;color:var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);padding:3px 8px;border-radius:999px;font-variant-numeric:tabular-nums}
+.mp-pv[aria-pressed="true"],.mp-disc[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 9%,var(--surface));box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 30%,transparent)}
+.mp-pv:active,.mp-disc:active{transform:scale(.98)}
+.mp-outra{margin-top:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:0 12px}
+.mp-outra summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 0;min-height:44px}
+.mp-outra summary::-webkit-details-marker{display:none}.mp-outra summary>.i{width:20px;height:20px;color:var(--mp-txt);flex:none}
+.mp-outra summary b{display:block;font-size:.95rem}.mp-outra summary small{color:var(--muted);font-size:.8rem}
+.mp-pers{margin-bottom:10px}.mp-pers button{min-width:44px;padding:8px 10px}
+.mp-discs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding-bottom:12px}
+.mp-disc{min-height:48px;padding:8px 10px;font-size:.88rem;font-weight:600}.mp-disc>span:not(.tile){min-width:0}.mp-pv .tile,.mp-disc .tile{flex:none}
+.mp-escolha{display:flex;align-items:center;gap:6px;margin-top:16px}
+/* configuração */
+.mp-cfg{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:var(--r);padding:16px;scroll-margin-top:80px}
+.mp-cfg-cab{display:flex;align-items:center;gap:12px}.mp-cfg-cab h2{margin:0;font-family:var(--f-display);font-size:1.15rem;line-height:1.2}.mp-cfg-cab small{color:var(--muted)}
+.mp-rot{margin:18px 0 8px;font-weight:700;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mp-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:var(--surface-2);padding:5px;border-radius:14px}
+.mp-seg button{border:0;background:transparent;color:inherit;border-radius:10px;padding:9px 6px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:background-color .2s,color .2s}
+.mp-seg b{font-size:.98rem}.mp-seg small{font-size:.7rem;color:var(--muted);line-height:1.2;text-align:center}
+.mp-seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 2px 8px -3px rgba(0,0,0,.25);color:var(--mp-txt)}
+.mp-seg button[aria-pressed="true"] small{color:inherit;opacity:.85}
+.mp-temas ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.mp-temas li{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 6px;font-size:.78rem;background:var(--surface-2);color:var(--muted);max-width:100%}
+.mp-temas li span{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;font-weight:800;font-size:.72rem;background:var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.mp-temas li.cai{background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--fg);padding-right:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-temas li.cai span{background:var(--c);color:#fff}
+.mp-temas .nota{margin:8px 0 0;font-size:.8rem}
+html[data-anim="on"] .mp-temas li.cai{animation:mp-sobe .35s ease-out both;animation-delay:calc(var(--i)*30ms)}
+.mp-tam button{flex:1 1 0;min-width:56px}.mp-tam button[disabled]{opacity:.4}
+.mp-ritmos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mp-ritmos button{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;background:var(--surface);color:inherit;border:1.5px solid var(--line);border-radius:14px;padding:10px 6px;transition:border-color .15s,background-color .15s}
+.mp-ritmos b{font-size:.88rem}.mp-ritmos small{font-size:.7rem;color:var(--muted);line-height:1.2}
+.mp-ritmos button[aria-pressed="true"]{border-color:var(--mp);background:color-mix(in srgb,var(--mp) 9%,var(--surface))}
+.mp-rit-ic{width:30px;height:30px;border-radius:50%;border:2.5px solid currentColor;position:relative;color:var(--mp-txt)}
+.mp-rit-ic i{position:absolute;left:50%;top:50%;width:2.5px;height:10px;margin:-10px 0 0 -1.25px;background:currentColor;border-radius:2px;transform-origin:50% 100%}
+html[data-anim="on"] .mp-ritmos button[aria-pressed="true"] .mp-rit-ic i{animation:mp-gira calc(var(--v)*1.2s) linear infinite}
+.mp-resumo{display:flex;align-items:center;gap:16px;margin-top:18px;padding:12px 14px;border-radius:16px;background:var(--surface-2)}
+.mp-dial{width:86px;height:86px;flex:none}
+.mp-dial-f{fill:var(--surface);stroke:var(--line);stroke-width:6}
+.mp-dial-v{fill:none;stroke:var(--mp);stroke-width:6;stroke-dasharray:100;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50px 50px;transition:stroke-dashoffset .7s cubic-bezier(.3,1.2,.4,1)}
+.mp-dial rect,.mp-dial circle:last-child{fill:var(--muted)}
+.mp-dial-p{stroke:var(--erro);stroke-width:2.6;stroke-linecap:round;transform-origin:50px 50px;transition:transform .7s cubic-bezier(.3,1.3,.4,1)}
+.mp-res-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mp-res-t b{font-family:var(--f-display);font-size:1.7rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.mp-res-t>span{font-size:.86rem;color:var(--muted)}
+.mp-min{display:inline-block}html[data-anim="on"] .mp-min.pula{animation:mp-pula .45s ease-out}
+.mp-regras{margin-top:14px;border-radius:12px;border:1px solid var(--line);padding:0 12px}
+.mp-regras summary{cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;min-height:44px}
+.mp-regras summary .i{width:18px;height:18px;color:var(--mp-txt)}
+.mp-regras ul{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}
+.mp-regras li{display:flex;gap:10px;font-size:.86rem;line-height:1.4;color:var(--muted)}.mp-regras li b{color:var(--fg)}
+.mp-regras li .i{width:18px;height:18px;flex:none;margin-top:1px;color:var(--mp-txt)}
+.mp-bts{margin-top:16px}.mp-vai{display:inline-flex;align-items:center;justify-content:center;gap:8px}.mp-vai .i{width:20px;height:20px}
+html[data-anim="on"] .mp-vai:not([disabled]) .i{animation:mp-treme .5s ease-in-out 1.2s 2}
+.mp-hist-nota{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;margin-left:auto;flex:none}
+.mp-hist-nota b{font-family:var(--f-display);font-size:1.15rem;font-variant-numeric:tabular-nums}.mp-hist-nota small{font-size:.7rem;color:var(--muted)}
+.mp-hist-nota.ok b{color:var(--ok)}.mp-hist-nota.ex b{color:var(--aviso)}.mp-hist-nota.rp b{color:var(--erro)}
+.mp-hist{display:flex;align-items:center;gap:12px}
+/* atalhos */
+.btn-mp{display:flex;align-items:center;gap:12px;width:100%;margin:10px 0 4px;padding:12px 14px;border-radius:14px;border:2px dashed var(--toga-borda);background:color-mix(in srgb,var(--toga) 5%,var(--surface));text-align:left;color:inherit}
+.btn-mp>span:nth-child(2){flex:1;min-width:0}.btn-mp b{display:block}.btn-mp small{color:var(--muted);font-size:.82rem}
+.btn-mp>.i{width:18px;height:18px;color:var(--muted);flex:none}
+.btn-mp-ic{position:relative;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--toga);color:var(--toga-fg);flex:none}
+.btn-mp-ic .i{width:24px;height:24px}
+.btn-mp-ic i{position:absolute;right:-3px;top:-3px;width:11px;height:11px;border-radius:50%;background:var(--erro);border:2px solid var(--surface)}
+html[data-anim="on"] .btn-mp-ic i{animation:mp-pisca 1.6s ease-in-out infinite}
+[data-estilo="premium"] .btn-mp{border-radius:20px;border-style:solid;border-width:1.5px;border-color:color-mix(in srgb,var(--p1) 35%,var(--line));background:var(--grad-suave)}
+[data-estilo="premium"] .btn-mp-ic{background:var(--grad);border-radius:14px}
+.pv-acoes .pv-mp{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--surface);color:var(--toga-txt);border:1.5px solid var(--toga-borda)}
+.pv-acoes .pv-mp .i{width:16px;height:16px}
+/* contagem regressiva */
+.mp-conta{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:ent-fade .2s ease-out;cursor:pointer}
+.mp-conta.sai{opacity:0;transition:opacity .25s}
+.mp-conta-in{position:relative;width:220px;height:220px;display:grid;place-items:center;text-align:center}
+.mp-conta-anel{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.mp-conta-anel circle{fill:none;stroke:var(--line);stroke-width:6}
+.mp-conta-anel .v{stroke:var(--toga);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:0;animation:mp-anel 3.4s linear forwards}
+@keyframes mp-anel{to{stroke-dashoffset:100}}
+@keyframes ent-fade{from{opacity:0}}
+.mp-conta-n{display:block;font-family:var(--f-display);font-weight:800;font-size:5.4rem;line-height:1;color:var(--toga-txt);font-variant-numeric:tabular-nums}
+.mp-conta-n.pula{animation:mp-pula .5s cubic-bezier(.2,1.4,.4,1)}
+.mp-conta small{position:absolute;bottom:52px;left:0;right:0;color:var(--muted);font-size:.85rem}
+.mp-conta.valendo .mp-conta-n{font-size:2.6rem;color:var(--ok)}
+[data-estilo="premium"] .mp-conta-anel .v{stroke:var(--p1)}
+/* durante a prova */
+.mp-tempo{height:5px;margin:8px 0 2px;border-radius:999px;background:#ffffff38;overflow:hidden}
+.mp-tempo i{display:block;height:100%;background:#fff;border-radius:inherit;transform-origin:left;transition:transform 1s linear,background-color .4s}
+.mp-tempo.pouco i{background:#ffd28a}
+html[data-anim="on"] .mp-tempo.pouco i{animation:mp-pisca 1s ease-in-out infinite}
+#mp-balao{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:55;display:flex;align-items:center;gap:8px;max-width:min(92vw,420px);padding:10px 14px;border-radius:14px;background:var(--fg);color:var(--bg);font-size:.88rem;font-weight:600;box-shadow:0 12px 28px -12px rgba(0,0,0,.5);animation:mp-sobe .3s ease-out;transition:opacity .4s,transform .4s}
+#mp-balao .i{width:18px;height:18px;flex:none}#mp-balao.sai{opacity:0;transform:translate(-50%,-8px)}
+/* resultado */
+.mp-boletim{position:relative;margin-top:14px;padding:18px 16px 16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);text-align:center;overflow:hidden;--st:var(--toga)}
+.mp-boletim.ok{--st:var(--ok)}.mp-boletim.ex{--st:var(--aviso)}.mp-boletim.rp{--st:var(--erro)}
+.mp-boletim::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--st)}
+.mp-esgotou{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;color:var(--erro);background:var(--erro-bg);padding:5px 10px;border-radius:999px;margin-bottom:6px}
+.mp-esgotou .i{width:15px;height:15px}
+.mp-gauge{width:min(100%,280px);display:block;margin:0 auto}
+.mp-gauge .g-f,.mp-gauge .g-v{fill:none;stroke-width:14;stroke-linecap:round}
+.mp-gauge .g-f{stroke:var(--surface-2)}
+.mp-gauge .g-v{stroke:var(--st);stroke-dasharray:100;stroke-dashoffset:calc(100 - var(--p))}
+.mp-gauge .g-m path{stroke:var(--muted);stroke-width:2.5;stroke-linecap:round}
+.mp-gauge text{font-size:9px;fill:var(--muted);text-anchor:middle;font-weight:700;font-family:var(--f-body)}
+.mp-gauge .g-agulha{transform-box:view-box;transform-origin:100px 104px;transform:rotate(var(--a))}
+.mp-gauge .g-agulha path{stroke:var(--fg);stroke-width:4;stroke-linecap:round}.mp-gauge .g-agulha circle{fill:var(--fg)}
+.mp-boletim.revela .g-v{animation:mp-gv 1.3s cubic-bezier(.3,1,.4,1) both}
+.mp-boletim.revela .g-agulha{animation:mp-ag 1.3s cubic-bezier(.3,1.25,.4,1) both}
+@keyframes mp-gv{from{stroke-dashoffset:100}}
+@keyframes mp-ag{from{transform:rotate(0deg)}}
+.mp-nota{margin-top:6px}
+.mp-nota small{display:block;color:var(--muted);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.mp-nota b{display:block;font-family:var(--f-display);font-size:2.9rem;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--st)}
+.mp-nota em{font-style:normal;font-size:1.05rem;color:var(--muted);font-weight:600}
+.mp-faixa{display:block;font-size:.82rem;color:var(--muted);margin-top:2px}
+.mp-carimbo{display:flex;justify-content:center;margin:12px 0 6px}
+.mp-carimbo span{display:inline-block;padding:6px 14px;border:3px solid var(--st);color:var(--st);border-radius:8px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;transform:rotate(-6deg);background:color-mix(in srgb,var(--st) 8%,transparent)}
+html[data-anim="on"] .mp-boletim.revela .mp-carimbo span{opacity:0}
+html[data-anim="on"] .mp-boletim.bateu .mp-carimbo span{animation:mp-bate2 .45s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes mp-bate2{0%{transform:rotate(-6deg) scale(2.4);opacity:0}60%{transform:rotate(-6deg) scale(.94);opacity:1}100%{transform:rotate(-6deg) scale(1);opacity:1}}
+.mp-st{margin:6px 0 0;font-size:.88rem;color:var(--muted);line-height:1.45}.mp-st b{color:var(--fg)}
+[data-estilo="premium"] .mp-boletim{border-radius:24px;box-shadow:var(--sombra)}
+.mp-bloco{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.mp-bloco h3{margin:0 0 8px;display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:1.02rem}
+.mp-bloco h3 .i{width:19px;height:19px;color:var(--toga-txt)}
+.mp-bloco .nota{margin:6px 0 0}
+.mp-temas-res{display:grid;gap:9px}
+.mp-tr{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center}
+.mp-tr-n{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--surface-2);font-weight:800;font-size:.78rem}
+.mp-tr-t{display:block;font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-tr-b{display:block;height:7px;border-radius:999px;background:var(--erro-bg);overflow:hidden;margin-top:4px}
+.mp-tr-b i{display:block;height:100%;border-radius:inherit;background:var(--ok)}.mp-tr-b i.ex{background:var(--aviso)}.mp-tr-b i.rp{background:var(--erro)}
+html[data-anim="on"] .mp-tr-b i{animation:mp-larg .8s cubic-bezier(.3,1,.4,1) both;animation-delay:calc(.2s + var(--i,0)*70ms)}
+.mp-tr{--i:0}@keyframes mp-larg{from{width:0}}
+.mp-tr b{font-variant-numeric:tabular-nums;font-size:.86rem}
+.mp-tr.fraco .mp-tr-n{background:var(--erro);color:#fff}
+.mp-revisar{border-color:var(--erro)}
+.mp-tbar{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.mp-tbar i{display:block;height:100%;background:var(--lacre);border-radius:inherit}
+html[data-anim="on"] .mp-tbar i{animation:mp-larg 1s cubic-bezier(.3,1,.4,1) both .3s}
+.mp-tempo-res p{margin:8px 0 0;font-size:.88rem}
+.mp-evo{display:flex;align-items:flex-end;gap:10px;height:130px;padding-top:6px}
+.mp-evo>div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;min-width:0}
+.mp-evo b{font-size:.78rem;font-variant-numeric:tabular-nums}
+.mp-evo i{display:block;width:100%;max-width:38px;height:var(--h);border-radius:8px 8px 4px 4px;background:var(--ok);opacity:.55}
+.mp-evo i.ex{background:var(--aviso)}.mp-evo i.rp{background:var(--erro)}
+.mp-evo .atual i{opacity:1;box-shadow:0 0 0 2px var(--surface),0 0 0 4px currentColor}.mp-evo .atual{color:var(--toga-txt)}
+.mp-evo small{font-size:.7rem;color:var(--muted)}
+html[data-anim="on"] .mp-evo i{animation:mp-alt .7s cubic-bezier(.3,1.2,.4,1) both;animation-delay:calc(var(--i)*90ms);transform-origin:bottom}
+@keyframes mp-alt{from{transform:scaleY(0)}}
+.mp-ese-regua{position:relative;height:16px;margin:30px 0 12px;border-radius:999px;background:var(--surface-2)}
+.mp-ese-regua i{position:absolute;top:0;bottom:0}
+.mp-ese-regua .a{left:0;background:var(--toga);border-radius:999px 0 0 999px}
+.mp-ese-regua .b{background:repeating-linear-gradient(45deg,var(--lacre),var(--lacre) 6px,color-mix(in srgb,var(--lacre) 70%,#fff) 6px,color-mix(in srgb,var(--lacre) 70%,#fff) 12px);transition:width .15s;max-width:100%}
+.mp-ese-regua .m{position:absolute;top:-22px;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:var(--muted)}
+.mp-ese-regua .m::after{content:"";position:absolute;left:50%;top:18px;width:2px;height:24px;margin-left:-1px;background:var(--fg);opacity:.5}
+.mp-ese-ctl{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4em;gap:10px;align-items:center;font-weight:700}
+.mp-ese-ctl input{width:100%;accent-color:var(--lacre);min-height:32px}
+.mp-ese-v{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-display);font-size:1.1rem}
+.mp-ese-res p{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0;padding:10px 12px;border-radius:12px;font-size:.9rem;line-height:1.4}
+.mp-ese-res p.ok{background:var(--ok-bg)}.mp-ese-res p.ex{background:color-mix(in srgb,var(--aviso) 16%,var(--surface))}.mp-ese-res p.rp{background:var(--erro-bg)}
+.mp-ese-ic{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.mp-ese-ic .i{width:15px;height:15px}
+.ok .mp-ese-ic{background:var(--ok)}.ex .mp-ese-ic{background:var(--aviso)}.rp .mp-ese-ic{background:var(--erro)}
+html[data-anim="on"] .mp-ese-res p.pula{animation:mp-pula .4s ease-out}
+/* segredo: o fiscal de prova */
+.of2-palco{margin:0 auto 6px;width:min(100%,260px)}
+.of2-svg{width:100%;display:block}
+.of2-mesa{fill:#a06a3d}.of2-papel{fill:#fff;stroke:#c9c2b8;stroke-width:1}.of2-papel2{fill:#fff6b8;stroke:#d8c460;stroke-width:1}.of2-linha{stroke:#9aa1ab;stroke-width:2;stroke-linecap:round;fill:none}
+.of2-corpo{fill:#2f4b7c}.of2-rosto{fill:#f2c49b}.of2-cabelo{fill:none;stroke:#5b3b26;stroke-width:9;stroke-linecap:round}
+.of2-oculos circle{fill:#ffffff99;stroke:#222;stroke-width:2}.of2-oculos path{stroke:#222;stroke-width:2}
+.of2-olhos circle{fill:#222}.of2-boca{fill:none;stroke:#7a3b2b;stroke-width:2.4;stroke-linecap:round}
+.of2-braco{stroke:#2f4b7c;stroke-width:9;stroke-linecap:round}.of2-apito rect{fill:#c0c6cf}.of2-som path{fill:none;stroke:var(--erro);stroke-width:3;stroke-linecap:round;opacity:0}
+html[data-anim="on"] .ovo-fiscal .of2-olhos{animation:of2-olha 2.4s ease-in-out infinite}
+@keyframes of2-olha{0%,100%{transform:translateX(0)}30%{transform:translateX(-4px)}60%{transform:translateX(4px)}}
+html[data-anim="on"] .ovo-fiscal .of2-fiscal{animation:mp-sobe .6s cubic-bezier(.2,1.3,.4,1) both}
+.of2-palco.pega .of2-cola{transform:translate(-30px,40px) rotate(-30deg);opacity:0;transition:transform .5s ease-in,opacity .5s ease-in .2s}
+.of2-palco.pega .of2-som path{opacity:1;transition:opacity .2s .5s}
+.of2-palco.pega .of2-olhos{animation:none!important;transform:translate(3px,2px)}
+html[data-anim="on"] .of2-palco.pega .of2-fiscal{animation:mp-treme .25s ease-in-out .5s 3}
+.of2-aviso{display:flex;align-items:center;justify-content:center;gap:6px;margin:10px 0 0;font-weight:700;font-size:.86rem;color:var(--erro)}
+.of2-aviso .i{width:16px;height:16px}
+</style>
 
 <div class="app" id="app"></div>
 <div id="aviso-vivo" class="sr" role="status" aria-live="polite"></div>
@@ -3736,7 +3948,7 @@ function cartaoProva(x,completo){const f=infoDisc(x.p.d);const urg=x.prox&&x.pro
    <div><span>Leitura da apostila</span><b>${x.temas?`${x.lidos} de ${x.temas} temas`:"—"}</b><i class="pv-bar lei"><i style="width:${x.temas?x.lidos*100/x.temas:0}%"></i></i></div></div>
    ${notasOn()&&situacaoNotas(x.p).est!=="vazio"?resultadoNotas({...x.p,id:x.p.id+"-m"}):""}
    ${x.datas.length>1?`<ol class="pv-datas">${x.datas.map(dd=>`<li class="${dd.n<0?"passou":dd.n===0?"hoje":""}"><b>${esc(dd.r||"Prova")}</b> ${dataCurta(dd.dt)} <small>${quandoTxt(dd.n)}</small></li>`).join("")}</ol>`:""}`:""}
-  ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:!alvo?"Descansa hoje no rodízio · treinar mesmo assim":`Hoje: ${alvo} ${alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}</div>`:""}
+  ${x.prox?`<div class="pv-acoes"><button class="botao cheio pv-ir" data-acao="${k?"abrir":"disc"}" ${k?`data-key="${k}"`:`data-d="${x.p.d}"`}>${ok?`${ic("ok")} Meta da prova feita · treinar mais`:!alvo?"Descansa hoje no rodízio · treinar mesmo assim":`Hoje: ${alvo} ${alvo===1?"questão":"questões"}${x.hoje?` (${x.hoje} feita${x.hoje>1?"s":""})`:""}`}</button>${completo?`<button class="botao pv-sec" data-acao="disc" data-d="${x.p.d}">Estudar a matéria</button>`:""}<button class="botao pv-sec pv-mp" data-mp="abrir" data-d="${x.p.d}" data-r="${mpRDaProva(x)}">${ic("relogio")} Modo prova${x.prox.r==="N1"||x.prox.r==="N2"?` da ${esc(x.prox.r)}`:""}</button></div>`:""}
  </article>`}
 function blocoProvasHoje(P){if(!avOn())return "";const L=P?P.L:provasAtivas();
  if(!L.length)return `<div class="secao" role="heading" aria-level="2">Suas provas</div><button class="card pv-vazio" data-acao="ir-raiz" data-tela="config">${tile("var(--lacre)","calendario")}<b>Cadastre suas provas da faculdade</b><small>Escolha a matéria e o dia de cada prova. O plano de hoje passa a se organizar por elas.</small></button>`;
@@ -4627,6 +4839,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   switch(rota.tela){
     case "oab":h=telaOab();break; case "materias":h=telaMaterias();break; case "materia":h=telaMateria();break;
     case "faculdade":h=telaFaculdade();break; case "disc":h=telaDisc();break; case "periodo":h=telaPeriodo();break; case "pre":h=telaPre();break;
+    case "mprova":h=telaModoProva();break;
     case "quiz":h=telaQuiz();break; case "res":h=telaRes();break; case "sobre":h=telaSobre();break; case "quem":h=telaQuem();break;
     case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "revisao":h=telaRevisao();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "backup":h=telaBackup();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "caderno":h=telaCaderno();break; case "ls-quiz":h=telaLsQuiz();break;
     case "foco":h=telaFoco();break;
@@ -4737,7 +4950,7 @@ function telaGaveta(){
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
    <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("revisao","refazer","Revisão espaçada")}${it("metas","barras","Metas e desempenho")}${it("semanal","calendario","Resumo da semana")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("foco","tomate","Modo foco (Pomodoro)")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
-   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}
+   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}${it("mprova","relogio","Modo prova (N1 e N2)")}
    ${it("caderno","caderno","Caderno de erros"+(cadPendentes()?` <span class="badge">${cadPendentes()}</span>`:""))}
    <hr>${it("config","eng","Configurações")}${it("backup","arquivo","Backup do progresso")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
@@ -4833,6 +5046,7 @@ function telaFaculdade(){
   `<main class="wrap">${capaTela("capelo",`${periodo+1}º período`,"Apostila, resumo, cartões e simulados de cada disciplina.")}<div class="secao" role="heading" aria-level="2">Apostila do período</div>
   <button class="card apost" data-acao="ap" data-p="${periodo}">${tile("var(--toga)","livro")}<b>Apostila do ${periodo+1}º período</b><small>Explicação de todas as matérias, com técnicas de memorização, ilustrações e mapas mentais</small></button>
   <button class="card resumo" data-acao="resumo" data-p="${periodo}" style="margin-top:10px">${tile("var(--lacre)","recibo")}<b>Resumo do ${periodo+1}º período</b><small>Versão curta com todas as matérias juntas em um só arquivo</small></button>
+  ${cardModoProva({p:periodo})}
   ${ds.length>1?`<div class="secao" role="heading" aria-level="2">Simulado do período</div>
   <button class="card destaque" data-acao="per" data-p="${periodo}">${tile("var(--lacre)","alvo")}<b>Simulado do ${periodo+1}º período</b><small>${idsPer(periodo).length} questões de ${ds.length} disciplinas · ${nPer(periodo)} simulado${nPer(periodo)>1?"s":""} de cerca de ${TAM_PER}</small>${(()=>{const s=statMat(idsPer(periodo));return `<span class="trilho"><i class="f-ok" style="width:${s.o*100/(s.n||1)}%"></i><i class="f-er" style="width:${s.e*100/(s.n||1)}%"></i></span>`})()}</button>`:""}
   <div class="secao" role="heading" aria-level="2">${periodo+1}º período · ${ds.length} disciplina${ds.length>1?"s":""}</div>
@@ -4849,6 +5063,7 @@ function telaDisc(){const d=rota.d,f=infoDisc(d);const n=nFac(d);const ks=[];for
   return topo(f.nome,`${idsDisc(d).length} questões`,{})+
   `<main class="wrap"><div class="cabeca">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><p class="nota">${idsDisc(d).length} questões · ${n} simulado${n>1?"s":""} de cerca de ${TAM_FAC} questões</p></div></div>
   ${temAp(d)?`<button class="btn-ap" data-acao="ler" data-d="${d}">${tile("var(--toga)","livro")}<span><b>Ler a apostila desta matéria</b><small>Teoria explicada, técnicas de memorização e mapa mental</small></span></button>`:""}
+  ${cardModoProva({d})}
   ${n>1?`<p class="nota" style="margin-top:14px">Os simulados vão do mais simples ao mais difícil. Faça na ordem: cada um prepara para o seguinte.</p>${escada()}`:""}
   <div class="secao" role="heading" aria-level="2">Simulados</div><div class="lista">${ks.map(k=>itemSim(k)).join("")}</div>
   ${n>1?`<div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("ftodas:"+d)}</div>`:""}${secaoAss(d)}</main>`}
@@ -4883,8 +5098,8 @@ function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
   const modo=modoQ(),pv=(pend&&pend.id===id)?pend.o:undefined,marc=pv!==undefined?pv:r;
   const rest=s.limite?s.limite-s.tempo:s.tempo;
-  const dir=`<span class="relogio${s.limite&&rest<600?" alerta":""}" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
-  return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,"",{voltarAcao:"pausar",dir})+
+  const dir=`<span class="relogio${s.limite&&rest<alertaRel(s)?" alerta":""}" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
+  return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,s.mp?"Modo prova · correção no fim":"",{voltarAcao:"pausar",dir,extra:s.mp?mpBarraTempo(s):""})+
   `<main class="wrap"><div class="q-cab"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${/^(fac|per|ftodas|ptodas):/.test(s.key)?`<div class="q-niv nivel" style="--c:var(--nv${nv(id)})">${barras(nv(id))}Dificuldade: ${NIVEL_INFO[nv(id)-1].nome}</div>`:""}<p class="q-enun">${esc(q.q)}</p></div>
   <div class="alts" role="radiogroup" aria-label="Alternativas">${ord.map((oi,pos)=>{let c="";if(mostra){if(oi===0)c="certa";else if(oi===r)c="errada"}else if(oi===marc)c="marcada";
     return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" data-acao="marcar" data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[pos]}</span><span>${esc(q.o[oi])}</span></button>`}).join("")}</div>
@@ -4909,19 +5124,21 @@ function telaFolha(){const s=sessao,r=res(s),feitas=s.qids.length-r.br;
   </div></div>`}
 function iniciarRelogio(){if(!sessao||tick)return;ultimoTick=Date.now();
   tick=setInterval(()=>{const now=Date.now();sessao.tempo+=(now-ultimoTick)/1000;ultimoTick=now;const el=document.getElementById("rel-t");if(!el)return;
-    if(sessao.limite){const rest=sessao.limite-sessao.tempo;el.textContent=mmss(rest);const rl=document.getElementById("relogio");if(rl)rl.classList.toggle("alerta",rest<600);
-      if(rest<=0){sessao.tempo=sessao.limite;finalizar()}}else el.textContent=mmss(sessao.tempo)},1000)}
+    if(sessao.limite){const rest=sessao.limite-sessao.tempo;el.textContent=mmss(rest);const rl=document.getElementById("relogio");if(rl)rl.classList.toggle("alerta",rest<alertaRel(sessao));
+      if(sessao.mp)mpTick(rest);
+      if(rest<=0){sessao.tempo=sessao.limite;if(sessao.mp)sessao.mp.esgotou=true;finalizar()}}else el.textContent=mmss(sessao.tempo)},1000)}
 function pararRelogio(){if(tick){clearInterval(tick);tick=null;if(sessao){sessao.tempo+=(Date.now()-ultimoTick)/1000;ultimoTick=Date.now()}}}
 function finalizar(){pararRelogio();const a=sessao;a.status="concluido";a.fim=Date.now();
   a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0,r)});
   sessao=null;folha=false;confirmar=null;salvar();
-  const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id};render();
-  {const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
+  const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id,revela:!!a.mp};render();
+  if(!a.mp){const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
 function pausar(){pararRelogio();if(sessao){sessao.pos=idx;salvar()}sessao=null;folha=false;confirmar=null;
   pilha=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");rota=pilha.pop()||{tela:"oab",aba:"historico"};render()}
 
 /* ---------- resultado ---------- */
 function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab"};return telaOab()}
+  if(a.mp)return telaResProva(a);
   const r=res(a),st=r.pct===100?"perf":r.pct>=50?"aprov":"reprov";
   const pm={};a.qids.forEach(id=>{const q=QMAP[id];if(!q)return;const x=pm[q.m]=pm[q.m]||{o:0,n:0};x.n++;if(a.resp[id]===0)x.o++});
   const temErr=r.er+r.br>0;
@@ -4932,10 +5149,11 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
   ${Object.keys(pm).length>1?`<div class="secao" role="heading" aria-level="2">Desempenho por matéria</div><div class="desemp">${Object.keys(pm).map(m=>{const x=pm[m];const p=Math.round(x.o*100/x.n);
     return `<div class="linha">${tile(META[m].cor,META[m].ic)}<div><div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${x.o}/${x.n}</b></div><div class="trilho"><i class="f-ok" style="width:${p}%"></i><i class="f-er" style="width:${100-p}%"></i></div></div><span></span></div>`}).join("")}</div>`:""}
   <div class="secao" role="heading" aria-level="2">Correção comentada</div>
-  <div class="revisao">${a.qids.map((id,i)=>{const q=QMAP[id];if(!q)return "";const x=a.resp[id],ord=a.ordem[id];const k=x===undefined?"br":x===0?"ok":"er";
+  ${listaCorrecao(a)}</main>`}
+function listaCorrecao(a){return `<div class="revisao">${a.qids.map((id,i)=>{const q=QMAP[id];if(!q)return "";const x=a.resp[id],ord=a.ordem[id];const k=x===undefined?"br":x===0?"ok":"er";
     return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)}</span><br>${esc(q.q)}</span></summary>
     <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${esc(q.o[oi])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}${oi!==0&&explQ(q)?`<span class="px">${esc(explQ(q)[oi-1])}</span>`:""}</p>`).join("")}
-    <p style="margin-top:10px">${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar este tema na apostila</button>`:""}${botaoRep(q)}</div></details>`}).join("")}</div></main>`}
+    <p style="margin-top:10px">${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar este tema na apostila</button>`:""}${botaoRep(q)}</div></details>`}).join("")}</div>`}
 
 /* ---------- sobre ---------- */
 /* ---------- Sobre o Facul Lab (texto do autor) ---------- */
@@ -6616,6 +6834,232 @@ document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
   if(ok){pal.classList.add("acolhido");ovoSomDepois("carimbo",animOn()?380:30);ovoConfete()}else som("erro")}
  else if(a==="emb-outra"){const pal=document.querySelector(".ovo-emb .emb-palco");if(!pal)return;embI=(embI+1+Math.floor(Math.random()*(EMB_CASOS.length-1)))%EMB_CASOS.length;pal.outerHTML=embPalco();ovoReanima(document.querySelector(".ovo-emb .emb-palco"),"troca");som("vira")}
 });
+/* ---------- modo prova: simulado cronometrado só com os temas da próxima N1 ou N2 ----------
+   A pessoa escolhe a matéria, a prova (N1, N2 ou a matéria toda), quantas questões e o ritmo. As questões saem dos temas que caem
+   (a divisão de "O que cai na N1 e na N2"), espalhadas por todos os temas e com prioridade às inéditas e às que ela errou.
+   Como numa prova de verdade, a correção fica para o fim. O resultado mostra a nota estimada na escala da prova (N1 e N2 valem
+   o que estiver em Notas e média, 50 cada por padrão), o desempenho por tema, o uso do tempo e um simulador "e se…" da outra prova.
+   As tentativas ficam em S.hist com key "mp:<matéria>:<N1|N2|tudo>" e o campo mp; as escolhas de tamanho e ritmo em S.cfg.mp. */
+const MP_TAM=[10,20,30];
+const MP_RITMO=[["folga","Com folga",180,"3 min por questão","Para pensar com calma e reler o enunciado"],["real","Prova real",120,"2 min por questão","O ritmo de uma prova objetiva da faculdade"],["relampago","Relâmpago",60,"1 min por questão","Para treinar a agilidade na reta final"]];
+const mpCfg=()=>{S.cfg=S.cfg||{};S.cfg.mp=S.cfg.mp||{};return S.cfg.mp};
+const mpRitmo=()=>MP_RITMO.find(x=>x[0]===mpCfg().ritmo)||MP_RITMO[1];
+const mpRot=r=>r==="tudo"?"Matéria toda":r;
+const mpProvaDe=d=>((S.cfg&&S.cfg.provasFac)||[]).find(x=>x.d===d)||null;
+/* a próxima prova cadastrada da matéria sugere o que treinar: N1, N2 ou a matéria toda (substitutiva, exame final…) */
+function mpRDaProva(x){return x&&x.prox?(x.prox.r==="N1"||x.prox.r==="N2"?x.prox.r:"tudo"):"N1"}
+function mpSugere(d){const p=mpProvaDe(d);return p&&avOn()?mpRDaProva(estadoProva(p)):"N1"}
+function mpDivisao(d){if(!temOk(d))return null;return divisaoProva(mpProvaDe(d)||{d})}
+function mpFaixa(d,r){if(r==="tudo")return null;const D=mpDivisao(d);if(!D)return null;
+ if(r==="N1")return {ini:1,fim:D.corte,N:D.N};return D.n2tudo?null:{ini:D.corte+1,fim:D.N,N:D.N}}
+function mpIds(d,fx){const tudo=idsDisc(d);if(!fx)return tudo;const ids=idsFaixa(d,fx.ini,fx.fim);return ids.length?ids:tudo}
+function mpVale(d,r){if(r==="tudo")return 100;const p=mpProvaDe(d);const s=p?situacaoNotas(p):{v1:50,v2:50};return r==="N1"?s.v1:s.v2}
+const alertaRel=s=>s&&s.mp?Math.min(600,s.limite*.2):600;
+/* sorteio: um pouco de cada tema, primeiro as inéditas, depois as erradas; no fim, na ordem da matéria, como na prova */
+function mpSorteia(d,fx,n){const ids=mpIds(d,fx),tem=temOk(d),porT={};
+ ids.forEach(id=>{const k=tem?temaDaQ(d,id):0;(porT[k]=porT[k]||[]).push(id)});
+ const peso=id=>{const s=S.stats[id];return (s?(s.u?2:1):0)+Math.random()*1.6};
+ const G=emb(Object.keys(porT)).map(k=>porT[k].map(id=>[id,peso(id)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]));
+ const out=[];while(out.length<n&&G.some(g=>g.length))G.forEach(g=>{if(out.length<n&&g.length)out.push(g.shift())});
+ return tem?out.sort((a,b)=>temaDaQ(d,a)-temaDaQ(d,b)):out}
+function mpN(d,r){const tot=mpIds(d,mpFaixa(d,r)).length,c=mpCfg().n;return Math.min(tot,c===0?tot:(c||20))}
+function mpComecar(d,r){const fx=mpFaixa(d,r),n=mpN(d,r);if(!n)return;
+ const R=mpRitmo(),qids=mpSorteia(d,fx,n),ordem={};qids.forEach(id=>ordem[id]=emb([0,1,2,3]));const key=`mp:${d}:${r}`;
+ S.hist=S.hist.filter(a=>!(a.key===key&&a.status==="pausado"));
+ sessao={id:"a"+Date.now(),key,titulo:`Modo prova · ${mpRot(r)}`,sub:nomeCurto(infoDisc(d).nome)+(fx?` · ${txtFaixa(fx)}`:" · a matéria toda"),inicio:Date.now(),status:"pausado",qids,ordem,resp:{},tempo:0,limite:n*R[2],corrFinal:true,pos:0,
+  mp:{d,r,fx,vale:mpVale(d,r),ritmo:R[0],av:[]}};
+ S.hist.unshift(sessao);if(S.hist.length>200)S.hist.length=200;idx=0;folha=false;confirmar=null;salvar();
+ /* "fazer outra prova" a partir do resultado: o resultado antigo sai da pilha, para o voltar levar ao modo prova */
+ if(rota.tela==="res"){const v=pilha.length&&pilha[pilha.length-1].tela==="mprova"?pilha.pop():{tela:"mprova",d,r};rota=v}
+ ir({tela:"quiz"})}
+/* contagem regressiva antes de começar: 3, 2, 1, valendo! (um toque pula) */
+function mpContagem(d,r){if(!animOn()){som("abre");mpComecar(d,r);return}
+ const el=document.createElement("div");el.className="mp-conta";el.setAttribute("role","status");el.setAttribute("aria-live","assertive");
+ el.innerHTML=`<div class="mp-conta-in"><svg class="mp-conta-anel" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle class="v" cx="60" cy="60" r="52" pathLength="100"/></svg><span class="mp-conta-n">3</span><small>Respire fundo…</small></div>`;
+ document.body.appendChild(el);const N=el.querySelector(".mp-conta-n"),T=el.querySelector("small");let k=3,fim=false;som("toque");
+ const vai=()=>{if(fim)return;fim=true;clearInterval(t);el.classList.add("sai");setTimeout(()=>el.remove(),260);mpComecar(d,r)};
+ const t=setInterval(()=>{k--;if(k>0){N.textContent=k;T.textContent=k===2?"Leia cada enunciado até o fim":"Boa prova!";ovoReanima(N,"pula");som("toque")}
+  else if(k===0){N.textContent="Valendo!";el.classList.add("valendo");ovoReanima(N,"pula");som("abre")}else vai()},850);
+ el.addEventListener("click",vai)}
+/* durante a prova: barra do tempo no topo e avisos na metade, a 5 minutos e a 1 minuto do fim */
+function mpBarraTempo(s){const p=Math.max(0,Math.min(1,1-s.tempo/s.limite));
+ return `<div class="mp-tempo${p<.2?" pouco":""}" role="progressbar" aria-label="Tempo restante" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(p*100)}"><i id="mp-tempo-i" style="transform:scaleX(${p})"></i></div>`}
+function mpTick(rest){const s=sessao;if(!s||!s.mp)return;const p=Math.max(0,rest/s.limite);
+ const b=document.getElementById("mp-tempo-i");if(b){b.style.transform=`scaleX(${p})`;const w=b.parentNode;w.classList.toggle("pouco",p<.2);w.setAttribute("aria-valuenow",Math.round(p*100))}
+ s.mp.av=s.mp.av||[];const L=s.limite,M=[[Math.round(L/2),"Metade do tempo. Confira se não ficou nenhuma em branco para trás.","toque"],[300,"Faltam 5 minutos. Responda as que faltam, mesmo no chute consciente.","abre"],[60,"Falta 1 minuto!","martelo"]];
+ M.forEach(([t,txt,sn])=>{if(t<L-20&&rest<=t&&!s.mp.av.includes(t)){if(M.some(m=>m[0]<t&&rest<=m[0])){s.mp.av.push(t);return}s.mp.av.push(t);mpBalao(txt);som(sn)}})}
+function mpBalao(txt){const v=$("#mp-balao");if(v)v.remove();const el=document.createElement("div");el.id="mp-balao";el.setAttribute("role","status");
+ el.innerHTML=`${ic("relogio")}<span>${esc(txt)}</span>`;document.body.appendChild(el);setTimeout(()=>el.classList.add("sai"),3600);setTimeout(()=>el.remove(),4100)}
+
+/* ilustração da capa: folha de prova sendo marcada, cronômetro correndo e o lápis */
+ILU.prova=`<g class="mp-folha"><rect x="52" y="30" width="92" height="112" rx="8" class="f-w s-t" stroke-width="2.5"/><rect x="64" y="42" width="44" height="7" rx="3.5" class="f-t"/><rect x="64" y="54" width="68" height="4" rx="2" class="f-s"/>`+
+ [0,1,2,3].map(i=>`<circle cx="70" cy="${74+i*17}" r="5.5" class="f-w s-t" stroke-width="2"/><rect x="82" y="${71+i*17}" width="${[46,38,50,30][i]}" height="5" rx="2.5" class="f-s"/><path class="mp-x" style="--k:${i}" d="M67 ${74+i*17}l2.4 2.6 4.6-5" fill="none" stroke="var(--ok)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="10"/>`).join("")+`</g>`+
+ `<g class="mp-crono"><rect x="166" y="22" width="12" height="8" rx="2" class="f-t"/><circle cx="172" cy="62" r="30" class="f-a"/><circle cx="172" cy="62" r="23" class="f-w"/>`+
+ [0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<rect x="171" y="41" width="2" height="${i%3?3:6}" rx="1" class="f-t" transform="rotate(${i*30} 172 62)"/>`).join("")+
+ `<path class="mp-seg" d="M172 62V45" stroke="var(--erro)" stroke-width="2.4" stroke-linecap="round"/><circle cx="172" cy="62" r="3.2" class="f-b"/></g>`+
+ `<g class="mp-lapis"><path d="M150 132l40-40 9 9-40 40-13 4z" class="f-b"/><path d="M190 92l5-5 9 9-5 5z" class="f-t"/><path d="M146 145l4-13 9 9z" class="f-w s-t" stroke-width="1.6"/></g>`;
+
+/* atalho nas telas da faculdade e da disciplina */
+function cardModoProva(o){const d=o.d,x=d&&avOn()&&mpProvaDe(d)?estadoProva(mpProvaDe(d)):null;
+ const txt=x&&x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)}: treine com cronômetro, só com o que cai, e veja a nota estimada`:"Cronômetro, só os temas da N1 ou da N2 e nota estimada no fim";
+ return `<button class="btn-mp" data-mp="abrir"${d?` data-d="${d}" data-r="${mpSugere(d)}"`:` data-p="${o.p}"`}><span class="btn-mp-ic" aria-hidden="true">${ic("relogio")}<i></i></span><span><b>Modo prova${d?"":" do período"}</b><small>${txt}</small></span>${ic("prox")}</button>`}
+
+/* ---------- tela do modo prova ---------- */
+function telaModoProva(){const L=avOn()?provasAtivas():[];
+ if(rota.d===undefined)rota.d=L.length?L.slice().sort((a,b)=>a.prox.n-b.prox.n)[0].p.d:null;
+ const d=rota.d&&DISC[rota.d]?rota.d:null;if(d&&!rota.r)rota.r=mpSugere(d);
+ if(d&&!temOk(d)&&periodoDe(d)>=0)carregarApP(periodoDe(d)).then(ok=>{if(ok)reRenderSe("mprova")});
+ const per=rota.p!==undefined?rota.p:d?periodoDe(d):Math.min(PERIODOS.length-1,perAtual()===null?periodo:perAtual());
+ const hist=S.hist.filter(a=>a.mp&&a.status==="concluido").slice(0,5);
+ return topo("Modo prova","Simulado cronometrado com nota estimada",pilha.length?{}:{menu:true})+
+ `<main class="wrap modo-prova">
+  <section class="mp-hero"><div><b>Treine como no dia da prova</b><p>Relógio correndo, só os temas que caem e correção no fim. No resultado, a nota que você tiraria hoje.</p>
+   <div class="mp-selos"><span>${ic("relogio")}Cronômetro</span><span>${ic("livro")}Só o que cai</span><span>${ic("alvo")}Nota estimada</span></div></div>${ilustra("prova","var(--p2,var(--lacre))")}</section>
+  ${L.length?`<div class="secao" role="heading" aria-level="2">Suas próximas provas</div><div class="mp-provas">${L.slice().sort((a,b)=>a.prox.n-b.prox.n).slice(0,6).map(x=>{const f=infoDisc(x.p.d),r=mpRDaProva(x),fx=mpFaixa(x.p.d,r);
+    return `<button class="mp-pv" style="--c:${f.cor}" data-mp="materia" data-d="${x.p.d}" data-r="${r}" aria-pressed="${d===x.p.d}">${tile(f.cor,f.ic)}<span><b>${esc(nomeCurto(f.nome))}</b><small>${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)}${fx?` · ${txtFaixa(fx)}`:""}</small></span><em class="mp-pv-dias">${x.prox.n===0?"hoje":x.prox.n+"d"}</em></button>`}).join("")}</div>`:""}
+  <details class="mp-outra"${!L.length||(d&&!L.some(x=>x.p.d===d))?" open":""}><summary>${ic("grade")}<span><b>${L.length?"Outra matéria":"Escolha a matéria"}</b><small>${L.length?"Qualquer disciplina, de qualquer período":"Toque no período e depois na disciplina"}${!avOn()?" · cadastre as datas das provas em Configurações para o app sugerir sozinho":""}</small></span></summary>
+   <div class="opcoes mp-pers" role="group" aria-label="Período">${PERIODOS.map((_,i)=>`<button data-mp="per" data-p="${i}" aria-pressed="${per===i}">${i+1}º</button>`).join("")}</div>
+   <div class="mp-discs">${PERIODOS[per].filter(x=>DISC[x]).map(x=>{const f=infoDisc(x);return `<button class="mp-disc" style="--c:${f.cor}" data-mp="materia" data-d="${x}" aria-pressed="${d===x}">${tile(f.cor,f.ic,"tile-mini")}<span>${esc(nomeCurto(f.nome))}</span></button>`}).join("")}</div></details>
+  ${d?mpConfig(d,rota.r):`<p class="nota mp-escolha">${ic("seta")} Escolha uma matéria para montar a sua prova.</p>`}
+  ${hist.length?`<div class="secao" role="heading" aria-level="2">Suas últimas provas</div><div class="lista">${hist.map(a=>{const f=DISC[a.mp.d]?infoDisc(a.mp.d):{cor:"var(--toga)",ic:"relogio",nome:""};const r=res(a),nt=r.ok/a.qids.length*a.mp.vale,st=mpSt(r.ok/a.qids.length);
+    return `<button class="item mp-hist" data-mp="ver" data-id="${a.id}">${tile(f.cor,f.ic)}<span style="min-width:0"><span class="item-tit">${esc(nomeCurto(f.nome))} · ${esc(mpRot(a.mp.r))}</span><br><span class="item-sub">${new Intl.DateTimeFormat("pt-BR",{day:"numeric",month:"short"}).format(a.inicio).replace(".","")} · ${r.ok} de ${a.qids.length} · ${dur(a.tempo)}</span></span><span class="mp-hist-nota ${st.k}"><b>${fmtNota(nt)}</b><small>de ${fmtNota(a.mp.vale)}</small></span></button>`}).join("")}</div>`:""}
+ </main>`}
+function mpConfig(d,r){const f=infoDisc(d),D=mpDivisao(d),carregando=!temOk(d)&&periodoDe(d)>=0&&!D;
+ const fx=mpFaixa(d,r),tot=mpIds(d,fx).length,P=temOk(d)?paginas(d):null;
+ const opR=[["N1",D?`temas 1 a ${D.corte}`:"1ª metade"],["N2",D?(D.n2tudo?"a matéria toda":`temas ${D.corte+1} a ${D.N}`):"2ª metade"],["tudo","substitutiva e exame final"]];
+ const pausa=S.hist.find(a=>a.key===`mp:${d}:${r}`&&a.status==="pausado");
+ return `<section class="mp-cfg" style="--c:${f.cor}" id="mp-cfg">
+  <div class="mp-cfg-cab">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><small>${tot} ${tot===1?"questão":"questões"} no banco para esta prova</small></div></div>
+  <p class="mp-rot">Qual prova?</p>
+  <div class="mp-seg" role="group" aria-label="Qual prova">${opR.map(([k,s])=>`<button data-mp="prova" data-r="${k}" aria-pressed="${r===k}"><b>${mpRot(k)}</b><small>${s}</small></button>`).join("")}</div>
+  ${carregando?`<p class="nota mp-carrega">${ic("livro")} Carregando os temas da apostila…</p>`
+   :P&&D?`<div class="mp-temas" aria-label="Temas que caem"><p class="mp-rot">O que cai ${fx?`· ${txtFaixa(fx)} de ${fx.N}`:"· a matéria toda"}</p><ol>${P.secs.map((x,k)=>{const dentro=!fx||(k+1>=fx.ini&&k+1<=fx.fim);return `<li class="${dentro?"cai":""}" style="--i:${k}" title="${esc(limpo(x.tit))}"><span>${k+1}</span>${dentro?esc(limpo(x.tit)):""}</li>`}).join("")}</ol>
+    <p class="nota">${r==="tudo"?"Substitutiva e exame final cobram a matéria inteira.":"A divisão entre N1 e N2 é a mesma de Configurações › Suas provas. Lá você ajusta onde a N1 termina."}</p></div>`
+   :`<p class="nota">Esta matéria ainda não tem os temas da apostila separados, então a prova sorteia questões de toda a matéria.</p>`}
+  <p class="mp-rot">Quantas questões?</p>
+  <div class="opcoes mp-tam" role="group" aria-label="Quantas questões">${MP_TAM.map(n=>`<button data-mp="tam" data-v="${n}" aria-pressed="${mpCfg().n===n||(!mpCfg().n&&mpCfg().n!==0&&n===20)}" ${n>tot?"disabled":""}>${n}</button>`).join("")}<button data-mp="tam" data-v="0" aria-pressed="${mpCfg().n===0}">Todas (${tot})</button></div>
+  <p class="mp-rot">Ritmo</p>
+  <div class="mp-ritmos" role="group" aria-label="Ritmo">${MP_RITMO.map(([k,nome,seg,t,dd])=>`<button data-mp="ritmo" data-v="${k}" aria-pressed="${mpRitmo()[0]===k}"><span class="mp-rit-ic" aria-hidden="true"><i style="--v:${seg/60}"></i></span><b>${nome}</b><small>${t}</small></button>`).join("")}</div>
+  <div id="mp-resumo">${mpResumo(d,r)}</div>
+  <details class="mp-regras"><summary>${ic("info")} Como funciona o modo prova</summary><ul>
+   <li>${ic("relogio")}<span><b>O relógio corre.</b> Quando o tempo acaba, a prova é entregue sozinha. Você recebe avisos na metade, a 5 minutos e a 1 minuto do fim.</span></li>
+   <li>${ic("recibo")}<span><b>Correção só no fim.</b> Como na sala, você não sabe se acertou até entregar. Em branco conta como erro.</span></li>
+   <li>${ic("grade")}<span><b>Pule e volte.</b> O botão Finalizar abre a folha de respostas: dá para pular as difíceis e voltar nelas depois.</span></li>
+   <li>${ic("alvo")}<span><b>Nota estimada.</b> O acerto vira nota na escala da prova (N1 e N2 valem o que está em Notas e média). Quanto mais questões, mais confiável.</span></li>
+   <li>${ic("pausa")}<span><b>Precisou sair?</b> O relógio pausa e a prova fica guardada aqui para continuar. Na sala, ele não para!</span></li></ul></details>
+  <div class="botoes mp-bts">${pausa?`<button class="botao linha" data-mp="continuar" data-id="${pausa.id}">Continuar a prova pausada · ${mmss(pausa.limite-pausa.tempo)}</button>`:""}<button class="botao cheio mp-vai" data-mp="comecar" ${tot?"":"disabled"}>${ic("relogio")} ${pausa?"Começar uma nova":"Começar a prova"}</button></div>
+ </section>`}
+function mpResumo(d,r){const n=mpN(d,r),R=mpRitmo(),seg=n*R[2],min=Math.round(seg/60),vale=mpVale(d,r);const ang=Math.min(1,seg/3600);
+ return `<div class="mp-resumo"><svg class="mp-dial" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" class="mp-dial-f"/><circle cx="50" cy="50" r="42" class="mp-dial-v" pathLength="100" style="stroke-dashoffset:${100-ang*100}"/>${[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<rect x="49.2" y="11" width="1.6" height="${i%3?3:5}" rx=".8" transform="rotate(${i*30} 50 50)"/>`).join("")}<path class="mp-dial-p" d="M50 50V18" style="transform:rotate(${ang*360}deg)"/><circle cx="50" cy="50" r="3.4"/></svg>
+  <div class="mp-res-t"><b><span class="mp-min">${min}</span> min</b><span>${n} ${n===1?"questão":"questões"} · ${R[1].toLowerCase()}</span><span>Vale ${fmtNota(vale)} pontos${r==="tudo"?" (escala do exame final)":` (${r})`}</span></div></div>`}
+
+/* ---------- resultado do modo prova ---------- */
+const mpSt=p=>p>=.7?{k:"ok",t:"Rumo à aprovação direta",s:"Acima de 70%: no ritmo dos 70 pontos que aprovam sem exame final."}
+ :p>=.4?{k:"ex",t:"Zona do exame final",s:"Entre 40% e 70%: se a outra prova for igual, você iria para o exame final."}
+ :{k:"rp",t:"Hora de reforçar",s:"Abaixo de 40%: revise os temas em vermelho e faça outra prova."};
+function telaResProva(a){const M=a.mp,r=res(a),n=a.qids.length,p=n?r.ok/n:0,nota=p*M.vale,st=mpSt(p),f=DISC[M.d]?infoDisc(M.d):{nome:"",cor:"var(--toga)",ic:"relogio"};
+ const erro=Math.max(.04,Math.sqrt(p*(1-p)/Math.max(1,n)))*M.vale,lo=Math.max(0,nota-erro),hi=Math.min(M.vale,nota+erro);
+ const ant=S.hist.filter(x=>x.key===a.key&&x.status==="concluido"&&x.mp).slice(0,6).reverse();
+ const usado=Math.min(a.tempo,a.limite),porQ=n?usado/n:0,sobra=a.limite-usado;
+ return topo("Resultado da prova",`${nomeCurto(f.nome)} · ${mpRot(M.r)}`,{})+
+ `<main class="wrap mp-res">
+  <section class="mp-boletim ${st.k}${rota.revela?" revela":""}" aria-label="Nota estimada: ${fmtNota(nota)} de ${fmtNota(M.vale)}">
+   ${M.esgotou?`<span class="mp-esgotou">${ic("relogio")} Tempo esgotado: a prova foi entregue sozinha</span>`:""}
+   <svg class="mp-gauge" viewBox="0 0 200 116" aria-hidden="true"><path class="g-f" d="M18 104a82 82 0 0 1 164 0" pathLength="100"/><path class="g-v" d="M18 104a82 82 0 0 1 164 0" pathLength="100" style="--p:${p*100}"/>
+    <g class="g-m"><path d="M${100-82*Math.cos(Math.PI*.4)} ${104-82*Math.sin(Math.PI*.4)}l${-9*Math.cos(Math.PI*.4)} ${-9*Math.sin(Math.PI*.4)}"/><path d="M${100-82*Math.cos(Math.PI*.7)} ${104-82*Math.sin(Math.PI*.7)}l${-9*Math.cos(Math.PI*.7)} ${-9*Math.sin(Math.PI*.7)}"/></g>
+    <text x="${100-100*Math.cos(Math.PI*.4)}" y="${104-100*Math.sin(Math.PI*.4)+3}">40%</text><text x="${100-100*Math.cos(Math.PI*.7)}" y="${104-100*Math.sin(Math.PI*.7)+3}">70%</text>
+    <g class="g-agulha" style="--a:${p*180}deg"><path d="M100 104L36 104" /><circle cx="100" cy="104" r="7"/></g></svg>
+   <div class="mp-nota"><small>Nota estimada${M.r==="tudo"?"":` na ${M.r}`}</small><b><span class="mp-conta-nota" data-v="${nota}">${fmtNota(nota)}</span><em> de ${fmtNota(M.vale)}</em></b>
+    <span class="mp-faixa">Algo entre ${fmtNota(lo)} e ${fmtNota(hi)}${M.vale!==10?` · ≈ ${fmtNota(p*10)} de 10`:""}</span></div>
+   <div class="mp-carimbo" aria-hidden="true"><span>${st.t}</span></div>
+   <p class="mp-st"><b>${r.ok} de ${n} certas (${Math.round(p*100)}%)</b> · ${r.er} erradas · ${r.br} em branco<br>${st.s}</p>
+  </section>
+  <div class="botoes mp-bts"><button class="botao cheio" data-mp="de-novo" data-d="${M.d}" data-r="${M.r}">${ic("refazer")} Fazer outra prova</button>${r.er+r.br?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button>`:""}</div>
+  ${mpEse(a,nota)}
+  ${mpPorTema(a)}
+  <section class="mp-bloco"><h3>${ic("relogio")} Seu tempo</h3>
+   <div class="mp-tempo-res"><div class="mp-tbar"><i style="width:${a.limite?usado*100/a.limite:0}%"></i></div><p><b>${dur(usado)}</b> de ${dur(a.limite)} · ${mmss(porQ)} por questão (o ritmo pedia ${mmss(a.limite/Math.max(1,n))})</p></div>
+   <p class="nota">${M.esgotou?`O tempo acabou com ${r.br} ${r.br===1?"questão":"questões"} em branco. Na próxima, pule as difíceis e volte nelas no fim, pela folha de respostas.`:sobra>a.limite*.4?"Sobrou bastante tempo. Use a sobra para reler as questões marcadas antes de entregar: muita gente erra por pressa.":porQ>a.limite/n*.9?"Você usou quase todo o tempo. Treine o ritmo Relâmpago para ganhar folga no dia.":"Bom ritmo: deu tempo de responder tudo com calma."}</p></section>
+  ${ant.length>1?`<section class="mp-bloco"><h3>${ic("barras")} Sua evolução nesta prova</h3><div class="mp-evo">${ant.map((x,i)=>{const pp=res(x).ok/x.qids.length;return `<div class="${x.id===a.id?"atual":""}" style="--h:${Math.max(4,pp*100)}%;--i:${i}"><b>${fmtNota(pp*x.mp.vale)}</b><i class="${mpSt(pp).k}"></i><small>${new Intl.DateTimeFormat("pt-BR",{day:"numeric",month:"numeric"}).format(x.inicio)}</small></div>`}).join("")}</div></section>`:""}
+  <div class="secao" role="heading" aria-level="2">Correção comentada</div>
+  ${listaCorrecao(a)}
+  <div class="botoes"><button class="botao linha" data-mp="abrir" data-d="${M.d}" data-r="${M.r}">Voltar ao modo prova</button></div></main>`}
+/* desempenho por tema da apostila, com atalho para revisar o mais fraco */
+function mpPorTema(a){const d=a.mp.d;if(!temOk(d))return "";const P=paginas(d),G={};
+ a.qids.forEach(id=>{if(!QMAP[id])return;const k=temaDaQ(d,id);const x=G[k]=G[k]||{k,o:0,n:0};x.n++;if(a.resp[id]===0)x.o++});
+ const L=Object.values(G).filter(x=>x.k&&P.secs[x.k-1]).sort((x,y)=>x.k-y.k);if(L.length<2)return "";
+ const fraco=L.filter(x=>x.o<x.n).sort((x,y)=>x.o/x.n-y.o/y.n||y.n-x.n)[0];
+ return `<section class="mp-bloco"><h3>${ic("livro")} Por tema</h3><div class="mp-temas-res">${L.map((x,i)=>{const pp=x.o/x.n;return `<div class="mp-tr${fraco&&fraco.k===x.k?" fraco":""}" style="--i:${i}"><span class="mp-tr-n">${x.k}</span><div><span class="mp-tr-t">${esc(limpo(P.secs[x.k-1].tit))}</span><i class="mp-tr-b"><i class="${mpSt(pp).k}" style="width:${pp*100}%"></i></i></div><b>${x.o}/${x.n}</b></div>`}).join("")}</div>
+  ${fraco?`<button class="btn-ap mp-revisar" data-acao="abrir-tema" data-d="${d}" data-k="${fraco.k}">${tile("var(--erro)","livro")}<span><b>Revisar o tema ${fraco.k}</b><small>${esc(limpo(P.secs[fraco.k-1].tit))}: foi onde você mais errou</small></span></button>`:`<p class="nota">${ic("ok")} Você foi bem em todos os temas. Que tal o ritmo Relâmpago?</p>`}</section>`}
+/* "e se…": arraste a nota da outra prova e veja se passa direto, vai para o exame final ou não alcança */
+function mpEse(a,nota){const M=a.mp;if(M.r==="tudo")return "";const p=mpProvaDe(M.d),s=p?situacaoNotas(p):{v1:50,v2:50,n1:null,n2:null};
+ const outra=M.r==="N1"?"N2":"N1",vOut=M.r==="N1"?s.v2:s.v1,real=M.r==="N1"?s.n2:s.n1;
+ const ini=real!=null?real:Math.max(0,Math.min(vOut,Math.ceil((NOTA_REGRA.dir-nota)*2)/2));
+ return `<section class="mp-bloco mp-ese" data-nota="${nota}" data-max="${vOut}" data-outra="${outra}" data-r="${M.r}">
+  <h3>${ic("alvo")} E se…</h3><p class="nota">${real!=null?`Com a sua ${outra} de verdade (${fmtNota(real)}), somada a esta nota:`:`Arraste para ver quanto você precisa tirar na ${outra}. N1 + N2 somam até 100: com 70 passa direto, de 40 a 69,9 vai para o exame final.`}</p>
+  <div class="mp-ese-regua" aria-hidden="true"><i class="a" style="width:${nota}%"></i><i class="b" style="left:${nota}%;width:${ini}%"></i><span class="m" style="left:40%">40</span><span class="m m70" style="left:70%">70</span></div>
+  ${real!=null?"":`<label class="mp-ese-ctl"><span>${outra}</span><input type="range" min="0" max="${vOut}" step="0.5" value="${ini}" data-mp-ese aria-label="Nota na ${outra}"><b class="mp-ese-v">${fmtNota(ini)}</b></label>`}
+  <div class="mp-ese-res" aria-live="polite">${mpEseTxt(nota,ini,outra,real!=null)}</div></section>`}
+function mpEseTxt(nota,x,outra,real){const soma=nota+x,R=NOTA_REGRA;
+ const k=soma>=R.dir?"ok":soma>=R.ex?"ex":"rp";
+ const t=k==="ok"?`<b>Aprovado direto</b> com ${fmtNota(soma)} pontos.${real?"":` ${x<=0?"Nem precisa pontuar na "+outra+"!":`Basta ${fmtNota(Math.max(0,R.dir-nota))} na ${outra}.`}`}`
+  :k==="ex"?`<b>Exame final</b> com ${fmtNota(soma)} pontos: precisaria de ${fmtNota(2*R.fim-soma)} no exame.${real?"":` Para passar direto, mire em ${fmtNota(R.dir-nota)} na ${outra}.`}`
+  :`<b>Abaixo de 40</b> (${fmtNota(soma)} pontos).${real?"":R.ex-nota>0?` Com ${fmtNota(R.ex-nota)} na ${outra}, você garante o exame final.`:""}`;
+ return `<p class="${k}"><span class="mp-ese-ic">${ic(k==="ok"?"ok":k==="ex"?"exc":"x")}</span><span>${t}</span></p>`}
+
+/* revelação do resultado: a agulha sobe, a nota conta e o carimbo bate */
+function mpRevela(){if(rota.tela!=="res"||!rota.revela)return;rota.revela=false;const b=document.querySelector(".mp-boletim");if(!b)return;
+ const a=S.hist.find(x=>x.id===rota.id);if(!a)return;const p=res(a).ok/a.qids.length,el=b.querySelector(".mp-conta-nota");
+ if(!animOn()){som(p>=.7?"aprovado":"fim");return}
+ const fim=+el.dataset.v,t0=performance.now(),T=1300;(function passo(t){const k=Math.min(1,(t-t0)/T);el.textContent=fmtNota(fim*(1-Math.pow(1-k,3)));if(k<1&&el.isConnected)requestAnimationFrame(passo)})(t0);
+ setTimeout(()=>{if(!b.isConnected)return;b.classList.add("bateu");som("carimbo")},1350);
+ setTimeout(()=>{if(!b.isConnected)return;if(p>=.7){som(p===1?"gabarito":"aprovado");estouro(b.querySelector(".mp-carimbo"),["#3bb273","#ffc53d","#2e86ab","#ffffff"]);if(p===1)setTimeout(()=>mostrarFesta(a),900)}else if(p>=.4)som("meta");else som("fim")},1800)}
+try{new MutationObserver(mpRevela).observe($("#app"),{childList:true})}catch(e){}
+
+/* ações do modo prova (ficam fora do clique principal) */
+function mpIr(o){const r={tela:"mprova",d:o.d||null};if(o.r)r.r=o.r;if(o.p!==undefined)r.p=+o.p;if(rota.tela==="mprova"){Object.assign(rota,r);rota.manterScroll=true;render()}else ir(r)}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-mp]");if(!b||b.disabled)return;const a=b.dataset.mp,D=b.dataset;
+ switch(a){
+  case "abrir":gaveta=false;if(rota.tela==="res"&&pilha.length&&pilha[pilha.length-1].tela==="mprova"&&D.d){rota=pilha.pop();rota.d=D.d;rota.r=D.r;render();break}ir(D.d?{tela:"mprova",d:D.d,r:D.r||mpSugere(D.d)}:{tela:"mprova",d:null,p:+D.p});break;
+  case "materia":som("toque");mpIr({d:D.d,r:D.r||mpSugere(D.d)});setTimeout(()=>{const c=$("#mp-cfg");if(c)try{c.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(err){}},60);break;
+  case "per":som("toque");rota.p=+D.p;rota.manterScroll=true;render();{const o=document.querySelector(".mp-outra");if(o)o.open=true}break;
+  case "prova":som("toque");rota.r=D.r;rota.manterScroll=true;render();break;
+  case "tam":case "ritmo":{if(a==="tam")mpCfg().n=+D.v;else mpCfg().ritmo=D.v;salvar();som("toque");
+   b.parentNode.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+   const box=$("#mp-resumo");if(box&&rota.d){const v=box.querySelector(".mp-dial-p"),c=box.querySelector(".mp-dial-v"),antes=v?v.style.transform:"",cAntes=c?c.style.strokeDashoffset:"";box.innerHTML=mpResumo(rota.d,rota.r);
+    const v2=box.querySelector(".mp-dial-p"),c2=box.querySelector(".mp-dial-v");if(animOn()&&v2&&antes){const fv=v2.style.transform,fc=c2.style.strokeDashoffset;v2.style.transform=antes;c2.style.strokeDashoffset=cAntes;requestAnimationFrame(()=>requestAnimationFrame(()=>{v2.style.transform=fv;c2.style.strokeDashoffset=fc}))}
+    ovoReanima(box.querySelector(".mp-min"),"pula");anunciar(box.querySelector(".mp-res-t").textContent.replace(/\s+/g," "))}break}
+  case "comecar":case "de-novo":{const d=D.d||rota.d,r=D.r||rota.r;if(d)mpContagem(d,r);break}
+  case "continuar":{const x=S.hist.find(y=>y.id===D.id);if(!x)break;sessao=x;idx=Math.min(x.pos||0,x.qids.length-1);folha=false;confirmar=null;ir({tela:"quiz"});break}
+  case "ver":ir({tela:"res",id:D.id});break;
+ }});
+document.addEventListener("input",e=>{const el=e.target;if(!el.dataset||el.dataset.mpEse===undefined)return;const box=el.closest(".mp-ese");if(!box)return;
+ const nota=+box.dataset.nota,x=+el.value,outra=box.dataset.outra;box.querySelector(".mp-ese-v").textContent=fmtNota(x);
+ const b=box.querySelector(".mp-ese-regua .b");if(b)b.style.width=Math.min(100-nota,x)+"%";
+ const res2=box.querySelector(".mp-ese-res"),k0=res2.firstElementChild&&res2.firstElementChild.className;res2.innerHTML=mpEseTxt(nota,x,outra,false);
+ const k1=res2.firstElementChild.className;if(k0!==k1){som(k1==="ok"?"acerto":k1==="ex"?"toque":"erro");ovoReanima(res2.firstElementChild,"pula")}});
+
+/* segredo do modo prova: toque cinco vezes no relógio durante a prova e o fiscal aparece */
+const FISCAL_SVG=`<svg class="of2-svg" viewBox="0 0 240 170" aria-hidden="true">
+ <rect x="20" y="118" width="200" height="12" rx="4" class="of2-mesa"/><rect x="38" y="130" width="10" height="34" class="of2-mesa"/><rect x="192" y="130" width="10" height="34" class="of2-mesa"/>
+ <g class="of2-prova"><rect x="70" y="98" width="70" height="22" rx="3" class="of2-papel" transform="rotate(-4 105 109)"/><path d="M78 106h40M78 112h30" class="of2-linha" transform="rotate(-4 105 109)"/></g>
+ <g class="of2-cola"><rect x="150" y="104" width="22" height="14" rx="2" class="of2-papel2"/><path d="M154 109h14M154 113h10" class="of2-linha"/></g>
+ <g class="of2-fiscal"><path d="M84 96c0-24 16-38 36-38s36 14 36 38z" class="of2-corpo"/><circle cx="120" cy="40" r="24" class="of2-rosto"/><path d="M96 34c4-16 44-16 48 0" class="of2-cabelo"/>
+  <g class="of2-oculos"><circle cx="110" cy="40" r="8"/><circle cx="130" cy="40" r="8"/><path d="M118 40h4"/></g>
+  <g class="of2-olhos"><circle cx="110" cy="40" r="2.6"/><circle cx="130" cy="40" r="2.6"/></g><path d="M112 54q8 4 16 0" class="of2-boca"/>
+  <path d="M146 70l26-14" class="of2-braco"/><g class="of2-apito"><rect x="168" y="48" width="14" height="8" rx="3"/></g></g>
+ <g class="of2-som"><path d="M190 40q8-6 0-14M198 46q14-12 0-26"/></g></svg>`;
+function ovoFiscal(rever){ovoCena("fiscal","ovo-fiscal",`<div class="of2-palco">${FISCAL_SVG}</div>
+ <h2>Olho na prova!</h2><p class="frase">O fiscal viu você mexendo no relógio. Tudo certo: aqui ninguém cola, só treina.</p>
+ <p class="ovo-nota"><b>Cola pode ser crime?</b> Em concurso público, vestibular, exame público ou exame previsto em lei, como o Exame de Ordem, sim: o <b>art. 311-A do Código Penal</b> (Lei 12.550/2011) pune quem utiliza ou divulga indevidamente conteúdo sigiloso do certame, com reclusão de 1 a 4 anos e multa. Antes dessa lei, o STF julgou que a "cola eletrônica" não se encaixava em nenhum crime (Inq 1.145), e por isso o tipo foi criado. Já numa prova da faculdade, cola é falta acadêmica, punida pelas regras da instituição.</p>
+ ${!rever&&sessao&&sessao.mp?`<p class="of2-aviso">${ic("relogio")} O relógio da sua prova continua correndo!</p>`:""}${ovoBotoes(`<button class="botao" data-ovo="fiscal-cola">Esconder a cola</button>`)}`,{rever,titulo:"Olho na prova!"});
+ ovoSomDepois("martelo",animOn()?500:40)}
+OVOS.push({id:"fiscal",ic:"relogio",nome:"Fiscal de prova",dica:"No modo prova, o relógio do topo esconde alguém. Toque nele cinco vezes seguidas."});
+OVO_ABRE.fiscal=ovoFiscal;
+document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
+ if(t.closest("#relogio")&&rota.tela==="quiz"&&sessao&&sessao.mp&&ovoConta("fiscal",5,2600)){ovoFiscal();return}
+ const b=t.closest('[data-ovo="fiscal-cola"]');if(b){const c=b.closest(".festa");ovoReanima(c.querySelector(".of2-palco"),"pega");ovoSomDepois("carimbo",animOn()?700:30);
+  const fr=c.querySelector(".frase");if(fr)setTimeout(()=>{fr.textContent="Peguei! A cola foi para o saco de provas, e a prova segue sem ela."},animOn()?700:0)}});
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 render();
