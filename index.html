@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <script>/* o ícone (tela inicial ao instalar, aba do navegador, iPhone) acompanha o tema escolhido */
-function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+t+"-192.png";
+function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite rubi tropical ameixa aurora c-cafe c-terracota c-oliva c-ouro ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+t+"-192.png";
  if(m&&m.getAttribute("href")!=="icones/manifest-"+t+".json")m.setAttribute("href","icones/manifest-"+t+".json");if(i)i.setAttribute("href",png);if(a)a.setAttribute("href",png)}</script>
 <script>try{var e=JSON.parse(localStorage.getItem("simuladoOAB.v2")||"{}").cfg||{};var h=document.documentElement;h.setAttribute("data-estilo",e.estilo==="classico"?"classico":"premium");h.setAttribute("data-paleta",e.paleta||"oceano");if(window.iconeDoTema)iconeDoTema(e.estilo==="classico"?"c-"+(e.cor||"azul"):e.paleta||"oceano")}catch(x){document.documentElement.setAttribute("data-estilo","premium");document.documentElement.setAttribute("data-paleta","oceano")}</script>
 <style>
@@ -30,6 +30,10 @@ function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-
 :root[data-cor="roxo"]{--bg:#f2eff6; --surface:#ffffff; --surface-2:#e8e2f0; --line:#d8cfe4; --fg:#211a2c; --muted:#655b72; --toga:#553088; --toga-2:#3e2266; --toga-txt:#553088; --toga-borda:#553088; --trilho:#e6e0ee}
 :root[data-cor="petroleo"]{--bg:#edf3f3; --surface:#ffffff; --surface-2:#e1eaea; --line:#cddbdb; --fg:#152224; --muted:#57686a; --toga:#0f5e66; --toga-2:#0a454b; --toga-txt:#0f5e66; --toga-borda:#0f5e66; --trilho:#dfe8e8}
 :root[data-cor="grafite"]{--bg:#f1f1f2; --surface:#ffffff; --surface-2:#e6e6e8; --line:#d4d4d8; --fg:#1b1c1f; --muted:#616369; --toga:#33363d; --toga-2:#22242a; --toga-txt:#33363d; --toga-borda:#33363d; --trilho:#e4e4e6}
+:root[data-cor="cafe"]{--bg:#f4f0eb; --surface:#ffffff; --surface-2:#ebe4dc; --line:#ddd2c5; --fg:#231b14; --muted:#6b5f53; --toga:#6b4a2b; --toga-2:#4f3520; --toga-txt:#6b4a2b; --toga-borda:#6b4a2b; --trilho:#e8e0d6}
+:root[data-cor="terracota"]{--bg:#f6efec; --surface:#ffffff; --surface-2:#eee3de; --line:#e0d0c8; --fg:#261a16; --muted:#6e5c55; --toga:#9c4221; --toga-2:#763017; --toga-txt:#9c4221; --toga-borda:#9c4221; --trilho:#ebe0da}
+:root[data-cor="oliva"]{--bg:#f1f2ea; --surface:#ffffff; --surface-2:#e6e8dc; --line:#d5d8c6; --fg:#1d2014; --muted:#60664f; --toga:#4f5d23; --toga-2:#3a4519; --toga-txt:#4f5d23; --toga-borda:#4f5d23; --trilho:#e3e5d8}
+:root[data-cor="ouro"]{--bg:#f5f2e9; --surface:#ffffff; --surface-2:#ece6d6; --line:#ddd4bd; --fg:#221d10; --muted:#6a634d; --toga:#7a5a12; --toga-2:#5c430c; --toga-txt:#7a5a12; --toga-borda:#7a5a12; --trilho:#e9e3d2}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#161112; --surface:#211819; --surface-2:#2d2123; --line:#43312f;
   --fg:#f1e9e9; --muted:#b29fa1;
@@ -53,6 +57,14 @@ function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-
 :root[data-cor="petroleo"][data-theme="dark"]{--bg:#111819; --surface:#182224; --surface-2:#212e30; --line:#2f4245; --fg:#e6f0f0; --muted:#9fb3b4; --toga:#0e4d54; --toga-2:#09363b; --toga-txt:#7fd1d6; --toga-borda:#2f8f96; --trilho:#212e30}
 @media (prefers-color-scheme: dark){:root[data-cor="grafite"]:not([data-theme="light"]){--bg:#121314; --surface:#1b1c1e; --surface-2:#252628; --line:#38393d; --fg:#ececee; --muted:#a8a9ae; --toga:#2b2d33; --toga-2:#1c1d21; --toga-txt:#c9cbd2; --toga-borda:#6b6e78; --trilho:#252628}}
 :root[data-cor="grafite"][data-theme="dark"]{--bg:#121314; --surface:#1b1c1e; --surface-2:#252628; --line:#38393d; --fg:#ececee; --muted:#a8a9ae; --toga:#2b2d33; --toga-2:#1c1d21; --toga-txt:#c9cbd2; --toga-borda:#6b6e78; --trilho:#252628}
+@media (prefers-color-scheme: dark){:root[data-cor="cafe"]:not([data-theme="light"]){--bg:#18140f; --surface:#211b15; --surface-2:#2c241c; --line:#3f342a; --fg:#f1ebe4; --muted:#b3a698; --toga:#5a3d22; --toga-2:#3f2a17; --toga-txt:#e0bf98; --toga-borda:#a07a52; --trilho:#2c241c}}
+:root[data-cor="cafe"][data-theme="dark"]{--bg:#18140f; --surface:#211b15; --surface-2:#2c241c; --line:#3f342a; --fg:#f1ebe4; --muted:#b3a698; --toga:#5a3d22; --toga-2:#3f2a17; --toga-txt:#e0bf98; --toga-borda:#a07a52; --trilho:#2c241c}
+@media (prefers-color-scheme: dark){:root[data-cor="terracota"]:not([data-theme="light"]){--bg:#1a1311; --surface:#241a17; --surface-2:#30231f; --line:#45332d; --fg:#f3ebe8; --muted:#b9a59d; --toga:#7f3519; --toga-2:#5a2410; --toga-txt:#f0a98a; --toga-borda:#c0663f; --trilho:#30231f}}
+:root[data-cor="terracota"][data-theme="dark"]{--bg:#1a1311; --surface:#241a17; --surface-2:#30231f; --line:#45332d; --fg:#f3ebe8; --muted:#b9a59d; --toga:#7f3519; --toga-2:#5a2410; --toga-txt:#f0a98a; --toga-borda:#c0663f; --trilho:#30231f}
+@media (prefers-color-scheme: dark){:root[data-cor="oliva"]:not([data-theme="light"]){--bg:#15170f; --surface:#1e2117; --surface-2:#282c1f; --line:#3a3f2d; --fg:#eceee4; --muted:#a9ae98; --toga:#434f1c; --toga-2:#2e3712; --toga-txt:#c3d38a; --toga-borda:#7f9147; --trilho:#282c1f}}
+:root[data-cor="oliva"][data-theme="dark"]{--bg:#15170f; --surface:#1e2117; --surface-2:#282c1f; --line:#3a3f2d; --fg:#eceee4; --muted:#a9ae98; --toga:#434f1c; --toga-2:#2e3712; --toga-txt:#c3d38a; --toga-borda:#7f9147; --trilho:#282c1f}
+@media (prefers-color-scheme: dark){:root[data-cor="ouro"]:not([data-theme="light"]){--bg:#17150e; --surface:#201d14; --surface-2:#2b271b; --line:#3f392a; --fg:#f1eee4; --muted:#b2ab95; --toga:#644a0e; --toga-2:#463408; --toga-txt:#e8c873; --toga-borda:#a8893c; --trilho:#2b271b}}
+:root[data-cor="ouro"][data-theme="dark"]{--bg:#17150e; --surface:#201d14; --surface-2:#2b271b; --line:#3f392a; --fg:#f1eee4; --muted:#b2ab95; --toga:#644a0e; --toga-2:#463408; --toga-txt:#e8c873; --toga-borda:#a8893c; --trilho:#2b271b}
 
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -1331,6 +1343,10 @@ html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *:
 :root[data-estilo="premium"][data-paleta="sol"]{--p1:#ea580c;--p2:#e11d48;--p1-txt:#c2410c;--p1-txt-d:#fdba74}
 :root[data-estilo="premium"][data-paleta="noite"]{--p1:#4f46e5;--p2:#0ea5e9;--p1-txt:#4338ca;--p1-txt-d:#a5b4fc}
 :root[data-estilo="premium"][data-paleta="grafite"]{--p1:#334155;--p2:#6366f1;--p1-txt:#334155;--p1-txt-d:#cbd5e1}
+:root[data-estilo="premium"][data-paleta="rubi"]{--p1:#9f1239;--p2:#d97706;--p1-txt:#9f1239;--p1-txt-d:#fda4af}
+:root[data-estilo="premium"][data-paleta="tropical"]{--p1:#0d9488;--p2:#65a30d;--p1-txt:#0f766e;--p1-txt-d:#5eead4}
+:root[data-estilo="premium"][data-paleta="ameixa"]{--p1:#86198f;--p2:#fb923c;--p1-txt:#86198f;--p1-txt-d:#f0abfc}
+:root[data-estilo="premium"][data-paleta="aurora"]{--p1:#0e7490;--p2:#8b5cf6;--p1-txt:#0e7490;--p1-txt-d:#67e8f9}
 @media (prefers-color-scheme: dark){:root[data-estilo="premium"]:not([data-theme="light"]){
   --bg:color-mix(in srgb,var(--p1) 7%,#0b0b10); --surface:color-mix(in srgb,var(--p1) 9%,#14141b); --surface-2:color-mix(in srgb,var(--p1) 14%,#1b1b24); --line:color-mix(in srgb,var(--p1) 20%,#292935);
   --fg:#f3f2f8; --muted:#aba8bb; --trilho:color-mix(in srgb,var(--p1) 22%,#24242e); --neutro:#605e70;
@@ -3779,11 +3795,11 @@ function topo(titulo,sub,opt){opt=opt||{};
   return `<header class="topo"><div class="wrap"><div class="topo-linha">${esq}<h1${String(titulo).length>30?' class="longo"':""}>${esc(titulo)}${sub?`<small>${esc(sub)}</small>`:""}</h1>${opt.dir||""}</div>${opt.extra||""}</div></header>`}
 
 function topoTela(){try{window.scrollTo(0,0);document.getElementById("app").scrollIntoView({block:"start"})}catch(e){}}
-const CORES=[["azul","Azul","Padrão","#1d4f91"],["vinho","Vinho","","#7a1f33"],["verde","Verde","A cor original","#174d3e"],["roxo","Roxo","","#553088"],["petroleo","Azul petróleo","","#0f5e66"],["grafite","Grafite","Cinza escuro","#33363d"]];
+const CORES=[["azul","Azul","Padrão","#1d4f91"],["vinho","Vinho","","#7a1f33"],["verde","Verde","A cor original","#174d3e"],["roxo","Roxo","","#553088"],["petroleo","Azul petróleo","","#0f5e66"],["grafite","Grafite","Cinza escuro","#33363d"],["cafe","Café","Couro de biblioteca","#6b4a2b"],["terracota","Terracota","Tijolo quente","#9c4221"],["oliva","Oliva","Verde-musgo","#4f5d23"],["ouro","Ouro velho","Dourado antigo","#7a5a12"]];
 function corAtual(){const c=S.cfg&&S.cfg.cor;return CORES.some(x=>x[0]===c)?c:"azul"}
 /* estilo visual: Premium na paleta Oceano (padrão) ou Clássico */
 const ESTILOS=[["classico","Clássico","O visual original do app, refinado"],["premium","Premium","Moderno, colorido e ilustrado, com leitura em fonte sem serifa"]];
-const PALETAS=[["violeta","Violeta","Violeta e magenta","#7c3aed","#db2777"],["oceano","Oceano","Azul e ciano (padrão)","#2563eb","#06b6d4"],["floresta","Floresta","Verde e azul-petróleo","#059669","#0891b2"],["sol","Pôr do sol","Laranja e coral","#ea580c","#e11d48"],["noite","Noite","Índigo e azul-céu","#4f46e5","#0ea5e9"],["grafite","Grafite","Cinza e índigo","#334155","#6366f1"]];
+const PALETAS=[["violeta","Violeta","Violeta e magenta","#7c3aed","#db2777"],["oceano","Oceano","Azul e ciano (padrão)","#2563eb","#06b6d4"],["floresta","Floresta","Verde e azul-petróleo","#059669","#0891b2"],["sol","Pôr do sol","Laranja e coral","#ea580c","#e11d48"],["noite","Noite","Índigo e azul-céu","#4f46e5","#0ea5e9"],["grafite","Grafite","Cinza e índigo","#334155","#6366f1"],["rubi","Rubi","Bordô e dourado","#9f1239","#d97706"],["tropical","Tropical","Turquesa e lima","#0d9488","#65a30d"],["ameixa","Ameixa","Ameixa e pêssego","#86198f","#fb923c"],["aurora","Aurora","Ciano e lilás","#0e7490","#8b5cf6"]];
 function paletaAtual(){const c=S.cfg&&S.cfg.paleta;return PALETAS.some(x=>x[0]===c)?c:"oceano"}
 function estiloAtual(){return (S.cfg&&S.cfg.estilo)==="classico"?"classico":"premium"}
 function aplicarCor(){const c=corAtual();const h=document.documentElement;if(c==="vinho")h.removeAttribute("data-cor");else h.setAttribute("data-cor",c);
