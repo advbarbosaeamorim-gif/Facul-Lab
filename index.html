@@ -2537,6 +2537,38 @@ html:not([data-anim="on"]) .sc-nota{opacity:1}
 @media (prefers-reduced-motion:reduce){.bk *,.bk-hero *,.ovo-copia *{animation:none!important;transition:none!important}.ovo-copia.certo .ca-carimbo{opacity:1;transform:translate(-50%,-50%) rotate(-14deg)}}
 [data-anim="off"] .bk *{animation:none!important;transition:none!important}
 </style>
+<style id="estilo-inverso">
+/* ---------- teste inverso: a resposta vira o enunciado ---------- */
+.inv-cab{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:12px 0 10px}
+.inv-cab small{color:var(--muted);font-size:.82rem;font-weight:600}
+.inv-selo{display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 8px;border-radius:999px;background:var(--toga);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.02em}
+.inv-selo .ic,.inv-selo svg{width:16px;height:16px}
+.inv-resp{position:relative;margin:0;padding:16px 18px 18px;border-radius:var(--r);background:var(--surface);border:2px solid var(--toga);box-shadow:0 6px 0 -2px color-mix(in srgb,var(--toga) 22%,transparent);transform-origin:50% 0}
+.inv-resp small{display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--toga-txt);margin-bottom:4px}
+.inv-resp p{margin:0;font-size:1.14rem;line-height:1.45;font-weight:700}
+.inv-resp p::before{content:"“";color:var(--toga-txt);opacity:.5;margin-right:2px} .inv-resp p::after{content:"”";color:var(--toga-txt);opacity:.5;margin-left:2px}
+.inv-qual{margin:16px 0 0;font-weight:700;font-size:1rem}
+.inv-alts .alt{font-size:.97rem}
+.inv-lac{display:inline-block;width:3.2em;height:.9em;vertical-align:-.1em;border-bottom:2px dashed var(--toga-txt);opacity:.7}
+.inv-coment .inv-frase,.rbody .inv-frase{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.inv-frase .ic,.inv-frase svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--toga-txt)}
+.inv-comp{margin-top:12px;padding:10px 12px;border-radius:12px;border:1px dashed var(--line)}
+.inv-comp p{margin:0 0 6px} .inv-dica{font-size:.86rem;color:var(--muted)}
+.inv-porque,.inv-pre{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--muted);margin:12px 0 0}
+.inv-porque .ic,.inv-porque svg,.inv-pre .ic,.inv-pre svg{flex:none;width:18px;height:18px;margin-top:1px;color:var(--toga-txt)}
+.inv-pre{padding:10px 12px;border-radius:12px;background:var(--surface-2);color:var(--fg)}
+.cad-refaz.inv .inv-cab{margin-top:6px}
+[data-estilo="premium"] .inv-resp{border-radius:22px}
+[data-estilo="premium"] .inv-selo{background:linear-gradient(135deg,var(--toga),var(--toga-2))}
+html[data-anim="on"] .inv-resp.entra{animation:inv-vira .75s cubic-bezier(.3,1.35,.5,1) both}
+html[data-anim="on"] .inv-resp.entra~.inv-qual{animation:inv-sobe .5s .35s ease both}
+html[data-anim="on"] .inv-selo svg{animation:inv-gira .9s .1s cubic-bezier(.4,1.6,.5,1) both}
+html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:not(:disabled){animation:inv-sobe .45s calc(.45s + var(--i,0)*.07s) ease both}
+html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(2){--i:1} html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(3){--i:2} html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(4){--i:3}
+@keyframes inv-vira{0%{opacity:0;transform:perspective(700px) rotateX(-95deg)}60%{opacity:1}100%{transform:none}}
+@keyframes inv-sobe{from{opacity:0;transform:translateY(10px)}}
+@keyframes inv-gira{from{transform:rotate(-180deg) scale(.6)}}
+</style>
 <style id="estilo-revisao">
 /* ---------- revisão espaçada: central, cartão do Hoje, etiqueta dos cartões e segredo Memória de elefante ---------- */
 .rv{--rv-c:var(--lacre);--rv-q:var(--nv2);--rv-m:var(--nv1)}
@@ -5126,7 +5158,7 @@ function telaPre(){if(/^faixa:/.test(rota.key||"")){const d=rota.key.split(":")[
     <div class="info"><div><strong>${n}</strong><small>questões</small></div><div><strong>${s.limite?dur(s.limite):"Livre"}</strong><small>${s.limite?"de prova":"sem cronômetro"}</small></div><div><strong>50%</strong><small>para aprovação</small></div></div>
     <div class="chave"><p><b>Correção no final ${S.cfg.corrFinal?"ligada":"desligada"}</b><small>${S.cfg.corrFinal?"A correção de cada questão será exibida ao final do simulado":"A correção aparece logo depois de cada resposta"}</small></p>
       <label class="switch"><input type="checkbox" id="corrFinal" ${S.cfg.corrFinal?"checked":""} aria-label="Correção no final"><span></span></label></div>
-    <p class="nota">A ordem das alternativas muda a cada tentativa.${s.fixa?" As questões seguem a ordem das matérias na prova.":s.rampa?" As questões começam pelas mais simples e vão ficando mais difíceis; cada correção traz o comentário e o fundamento legal.":" A ordem das questões também muda."}</p>
+    <p class="nota">A ordem das alternativas muda a cada tentativa.${s.fixa?" As questões seguem a ordem das matérias na prova.":s.rampa?" As questões começam pelas mais simples e vão ficando mais difíceis; cada correção traz o comentário e o fundamento legal.":" A ordem das questões também muda."}</p>${invAvisoPre(s)}
   </div>
   <div class="botoes">${e.st==="pausa"?`<button class="botao linha" data-acao="comecar">Refazer simulado</button><button class="botao cheio" data-acao="continuar">Continuar onde parei</button>`
     :`${e.a?`<button class="botao linha" data-acao="ver-ultima">Ver última correção</button>`:""}<button class="botao cheio" data-acao="comecar">${e.a?"Refazer simulado":"Iniciar simulado"}</button>`}</div></main>`}
@@ -5134,14 +5166,15 @@ function comecar(key){const s=sim(key);if(!s||!s.qids.length)return;
   const qids=s.fixa?s.qids.slice():s.rampa?rampa(s.qids):emb(s.qids);const ordem={};qids.forEach(id=>ordem[id]=emb([0,1,2,3]));
   S.hist.forEach(a=>{if(a.key===key&&a.status==="pausado"){a.status="descartado"}});
   S.hist=S.hist.filter(a=>a.status!=="descartado");
-  sessao={id:"a"+Date.now(),key,titulo:s.titulo,sub:s.sub,inicio:Date.now(),status:"pausado",qids,ordem,resp:{},tempo:0,limite:s.limite,corrFinal:!!S.cfg.corrFinal,pos:0};
+  sessao={id:"a"+Date.now(),key,titulo:s.titulo,sub:s.sub,inicio:Date.now(),status:"pausado",qids,ordem,resp:{},tempo:0,limite:s.limite,corrFinal:!!S.cfg.corrFinal,pos:0,inv:s.tipo==="err"?invMonta(qids):undefined};
   S.hist.unshift(sessao);if(S.hist.length>200)S.hist.length=200;idx=0;folha=false;confirmar=null;salvar();ir({tela:"quiz"})}
 
 /* ---------- prova ---------- */
 function responderQ(o){const s=sessao,id=s.qids[idx];if(!s.corrFinal&&s.resp[id]!==undefined)return;
-  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0,o);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
+  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0,o>0&&invDe(s,id)?"inv":o);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
 function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   if(!q){return topo("Questão indisponível","",{voltarAcao:"pausar"})+`<main class="wrap">${vazio("carimbo","Questão retirada do banco","Ela foi removida depois de uma revisão. Passe para a próxima: a sua nota considera só as questões disponíveis.")}</main>`+navQuiz()}
+  const L=invDe(s,id);if(L)return telaQuizInv(s,id,q,L);
   const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
   const modo=modoQ(),pv=(pend&&pend.id===id)?pend.o:undefined,marc=pv!==undefined?pv:r;
   const rest=s.limite?s.limite-s.tempo:s.tempo;
@@ -5176,7 +5209,7 @@ function iniciarRelogio(){if(!sessao||tick)return;ultimoTick=Date.now();
       if(rest<=0){sessao.tempo=sessao.limite;if(sessao.mp)sessao.mp.esgotou=true;finalizar()}}else el.textContent=mmss(sessao.tempo)},1000)}
 function pararRelogio(){if(tick){clearInterval(tick);tick=null;if(sessao){sessao.tempo+=(Date.now()-ultimoTick)/1000;ultimoTick=Date.now()}}}
 function finalizar(){pararRelogio();const a=sessao;a.status="concluido";a.fim=Date.now();
-  a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0,r)});
+  a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0,r>0&&invDe(a,id)?"inv":r)});
   sessao=null;folha=false;confirmar=null;salvar();
   const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id,revela:!!a.mp};render();
   if(!a.mp){const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
@@ -5197,7 +5230,7 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
     return `<div class="linha">${tile(META[m].cor,META[m].ic)}<div><div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${x.o}/${x.n}</b></div><div class="trilho"><i class="f-ok" style="width:${p}%"></i><i class="f-er" style="width:${100-p}%"></i></div></div><span></span></div>`}).join("")}</div>`:""}
   <div class="secao" role="heading" aria-level="2">Correção comentada</div>
   ${listaCorrecao(a)}</main>`}
-function listaCorrecao(a){return `<div class="revisao">${a.qids.map((id,i)=>{const q=QMAP[id];if(!q)return "";const x=a.resp[id],ord=a.ordem[id];const k=x===undefined?"br":x===0?"ok":"er";
+function listaCorrecao(a){return `<div class="revisao">${a.qids.map((id,i)=>{const q=QMAP[id];if(!q)return "";const L=invDe(a,id);if(L)return invCorr(a,id,i,L);const x=a.resp[id],ord=a.ordem[id];const k=x===undefined?"br":x===0?"ok":"er";
     return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)}</span><br>${esc(q.q)}</span></summary>
     <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${esc(q.o[oi])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}${oi!==0&&explQ(q)?`<span class="px">${esc(explQ(q)[oi-1])}</span>`:""}</p>`).join("")}
     <p style="margin-top:10px">${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar este tema na apostila</button>`:""}${botaoRep(q)}</div></details>`}).join("")}</div>`}
@@ -6166,7 +6199,7 @@ function telaRevisao(){const L=rvItens(),mem=rvMemoria(L),P=rvPrevisao(14),cx=rv
  <div class="rv-bloco rv-explica"><p>Em 1885, o psicólogo alemão <b>Hermann Ebbinghaus</b> mediu quanto esquecemos com o tempo: a memória cai rápido nos primeiros dias e depois vai se apagando. Cada revisão feita bem quando você está quase esquecendo deixa a queda mais lenta. Toque nos números e veja:</p>
  ${rvCurva()}
  <ul class="rv-regras"><li style="--c:var(--lacre)">${ic("cartas")}<span><b>Cartões:</b> você diz como foi lembrar. <em>Errei</em> volta na mesma sessão; <em>Difícil</em>, <em>Acertei</em> e <em>Fácil</em> espaçam cada vez mais. Cada cartão aprende o seu ritmo.</span></li>
- <li style="--c:var(--nv2)">${ic("refazer")}<span><b>Questões erradas:</b> voltam no dia seguinte e, a cada acerto, em 3, 7, 15 e 30 dias. Cinco acertos seguidos e ela está dominada.</span></li>
+ <li style="--c:var(--nv2)">${ic("refazer")}<span><b>Questões erradas:</b> voltam no dia seguinte e, a cada acerto, em 3, 7, 15 e 30 dias. Depois do primeiro acerto, elas voltam no <b>teste inverso</b>: a resposta vira o enunciado e você acha a pergunta. A última revisão volta no formato da prova. Cinco acertos seguidos e ela está dominada.</span></li>
  <li style="--c:var(--nv1)">${ic("livro")}<span><b>Mapas mentais:</b> quando você termina uma apostila, o mapa volta 1, 7, 15, 30 e 60 dias depois.</span></li></ul>
  <p class="rv-nota">Os lotes de cartões seguem o seu <button class="link-inline" data-acao="ir-raiz" data-tela="config">ritmo de estudo</button>: ${rvLote()} por vez agora.</p></div></main>`}
 
@@ -6215,6 +6248,62 @@ function ovoMemoria(rever){omeI=0;ovoCena("memoria","ovo-memoria",`<div class="o
 OVO_ABRE.memoria=ovoMemoria;
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-ovo="mem-esquece"]');if(!b)return;const c=b.closest(".festa");if(!c)return;
  omeI=(omeI+1)%OME_FALAS.length||1;const f=c.querySelector(".ome-fala");if(f)f.textContent=OME_FALAS[omeI];ovoReanima(c.querySelector(".ome-palco"),"nega");ovoSom("puxa")});
+/* ---------- teste inverso ----------
+   A questão recuperada (acertou depois de errar) ou já acertada numa revisão volta invertida: a resposta vira o enunciado
+   e as alternativas viram perguntas. Só inverte quando faz sentido: ficam de fora o comando negativo (incorreta, exceto),
+   a resposta que não se sustenta sozinha (todas, apenas I e II) e o enunciado com itens. As outras perguntas vêm da mesma
+   matéria, de preferência do mesmo assunto, e nunca têm resposta parecida com a certa, para que só uma sirva.
+   Na revisão espaçada, o inverso vale do 1º ao 4º acerto; a última revisão (30 dias) volta ao formato da prova.
+   sessao.inv[id] e cadRef.inv guardam as perguntas sorteadas (índice 0 é a da própria questão). */
+P.inverte='<path d="M4 8h15l-4-4M20 16H5l4 4"/>';
+const INV_NEG=/\b(INCORRET\w*|EXCETO|NÃO|SALVO)\b|incorret|exceto|\bfals[ao]s?\b|\berrad[ao]s?\b|inverídic|não (é|está|se aplica|corresponde)/;
+const INV_META=/^(todas|nenhuma|apenas|somente|ambas|I[\s,]|II|III|IV\b|V\b|[VF],|certo|errado|sim\b|não\b)/i;
+const INV_ITENS=/(^|\s)(I|II|III)\s*[-–.)]|afirmativas|assertivas|afirmações|proposições|\bitens\b|\bseguintes\b/i;
+/* enunciado genérico ("assinale a correta", "é correto afirmar") não identifica a resposta: não serve de pergunta */
+const INV_GEN=/(assinale|marque|indique|aponte) a (alternativa|opção|afirmativa|assertiva)? ?(correta|verdadeira|certa)|(é|está) correto (afirmar|dizer)|pode-se afirmar|(está|é) corret[ao]s?\s*:?\s*$|é correta a/i;
+const invApta=q=>!!q&&q.q.length<=300&&q.o[0].length<=200&&!INV_NEG.test(q.q)&&!INV_GEN.test(q.q)&&!INV_META.test(q.o[0].trim())&&!INV_ITENS.test(q.q);
+const invTok=t=>new Set(String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9 ]+/g," ").split(" ").filter(w=>w.length>3||/\d/.test(w)));
+function invParece(a,b){const A=invTok(a),B=invTok(b);if(!A.size||!B.size)return a.trim().toLowerCase()===b.trim().toLowerCase();let n=0;A.forEach(w=>{if(B.has(w))n++});return n/Math.min(A.size,B.size)>=.5}
+/* quer o inverso: na revisão, do 1º ao 4º acerto; fora dela, enquanto está "recuperada" no caderno */
+function invQuer(id){const r=S.qrev&&S.qrev[id];if(r)return r.n>=1&&r.n<PASSOS_Q.length-1;const e=S.cad&&S.cad[id];return !!(e&&!e.fora&&cadEst(id)==="recuperada")}
+function invSorteia(id){const q=QMAP[id];if(!invApta(q))return null;const g=grupoDe(q),L=[];
+ const serve=x=>x.id!==id&&x.m===q.m&&invApta(x)&&!invParece(x.o[0],q.o[0])&&!invParece(x.q,q.q)&&L.every(y=>!invParece(QMAP[y].q,x.q)&&!invParece(QMAP[y].o[0],x.o[0]));
+ const C=QS.filter(x=>x.m===q.m&&x.id!==id);
+ [emb(C.filter(x=>grupoDe(x)===g)),emb(C.filter(x=>grupoDe(x)!==g))].forEach(l=>l.forEach(x=>{if(L.length<3&&serve(x))L.push(x.id)}));
+ return L.length===3?[id,...L]:null}
+function invMonta(qids){const o={};qids.forEach(id=>{if(invQuer(id)){const L=invSorteia(id);if(L)o[id]=L}});return Object.keys(o).length?o:undefined}
+const invDe=(s,id)=>{const L=s&&s.inv&&s.inv[id];return L&&L.every(x=>QMAP[x])?L:null};
+/* enunciado como pergunta: o "…é chamado de:" vira uma lacuna */
+const invPerg=q=>/:\s*$/.test(q.q)?`${esc(q.q.replace(/\s*:\s*$/,""))} <span class="inv-lac" aria-label="lacuna"></span>`:esc(q.q);
+const invFrase=q=>`${esc(q.q)} <b>${esc(q.o[0])}</b>`;
+function invTopo(q,novo){return `<div class="inv-cab"><span class="inv-selo">${ic("inverte")}Teste inverso</span><small>A resposta vira a pergunta</small></div>
+ <div class="inv-resp${novo?" entra":""}"><small>A resposta é</small><p>${esc(q.o[0])}</p></div><p class="inv-qual">Qual destas perguntas ela responde?</p>`}
+function invAlts(L,ord,r,marc,mostra,attr){return `<div class="alts inv-alts" role="radiogroup" aria-label="Perguntas">${ord.map((oi,p)=>{let c="";if(mostra){if(oi===0)c="certa";else if(oi===r)c="errada"}else if(oi===marc)c="marcada";
+ return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" ${attr} data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[p]}</span><span>${invPerg(QMAP[L[oi]])}</span></button>`}).join("")}</div>`}
+function invExplica(q,L,r,ord,cad){const ok=r===0,x=r>0?QMAP[L[r]]:null;
+ return `<div class="coment ${ok?"":"err"} inv-coment"><h3>${r===undefined?"Em branco":ok?"Inverso certo":"Inverso incorreto"} · era a ${LETRAS[ord.indexOf(0)]}</h3>
+ <p class="inv-frase">${ic("inverte")}<span>${invFrase(q)}</span></p><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>
+ ${x?`<div class="inv-comp"><p class="porque-t">Compare com a pergunta que você marcou</p><p>${invFrase(x)}</p><p class="inv-dica">Perguntas vizinhas, respostas diferentes. Grave o detalhe do enunciado que separa uma da outra.</p></div>`:""}
+ <p class="inv-porque">${ic("lampada")}<span><b>Por que inverter?</b> Na prova você vai da pergunta à resposta. Aqui faz o caminho de volta: ligar a resposta ao contexto certo mostra que você entendeu, e não só reconheceu a alternativa. A memória fica firme nos dois sentidos.</span></p>
+ ${ok||cad?"":`<p class="cad-foi">${ic("caderno")}<span>Guardada no seu <b>Caderno de erros</b>, com a explicação, para refazer depois.</span></p>`}${botaoRep(q)}</div>`}
+function telaQuizInv(s,id,q,L){const ord=s.ordem[id],r=s.resp[id],mostra=!s.corrFinal&&r!==undefined;const M=META[q.m];
+ const modo=modoQ(),pv=(pend&&pend.id===id)?pend.o:undefined,marc=pv!==undefined?pv:r;const rest=s.limite?s.limite-s.tempo:s.tempo;
+ const dir=`<span class="relogio" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
+ const novo=r===undefined&&!(pend&&pend.id===id);
+ return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,"Teste inverso",{voltarAcao:"pausar",dir})+
+ `<main class="wrap"><div class="q-cab inv${novo?" novo":""}"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${invTopo(q,novo)}</div>
+ ${invAlts(L,ord,r,marc,mostra,'data-acao="marcar"')}
+ ${modo==="confirmar"&&!mostra?(pv!==undefined&&pv!==r?`<div class="botoes" style="margin-top:12px"><button class="botao cheio" data-acao="confirmar-resp">Confirmar resposta</button></div>`:r===undefined?`<p class="dica-modo">Toque em uma pergunta e depois em "Confirmar resposta".</p>`:""):""}
+ ${setasAcima()?navQuizAcima():""}
+ ${mostra?invExplica(q,L,r,ord):""}</main>`+(setasAcima()?"":navQuiz())+(folha?telaFolha():"")}
+/* na correção do resultado */
+function invCorr(a,id,i,L){const q=QMAP[id],x=a.resp[id],ord=a.ordem[id],k=x===undefined?"br":x===0?"ok":"er";
+ return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)} · teste inverso</span><br>A resposta é: <b>${esc(q.o[0])}</b></span></summary>
+ <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${invPerg(QMAP[L[oi]])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}</p>`).join("")}
+ <p class="inv-frase" style="margin-top:10px">${ic("inverte")}<span>${invFrase(q)}</span></p>${x>0?`<p class="fund">A pergunta que você marcou: ${invFrase(QMAP[L[x]])}</p>`:""}<p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${botaoRep(q)}</div></details>`}
+/* aviso na tela de começar */
+function invAvisoPre(s){if(s.tipo!=="err")return "";const n=s.qids.filter(id=>invQuer(id)&&invApta(QMAP[id])).length;if(!n)return "";
+ return `<p class="inv-pre">${ic("inverte")}<span>${n===1?"Uma questão que você já recuperou volta":`Até ${n} questões que você já recuperou voltam`} no <b>teste inverso</b>: a resposta aparece como enunciado e você escolhe a pergunta certa.</span></p>`}
 /* ---------- caderno de erros ----------
    Cada questão errada vai para S.cad ({id: {n: vezes que errou, r: alternativa marcada no último erro (br: deixou em branco),
    t0/t: primeiro e último erro, s: acertos seguidos depois do erro, ta: último acerto, mot: por que errou, nota: anotação, fora: tirada do caderno}}).
@@ -6242,7 +6331,7 @@ function cadMigra(){if(S.cad)return;const c={};
  Object.keys(S.stats||{}).forEach(id=>{const s=S.stats[id];if(s.u===0&&!c[id])c[id]={n:Math.max(1,(s.n||1)-(s.ok||0)),t0:s.t||Date.now(),t:s.t||Date.now(),s:0,br:1};else if(s.u===1&&c[id]&&!c[id].s)c[id].s=1});
  Object.keys(c).forEach(id=>{if(!QMAP[id])delete c[id]});S.cad=c}
 function cadAnota(id,c,o){cadMigra();const e=S.cad[id],t=Date.now();
- if(!c){const x=e||{n:0,t0:t};x.n++;x.t=t;x.s=0;if(o>0){x.r=o;delete x.br}else{delete x.r;x.br=1}delete x.fora;S.cad[id]=x}
+ if(!c){const x=e||{n:0,t0:t};x.n++;x.t=t;x.s=0;delete x.inv;if(o==="inv"){x.inv=1;delete x.r;delete x.br}else if(o>0){x.r=o;delete x.br}else{delete x.r;x.br=1}delete x.fora;S.cad[id]=x}
  else if(e){e.s=(e.s||0)+1;e.ta=t}}
 function cadIds(){cadMigra();return Object.keys(S.cad).filter(id=>QMAP[id]&&!S.cad[id].fora)}
 function cadEst(id){const e=S.cad[id],st=S.stats[id];const u=st?st.u:(e.s?1:0);return !u?"refazer":(e.s||0)>=CAD_DOMINA?"dominada":"recuperada"}
@@ -6303,7 +6392,7 @@ function cadAlts(q,ord,r,mostra,clicavel){const X=explQ(q);
    :`<div class="alt ${c}" role="listitem"><span class="letra">${LETRAS[p]}</span><span>${esc(q.o[oi])}${tag}${px}</span></div>`}).join("")}</div>`}
 function cadCorpo(id){const q=QMAP[id],e=S.cad[id],st=cadEst(id);
  return `<div class="cad-corpo${cadEntra===id?" entra":""}">
- ${e.br?`<p class="cad-aviso">${ic("exc")} Da última vez você deixou esta questão em branco.</p>`:""}
+ ${e.br?`<p class="cad-aviso">${ic("exc")} Da última vez você deixou esta questão em branco.</p>`:e.inv?`<p class="cad-aviso">${ic("inverte")} Da última vez você errou o teste inverso: reconheceu a resposta, mas não a pergunta. Releia o enunciado com calma.</p>`:""}
  ${cadAlts(q,cadOrd(id),e.br?undefined:e.r,true,false)}
  <div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>
  <div class="cad-pq"><p class="cad-pq-t">Por que eu errei?</p><div class="cad-pq-bts">${CAD_MOT.map(x=>`<button data-cad="mot" data-id="${id}" data-v="${x[0]}" aria-pressed="${e.mot===x[0]}">${ic(x[2])}${x[1]}</button>`).join("")}</div>
@@ -6311,19 +6400,19 @@ function cadCorpo(id){const q=QMAP[id],e=S.cad[id],st=cadEst(id);
  <label class="campo cad-nota"><span>${ic("nota")} O que eu aprendi</span><textarea data-cad-nota="${id}" rows="2" placeholder="Com suas palavras. Ex.: na dúvida entre as duas, o prazo é de 15 dias úteis.">${esc(e.nota||"")}</textarea></label>
  <div class="cad-acoes"><button class="botao cheio" data-cad="refazer" data-id="${id}">${ic("refazer")} ${st==="refazer"?"Refazer agora":"Refazer de novo"}</button>
  <div class="cad-acoes-l">${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar na apostila</button>`:""}<button class="link-tema cad-tirar" data-cad="tirar" data-id="${id}">${ic("x")} Tirar do caderno</button></div></div></div>`}
-function cadRefaz(id){const q=QMAP[id],R=cadRef,e=S.cad[id],feito=R.r!==undefined;
+function cadRefaz(id){const q=QMAP[id],R=cadRef,e=S.cad[id],feito=R.r!==undefined,L=R.inv&&R.inv.every(x=>QMAP[x])?R.inv:null;
  let res="";if(feito){const ok=R.r===0,dom=ok&&(e.s||0)>=CAD_DOMINA;
   res=`<div class="cad-res ${ok?"ok":"er"}">${ok?`<span class="cad-carimbo${dom?" dom":""}">${dom?"Dominada":"Recuperada"}</span>`:""}
   <p><b>${ok?(dom?"Dominou! Essa não te pega mais.":"Acertou! Erro virou acerto."):"Ainda não foi dessa vez."}</b> ${ok?(dom?`Foram ${CAD_DOMINA} acertos seguidos.`:`Acerto ${e.s} de ${CAD_DOMINA} para dominar.`):"Tudo bem: veja a explicação e tente de novo mais tarde."}</p>
   <div class="cad-pontos" aria-hidden="true">${Array.from({length:CAD_DOMINA},(_,k)=>`<i class="${k<(e.s||0)?"on":""}"></i>`).join("")}</div></div>`}
- return `<div class="cad-corpo cad-refaz${cadEntra===id?" entra":""}"><p class="cad-aviso">${ic("relogio")} ${feito?"Resultado":"Sem olhar a explicação: qual é a certa?"}</p>
- ${cadAlts(q,R.ord,R.r,feito,!feito)}${res}
- ${feito&&R.r!==0?`<div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>`:""}
+ return `<div class="cad-corpo cad-refaz${cadEntra===id?" entra":""}${L?" inv":""}">${L?invTopo(q,!feito):`<p class="cad-aviso">${ic("relogio")} ${feito?"Resultado":"Sem olhar a explicação: qual é a certa?"}</p>`}
+ ${L?invAlts(L,R.ord,R.r,undefined,feito,feito?"":'data-cad="resp"'):cadAlts(q,R.ord,R.r,feito,!feito)}${res}
+ ${L&&feito?invExplica(q,L,R.r,R.ord,true):feito&&R.r!==0?`<div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>`:""}
  <div class="cad-acoes">${feito?`<button class="botao cheio" data-cad="fecha-ref" data-id="${id}">${R.r===0?"Voltar à explicação":"Ver explicação completa"}</button>${R.r!==0?`<button class="botao linha" data-cad="refazer" data-id="${id}">Tentar de novo</button>`:""}`
   :`<button class="botao linha" data-cad="fecha-ref" data-id="${id}">Cancelar</button>`}</div></div>`}
 function cadRender(){rota.manterScroll=true;render()}
 function cadResponde(id,o){const R=cadRef;if(!R||R.id!==id||R.r!==undefined)return;R.r=o;const ok=o===0;
- marcarDia("q");registrar(id,ok,o);salvar();cadFx={id,ok};cadRender();
+ marcarDia("q");registrar(id,ok,o>0&&R.inv?"inv":o);salvar();cadFx={id,ok};cadRender();
  const dom=ok&&(S.cad[id].s||0)>=CAD_DOMINA;efeitoResposta(ok);
  if(ok){som(dom?"aprovado":"acerto");setTimeout(()=>som("carimbo"),animOn()?520:10)}else som("erro");
  anunciar(ok?(dom?"Acertou e dominou a questão":"Acertou. Questão recuperada"):"Errou. A explicação está logo abaixo")}
@@ -6338,7 +6427,7 @@ document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
   case "abre":{const k=b.closest(".cad-q").dataset.id;cadAberto=cadAberto===k?null:k;cadEntra=cadAberto;cadRef=null;som(cadAberto?"vira":"toque");cadRender();
    if(cadAberto)setTimeout(()=>{const el=document.querySelector(`.cad-q[data-id="${cadAberto}"]`);if(el){const r=el.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)el.scrollIntoView({behavior:animOn()?"smooth":"auto",block:"start"})}},30);break}
   case "mot":{const x=S.cad[id];if(!x)break;x.mot=x.mot===b.dataset.v?undefined:b.dataset.v;salvar();som("toque");cadRender();break}
-  case "refazer":cadRef={id,ord:emb([0,1,2,3])};cadAberto=id;cadEntra=id;som("vira");cadRender();break;
+  case "refazer":cadRef={id,ord:emb([0,1,2,3]),inv:invQuer(id)?invSorteia(id):null};cadAberto=id;cadEntra=id;som("vira");cadRender();break;
   case "resp":cadResponde(b.closest(".cad-q").dataset.id,+b.dataset.o);break;
   case "fecha-ref":cadRef=null;cadEntra=id;som("toque");cadRender();break;
   case "tirar":{const x=S.cad[id];if(!x)break;x.fora=1;cadTirada=id;cadAberto=null;cadRef=null;salvar();som("tira");cadRender();anunciar("Questão tirada do caderno");break}
@@ -6672,7 +6761,7 @@ function semFaixa(seg){const a=new Date(seg),b=new Date(seg);b.setDate(b.getDate
 /* guarda cada resposta do dia (para comparar semanas sem perder o que foi refeito depois) */
 function semGuarda(id,c){S.semQ=S.semQ||{};const k=hojeStr();(S.semQ[k]=S.semQ[k]||{})[id]=c?1:0;
  const ks=Object.keys(S.semQ).sort();if(ks.length>63)ks.slice(0,ks.length-63).forEach(z=>delete S.semQ[z])}
-{const reg0=registrar;registrar=function(id,c){reg0(id,c);try{semGuarda(id,c)}catch(e){}}}
+{const reg0=registrar;registrar=function(id,c,o){reg0(id,c,o);try{semGuarda(id,c)}catch(e){}}}
 function semRespostas(ks){const out={},G=S.semQ||{},F={};ks.forEach(k=>{if(G[k])out[k]=G[k];else F[k]=out[k]={}});
  if(Object.keys(F).length)Object.keys(S.stats||{}).forEach(id=>{const s=S.stats[id];if(!s||!s.t)return;const k=hojeStr(s.t);if(F[k])F[k][id]=s.u?1:0});
  return out}
