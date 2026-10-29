@@ -2143,7 +2143,29 @@ html[data-anim="on"] .ovo-dt{animation:ovo-dt 2.4s ease-in-out infinite}
 .ovo-item.ach .sb-ic{background:#f6c453;color:#3a2a00}
 .ovo-item .sb-ic .i{width:20px;height:20px}
 .ovo-item b{display:block;font-size:.92rem}.ovo-item small{display:block;color:var(--muted);font-size:.8rem;line-height:1.35}
-@media (prefers-reduced-motion:reduce){.ovo *{animation:none!important}}
+/* pergunta antes de revelar e a lista que desce */
+.ovo-pergunta{margin-top:10px;padding:16px;border-radius:16px;background:var(--surface-2);text-align:center}
+.ovo-pergunta p{margin:10px 0 14px;line-height:1.5}
+.ovo-lacre{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:2px dashed #c9971c;color:#8a6500;background:color-mix(in srgb,#f6c453 22%,transparent);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+[data-theme="dark"] .ovo-lacre{color:#f6c453}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .ovo-lacre{color:#f6c453}}
+.ovo-lacre .i{width:16px;height:16px}
+html[data-anim="on"] .ovo-lacre{animation:ovo-lacre 3s ease-in-out infinite}
+@keyframes ovo-lacre{0%,100%{transform:none}6%{transform:rotate(-3deg) scale(1.04)}12%{transform:rotate(2deg)}18%{transform:none}}
+html[data-anim="on"] .ovo-pergunta.sai{animation:ovo-sai .26s ease-in both}
+@keyframes ovo-sai{to{opacity:0;transform:translateY(-8px) scale(.97)}}
+html[data-anim="on"] .ovo-pergunta.volta{animation:ovo-volta .35s ease-out both}
+@keyframes ovo-volta{from{opacity:0;transform:translateY(-8px)}}
+.ovo-revela{display:grid;grid-template-rows:1fr}
+.ovo-revela>div{min-height:0;overflow:hidden}
+.ovo-revela[hidden],.ovo-pergunta[hidden]{display:none}
+html[data-anim="on"] .ovo-revela.desce{animation:ovo-desce .7s cubic-bezier(.2,.8,.3,1) both}
+@keyframes ovo-desce{from{grid-template-rows:0fr}to{grid-template-rows:1fr}}
+html[data-anim="on"] .ovo-revela.desce>div>p{animation:ovo-item .45s .1s ease-out both}
+html[data-anim="on"] .ovo-revela.desce li{animation:ovo-item .5s cubic-bezier(.2,1.3,.4,1) both;animation-delay:calc(.15s + var(--oi,0) * 60ms)}
+@keyframes ovo-item{from{opacity:0;transform:translateY(-14px)}}
+.ovo-esconde{all:unset;display:block;margin:12px auto 0;padding:6px 10px;color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.ovo *,.ovo-revela,.ovo-revela *,.ovo-pergunta,.ovo-lacre{animation:none!important}}
 /* fim dos autos: puxar para cima no fim da tela */
 #ovo-puxa{position:fixed;left:50%;bottom:0;z-index:45;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:12px 18px calc(14px + env(safe-area-inset-bottom,0px));border-radius:20px 20px 0 0;background:var(--surface);border:1px solid var(--line);border-bottom:0;box-shadow:0 -10px 30px rgba(0,0,0,.18);color:var(--fg);font-weight:700;font-size:.9rem;white-space:nowrap;pointer-events:none;transform:translate(-50%,100%)}
 #ovo-puxa .op-ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--lacre) 16%,transparent);color:var(--lacre);transition:transform .25s cubic-bezier(.2,1.6,.4,1)}
@@ -4248,7 +4270,7 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Quando ver a correção</div>
- <div class="cores">${[["0","Na hora","Comentário logo após responder"],["1","No final","Correção só no resultado"]].map(([k,n,d])=>`<button data-acao="cfg-corr" data-v="${k}" aria-pressed="${(S.cfg&&S.cfg.corrFinal?"1":"0")===k}"><span class="ico-op">${ic(k==="0"?"ok":"relogio")}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="cores">${[["0","Na hora","Padrão · comentário logo após responder"],["1","No final","Correção só no resultado"]].map(([k,n,d])=>`<button data-acao="cfg-corr" data-v="${k}" aria-pressed="${(S.cfg&&S.cfg.corrFinal?"1":"0")===k}"><span class="ico-op">${ic(k==="0"?"ok":"relogio")}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Setas para passar as questões</div>
  <div class="cores">${[["baixo","Embaixo","Barra fixa no rodapé","baixo"],["acima","Acima","Logo abaixo das alternativas","cima"]].map(([k,n,d,i])=>`<button data-acao="cfg-setas" data-v="${k}" aria-pressed="${(setasAcima()?"acima":"baixo")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Essas escolhas valem para todos os simulados e listas de questões. A correção também pode ser trocada na tela de início de cada simulado.</p>
@@ -4734,12 +4756,12 @@ function mostrarFesta(a){const v=versoDaChave(a.key);const fr=MOTIVA[Math.floor(
  document.body.appendChild(el);confete(el.querySelector("canvas"));som("gabarito");syncVoltar()}
 /* ---------- estado ---------- */
 const CHAVE="simuladoOAB.v2";
-function novoEstado(){return {v:2,atualizado:0,hist:[],stats:{},cfg:{corrFinal:true},lidos:{}}}
+function novoEstado(){return {v:2,atualizado:0,hist:[],stats:{},cfg:{corrFinal:false,migCorr:1},lidos:{}}}
 let S=novoEstado();
 function carregar(o){
   if(!o) return null;
   if(o.v===2) return Object.assign(novoEstado(),o);
-  if(o.v===1){const n=novoEstado();n.stats=o.stats||{};n.cfg.corrFinal=!(o.cfg&&o.cfg.corrFinal===false);n.atualizado=o.atualizado||0;return n}
+  if(o.v===1){const n=novoEstado();n.stats=o.stats||{};n.cfg.corrFinal=false;n.atualizado=o.atualizado||0;return n}
   return null;
 }
 try{const a=localStorage.getItem(CHAVE)||localStorage.getItem("simuladoOAB.v1");if(a){const c=carregar(JSON.parse(a));if(c)S=c}}catch(e){}
@@ -4832,6 +4854,8 @@ function anunciar(t){const el=document.getElementById("aviso-vivo");if(!el)retur
 function modoQ(){const m=S.cfg&&S.cfg.modoQ;return MODOS_Q.some(x=>x[0]===m)?m:"imediato"}
 function setasAcima(){return !(S.cfg&&S.cfg.setas==="baixo")}
 function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul";S.cfg.setas="acima";try{salvar()}catch(e){}}
+  /* a correção na hora passou a ser o padrão: quem estava no padrão antigo (no final) muda uma vez; depois, vale a escolha da pessoa */
+  if(!S.cfg.migCorr){S.cfg.migCorr=1;S.cfg.corrFinal=false;try{salvar()}catch(e){}}
   if(!S.cfg.mig40){S.cfg.mig40=1;S.qrev=S.qrev||{};const h=inicioDia();Object.keys(S.stats||{}).forEach(k=>{if(S.stats[k].u===0&&!S.qrev[k])S.qrev[k]={n:0,due:h}});try{salvar()}catch(e){}}
   aplicarCor();
   pararRelogio();
@@ -4862,7 +4886,30 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
   if(metaNova){metaNova=false;setTimeout(mostrarMeta,900)}
   if(ofensivaNova){ofensivaNova=false;setTimeout(()=>som("chama"),450)}
   if(rota.tela==="busca"&&telaNova)animarBusca();
+  guardarTela();
 }
+
+/* ---------- recarregar sem perder o lugar ----------
+   A cada tela, o app anota onde a pessoa está (tela, caminho de volta, questão, cartões). Ao recarregar a página,
+   ou ao voltar ao app em até 30 minutos depois de o celular fechá-lo, ela continua exatamente dali. */
+const TELA_CH="faculLab.tela",TELA_VALE=30*60*1000;
+function guardarTela(){try{const j=JSON.stringify({t:Date.now(),rota,pilha,sid:sessao?sessao.id:null,idx,deck,ls:lsSess,y:Math.round(window.scrollY||0)});
+  sessionStorage.setItem(TELA_CH,j);localStorage.setItem(TELA_CH,j)}catch(e){}}
+function guardarRolagem(){try{const j=sessionStorage.getItem(TELA_CH)||localStorage.getItem(TELA_CH);if(!j)return;const o=JSON.parse(j);o.y=Math.round(window.scrollY||0);o.t=Date.now();const k=JSON.stringify(o);sessionStorage.setItem(TELA_CH,k);localStorage.setItem(TELA_CH,k)}catch(e){}}
+window.addEventListener("pagehide",()=>{if(sessao&&rota.tela==="quiz"){pararRelogio();salvar()}guardarRolagem()});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)guardarRolagem()});
+function restaurarTela(){let o=null;
+  try{const a=sessionStorage.getItem(TELA_CH);if(a)o=JSON.parse(a);else{const b=localStorage.getItem(TELA_CH);const x=b&&JSON.parse(b);if(x&&Date.now()-(x.t||0)<TELA_VALE)o=x}}catch(e){o=null}
+  if(!o||!o.rota||typeof o.rota.tela!=="string")return 0;
+  const so=r=>r&&typeof r==="object"&&typeof r.tela==="string"&&!["quiz","cartao","ls-quiz"].includes(r.tela);
+  let pl=Array.isArray(o.pilha)?o.pilha.filter(so):[],rt=o.rota;
+  if(rt.tela==="quiz"){const x=o.sid&&S.hist.find(a=>a.id===o.sid&&a.status==="pausado");
+    if(x){sessao=x;idx=Math.max(0,Math.min(+o.idx||0,x.qids.length-1));folha=false;confirmar=null}else rt=pl.pop()||{tela:"hoje"}}
+  else if(rt.tela==="cartao"){if(o.deck&&Array.isArray(o.deck.q)&&o.deck.q.length)deck=o.deck;else rt={tela:"cartoes"}}
+  else if(rt.tela==="ls-quiz"){if(o.ls&&Array.isArray(o.ls.itens))lsSess=o.ls}
+  if(rt.tela==="hoje"&&!pl.length)return 0;
+  rt.manterScroll=false;rota=rt;pilha=pl;return rt.tela==="quiz"?0:(+o.y||0)}
+function voltarRolagem(y){if(!y)return;let n=0;const f=()=>{if(n++>6)return;const max=document.documentElement.scrollHeight-innerHeight;if(max>=y-4){window.scrollTo(0,y);return}window.scrollTo(0,Math.max(0,max));setTimeout(f,250)};requestAnimationFrame(f)}
 
 /* ---------- botão voltar do celular ----------
    Enquanto houver para onde voltar (menu ou janela aberta, tela interna, ou outra aba que não seja Hoje),
@@ -5636,9 +5683,16 @@ function ovoFundo(rever){ovoCena("fundo","ovo-fundo",`<div class="of-palco">${OF
  ovoSomDepois("carimbo",animOn()?420:60)}
 const OVO_ABRE={balanca:ovoBalanca,brocardo:ovoBrocardo,martelo:ovoMartelo,chama:ovoChama,habeas:ovoHabeas,coruja:ovoCoruja,data:ovoData,fundo:ovoFundo};
 /* lista em Sobre o Facul Lab: os achados podem ser revistos; os outros mostram só a dica */
+/* a lista fica em "segredo de justiça": o app pergunta antes e, ao revelar, ela desce desdobrando como um processo aberto */
+let ovosRevelados=false;
 function ovosSecao(){const n=ovosAchados();
- return `<section class="sb-bloco ovo-lista"><h3>${ic("estrela")} Segredos do Facul Lab <small>${n} de ${OVOS.length}</small></h3><p>${n===OVOS.length?"Você achou todos! Toque em um segredo para rever.":n?"Ainda há segredos escondidos pelo app. As dicas estão abaixo.":"O app esconde alguns segredos interativos. Siga as dicas para encontrar."}</p>
- <ul>${OVOS.map(o=>{const ach=(S.ovos||{})[o.id];return ach?`<li><button class="ovo-item ach" data-ovo="rever" data-id="${o.id}"><span class="sb-ic">${ic(o.ic)}</span><span><b>${esc(o.nome)}</b><small>${o.id==="sacode"?`${sacoN()} de ${SACO.length} cenas · toque para rever`:"Encontrado · toque para rever"}</small></span></button></li>`:`<li><div class="ovo-item"><span class="sb-ic">?</span><span><b>???</b><small>${esc(o.dica)}</small></span></div></li>`}).join("")}</ul></section>`}
+ const pergunta=`<div class="ovo-pergunta"${ovosRevelados?" hidden":""}><div class="ovo-lacre" aria-hidden="true">${ic("estrela")}<span>Segredo de justiça</span></div>
+  <p><b>Quer revelar os segredos?</b> Estes autos correm em segredo de justiça. Se abrir, você vê as dicas de onde cada surpresa está escondida.</p>
+  <button class="botao cheio" data-ovo="revelar" aria-expanded="false" aria-controls="ovo-revela">Revelar os segredos</button></div>`;
+ return `<section class="sb-bloco ovo-lista"><h3>${ic("estrela")} Segredos do Facul Lab <small>${n} de ${OVOS.length}</small></h3>${pergunta}
+ <div class="ovo-revela" id="ovo-revela"${ovosRevelados?"":" hidden"}><div><p>${n===OVOS.length?"Você achou todos! Toque em um segredo para rever.":n?"Ainda há segredos escondidos pelo app. As dicas estão abaixo.":"O app esconde alguns segredos interativos. Siga as dicas para encontrar."}</p>
+ <ul>${OVOS.map(o=>{const ach=(S.ovos||{})[o.id];return ach?`<li><button class="ovo-item ach" data-ovo="rever" data-id="${o.id}"><span class="sb-ic">${ic(o.ic)}</span><span><b>${esc(o.nome)}</b><small>${o.id==="sacode"?`${sacoN()} de ${SACO.length} cenas · toque para rever`:"Encontrado · toque para rever"}</small></span></button></li>`:`<li><div class="ovo-item"><span class="sb-ic">?</span><span><b>???</b><small>${esc(o.dica)}</small></span></div></li>`}).join("")}</ul>
+ <button class="ovo-esconde" data-ovo="esconder">Esconder os segredos de novo</button></div></div></section>`}
 
 /* ações dentro das cenas e gatilhos por toque */
 const ovoToques={};
@@ -5647,6 +5701,11 @@ function ovoReanima(el,cls){if(!el)return;el.classList.remove(cls);void el.getBo
 document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
  const b=t.closest("[data-ovo]");
  if(b){const a=b.dataset.ovo,c=b.closest(".festa");
+  if(a==="revelar"){const sec=b.closest(".ovo-lista"),r=sec&&sec.querySelector(".ovo-revela");if(!r)return;ovosRevelados=true;
+   const pg=sec.querySelector(".ovo-pergunta");r.querySelectorAll("li").forEach((li,i)=>li.style.setProperty("--oi",i));
+   if(animOn()){pg.classList.add("sai");setTimeout(()=>{pg.hidden=true;pg.classList.remove("sai");r.hidden=false;ovoReanima(r,"desce")},260)}else{pg.hidden=true;r.hidden=false}
+   ovoSom("vira");return}
+  if(a==="esconder"){const sec=b.closest(".ovo-lista");if(!sec)return;ovosRevelados=false;sec.querySelector(".ovo-revela").hidden=true;const pg=sec.querySelector(".ovo-pergunta");pg.hidden=false;ovoReanima(pg,"volta");return}
   if(a==="bal-p"&&ovoBal){ovoBal.R.push(+b.dataset.v);ovoSom("peso");ovoBalAtualiza()}
   else if(a==="bal-tira"&&ovoBal){ovoBal.R.pop();ovoSom("tira");ovoBalAtualiza()}
   else if(a==="bal-de-novo")ovoBalanca(true);
@@ -7062,7 +7121,9 @@ document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
   const fr=c.querySelector(".frase");if(fr)setTimeout(()=>{fr.textContent="Peguei! A cola foi para o saco de provas, e a prova segue sem ela."},animOn()?700:0)}});
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
-render();
+{let y=0;try{y=restaurarTela()}catch(e){y=0}
+ try{render()}catch(e){rota={tela:"hoje"};pilha=[];sessao=null;deck=null;y=0;render()}
+ voltarRolagem(y)}
 /* nas prévias do Netlify, espaço para o selo que fica no rodapé */
 if(/netlify\.app$/.test(location.hostname))document.documentElement.classList.add("np");
 /* na primeira entrada, o tour "Como funciona" (com opção de pular) */
