@@ -47,7 +47,7 @@ async function abre(nome, estilo, tema, rota, extra = {}) {
 
 for (const [estilo, tema] of VISUAIS) {
   for (const rota of TELAS) {
-    const nome = `${estilo}-${tema}-${Object.values(rota).join("-")}`;
+    const nome = `${estilo}-${tema}-${Object.values(rota).join("-")}`.replace(/[^\w.-]/g, "-");
     const [ctx, p] = await abre(nome, estilo, tema, rota);
     if (estilo === "premium" && tema === "claro") await p.screenshot({ path: PRINTS + nome + ".png" });
     await ctx.close();
