@@ -1,7 +1,7 @@
 {
   "name": "Facul Lab",
   "short_name": "Facul Lab",
-  "description": "Simulados e questões atualizados para o Exame da OAB",
+  "description": "Estudo de Direito da faculdade ao Exame da OAB: plano do dia, questões comentadas, apostilas, cartões e lei seca",
   "id": "../",
   "start_url": "../",
   "scope": "../",
@@ -27,6 +27,44 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Plano de hoje",
+      "short_name": "Hoje",
+      "url": "../?ir=hoje",
+      "icons": [
+        {
+          "src": "c-grafite-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Cartões de memorização",
+      "short_name": "Cartões",
+      "url": "../?ir=cartoes",
+      "icons": [
+        {
+          "src": "c-grafite-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Modo foco",
+      "short_name": "Foco",
+      "url": "../?ir=foco",
+      "icons": [
+        {
+          "src": "c-grafite-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }

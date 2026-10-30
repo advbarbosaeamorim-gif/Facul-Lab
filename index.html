@@ -84,7 +84,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .topo h1.longo small{display:none}
 .topo h1 small{display:block;font-family:var(--f-body);font-weight:400;font-size:.78rem;opacity:.8;letter-spacing:.02em}
 .icone{background:none;border:0;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:inherit;flex:none;margin-left:-8px}
-.icone:hover{background:rgba(255,255,255,.12)}
+@media(hover:hover){.icone:hover{background:rgba(255,255,255,.12)}}
 .relogio{font-family:var(--f-mono);font-size:1.05rem;display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
 .relogio.alerta{color:#ffd28a}
 .abas{display:flex}
@@ -136,14 +136,14 @@ main{flex:1;padding-block:18px 120px}
 .assunto .barra.tem span{color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.25)}
 .assunto .barra span em{font-style:normal;font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums;flex:none}
 .assunto .barra span b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.assunto:hover .barra{filter:brightness(1.05)}
+@media(hover:hover){.assunto:hover .barra{filter:brightness(1.05)}}
 
 /* listas de simulados */
 .lista{display:flex;flex-direction:column;background:var(--surface);border-radius:14px;border:1px solid var(--line);overflow:hidden}
 .item{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;border:0;border-top:1px solid var(--line);background:none;text-align:left;width:100%}
 .item:first-child{border-top:0}
 .item{transition:background-color .15s}
-.item:hover:not([disabled]){background:var(--surface-2)}
+@media(hover:hover){.item:hover:not([disabled]){background:var(--surface-2)}}
 .selo{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff}
 .selo svg.i{width:26px;height:26px;stroke-width:2.6}
 .selo.nao{background:var(--neutro)} .selo.pausa{background:var(--lacre)} .selo.aprov{background:var(--ok)} .selo.reprov{background:var(--erro)} .selo.perf{background:var(--toga)}
@@ -155,7 +155,7 @@ main{flex:1;padding-block:18px 120px}
 /* cartões de matéria */
 .grade-mat{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;transition:border-color .15s,background-color .15s;display:flex;flex-direction:column;gap:10px;text-align:left;min-width:0}
-.card:hover{border-color:var(--toga-txt)}
+@media(hover:hover){.card:hover{border-color:var(--toga-txt)}}
 .card .tile{width:44px;height:44px;border-radius:10px}
 .card b{font-family:var(--f-display);font-weight:600;font-size:1.05rem;line-height:1.2}
 .card small{color:var(--muted);font-size:.82rem}
@@ -193,7 +193,7 @@ html[data-anim="on"] .camada.abre .gaveta nav>*:nth-child(n){animation-delay:cal
 @keyframes gav-item{from{opacity:0;transform:translateX(-18px)}}
 .gaveta nav{display:flex;flex-direction:column;padding-block:8px}
 .gaveta nav button{display:flex;gap:18px;align-items:center;background:none;border:0;padding:14px 20px 14px max(20px,env(safe-area-inset-left,0px));text-align:left;font-size:1.02rem}
-.gaveta nav button:hover,.gaveta nav button[aria-current="page"]{background:var(--surface-2)}
+.gaveta nav button[aria-current="page"]{background:var(--surface-2)}@media(hover:hover){.gaveta nav button:hover{background:var(--surface-2)}}
 .gaveta nav button[aria-current="page"]{font-weight:700}
 .gaveta,.folha,.camada,.folha-camada{overscroll-behavior:contain}
 .gaveta nav button svg.i{color:var(--muted)}
@@ -231,7 +231,7 @@ html[data-anim="on"] .camada.abre .gaveta nav>*:nth-child(n){animation-delay:cal
 .alts{margin-top:12px;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .alt{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:center;padding:15px 16px;border:0;border-top:1px solid var(--line);background:none;text-align:left;width:100%;font-size:1.02rem;line-height:1.45}
 .alt:first-child{border-top:0}
-.alt:hover:not([disabled]){background:var(--surface-2)}
+@media(hover:hover){.alt:hover:not([disabled]){background:var(--surface-2)}}
 .letra{width:32px;height:32px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--muted)}
 .alt.marcada{background:var(--surface-2)} .alt.marcada .letra{background:var(--toga);border-color:var(--toga-txt);color:#fff}
 .alt.certa{background:var(--ok-bg)} .alt.certa .letra{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -393,7 +393,7 @@ html[data-anim="on"] .calc-out.calc-novo{animation:pv-res-in .4s ease-out both}
 }
 .sumario{display:flex;flex-direction:column;gap:6px;margin:14px 0 6px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 .sumario button{display:flex;gap:10px;align-items:center;text-align:left;background:none;border:0;padding:6px 4px;border-radius:8px;color:inherit;font-size:.95rem}
-.sumario button:hover{background:var(--surface-2)}
+@media(hover:hover){.sumario button:hover{background:var(--surface-2)}}
 .sumario span{width:24px;height:24px;flex:none;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-size:.78rem;font-weight:700}
 .metodo{margin:16px 0 4px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:4px 14px}
 .metodo summary{display:flex;align-items:center;gap:8px;font-weight:700;padding:10px 0;cursor:pointer}
@@ -984,8 +984,8 @@ html[data-anim="off"] .mv *{animation:none!important}
 .botao,.card,.item,.alt,.cores button,.opcoes button,.estilos button,.nav-q button,.indice-temas button,.navtema button{transition:background-color .15s,border-color .15s,color .15s,transform .1s}
 .botao:active:not([disabled]),.card:active,.item:active:not([disabled]),.alt:active:not([disabled]){transform:scale(.985)}
 .botao[disabled]{opacity:.5;cursor:default}
-.botao.cheio:hover:not([disabled]){filter:brightness(1.08)}
-.botao.linha:hover:not([disabled]){background:var(--surface-2)}
+@media(hover:hover){.botao.cheio:hover:not([disabled]){filter:brightness(1.08)}}
+@media(hover:hover){.botao.linha:hover:not([disabled]){background:var(--surface-2)}}
 /* estado vazio */
 .vazio-ilu{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:28px 12px 20px}
 .vazio-ilu .ilu{max-width:190px}
@@ -1117,7 +1117,7 @@ html[data-anim="on"] .pp-dia.tem-prova .pp-flag{animation:pv-pulsa 1.6s ease-in-
 .trilha button::before{content:"";position:absolute;left:0;right:0;top:9px;height:6px;border-radius:3px;background:var(--trilho);transition:background-color .2s}
 .trilha .lido button::before{background:color-mix(in srgb,var(--ok) 65%,var(--trilho))}
 .trilha .atual button::before{background:var(--toga-txt)}
-.trilha button:hover::before{filter:brightness(.92)}
+@media(hover:hover){.trilha button:hover::before{filter:brightness(.92)}}
 .ap-prog{display:flex;align-items:center;gap:8px;margin-top:8px}
 .ap-prog .trilho{flex:1;margin:0}
 .ap-prog small{color:var(--muted);font-size:.8rem;white-space:nowrap}
@@ -1373,7 +1373,7 @@ html[data-anim="off"] *,html[data-anim="off"] *::before,html[data-anim="off"] *:
 [data-estilo="premium"] .topo h1.longo{font-size:1.08rem}
 [data-estilo="premium"] .topo h1 small{font-size:.8rem;font-weight:500;opacity:1;color:rgba(255,255,255,.82);letter-spacing:0;margin-top:1px}
 [data-estilo="premium"] .icone{border-radius:12px}
-[data-estilo="premium"] .icone:hover{background:var(--surface-2)}
+@media(hover:hover){[data-estilo="premium"] .icone:hover{background:var(--surface-2)}}
 [data-estilo="premium"] .progresso-leitura{height:3px;background:transparent}
 [data-estilo="premium"] .progresso-leitura i{background:var(--grad)}
 [data-estilo="premium"] .abas{gap:6px;border:0}
@@ -1460,7 +1460,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .pp-dia[aria-pressed="true"] .pp-bola{box-shadow:0 0 0 2px #fff}
 [data-estilo="premium"] .pp-num{background:var(--grad);color:#fff}
 [data-estilo="premium"] .item{background:var(--surface);border:1px solid var(--line)!important;border-radius:22px;box-shadow:var(--sombra);padding:14px 16px;grid-template-columns:48px minmax(0,1fr) auto}
-[data-estilo="premium"] .item:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))!important}
+@media(hover:hover){[data-estilo="premium"] .item:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))!important}}
 [data-estilo="premium"] .item.ass{grid-template-columns:minmax(0,1fr) auto}
 [data-estilo="premium"] .item-tit{font-family:var(--f-body);font-weight:700;font-size:1rem;line-height:1.3;letter-spacing:-.015em}
 [data-estilo="premium"] .item-sub{font-size:.85rem;color:var(--muted)}
@@ -1473,7 +1473,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .ck.ok{color:var(--ok)} [data-estilo="premium"] .ck.er{color:var(--erro)} [data-estilo="premium"] .ck.br{color:var(--aviso)}
 [data-estilo="premium"] .ck svg.i{width:14px;height:14px;stroke-width:2.6}
 [data-estilo="premium"] .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sombra);padding:18px;gap:12px}
-[data-estilo="premium"] .card:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}
+@media(hover:hover){[data-estilo="premium"] .card:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}}
 [data-estilo="premium"] .card b{font-size:1.06rem;font-weight:800;line-height:1.22;letter-spacing:-.02em}
 [data-estilo="premium"] .card small{font-size:.84rem;line-height:1.4;color:var(--muted)}
 /* o cartão da ação principal ganha o degradê */
@@ -1481,7 +1481,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .card.destaque small,[data-estilo="premium"] .hoje-card small{color:#ffffffd9}
 [data-estilo="premium"] .card.destaque .tile,[data-estilo="premium"] .hoje-card .tile{background:#ffffff2e;color:#fff;box-shadow:none}
 [data-estilo="premium"] .card.destaque .trilho{background:#ffffff3a}
-[data-estilo="premium"] .card.destaque:hover,[data-estilo="premium"] .hoje-card:hover{filter:brightness(1.06)}
+@media(hover:hover){[data-estilo="premium"] .card.destaque:hover,[data-estilo="premium"] .hoje-card:hover{filter:brightness(1.06)}}
 [data-estilo="premium"] .metrica .top b{font-family:var(--f-body);font-weight:800}
 [data-estilo="premium"] .trilho{height:7px;border-radius:999px;background:var(--trilho)}
 [data-estilo="premium"] .trilho i{border-radius:999px}
@@ -1491,7 +1491,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .assunto .barra.tem span{color:var(--fg);text-shadow:none}
 [data-estilo="premium"] .assunto .barra span b{font-weight:700}
 [data-estilo="premium"] .assunto .barra span em{font-family:var(--f-body);font-weight:800}
-[data-estilo="premium"] .assunto:hover .barra{filter:none;border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}
+@media(hover:hover){[data-estilo="premium"] .assunto:hover .barra{filter:none;border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}}
 [data-estilo="premium"] .b7{border-radius:8px 8px 3px 3px;background:color-mix(in srgb,var(--p1) 30%,var(--trilho))}
 [data-estilo="premium"] .b7.ok{background:var(--grad)}
 
@@ -1535,7 +1535,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .q-enun{font-family:var(--f-read);font-size:1.12rem;line-height:1.6;font-weight:500;letter-spacing:-.01em}
 [data-estilo="premium"] .alts{border:0;background:none;display:grid;gap:10px;border-radius:0}
 [data-estilo="premium"] .alt{padding:15px 16px;font-size:1rem;line-height:1.5;border:1px solid var(--line)!important;border-radius:18px;background:var(--surface)}
-[data-estilo="premium"] .alt:hover{border-color:color-mix(in srgb,var(--p1) 40%,var(--line))!important}
+@media(hover:hover){[data-estilo="premium"] .alt:hover{border-color:color-mix(in srgb,var(--p1) 40%,var(--line))!important}}
 [data-estilo="premium"] .letra{width:32px;height:32px;border-radius:11px;border:1.5px solid var(--line);font-weight:800;color:var(--muted)}
 [data-estilo="premium"] .alt.marcada{background:color-mix(in srgb,var(--p1) 9%,var(--surface));border-color:var(--p1)!important}
 [data-estilo="premium"] .alt.marcada .letra{background:var(--grad);border-color:transparent;color:#fff}
@@ -1632,7 +1632,7 @@ html[data-estilo="premium"] .metrica .tile[style*="--toga"]{--c:var(--p1)!import
 [data-estilo="premium"] .verso p{font-style:normal;font-weight:600;font-size:1.12rem;color:#fff}
 [data-estilo="premium"] .verso cite{color:#ffffffd9!important}
 [data-estilo="premium"] .indice-temas button,[data-estilo="premium"] .navtema button,[data-estilo="premium"] .btn-lida,[data-estilo="premium"] .btn-ap,[data-estilo="premium"] .sumario-tudo,[data-estilo="premium"] .metodo{border-radius:20px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--sombra)}
-[data-estilo="premium"] .indice-temas button:hover,[data-estilo="premium"] .navtema button:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}
+@media(hover:hover){[data-estilo="premium"] .indice-temas button:hover,[data-estilo="premium"] .navtema button:hover{border-color:color-mix(in srgb,var(--p1) 35%,var(--line))}}
 [data-estilo="premium"] .indice-temas button b{font-family:var(--f-body);font-weight:800;font-size:1rem;letter-spacing:-.015em}
 [data-estilo="premium"] .navtema button.prox{border:0;background:var(--grad);color:#fff}
 [data-estilo="premium"] .navtema button.prox small{color:#ffffffd9}
@@ -2601,7 +2601,7 @@ html[data-anim="on"] .rv-medidor.treme .rv-ponteiro{animation:rv-treme .55s ease
 /* para hoje */
 .rv-hoje{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .rv-t{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:var(--r);padding:12px;color:var(--fg);font:inherit;cursor:pointer;min-width:0;position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
-.rv-t:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 20px -14px var(--c)}
+@media(hover:hover){.rv-t:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 20px -14px var(--c)}}
 .rv-t:disabled{cursor:default;opacity:1}
 .rv-t-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c)}
 .rv-t-ic .i{width:19px;height:19px}
@@ -3195,10 +3195,73 @@ html:not([data-anim="on"]) .din-gal-mais,html:not([data-anim="on"]) .din-gal-mai
 @media (prefers-reduced-motion: reduce){html.din-suave{transition:none}}
 </style>
 
-<div class="app" id="app"></div>
+<div class="app" id="app"><div class="abrindo" aria-busy="true"><img src="icon-192.png" alt="" width="88" height="88"><b>Facul Lab</b><span>Abrindo seu plano de hoje…</span></div></div>
 <div id="aviso-vivo" class="sr" role="status" aria-live="polite"></div>
 <div id="impressao" class="wrap leitura"></div>
 
+<style id="estilo-ajustes">
+/* tela de abertura: aparece na hora, enquanto o banco de questões termina de chegar */
+.abrindo{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--fg);background:var(--bg)}
+.abrindo img{border-radius:22px;box-shadow:0 14px 34px -14px rgba(0,0,0,.45);animation:abrindo-pulsa 1.4s ease-in-out infinite}
+.abrindo b{font-size:1.3rem;letter-spacing:-.01em}
+.abrindo span{color:var(--muted);font-size:.92rem}
+@keyframes abrindo-pulsa{50%{transform:scale(.94)}}
+@media (prefers-reduced-motion:reduce){.abrindo img{animation:none}}
+/* Hoje sem período: a pergunta no topo, com resposta de um toque */
+.per-rapido{display:grid;grid-template-columns:76px minmax(0,1fr);gap:4px 12px;align-items:center;margin:14px 0 4px;padding:14px 16px;border-radius:var(--r);border:1px solid var(--line);border-left:4px solid var(--toga-txt);background:var(--surface)}
+.per-rapido .ilu{width:76px;height:auto}
+.per-rapido h2{margin:0;font-size:1.08rem}
+.per-rapido p{margin:4px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
+.per-rapido .opcoes{grid-column:1/-1;margin-top:10px;gap:6px}
+.per-rapido .opcoes button{min-width:0;flex:1 1 calc(20% - 6px);padding:10px 4px}
+.per-rapido .opcoes .pr-oab{flex-basis:100%}
+[data-estilo="premium"] .per-rapido{border-radius:24px;border-left:1px solid var(--line);background:var(--grad-suave),var(--surface);box-shadow:var(--sombra)}
+.anim-on .per-rapido{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards}
+
+/* Configurações em grupos */
+.cfg-g{margin:12px 0 0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.cfg-g-cab{display:grid;grid-template-columns:56px minmax(0,1fr) 28px;gap:12px;align-items:center;width:100%;padding:10px 14px 10px 10px;border:0;background:none;color:inherit;text-align:left;min-height:64px}
+.cfg-g-ilu{display:grid;place-items:center;width:56px;height:44px}
+.cfg-g-ilu .ilu{width:64px;height:auto}
+.cfg-g-txt b{display:block;font-size:1.02rem}
+.cfg-g-txt small{display:block;color:var(--muted);font-size:.84rem;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cfg-g-seta{display:grid;place-items:center;color:var(--muted);transform:rotate(90deg);transition:transform .25s}
+.cfg-g.aberto .cfg-g-seta{transform:rotate(-90deg)}
+.cfg-g-corpo{padding:0 14px 16px;border-top:1px solid var(--line)}
+.cfg-g-corpo>.secao:first-child,.cfg-g-corpo>.tour-cta:first-child{margin-top:14px}
+.anim-on .cfg-g-corpo{animation:cfg-abre .3s ease-out}
+@keyframes cfg-abre{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+[data-estilo="premium"] .cfg-g{border-radius:22px;box-shadow:var(--sombra)}
+[data-estilo="premium"] .cfg-g.aberto .cfg-g-cab{background:var(--grad-suave)}
+
+/* Busca vazia */
+.busca-ini{margin:18px 0 0}
+.bs-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.bs-tit{margin:16px 0 8px;font-weight:700;font-size:.92rem}
+.bs-cab .bs-tit{margin-top:0}
+.bs-chips{display:flex;flex-wrap:wrap;gap:8px}
+.bs-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:inherit;border-radius:999px;padding:8px 14px;font-size:.88rem;font-weight:600;min-height:40px}
+.bs-chip .i{width:15px;height:15px;color:var(--muted)}
+.anim-on .bs-chip{animation:ent-pop .4s cubic-bezier(.3,1.4,.5,1) backwards}
+.anim-on .bs-chips .bs-chip:nth-child(2){animation-delay:40ms}.anim-on .bs-chips .bs-chip:nth-child(3){animation-delay:80ms}.anim-on .bs-chips .bs-chip:nth-child(4){animation-delay:120ms}.anim-on .bs-chips .bs-chip:nth-child(n+5){animation-delay:160ms}
+
+/* Progresso protegido */
+.guarda-lemb{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:start;margin:14px 0 0;padding:14px 16px;border-radius:var(--r);border:1px solid var(--line);border-left:4px solid var(--lacre);background:var(--surface)}
+.guarda-lemb .ilu{width:84px;height:auto}
+.guarda-lemb h2{margin:0;font-size:1.02rem}
+.guarda-lemb p{margin:4px 0 10px;color:var(--muted);font-size:.9rem;line-height:1.45}
+.gf-botoes{display:flex;flex-wrap:wrap;gap:8px}
+.gf-botoes .botao{width:auto;flex:1 1 140px;padding:11px 14px;font-size:.82rem}
+[data-estilo="premium"] .guarda-lemb{border-radius:24px;border-left:1px solid var(--line);box-shadow:var(--sombra)}
+.guarda-falha{position:fixed;z-index:80;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto;display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;align-items:start;padding:14px;border-radius:18px;background:var(--surface);color:var(--fg);border:1px solid var(--erro);box-shadow:0 18px 40px -16px rgba(0,0,0,.45)}
+.guarda-falha .ilu{width:72px;height:auto}
+.guarda-falha b{display:block;margin-bottom:2px}
+.guarda-falha p{margin:0 0 10px;font-size:.88rem;color:var(--muted);line-height:1.45}
+.anim-on .guarda-falha{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards}
+
+/* Instalar */
+.inst-cta{border-left-color:var(--toga-txt);margin-top:12px}
+</style>
 <script src="questoes.js"></script>
 <script src="q1.js"></script>
 <script src="q2.js"></script>
@@ -3236,7 +3299,8 @@ html:not([data-anim="on"]) .din-gal-mais,html:not([data-anim="on"]) .din-gal-mai
 <script src="q17.js"></script>
 <script src="q18.js"></script>
 <script src="assuntos.js"></script>
-<script src="explicacoes.js"></script>
+<!-- as explicações de cada alternativa (400 KB) chegam depois da primeira tela; o app só as usa depois de uma resposta -->
+<script src="explicacoes.js" defer></script>
 <script src="leiseca.js"></script>
 <script src="niveis.js"></script>
 <script src="resumos.js"></script>
@@ -4379,7 +4443,8 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  const ambos=per!==null&&per>=8;const tipo=rota.tipoData||(p?(ambos&&avOn()?"ambas":"oab"):(avOn()&&provasFac().length?"fac":null));
  const comOab=tipo==="oab"||tipo==="ambas",comFac=tipo==="fac"||tipo==="ambas";
  return topo("Configurações","Seu período, a prova, as questões e a aparência do app",{menu:true})+
- `<main class="wrap">${capaTela("checklist","Do seu jeito","Período, data da prova, meta diária e a aparência do app.")}<div class="secao" role="heading" aria-level="2">Em que momento você está?</div>
+ `<main class="wrap">${capaTela("checklist","Do seu jeito","Período, data da prova, meta diária e a aparência do app.")}
+ ${cfgG("estudo","capelo","Meu estudo",`${nomePer(per)} · meta de ${metaDia()} por dia`,`<div class="secao" role="heading" aria-level="2">Em que momento você está?</div>
  <p class="nota" style="margin-top:0">A tela Hoje usa essa escolha para sugerir os temas, os cartões e os simulados certos para você.</p>
  <div class="opcoes">${PERIODOS.slice(0,9).map((_,i)=>`<button data-acao="cfg-per" data-v="${i}" aria-pressed="${per===i}">${i+1}º</button>`).join("")}</div>
  <div class="opcoes" style="margin-top:8px"><button data-acao="cfg-per" data-v="9" aria-pressed="${per===9}">10º período ou formado: foco no Exame de Ordem</button></div>
@@ -4397,8 +4462,8 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Meta diária de questões</div>
  <div class="opcoes"><button data-acao="meta" data-v="0" aria-pressed="${!m}">Automática (${metaFase()})</button>${[10,20,40,80].map(n=>`<button data-acao="meta" data-v="${n}" aria-pressed="${n===m}">${n}</button>`).join("")}</div>
  <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.${avOn()&&metaProvas()?` Com o modo avançado, suas provas pedem <b>${metaProvas()} questões por dia</b>; a meta usa o maior dos dois valores.`:""}</p>
- ${blocoLembretes()}
- <div class="secao" role="heading" aria-level="2">Estilo visual</div>
+ `)}
+ ${cfgG("aparencia","engrenagem","Aparência e sons",`${estiloAtual()==="premium"?"Premium":"Clássico"} · ${(TEMAS.find(t=>t[0]===((S.cfg&&S.cfg.tema)||"auto"))||TEMAS[0])[1].toLowerCase()} · animações ${(S.cfg&&S.cfg.anim)==="off"?"desligadas":"ligadas"}`,`<div class="secao" role="heading" aria-level="2">Estilo visual</div>
  <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${prevEstilo(k)}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os dois estilos funcionam nos modos claro e escuro e mantêm todas as funções.</p>
  ${estiloAtual()==="premium"?`<div class="secao" role="heading" aria-level="2">Paleta do Premium</div>
@@ -4414,17 +4479,20 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Sons e vibração</div>
  <div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="cfg-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os sons seguem o volume de mídia do aparelho, e no iPhone o modo silencioso também os cala. A vibração funciona em celulares Android. Toque em uma opção para ouvir como fica.</p>
- <div class="secao" role="heading" aria-level="2">Como responder as questões</div>
+ `)}
+ ${cfgG("questoes","alvo","Questões",`${(MODOS_Q.find(x=>x[0]===modoQ())||MODOS_Q[0])[1]} · correção ${S.cfg&&S.cfg.corrFinal?"no final":"na hora"}`,`<div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Quando ver a correção</div>
  <div class="cores">${[["0","Na hora","Padrão · comentário logo após responder"],["1","No final","Correção só no resultado"]].map(([k,n,d])=>`<button data-acao="cfg-corr" data-v="${k}" aria-pressed="${(S.cfg&&S.cfg.corrFinal?"1":"0")===k}"><span class="ico-op">${ic(k==="0"?"ok":"relogio")}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Setas para passar as questões</div>
- <div class="cores">${[["baixo","Embaixo","Barra fixa no rodapé","baixo"],["acima","Acima","Logo abaixo das alternativas","cima"]].map(([k,n,d,i])=>`<button data-acao="cfg-setas" data-v="${k}" aria-pressed="${(setasAcima()?"acima":"baixo")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="cores">${[["baixo","Embaixo","Barra fixa no rodapé","baixo"],["acima","Acima","Abaixo das alternativas e da correção","cima"]].map(([k,n,d,i])=>`<button data-acao="cfg-setas" data-v="${k}" aria-pressed="${(setasAcima()?"acima":"baixo")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Essas escolhas valem para todos os simulados e listas de questões. A correção também pode ser trocada na tela de início de cada simulado.</p>
+ `)}
+ ${cfgG("dados","carimbo","Lembretes, backup e ajuda",`${lbCfg().on?"Lembretes ligados":"Lembretes desligados"} · ${bkIdade().cls==="nunca"?"nenhum backup ainda":"último backup "+bkIdade().q}`,`${blocoLembretes()}
  <div class="secao" role="heading" aria-level="2">Seu progresso</div>
  ${bkCta()}
  <div class="secao" role="heading" aria-level="2">Ajuda</div>
- ${tourCta()}
+ ${tourCta()}${instalarCta()}`)}
  <div class="dica" style="margin-top:18px"><p style="margin:0"><b>${esc(nomePer(per))} · ${esc(FASES[f].nome)}.</b> ${esc(FASES[f].txt)}</p></div>
  <div class="botoes"><button class="botao cheio" data-acao="ir-raiz" data-tela="hoje">Ver o plano de hoje</button></div></main>`}
 function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeStr()]||{q:0,c:0,p:0};const seq=sequencia();const falta=diasProva();
@@ -4484,7 +4552,7 @@ function telaCartoes(){const i=rota.p===undefined?periodo:rota.p;rota.p=i;if(!ap
  const ds=PERIODOS[i].filter(d=>window.APOSTILA[i].mat&&window.APOSTILA[i].mat[d]);const venc=contaVencidos();
  const extra=`<div class="periodos" role="group" aria-label="Período">${PERIODOS.map((_,j)=>`<button data-acao="cards-per" data-p="${j}" aria-pressed="${i===j}">${j+1}º período</button>`).join("")}</div>`;
  return topo("Cartões de memorização","Perguntas das apostilas com revisão espaçada",{menu:true,extra})+
- `<main class="wrap">${capaTela("cartas","Memorize sem decorar","Tente lembrar antes de virar. O app traz cada cartão de volta na hora certa.")}<div class="dica"><p style="margin:0">Leia a pergunta, tente responder de cabeça e só depois vire o cartão. Depois diga como foi: <b>Errei</b>, <b>Difícil</b>, <b>Acertei</b> ou <b>Fácil</b>. Cada cartão aprende o seu ritmo: o que você acerta com facilidade volta cada vez mais tarde, e o que você erra volta logo, até fixar.</p></div>
+ `<main class="wrap">${capaTela("cartas","Memorize sem decorar","Tente lembrar antes de virar. O app traz cada cartão de volta na hora certa.")}${Object.keys(S.cards||{}).length?"":`<div class="dica"><p style="margin:0">Leia a pergunta, tente responder de cabeça e só depois vire o cartão. Depois diga como foi: <b>Errei</b>, <b>Difícil</b>, <b>Acertei</b> ou <b>Fácil</b>. Cada cartão aprende o seu ritmo: o que você acerta com facilidade volta cada vez mais tarde, e o que você erra volta logo, até fixar.</p></div>`}
  ${venc?`<button class="card destaque" data-acao="cards-venc" style="margin-top:12px">${tile("var(--lacre)","refazer")}<b>Revisar os ${venc} cartões de hoje</b><small>Cartões de todas as matérias que chegaram no dia de revisão</small></button>`:""}
  <div class="secao" role="heading" aria-level="2">${i+1}º período</div><div class="lista">${ds.map(d=>{const f=infoDisc(d);const x=infoDeck(d);
   return `<button class="item" data-acao="cards-disc" data-d="${d}" ${x.cs.length?"":"disabled"}>${tile(f.cor,f.ic)}<span style="min-width:0"><span class="item-tit">${esc(f.nome)}</span><br><span class="item-sub">${x.cs.length} cartões · ${x.novos} novos · ${x.venc} para revisar</span></span><span class="item-data">${ic("prox")}</span></button>`}).join("")}</div></main>`}
@@ -4518,9 +4586,11 @@ function itemPlano(feito,acao,attrs,cor,icn,tit,sub,desab){return `<button class
 /* anel de progresso da meta e semana de estudo */
 function anel(v,max,rot){const p=max?Math.min(1,v/max):0;const C=2*Math.PI*42;
  return `<svg class="anel" viewBox="0 0 100 100" role="img" aria-label="${esc(rot)}"><circle cx="50" cy="50" r="42" class="anel-t"/><circle cx="50" cy="50" r="42" class="anel-v${p>=1?" cheio":""}" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-p)).toFixed(1)}" transform="rotate(-90 50 50)"/></svg>`}
+/* três letras: só a inicial deixava "S D S T Q Q S", com três S e dois Q */
+const DIA_CURTO=["dom","seg","ter","qua","qui","sex","sáb"];
 function semana(){const D=S.dias||{};const fmt=new Intl.DateTimeFormat("pt-BR",{weekday:"long"});let h="",n=0;
  for(let k=6;k>=0;k--){const d=new Date();d.setDate(d.getDate()-k);const on=temAtiv(D[hojeStr(d.getTime())]);if(on)n++;
-  h+=`<li class="dia${on?" on":""}${k===0?" hoje":""}" style="--d:${6-k}"><i aria-hidden="true">${on?ic("ok"):""}</i><span aria-hidden="true">${fmt.format(d).slice(0,1).toUpperCase()}</span><span class="sr">${fmt.format(d)}${k===0?" (hoje)":""}: ${on?"estudou":"sem estudo"}</span></li>`}
+  h+=`<li class="dia${on?" on":""}${k===0?" hoje":""}" style="--d:${6-k}"><i aria-hidden="true">${on?ic("ok"):""}</i><span aria-hidden="true">${DIA_CURTO[d.getDay()]}</span><span class="sr">${fmt.format(d)}${k===0?" (hoje)":""}: ${on?"estudou":"sem estudo"}</span></li>`}
  return `<ol class="semana" aria-label="Estudo nos últimos 7 dias: ${n} de 7">${h}</ol>`}
 /* ---------- chama da ofensiva e calendário da prova ---------- */
 function chamaViva(seq){const on=seq>0;const nv=seq>=30?" n3":seq>=7?" n2":"";
@@ -4677,7 +4747,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  const titulo=tudo?"Plano de hoje cumprido":pend===1?"Falta 1 tarefa para hoje":`${pend} tarefas para hoje`;
  const linha=tudo?"Você fechou o dia. Se quiser ir além, revise um mapa mental ou adiante cartões novos.":(hoje.q||0)<meta?`Faltam ${meta-(hoje.q||0)} questões para a meta de ${meta}.`:"Meta de questões batida. Agora, revise o que está pendente.";
  return topo("Hoje",`${dataHoje()}`,{menu:true,dir:`<button class="icone" data-acao="ir-raiz" data-tela="config" aria-label="Configurações">${ic("eng")}</button>`})+
- `<main class="wrap hoje">${motivaBanner()}
+ `<main class="wrap hoje">${per===null?perRapido():""}${motivaBanner()}
  <section class="hoje-hero" aria-labelledby="hoje-tit">
   <div class="hh-txt"><p class="hh-fase">${esc(nomePer(per))} · ${esc(F.nome)}</p><h2 id="hoje-tit">${titulo}</h2><p class="hh-linha">${linha}</p></div>
   ${ilustra(tudo?"trofeu":"estudo","var(--toga-txt)")}
@@ -4687,8 +4757,8 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
   <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>
   ${(()=>{const px=provaProx(),fx=px?px.n:null;return `<div class="hs hs-prova">${calProva(px)}<div><b>${fx===null||fx<0?"—":fx}</b><span>${fx===null?"sem data de prova":fx<0?"a prova já passou":(fx===1?"dia para ":"dias para ")+(px.nome?`a <em class="hs-qual">${esc(px.nome)}</em>`:"a prova")}</span></div></div>`})()}
  </div>
- ${per===null?`<button class="card destaque" data-acao="ir-raiz" data-tela="config" style="width:100%;margin:14px 0 0">${tile("var(--lacre)","eng")}<b>Conte em que período você está</b><small>Assim o plano de hoje sugere os temas, cartões e simulados do seu momento. Você também pode definir a data da prova ou estudar sem data.</small></button>`:""}
- ${blocoProvasHoje(PP)}${rvHoje()}
+ 
+ ${blocoProvasHoje(PP)}${rvHoje()}${guardaLembrete()}
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Plano de hoje</div><span class="contador">${nFeito} de ${nTot} feito${nFeito===1?"":"s"}</span></div>
  ${PP?`<div class="pp-intro"><p class="pp-etapa"><span class="pp-num">1</span><span><b>Prioridade: suas provas</b><small>${esc(explicaPP(PP))}</small></span></p>${PP.L.length>=2?agendaPP(PP):""}</div>${pv}
  <p class="pp-etapa"><span class="pp-num">2</span><span><b>Depois: ${per===9?"seu foco na OAB":per===null?"o restante do dia":"as outras matérias do período"}</b><small>Com a prova em dia, siga com a meta, as revisões e o resto do período.</small></span></p>`:""}
@@ -4826,7 +4896,7 @@ function itemQBusca(r,q){const x=r.x,M=META[x.m];const ord=permFixa([0,1,2,3].ma
 function procurar(m,f){return {ap:(f==="tudo"||f==="ap")?buscaAp(m):[],q:(f==="tudo"||f==="q")?buscaQ(m):[],res:(f==="tudo"||f==="res")?buscaRes(m):[],ls:(f==="tudo"||f==="ls")?buscaLs(m):[]}}
 const totalR=R=>R.ap.length+R.q.length+R.res.length+R.ls.length;
 function resultadosBusca(q,f){q=String(q||"").trim();f=f||"tudo";
- if(q.length<3&&!partesConsulta(semAcento(q)).some(x=>x.fixo))return vazio("lupa","Busque em todo o conteúdo","Digite pelo menos 3 letras. A busca ignora acentos e maiúsculas e procura nas apostilas, nas questões (enunciado, alternativas e comentário), nos resumos e na lei seca. Exemplos: “legítima defesa”, “art. 312”, “usucapião”.");
+ if(q.length<3&&!partesConsulta(semAcento(q)).some(x=>x.fixo))return buscaInicio();
  const todas=PERIODOS.every((_,i)=>apOk(i));
  /* 1) a expressão exata (com variações de acento, plural, artigo e sigla); 2) todas as palavras em qualquer ordem;
     3) com erro de digitação, a correção mais provável, só quando ela de fato aparece no conteúdo */
@@ -4913,7 +4983,7 @@ function carregar(o){
 }
 try{const a=localStorage.getItem(CHAVE)||localStorage.getItem("simuladoOAB.v1");if(a){const c=carregar(JSON.parse(a));if(c)S=c}}catch(e){}
 let dbDoc=null,gravando=false,pendente=false,tSalvar=null,statusSinc="Progresso salvo neste aparelho";
-function salvar(){S.atualizado=Date.now();try{localStorage.setItem(CHAVE,JSON.stringify(S))}catch(e){}
+function salvar(){S.atualizado=Date.now();try{localStorage.setItem(CHAVE,JSON.stringify(S))}catch(e){try{guardaFalhou()}catch(x){}}
   if(dbDoc){clearTimeout(tSalvar);tSalvar=setTimeout(gravarDb,900)}
   if(typeof lbAgendar=="function")lbAgendar()}
 async function gravarDb(){if(!dbDoc)return;if(gravando){pendente=true;return}gravando=true;
@@ -5420,8 +5490,9 @@ function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
     return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" data-acao="marcar" data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[pos]}</span><span>${esc(q.o[oi])}</span></button>`}).join("")}</div>
   ${modo==="confirmar"&&!mostra?(pv!==undefined&&pv!==r?`<div class="botoes" style="margin-top:12px"><button class="botao cheio" data-acao="confirmar-resp">Confirmar resposta</button></div>`:r===undefined?`<p class="dica-modo">Toque em uma alternativa e depois em "Confirmar resposta".</p>`:""):""}
   ${modo==="avancar"&&!mostra&&r===undefined?`<p class="dica-modo">Ao tocar na alternativa, o app passa sozinho para a próxima questão.</p>`:""}
-  ${setasAcima()?navQuizAcima():""}
-  ${mostra?comentario(q,r,ord):""}</main>`+(setasAcima()?"":navQuiz())+(folha?telaFolha():"")}
+  ${setasAcima()&&!mostra?navQuizAcima():""}
+  ${mostra?comentario(q,r,ord):""}
+  ${setasAcima()&&mostra?navQuizAcima():""}</main>`+(setasAcima()?"":navQuiz())+(folha?telaFolha():"")}
 function navQuizAcima(){const s=sessao;return `<div class="nav-q"><button data-acao="ant" ${idx===0?"disabled":""}>${ic("ant")}<span>Anterior</span></button><button data-acao="folha" aria-label="Ver questões e finalizar">${ic("grade")}</button>${idx===s.qids.length-1?`<button class="cheio" data-acao="folha"><span>Finalizar</span></button>`:`<button class="cheio" data-acao="prox"><span>Próxima</span>${ic("prox")}</button>`}</div>`}
 function navQuiz(){const s=sessao;return `<nav class="nav"><div class="nav-in">
   <button data-acao="ant" class="forte" ${idx===0?"disabled":""}>${ic("ant")}<span>Anterior</span></button>
@@ -5691,7 +5762,7 @@ document.addEventListener("click",e=>{
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
     case "chama":faiscas(b);som(b.classList.contains("apagada")?"toque":"fogo");break;
     case "notif":if(b.dataset.v==="1")lbLigar();else lbDesligar();break;
-    case "lb-convite-sim":{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();lbLigar().then(()=>{if(lbCfg().on){const c=document.querySelector(".lb-card");if(!c)anunciar("Lembretes ligados! Você recebe um recado por dia.")}else if(lbStatus&&rota.tela!=="config")raiz({tela:"config"})});break}
+    case "lb-convite-sim":cfgAbre.dados=true;{const f=document.querySelector(".festa");if(f)f.remove();syncVoltar();lbLigar().then(()=>{if(lbCfg().on){const c=document.querySelector(".lb-card");if(!c)anunciar("Lembretes ligados! Você recebe um recado por dia.")}else if(lbStatus&&rota.tela!=="config")raiz({tela:"config"})});break}
     case "notif-teste":lbTestar();break;
     case "cal-vira":b.classList.toggle("virado");som("mes");break;
     case "cfg-anim":S.cfg=S.cfg||{};S.cfg.anim=b.dataset.v;salvar();rota.manterScroll=true;render();break;
@@ -5775,7 +5846,7 @@ let tNota=null,tBusca=null;
 document.addEventListener("input",e=>{const el=e.target;
   if(el.dataset&&el.dataset.corte){corteVivo(el,false);return}
   if(el.dataset&&el.dataset.nota){clearTimeout(tNota);tNota=setTimeout(()=>{S.notas=S.notas||{};const v=el.value.trim();if(v)S.notas[el.dataset.nota]=el.value;else delete S.notas[el.dataset.nota];salvar()},500)}
-  if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
+  if(el.id==="q-busca"){clearTimeout(tBusca);tBusca=setTimeout(()=>{rota.q=el.value;buscaGuardar(el.value);const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca(el.value,rota.bf);animarBusca()},250)}});
 document.addEventListener("input",e=>{const f=e.target.closest&&e.target.closest(".calc");if(f)calcAtualiza(f)});
 document.addEventListener("keydown",e=>{
   if(tourI>=0){if(e.key==="Escape")tourFechar();else if(e.key==="ArrowRight")tourIr(tourI+1);else if(e.key==="ArrowLeft")tourIr(tourI-1);return}
@@ -6535,8 +6606,9 @@ function telaQuizInv(s,id,q,L){const ord=s.ordem[id],r=s.resp[id],mostra=!s.corr
  `<main class="wrap"><div class="q-cab inv${novo?" novo":""}"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${invTopo(q,novo)}</div>
  ${invAlts(L,ord,r,marc,mostra,'data-acao="marcar"')}
  ${modo==="confirmar"&&!mostra?(pv!==undefined&&pv!==r?`<div class="botoes" style="margin-top:12px"><button class="botao cheio" data-acao="confirmar-resp">Confirmar resposta</button></div>`:r===undefined?`<p class="dica-modo">Toque em uma pergunta e depois em "Confirmar resposta".</p>`:""):""}
- ${setasAcima()?navQuizAcima():""}
- ${mostra?invExplica(q,L,r,ord):""}</main>`+(setasAcima()?"":navQuiz())+(folha?telaFolha():"")}
+ ${setasAcima()&&!mostra?navQuizAcima():""}
+ ${mostra?invExplica(q,L,r,ord):""}
+ ${setasAcima()&&mostra?navQuizAcima():""}</main>`+(setasAcima()?"":navQuiz())+(folha?telaFolha():"")}
 /* na correção do resultado */
 function invCorr(a,id,i,L){const q=QMAP[id],x=a.resp[id],ord=a.ordem[id],k=x===undefined?"br":x===0?"ok":"er";
  return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)} · teste inverso</span><br>A resposta é: <b>${esc(q.o[0])}</b></span></summary>
@@ -7449,6 +7521,65 @@ document.addEventListener("click",e=>{const t=e.target;if(!t||!t.closest)return;
  if(t.closest("#relogio")&&rota.tela==="quiz"&&sessao&&sessao.mp&&ovoConta("fiscal",5,2600)){ovoFiscal();return}
  const b=t.closest('[data-ovo="fiscal-cola"]');if(b){const c=b.closest(".festa");ovoReanima(c.querySelector(".of2-palco"),"pega");ovoSomDepois("carimbo",animOn()?700:30);
   const fr=c.querySelector(".frase");if(fr)setTimeout(()=>{fr.textContent="Peguei! A cola foi para o saco de provas, e a prova segue sem ela."},animOn()?700:0)}});
+
+/* ---------- ajustes da análise de 30/10: período no Hoje, Configurações em grupos, busca, progresso protegido e instalar ---------- */
+/* Hoje sem período escolhido: a pergunta vem no topo e responde com um toque (quem pulou o tour não a perde lá embaixo) */
+function perRapido(){return `<section class="per-rapido" aria-labelledby="pr-tit">${ilustra("capelo","var(--toga)")}<div class="pr-txt"><h2 id="pr-tit">Em que período você está?</h2><p>Um toque e o plano de hoje passa a sugerir as matérias, os cartões e os simulados do seu momento.</p></div>
+ <div class="opcoes">${PERIODOS.slice(0,9).map((_,i)=>`<button data-acao="cfg-per" data-v="${i}">${i+1}º</button>`).join("")}<button class="pr-oab" data-acao="cfg-per" data-v="9">10º período ou formado: foco na OAB</button></div></section>`}
+
+/* Configurações em grupos que abrem e fecham; "Meu estudo" começa aberto */
+const cfgAbre={estudo:true};
+function cfgG(id,ilu,tit,resumo,corpo){if(rota.grupo){cfgAbre[rota.grupo]=true;delete rota.grupo}const on=!!cfgAbre[id];
+ return `<section class="cfg-g${on?" aberto":""}"><button class="cfg-g-cab" data-acao="cfg-grupo" data-v="${id}" aria-expanded="${on}" aria-controls="cfg-${id}"><span class="cfg-g-ilu">${ilustra(ilu,"var(--toga)")||tile("var(--toga)",ilu==="capelo"?"livro":ilu==="carimbo"?"recibo":ilu==="engrenagem"?"eng":ilu)}</span><span class="cfg-g-txt"><b>${tit}</b><small>${esc(resumo)}</small></span><span class="cfg-g-seta" aria-hidden="true">${ic("prox")}</span></button>
+ ${on?`<div class="cfg-g-corpo" id="cfg-${id}">${corpo}</div>`:""}</section>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-acao="cfg-grupo"]');if(!b)return;e.stopImmediatePropagation();
+ const id=b.dataset.v;cfgAbre[id]=!cfgAbre[id];rota.manterScroll=true;render();
+ const sec=document.querySelector(`[data-acao="cfg-grupo"][data-v="${id}"]`);if(sec){try{sec.focus({preventScroll:true})}catch(x){}
+  if(cfgAbre[id]){const r=sec.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(x){}}}},true);
+
+/* Busca vazia: buscas recentes e sugestões no lugar de uma segunda ilustração */
+const BUSCAS_CH="faculLab.buscas",BUSCA_SUG=["legítima defesa","art. 5º","usucapião","prescrição","habeas corpus","dosimetria","responsabilidade civil","contrato de trabalho"];
+function buscasRecentes(){try{const a=JSON.parse(localStorage.getItem(BUSCAS_CH)||"[]");return Array.isArray(a)?a.filter(x=>typeof x==="string").slice(0,6):[]}catch(e){return []}}
+function buscaGuardar(q){q=String(q||"").trim();if(semAcento(q).length<3)return;let a=buscasRecentes();const n=semAcento(q);
+ /* enquanto a pessoa digita, "legi" vira "legitima": fica só a versão mais nova */
+ a=a.filter(x=>{const m=semAcento(x);return m!==n&&!n.startsWith(m)&&!m.startsWith(n)});a.unshift(q);try{localStorage.setItem(BUSCAS_CH,JSON.stringify(a.slice(0,6)))}catch(e){}}
+function buscaInicio(){const r=buscasRecentes();const chip=t=>`<button class="bs-chip" data-acao="busca-sug" data-v="${esc(t)}">${esc(t)}</button>`;
+ return `<div class="busca-ini">${r.length?`<div class="bs-cab"><p class="bs-tit">Buscas recentes</p><button class="link-inline" data-acao="busca-limpar">Limpar</button></div><div class="bs-chips">${r.map(t=>`<button class="bs-chip rec" data-acao="busca-sug" data-v="${esc(t)}">${ic("relogio")}${esc(t)}</button>`).join("")}</div>`:""}
+ <p class="bs-tit">Experimente buscar</p><div class="bs-chips">${BUSCA_SUG.filter(t=>!r.some(x=>semAcento(x)===semAcento(t))).map(chip).join("")}</div>
+ <p class="nota">Digite pelo menos 3 letras. A busca ignora acentos e maiúsculas e procura nas apostilas, nas questões (enunciado, alternativas e comentário), nos resumos e na lei seca.</p></div>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-acao="busca-sug"],[data-acao="busca-limpar"]');if(!b)return;
+ if(b.dataset.acao==="busca-sug"){buscaGuardar(b.dataset.v);return}
+ e.stopImmediatePropagation();try{localStorage.removeItem(BUSCAS_CH)}catch(x){}const r=document.getElementById("res-busca");if(r)r.innerHTML=resultadosBusca("",rota.bf)},true);
+
+/* Progresso protegido: o celular guarda os dados de forma persistente, e o app avisa se não conseguir salvar */
+function guardaPersistir(){try{const st=navigator.storage;if(!st||!st.persist)return;st.persisted().then(ok=>{if(!ok)return st.persist()}).catch(()=>{})}catch(e){}}
+let guardaAvisou=false;
+function guardaFalhou(){if(guardaAvisou||document.getElementById("guarda-falha"))return;guardaAvisou=true;
+ const d=document.createElement("div");d.id="guarda-falha";d.className="guarda-falha";d.setAttribute("role","alert");
+ d.innerHTML=`${ilustra("cadeado","var(--erro)")}<div><b>Não consegui salvar seu progresso</b><p>O espaço do navegador neste celular pode estar cheio. Faça um backup agora para não perder nada.</p>
+ <div class="gf-botoes"><button class="botao cheio" data-gu="backup">Fazer backup</button><button class="botao linha" data-gu="fechar">Agora não</button></div></div>`;document.body.appendChild(d)}
+/* lembrete de backup no Hoje: depois de algum estudo, se o último backup passou de 30 dias (ou nunca houve), uma vez por mês */
+function guardaLembrete(){const n=Object.keys(S.stats||{}).length;if(n<40)return "";const a=bkIdade();if(a.cls!=="nunca"&&a.d<=30)return "";
+ const mes=hojeStr().slice(0,7);if(S.cfg&&S.cfg.bkLemb===mes)return "";
+ return `<section class="guarda-lemb" aria-labelledby="gl-tit">${ilustra("carimbo","var(--lacre)")}<div><h2 id="gl-tit">Guarde seu progresso</h2><p>São ${n.toLocaleString("pt-BR")} questões respondidas, e elas ficam só neste celular. ${a.cls==="nunca"?"Você ainda não fez nenhum backup.":`Seu último backup foi ${a.q}.`} Leva um minuto.</p>
+ <div class="gf-botoes"><button class="botao cheio" data-gu="backup">Fazer backup</button><button class="botao linha" data-gu="adiar">Lembrar mês que vem</button></div></div></section>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-gu]");if(!b)return;const a=b.dataset.gu;const f=document.getElementById("guarda-falha");
+ if(a==="backup"){if(f)f.remove();ir({tela:"backup"})}
+ else if(a==="fechar"){if(f)f.remove()}
+ else if(a==="adiar"){S.cfg=S.cfg||{};S.cfg.bkLemb=hojeStr().slice(0,7);salvar();rota.manterScroll=true;render();anunciar("Tudo bem. Lembro de novo no mês que vem.")}});
+
+/* Instalar o app: botão próprio no Android (o navegador guarda o pedido de instalação até a pessoa tocar) */
+let pedidoInstalar=null;
+const appInstalado=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch(e){return false}};
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();pedidoInstalar=e;if(rota.tela==="config")reRenderSe("config")});
+window.addEventListener("appinstalled",()=>{pedidoInstalar=null;guardaPersistir();anunciar("Facul Lab instalado! Ele agora abre direto da tela inicial.");if(rota.tela==="config")reRenderSe("config")});
+function instalarCta(){if(appInstalado()||!pedidoInstalar)return "";
+ return `<button class="tour-cta inst-cta" data-acao="instalar">${ilustra("estudo","var(--toga)")}<span><b>Instalar o Facul Lab</b><small>Ganha um ícone na tela inicial, abre em tela cheia e funciona sem internet. Segure o ícone para ir direto ao plano de hoje, aos cartões ou ao modo foco.</small></span>${ic("prox")}</button>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-acao="instalar"]');if(!b||!pedidoInstalar)return;e.stopImmediatePropagation();
+ const p=pedidoInstalar;pedidoInstalar=null;p.prompt();(p.userChoice||Promise.resolve({})).then(()=>{if(rota.tela==="config")reRenderSe("config")}).catch(()=>{})},true);
+/* atalhos do ícone instalado: o manifest abre ./?ir=hoje|cartoes|foco */
+try{const v=new URLSearchParams(location.search).get("ir");if(["hoje","cartoes","foco"].includes(v)){sessionStorage.removeItem(TELA_CH);localStorage.removeItem(TELA_CH);history.replaceState(null,"",location.pathname);pilha=[];rota={tela:v}}}catch(e){}
+guardaPersistir();
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 {let y=0;try{y=restaurarTela()}catch(e){y=0}

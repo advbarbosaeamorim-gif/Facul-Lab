@@ -98,16 +98,23 @@ BADGE = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g tra
 <g transform="translate(256 240) scale(.78) translate(-256 -262)">{BAL.replace("FILL", "#fff").replace('stroke-width="4"', 'stroke-width="9"')}</g>
 <g transform="translate(-7 0)">{LIVRO.split("/>")[0]}/></g><g transform="translate(7 0)">{LIVRO.split("/>")[1]}/></g></g></svg>'''.replace("{f}", "#fff")
 
+ATALHOS = [("hoje", "Plano de hoje", "Hoje"), ("cartoes", "Cartões de memorização", "Cartões"), ("foco", "Modo foco", "Foco")]
+
 def manifesto(tema, cor):
     return {
         "name": "Facul Lab", "short_name": "Facul Lab",
-        "description": "Simulados e questões atualizados para o Exame da OAB",
+        "description": "Estudo de Direito da faculdade ao Exame da OAB: plano do dia, questões comentadas, apostilas, cartões e lei seca",
         "id": "../", "start_url": "../", "scope": "../",
         "display": "standalone", "background_color": "#12161d", "theme_color": cor, "orientation": "portrait",
         "icons": [
             {"src": f"{tema}-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
             {"src": f"{tema}-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
             {"src": f"{tema}-mask-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+        ],
+        # atalhos ao segurar o ícone instalado (o app lê ?ir= e abre a tela)
+        "shortcuts": [
+            {"name": n, "short_name": c, "url": f"../?ir={k}", "icons": [{"src": f"{tema}-192.png", "sizes": "192x192", "type": "image/png"}]}
+            for k, n, c in ATALHOS
         ],
     }
 
