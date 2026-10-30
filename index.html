@@ -3179,10 +3179,10 @@ html[data-anim="on"] button[aria-pressed="true"] .din-amostra{animation:din-roda
 .din-gal-mais{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
 .din-gal-mais.aberta{grid-template-rows:1fr}
 .din-gal-mais>div{overflow:hidden;min-height:0}
-.din-gal-mais .din-galeria{padding-top:8px}
+.din-gal-mais .din-galeria{padding:8px 0 2px}
 .din-gal-mais .din-galeria button{opacity:0;transform:translateY(-10px) scale(.97);transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
 .din-gal-mais.aberta .din-galeria button{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 22ms + 60ms)}
-.din-gal-bt{margin-top:6px}
+.din-gal-bt{margin-top:0}
 @media (prefers-reduced-motion:reduce){.din-gal-mais,.din-gal-mais .din-galeria button{transition:none}}
 html:not([data-anim="on"]) .din-gal-mais,html:not([data-anim="on"]) .din-gal-mais .din-galeria button{transition:none}
 @media (prefers-reduced-motion: reduce){html.din-suave{transition:none}}
@@ -5100,11 +5100,10 @@ function dinSelo(k,cls){const e=DIN[k];if(!e)return "";const icn=dinIcone(k);
 function dinGaleria(){const ks=[];PERIODOS.forEach(l=>l.forEach(d=>{const k=dinDe(d);if(k&&!ks.includes(k))ks.push(k)}));
   return `<p class="nota">O app veste as cores da matéria que você abre. Toque numa matéria para ver as cores dela nesta tela.</p>
   <div class="secao" role="heading" aria-level="2">As cores de cada matéria</div>
-  ${(()=>{const bt=(k,i)=>`<button data-acao="din-prev" data-k="${k}" aria-pressed="${dinPrev===k}"${i!=null?` style="--i:${i}"`:""}>${dinSelo(k,"mini")}<span>${esc(nomeCurto(dinNome(k)))}</span></button>`;
-    const vis=ks.slice(0,6),resto=ks.slice(6);
-    if(resto.includes(dinPrev))dinGalAberta=true;
-    return `<div class="din-galeria">${vis.map(k=>bt(k)).join("")}</div>${resto.length?`<div class="din-gal-mais${dinGalAberta?" aberta":""}" id="din-gal-mais"${dinGalAberta?"":" inert"}><div><div class="din-galeria">${resto.map((k,i)=>bt(k,i)).join("")}</div></div></div>
-    <button class="ver-mais mais-cores din-gal-bt" data-acao="din-gal" aria-controls="din-gal-mais" aria-expanded="${dinGalAberta}" data-n="${resto.length}">${dinGalAberta?"Mostrar menos":`Mostrar mais ${resto.length} matérias`} ${ic("prox")}</button>`:""}`})()}`}
+  ${(()=>{const bt=(k,i)=>`<button data-acao="din-prev" data-k="${k}" aria-pressed="${dinPrev===k}" style="--i:${i}">${dinSelo(k,"mini")}<span>${esc(nomeCurto(dinNome(k)))}</span></button>`;
+    if(dinPrev)dinGalAberta=true;
+    return `<button class="ver-mais mais-cores din-gal-bt" data-acao="din-gal" aria-controls="din-gal-mais" aria-expanded="${dinGalAberta}" data-n="${ks.length}">${dinGalAberta?"Esconder as cores":`Ver as cores das ${ks.length} matérias`} ${ic("prox")}</button>
+    <div class="din-gal-mais${dinGalAberta?" aberta":""}" id="din-gal-mais"${dinGalAberta?"":" inert"}><div><div class="din-galeria">${ks.map((k,i)=>bt(k,i)).join("")}</div></div></div>`})()}`}
 let dinGalAberta=false;
 const TEMAS=[["auto","Automático","Segue o celular","meio"],["claro","Claro","Fundo claro","sol"],["escuro","Escuro","Fundo escuro","lua"]];
 const MODOS_Q=[["imediato","Tocar e responder","Ao tocar na alternativa, a resposta é registrada na hora (como era antes)","ok"],["avancar","Responder e avançar sozinho","Ao tocar na alternativa, o app registra a resposta e passa para a próxima questão","seta"],["confirmar","Marcar e confirmar","Toque para marcar, troque se quiser, e depois aperte \"Confirmar resposta\"","alvo"]];
@@ -5673,11 +5672,11 @@ document.addEventListener("click",e=>{
       const v=document.querySelector(".rt-vel");if(v&&animOn()){v.classList.add("rt-novo");if(b.dataset.v==="intenso")estouro(v,["#e5484d","#ffc53d","#ff8a1f","#ffffff"])}break}
     case "meta":S.cfg=S.cfg||{};S.cfg.meta=+b.dataset.v;salvar();rota.manterScroll=true;render();break;
     case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;dinPrev=null;salvar();rota.manterScroll=true;render();if(b.dataset.v==="dinamica")anunciar("Cor Dinâmica: cada matéria com as suas cores");break;
-    case "din-gal":{dinGalAberta=!dinGalAberta;const w=document.getElementById("din-gal-mais");if(!w)break;const hAntes=w.firstElementChild.offsetHeight;
+    case "din-gal":{dinGalAberta=!dinGalAberta;const w=document.getElementById("din-gal-mais");if(!w)break;
       w.classList.toggle("aberta",dinGalAberta);w.toggleAttribute("inert",!dinGalAberta);b.setAttribute("aria-expanded",dinGalAberta);
-      b.innerHTML=(dinGalAberta?"Mostrar menos":`Mostrar mais ${b.dataset.n} matérias`)+" "+ic("prox");
+      b.innerHTML=(dinGalAberta?"Esconder as cores":`Ver as cores das ${b.dataset.n} matérias`)+" "+ic("prox");
       som("toque");anunciar(dinGalAberta?"Lista aberta":"Lista fechada");
-      if(!dinGalAberta){const h=hAntes,t=b.getBoundingClientRect().top-h;if(t<innerHeight*.35)scrollBy({top:t-innerHeight*.5,behavior:animOn()?"smooth":"auto"})}break}
+      break}
     case "din-prev":dinPrev=dinPrev===b.dataset.k?null:b.dataset.k;rota.manterScroll=true;render();{const e=DIN[dinPrev];if(e)anunciar(dinNome(dinPrev)+": "+e[0])}break;
     case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;dinPrev=null;salvar();rota.manterScroll=true;render();if(b.dataset.v==="dinamica")anunciar("Cor Dinâmica: cada matéria com as suas cores");break;
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
