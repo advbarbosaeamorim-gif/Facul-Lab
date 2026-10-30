@@ -3453,12 +3453,13 @@ function capaTela(ilu,tit,txt){return estiloAtual()==="premium"?`<div class="cap
 /* estado vazio: ilustração, o que aconteceu e o próximo passo */
 function vazio(ilu,tit,txt,acoes,cor){return `<div class="vazio-ilu">${ilustra(ilu,cor||"var(--toga-txt)")}<p class="v-tit">${tit}</p>${txt?`<p class="v-txt">${txt}</p>`:""}${acoes?`<div class="vazio-acoes">${acoes}</div>`:""}</div>`}
 /* simuladores interativos das apostilas: ::calc prd (cabe a substituição?), ::calc conv (conversão em prisão),
-   ::calc dosi (dosimetria trifásica) e ::calc reinc (é reincidente?) */
+   ::calc dosi (dosimetria trifásica), ::calc reinc (é reincidente?) e ::calc antec (linha do tempo: reincidência ou maus antecedentes?) */
 const CALC_DEF={
  prd:{a:2,m:0,d:0,tipo:"doloso",viol:"nao",reinc:"nao",circ:"sim"},
  conv:{pm:7,pd:0,cm:1,cd:0},
  dosi:{mina:4,maxa:10,circ:2,ag:1,at:1,aum:"1/3",dim:"0"},
- reinc:{ant:"doloso",quando:"depois",prazo:"ate5",novo:"doloso",mesmo:"nao"}};
+ reinc:{ant:"doloso",quando:"depois",prazo:"ate5",novo:"doloso",mesmo:"nao"},
+ antec:{fa:"2000-03-10",tj:"2002-03-31",ext:"",fn:"2003-05-30",sn:"2004-08-20"}};
 const FRACAO={"0":0,"1/6":1/6,"1/5":1/5,"1/4":1/4,"1/3":1/3,"1/2":1/2,"2/3":2/3};
 function calcDosimetria(v){
  const min=Math.max(0,+v.mina||0)*360,max=Math.max(0,+v.maxa||0)*360;
@@ -3495,10 +3496,26 @@ function calcReincidencia(v){
  return {ok:null,tit:"Reincidente, mas não em crime doloso",it:[base,`O novo fato veio depois do trânsito em julgado e dentro de 5 anos: é **reincidente** (${lei}).`,
   "**Na dosimetria:** continua sendo agravante na 2ª fase (art. 61, I).",
   novo==="contr"||ant==="contr"?"**Na substituição e no sursis:** não impede, porque não há dois crimes dolosos. Contravenção não é crime doloso (arts. 44, II, e 77, I).":"**Na substituição e no sursis:** não impede, porque só a reincidência em crime **doloso** (dolo + dolo) é obstáculo (arts. 44, II, e 77, I)."]}}
+function calcAntecedentes(v){
+ const d=x=>x?new Date(x+"T12:00:00"):null,br=x=>x.split("-").reverse().join("/");
+ const fa=d(v.fa),tj=d(v.tj),ext=d(v.ext),fn=d(v.fn),sn=d(v.sn);
+ if(!fa||!fn||!sn)return {ok:null,tit:"Preencha as datas dos dois fatos e a da nova sentença",it:[]};
+ if(sn<fn)return {ok:null,tit:"A nova sentença não pode vir antes do novo fato",it:[]};
+ const anos=(a,b)=>{const c=new Date(a);c.setFullYear(c.getFullYear()+b);return c};
+ if(fa>=fn)return {ok:true,tit:"Não pesa contra o réu",it:["O fato anterior **não é anterior**: foi praticado no mesmo dia ou depois do novo fato.","Condenação por fato **posterior** não gera reincidência nem maus antecedentes. Ela só vai pesar no processo do outro fato."]};
+ if(!tj||tj>sn)return {ok:true,tit:"Bons antecedentes",it:[tj?`O trânsito em julgado anterior (${br(v.tj)}) só vem **depois** da nova sentença (${br(v.sn)}).`:"A condenação anterior ainda **não transitou em julgado**.","Na data da sentença, é processo em curso, que não pode agravar a pena-base (Súmula 444 do STJ). O réu é tecnicamente **primário e de bons antecedentes**."]};
+ if(ext&&ext<tj)return {ok:null,tit:"O fim da pena não pode vir antes do trânsito em julgado",it:[]};
+ if(tj>=fn)return {ok:null,tit:"Maus antecedentes",it:[`O trânsito em julgado anterior (${br(v.tj)}) veio **depois** do novo fato (${br(v.fn)}), mas **antes** da sentença (${br(v.sn)}).`,"Não é reincidência, porque o novo fato não veio depois do trânsito (art. 63). Mas pesa como **maus antecedentes** na 1ª fase (art. 59)."]};
+ const base=`O trânsito em julgado anterior (${br(v.tj)}) veio **antes** do novo fato (${br(v.fn)}): a 1ª regra da reincidência está cumprida (art. 63).`;
+ if(!ext||anos(ext,5)>=fn)return {ok:false,tit:"Reincidente",it:[base,ext?`Do fim da pena (${br(v.ext)}) ao novo fato **não passaram mais de 5 anos**: o período depurador não salva (art. 64, I).`:"A pena anterior ainda não tinha sido cumprida ou extinta quando veio o novo fato, então o período depurador nem começou a correr (art. 64, I).",
+  "**Na dosimetria:** agravante na 2ª fase (art. 61, I). A mesma condenação não pode pesar também como maus antecedentes (Súmula 241 do STJ).","Lembre: se o crime anterior fosse **militar próprio** ou **político**, ou uma **contravenção** seguida de crime, não haveria reincidência (art. 64, II; art. 7º da LCP)."]};
+ if(anos(ext,10)>=fn)return {ok:null,tit:"Maus antecedentes, não reincidência",it:[base,`Mas do fim da pena (${br(v.ext)}) ao novo fato passaram **mais de 5 anos**: o **período depurador** apaga a reincidência (art. 64, I).`,"A condenação ainda pode pesar como **maus antecedentes** na 1ª fase (STF, Tema 150)."]};
+ return {ok:true,tit:"Nem reincidência, nem maus antecedentes (STJ)",it:[base,`Do fim da pena (${br(v.ext)}) ao novo fato passaram **mais de 10 anos**: muito além do período depurador de 5 anos (art. 64, I).`,"Para o STJ (2025, Informativo 856), aplica-se o **direito ao esquecimento**: a condenação tão antiga não deve ser usada como maus antecedentes.","Atenção: o STF (Tema 150) admite usá-la, deixando ao juiz avaliar se é remota demais. Na prova, veja qual tribunal a questão pede."]}}
 function calcTempo(dias){const a=Math.floor(dias/360),m=Math.floor(dias%360/30),d=dias%30;const p=[];if(a)p.push(a+(a>1?" anos":" ano"));if(m)p.push(m+(m>1?" meses":" mês"));if(d)p.push(d+(d>1?" dias":" dia"));return p.length?p.join(" e ").replace(/ e (?=.* e )/,", "):"0 dia"}
 function calcResultado(tipo,v){
  if(tipo==="dosi")return calcDosimetria(v);
  if(tipo==="reinc")return calcReincidencia(v);
+ if(tipo==="antec")return calcAntecedentes(v);
  if(tipo==="conv"){const pena=(+v.pm||0)*30+(+v.pd||0),cump=Math.min(pena,(+v.cm||0)*30+(+v.cd||0));
   if(!pena)return {ok:null,tit:"Informe a pena substituída",it:[]};
   const resto=pena-cump,final=Math.max(30,resto);
@@ -3523,6 +3540,7 @@ function calcSaida(tipo,v){const r=calcResultado(tipo,v);const cls=r.ok===null?"
  return `<div class="calc-out${cls}" aria-live="polite"><b>${inl(r.tit)}</b>${r.it.length?`<ul>${r.it.map(x=>`<li>${inl(x)}</li>`).join("")}</ul>`:""}</div>`}
 function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
  const num=(n,rot,max)=>`<label>${rot}<input type="number" inputmode="numeric" min="0" max="${max}" data-c="${n}" value="${v[n]}"></label>`;
+ const dt=(n,rot)=>`<label>${rot}<input type="date" data-c="${n}" value="${v[n]}"></label>`;
  const sel=(n,rot,ops)=>`<label>${rot}<select data-c="${n}">${ops.map(([k,t])=>`<option value="${k}"${v[n]===k?" selected":""}>${t}</option>`).join("")}</select></label>`;
  const campos=tipo==="prd"?`<div class="calc-l3">${num("a","Anos",30)}${num("m","Meses",11)}${num("d","Dias",29)}</div>
   ${sel("tipo","O crime é",[["doloso","doloso"],["culposo","culposo"]])}
@@ -3534,6 +3552,8 @@ function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
   <div class="calc-l3">${num("ag","Agravantes",9)}${num("at","Atenuantes",9)}</div>
   ${sel("aum","Causa de aumento",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}
   ${sel("dim","Causa de diminuição",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}`
+  :tipo==="antec"?`<p class="calc-rot">Condenação anterior</p>${dt("fa","Data do fato anterior")}${dt("tj","Trânsito em julgado (deixe vazio se ainda não houve)")}${dt("ext","Fim da pena: cumprimento ou extinção (vazio se ainda não acabou)")}
+  <p class="calc-rot">Processo que está sendo julgado agora</p>${dt("fn","Data do novo fato")}${dt("sn","Data da sentença")}`
   :tipo==="reinc"?`${sel("ant","Condenação anterior, transitada em julgado, por",[["doloso","crime doloso"],["culposo","crime culposo"],["contr","contravenção penal"]])}
   ${sel("quando","O novo fato foi praticado",[["depois","depois do trânsito em julgado"],["antes","antes do trânsito em julgado"]])}
   ${sel("prazo","Do fim da pena anterior até o novo fato",[["ate5","até 5 anos"],["mais5","mais de 5 anos"]])}
