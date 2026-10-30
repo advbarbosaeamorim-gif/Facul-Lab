@@ -1015,7 +1015,7 @@ html[data-anim="off"] .mv *{animation:none!important}
 .prev-premium i:nth-child(2),.prev-premium i:nth-child(3){background:#16141f}
 .prev-premium i:nth-child(4){background:linear-gradient(135deg,var(--g1,#7c3aed),var(--g2,#db2777))}
 .prev-classico{background:#eef1f6}
-.prev-classico i:nth-child(1){background:var(--toga)}
+.prev-classico i:nth-child(1){background:var(--g1,var(--toga))}
 .prev-classico i:nth-child(2),.prev-classico i:nth-child(3){background:#172033}
 .prev-classico i:nth-child(4){background:#c9821c}
 /* gaveta */
@@ -4394,7 +4394,7 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <p class="nota">Na meta automática, o número de questões aumenta conforme a prova se aproxima.${avOn()&&metaProvas()?` Com o modo avançado, suas provas pedem <b>${metaProvas()} questões por dia</b>; a meta usa o maior dos dois valores.`:""}</p>
  ${blocoLembretes()}
  <div class="secao" role="heading" aria-level="2">Estilo visual</div>
- <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
+ <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${prevEstilo(k)}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os dois estilos funcionam nos modos claro e escuro e mantêm todas as funções.</p>
  ${estiloAtual()==="premium"?`<div class="secao" role="heading" aria-level="2">Paleta do Premium</div>
  <div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="cfg-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g${k==="dinamica"?" din-amostra":""}" style="background:${k==="dinamica"?dinArco("conic"):`linear-gradient(135deg,${c1},${c2})`}"></span><span>${n}${k==="dinamica"?` <em class="din-novo">Novo</em>`:""}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}
@@ -4978,6 +4978,8 @@ const PALETAS=[["dinamica","Dinâmica","Muda com a matéria","#b91c1c","#00733a"
 let coresTodas=false;
 function coresVisiveis(L,atual){return coresTodas?L:L.filter((x,i)=>i<6||x[0]===atual)}
 function botaoMaisCores(L,atual){const f=L.length-coresVisiveis(L,atual).length;if(!f&&!coresTodas)return "";return `<button class="ver-mais mais-cores" data-acao="cores-mais" aria-expanded="${coresTodas}">${coresTodas?"Mostrar menos":`Mostrar mais ${f} ${f>1?"cores":"cor"}`} ${ic("prox")}</button>`}
+function prevEstilo(k){if(k==="premium"){if(paletaAtual()==="dinamica")return ` style="--g1:var(--d1);--g2:var(--d2m)"`;const p=PALETAS.find(x=>x[0]===paletaAtual());return ` style="--g1:${p[3]};--g2:${p[4]}"`}
+  const c=corAtual();return ` style="--g1:${c==="dinamica"?DIN_BASE.classico[0]:CORES.find(x=>x[0]===c)[3]}"`}
 function paletaAtual(){const c=S.cfg&&S.cfg.paleta;return PALETAS.some(x=>x[0]===c)?c:"oceano"}
 function estiloAtual(){return (S.cfg&&S.cfg.estilo)==="classico"?"classico":"premium"}
 function aplicarCor(){const c=corAtual();const h=document.documentElement;if(c==="vinho")h.removeAttribute("data-cor");else h.setAttribute("data-cor",c);
@@ -5553,7 +5555,7 @@ function tourDemoMenu(){const s=tourD.menu;
  return `<div class="tour-menu">${TOUR_MENU.map(([icn,n],i)=>`<button data-acao="tour-menu" data-v="${i}" aria-pressed="${s===i}">${ic(icn)}<span>${n}</span></button>`).join("")}</div>
  <p class="tour-res${s===undefined?" vazio":tourNv()}" aria-live="polite">${s===undefined?"Toque em uma parte do menu.":`${ic(TOUR_MENU[s][0])}<span><b>${TOUR_MENU[s][1]}.</b> ${TOUR_MENU[s][2]}</span>`}</p>`}
 function tourDemoVisual(){const e=estiloAtual(),an=(S.cfg&&S.cfg.anim)||"on";
- return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
+ return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${prevEstilo(k)}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g${k==="dinamica"?" din-amostra":""}" style="background:${k==="dinamica"?dinArco("conic"):`linear-gradient(135deg,${c1},${c2})`}"></span><span>${n}${k==="dinamica"?` <em class="din-novo">Novo</em>`:""}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}`:""}
  <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota tour-sub"><b>Sons e vibração</b></p><div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="tour-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
