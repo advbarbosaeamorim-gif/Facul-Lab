@@ -3124,6 +3124,7 @@ html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s e
 :root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
 :root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{content:none}
 [data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
+:root[data-din]:not([data-paleta="dinamica"]):not([data-cor="dinamica"]) .topo::after{content:none}
 /* Constitucional: o degradê fica quase todo no amarelo e só termina no verde */
 :root[data-estilo="premium"][data-paleta="dinamica"][data-din="const"]{--grad:linear-gradient(135deg,var(--d1) 0%,color-mix(in srgb,var(--d1) 88%,#c9a000) 58%,var(--d2g) 100%)}
 /* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
@@ -4934,7 +4935,7 @@ function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date()
 function errosHoje(){const q=S.qrev||{};const now=Date.now();return Object.keys(q).filter(id=>QMAP[id]&&q[id].due<=now)}
 const ultima=key=>S.hist.find(a=>a.key===key);
 const p2=n=>String(n).padStart(2,"0");
-function tile(cor,icn,cls){const d=dinCoresOn&&DIN_POR_COR[cor];return `<span class="tile ${cls||""}${d?" din":""}" style="--c:${cor}${d?";--c2:"+d[2]:""}">${ic(icn)}</span>`}
+function tile(cor,icn,cls){const d=dinCoresOn&&DIN_POR_COR[cor],c2=d?d[2]:estiloAtual()==="premium"&&/^#[0-9a-f]{6}$/i.test(cor)?mixHex(cor,"#ffffff",.45):"";return `<span class="tile ${cls||""}${c2?" din":""}" style="--c:${cor}${c2?";--c2:"+c2:""}">${ic(icn)}</span>`}
 function estado(key){const a=ultima(key);if(!a)return {st:"nao",a:null};if(a.status==="pausado")return {st:"pausa",a};const r=res(a);return {st:r.pct===100?"perf":r.pct>=50?"aprov":"reprov",a,r}}
 const ROTULO={nao:"Não iniciado",pausa:"Pausado",aprov:"Aprovado",reprov:"Reprovado",perf:"Perfeito"};
 const SELO={nao:"exc",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela"};
@@ -5061,7 +5062,15 @@ const META_COR={},DISC_COR={};Object.keys(META).forEach(k=>META_COR[k]=META[k].c
 let dinCoresOn=false;
 function dinCores(on){if(dinCoresOn===on)return;dinCoresOn=on;Object.keys(META).forEach(k=>META[k].cor=on&&DIN[k]?DIN[k][1]:META_COR[k]);Object.keys(DISC_COR).forEach(k=>DISC[k].cor=on&&DIN[k]?DIN[k][1]:DISC_COR[k])}
 let dinUlt=null,dinT=null;
-function dinAplicar(){const h=document.documentElement,on=dinOn();dinCores(on);
+/* o acabamento da Dinâmica (marca d'água no topo, brilho, halo, ícones em degradê) vale para todas as paletas do Premium,
+   cada uma com as próprias cores; só a Dinâmica troca de cor por matéria e mostra a faixa de três cores */
+function dinAplicar(){const h=document.documentElement,on=dinOn(),pr=!on&&estiloAtual()==="premium";dinCores(on);
+  if(pr){const pl=PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0],k=dinTela(),id=k||"base";
+    h.style.setProperty("--d1",pl[3]);h.style.setProperty("--d2",pl[4]);h.style.setProperty("--d3",pl[4]);h.style.setProperty("--dt",mixHex(pl[3],"#ffffff",.6));
+    ["--d2g","--d2m"].forEach(v=>h.style.removeProperty(v));h.setAttribute("data-din",id);h.style.setProperty("--din-ic",dinMarca(k));
+    if(dinUlt===null)setTimeout(()=>h.classList.add("din-suave"),60);
+    else if(dinUlt!==id&&animOn()){h.classList.remove("din-muda");void h.offsetWidth;h.classList.add("din-muda");clearTimeout(dinT);dinT=setTimeout(()=>h.classList.remove("din-muda"),900)}
+    dinUlt=id;return null}
   if(!on){if(h.hasAttribute("data-din")){h.removeAttribute("data-din");h.classList.remove("din-suave","din-muda");["--d1","--d2","--d3","--dt","--d2g","--d2m","--din-ic"].forEach(v=>h.style.removeProperty(v))}dinUlt=null;return null}
   const k=dinTela(),e=k&&DIN[k],c=e?e.slice(1,4):DIN_BASE[estiloAtual()],id=k||"base";
   h.style.setProperty("--d1",c[0]);h.style.setProperty("--d2",c[1]);h.style.setProperty("--d3",c[2]);h.style.setProperty("--dt",mixHex(c[0],"#ffffff",.6));const [gm,g]=dinDegrade(c[0],c[1]);h.style.setProperty("--d2g",g);h.style.setProperty("--d2m",gm);
