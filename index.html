@@ -3120,9 +3120,9 @@ html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s e
 @media (prefers-color-scheme: dark){:root[data-cor="dinamica"]:not([data-theme="light"]){--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}}
 :root[data-cor="dinamica"][data-theme="dark"]{--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}
 
-/* faixa de três cores sob o topo (em Constitucional, verde, amarelo e azul); fora das matérias e na revisão geral, todas as cores */
+/* faixa de três cores sob o topo das matérias; fora delas e na revisão geral, sem faixa */
 :root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
-:root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{background:linear-gradient(90deg,#b91c1c,#c2410c,#d4a017,#00733a,#0e7490,#1d4ed8,#5b21b6,#a21caf)}
+:root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{content:none}
 [data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
 /* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
 :root[data-din="const"] .topo::after{background:linear-gradient(90deg,#f2c500 0 40%,#00733a 40% 80%,#002776 80%)}
