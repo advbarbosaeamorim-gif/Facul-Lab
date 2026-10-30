@@ -1,0 +1,27 @@
+# Robô de testes: a cada PR (e a cada push na main), abre as telas do app nos 4 visuais e avisa se algo quebrou.
+name: Teste das telas
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  telas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # o Playwright fica fora do package.json, que só serve às funções do Netlify
+      - run: npm install --no-save --no-package-lock playwright@1.48.2
+      - run: npx playwright install --with-deps chromium
+      - name: Servidor local
+        run: python3 -m http.server 8811 >/dev/null 2>&1 &
+      - run: node tools/teste/telas.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prints-das-telas
+          path: tools/teste/prints/
+          retention-days: 7
