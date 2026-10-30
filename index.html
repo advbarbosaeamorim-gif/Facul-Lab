@@ -4,6 +4,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<!-- só os algarismos da Public Sans: no Clássico, a Atkinson Hyperlegible desenha o zero cortado ("3Ø de outubro") -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800&text=0123456789&display=swap">
 <script>/* o ícone (tela inicial ao instalar, aba do navegador, iPhone) acompanha o tema escolhido */
 function iconeDoTema(t,fav){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite rosa mel lima carvao c-telha c-ouro c-oliva c-rosa dinamica c-dinamica ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+(fav||t)+"-192.png";
  if(m&&m.getAttribute("href")!=="icones/manifest-"+t+".json")m.setAttribute("href","icones/manifest-"+t+".json");if(i)i.setAttribute("href",png);if(a)a.setAttribute("href",png)}</script>
@@ -20,7 +22,7 @@ function iconeDoTema(t,fav){if(" violeta oceano floresta sol noite grafite c-azu
   --trilho:#e8dddc;
   --nv1:#23845a; --nv2:#2f72b8; --nv3:#9a7410; --nv4:#c25a1c; --nv5:#b02e44; --nv6:#6a4fb3; --nv7:#12808a;
   --f-display:"Zilla Slab", Georgia, "Times New Roman", serif;
-  --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body:"Public Sans", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:12px; --f-read:var(--f-body);
 }
@@ -425,7 +427,7 @@ html[data-anim="on"] .calc-out.calc-novo{animation:pv-res-in .4s ease-out both}
 .pager .indice svg.i{width:16px;height:16px}
 .tema-ban{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:12px;align-items:center;margin:10px 0 8px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--c) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 35%,var(--line))}
 .tema-ban .ilu{max-width:120px}
-.tema-ban .tn{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.tema-ban .tn{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 80%,#000)}
 :root[data-theme="dark"] .tema-ban .tn{color:var(--fg)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tema-ban .tn{color:var(--fg)}}
 .tema-ban h3{margin:4px 0 0;font-family:var(--f-display);font-size:1.3rem;line-height:1.2}
@@ -3259,6 +3261,65 @@ html:not([data-anim="on"]) .din-gal-mais,html:not([data-anim="on"]) .din-gal-mai
 .guarda-falha p{margin:0 0 10px;font-size:.88rem;color:var(--muted);line-height:1.45}
 .anim-on .guarda-falha{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards}
 
+/* Tabelas das apostilas: com 3 colunas ou mais, no celular cada linha vira um cartão (antes cortava à direita) */
+.tab:focus-visible{outline:3px solid var(--foco);outline-offset:2px}
+.tab:not(.cartoes) table{min-width:0}
+@media (max-width:560px){
+ .tab.cartoes{overflow:visible;border:0;background:none}
+ .tab.cartoes table,.tab.cartoes tbody,.tab.cartoes tr,.tab.cartoes td{display:block;width:auto;min-width:0}
+ .tab.cartoes thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .tab.cartoes tr{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:0 0 10px;overflow:hidden}
+ .tab.cartoes td{border:0;padding:6px 12px}
+ .tab.cartoes td:first-child{background:var(--surface-2);font-weight:700;padding:9px 12px}
+ .tab.cartoes td::before{content:attr(data-l);display:block;font-size:.74em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:1px}
+ .tab.cartoes td:not(:first-child):empty{display:none}
+ .tab.cartoes td:first-child::before{font-weight:600}
+ [data-estilo="premium"] .tab.cartoes tr{border-radius:16px;box-shadow:var(--sombra)}
+ [data-estilo="premium"] .tab.cartoes td:first-child{background:color-mix(in srgb,var(--p1) 10%,var(--surface))}
+}
+/* Contraste (WCAG AA). "PROVA" no calendário: texto escuro sobre o âmbar (o branco dava 2,1:1) */
+.cal-prova.cal-prova .cal-mes{color:#2a1700}
+.cal-prova.cal-prova .cal-verso .cal-mes,[data-estilo="premium"] .cal-prova.cal-prova .cal-frente .cal-mes{color:#fff}
+/* no escuro, o texto na cor da paleta usa a versão clara (o tom escuro sumia no fundo escuro: 2,3:1).
+   O :not(#x) só dá peso para vencer as regras de cada paleta, inclusive a Dinâmica */
+:root[data-estilo="premium"][data-theme="dark"]:not(#x){--p1-txt:var(--p1-txt-d)}
+@media (prefers-color-scheme:dark){:root[data-estilo="premium"]:not([data-theme="light"]):not(#x){--p1-txt:var(--p1-txt-d)}}
+
+/* do tema para as questões */
+.treino-tema{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;margin:18px 0 6px;padding:10px 14px 10px 8px;border-radius:var(--r);border:1px solid var(--line);border-left:4px solid var(--ok);background:var(--surface);color:inherit;text-align:left}
+.treino-tema .ilu{width:84px;height:auto}
+.treino-tema small{display:block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.treino-tema b{display:block;font-size:1rem;margin:2px 0}
+.treino-tema em{display:block;font-style:normal;color:var(--muted);font-size:.86rem}
+[data-estilo="premium"] .treino-tema{border-radius:22px;border-left:1px solid var(--line);background:var(--grad-suave),var(--surface);box-shadow:var(--sombra)}
+@media(hover:hover){.treino-tema:hover{border-color:var(--toga-txt)}}
+
+/* ouvir a apostila */
+.ouvir{display:inline-flex;align-items:center;gap:8px;margin:4px 0 12px;padding:9px 16px 9px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--toga-txt);font-weight:700;font-size:.9rem;min-height:44px}
+.ouvir .i{width:18px;height:18px}
+.ouvir.on{background:var(--toga);color:var(--toga-fg);border-color:transparent}
+[data-estilo="premium"] .ouvir.on{background:var(--grad)}
+.texto .ouvindo{background:color-mix(in srgb,var(--lacre) 18%,transparent);border-radius:8px;box-shadow:0 0 0 6px color-mix(in srgb,var(--lacre) 18%,transparent);transition:background-color .3s,box-shadow .3s}
+.ouvir-barra{position:fixed;z-index:78;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 8px 8px 14px;border-radius:18px;background:var(--surface);color:var(--fg);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.45)}
+.np .ouvir-barra{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+.ob-txt{flex:1;min-width:0}.ob-txt b{display:block;font-size:.92rem}.ob-txt small{color:var(--muted);font-size:.78rem}
+.ob-prog{display:block;height:4px;border-radius:4px;background:var(--trilho);margin-top:5px;overflow:hidden}.ob-prog i{display:block;height:100%;background:var(--toga-txt);transition:width .4s}
+[data-estilo="premium"] .ob-prog i{background:var(--grad)}
+.ob-b{flex:none;min-width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:inherit;font-weight:800;display:grid;place-items:center}
+.ob-onda{display:flex;align-items:flex-end;gap:3px;height:22px}.ob-onda i{width:4px;height:6px;border-radius:2px;background:var(--toga-txt)}
+.anim-on .ob-onda.tocando i{animation:ob-onda .9s ease-in-out infinite}.anim-on .ob-onda.tocando i:nth-child(2){animation-delay:.15s}.anim-on .ob-onda.tocando i:nth-child(3){animation-delay:.3s}.anim-on .ob-onda.tocando i:nth-child(4){animation-delay:.45s}
+@keyframes ob-onda{50%{height:22px}}
+.anim-on .ouvir-barra{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards}
+
+/* aviso de conteúdo novo */
+.conteudo-novo{position:fixed;z-index:79;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 8px 10px 14px;border-radius:16px;background:var(--surface);color:var(--fg);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.45)}
+.conteudo-novo>.i{color:var(--lacre);flex:none}
+.conteudo-novo span{flex:1;min-width:0}.conteudo-novo b{display:block;font-size:.95rem}.conteudo-novo small{color:var(--muted);font-size:.82rem}
+.conteudo-novo .botao{width:auto;padding:10px 14px;font-size:.78rem}
+.conteudo-novo .icone{margin:0;color:var(--muted)}
+.np .conteudo-novo,.np .guarda-falha{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+.anim-on .conteudo-novo{animation:ent-pop .45s cubic-bezier(.3,1.4,.5,1) backwards}
+
 /* Instalar */
 .inst-cta{border-left-color:var(--toga-txt);margin-top:12px}
 </style>
@@ -3755,7 +3816,9 @@ function md(txt,cor){const L=String(txt).replace(/\r/g,"").split("\n");let h="",
    const m=it[0].match(/^([^:]{2,12}):\s*/);let k=m&&CALL[m[1].toLowerCase()];if(k){it[0]=it[0].slice(m[0].length);it[0]=it[0].charAt(0).toUpperCase()+it[0].slice(1)}else k=CALL.dica;
    h+=`<aside class="call ${k[1]}">${k[1]==="ex"?CENA:""}<b>${ic(k[2])}${k[0]}</b>${it.map(x=>`<p>${inl(x)}</p>`).join("")}</aside>`;continue}
   if(l.startsWith("|")){const rows=[];while(i<L.length&&L[i].trim().startsWith("|")){rows.push(L[i].trim().replace(/^\||\|$/g,"").split("|").map(x=>x.trim()));i++}
-   h+=`<div class="tab"><table><thead><tr>${rows[0].map(c=>`<th>${inl(c)}</th>`).join("")}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${inl(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;continue}
+   /* 3 colunas ou mais viram cartões no celular (classe "cartoes"); cada célula leva o nome da coluna em data-l */
+   {const cab=rows[0].map(c=>esc(String(c).replace(/\*\*|__|`/g,"").trim())),n=cab.length;
+   h+=`<div class="tab${n>=3?" cartoes":""}" role="region" aria-label="Tabela: ${cab.join(", ")}" tabindex="0"><table><thead><tr>${rows[0].map(c=>`<th>${inl(c)}</th>`).join("")}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map((c,k)=>`<td data-l="${cab[k]||""}">${inl(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`}continue}
   const tl=tipoLista(l);if(tl){let it=[];while(i<L.length&&tipoLista(L[i].trim())===tl){it.push(L[i].trim().replace(/^(- |\d+\. )/,""));i++}h+=`<${tl}>${it.map(x=>`<li>${inl(x)}</li>`).join("")}</${tl}>`;continue}
   let p=[];while(i<L.length&&L[i].trim()&&!/^(#|::|!! |\?\? |> |\||- |\d+\. )/.test(L[i].trim())){p.push(L[i].trim());i++}
   if(p.length)h+=`<p>${inl(p.join(" "))}</p>`;else i++;
@@ -3881,11 +3944,11 @@ function nesteTema(s){const subs=[];s.corpo.split("\n").forEach(l=>{l=l.trim();i
  return `<nav class="neste" aria-label="Neste tema"><p class="neste-t">${ic("grade")}Neste tema</p>${subs.length>=2?`<ol>${subs.map(x=>`<li>${inl(x)}</li>`).join("")}</ol>`:""}${extras.length?`<p class="neste-x">Inclui ${extras.join(", ")}.</p>`:""}</nav>`}
 function blocoTema(d,f,P,k){const s=P.secs[k-1];
  return `<div class="tema-ban" style="--c:${s.cor||f.cor}">${ilustra(s.ilu,s.cor||f.cor)}<div><span class="tn">Tema ${k} de ${P.secs.length} · ${minLeitura(s.corpo)} min</span><h3>${inl(s.tit)}</h3></div></div>
- ${nesteTema(s)}<article class="texto" style="--c:${f.cor}">${md(s.corpo,f.cor).html}</article>`}
+ ${nesteTema(s)}${ouvirBtn(d+":"+k)}<article class="texto" style="--c:${f.cor}">${md(s.corpo,f.cor).html}</article>`}
 function trilhaTemas(d,P,pg){const N=P.secs.length;const vis=(S.apPg&&S.apPg[d])||0;
  return `<ol class="trilha" aria-label="Progresso na apostila">${P.secs.map((x,k)=>`<li class="${k+1===pg?"atual":k+1<=vis?"lido":""}"><button data-acao="pag" data-pg="${k+1}" aria-label="Tema ${k+1}: ${esc(limpo(x.tit))}${k+1===pg?" (atual)":""}"${k+1===pg?' aria-current="step"':""}></button></li>`).join("")}<li class="${pg>N?"atual":vis>N?"lido":""}"><button data-acao="pag" data-pg="${N+1}" aria-label="Mapa mental e revisão"${pg>N?' aria-current="step"':""}></button></li></ol>`}
 function extrasTema(d,k){const key=d+":"+k;const fav=S.fav&&S.fav[key];const nota=(S.notas&&S.notas[key])||"";
- return `<div class="extras-tema"><button class="btn-fav${fav?" on":""}" data-acao="fav" data-key="${key}" aria-pressed="${!!fav}">${ic("estrela")}<span>${fav?"Tema favoritado":"Favoritar este tema"}</span></button>
+ return `${treinoTema(d,k)}<div class="extras-tema"><button class="btn-fav${fav?" on":""}" data-acao="fav" data-key="${key}" aria-pressed="${!!fav}">${ic("estrela")}<span>${fav?"Tema favoritado":"Favoritar este tema"}</span></button>
  <details class="notas"${nota?" open":""}><summary>${ic("balao")}Minhas anotações deste tema</summary><textarea data-nota="${key}" rows="4" placeholder="Escreva aqui seus resumos, dúvidas ou exemplos. Fica salvo automaticamente.">${esc(nota)}</textarea></details></div>`}
 function btnModo(){const t=S.cfg&&S.cfg.apTudo;
  return `<div class="modo-ap" role="group" aria-label="Modo de leitura"><button data-acao="modo-ap" data-v="0" aria-pressed="${!t}">Um tema por página</button><button data-acao="modo-ap" data-v="1" aria-pressed="${!!t}">Ver tudo de uma vez</button></div>`}
@@ -7537,6 +7600,61 @@ document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest
  const sec=document.querySelector(`[data-acao="cfg-grupo"][data-v="${id}"]`);if(sec){try{sec.focus({preventScroll:true})}catch(x){}
   if(cfgAbre[id]){const r=sec.getBoundingClientRect();if(r.top<70||r.top>innerHeight*.5)try{sec.scrollIntoView({block:"start",behavior:animOn()?"smooth":"auto"})}catch(x){}}}},true);
 
+/* Do tema para as questões: no fim de cada tema, o assunto do banco de questões que mais combina com o título */
+const PAL_VAZIAS=new Set("para pela pelo pelas pelos como sobre entre com sem dos das nos nas uma umas uns que qual quais seus suas sua seu esse essa este esta isso tema direito geral parte".split(" "));
+const palavrasDe=t=>semAcento(limpo(String(t||""))).toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>=4&&!PAL_VAZIAS.has(w)).map(w=>w.replace(/(oes|aes|ais|eis|is|es|s)$/,""));
+function assuntoDoTema(d,k){try{const P=paginas(d),x=P.secs[k-1];if(!x)return null;const pw=palavrasDe(x.tit);if(!pw.length)return null;
+ const g={};idsEscopo(d).forEach(id=>{const q=QMAP[id];if(q){const a=grupoDe(q);g[a]=(g[a]||0)+1}});
+ let best=null;Object.keys(g).forEach(a=>{if(g[a]<3)return;const aw=palavrasDe(a);const n=aw.filter(w=>pw.includes(w)).length;if(!n)return;
+  const nota=n/Math.max(aw.length,1);if(!best||nota>best.nota||(nota===best.nota&&g[a]>best.n))best={a,n:g[a],nota}});
+ return best}catch(e){return null}}
+function treinoTema(d,k){const b=assuntoDoTema(d,k);const f=infoDisc(d);
+ if(b)return `<button class="treino-tema" data-acao="treinar-ass" data-sc="${d}" data-a="${esc(encodeURIComponent(b.a))}">${ilustra("alvo","var(--toga)")}<span><small>Agora, pratique</small><b>Treinar questões: ${esc(b.a)}</b><em>${b.n} questões deste assunto, com explicação de cada alternativa</em></span>${ic("prox")}</button>`;
+ if(!idsEscopo(d).length)return "";
+ return `<button class="treino-tema" data-acao="abrir-disc" data-d="${d}">${ilustra("alvo","var(--toga)")}<span><small>Agora, pratique</small><b>Questões de ${esc(nomeCurto(f.nome))}</b><em>Simulados e treino por assunto desta matéria</em></span>${ic("prox")}</button>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('.treino-tema[data-acao="abrir-disc"]');if(!b)return;e.stopImmediatePropagation();ir({tela:"disc",d:b.dataset.d})},true);
+
+/* Ouvir a apostila: a voz do próprio celular lê o tema, parágrafo por parágrafo, com o trecho em destaque.
+   Funciona sem internet. Pula os simuladores, as respostas do Teste-se e as tabelas. */
+const ouvirOk=()=>{try{return "speechSynthesis" in window&&typeof SpeechSynthesisUtterance=="function"}catch(e){return false}};
+let ouv=null;
+function ouvirBtn(k){if(!ouvirOk())return "";const on=ouv&&ouv.k===k;
+ return `<button class="ouvir${on?" on":""}" data-ouvir="tocar" data-ouvir-k="${k}" aria-pressed="${!!on}">${ic(on?"pausa":"som")}<span>${on?(ouv.pausa?"Continuar ouvindo":"Pausar a leitura"):"Ouvir este tema"}</span></button>`}
+function ouvirTrechos(btn){const art=btn&&btn.nextElementSibling;if(!art||!art.matches("article.texto"))return [];
+ return [...art.querySelectorAll("h2,h3,h4,h5,p,li,blockquote")].filter(el=>!el.closest("details,.calc,.ilus,figure,.tab,button,table")&&!(el.matches("li")&&el.querySelector("p"))&&!(el.matches("blockquote")&&el.querySelector("p"))&&el.innerText.trim().length>1)}
+function ouvirVoz(){const v=speechSynthesis.getVoices();return v.find(x=>/^pt[-_]BR/i.test(x.lang)&&/google|natural|neural/i.test(x.name))||v.find(x=>/^pt[-_]BR/i.test(x.lang))||v.find(x=>/^pt/i.test(x.lang))||null}
+function ouvirFalar(){if(!ouv)return;const el=ouv.els[ouv.i];if(!el){ouvirParar(true);return}
+ document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));el.classList.add("ouvindo");
+ if(ouv.segue){const r=el.getBoundingClientRect();if(r.top<90||r.bottom>innerHeight-110)try{el.scrollIntoView({block:"center",behavior:animOn()?"smooth":"auto"})}catch(e){}}
+ const u=new SpeechSynthesisUtterance(el.innerText.replace(/\s+/g," ").replace(/§/g,"parágrafo ").trim());u.lang="pt-BR";u.rate=ouv.vel;const v=ouvirVoz();if(v)u.voice=v;
+ const id=ouv.id;u.onend=()=>{if(!ouv||ouv.id!==id||ouv.pausa)return;ouv.i++;ouvirFalar()};u.onerror=e=>{if(!ouv||ouv.id!==id)return;if(e.error!=="interrupted"&&e.error!=="canceled"){const k=ouv.k;ouvirParar();const x=document.querySelector(`[data-ouvir-k="${k}"] span`);if(x)x.textContent="A voz do celular não respondeu. Confira a leitura em voz alta nas configurações do aparelho.";anunciar("A leitura em voz alta não funcionou neste aparelho.")}};
+ speechSynthesis.speak(u);ouvirBarra()}
+function ouvirBarra(){let b=document.getElementById("ouvir-barra");if(!ouv){if(b)b.remove();return}
+ if(!b){b=document.createElement("div");b.id="ouvir-barra";b.className="ouvir-barra";b.setAttribute("role","region");b.setAttribute("aria-label","Leitura em voz alta");document.body.appendChild(b)}
+ const pct=Math.round(100*ouv.i/Math.max(ouv.els.length,1));
+ b.innerHTML=`<span class="ob-onda${ouv.pausa?"":" tocando"}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="ob-txt"><b>${ouv.pausa?"Leitura pausada":"Ouvindo o tema"}</b><small>Trecho ${Math.min(ouv.i+1,ouv.els.length)} de ${ouv.els.length}</small><span class="ob-prog"><i style="width:${pct}%"></i></span></span>
+ <button class="ob-b" data-ouvir="vel" aria-label="Velocidade ${String(ouv.vel).replace(".",",")} vezes">${String(ouv.vel).replace(".",",")}×</button>
+ <button class="ob-b" data-ouvir="${ouv.pausa?"continuar":"pausar"}" aria-label="${ouv.pausa?"Continuar":"Pausar"}">${ic(ouv.pausa?"prox":"pausa")}</button>
+ <button class="ob-b" data-ouvir="parar" aria-label="Parar a leitura">${ic("x")}</button>`;
+ document.querySelectorAll("[data-ouvir-k]").forEach(x=>{const on=x.dataset.ouvirK===ouv.k;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on);x.innerHTML=`${ic(on&&!ouv.pausa?"pausa":"som")}<span>${on?(ouv.pausa?"Continuar ouvindo":"Pausar a leitura"):"Ouvir este tema"}</span>`})}
+function ouvirParar(fim){try{speechSynthesis.cancel()}catch(e){}document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));
+ const k=ouv&&ouv.k;ouv=null;ouvirBarra();document.querySelectorAll("[data-ouvir-k]").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-pressed","false");x.innerHTML=`${ic("som")}<span>Ouvir este tema</span>`});
+ if(fim&&k)anunciar("Fim do tema. Que tal o Teste-se?")}
+function ouvirComecar(btn){const els=ouvirTrechos(btn);if(!els.length)return;try{speechSynthesis.cancel()}catch(e){}
+ ouv={k:btn.dataset.ouvirK,els,i:0,vel:(S.cfg&&S.cfg.ouvVel)||1,pausa:false,segue:true,id:Date.now()};ouvirFalar()}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-ouvir]");if(!b)return;e.stopImmediatePropagation();const a=b.dataset.ouvir;
+ if(a==="tocar"){if(ouv&&ouv.k===b.dataset.ouvirK){if(ouv.pausa){ouv.pausa=false;ouv.id=Date.now();ouvirFalar()}else{ouv.pausa=true;try{speechSynthesis.cancel()}catch(x){}ouvirBarra()}}else ouvirComecar(b)}
+ else if(a==="pausar"&&ouv){ouv.pausa=true;try{speechSynthesis.cancel()}catch(x){}ouvirBarra()}
+ else if(a==="continuar"&&ouv){ouv.pausa=false;ouv.id=Date.now();ouvirFalar()}
+ else if(a==="parar")ouvirParar();
+ else if(a==="vel"&&ouv){const V=[1,1.25,1.5,1.75,0.75],n=V[(V.indexOf(ouv.vel)+1)%V.length];ouv.vel=n;S.cfg=S.cfg||{};S.cfg.ouvVel=n;salvar();if(!ouv.pausa){ouv.id=Date.now();try{speechSynthesis.cancel()}catch(x){}ouvirFalar()}else ouvirBarra()}},true);
+/* se a pessoa rolar a tela, a leitura para de puxar a rolagem até o próximo toque em continuar */
+window.addEventListener("touchmove",()=>{if(ouv)ouv.segue=false},{passive:true});
+/* depois de cada render: mesma página, a leitura segue (só reencontra os trechos); outra tela, ela para */
+{const r0=render;render=function(){const x=r0.apply(this,arguments);if(ouv){const b=document.querySelector(`[data-ouvir-k="${ouv.k}"]`);if(!b)ouvirParar();else{ouv.els=ouvirTrechos(b);const el=ouv.els[ouv.i];if(el)el.classList.add("ouvindo");ouvirBarra()}}return x}}
+window.addEventListener("pagehide",()=>{if(ouv)ouvirParar()});
+try{if(ouvirOk())speechSynthesis.getVoices()}catch(e){}
+
 /* Busca vazia: buscas recentes e sugestões no lugar de uma segunda ilustração */
 const BUSCAS_CH="faculLab.buscas",BUSCA_SUG=["legítima defesa","art. 5º","usucapião","prescrição","habeas corpus","dosimetria","responsabilidade civil","contrato de trabalho"];
 function buscasRecentes(){try{const a=JSON.parse(localStorage.getItem(BUSCAS_CH)||"[]");return Array.isArray(a)?a.filter(x=>typeof x==="string").slice(0,6):[]}catch(e){return []}}
@@ -7580,6 +7698,14 @@ document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest
 /* atalhos do ícone instalado: o manifest abre ./?ir=hoje|cartoes|foco */
 try{const v=new URLSearchParams(location.search).get("ir");if(["hoje","cartoes","foco"].includes(v)){sessionStorage.removeItem(TELA_CH);localStorage.removeItem(TELA_CH);history.replaceState(null,"",location.pathname);pilha=[];rota={tela:v}}}catch(e){}
 guardaPersistir();
+/* conteúdo novo: o service worker abre os arquivos da cópia guardada e avisa quando chegou versão nova */
+let novoAvisado=false;
+try{navigator.serviceWorker&&navigator.serviceWorker.addEventListener("message",e=>{if(!e.data||e.data.tipo!=="conteudo-novo"||novoAvisado)return;novoAvisado=true;
+ const d=document.createElement("div");d.className="conteudo-novo";d.setAttribute("role","status");
+ d.innerHTML=`${ic("estrela")}<span><b>Chegou conteúdo novo</b><small>Questões e apostilas atualizadas.</small></span><button class="botao cheio" data-cn="atualizar">Atualizar</button><button class="icone" data-cn="fechar" aria-label="Fechar">${ic("x")}</button>`;
+ document.body.appendChild(d)})}catch(e){}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-cn]");if(!b)return;
+ if(b.dataset.cn==="atualizar"){if(sessao&&rota.tela==="quiz"){pararRelogio();salvar()}guardarRolagem();location.reload()}else{const d=b.closest(".conteudo-novo");if(d)d.remove()}});
 
 if(perAtual()!==null)periodo=Math.min(9,perAtual());
 {let y=0;try{y=restaurarTela()}catch(e){y=0}
