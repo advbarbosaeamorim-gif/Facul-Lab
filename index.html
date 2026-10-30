@@ -3130,8 +3130,10 @@ html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s e
 /* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
 :root[data-din="const"] .topo::after{background:linear-gradient(90deg,#f2c500 0 40%,#00733a 40% 80%,#002776 80%)}
 /* topo mais nobre: o ícone da matéria em marca d'água à direita e um leve brilho de cima para baixo */
-:root[data-din] .topo{background:var(--din-ic) right -10px center/104px 104px no-repeat,linear-gradient(180deg,#ffffff14,#ffffff00 70%),var(--toga)}
-:root[data-estilo="premium"][data-din] .topo{background:var(--din-ic) right -10px center/104px 104px no-repeat,linear-gradient(180deg,#ffffff1f,#ffffff00 65%),var(--grad);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--d1) 85%,transparent),inset 0 -1px 0 #ffffff1a}
+:root[data-din] .topo{background:linear-gradient(180deg,#ffffff14,#ffffff00 70%),var(--toga)}
+:root[data-estilo="premium"][data-din] .topo{background:linear-gradient(180deg,#ffffff1f,#ffffff00 65%),var(--grad);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--d1) 85%,transparent),inset 0 -1px 0 #ffffff1a}
+:root[data-din] .topo h1{position:relative;isolation:isolate}
+:root[data-din] .topo h1:not(.longo)::after{content:"";position:absolute;z-index:-1;right:6px;top:50%;width:92px;height:92px;transform:translateY(-50%);background:var(--din-ic) center/contain no-repeat;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 45%);mask:linear-gradient(90deg,transparent,#000 45%)}
 /* fundo do Premium: além do halo da cor principal, um halo suave da segunda cor no canto oposto */
 [data-estilo="premium"][data-din] body::after{content:"";position:fixed;inset:auto auto -25vh -25vw;width:70vw;height:55vh;max-width:560px;max-height:460px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--d2) 10%,transparent),transparent);pointer-events:none;z-index:-1}
 /* ícone grande da matéria (cabeçalho da tela): degradê cheio, ícone branco e um brilho de vidro */
