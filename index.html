@@ -3124,6 +3124,8 @@ html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s e
 :root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
 :root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{content:none}
 [data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
+/* Constitucional: o degradê fica quase todo no amarelo e só termina no verde */
+:root[data-estilo="premium"][data-paleta="dinamica"][data-din="const"]{--grad:linear-gradient(135deg,var(--d1) 0%,color-mix(in srgb,var(--d1) 88%,#c9a000) 58%,var(--d2g) 100%)}
 /* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
 :root[data-din="const"] .topo::after{background:linear-gradient(90deg,#f2c500 0 40%,#00733a 40% 80%,#002776 80%)}
 /* topo mais nobre: o ícone da matéria em marca d'água à direita e um leve brilho de cima para baixo */
