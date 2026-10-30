@@ -74,7 +74,7 @@ function telaOab(){
   const aba=rota.aba||"progresso";
   const extra=`<div class="abas" role="tablist"><button role="tab" aria-selected="${aba==="progresso"}" data-acao="aba" data-aba="progresso">Progresso</button><button role="tab" aria-selected="${aba==="historico"}" data-acao="aba" data-aba="historico">Histórico</button></div>`;
   return topo("Simulado OAB","1ª fase · 30 simulados de 80 questões",{menu:true,extra})+
-   `<main class="wrap">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
+   `<main class="wrap">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
    <button class="fab" data-acao="proximo" aria-label="Iniciar próximo simulado">${ic("mais")}</button>`}
 function concluidosOab(){const l=[];for(let k=0;k<N_SIM;k++){const a=S.hist.find(x=>x.key==="oab:"+k&&x.status==="concluido");if(a)l.push(a)}return l}
 function blocoProgresso(){
@@ -151,7 +151,7 @@ function telaMateria(){const m=rota.m,M=META[m];const n=nMat(m);const ks=[];for(
   return topo(M.nome,`${(porM[m]||[]).length} questões`,{})+
   `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>
   <div class="secao" role="heading" aria-level="2">Simulados</div><div class="lista">${ks.map(k=>itemSim(k)).join("")}</div>
-  <div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("mtodas:"+m)}</div>${secaoAss(m)}</main>`}
+  <div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("mtodas:"+m)}${itemSim("casos:"+m)}</div>${secaoAss(m)}</main>`}
 
 /* ---------- faculdade ---------- */
 function telaFaculdade(){
@@ -216,7 +216,7 @@ function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   const rest=s.limite?s.limite-s.tempo:s.tempo;
   const dir=`<span class="relogio${s.limite&&rest<alertaRel(s)?" alerta":""}" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
   return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,s.mp?"Modo prova · correção no fim":"",{voltarAcao:"pausar",dir,extra:s.mp?mpBarraTempo(s):""})+
-  `<main class="wrap"><div class="q-cab"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${/^(fac|per|ftodas|ptodas):/.test(s.key)?`<div class="q-niv nivel" style="--c:var(--nv${nv(id)})">${barras(nv(id))}Dificuldade: ${NIVEL_INFO[nv(id)-1].nome}</div>`:""}<p class="q-enun">${esc(q.q)}</p></div>
+  `<main class="wrap"><div class="q-cab"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${seloCaso(q)}${/^(fac|per|ftodas|ptodas):/.test(s.key)?`<div class="q-niv nivel" style="--c:var(--nv${nv(id)})">${barras(nv(id))}Dificuldade: ${NIVEL_INFO[nv(id)-1].nome}</div>`:""}<p class="q-enun">${esc(q.q)}</p></div>
   <div class="alts" role="radiogroup" aria-label="Alternativas">${ord.map((oi,pos)=>{let c="";if(mostra){if(oi===0)c="certa";else if(oi===r)c="errada"}else if(oi===marc)c="marcada";
     return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" data-acao="marcar" data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[pos]}</span><span>${esc(q.o[oi])}</span></button>`}).join("")}</div>
   ${modo==="confirmar"&&!mostra?(pv!==undefined&&pv!==r?`<div class="botoes" style="margin-top:12px"><button class="botao cheio" data-acao="confirmar-resp">Confirmar resposta</button></div>`:r===undefined?`<p class="dica-modo">Toque em uma alternativa e depois em "Confirmar resposta".</p>`:""):""}

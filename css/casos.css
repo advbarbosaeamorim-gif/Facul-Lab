@@ -1,0 +1,5 @@
+/* casos de prova: selo na questão */
+.q-caso{display:inline-flex;align-items:center;gap:6px;margin:-2px 0 10px;padding:4px 10px 4px 8px;border-radius:999px;font-size:.74rem;font-weight:700;letter-spacing:.02em;
+ color:var(--toga-txt,var(--toga));background:color-mix(in srgb,var(--toga) 12%,transparent);border:1px solid color-mix(in srgb,var(--toga) 30%,transparent)}
+.q-caso svg.i{width:15px;height:15px}
+[data-estilo="classico"] .q-caso{border-radius:4px;text-transform:uppercase;font-size:.68rem;letter-spacing:.05em}
