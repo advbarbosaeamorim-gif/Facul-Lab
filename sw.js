@@ -10,9 +10,9 @@ const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512
   "./leiseca.js","./niveis.js",
   "./q1.js","./q2.js","./q3.js","./q4.js","./q5.js","./q6.js","./q7.js","./q8.js","./q9.js",
   "./q10.js","./q11.js","./q12.js","./q13.js","./q14.js","./q15.js","./q16.js","./q17.js","./q18.js",
-  "./css/base.css","./css/premium.css","./css/caderno.css","./css/foco.css","./css/ovos.css","./css/backup.css","./css/inverso.css","./css/revisao.css","./css/semanal.css","./css/modo-prova.css","./css/dinamica.css","./css/ajustes.css",
-  "./js/01-base.js","./js/02-estudo-e-provas.js","./js/03-cartoes-sons-busca.js","./js/04-estado-e-navegacao.js","./js/05-telas.js","./js/06-eventos.js","./js/07-segredos.js","./js/08-backup.js","./js/09-revisao.js","./js/10-inverso-e-caderno.js","./js/11-foco.js","./js/12-resumo-semanal.js","./js/13-modo-prova.js","./js/14-ajustes.js","./js/99-inicio.js",
-  "./questoes.js","./resumos.js","./resumos2.js"];
+  "./css/base.css","./css/premium.css","./css/caderno.css","./css/foco.css","./css/ovos.css","./css/backup.css","./css/inverso.css","./css/revisao.css","./css/semanal.css","./css/modo-prova.css","./css/dinamica.css","./css/ajustes.css","./css/casos.css",
+  "./js/01-base.js","./js/02-estudo-e-provas.js","./js/03-cartoes-sons-busca.js","./js/04-estado-e-navegacao.js","./js/05-telas.js","./js/06-eventos.js","./js/07-segredos.js","./js/08-backup.js","./js/09-revisao.js","./js/10-inverso-e-caderno.js","./js/11-foco.js","./js/12-resumo-semanal.js","./js/13-modo-prova.js","./js/14-ajustes.js","./js/15-casos.js","./js/99-inicio.js",
+  "./questoes.js","./resumos.js","./resumos2.js","./casos.js"];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
