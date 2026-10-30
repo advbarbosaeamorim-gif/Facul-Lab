@@ -1,0 +1,180 @@
+/* ---------- caderno de erros ---------- */
+.cad{--rc:var(--aviso);padding-bottom:40px}
+.cad-hero{position:relative;margin-top:16px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--erro);border-radius:var(--r);padding:16px 16px 14px;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:4px 10px;overflow:hidden}
+.cad-hero-txt{align-self:center}
+.cad-kicker{display:inline-flex;align-items:center;gap:6px;margin:0;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--erro)}
+.cad-kicker .i{width:16px;height:16px}
+.cad-hero h2{font-family:var(--f-display);font-size:1.4rem;line-height:1.15;margin:4px 0 6px}
+.cad-hero-txt>p:last-child{margin:0;font-size:.9rem;color:var(--muted);line-height:1.45}
+.cad-hero-ilu{align-self:center;cursor:pointer;-webkit-user-select:none;user-select:none}
+.cad-hero-ilu .ilu{width:100%;height:auto;display:block}
+.cad-ix{stroke:var(--erro);stroke-width:4;stroke-linecap:round;fill:none}
+.cad-io{stroke:var(--erro);stroke-width:2.5;fill:none;opacity:.75}
+.cad-iv{stroke:var(--ok);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.cad-borr{fill:#f08da0}
+.cad-placar{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.cad-n{--k:var(--erro);display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:10px 12px;border:1.5px solid var(--line);border-radius:calc(var(--r) - 2px);background:var(--surface);text-align:left;transition:border-color .2s,background-color .2s,transform .2s}
+.cad-n.rc{--k:var(--rc)} .cad-n.ok{--k:var(--ok)}
+.cad-n b{font-family:var(--f-mono);font-size:1.65rem;line-height:1.1;color:var(--k);font-variant-numeric:tabular-nums}
+.cad-n span{font-size:.76rem;color:var(--muted);line-height:1.25}
+.cad-n[aria-pressed="true"]{border-color:var(--k);background:color-mix(in srgb,var(--k) 9%,var(--surface))}
+.cad-n:active{transform:scale(.97)}
+.cad-trilha{grid-column:1/-1;display:flex;height:10px;border-radius:5px;background:var(--trilho);overflow:hidden;margin-top:12px}
+.cad-trilha i{display:block;height:100%}
+.cad-trilha .er{background:var(--erro)} .cad-trilha .rc{background:var(--rc)} .cad-trilha .ok{background:var(--ok)}
+.cad-leg{grid-column:1/-1;margin:6px 0 0;font-size:.84rem;color:var(--muted)}
+.cad-leg b{color:var(--fg)}
+.cad-rev{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);text-align:left}
+.cad-rev b{display:block;font-size:.95rem}
+.cad-rev small{display:block;color:var(--muted);font-size:.82rem;line-height:1.35}
+.cad-bloco{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.cad-mots{display:flex;flex-direction:column;gap:10px}
+.cad-mot,.cad-mat{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center}
+.cad-mot>b,.cad-mat>b{font-family:var(--f-mono);font-variant-numeric:tabular-nums;min-width:22px;text-align:right}
+.cad-mot-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted)}
+.cad-mot-ic .i{width:18px;height:18px}
+.cad-mot.top .cad-mot-ic{background:var(--erro-bg);color:var(--erro)}
+.cad-mot-l{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:.9rem}
+.cad-mot-l>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cad-barra{display:block;height:7px;border-radius:4px;background:var(--trilho);overflow:hidden}
+.cad-barra i{display:block;height:100%;width:var(--w);border-radius:4px;background:var(--c,var(--erro))}
+.cad-mot:not(.top) .cad-barra i{background:color-mix(in srgb,var(--erro) 55%,var(--trilho))}
+.cad-onde{display:flex;flex-direction:column;gap:4px;padding:6px}
+.cad-mat{width:100%;padding:8px;border:1.5px solid transparent;border-radius:calc(var(--r) - 4px);background:none;text-align:left}
+.cad-mat .tile{width:34px;height:34px;border-radius:9px}
+.cad-mat .tile svg.i{width:18px;height:18px}
+.cad-mat[aria-pressed="true"]{border-color:var(--toga-borda);background:var(--surface-2)}
+.cad-dica{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;padding:10px 12px;border-radius:calc(var(--r) - 4px);background:color-mix(in srgb,var(--lacre) 13%,var(--surface));font-size:.88rem;line-height:1.45}
+.cad-dica .i{color:var(--lacre);width:20px;height:20px;margin-top:1px}
+.cad-seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border-radius:calc(var(--r) - 2px);background:var(--surface-2);scroll-margin-top:80px}
+.cad-seg button{border:0;background:none;border-radius:calc(var(--r) - 5px);padding:9px 4px;font-size:.8rem;font-weight:700;color:var(--muted);line-height:1.2;transition:background-color .2s,color .2s}
+.cad-seg button small{display:block;font-family:var(--f-mono);font-size:.78rem;font-weight:500;opacity:.85}
+.cad-seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.cad-chips{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 2px;scrollbar-width:none}
+.cad-chips::-webkit-scrollbar{display:none}
+.cad-chips button{flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:.84rem;white-space:nowrap}
+.cad-chips button i{width:9px;height:9px;border-radius:50%}
+.cad-chips button[aria-pressed="true"]{background:var(--toga);border-color:var(--toga);color:var(--toga-fg);font-weight:700}
+.cad-ordem{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0 10px;font-size:.85rem;color:var(--muted)}
+.cad-ord-bts{display:flex;gap:4px}
+.cad-ord-bts button{border:0;background:none;padding:5px 9px;border-radius:999px;font-size:.82rem;color:var(--muted)}
+.cad-ord-bts button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg);font-weight:700}
+.cad-treinar{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.cad-desfaz{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;padding:10px 14px;border-radius:calc(var(--r) - 2px);background:var(--fg);color:var(--bg);font-size:.88rem}
+.cad-desfaz button{border:0;background:none;color:inherit;font-weight:700;text-decoration:underline;padding:4px}
+.cad-lista{display:flex;flex-direction:column;gap:10px}
+.cad-nada{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);padding:20px 0}
+.cad-mais{margin-top:12px}
+/* cartão de cada questão */
+.cad-q{--k:var(--erro);position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;scroll-margin-top:76px}
+.cad-q::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--k)}
+.cad-q.st-rc{--k:var(--rc)} .cad-q.st-ok{--k:var(--ok)}
+.cad-q-cab{display:grid;grid-template-columns:40px minmax(0,1fr) 22px;gap:12px;align-items:start;width:100%;padding:14px 12px 12px 16px;border:0;background:none;text-align:left}
+.cad-q-txt{display:flex;flex-direction:column;gap:5px;min-width:0}
+.cad-q-meta{font-size:.76rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cad-q-meta b{color:var(--fg)}
+.cad-q-enun{font-size:.95rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cad-q.aberto .cad-q-enun{display:block;font-size:1rem}
+.cad-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.cad-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.cad-tag .i{width:12px;height:12px}
+.cad-tag.st{background:color-mix(in srgb,var(--k) 15%,var(--surface));color:var(--k)}
+.cad-tag.mot{background:color-mix(in srgb,var(--lacre) 15%,var(--surface));color:var(--fg)}
+.cad-seta{align-self:center;color:var(--muted);transition:transform .25s}
+.cad-seta .i{width:20px;height:20px}
+.cad-q.aberto .cad-seta{transform:rotate(180deg)}
+.cad-corpo{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+.cad-aviso{display:flex;align-items:center;gap:8px;margin:12px 0 0;font-size:.86rem;color:var(--muted);font-weight:600}
+.cad-aviso .i{width:18px;height:18px}
+.cad-alts .alt{box-sizing:border-box;font-size:.95rem;padding:12px 14px}
+.cad-alts .alt .letra{width:30px;height:30px}
+.cad-gab,.cad-sua{display:inline-flex;align-items:center;gap:3px;margin-left:6px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;vertical-align:1px}
+.cad-gab{color:var(--ok)} .cad-sua{color:var(--erro)}
+.cad-gab .i,.cad-sua .i{width:13px;height:13px;stroke-width:3}
+.cad-px{display:block;margin-top:4px;font-size:.85rem;color:var(--muted);line-height:1.4}
+.cad-coment h3{display:flex;align-items:center;gap:8px;font-size:1rem}
+.cad-coment h3 .i{width:18px;height:18px;color:var(--lacre)}
+.cad-coment{border-left-color:var(--lacre)}
+.cad-pq{margin-top:14px}
+.cad-pq-t{margin:0 0 8px;font-weight:700;font-size:.92rem}
+.cad-pq-bts{display:flex;flex-wrap:wrap;gap:6px}
+.cad-pq-bts button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:.84rem;transition:background-color .2s,border-color .2s,transform .15s}
+.cad-pq-bts button .i{width:15px;height:15px;color:var(--muted)}
+.cad-pq-bts button[aria-pressed="true"]{border-color:var(--erro);background:var(--erro-bg);font-weight:700}
+.cad-pq-bts button[aria-pressed="true"] .i{color:var(--erro)}
+.cad-pq-bts button:active{transform:scale(.95)}
+.cad-nota{margin-top:14px}
+.cad-nota>span{display:flex;align-items:center;gap:6px;font-weight:700}
+.cad-nota>span .i{width:16px;height:16px;color:var(--muted)}
+.cad-acoes{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.cad-acoes .botao{display:flex;align-items:center;justify-content:center;gap:8px}
+.cad-acoes-l{display:flex;flex-wrap:wrap;gap:8px}
+.cad-acoes-l .link-tema{margin-top:0}
+.cad-tirar{border-color:var(--line)!important;color:var(--muted)!important}
+/* refazer dentro do cartão */
+.cad-res{position:relative;margin-top:12px;padding:14px 16px;border-radius:var(--r);background:var(--erro-bg);overflow:hidden}
+.cad-res.ok{background:var(--ok-bg)}
+.cad-res p{margin:0;font-size:.92rem}
+.cad-pontos{display:flex;gap:6px;margin-top:10px}
+.cad-pontos i{width:26px;height:8px;border-radius:4px;background:color-mix(in srgb,var(--fg) 14%,transparent)}
+.cad-pontos i.on{background:var(--ok)}
+.cad-carimbo{display:inline-block;margin:2px 0 10px 4px;rotate:-6deg;padding:4px 12px;border:3px solid var(--ok);border-radius:8px;color:var(--ok);font-family:var(--f-display);font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+.cad-carimbo.dom{border-color:var(--lacre);color:var(--lacre)}
+.cad-foi{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:var(--surface-2);font-size:.86rem;line-height:1.4}
+.cad-foi .i{width:18px;height:18px;color:var(--erro);margin-top:1px}
+/* animações */
+html[data-anim="on"] .cad-hero.novo .cad-trilha i{animation:cad-cresce .9s cubic-bezier(.2,.8,.3,1) both .2s}
+html[data-anim="on"] .cad-hero.novo .cad-hero-ilu .cad-ix{stroke-dasharray:30;animation:cad-risca .5s ease-out both .45s}
+html[data-anim="on"] .cad-hero.novo .cad-hero-ilu .cad-iv{stroke-dasharray:30;animation:cad-risca .5s ease-out both .8s}
+html[data-anim="on"] .cad-hero-ilu .cad-lapis{transform-box:fill-box;transform-origin:50% 100%;animation:cad-lapis 3.6s ease-in-out infinite}
+html[data-anim="on"] .cad-q.entra{animation:cad-in .45s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i)*45ms)}
+html[data-anim="on"] .cad-corpo.entra{animation:cad-abre .35s ease-out both}
+html[data-anim="on"] .cad-barra i{animation:cad-cresce .8s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"] .cad-q.fx-er{animation:treme .45s ease}
+html[data-anim="on"] .cad-q.fx-ok .cad-carimbo{animation:cad-carimba .55s cubic-bezier(.3,1.6,.5,1) both .35s}
+html[data-anim="on"] .cad-q.fx-ok .cad-pontos i.on:last-of-type{animation:cad-ponto .5s ease-out both .6s}
+html[data-anim="on"] .cad-q.fx-ok .cad-res{animation:cad-brilho 1.2s ease-out both}
+html[data-anim="on"] .cad-desfaz{animation:cad-in .3s ease-out both}
+@keyframes cad-cresce{from{width:0}}
+@keyframes cad-risca{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+@keyframes cad-lapis{0%,100%{rotate:0deg}40%{rotate:-7deg}60%{rotate:4deg}}
+@keyframes cad-in{from{opacity:0;transform:translateY(12px)}}
+@keyframes cad-abre{from{opacity:0;transform:translateY(-6px)}}
+@keyframes cad-carimba{0%{opacity:0;scale:2.4}60%{opacity:1;scale:.92}100%{scale:1}}
+@keyframes cad-ponto{0%{scale:1 1}40%{scale:1.5 1.6}100%{scale:1 1}}
+@keyframes cad-brilho{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+/* Premium: degradê suave, cantos maiores e sombra */
+[data-estilo="premium"] .cad-hero{border:0;background:var(--grad-suave),var(--surface);box-shadow:var(--sombra);padding:18px}
+[data-estilo="premium"] .cad-hero::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--erro) 18%,transparent),transparent);pointer-events:none}
+[data-estilo="premium"] .cad-kicker{letter-spacing:.04em}
+[data-estilo="premium"] .cad-hero h2{font-weight:800;font-size:1.5rem}
+[data-estilo="premium"] .cad-n{border-color:transparent;background:color-mix(in srgb,var(--surface) 80%,transparent);box-shadow:0 4px 14px -10px rgba(0,0,0,.35)}
+[data-estilo="premium"] .cad-n[aria-pressed="true"]{border-color:var(--k);background:color-mix(in srgb,var(--k) 10%,var(--surface))}
+[data-estilo="premium"] .cad-trilha i{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.25))}
+[data-estilo="premium"] .cad-q,[data-estilo="premium"] .cad-bloco,[data-estilo="premium"] .cad-rev{border-color:transparent;box-shadow:var(--sombra)}
+[data-estilo="premium"] .cad-q::before{width:5px;border-radius:0 4px 4px 0;top:14px;bottom:14px}
+[data-estilo="premium"] .cad-tag{font-weight:600}
+[data-estilo="premium"] .cad-seg button[aria-pressed="true"]{color:var(--toga-txt)}
+[data-estilo="premium"] .cad-chips button[aria-pressed="true"]{background:var(--grad);border-color:transparent}
+[data-estilo="premium"] .cad-treinar{background:var(--grad)}
+[data-estilo="premium"] .cad-carimbo{font-weight:800}
+[data-estilo="premium"] .cad-alts .alt.certa{background:var(--ok-bg);border-color:color-mix(in srgb,var(--ok) 55%,transparent)!important}
+[data-estilo="premium"] .cad-alts .alt.errada{background:var(--erro-bg);border-color:color-mix(in srgb,var(--erro) 55%,transparent)!important}
+@media (max-width:420px){.cad-hero{grid-template-columns:minmax(0,1fr) 110px}.cad-hero h2{font-size:1.25rem}.cad-n b{font-size:1.4rem}.cad-seg button{font-size:.74rem}}
+/* segredo "Errar é humano" */
+.oe-folha{display:flex;flex-direction:column;margin:14px 0 8px;padding:0 0 0 28px;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(var(--surface) 0 45px,color-mix(in srgb,var(--toga) 22%,var(--surface)) 45px 46px);border:1px solid var(--line);position:relative;text-align:left}
+.oe-folha::before{content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;background:color-mix(in srgb,var(--erro) 45%,transparent)}
+.oe-linha{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:center;min-height:46px;padding:4px 10px 4px 4px;border:0;background:none;text-align:left;overflow:hidden}
+.oe-x{color:var(--erro)} .oe-x .i{width:18px;height:18px;stroke-width:3}
+.oe-x .i+.i,.oe-linha.ok .oe-x .i:first-child{display:none} .oe-linha.ok .oe-x .i+.i{display:block}
+.oe-t{position:relative;display:grid;font-size:.86rem;line-height:1.25}
+.oe-t>*{grid-area:1/1;transition:opacity .35s,transform .35s}
+.oe-t s{color:var(--erro);text-decoration-thickness:2px}
+.oe-t b{color:var(--ok);opacity:0;transform:translateY(6px)}
+.oe-linha.ok .oe-t s{opacity:0;transform:translateY(-6px)}
+.oe-linha.ok .oe-t b{opacity:1;transform:none}
+.oe-linha.ok .oe-x{color:var(--ok)}
+.oe-borr{position:absolute;top:50%;left:-40px;width:34px;height:22px;margin-top:-11px;border-radius:5px;background:linear-gradient(90deg,#f08da0 0 62%,#9aa4b8 62% 70%,#f6c453 70%);opacity:0;pointer-events:none}
+html[data-anim="on"] .oe-linha.ok .oe-borr{animation:oe-apaga .55s ease-in-out}
+@keyframes oe-apaga{0%{opacity:1;left:-40px;rotate:-8deg}50%{rotate:8deg}100%{opacity:0;left:105%;rotate:-6deg}}
+.oe-msg{margin:4px 0 0;font-weight:700;color:var(--muted)}
