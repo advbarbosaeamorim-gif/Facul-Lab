@@ -1266,6 +1266,7 @@ Súmulas importantes sobre a 1ª fase:
 - É **vedada** a utilização de **inquéritos policiais e ações penais em curso** para **agravar a pena-base** (Súmula 444 do STJ), por força da presunção de inocência. Só condenações transitadas em julgado configuram maus antecedentes.
 - A **folha de antecedentes criminais** é documento suficiente a comprovar os maus antecedentes e a reincidência (Súmula 636 do STJ).
 - Segundo o STF (Tema 150), o **período depurador** de 5 anos da reincidência **não se aplica aos maus antecedentes**: uma condenação antiga, que já não gera reincidência, ainda pode ser considerada como mau antecedente, embora o juiz possa deixar de considerá-la se for muito remota.
+- **Novidade do STJ (2025, Informativo 856, 5ª Turma):** aplicando o **direito ao esquecimento**, o STJ entendeu que a condenação cuja pena foi **extinta há mais de 10 anos** antes do novo crime **não deve ser usada como maus antecedentes**. A 6ª Turma segue a mesma linha. Guarde a escadinha: **até 5 anos** do fim da pena, gera reincidência; **de 5 a 10 anos**, só maus antecedentes; **mais de 10 anos**, para o STJ, nem isso.
 - A **reincidência** não pode ser considerada, ao mesmo tempo, como circunstância agravante e como circunstância judicial (Súmula 241 do STJ): seria punir duas vezes pelo mesmo fato (_bis in idem_).
 
 ## 2ª fase: agravantes e atenuantes
@@ -1307,6 +1308,42 @@ A Lei das Contravenções Penais completa a regra: verifica-se a reincidência q
 |Contravenção|Crime|**Não**: nenhuma lei prevê; pode haver maus antecedentes|
 
 ::calc reinc|Simulador: é reincidente? E o que isso muda?
+
+### Reincidência x maus antecedentes na linha do tempo
+Na prova, a pergunta costuma vir com **datas**: o fato, a sentença e o **trânsito em julgado** (TJ) de cada processo. Para cada condenação anterior, compare **duas datas** do processo que está sendo julgado agora:
+- o TJ anterior veio **antes do novo fato**: **reincidência** (art. 63), desde que não tenham passado mais de 5 anos do fim da pena (art. 64, I);
+- o TJ anterior veio **depois do novo fato, mas antes da sentença** do novo processo: **maus antecedentes** (1ª fase, art. 59);
+- o TJ anterior **ainda não existe** na data da sentença: o réu tem **bons antecedentes** (processo em curso não pesa, Súmula 444 do STJ).
+
+::linha As 4 regras da reincidência|1ª regra (art. 63) — o novo crime precisa ser praticado **depois do trânsito em julgado** da condenação anterior|2ª regra (art. 64, I) — entre o **cumprimento ou a extinção** da pena e o novo crime não podem ter passado **mais de 5 anos** (período depurador)|3ª regra (art. 64, II) — **crime militar próprio** e **crime político** anteriores **não geram** reincidência|4ª regra (art. 7º da LCP c/c art. 63 do CP) — **contravenção** anterior + **crime** posterior **não gera** reincidência; só geram crime-crime, crime-contravenção e contravenção-contravenção
+
+> Atenção: no prazo de 5 anos do art. 64, I, **conta-se o período de prova** do sursis ou do livramento condicional, se não houver revogação. Quem cumpriu 2 anos de período de prova do sursis já "gastou" 2 dos 5 anos.
+
+> Caso: exercício de sala nº 1. Três processos do mesmo réu:
+> **Furto:** fato em 10/03/2000, sentença em 20/11/2001, TJ em 31/03/2002.
+> **Roubo:** fato em 25/11/2001, sentença em 30/01/2002, TJ em 10/06/2003.
+> **Extorsão:** fato em 30/05/2003, sentença em 20/08/2004, TJ em 10/06/2006.
+> Na sentença do **furto**, não havia nada antes: **bons antecedentes**. Na sentença do **roubo** (30/01/2002), o furto ainda não tinha transitado (só em 31/03/2002): continua com **bons antecedentes**.
+> Na sentença da **extorsão**: o furto transitou em 31/03/2002, **antes** do fato (30/05/2003), então ele é **reincidente**. O roubo transitou em 10/06/2003, **depois** do fato, mas **antes** da sentença (20/08/2004): pesa como **maus antecedentes**.
+
+> Caso: exercício de sala nº 2. Outro réu:
+> **Roubo:** fato em 10/11/2007, sentença em 29/08/2009, TJ em 15/05/2010.
+> **Extorsão:** fato em 10/09/2009, sentença em 18/10/2010, TJ em 07/04/2011.
+> **Estelionato:** fato em 12/03/2010, sentença em 25/05/2011, TJ em 27/07/2013.
+> Na sentença da **extorsão**: o roubo transitou em 15/05/2010, depois do fato (10/09/2009) e antes da sentença: **maus antecedentes**, não reincidência.
+> Na sentença do **estelionato**: o roubo (TJ 15/05/2010) e a extorsão (TJ 07/04/2011) transitaram **depois** do fato (12/03/2010), mas antes da sentença: **dois maus antecedentes** e **nenhuma reincidência**.
+
+> Na prova: o réu pode ser, ao mesmo tempo, **reincidente** por uma condenação e ter **maus antecedentes** por outra. Não é _bis in idem_, porque são condenações diferentes. O que a Súmula 241 do STJ proíbe é usar **a mesma** condenação nas duas fases.
+
+!! **TJ antes do fato** = reincidente. **TJ entre o fato e a sentença** = maus antecedentes. **Sem TJ** = bons antecedentes.
+!! Do fim da pena até o novo fato: **até 5 anos** reincidência; **5 a 10** maus antecedentes; **mais de 10**, para o STJ (2025), esquecimento.
+
+::calc antec|Simulador: linha do tempo do réu
+
+?? Crime militar próprio anterior gera reincidência? | Não (art. 64, II). O crime político também não.
+?? Contravenção anterior e crime posterior: o réu é reincidente? | Não. Nenhuma lei prevê essa combinação; pode haver maus antecedentes.
+?? A condenação anterior transitou em julgado depois do novo fato, mas antes da sentença. O que ela gera? | Maus antecedentes (1ª fase), e não reincidência.
+?? A pena anterior foi extinta há 12 anos. Para o STJ (Informativo 856), ela pode pesar como maus antecedentes? | Não: aplica-se o direito ao esquecimento (mais de 10 anos). O STF, no Tema 150, admite considerá-la, a critério do juiz.
 
 ### Atenuantes
 São circunstâncias que **sempre atenuam a pena** (art. 65):
