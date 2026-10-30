@@ -164,19 +164,22 @@ main{flex:1;padding-block:18px 120px}
 .fab svg.i{width:30px;height:30px;stroke-width:2.6}
 
 /* gaveta */
-.camada{position:fixed;inset:0;z-index:20;background:rgba(16,8,10,.55);display:flex}
+.camada{position:fixed;inset:0;z-index:20;display:flex;--veu:rgba(16,8,10,.55)}
+/* o fundo escuro é uma camada própria que só muda de opacidade: a placa de vídeo faz o trabalho e a tela de baixo não é repintada */
+.camada::before{content:"";position:absolute;inset:0;background:var(--veu)}
+.camada>.gaveta{position:relative}
 .gaveta{width:min(82vw,330px);height:100%;background:var(--surface);overflow:auto;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:4px 0 18px rgba(0,0,0,.3)}
 .gaveta-topo{background:var(--toga);color:#fff;padding:calc(28px + env(safe-area-inset-top,0px)) 20px 20px max(20px,env(safe-area-inset-left,0px))}
 .gaveta-topo svg.i{width:44px;height:44px;stroke-width:1.6}
 .gaveta-topo b{display:block;font-family:var(--f-display);font-size:1.25rem;margin-top:10px}
 .gaveta-topo small{opacity:.8}
-html[data-anim="on"] .camada.abre{animation:cam-entra .28s ease-out both}
+html[data-anim="on"] .camada.abre::before{animation:cam-entra .28s ease-out both}
 html[data-anim="on"] .camada.abre .gaveta{animation:gav-entra .34s cubic-bezier(.2,.9,.3,1) both}
 html[data-anim="on"] .camada.abre .gaveta nav>*{animation:gav-item .38s ease-out both}
 html[data-anim="on"] .camada.abre .gaveta nav>*:nth-child(n){animation-delay:calc(.06s + var(--gi,0)*.025s)}
-.camada.sai{animation:cam-sai .3s ease-in both}.camada.sai .gaveta{animation:gav-sai .3s cubic-bezier(.4,0,.8,.4) both}
-@keyframes cam-entra{from{background:rgba(16,8,10,0)}}
-@keyframes cam-sai{to{background:rgba(16,8,10,0)}}
+.camada.sai::before{animation:cam-sai .3s ease-in both}.camada.sai .gaveta{animation:gav-sai .3s cubic-bezier(.4,0,.8,.4) both}
+@keyframes cam-entra{from{opacity:0}}
+@keyframes cam-sai{to{opacity:0}}
 @keyframes gav-entra{from{transform:translateX(-102%)}}
 @keyframes gav-sai{to{transform:translateX(-102%)}}
 @keyframes gav-item{from{opacity:0;transform:translateX(-18px)}}

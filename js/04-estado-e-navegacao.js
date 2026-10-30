@@ -287,7 +287,7 @@ function voltarSistema(){
   if(tourI>=0){if(tourI>0)tourIr(tourI-1);else tourFechar();return}
   const fs=document.querySelector(".festa");if(fs){fs.remove();return}
   if(repQ){repQ=null;rota.manterScroll=true;render();return}
-  if(gaveta){gaveta=false;rota.manterScroll=true;render();return}
+  if(gaveta){fecharGaveta();return}
   if(folha){folha=false;confirmar=null;rota.manterScroll=true;render();return}
   /* usa o mesmo botão de voltar do topo, que já sabe pausar o simulado, salvar a leitura etc. */
   const b=document.querySelector('.topo .topo-linha > button.icone:first-child');

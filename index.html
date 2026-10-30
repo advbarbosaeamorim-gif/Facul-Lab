@@ -94,12 +94,15 @@ function iconeDoTema(t,fav){if(" violeta oceano floresta sol noite grafite c-azu
 <script src="js/13-modo-prova.js"></script>
 <script src="js/14-ajustes.js"></script>
 <script src="js/15-casos.js"></script>
+<script src="js/16-leveza.js"></script>
 <script src="js/99-inicio.js"></script>
 
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch(console.error);
+    /* com a página já aberta (da cópia guardada, na hora), o service worker confere em segundo plano se há versão nova */
+    navigator.serviceWorker.ready.then(r => setTimeout(() => { try { r.active && r.active.postMessage({ tipo: "conferir" }) } catch (e) {} }, 1200)).catch(() => {});
   });
 }
 </script></body></html>

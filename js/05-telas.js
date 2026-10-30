@@ -69,6 +69,16 @@ function telaGaveta(){
    ${it("caderno","caderno","Caderno de erros"+(cadPendentes()?` <span class="badge">${cadPendentes()}</span>`:""))}
    <hr>${it("config","eng","Configurações")}${it("backup","arquivo","Backup do progresso")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
+/* abrir e fechar o menu mexe só no menu: a tela de baixo fica como está (redesenhar tudo travava o ≡ no celular) */
+function abrirGaveta(){gaveta=true;const app=$("#app");if(typeof acalmar=="function")acalmar();
+  if(!app.querySelector(".camada")){app.insertAdjacentHTML("beforeend",telaGaveta());const c=app.lastElementChild;
+    c.classList.add("abre");c.querySelectorAll(".gaveta nav>*").forEach((x,i)=>x.style.setProperty("--gi",i));
+    const g=c.querySelector(".gaveta nav button");if(g)try{g.focus({preventScroll:true})}catch(e){}}
+  syncVoltar()}
+function fecharGaveta(){gaveta=false;const c=$("#app .camada");
+  if(c){if(animOn()){c.classList.remove("abre");c.classList.add("sai");c.setAttribute("aria-hidden","true");c.style.pointerEvents="none";document.body.appendChild(c);setTimeout(()=>c.remove(),330)}else c.remove()}
+  syncVoltar()}
+
 /* ---------- OAB ---------- */
 function telaOab(){
   const aba=rota.aba||"progresso";

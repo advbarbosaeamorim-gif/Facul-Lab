@@ -5,8 +5,8 @@ document.addEventListener("click",e=>{
   if((a==="fechar-gaveta"||a==="fechar-folha"||a==="fechar-rep"||(a==="festa-fechar"&&b.classList.contains("festa")))&&e.target!==b)return;
   if(b.disabled)return;
   switch(a){
-    case "gaveta":gaveta=true;rota.manterScroll=true;render();break;
-    case "fechar-gaveta":gaveta=false;rota.manterScroll=true;render();break;
+    case "gaveta":abrirGaveta();break;
+    case "fechar-gaveta":fecharGaveta();break;
     case "tour":tourAbrir();break;
     case "tour-pular":tourFechar();break;
     case "tour-fim":tourFechar("hoje");break;
@@ -176,7 +176,7 @@ document.addEventListener("input",e=>{const el=e.target;
 document.addEventListener("input",e=>{const f=e.target.closest&&e.target.closest(".calc");if(f)calcAtualiza(f)});
 document.addEventListener("keydown",e=>{
   if(tourI>=0){if(e.key==="Escape")tourFechar();else if(e.key==="ArrowRight")tourIr(tourI+1);else if(e.key==="ArrowLeft")tourIr(tourI-1);return}
-  if(e.key==="Escape"){const fs=document.querySelector(".festa");if(fs){fs.remove();return}if(repQ){repQ=null;rota.manterScroll=true;render()}else if(gaveta){gaveta=false;rota.manterScroll=true;render();const b=document.querySelector('[data-acao="gaveta"]');if(b)b.focus()}else if(folha){folha=false;rota.manterScroll=true;render()}return}
+  if(e.key==="Escape"){const fs=document.querySelector(".festa");if(fs){fs.remove();return}if(repQ){repQ=null;rota.manterScroll=true;render()}else if(gaveta){fecharGaveta();const b=document.querySelector('[data-acao="gaveta"]');if(b)b.focus()}else if(folha){folha=false;rota.manterScroll=true;render()}return}
   if(rota.tela!=="quiz"||folha)return;
   if(e.key==="ArrowRight"){const b=$('[data-acao="prox"]');b&&!b.disabled&&b.click()}
   if(e.key==="ArrowLeft"){const b=$('[data-acao="ant"]');b&&!b.disabled&&b.click()}
