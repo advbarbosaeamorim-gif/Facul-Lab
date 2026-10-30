@@ -82,7 +82,7 @@ Família: Família; Casamento; Divórcio; União estável; Regime de bens; Filia
 Sucessões: Sucessões; Sucessão legítima; Testamento; Codicilo; Colação; Herança jacente; Inventário`,
 eca:`Adoção e família substituta: Adoção; Adoção internacional; Família substituta; Guarda; Tutela; Apadrinhamento; Entrega voluntária; Família; Acolhimento; Convivência familiar
 Ato infracional e medidas socioeducativas: Ato infracional; Medidas socioeducativas; Internação; Remissão; Maioridade
-Direitos e proteção integral: Conceitos; Direitos fundamentais; Prioridade absoluta; Proteção integral; Trabalho; Viagem
+Direitos e proteção integral: Conceitos; Direitos fundamentais; Prioridade absoluta; Proteção integral; Trabalho; Viagem; Prevenção
 Conselho Tutelar e Justiça da Infância: Conselho Tutelar; Competência; Procedimentos; Recursos; Crimes; Crimes do ECA; Jurisprudência`,
 cdc:`Conceitos e direitos básicos: Conceitos; Consumidor; Direitos básicos; Ônus da prova; Serviços públicos; Instituições financeiras
 Responsabilidade por fato e vício: Fato do produto; Fato do serviço; Vício do produto; Vício do serviço; Fortuito interno; Responsabilidade; Garantia; Decadência; Prazos; Recall; Desconsideração
