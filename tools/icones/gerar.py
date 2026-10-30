@@ -21,6 +21,20 @@ TEMAS = {
     "rosa": ("#db2777", "#fb7185"), "mel": ("#a16207", "#d9a406"), "lima": ("#4d7c0f", "#84cc16"), "carvao": ("#27272a", "#8b8b94"),
     "c-telha": ("#b2471c", "#e0703f"), "c-ouro": ("#8a6500", "#c79a1c"), "c-oliva": ("#556b16", "#86a32c"), "c-rosa": ("#a3266a", "#d65497"),
 }
+# cor Dinâmica: o ícone instalado tem as cores de todas as matérias; a aba do navegador mostra o da matéria aberta
+ARCO = ["#b91c1c", "#c2410c", "#d4a017", "#00733a", "#0e7490", "#1d4ed8", "#5b21b6", "#a21caf"]
+TEMAS["dinamica"] = TEMAS["c-dinamica"] = ("#1d4ed8", "#a21caf")
+# mesmas cores de DIN no index.html (principal, segunda)
+DIN = {
+    "ied": ("#1e3a8a", "#b45309"), "tge": ("#6b21a8", "#d97706"), "soc": ("#047857", "#f59e0b"), "psc": ("#9d174d", "#fb923c"),
+    "filo": ("#312e81", "#f59e0b"), "crim": ("#3f3f46", "#dc2626"), "civil": ("#0f766e", "#2dd4bf"), "const": ("#00733a", "#f2c500"),
+    "penal": ("#b91c1c", "#f43f5e"), "pc": ("#5b21b6", "#c084fc"), "dh": ("#0369a1", "#e11d48"), "adm": ("#1e40af", "#0ea5e9"),
+    "emp": ("#1e293b", "#ca8a04"), "pp": ("#881337", "#e11d48"), "trab": ("#975c00", "#facc15"), "cdc": ("#a21caf", "#f472b6"),
+    "inter": ("#0e7490", "#10b981"), "pt": ("#854d0e", "#d97706"), "trib": ("#c2410c", "#f59e0b"), "eca": ("#1d4ed8", "#facc15"),
+    "amb": ("#2e7d32", "#84cc16"), "fin": ("#3f6212", "#d4a017"), "prev": ("#075985", "#38bdf8"), "eleit": ("#334155", "#16a34a"),
+    "etica": ("#8a5a1f", "#d4a017"), "masc": ("#155e75", "#84cc16"), "prc": ("#115e59", "#14b8a6"), "prp": ("#991b1b", "#f97316"),
+    "prt": ("#92400e", "#fbbf24"), "prpub": ("#173a7a", "#00733a"), "rev": ("#9a3412", "#f59e0b"),
+}
 
 def h2r(h): return [int(h[i:i + 2], 16) for i in (1, 3, 5)]
 def mix(h, k, t): return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(h2r(h), h2r(k)))
@@ -35,8 +49,8 @@ PRATOS = ("M104 270 H196 A46 34 0 0 1 104 270 Z", "M316 270 H408 A46 34 0 0 1 31
 
 def hexa(r): return " ".join(f"{256 + r * math.cos(math.radians(a - 90)):.1f},{262 + r * math.sin(math.radians(a - 90)):.1f}" for a in range(0, 360, 60))
 
-def desenho(p1, p2):
-    """Devolve (defs, fundo, frente) do desenho escolhido."""
+def desenho(p1, p2, arco=False):
+    """Devolve (defs, fundo, frente) do desenho escolhido. arco=True: fundo com as cores de todas as matérias (Dinâmica)."""
     if OPCAO == "A":
         defs = f'''<radialGradient id="bg" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="{dark(p1, .45)}"/><stop offset=".55" stop-color="{dark(p1, .72)}"/><stop offset="1" stop-color="{dark(p2, .88)}"/></radialGradient>{AU}
 <radialGradient id="sh" cx="50%" cy="0%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>''' + SOMBRA.format(dy=6, sd=7, c="#000", o=.45)
@@ -52,6 +66,9 @@ def desenho(p1, p2):
         defs = f'''<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{dark(p1, .25)}"/><stop offset=".5" stop-color="{p1}"/><stop offset="1" stop-color="{p2}"/></linearGradient>
 <linearGradient id="ou" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
 <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="{mix(p1, '#ffffff', .85)}"/></linearGradient>''' + SOMBRA.format(dy=10, sd=10, c=dark(p1, .7), o=.45)
+        if arco:
+            n = len(ARCO) - 1
+            defs = defs.replace(defs.split("</linearGradient>")[0] + "</linearGradient>", '<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">' + "".join(f'<stop offset="{i / n:.3f}" stop-color="{c}"/>' for i, c in enumerate(ARCO)) + "</linearGradient>", 1)
         fundo = '<rect width="512" height="512" fill="url(#bg)"/><circle cx="430" cy="80" r="120" fill="#fff" opacity=".08"/><circle cx="70" cy="470" r="150" fill="#fff" opacity=".07"/>'
         frente = f'''<path d="M392 112 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z" fill="#fff" opacity=".85"/><circle cx="118" cy="128" r="6" fill="#fff" opacity=".6"/>
 <g filter="url(#ds)"><g transform="translate(256 240) scale(.78) translate(-256 -262)">{bal}</g>
@@ -70,9 +87,9 @@ def desenho(p1, p2):
 <path d="M168 336 C196 330 226 334 244 342 M168 352 C196 346 226 350 244 358 M344 336 C316 330 286 334 268 342 M344 352 C316 346 286 350 268 358" stroke="#7a5414" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/></g>'''
     return defs, fundo, frente
 
-def svg(p1, p2, escala=1.0):
+def svg(p1, p2, escala=1.0, arco=False):
     """escala < 1 encolhe só a frente: versão maskable, com folga para o recorte redondo do Android."""
-    defs, fundo, frente = desenho(p1, p2)
+    defs, fundo, frente = desenho(p1, p2, arco)
     if escala != 1: frente = f'<g transform="translate(256 256) scale({escala}) translate(-256 -256)">{frente}</g>'
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs>{defs}</defs>{fundo}{frente}</svg>'
 
@@ -101,11 +118,14 @@ if __name__ == "__main__":
     def job(nome, conteudo, destino, tam):
         p = os.path.join(tmp, nome + ".svg"); open(p, "w").write(conteudo); jobs.append([p, destino, tam])
     for tema, (p1, p2) in TEMAS.items():
-        job(tema, svg(p1, p2), os.path.join(saida, f"{tema}-512.png"), 512)
-        job(tema, svg(p1, p2), os.path.join(saida, f"{tema}-192.png"), 192)
-        job(tema + "-mask", svg(p1, p2, .82), os.path.join(saida, f"{tema}-mask-512.png"), 512)
+        a = tema.endswith("dinamica")
+        job(tema, svg(p1, p2, arco=a), os.path.join(saida, f"{tema}-512.png"), 512)
+        job(tema, svg(p1, p2, arco=a), os.path.join(saida, f"{tema}-192.png"), 192)
+        job(tema + "-mask", svg(p1, p2, .82, arco=a), os.path.join(saida, f"{tema}-mask-512.png"), 512)
         with open(os.path.join(saida, f"manifest-{tema}.json"), "w") as f:
             json.dump(manifesto(tema, p1), f, ensure_ascii=False, indent=2); f.write("\n")
+    for k, (p1, p2) in DIN.items():
+        job("d-" + k, svg(p1, p2), os.path.join(saida, f"d-{k}-192.png"), 192)
     p1, p2 = TEMAS["oceano"]
     job("padrao", svg(p1, p2), os.path.join(RAIZ, "icon-512.png"), 512)
     job("padrao", svg(p1, p2), os.path.join(RAIZ, "icon-192.png"), 192)

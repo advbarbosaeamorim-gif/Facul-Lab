@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <script>/* o ícone (tela inicial ao instalar, aba do navegador, iPhone) acompanha o tema escolhido */
-function iconeDoTema(t){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite rosa mel lima carvao c-telha c-ouro c-oliva c-rosa ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+t+"-192.png";
+function iconeDoTema(t,fav){if(" violeta oceano floresta sol noite grafite c-azul c-vinho c-verde c-roxo c-petroleo c-grafite rosa mel lima carvao c-telha c-ouro c-oliva c-rosa dinamica c-dinamica ".indexOf(" "+t+" ")<0)t="oceano";var q=function(s){return document.querySelector(s)},m=q('link[rel="manifest"]'),i=q('link[rel="icon"]'),a=q('link[rel="apple-touch-icon"]'),png="icones/"+(fav||t)+"-192.png";
  if(m&&m.getAttribute("href")!=="icones/manifest-"+t+".json")m.setAttribute("href","icones/manifest-"+t+".json");if(i)i.setAttribute("href",png);if(a)a.setAttribute("href",png)}</script>
 <script>try{var e=JSON.parse(localStorage.getItem("simuladoOAB.v2")||"{}").cfg||{};var h=document.documentElement;h.setAttribute("data-estilo",e.estilo==="classico"?"classico":"premium");h.setAttribute("data-paleta",e.paleta||"oceano");if(window.iconeDoTema)iconeDoTema(e.estilo==="classico"?"c-"+(e.cor||"azul"):e.paleta||"oceano")}catch(x){document.documentElement.setAttribute("data-estilo","premium");document.documentElement.setAttribute("data-paleta","oceano")}</script>
 <style>
@@ -3100,6 +3100,83 @@ html[data-anim="on"] .of2-palco.pega .of2-fiscal{animation:mp-treme .25s ease-in
 .of2-aviso .i{width:16px;height:16px}
 </style>
 
+<style id="estilo-dinamica">
+/* Cor Dinâmica: o JavaScript põe em <html> as cores da matéria aberta (--d1 principal, --d2, --d3 e --dt,
+   o texto claro do modo escuro) e o nome dela em data-din. Registradas com @property, as cores deslizam
+   de uma matéria para a outra em vez de trocar de repente. */
+@property --d1{syntax:"<color>";inherits:true;initial-value:#2563eb}
+@property --d2{syntax:"<color>";inherits:true;initial-value:#06b6d4}
+@property --d3{syntax:"<color>";inherits:true;initial-value:#7c3aed}
+@property --dt{syntax:"<color>";inherits:true;initial-value:#93c5fd}
+@property --d2g{syntax:"<color>";inherits:true;initial-value:#0e7490}
+@property --d2m{syntax:"<color>";inherits:true;initial-value:#1a6bbf}
+html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s ease,--dt .7s ease,--d2g .7s ease,--d2m .7s ease}
+/* Premium: a paleta vira a da matéria. No degradê que fica atrás de texto branco (topo, botões, destaques),
+   a segunda cor entra escurecida (--d2g) para o texto continuar legível mesmo com amarelo ou lilás */
+:root[data-estilo="premium"][data-paleta="dinamica"]{--p1:var(--d1);--p2:var(--d2);--p1-txt:var(--d1);--p1-txt-d:var(--dt);
+  --grad:linear-gradient(135deg,var(--d1) 0%,var(--d2m) 55%,var(--d2g) 100%)}
+/* Clássico: fundo, linhas e barra do topo levemente tingidos pela matéria */
+:root[data-cor="dinamica"]{--bg:color-mix(in srgb,var(--d1) 6%,#f5f5f4);--surface:#fff;--surface-2:color-mix(in srgb,var(--d1) 9%,#eeeeec);--line:color-mix(in srgb,var(--d1) 17%,#dcdcd8);--fg:color-mix(in srgb,var(--d1) 14%,#151515);--muted:color-mix(in srgb,var(--d1) 18%,#5b5b5b);--toga:var(--d1);--toga-2:color-mix(in srgb,var(--d1) 75%,#000);--toga-txt:var(--d1);--toga-borda:var(--d1);--trilho:color-mix(in srgb,var(--d1) 11%,#e7e7e4)}
+@media (prefers-color-scheme: dark){:root[data-cor="dinamica"]:not([data-theme="light"]){--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}}
+:root[data-cor="dinamica"][data-theme="dark"]{--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}
+
+/* faixa de três cores sob o topo (em Constitucional, verde, amarelo e azul); fora das matérias e na revisão geral, todas as cores */
+:root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
+:root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{background:linear-gradient(90deg,#b91c1c,#c2410c,#d4a017,#00733a,#0e7490,#1d4ed8,#5b21b6,#a21caf)}
+[data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
+/* Criminologia: as luzes da viatura passam devagar pela faixa */
+html[data-anim="on"][data-din="crim"] .topo::after{background:linear-gradient(90deg,#dc2626,#2563eb,#dc2626,#2563eb,#dc2626);background-size:200% 100%;animation:din-giro 6s linear infinite}
+@keyframes din-giro{to{background-position:-200% 0}}
+html[data-anim="on"].din-muda .topo::after{animation:din-faixa .75s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"].din-muda[data-din="crim"] .topo::after{animation:din-faixa .75s cubic-bezier(.2,.8,.3,1) both,din-giro 6s linear .75s infinite}
+@keyframes din-faixa{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* ao entrar numa matéria, um brilho da cor nova atravessa o topo */
+html[data-anim="on"].din-muda .topo-linha{position:relative}
+html[data-anim="on"].din-muda .topo::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--d2) 55%,#ffffff00) 50%,transparent 70%);background-size:250% 100%;animation:din-brilho .9s ease-out both;mix-blend-mode:soft-light}
+@keyframes din-brilho{from{background-position:120% 0}to{background-position:-130% 0}}
+
+/* ícones das matérias: degradê da cor principal para a segunda */
+:root[data-din] .tile.din{background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,var(--c2)))}
+:root[data-estilo="premium"][data-din] .tile.din{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--surface)),color-mix(in srgb,var(--c2) 28%,var(--surface)));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
+@media (prefers-color-scheme: dark){:root[data-estilo="premium"][data-din]:not([data-theme="light"]) .tile.din{background:linear-gradient(135deg,color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 40%,var(--surface)),color-mix(in srgb,var(--c2) 42%,var(--surface)));color:#fff}}
+:root[data-estilo="premium"][data-din][data-theme="dark"] .tile.din{background:linear-gradient(135deg,color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 40%,var(--surface)),color-mix(in srgb,var(--c2) 42%,var(--surface)));color:#fff}
+html[data-anim="on"].din-muda .cabeca .tile{animation:din-pulo .6s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes din-pulo{0%{transform:scale(.6) rotate(-8deg);opacity:0}100%{transform:none;opacity:1}}
+
+/* amostra "Dinâmica" nas listas de cores: um disco com as cores das matérias */
+.din-amostra{background-size:cover}
+html[data-anim="on"] button[aria-pressed="true"] .din-amostra{animation:din-roda 9s linear infinite}
+@keyframes din-roda{to{transform:rotate(360deg)}}
+.din-novo{font-style:normal;font-size:.68rem;font-weight:800;letter-spacing:.02em;padding:1px 7px;border-radius:999px;background:var(--lacre);color:var(--lacre-fg);vertical-align:2px;margin-left:2px}
+
+/* selo da matéria e cartão "por que essa cor" */
+.din-selo{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;color:#fff;background:linear-gradient(135deg,var(--t1),color-mix(in srgb,var(--t1) 45%,var(--t2)));box-shadow:inset 0 -6px 0 -2px var(--t3),0 6px 14px -8px var(--t1);overflow:hidden}
+.din-selo svg{width:100%;height:100%}
+.din-selo svg.i{width:24px;height:24px}
+.din-selo.mini{width:36px;height:36px;border-radius:11px;box-shadow:inset 0 -5px 0 -2px var(--t3)}
+.din-selo.mini svg.i{width:19px;height:19px}
+[data-estilo="classico"] .din-selo{border-radius:9px}
+.din-card{display:flex;gap:14px;align-items:flex-start;margin:14px 0 4px;padding:14px 16px;border-radius:var(--r);background:linear-gradient(135deg,color-mix(in srgb,var(--d1) 9%,var(--surface)),color-mix(in srgb,var(--d2) 11%,var(--surface)));border:1px solid color-mix(in srgb,var(--d1) 22%,var(--line))}
+.din-card b{display:block;font-family:var(--f-display);font-size:1rem;color:var(--toga-txt);line-height:1.25}
+.din-card p{margin:4px 0 8px;color:var(--muted);font-size:.88rem;line-height:1.45}
+.din-tri{display:flex;width:84px;height:6px;border-radius:99px;overflow:hidden}
+.din-tri i{flex:1}.din-tri i:nth-child(1){background:var(--t1)}.din-tri i:nth-child(2){background:var(--t2)}.din-tri i:nth-child(3){background:var(--t3)}
+html[data-anim="on"] .din-card{animation:ent-sobe .45s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"] .din-card .din-tri i{animation:din-faixa .6s cubic-bezier(.2,.8,.3,1) both;transform-origin:left}
+html[data-anim="on"] .din-card .din-tri i:nth-child(2){animation-delay:.12s}html[data-anim="on"] .din-card .din-tri i:nth-child(3){animation-delay:.24s}
+html[data-anim="on"] .din-card .din-selo{animation:din-pulo .6s cubic-bezier(.3,1.5,.5,1) .1s both}
+/* galeria da Configuração */
+.din-galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.din-galeria button{display:flex;align-items:center;gap:10px;text-align:left;padding:8px 10px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:inherit;font:inherit;font-weight:700;font-size:.86rem;line-height:1.2;cursor:pointer;min-width:0;transition:transform .14s ease,border-color .2s}
+.din-galeria button span:last-child{min-width:0}
+.din-galeria small{display:block;font-weight:500;color:var(--muted);font-size:.76rem;margin-top:2px}
+.din-galeria button[aria-pressed="true"]{border:2px solid var(--toga-borda);padding:7px 9px}
+.din-galeria button:active{transform:scale(.97)}
+[data-estilo="classico"] .din-galeria button{border-radius:8px}
+.din-prev{margin-bottom:12px}
+@media (prefers-reduced-motion: reduce){html.din-suave{transition:none}}
+</style>
+
 <div class="app" id="app"></div>
 <div id="aviso-vivo" class="sr" role="status" aria-live="polite"></div>
 <div id="impressao" class="wrap leitura"></div>
@@ -4307,10 +4384,10 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="cfg-estilo" data-v="${k}" aria-pressed="${estiloAtual()===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os dois estilos funcionam nos modos claro e escuro e mantêm todas as funções.</p>
  ${estiloAtual()==="premium"?`<div class="secao" role="heading" aria-level="2">Paleta do Premium</div>
- <div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="cfg-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}
- <p class="nota">A primeira cor aparece nos botões, na seleção e no progresso; a segunda só no degradê dos destaques e das ilustrações. As cores das matérias, de acerto e de erro não mudam.</p>`:`<div class="secao" role="heading" aria-level="2">Cor do app</div>
- <div class="cores">${coresVisiveis(CORES,corAtual()).map(([k,n,d,hex])=>`<button data-acao="cfg-cor" data-v="${k}" aria-pressed="${corAtual()===k}"><span class="amostra" style="background:${hex}"></span><span>${n}${d?`<small>${d}</small>`:""}</span></button>`).join("")}</div>${botaoMaisCores(CORES,corAtual())}
- <p class="nota">No estilo Clássico, a cor pinta a barra do topo e os destaques. Vale nos modos claro e escuro.</p>`}
+ <div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="cfg-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g${k==="dinamica"?" din-amostra":""}" style="background:${k==="dinamica"?dinArco("conic"):`linear-gradient(135deg,${c1},${c2})`}"></span><span>${n}${k==="dinamica"?` <em class="din-novo">Novo</em>`:""}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}
+ ${dinOn()?dinGaleria():`<p class="nota">A primeira cor aparece nos botões, na seleção e no progresso; a segunda só no degradê dos destaques e das ilustrações. As cores das matérias, de acerto e de erro não mudam.</p>`}`:`<div class="secao" role="heading" aria-level="2">Cor do app</div>
+ <div class="cores">${coresVisiveis(CORES,corAtual()).map(([k,n,d,hex])=>`<button data-acao="cfg-cor" data-v="${k}" aria-pressed="${corAtual()===k}"><span class="amostra${k==="dinamica"?" din-amostra":""}" style="background:${k==="dinamica"?dinArco("conic"):hex}"></span><span>${n}${k==="dinamica"?` <em class="din-novo">Novo</em>`:""}${d?`<small>${d}</small>`:""}</span></button>`).join("")}</div>${botaoMaisCores(CORES,corAtual())}
+ ${dinOn()?dinGaleria():`<p class="nota">No estilo Clássico, a cor pinta a barra do topo e os destaques. Vale nos modos claro e escuro.</p>`}`}
  <div class="secao" role="heading" aria-level="2">Modo claro ou escuro</div>
  <div class="cores tres">${TEMAS.map(([k,n,d,i])=>`<button data-acao="cfg-tema" data-v="${k}" aria-pressed="${((S.cfg&&S.cfg.tema)||"auto")===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <div class="secao" role="heading" aria-level="2">Animações</div>
@@ -4856,7 +4933,7 @@ function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date()
 function errosHoje(){const q=S.qrev||{};const now=Date.now();return Object.keys(q).filter(id=>QMAP[id]&&q[id].due<=now)}
 const ultima=key=>S.hist.find(a=>a.key===key);
 const p2=n=>String(n).padStart(2,"0");
-function tile(cor,icn,cls){return `<span class="tile ${cls||""}" style="--c:${cor}">${ic(icn)}</span>`}
+function tile(cor,icn,cls){const d=dinCoresOn&&DIN_POR_COR[cor];return `<span class="tile ${cls||""}${d?" din":""}" style="--c:${cor}${d?";--c2:"+d[2]:""}">${ic(icn)}</span>`}
 function estado(key){const a=ultima(key);if(!a)return {st:"nao",a:null};if(a.status==="pausado")return {st:"pausa",a};const r=res(a);return {st:r.pct===100?"perf":r.pct>=50?"aprov":"reprov",a,r}}
 const ROTULO={nao:"Não iniciado",pausa:"Pausado",aprov:"Aprovado",reprov:"Reprovado",perf:"Perfeito"};
 const SELO={nao:"exc",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela"};
@@ -4879,11 +4956,11 @@ function topo(titulo,sub,opt){opt=opt||{};
   return `<header class="topo"><div class="wrap"><div class="topo-linha">${esq}<h1${String(titulo).length>30?' class="longo"':""}>${esc(titulo)}${sub?`<small>${esc(sub)}</small>`:""}</h1>${opt.dir||""}</div>${opt.extra||""}</div></header>`}
 
 function topoTela(){try{window.scrollTo(0,0);document.getElementById("app").scrollIntoView({block:"start"})}catch(e){}}
-const CORES=[["azul","Azul","Padrão","#1d4f91"],["vinho","Vinho","","#7a1f33"],["verde","Verde","A cor original","#174d3e"],["roxo","Roxo","","#553088"],["petroleo","Azul petróleo","","#0f5e66"],["grafite","Grafite","Cinza escuro","#33363d"],["telha","Telha","Laranja queimado","#b2471c"],["ouro","Ouro","Mostarda","#8a6500"],["oliva","Oliva","Verde-oliva","#556b16"],["rosa","Rosa","Rosa antigo","#a3266a"]];
+const CORES=[["dinamica","Dinâmica","Muda com a matéria","#b91c1c"],["azul","Azul","Padrão","#1d4f91"],["vinho","Vinho","","#7a1f33"],["verde","Verde","A cor original","#174d3e"],["roxo","Roxo","","#553088"],["petroleo","Azul petróleo","","#0f5e66"],["grafite","Grafite","Cinza escuro","#33363d"],["telha","Telha","Laranja queimado","#b2471c"],["ouro","Ouro","Mostarda","#8a6500"],["oliva","Oliva","Verde-oliva","#556b16"],["rosa","Rosa","Rosa antigo","#a3266a"]];
 function corAtual(){const c=S.cfg&&S.cfg.cor;return CORES.some(x=>x[0]===c)?c:"azul"}
 /* estilo visual: Premium na paleta Oceano (padrão) ou Clássico */
 const ESTILOS=[["classico","Clássico","O visual original do app, refinado"],["premium","Premium","Moderno, colorido e ilustrado, com leitura em fonte sem serifa"]];
-const PALETAS=[["violeta","Violeta","Violeta e magenta","#7c3aed","#db2777"],["oceano","Oceano","Azul e ciano (padrão)","#2563eb","#06b6d4"],["floresta","Floresta","Verde e azul-petróleo","#059669","#0891b2"],["sol","Pôr do sol","Laranja e coral","#ea580c","#e11d48"],["noite","Noite","Índigo e azul-céu","#4f46e5","#0ea5e9"],["grafite","Grafite","Cinza e índigo","#334155","#6366f1"],["rosa","Rosa","Pink e coral","#db2777","#fb7185"],["mel","Mel","Amarelo e dourado","#a16207","#d9a406"],["lima","Lima","Verde-limão","#4d7c0f","#84cc16"],["carvao","Carvão","Preto e prata","#27272a","#8b8b94"]];
+const PALETAS=[["dinamica","Dinâmica","Muda com a matéria","#b91c1c","#00733a"],["violeta","Violeta","Violeta e magenta","#7c3aed","#db2777"],["oceano","Oceano","Azul e ciano (padrão)","#2563eb","#06b6d4"],["floresta","Floresta","Verde e azul-petróleo","#059669","#0891b2"],["sol","Pôr do sol","Laranja e coral","#ea580c","#e11d48"],["noite","Noite","Índigo e azul-céu","#4f46e5","#0ea5e9"],["grafite","Grafite","Cinza e índigo","#334155","#6366f1"],["rosa","Rosa","Pink e coral","#db2777","#fb7185"],["mel","Mel","Amarelo e dourado","#a16207","#d9a406"],["lima","Lima","Verde-limão","#4d7c0f","#84cc16"],["carvao","Carvão","Preto e prata","#27272a","#8b8b94"]];
 /* a lista de cores começa com as 6 primeiras (e a escolhida, se for uma das outras); "Mostrar mais" abre o resto */
 let coresTodas=false;
 function coresVisiveis(L,atual){return coresTodas?L:L.filter((x,i)=>i<6||x[0]===atual)}
@@ -4892,13 +4969,121 @@ function paletaAtual(){const c=S.cfg&&S.cfg.paleta;return PALETAS.some(x=>x[0]==
 function estiloAtual(){return (S.cfg&&S.cfg.estilo)==="classico"?"classico":"premium"}
 function aplicarCor(){const c=corAtual();const h=document.documentElement;if(c==="vinho")h.removeAttribute("data-cor");else h.setAttribute("data-cor",c);
   h.setAttribute("data-estilo",estiloAtual());h.setAttribute("data-paleta",paletaAtual());
-  try{iconeDoTema(estiloAtual()==="classico"?"c-"+corAtual():paletaAtual())}catch(e){}
+  const dc=dinAplicar();
+  try{iconeDoTema(estiloAtual()==="classico"?"c-"+corAtual():paletaAtual(),dc&&dc.k?"d-"+dc.k:null)}catch(e){}
   if(!document.getElementById("pg-defs"))document.body.insertAdjacentHTML("afterbegin",PG_DEFS);
   const t=S.cfg&&S.cfg.tema;if(t==="claro")h.setAttribute("data-theme","light");else if(t==="escuro")h.setAttribute("data-theme","dark");else h.removeAttribute("data-theme");
   /* a barra do sistema acompanha o topo do app */
-  try{const m=document.querySelector('meta[name="theme-color"]');const cs=getComputedStyle(h);const v=cs.getPropertyValue(estiloAtual()==="premium"?"--p1":"--toga").trim();if(m&&v)m.setAttribute("content",v)}catch(e){}}
+  try{const m=document.querySelector('meta[name="theme-color"]');const cs=getComputedStyle(h);const v=dc?dc.c[0]:cs.getPropertyValue(estiloAtual()==="premium"?"--p1":"--toga").trim();if(m&&v)m.setAttribute("content",v)}catch(e){}}
 /* no tema automático, a barra do sistema troca junto com o claro/escuro do celular */
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>aplicarCor())}catch(e){}
+/* ---------- cor Dinâmica: o app veste as cores da matéria aberta ----------
+   Cada matéria: [nome da cor, principal, segunda, terceira, por que essa cor]. A principal tem contraste
+   de pelo menos 4,5:1 com o branco (texto dos botões e do topo); a segunda e a terceira aparecem nos
+   degradês, na faixa do topo, nos ícones e nas ilustrações. Fora de uma matéria, vale a cor de base. */
+const DIN={
+ ied:["Lombada de código","#1e3a8a","#b45309","#93c5fd","O azul-marinho e o dourado das lombadas dos códigos na estante: a porta de entrada do curso de Direito."],
+ tge:["Púrpura e coroa","#6b21a8","#d97706","#f0abfc","A púrpura e o ouro das coroas antigas: do poder absoluto dos reis ao Estado de Direito, em que o próprio poder obedece à lei."],
+ soc:["Praça cheia","#047857","#f59e0b","#fb7185","Cores misturadas, como uma praça cheia de gente: o Direito visto como fato social, nascido da vida em sociedade."],
+ psc:["Debate de ideias","#9d174d","#fb923c","#7c3aed","Tons quentes de uma boa conversa: correntes de pensamento que dialogam, discordam e se completam."],
+ filo:["Coruja ao entardecer","#312e81","#f59e0b","#818cf8","No prefácio da Filosofia do Direito, Hegel escreveu que a coruja de Minerva só levanta voo ao cair do crepúsculo. Daí o azul do anoitecer com a luz da lamparina."],
+ crim:["Luzes da viatura","#3f3f46","#dc2626","#2563eb","O grafite da rua à noite, com o vermelho e o azul das luzes da viatura: o crime, quem o pratica, a vítima e o controle social."],
+ civil:["Vida em comum","#0f766e","#2dd4bf","#f59e0b","Verde-água, a cor do dia a dia: pessoas, contratos, bens e família, do nascimento à sucessão."],
+ const:["Bandeira do Brasil","#00733a","#f2c500","#002776","O verde, o amarelo e o azul da Bandeira Nacional: a Constituição dá forma ao país e está acima de todas as outras leis."],
+ penal:["Vermelho-alerta","#b91c1c","#f43f5e","#1f2937","Vermelho de alerta: o Direito Penal protege os bens jurídicos mais importantes e só entra em cena como última opção, a ultima ratio."],
+ pc:["Roxo do rito","#5b21b6","#c084fc","#f59e0b","Roxo e lilás em degraus, como o próprio processo: cada ato no seu tempo, da petição inicial à sentença."],
+ dh:["Azul da ONU","#0369a1","#e11d48","#7dd3fc","O azul das Nações Unidas, que aprovaram a Declaração Universal dos Direitos Humanos em 1948, com o vermelho do coração: dignidade para cada pessoa."],
+ adm:["Prédios públicos","#1e40af","#0ea5e9","#94a3b8","O azul sóbrio das repartições e o cinza do concreto de Brasília: a máquina do Estado a serviço do interesse público."],
+ emp:["Terno e ouro","#1e293b","#ca8a04","#38bdf8","O azul-marinho das reuniões de negócio e o dourado dos resultados: empresário, sociedades, títulos de crédito e recuperação."],
+ pp:["Bordô e grafite","#881337","#e11d48","#64748b","Bordô, parente do vermelho do Penal, com o grafite das investigações: provas, ritos e as garantias de quem é acusado."],
+ trab:["Capacete de obra","#975c00","#facc15","#ea580c","O amarelo do capacete e o laranja do colete de segurança: quem trabalha merece proteção, salário justo e descanso."],
+ cdc:["Etiqueta de vitrine","#a21caf","#f472b6","#facc15","O magenta das etiquetas e das promoções: o consumidor é reconhecido como a parte vulnerável da relação de consumo."],
+ inter:["Mares e continentes","#0e7490","#10b981","#1e3a8a","O azul dos oceanos e o verde da terra firme: tratados, Estados e pessoas que cruzam fronteiras."],
+ pt:["Pauta de audiência","#854d0e","#d97706","#1e293b","Mostarda e caramelo, tons quentes como a pauta da Justiça do Trabalho: oralidade, conciliação e rapidez."],
+ trib:["Juba do Leão","#c2410c","#f59e0b","#7c2d12","O laranja e o âmbar da juba do leão, mascote que virou apelido da Receita Federal na época do Imposto de Renda."],
+ eca:["Lápis de cor","#1d4ed8","#facc15","#ef4444","As cores primárias da primeira caixa de lápis de cor: criança e adolescente com proteção integral e prioridade absoluta."],
+ amb:["Mata e rio","#2e7d32","#84cc16","#0891b2","O verde da mata e o azul do rio: o meio ambiente equilibrado é direito de todos, inclusive das futuras gerações."],
+ fin:["Moedas e cofre","#3f6212","#d4a017","#a3e635","O dourado das moedas e o verde das contas em dia: orçamento, receita e despesa do dinheiro público."],
+ prev:["Guarda-chuva","#075985","#38bdf8","#fbbf24","O azul de um guarda-chuva aberto: a previdência protege nos dias de chuva da vida, como doença, invalidez, idade avançada e morte."],
+ eleit:["Teclas da urna","#334155","#16a34a","#f97316","O cinza da urna eletrônica com as teclas que todo eleitor conhece: o verde do CONFIRMA e o laranja do CORRIGE."],
+ etica:["Bronze das balanças","#8a5a1f","#d4a017","#5b3a12","O bronze e o ouro das balanças antigas: a ética é o contrapeso que mantém a advocacia de pé."],
+ masc:["Ramo de oliveira","#155e75","#84cc16","#a5f3fc","Azul sereno e o verde do ramo de oliveira: conversa no lugar do conflito, com a solução construída pelas próprias partes."],
+ prc:["Pasta cível","#115e59","#14b8a6","#f59e0b","Os tons do Civil e do Processo Civil juntos, prontos para a petição: a prática leva a teoria para o caso real."],
+ prp:["Plantão criminal","#991b1b","#f97316","#1f2937","O vermelho do Penal com o laranja do plantão: peças, prazos e audiências da advocacia criminal."],
+ prt:["Chão de fábrica","#92400e","#fbbf24","#ea580c","O amarelo e o laranja do Trabalho, agora na prática: reclamação, contestação e audiência."],
+ prpub:["Esplanada","#173a7a","#00733a","#f2c500","O azul das repartições com o verde e o amarelo da Bandeira: Constitucional, Administrativo e Tributário na prática."],
+ rev:["Todas as cores","#9a3412","#f59e0b","#2563eb","Todas as cores juntas: na revisão geral, as matérias da prova se encontram de uma vez."]
+};
+/* cor de base (fora das matérias): a do Oceano no Premium e a Azul no Clássico */
+const DIN_BASE={premium:["#2563eb","#06b6d4","#7c3aed"],classico:["#1d4f91","#3a78c9","#c9821c"]};
+const DIN_ARCO=["#b91c1c","#c2410c","#d4a017","#00733a","#0e7490","#1d4ed8","#5b21b6","#a21caf"];
+const DIN_POR_COR={};Object.keys(DIN).forEach(k=>DIN_POR_COR[DIN[k][1]]=DIN[k]);
+const dinArco=t=>t==="conic"?`conic-gradient(from 200deg,${DIN_ARCO.join(",")},${DIN_ARCO[0]})`:`linear-gradient(90deg,${DIN_ARCO.join(",")})`;
+const dinOn=()=>estiloAtual()==="premium"?paletaAtual()==="dinamica":corAtual()==="dinamica";
+/* escurece a cor até o texto branco por cima ter o contraste pedido (para o degradê do topo e dos botões) */
+const lumHex=h=>{const c=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255).map(v=>v<=.03928?v/12.92:((v+.055)/1.055)**2.4);return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+function seguraHex(h,cr){let t=0,x=h;while(1.05/(lumHex(x)+.05)<cr&&t<1){t+=.04;x=mixHex(h,"#000000",t)}return x}
+/* degradê do topo: da cor principal até a segunda, passando pela roda de cores (verde + dourado dá verde-limão, e não
+   um tom barrento). Quando as duas são opostas na roda (azul-marinho e âmbar), o degradê fica na família da principal
+   e a segunda aparece só na faixa, nos ícones e nas ilustrações. As duas pontas são escurecidas até o texto branco ler bem. */
+const hexHsl=h=>{const [r,g,b]=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255),mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,d=mx-mn;let H=0,S=0;
+  if(d){S=d/(1-Math.abs(2*l-1));H=mx===r?((g-b)/d+6)%6:mx===g?(b-r)/d+2:(r-g)/d+4}return [H*60,S,l]};
+const hslHex=(H,S,L)=>{H=(H%360+360)%360;const C=(1-Math.abs(2*L-1))*S,X=C*(1-Math.abs(H/60%2-1)),m=L-C/2;
+  const [r,g,b]=H<60?[C,X,0]:H<120?[X,C,0]:H<180?[0,C,X]:H<240?[0,X,C]:H<300?[X,0,C]:[C,0,X];
+  return "#"+[r,g,b].map(v=>Math.round((v+m)*255).toString(16).padStart(2,"0")).join("")};
+function dinDegrade(a,b){const [h1,s1,l1]=hexHsl(a),[h2,s2,l2]=hexHsl(b);
+  if(s1<.25||s2<.25){const g=seguraHex(b,4);return [seguraHex(mixHex(a,g,.5),4),g]}
+  let dh=h2-h1;if(dh>180)dh-=360;if(dh<-180)dh+=360;
+  if(Math.abs(dh)>110){const g=seguraHex(hslHex(h1+Math.sign(dh)*30,Math.max(s1,.6),Math.min(l1+.12,.5)),4);return [seguraHex(hslHex(h1+Math.sign(dh)*15,Math.max(s1,.6),Math.min(l1+.06,.45)),4),g]}
+  const g=seguraHex(b,4),[hg,sg,lg]=hexHsl(g);return [seguraHex(hslHex(h1+dh/2,(s1+sg)/2,(l1+lg)/2),4),g]}
+const mixHex=(a,b,t)=>"#"+[1,3,5].map(i=>{const x=parseInt(a.substr(i,2),16),y=parseInt(b.substr(i,2),16);return Math.round(x+(y-x)*t).toString(16).padStart(2,"0")}).join("");
+/* chave da matéria: as da OAB (META) e as práticas valem direto; as disciplinas da faculdade usam a matéria-base (Civil I a V → Civil) */
+function dinDe(x){if(!x)return null;if(DIN[x])return x;const d=DISC[x];if(!d)return null;const b=d.base||(d.m&&d.m.length===1&&d.m[0]);return DIN[b]?b:null}
+function dinNome(k){return (DISC[k]&&DISC[k].nome)||(META[k]&&META[k].nome)||k}
+function dinDaChave(key){const p=String(key||"").split(":");return /^(mat|mtodas|fac|ftodas|faixa)$/.test(p[0])?dinDe(p[1]):null}
+/* qual matéria está na tela: no simulado, a da questão (num simulado misto a cor acompanha cada questão) */
+let dinPrev=null;
+function dinTela(){const r=rota||{};if(r.tela!=="config")dinPrev=null;
+  switch(r.tela){
+    case "config":return dinPrev;
+    case "materia":return dinDe(r.m);
+    case "disc":case "ler":return dinDe(r.d);
+    case "pre":return dinDaChave(r.key);
+    case "quiz":{const s=sessao,q=s&&QMAP[s.qids[idx]];return q?dinDe(q.m):dinDaChave(s&&s.key)}
+    case "res":{const a=(S.hist||[]).find(x=>x.id===r.id);return a?dinDaChave(a.key):null}
+    case "cartao":{const c=deck&&deck.q[Math.min(deck.pos,deck.q.length-1)];return c?dinDe(c.d):null}
+    case "ls-quiz":{const s=lsSess,it=s&&s.itens[s.i],x=it&&LSMAP[it.id];return x?dinDe(x.m):null}
+    case "leiseca":return r.lsm&&r.lsm!=="todas"?dinDe(r.lsm):null}
+  return null}
+/* com a Dinâmica ligada, os ícones das matérias (listas, cartões, gráficos) usam a cor principal de cada uma */
+const META_COR={},DISC_COR={};Object.keys(META).forEach(k=>META_COR[k]=META[k].cor);Object.keys(DISC).forEach(k=>{if(DISC[k].cor)DISC_COR[k]=DISC[k].cor});
+let dinCoresOn=false;
+function dinCores(on){if(dinCoresOn===on)return;dinCoresOn=on;Object.keys(META).forEach(k=>META[k].cor=on&&DIN[k]?DIN[k][1]:META_COR[k]);Object.keys(DISC_COR).forEach(k=>DISC[k].cor=on&&DIN[k]?DIN[k][1]:DISC_COR[k])}
+let dinUlt=null,dinT=null;
+function dinAplicar(){const h=document.documentElement,on=dinOn();dinCores(on);
+  if(!on){if(h.hasAttribute("data-din")){h.removeAttribute("data-din");h.classList.remove("din-suave","din-muda");["--d1","--d2","--d3","--dt","--d2g","--d2m"].forEach(v=>h.style.removeProperty(v))}dinUlt=null;return null}
+  const k=dinTela(),e=k&&DIN[k],c=e?e.slice(1,4):DIN_BASE[estiloAtual()],id=k||"base";
+  h.style.setProperty("--d1",c[0]);h.style.setProperty("--d2",c[1]);h.style.setProperty("--d3",c[2]);h.style.setProperty("--dt",mixHex(c[0],"#ffffff",.6));const [gm,g]=dinDegrade(c[0],c[1]);h.style.setProperty("--d2g",g);h.style.setProperty("--d2m",gm);
+  h.setAttribute("data-din",id);
+  /* a troca de cor desliza (sem animar na primeira pintura da página) e a faixa do topo se desenha de novo */
+  if(dinUlt===null)setTimeout(()=>h.classList.add("din-suave"),60);
+  else if(dinUlt!==id&&animOn()){h.classList.remove("din-muda");void h.offsetWidth;h.classList.add("din-muda");clearTimeout(dinT);dinT=setTimeout(()=>h.classList.remove("din-muda"),900)}
+  dinUlt=id;return {k,c}}
+/* selo da matéria: degradê da cor com o ícone dela (a de Constitucional é a própria bandeira) */
+function dinSelo(k,cls){const e=DIN[k];if(!e)return "";const M=META[k]||{},icn=(DISC[k]&&DISC[k].ic)||M.ic||"livro";
+  if(k==="const")return `<span class="din-selo ${cls||""}" aria-hidden="true"><svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#00733a"/><path d="M20 7 35 20 20 33 5 20z" fill="#f2c500"/><circle cx="20" cy="20" r="7.5" fill="#002776"/><path d="M12.9 18.6c4.6-1.2 9.6-.6 14 1.7" stroke="#fff" stroke-width="1.3" fill="none"/></svg></span>`;
+  return `<span class="din-selo ${cls||""}" aria-hidden="true" style="--t1:${e[1]};--t2:${e[2]};--t3:${e[3]}">${ic(icn)}</span>`}
+function dinCard(k){if(!dinOn()||!DIN[k])return "";const e=DIN[k];
+  return `<div class="din-card">${dinSelo(k)}<div><b>Cor da matéria: ${esc(e[0])}</b><p>${esc(e[4])}</p><span class="din-tri" aria-hidden="true" style="--t1:${e[1]};--t2:${e[2]};--t3:${e[3]}"><i></i><i></i><i></i></span></div></div>`}
+/* galeria da Configuração: tocar numa matéria mostra a cor dela aqui mesmo, sem sair da tela */
+function dinGaleria(){const ks=[];PERIODOS.forEach(l=>l.forEach(d=>{const k=dinDe(d);if(k&&!ks.includes(k))ks.push(k)}));
+  const sel=dinPrev&&DIN[dinPrev];
+  return `<p class="nota">Cada matéria veste as suas cores: o topo, os botões, o progresso, as ilustrações e os ícones mudam conforme o assunto que você abre. Num simulado misto, a cor acompanha a matéria de cada questão. Fora das matérias, o app usa a cor de base.</p>
+  <div class="secao" role="heading" aria-level="2">As cores de cada matéria</div>
+  <p class="nota" style="margin-top:0">Toque numa matéria para ver a cor dela nesta tela.</p>
+  ${sel?`<div class="din-card din-prev" aria-live="polite">${dinSelo(dinPrev)}<div><b>${esc(dinNome(dinPrev))}: ${esc(sel[0])}</b><p>${esc(sel[4])}</p><span class="din-tri" aria-hidden="true" style="--t1:${sel[1]};--t2:${sel[2]};--t3:${sel[3]}"><i></i><i></i><i></i></span></div></div>`
+    :`<div class="din-card din-prev vazio" aria-live="polite"><span class="din-selo" aria-hidden="true" style="background:${dinArco("conic")}">${ic("balanca")}</span><div><b>Escolha uma matéria</b><p>A cor dela aparece aqui e veste esta tela inteira. Toque de novo na mesma matéria para voltar à cor de base.</p></div></div>`}
+  <div class="din-galeria">${ks.map(k=>`<button data-acao="din-prev" data-k="${k}" aria-pressed="${dinPrev===k}">${dinSelo(k,"mini")}<span>${esc(nomeCurto(dinNome(k)))}<small>${esc(DIN[k][0])}</small></span></button>`).join("")}</div>`}
 const TEMAS=[["auto","Automático","Segue o celular","meio"],["claro","Claro","Fundo claro","sol"],["escuro","Escuro","Fundo escuro","lua"]];
 const MODOS_Q=[["imediato","Tocar e responder","Ao tocar na alternativa, a resposta é registrada na hora (como era antes)","ok"],["avancar","Responder e avançar sozinho","Ao tocar na alternativa, o app registra a resposta e passa para a próxima questão","seta"],["confirmar","Marcar e confirmar","Toque para marcar, troque se quiser, e depois aperte \"Confirmar resposta\"","alvo"]];
 /* avisos para leitores de tela */
@@ -5133,7 +5318,7 @@ function telaMaterias(){
   `<main class="wrap">${capaTela("alvo","Treine por matéria","Foque nas disciplinas em que você mais erra.")}<div class="grade-mat">${OAB.map(m=>cardMat(m,"materia",`data-m="${m}"`,META[m].nome,META[m].cor,META[m].ic,porM[m]||[])).join("")}</div><p class="sinc">${esc(statusSinc)}</p></main>`}
 function telaMateria(){const m=rota.m,M=META[m];const n=nMat(m);const ks=[];for(let i=0;i<n;i++)ks.push(`mat:${m}:${i}`);
   return topo(M.nome,`${(porM[m]||[]).length} questões`,{})+
-  `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>
+  `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>${dinCard(dinDe(m))}
   <div class="secao" role="heading" aria-level="2">Simulados</div><div class="lista">${ks.map(k=>itemSim(k)).join("")}</div>
   <div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("mtodas:"+m)}</div>${secaoAss(m)}</main>`}
 
@@ -5160,7 +5345,7 @@ function telaPeriodo(){const i=rota.p;const n=nPer(i);const ks=[];for(let k=0;k<
   ${n>1?`<div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("ptodas:"+i)}</div>`:""}</main>`}
 function telaDisc(){const d=rota.d,f=infoDisc(d);const n=nFac(d);const ks=[];for(let i=0;i<n;i++)ks.push(`fac:${d}:${i}`);
   return topo(f.nome,`${idsDisc(d).length} questões`,{})+
-  `<main class="wrap"><div class="cabeca">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><p class="nota">${idsDisc(d).length} questões · ${n} simulado${n>1?"s":""} de cerca de ${TAM_FAC} questões</p></div></div>
+  `<main class="wrap"><div class="cabeca">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><p class="nota">${idsDisc(d).length} questões · ${n} simulado${n>1?"s":""} de cerca de ${TAM_FAC} questões</p></div></div>${dinCard(dinDe(d))}
   ${temAp(d)?`<button class="btn-ap" data-acao="ler" data-d="${d}">${tile("var(--toga)","livro")}<span><b>Ler a apostila desta matéria</b><small>Teoria explicada, técnicas de memorização e mapa mental</small></span></button>`:""}
   ${cardModoProva({d})}
   ${n>1?`<p class="nota" style="margin-top:14px">Os simulados vão do mais simples ao mais difícil. Faça na ordem: cada um prepara para o seguinte.</p>${escada()}`:""}
@@ -5346,7 +5531,7 @@ function tourDemoMenu(){const s=tourD.menu;
  <p class="tour-res${s===undefined?" vazio":tourNv()}" aria-live="polite">${s===undefined?"Toque em uma parte do menu.":`${ic(TOUR_MENU[s][0])}<span><b>${TOUR_MENU[s][1]}.</b> ${TOUR_MENU[s][2]}</span>`}</p>`}
 function tourDemoVisual(){const e=estiloAtual(),an=(S.cfg&&S.cfg.anim)||"on";
  return `<div class="estilos">${ESTILOS.map(([k,n,d])=>`<button data-acao="tour-estilo" data-v="${k}" aria-pressed="${e===k}"><span class="prev prev-${k}" aria-hidden="true"${k==="premium"?(p=>` style="--g1:${p[3]};--g2:${p[4]}"`)(PALETAS.find(x=>x[0]===paletaAtual())||PALETAS[0]):""}><i></i><i></i><i></i><i></i></span><span><b>${n}</b>${k==="premium"?" <em>Padrão</em>":""}<small>${d}</small></span></button>`).join("")}</div>
- ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g" style="background:linear-gradient(135deg,${c1},${c2})"></span><span>${n}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}`:""}
+ ${e==="premium"?`<p class="nota tour-sub"><b>Paleta do Premium</b></p><div class="paletas">${coresVisiveis(PALETAS,paletaAtual()).map(([k,n,d,c1,c2])=>`<button data-acao="tour-paleta" data-v="${k}" aria-pressed="${paletaAtual()===k}"><span class="amostra-g${k==="dinamica"?" din-amostra":""}" style="background:${k==="dinamica"?dinArco("conic"):`linear-gradient(135deg,${c1},${c2})`}"></span><span>${n}${k==="dinamica"?` <em class="din-novo">Novo</em>`:""}<small>${d}</small></span></button>`).join("")}</div>${botaoMaisCores(PALETAS,paletaAtual())}`:""}
  <p class="nota tour-sub"><b>Animações</b></p><div class="cores">${[["on","Ligadas","Movimento nas telas e nas respostas","chama"],["off","Desligadas","Tudo parado, para foco ou bateria","pausa"]].map(([k,n,d,i])=>`<button data-acao="tour-anim" data-v="${k}" aria-pressed="${an===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota tour-sub"><b>Sons e vibração</b></p><div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="tour-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>`}
 function tourDemoFim(){const per=perAtual();const pl=PALETAS.find(x=>x[0]===paletaAtual());
@@ -5465,8 +5650,9 @@ document.addEventListener("click",e=>{
     case "cfg-ritmo":{S.cfg=S.cfg||{};S.cfg.ritmo=b.dataset.v==="auto"?"":b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Ritmo "+ritmoAtual()[1]);
       const v=document.querySelector(".rt-vel");if(v&&animOn()){v.classList.add("rt-novo");if(b.dataset.v==="intenso")estouro(v,["#e5484d","#ffc53d","#ff8a1f","#ffffff"])}break}
     case "meta":S.cfg=S.cfg||{};S.cfg.meta=+b.dataset.v;salvar();rota.manterScroll=true;render();break;
-    case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;salvar();rota.manterScroll=true;render();break;
-    case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;salvar();rota.manterScroll=true;render();break;
+    case "cfg-paleta":S.cfg=S.cfg||{};S.cfg.paleta=b.dataset.v;dinPrev=null;salvar();rota.manterScroll=true;render();if(b.dataset.v==="dinamica")anunciar("Cor Dinâmica: cada matéria com as suas cores");break;
+    case "din-prev":dinPrev=dinPrev===b.dataset.k?null:b.dataset.k;rota.manterScroll=true;render();{const e=DIN[dinPrev];if(e)anunciar(dinNome(dinPrev)+": "+e[0])}break;
+    case "cfg-cor":S.cfg=S.cfg||{};S.cfg.cor=b.dataset.v;dinPrev=null;salvar();rota.manterScroll=true;render();if(b.dataset.v==="dinamica")anunciar("Cor Dinâmica: cada matéria com as suas cores");break;
     case "cfg-estilo":S.cfg=S.cfg||{};S.cfg.estilo=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Estilo "+(b.dataset.v==="classico"?"Clássico":"Premium")+" aplicado");break;
     case "chama":faiscas(b);som(b.classList.contains("apagada")?"toque":"fogo");break;
     case "notif":if(b.dataset.v==="1")lbLigar();else lbDesligar();break;
