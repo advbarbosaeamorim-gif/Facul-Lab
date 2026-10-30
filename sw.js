@@ -11,7 +11,7 @@ const CORE = ['./','./index.html','./manifest.json','./icon-192.png','./icon-512
   "./q1.js","./q2.js","./q3.js","./q4.js","./q5.js","./q6.js","./q7.js","./q8.js","./q9.js",
   "./q10.js","./q11.js","./q12.js","./q13.js","./q14.js","./q15.js","./q16.js","./q17.js","./q18.js",
   "./css/base.css","./css/premium.css","./css/caderno.css","./css/foco.css","./css/ovos.css","./css/backup.css","./css/inverso.css","./css/revisao.css","./css/semanal.css","./css/modo-prova.css","./css/dinamica.css","./css/ajustes.css","./css/casos.css",
-  "./js/01-base.js","./js/02-estudo-e-provas.js","./js/03-cartoes-sons-busca.js","./js/04-estado-e-navegacao.js","./js/05-telas.js","./js/06-eventos.js","./js/07-segredos.js","./js/08-backup.js","./js/09-revisao.js","./js/10-inverso-e-caderno.js","./js/11-foco.js","./js/12-resumo-semanal.js","./js/13-modo-prova.js","./js/14-ajustes.js","./js/15-casos.js","./js/99-inicio.js",
+  "./js/01-base.js","./js/02-estudo-e-provas.js","./js/03-cartoes-sons-busca.js","./js/04-estado-e-navegacao.js","./js/05-telas.js","./js/06-eventos.js","./js/07-segredos.js","./js/08-backup.js","./js/09-revisao.js","./js/10-inverso-e-caderno.js","./js/11-foco.js","./js/12-resumo-semanal.js","./js/13-modo-prova.js","./js/14-ajustes.js","./js/15-casos.js","./js/16-leveza.js","./js/99-inicio.js",
   "./questoes.js","./resumos.js","./resumos2.js","./casos.js"];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -19,20 +19,42 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
-/* Página (index.html) e manifest: rede primeiro (pega atualizações na hora), cache se estiver
-   offline ou se a rede demorar mais de 4 s. O código do app (css/ e js/) segue a página: rede primeiro, para nunca
-   misturar uma página nova com código velho. Fontes e outros sites: cache primeiro. */
+/* Página (index.html), manifest e código do app (css/ e js/): abrem na hora da cópia guardada, que é sempre um conjunto
+   inteiro da mesma versão. Antes o app esperava a internet até 4 s por arquivo antes de abrir; com sinal fraco, era essa
+   a demora para abrir. Depois que a página carrega, ela pede "conferir": aqui se baixa a página nova e todo o código que
+   ela usa e, só se tudo chegou bem e algo mudou, o conjunto inteiro é trocado de uma vez (página nova nunca se mistura
+   com código velho) e a página recebe o aviso "conteudo-novo". Sem cópia guardada, vem da rede. Fontes e outros sites:
+   cache primeiro. */
 const guarda = (chave, resp) => {
   if (resp.ok || resp.type === 'opaque') { const copia = resp.clone(); caches.open(CACHE_NAME).then(c => c.put(chave, copia)); }
   return resp;
 };
-const redePrimeiro = (req, chave) => new Promise(ok => {
-  let feito = false;
-  const doCache = () => caches.match(chave).then(r => r || caches.match(req));
-  const t = setTimeout(() => doCache().then(r => { if (r && !feito) { feito = true; ok(r); } }), 4000);
-  fetch(req, { cache: 'no-cache' }).then(resp => { guarda(chave, resp); if (!feito) { feito = true; clearTimeout(t); ok(resp); } })
-    .catch(() => doCache().then(r => { if (!feito) { feito = true; clearTimeout(t); ok(r || Response.error()); } }));
-});
+const daRede = (req, chave) => fetch(req, { cache: 'no-cache' }).then(resp => guarda(chave, resp));
+const guardadoOuRede = (req, chave) => caches.match(chave).then(r => r || daRede(req, chave).catch(() => Response.error()));
+const versao = r => r ? (r.headers.get('etag') || r.headers.get('last-modified') || r.headers.get('content-length') || '') : '';
+const ehCodigo = u => /^(css|js)\/[^/]+\.(css|js)$/.test(u);
+let conferindo = null, conferiuEm = 0;
+const conferirVersao = () => {
+  if (conferindo) return conferindo;
+  if (Date.now() - conferiuEm < 30000) return Promise.resolve();
+  conferindo = (async () => {
+    const pagina = await fetch('./index.html', { cache: 'no-cache' });
+    if (!pagina.ok) return;
+    const html = await pagina.clone().text();
+    const lista = ['./manifest.json'];
+    html.replace(/(?:src|href)="(?:\.\/)?([^"?#]+)"/g, (m, u) => { if (ehCodigo(u) && !lista.includes('./' + u)) lista.push('./' + u); return m; });
+    const novos = await Promise.all(lista.map(u => fetch(u, { cache: 'no-cache' }).then(r => [u, r])));
+    if (novos.some(([, r]) => !r.ok)) return;
+    const c = await caches.open(CACHE_NAME);
+    let mudou = versao(await c.match('./index.html')) !== versao(pagina);
+    for (const [u, r] of novos) if (!mudou && versao(await c.match(u)) !== versao(r)) mudou = true;
+    if (!mudou) return;
+    await Promise.all([c.put('./index.html', pagina), ...novos.map(([u, r]) => c.put(u, r))]);
+    avisaNovo();
+  })().catch(() => {}).finally(() => { conferindo = null; conferiuEm = Date.now(); });
+  return conferindo;
+};
+self.addEventListener('message', e => { if (e.data && e.data.tipo === 'conferir') e.waitUntil(conferirVersao()); });
 /* Arquivos de conteúdo (questões, apostilas, explicações, imagens): abrem na hora da cópia guardada e se atualizam
    em segundo plano. Com sinal fraco, o app não espera mais 4 s por arquivo. Se algum chegou diferente, a página
    recebe o aviso "conteudo-novo" e oferece atualizar. Sem cópia guardada, vem da rede como antes. */
@@ -53,11 +75,17 @@ const guardadoPrimeiro = (e, req) => caches.match(req).then(velho => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  if (req.mode === 'navigate') { e.respondWith(redePrimeiro(req, './index.html')); return; }
   const url = new URL(req.url);
+  const caminho = url.origin === self.location.origin && url.pathname.startsWith(self.registration.scope.replace(location.origin, '')) ? url.pathname.slice(self.registration.scope.replace(location.origin, '').length) : null;
+  if (req.mode === 'navigate') {
+    if (caminho === '' || caminho === 'index.html') e.respondWith(guardadoOuRede(req, './index.html'));
+    else e.respondWith(fetch(req).catch(() => caches.match('./index.html').then(r => r || Response.error())));
+    return;
+  }
   if (url.origin === self.location.origin) {
-    if (/\.(js|png|jpg|svg|mp3)$/.test(url.pathname) && !/\/sw\.js$/.test(url.pathname) && !/\/js\//.test(url.pathname)) { e.respondWith(guardadoPrimeiro(e, req)); return; }
-    e.respondWith(redePrimeiro(req, req)); return;
+    if (caminho !== null && (ehCodigo(caminho) || caminho === 'manifest.json')) { e.respondWith(guardadoOuRede(req, './' + caminho)); return; }
+    if (/\.(js|png|jpg|svg|mp3)$/.test(url.pathname) && !/\/sw\.js$/.test(url.pathname)) { e.respondWith(guardadoPrimeiro(e, req)); return; }
+    e.respondWith(fetch(req, { cache: 'no-cache' }).then(resp => guarda(req, resp)).catch(() => caches.match(req).then(r => r || Response.error()))); return;
   }
   e.respondWith(caches.match(req).then(r => r || fetch(req).then(resp => guarda(req, resp))));
 });

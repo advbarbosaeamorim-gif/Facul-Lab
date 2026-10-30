@@ -24,7 +24,7 @@ function ovoCena(id,cls,html,opt){opt=opt||{};const novo=opt.rever?false:ovoAcho
  el.innerHTML=`<canvas aria-hidden="true"></canvas><div class="festa-card"><span class="ovo-selo${novo?" novo":""}">${ic("estrela")} ${novo?"Segredo encontrado!":"Segredo"} · ${n} de ${OVOS.length}</span>${html}</div>`;
  document.body.appendChild(el);
  /* o menu fecha depois que a cena já está na página, para o voltar do celular continuar valendo para ela */
- if(gaveta){gaveta=false;rota.manterScroll=true;render()}
+ if(gaveta)fecharGaveta()
  if(opt.confete&&animOn())confete(el.querySelector("canvas"));syncVoltar();ovoSom(novo?"segredo":"abre");return el}
 function ovoSom(n){if(typeof som=="function")som(n)}
 function ovoSomDepois(n,ms){setTimeout(()=>{if(document.querySelector(".festa.ovo"))ovoSom(n)},ms)}
