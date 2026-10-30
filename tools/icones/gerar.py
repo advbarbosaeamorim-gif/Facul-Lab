@@ -27,7 +27,7 @@ TEMAS["dinamica"] = TEMAS["c-dinamica"] = ("#1d4ed8", "#a21caf")
 # mesmas cores de DIN no index.html (principal, segunda)
 DIN = {
     "ied": ("#1e3a8a", "#b45309"), "tge": ("#6b21a8", "#d97706"), "soc": ("#047857", "#f59e0b"), "psc": ("#9d174d", "#fb923c"),
-    "filo": ("#312e81", "#f59e0b"), "crim": ("#3f3f46", "#dc2626"), "civil": ("#0f766e", "#2dd4bf"), "const": ("#00733a", "#f2c500"),
+    "filo": ("#312e81", "#f59e0b"), "crim": ("#3f3f46", "#dc2626"), "civil": ("#0f766e", "#2dd4bf"), "const": ("#9c7a00", "#00733a"),
     "penal": ("#b91c1c", "#f43f5e"), "pc": ("#5b21b6", "#c084fc"), "dh": ("#0369a1", "#e11d48"), "adm": ("#1e40af", "#0ea5e9"),
     "emp": ("#1e293b", "#ca8a04"), "pp": ("#881337", "#e11d48"), "trab": ("#975c00", "#facc15"), "cdc": ("#a21caf", "#f472b6"),
     "inter": ("#0e7490", "#10b981"), "pt": ("#854d0e", "#d97706"), "trib": ("#c2410c", "#f59e0b"), "eca": ("#1d4ed8", "#facc15"),

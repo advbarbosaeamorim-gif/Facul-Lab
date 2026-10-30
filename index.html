@@ -3124,6 +3124,15 @@ html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s e
 :root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
 :root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{background:linear-gradient(90deg,#b91c1c,#c2410c,#d4a017,#00733a,#0e7490,#1d4ed8,#5b21b6,#a21caf)}
 [data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
+/* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
+:root[data-din="const"] .topo::after{background:linear-gradient(90deg,#f2c500 0 40%,#00733a 40% 80%,#002776 80%)}
+/* topo mais nobre: o ícone da matéria em marca d'água à direita e um leve brilho de cima para baixo */
+:root[data-din] .topo{background:var(--din-ic) right -10px center/104px 104px no-repeat,linear-gradient(180deg,#ffffff14,#ffffff00 70%),var(--toga)}
+:root[data-estilo="premium"][data-din] .topo{background:var(--din-ic) right -10px center/104px 104px no-repeat,linear-gradient(180deg,#ffffff1f,#ffffff00 65%),var(--grad);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--d1) 85%,transparent),inset 0 -1px 0 #ffffff1a}
+/* fundo do Premium: além do halo da cor principal, um halo suave da segunda cor no canto oposto */
+[data-estilo="premium"][data-din] body::after{content:"";position:fixed;inset:auto auto -25vh -25vw;width:70vw;height:55vh;max-width:560px;max-height:460px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--d2) 10%,transparent),transparent);pointer-events:none;z-index:-1}
+/* ícone grande da matéria (cabeçalho da tela): degradê cheio, ícone branco e um brilho de vidro */
+:root[data-estilo="premium"][data-din] .cabeca .tile.din.din{background:linear-gradient(145deg,color-mix(in srgb,var(--c) 92%,#fff),color-mix(in srgb,var(--c) 50%,var(--c2)));color:#fff;box-shadow:inset 0 1px 0 #ffffff59,inset 0 -10px 18px -10px #00000040,0 12px 24px -14px var(--c)}
 /* Criminologia: as luzes da viatura passam devagar pela faixa */
 html[data-anim="on"][data-din="crim"] .topo::after{background:linear-gradient(90deg,#dc2626,#2563eb,#dc2626,#2563eb,#dc2626);background-size:200% 100%;animation:din-giro 6s linear infinite}
 @keyframes din-giro{to{background-position:-200% 0}}
@@ -3150,21 +3159,12 @@ html[data-anim="on"] button[aria-pressed="true"] .din-amostra{animation:din-roda
 .din-novo{font-style:normal;font-size:.68rem;font-weight:800;letter-spacing:.02em;padding:1px 7px;border-radius:999px;background:var(--lacre);color:var(--lacre-fg);vertical-align:2px;margin-left:2px}
 
 /* selo da matéria e cartão "por que essa cor" */
-.din-selo{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;color:#fff;background:linear-gradient(135deg,var(--t1),color-mix(in srgb,var(--t1) 45%,var(--t2)));box-shadow:inset 0 -6px 0 -2px var(--t3),0 6px 14px -8px var(--t1);overflow:hidden}
+.din-selo{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;color:#fff;background:linear-gradient(145deg,color-mix(in srgb,var(--t1) 90%,#fff),color-mix(in srgb,var(--t1) 50%,var(--t2)));box-shadow:inset 0 1px 0 #ffffff59,inset 0 -8px 14px -8px #00000038,0 6px 14px -8px var(--t1);overflow:hidden}
 .din-selo svg{width:100%;height:100%}
 .din-selo svg.i{width:24px;height:24px}
-.din-selo.mini{width:36px;height:36px;border-radius:11px;box-shadow:inset 0 -5px 0 -2px var(--t3)}
+.din-selo.mini{width:36px;height:36px;border-radius:11px}
 .din-selo.mini svg.i{width:19px;height:19px}
 [data-estilo="classico"] .din-selo{border-radius:9px}
-.din-card{display:flex;gap:14px;align-items:flex-start;margin:14px 0 4px;padding:14px 16px;border-radius:var(--r);background:linear-gradient(135deg,color-mix(in srgb,var(--d1) 9%,var(--surface)),color-mix(in srgb,var(--d2) 11%,var(--surface)));border:1px solid color-mix(in srgb,var(--d1) 22%,var(--line))}
-.din-card b{display:block;font-family:var(--f-display);font-size:1rem;color:var(--toga-txt);line-height:1.25}
-.din-card p{margin:4px 0 8px;color:var(--muted);font-size:.88rem;line-height:1.45}
-.din-tri{display:flex;width:84px;height:6px;border-radius:99px;overflow:hidden}
-.din-tri i{flex:1}.din-tri i:nth-child(1){background:var(--t1)}.din-tri i:nth-child(2){background:var(--t2)}.din-tri i:nth-child(3){background:var(--t3)}
-html[data-anim="on"] .din-card{animation:ent-sobe .45s cubic-bezier(.2,.8,.3,1) both}
-html[data-anim="on"] .din-card .din-tri i{animation:din-faixa .6s cubic-bezier(.2,.8,.3,1) both;transform-origin:left}
-html[data-anim="on"] .din-card .din-tri i:nth-child(2){animation-delay:.12s}html[data-anim="on"] .din-card .din-tri i:nth-child(3){animation-delay:.24s}
-html[data-anim="on"] .din-card .din-selo{animation:din-pulo .6s cubic-bezier(.3,1.5,.5,1) .1s both}
 /* galeria da Configuração */
 .din-galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .din-galeria button{display:flex;align-items:center;gap:10px;text-align:left;padding:8px 10px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:inherit;font:inherit;font-weight:700;font-size:.86rem;line-height:1.2;cursor:pointer;min-width:0;transition:transform .14s ease,border-color .2s}
@@ -3173,7 +3173,6 @@ html[data-anim="on"] .din-card .din-selo{animation:din-pulo .6s cubic-bezier(.3,
 .din-galeria button[aria-pressed="true"]{border:2px solid var(--toga-borda);padding:7px 9px}
 .din-galeria button:active{transform:scale(.97)}
 [data-estilo="classico"] .din-galeria button{border-radius:8px}
-.din-prev{margin-bottom:12px}
 @media (prefers-reduced-motion: reduce){html.din-suave{transition:none}}
 </style>
 
@@ -4989,7 +4988,7 @@ const DIN={
  filo:["Coruja ao entardecer","#312e81","#f59e0b","#818cf8","No prefácio da Filosofia do Direito, Hegel escreveu que a coruja de Minerva só levanta voo ao cair do crepúsculo. Daí o azul do anoitecer com a luz da lamparina."],
  crim:["Luzes da viatura","#3f3f46","#dc2626","#2563eb","O grafite da rua à noite, com o vermelho e o azul das luzes da viatura: o crime, quem o pratica, a vítima e o controle social."],
  civil:["Vida em comum","#0f766e","#2dd4bf","#f59e0b","Verde-água, a cor do dia a dia: pessoas, contratos, bens e família, do nascimento à sucessão."],
- const:["Bandeira do Brasil","#00733a","#f2c500","#002776","O verde, o amarelo e o azul da Bandeira Nacional: a Constituição dá forma ao país e está acima de todas as outras leis."],
+ const:["Amarelo e verde","#9c7a00","#00733a","#002776","O verde, o amarelo e o azul da Bandeira Nacional: a Constituição dá forma ao país e está acima de todas as outras leis."],
  penal:["Vermelho-alerta","#b91c1c","#f43f5e","#1f2937","Vermelho de alerta: o Direito Penal protege os bens jurídicos mais importantes e só entra em cena como última opção, a ultima ratio."],
  pc:["Roxo do rito","#5b21b6","#c084fc","#f59e0b","Roxo e lilás em degraus, como o próprio processo: cada ato no seu tempo, da petição inicial à sentença."],
  dh:["Azul da ONU","#0369a1","#e11d48","#7dd3fc","O azul das Nações Unidas, que aprovaram a Declaração Universal dos Direitos Humanos em 1948, com o vermelho do coração: dignidade para cada pessoa."],
@@ -5061,29 +5060,27 @@ let dinCoresOn=false;
 function dinCores(on){if(dinCoresOn===on)return;dinCoresOn=on;Object.keys(META).forEach(k=>META[k].cor=on&&DIN[k]?DIN[k][1]:META_COR[k]);Object.keys(DISC_COR).forEach(k=>DISC[k].cor=on&&DIN[k]?DIN[k][1]:DISC_COR[k])}
 let dinUlt=null,dinT=null;
 function dinAplicar(){const h=document.documentElement,on=dinOn();dinCores(on);
-  if(!on){if(h.hasAttribute("data-din")){h.removeAttribute("data-din");h.classList.remove("din-suave","din-muda");["--d1","--d2","--d3","--dt","--d2g","--d2m"].forEach(v=>h.style.removeProperty(v))}dinUlt=null;return null}
+  if(!on){if(h.hasAttribute("data-din")){h.removeAttribute("data-din");h.classList.remove("din-suave","din-muda");["--d1","--d2","--d3","--dt","--d2g","--d2m","--din-ic"].forEach(v=>h.style.removeProperty(v))}dinUlt=null;return null}
   const k=dinTela(),e=k&&DIN[k],c=e?e.slice(1,4):DIN_BASE[estiloAtual()],id=k||"base";
   h.style.setProperty("--d1",c[0]);h.style.setProperty("--d2",c[1]);h.style.setProperty("--d3",c[2]);h.style.setProperty("--dt",mixHex(c[0],"#ffffff",.6));const [gm,g]=dinDegrade(c[0],c[1]);h.style.setProperty("--d2g",g);h.style.setProperty("--d2m",gm);
-  h.setAttribute("data-din",id);
+  h.setAttribute("data-din",id);h.style.setProperty("--din-ic",dinMarca(k));
   /* a troca de cor desliza (sem animar na primeira pintura da página) e a faixa do topo se desenha de novo */
   if(dinUlt===null)setTimeout(()=>h.classList.add("din-suave"),60);
   else if(dinUlt!==id&&animOn()){h.classList.remove("din-muda");void h.offsetWidth;h.classList.add("din-muda");clearTimeout(dinT);dinT=setTimeout(()=>h.classList.remove("din-muda"),900)}
   dinUlt=id;return {k,c}}
+/* marca d'água do topo: o ícone da matéria em traço branco fino, grande, à direita */
+const DIN_MARCA={};
+function dinIcone(k){const M=META[k]||{};return (DISC[k]&&DISC[k].ic)||M.ic||"balanca"}
+function dinMarca(k){const n=k?dinIcone(k):"balanca";return DIN_MARCA[n]||(DIN_MARCA[n]=`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">${(P[n]||"").replace(/currentColor/g,"#fff")}</svg>`)}")`)}
 /* selo da matéria: degradê da cor com o ícone dela (a de Constitucional é a própria bandeira) */
-function dinSelo(k,cls){const e=DIN[k];if(!e)return "";const M=META[k]||{},icn=(DISC[k]&&DISC[k].ic)||M.ic||"livro";
+function dinSelo(k,cls){const e=DIN[k];if(!e)return "";const icn=dinIcone(k);
   if(k==="const")return `<span class="din-selo ${cls||""}" aria-hidden="true"><svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#00733a"/><path d="M20 7 35 20 20 33 5 20z" fill="#f2c500"/><circle cx="20" cy="20" r="7.5" fill="#002776"/><path d="M12.9 18.6c4.6-1.2 9.6-.6 14 1.7" stroke="#fff" stroke-width="1.3" fill="none"/></svg></span>`;
   return `<span class="din-selo ${cls||""}" aria-hidden="true" style="--t1:${e[1]};--t2:${e[2]};--t3:${e[3]}">${ic(icn)}</span>`}
-function dinCard(k){if(!dinOn()||!DIN[k])return "";const e=DIN[k];
-  return `<div class="din-card">${dinSelo(k)}<div><b>Cor da matéria: ${esc(e[0])}</b><p>${esc(e[4])}</p><span class="din-tri" aria-hidden="true" style="--t1:${e[1]};--t2:${e[2]};--t3:${e[3]}"><i></i><i></i><i></i></span></div></div>`}
 /* galeria da Configuração: tocar numa matéria mostra a cor dela aqui mesmo, sem sair da tela */
 function dinGaleria(){const ks=[];PERIODOS.forEach(l=>l.forEach(d=>{const k=dinDe(d);if(k&&!ks.includes(k))ks.push(k)}));
-  const sel=dinPrev&&DIN[dinPrev];
-  return `<p class="nota">Cada matéria veste as suas cores: o topo, os botões, o progresso, as ilustrações e os ícones mudam conforme o assunto que você abre. Num simulado misto, a cor acompanha a matéria de cada questão. Fora das matérias, o app usa a cor de base.</p>
+  return `<p class="nota">O app veste as cores da matéria que você abre. Toque numa matéria para ver as cores dela nesta tela.</p>
   <div class="secao" role="heading" aria-level="2">As cores de cada matéria</div>
-  <p class="nota" style="margin-top:0">Toque numa matéria para ver a cor dela nesta tela.</p>
-  ${sel?`<div class="din-card din-prev" aria-live="polite">${dinSelo(dinPrev)}<div><b>${esc(dinNome(dinPrev))}: ${esc(sel[0])}</b><p>${esc(sel[4])}</p><span class="din-tri" aria-hidden="true" style="--t1:${sel[1]};--t2:${sel[2]};--t3:${sel[3]}"><i></i><i></i><i></i></span></div></div>`
-    :`<div class="din-card din-prev vazio" aria-live="polite"><span class="din-selo" aria-hidden="true" style="background:${dinArco("conic")}">${ic("balanca")}</span><div><b>Escolha uma matéria</b><p>A cor dela aparece aqui e veste esta tela inteira. Toque de novo na mesma matéria para voltar à cor de base.</p></div></div>`}
-  <div class="din-galeria">${ks.map(k=>`<button data-acao="din-prev" data-k="${k}" aria-pressed="${dinPrev===k}">${dinSelo(k,"mini")}<span>${esc(nomeCurto(dinNome(k)))}<small>${esc(DIN[k][0])}</small></span></button>`).join("")}</div>`}
+  <div class="din-galeria">${ks.map(k=>`<button data-acao="din-prev" data-k="${k}" aria-pressed="${dinPrev===k}">${dinSelo(k,"mini")}<span>${esc(nomeCurto(dinNome(k)))}</span></button>`).join("")}</div>`}
 const TEMAS=[["auto","Automático","Segue o celular","meio"],["claro","Claro","Fundo claro","sol"],["escuro","Escuro","Fundo escuro","lua"]];
 const MODOS_Q=[["imediato","Tocar e responder","Ao tocar na alternativa, a resposta é registrada na hora (como era antes)","ok"],["avancar","Responder e avançar sozinho","Ao tocar na alternativa, o app registra a resposta e passa para a próxima questão","seta"],["confirmar","Marcar e confirmar","Toque para marcar, troque se quiser, e depois aperte \"Confirmar resposta\"","alvo"]];
 /* avisos para leitores de tela */
@@ -5318,7 +5315,7 @@ function telaMaterias(){
   `<main class="wrap">${capaTela("alvo","Treine por matéria","Foque nas disciplinas em que você mais erra.")}<div class="grade-mat">${OAB.map(m=>cardMat(m,"materia",`data-m="${m}"`,META[m].nome,META[m].cor,META[m].ic,porM[m]||[])).join("")}</div><p class="sinc">${esc(statusSinc)}</p></main>`}
 function telaMateria(){const m=rota.m,M=META[m];const n=nMat(m);const ks=[];for(let i=0;i<n;i++)ks.push(`mat:${m}:${i}`);
   return topo(M.nome,`${(porM[m]||[]).length} questões`,{})+
-  `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>${dinCard(dinDe(m))}
+  `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>
   <div class="secao" role="heading" aria-level="2">Simulados</div><div class="lista">${ks.map(k=>itemSim(k)).join("")}</div>
   <div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("mtodas:"+m)}</div>${secaoAss(m)}</main>`}
 
@@ -5345,7 +5342,7 @@ function telaPeriodo(){const i=rota.p;const n=nPer(i);const ks=[];for(let k=0;k<
   ${n>1?`<div class="secao" role="heading" aria-level="2">Treino livre</div><div class="lista">${itemSim("ptodas:"+i)}</div>`:""}</main>`}
 function telaDisc(){const d=rota.d,f=infoDisc(d);const n=nFac(d);const ks=[];for(let i=0;i<n;i++)ks.push(`fac:${d}:${i}`);
   return topo(f.nome,`${idsDisc(d).length} questões`,{})+
-  `<main class="wrap"><div class="cabeca">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><p class="nota">${idsDisc(d).length} questões · ${n} simulado${n>1?"s":""} de cerca de ${TAM_FAC} questões</p></div></div>${dinCard(dinDe(d))}
+  `<main class="wrap"><div class="cabeca">${tile(f.cor,f.ic)}<div><h2>${esc(f.nome)}</h2><p class="nota">${idsDisc(d).length} questões · ${n} simulado${n>1?"s":""} de cerca de ${TAM_FAC} questões</p></div></div>
   ${temAp(d)?`<button class="btn-ap" data-acao="ler" data-d="${d}">${tile("var(--toga)","livro")}<span><b>Ler a apostila desta matéria</b><small>Teoria explicada, técnicas de memorização e mapa mental</small></span></button>`:""}
   ${cardModoProva({d})}
   ${n>1?`<p class="nota" style="margin-top:14px">Os simulados vão do mais simples ao mais difícil. Faça na ordem: cada um prepara para o seguinte.</p>${escada()}`:""}
