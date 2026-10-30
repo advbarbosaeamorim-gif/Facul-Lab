@@ -1,0 +1,30 @@
+/* ---------- teste inverso: a resposta vira o enunciado ---------- */
+.inv-cab{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:12px 0 10px}
+.inv-cab small{color:var(--muted);font-size:.82rem;font-weight:600}
+.inv-selo{display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 8px;border-radius:999px;background:var(--toga);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.02em}
+.inv-selo .ic,.inv-selo svg{width:16px;height:16px}
+.inv-resp{position:relative;margin:0;padding:16px 18px 18px;border-radius:var(--r);background:var(--surface);border:2px solid var(--toga);box-shadow:0 6px 0 -2px color-mix(in srgb,var(--toga) 22%,transparent);transform-origin:50% 0}
+.inv-resp small{display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--toga-txt);margin-bottom:4px}
+.inv-resp p{margin:0;font-size:1.14rem;line-height:1.45;font-weight:700}
+.inv-resp p::before{content:"“";color:var(--toga-txt);opacity:.5;margin-right:2px} .inv-resp p::after{content:"”";color:var(--toga-txt);opacity:.5;margin-left:2px}
+.inv-qual{margin:16px 0 0;font-weight:700;font-size:1rem}
+.inv-alts .alt{font-size:.97rem}
+.inv-lac{display:inline-block;width:3.2em;height:.9em;vertical-align:-.1em;border-bottom:2px dashed var(--toga-txt);opacity:.7}
+.inv-coment .inv-frase,.rbody .inv-frase{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.inv-frase .ic,.inv-frase svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--toga-txt)}
+.inv-comp{margin-top:12px;padding:10px 12px;border-radius:12px;border:1px dashed var(--line)}
+.inv-comp p{margin:0 0 6px} .inv-dica{font-size:.86rem;color:var(--muted)}
+.inv-porque,.inv-pre{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--muted);margin:12px 0 0}
+.inv-porque .ic,.inv-porque svg,.inv-pre .ic,.inv-pre svg{flex:none;width:18px;height:18px;margin-top:1px;color:var(--toga-txt)}
+.inv-pre{padding:10px 12px;border-radius:12px;background:var(--surface-2);color:var(--fg)}
+.cad-refaz.inv .inv-cab{margin-top:6px}
+[data-estilo="premium"] .inv-resp{border-radius:22px}
+[data-estilo="premium"] .inv-selo{background:linear-gradient(135deg,var(--toga),var(--toga-2))}
+html[data-anim="on"] .inv-resp.entra{animation:inv-vira .75s cubic-bezier(.3,1.35,.5,1) both}
+html[data-anim="on"] .inv-resp.entra~.inv-qual{animation:inv-sobe .5s .35s ease both}
+html[data-anim="on"] .inv-selo svg{animation:inv-gira .9s .1s cubic-bezier(.4,1.6,.5,1) both}
+html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:not(:disabled){animation:inv-sobe .45s calc(.45s + var(--i,0)*.07s) ease both}
+html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(2){--i:1} html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(3){--i:2} html[data-anim="on"] .q-cab.inv.novo~.inv-alts .alt:nth-child(4){--i:3}
+@keyframes inv-vira{0%{opacity:0;transform:perspective(700px) rotateX(-95deg)}60%{opacity:1}100%{transform:none}}
+@keyframes inv-sobe{from{opacity:0;transform:translateY(10px)}}
+@keyframes inv-gira{from{transform:rotate(-180deg) scale(.6)}}

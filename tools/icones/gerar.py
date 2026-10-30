@@ -12,7 +12,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.normpath(os.path.join(AQUI, "..", ".."))
 BAL = open(os.path.join(AQUI, "balanca.svg.inc")).read()
 
-# mesmas cores de PALETAS e CORES do index.html
+# mesmas cores de PALETAS e CORES (js/04-estado-e-navegacao.js)
 TEMAS = {
     "violeta": ("#7c3aed", "#db2777"), "oceano": ("#2563eb", "#06b6d4"), "floresta": ("#059669", "#0891b2"),
     "sol": ("#ea580c", "#e11d48"), "noite": ("#4f46e5", "#0ea5e9"), "grafite": ("#334155", "#6366f1"),
@@ -24,7 +24,7 @@ TEMAS = {
 # cor Dinâmica: o ícone instalado tem as cores de todas as matérias; a aba do navegador mostra o da matéria aberta
 ARCO = ["#b91c1c", "#c2410c", "#d4a017", "#00733a", "#0e7490", "#1d4ed8", "#5b21b6", "#a21caf"]
 TEMAS["dinamica"] = TEMAS["c-dinamica"] = ("#1d4ed8", "#a21caf")
-# mesmas cores de DIN no index.html (principal, segunda)
+# mesmas cores de DIN (js/04-estado-e-navegacao.js) (principal, segunda)
 DIN = {
     "ied": ("#14532d", "#16a34a"), "tge": ("#8b5a0b", "#d97706"), "soc": ("#0e7490", "#fb7185"), "psc": ("#9d174d", "#fb923c"),
     "filo": ("#3730a3", "#f59e0b"), "crim": ("#3f3f46", "#dc2626"), "civil": ("#0f766e", "#2dd4bf"), "const": ("#9c7a00", "#00733a"),

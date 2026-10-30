@@ -1,0 +1,87 @@
+/* Cor Dinâmica: o JavaScript põe em <html> as cores da matéria aberta (--d1 principal, --d2, --d3 e --dt,
+   o texto claro do modo escuro) e o nome dela em data-din. Registradas com @property, as cores deslizam
+   de uma matéria para a outra em vez de trocar de repente. */
+@property --d1{syntax:"<color>";inherits:true;initial-value:#2563eb}
+@property --d2{syntax:"<color>";inherits:true;initial-value:#06b6d4}
+@property --d3{syntax:"<color>";inherits:true;initial-value:#7c3aed}
+@property --dt{syntax:"<color>";inherits:true;initial-value:#93c5fd}
+@property --d2g{syntax:"<color>";inherits:true;initial-value:#0e7490}
+@property --d2m{syntax:"<color>";inherits:true;initial-value:#1a6bbf}
+html[data-anim="on"].din-suave{transition:--d1 .7s ease,--d2 .7s ease,--d3 .7s ease,--dt .7s ease,--d2g .7s ease,--d2m .7s ease}
+/* Premium: a paleta vira a da matéria. No degradê que fica atrás de texto branco (topo, botões, destaques),
+   a segunda cor entra escurecida (--d2g) para o texto continuar legível mesmo com amarelo ou lilás */
+:root[data-estilo="premium"][data-paleta="dinamica"]{--p1:var(--d1);--p2:var(--d2);--p1-txt:var(--d1);--p1-txt-d:var(--dt);
+  --grad:linear-gradient(135deg,var(--d1) 0%,var(--d2m) 55%,var(--d2g) 100%)}
+/* Clássico: fundo, linhas e barra do topo levemente tingidos pela matéria */
+:root[data-cor="dinamica"]{--bg:color-mix(in srgb,var(--d1) 6%,#f5f5f4);--surface:#fff;--surface-2:color-mix(in srgb,var(--d1) 9%,#eeeeec);--line:color-mix(in srgb,var(--d1) 17%,#dcdcd8);--fg:color-mix(in srgb,var(--d1) 14%,#151515);--muted:color-mix(in srgb,var(--d1) 18%,#5b5b5b);--toga:var(--d1);--toga-2:color-mix(in srgb,var(--d1) 75%,#000);--toga-txt:var(--d1);--toga-borda:var(--d1);--trilho:color-mix(in srgb,var(--d1) 11%,#e7e7e4)}
+@media (prefers-color-scheme: dark){:root[data-cor="dinamica"]:not([data-theme="light"]){--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}}
+:root[data-cor="dinamica"][data-theme="dark"]{--bg:color-mix(in srgb,var(--d1) 9%,#111214);--surface:color-mix(in srgb,var(--d1) 11%,#191a1d);--surface-2:color-mix(in srgb,var(--d1) 16%,#222428);--line:color-mix(in srgb,var(--d1) 26%,#303238);--fg:#eeeef0;--muted:#a9aab0;--toga:color-mix(in srgb,var(--d1) 86%,#000);--toga-2:color-mix(in srgb,var(--d1) 60%,#000);--toga-txt:var(--dt);--toga-borda:color-mix(in srgb,var(--d1) 55%,#fff);--trilho:color-mix(in srgb,var(--d1) 16%,#222428)}
+
+/* faixa de três cores sob o topo das matérias; fora delas e na revisão geral, sem faixa */
+:root[data-din] .topo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--d1) 0 34%,var(--d2) 34% 67%,var(--d3) 67%);transform-origin:left;pointer-events:none}
+:root[data-din="base"] .topo::after,:root[data-din="rev"] .topo::after{content:none}
+[data-estilo="premium"][data-din] .topo::after{height:3px;opacity:.95;box-shadow:0 1px 0 #ffffff33 inset}
+:root[data-din]:not([data-paleta="dinamica"]):not([data-cor="dinamica"]) .topo::after{content:none}
+/* Constitucional: o degradê fica quase todo no amarelo e só termina no verde */
+:root[data-estilo="premium"][data-paleta="dinamica"][data-din="const"]{--grad:linear-gradient(135deg,var(--d1) 0%,color-mix(in srgb,var(--d1) 88%,#c9a000) 58%,var(--d2g) 100%)}
+/* Constitucional: amarelo e verde à frente, com o azul do círculo da Bandeira */
+:root[data-din="const"] .topo::after{background:linear-gradient(90deg,#f2c500 0 40%,#00733a 40% 80%,#002776 80%)}
+/* topo mais nobre: o ícone da matéria em marca d'água à direita e um leve brilho de cima para baixo */
+:root[data-din] .topo{background:linear-gradient(180deg,#ffffff14,#ffffff00 70%),var(--toga)}
+:root[data-estilo="premium"][data-din] .topo{background:linear-gradient(180deg,#ffffff1f,#ffffff00 65%),var(--grad);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--d1) 85%,transparent),inset 0 -1px 0 #ffffff1a}
+:root[data-din] .topo h1{position:relative;isolation:isolate}
+:root[data-din] .topo h1:not(.longo)::after{content:"";position:absolute;z-index:-1;right:6px;top:50%;width:92px;height:92px;transform:translateY(-50%);background:var(--din-ic) center/contain no-repeat;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 45%);mask:linear-gradient(90deg,transparent,#000 45%)}
+/* fundo do Premium: além do halo da cor principal, um halo suave da segunda cor no canto oposto */
+[data-estilo="premium"][data-din] body::after{content:"";position:fixed;inset:auto auto -25vh -25vw;width:70vw;height:55vh;max-width:560px;max-height:460px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--d2) 10%,transparent),transparent);pointer-events:none;z-index:-1}
+/* ícone grande da matéria (cabeçalho da tela): degradê cheio, ícone branco e um brilho de vidro */
+:root[data-estilo="premium"][data-din] .cabeca .tile.din.din{background:linear-gradient(145deg,color-mix(in srgb,var(--c) 92%,#fff),color-mix(in srgb,var(--c) 50%,var(--c2)));color:#fff;box-shadow:inset 0 1px 0 #ffffff59,inset 0 -10px 18px -10px #00000040,0 12px 24px -14px var(--c)}
+/* Criminologia: as luzes da viatura passam devagar pela faixa */
+html[data-anim="on"][data-din="crim"] .topo::after{background:linear-gradient(90deg,#dc2626,#2563eb,#dc2626,#2563eb,#dc2626);background-size:200% 100%;animation:din-giro 6s linear infinite}
+@keyframes din-giro{to{background-position:-200% 0}}
+html[data-anim="on"].din-muda .topo::after{animation:din-faixa .75s cubic-bezier(.2,.8,.3,1) both}
+html[data-anim="on"].din-muda[data-din="crim"] .topo::after{animation:din-faixa .75s cubic-bezier(.2,.8,.3,1) both,din-giro 6s linear .75s infinite}
+@keyframes din-faixa{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* ao entrar numa matéria, um brilho da cor nova atravessa o topo */
+html[data-anim="on"].din-muda .topo-linha{position:relative}
+html[data-anim="on"].din-muda .topo::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--d2) 55%,#ffffff00) 50%,transparent 70%);background-size:250% 100%;animation:din-brilho .9s ease-out both;mix-blend-mode:soft-light}
+@keyframes din-brilho{from{background-position:120% 0}to{background-position:-130% 0}}
+
+/* ícones das matérias: degradê da cor principal para a segunda */
+:root[data-din] .tile.din{background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,var(--c2)))}
+:root[data-estilo="premium"][data-din] .tile.din{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 16%,var(--surface)),color-mix(in srgb,var(--c2) 28%,var(--surface)));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 22%,transparent)}
+@media (prefers-color-scheme: dark){:root[data-estilo="premium"][data-din]:not([data-theme="light"]) .tile.din{background:linear-gradient(135deg,color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 40%,var(--surface)),color-mix(in srgb,var(--c2) 42%,var(--surface)));color:#fff}}
+:root[data-estilo="premium"][data-din][data-theme="dark"] .tile.din{background:linear-gradient(135deg,color-mix(in srgb,color-mix(in srgb,var(--c) 60%,#fff) 40%,var(--surface)),color-mix(in srgb,var(--c2) 42%,var(--surface)));color:#fff}
+html[data-anim="on"].din-muda .cabeca .tile{animation:din-pulo .6s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes din-pulo{0%{transform:scale(.6) rotate(-8deg);opacity:0}100%{transform:none;opacity:1}}
+
+/* amostra "Dinâmica" nas listas de cores: um disco com as cores das matérias */
+.din-amostra{background-size:cover}
+html[data-anim="on"] button[aria-pressed="true"] .din-amostra{animation:din-roda 9s linear infinite}
+@keyframes din-roda{to{transform:rotate(360deg)}}
+.din-novo{font-style:normal;font-size:.68rem;font-weight:800;letter-spacing:.02em;padding:1px 7px;border-radius:999px;background:var(--lacre);color:var(--lacre-fg);vertical-align:2px;margin-left:2px}
+
+/* selo da matéria e cartão "por que essa cor" */
+.din-selo{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;color:#fff;background:linear-gradient(145deg,color-mix(in srgb,var(--t1) 90%,#fff),color-mix(in srgb,var(--t1) 50%,var(--t2)));box-shadow:inset 0 1px 0 #ffffff59,inset 0 -8px 14px -8px #00000038,0 6px 14px -8px var(--t1);overflow:hidden}
+.din-selo svg{width:100%;height:100%}
+.din-selo svg.i{width:24px;height:24px}
+.din-selo.mini{width:36px;height:36px;border-radius:11px}
+.din-selo.mini svg.i{width:19px;height:19px}
+[data-estilo="classico"] .din-selo{border-radius:9px}
+/* galeria da Configuração */
+.din-galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.din-galeria button{display:flex;align-items:center;gap:10px;text-align:left;padding:8px 10px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:inherit;font:inherit;font-weight:700;font-size:.86rem;line-height:1.2;cursor:pointer;min-width:0;transition:transform .14s ease,border-color .2s}
+.din-galeria button span:last-child{min-width:0}
+.din-galeria small{display:block;font-weight:500;color:var(--muted);font-size:.76rem;margin-top:2px}
+.din-galeria button[aria-pressed="true"]{border:2px solid var(--toga-borda);padding:7px 9px}
+.din-galeria button:active{transform:scale(.97)}
+[data-estilo="classico"] .din-galeria button{border-radius:8px}
+.din-gal-mais{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.din-gal-mais.aberta{grid-template-rows:1fr}
+.din-gal-mais>div{overflow:hidden;min-height:0}
+.din-gal-mais .din-galeria{padding:8px 0 2px}
+.din-gal-mais .din-galeria button{opacity:0;transform:translateY(-10px) scale(.97);transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+.din-gal-mais.aberta .din-galeria button{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 22ms + 60ms)}
+.din-gal-bt{margin-top:0}
+@media (prefers-reduced-motion:reduce){.din-gal-mais,.din-gal-mais .din-galeria button{transition:none}}
+html:not([data-anim="on"]) .din-gal-mais,html:not([data-anim="on"]) .din-gal-mais .din-galeria button{transition:none}
+@media (prefers-reduced-motion: reduce){html.din-suave{transition:none}}
