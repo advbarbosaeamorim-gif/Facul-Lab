@@ -1014,6 +1014,11 @@ html[data-anim="off"] .mv *{animation:none!important}
 .prev-premium i:nth-child(1){left:5px;right:5px;top:5px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--g1,#7c3aed),var(--g2,#db2777))}
 .prev-premium i:nth-child(2),.prev-premium i:nth-child(3){background:#16141f}
 .prev-premium i:nth-child(4){background:linear-gradient(135deg,var(--g1,#7c3aed),var(--g2,#db2777))}
+.prev-premium[data-din-prev] i:nth-child(1),.prev-premium[data-din-prev] i:nth-child(4){background:linear-gradient(110deg,#b91c1c,#e11d48,#d97706,#ca8a04,#16a34a,#0d9488,#0369a1,#1e3a8a,#7c3aed,#a21caf,#b91c1c);background-size:500% 100%;background-position:0 50%}
+html[data-anim="on"] .prev-premium[data-din-prev] i:nth-child(1),html[data-anim="on"] .prev-premium[data-din-prev] i:nth-child(4){animation:prev-din 7s ease-in-out infinite alternate}
+html[data-anim="on"] .prev-premium[data-din-prev] i:nth-child(4){animation-delay:-1.2s}
+@keyframes prev-din{to{background-position:100% 50%}}
+@media (prefers-reduced-motion:reduce){.prev-premium[data-din-prev] i{animation:none!important}}
 .prev-classico{background:#eef1f6}
 .prev-classico i:nth-child(1){background:var(--g1,var(--toga))}
 .prev-classico i:nth-child(2),.prev-classico i:nth-child(3){background:#172033}
@@ -4978,7 +4983,7 @@ const PALETAS=[["dinamica","Dinâmica","Muda com a matéria","#b91c1c","#00733a"
 let coresTodas=false;
 function coresVisiveis(L,atual){return coresTodas?L:L.filter((x,i)=>i<6||x[0]===atual)}
 function botaoMaisCores(L,atual){const f=L.length-coresVisiveis(L,atual).length;if(!f&&!coresTodas)return "";return `<button class="ver-mais mais-cores" data-acao="cores-mais" aria-expanded="${coresTodas}">${coresTodas?"Mostrar menos":`Mostrar mais ${f} ${f>1?"cores":"cor"}`} ${ic("prox")}</button>`}
-function prevEstilo(k){if(k==="premium"){if(paletaAtual()==="dinamica")return ` style="--g1:var(--d1);--g2:var(--d2m)"`;const p=PALETAS.find(x=>x[0]===paletaAtual());return ` style="--g1:${p[3]};--g2:${p[4]}"`}
+function prevEstilo(k){if(k==="premium"){if(paletaAtual()==="dinamica")return ` data-din-prev`;const p=PALETAS.find(x=>x[0]===paletaAtual());return ` style="--g1:${p[3]};--g2:${p[4]}"`}
   const c=corAtual();return ` style="--g1:${c==="dinamica"?DIN_BASE.classico[0]:CORES.find(x=>x[0]===c)[3]}"`}
 function paletaAtual(){const c=S.cfg&&S.cfg.paleta;return PALETAS.some(x=>x[0]===c)?c:"oceano"}
 function estiloAtual(){return (S.cfg&&S.cfg.estilo)==="classico"?"classico":"premium"}
