@@ -1,4 +1,4 @@
-/* Os arquivos do app vêm da rede primeiro, então conteúdo novo chega sem trocar CACHE_NAME.
+/* A página vem da rede primeiro e os arquivos de conteúdo se atualizam em segundo plano, então conteúdo novo chega sem trocar CACHE_NAME.
    NÃO mude CACHE_NAME nos PRs (é isso que fazia os PRs colidirem). Só mude se a lista CORE
    mudar ou o formato do cache precisar ser apagado, e faça isso depois de mergear na main. */
 const CACHE_NAME = 'facul-lab-v37';
@@ -17,7 +17,7 @@ self.addEventListener('install', e => {
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
-/* Página e arquivos do próprio app: rede primeiro (pega atualizações na hora), cache se estiver
+/* Página (index.html) e manifest: rede primeiro (pega atualizações na hora), cache se estiver
    offline ou se a rede demorar mais de 4 s. Fontes e outros sites: cache primeiro. */
 const guarda = (chave, resp) => {
   if (resp.ok || resp.type === 'opaque') { const copia = resp.clone(); caches.open(CACHE_NAME).then(c => c.put(chave, copia)); }
@@ -30,11 +30,32 @@ const redePrimeiro = (req, chave) => new Promise(ok => {
   fetch(req, { cache: 'no-cache' }).then(resp => { guarda(chave, resp); if (!feito) { feito = true; clearTimeout(t); ok(resp); } })
     .catch(() => doCache().then(r => { if (!feito) { feito = true; clearTimeout(t); ok(r || Response.error()); } }));
 });
+/* Arquivos de conteúdo (questões, apostilas, explicações, imagens): abrem na hora da cópia guardada e se atualizam
+   em segundo plano. Com sinal fraco, o app não espera mais 4 s por arquivo. Se algum chegou diferente, a página
+   recebe o aviso "conteudo-novo" e oferece atualizar. Sem cópia guardada, vem da rede como antes. */
+const avisaNovo = () => self.clients.matchAll({ type: 'window' }).then(l => l.forEach(c => c.postMessage({ tipo: 'conteudo-novo' })));
+const guardadoPrimeiro = (e, req) => caches.match(req).then(velho => {
+  const rede = fetch(req, { cache: 'no-cache' }).then(resp => {
+    if (resp.ok && velho) {
+      const a = velho.headers.get('etag') || velho.headers.get('last-modified') || velho.headers.get('content-length');
+      const b = resp.headers.get('etag') || resp.headers.get('last-modified') || resp.headers.get('content-length');
+      if (a && b && a !== b) avisaNovo();
+    }
+    return guarda(req, resp);
+  });
+  if (!velho) return rede.catch(() => Response.error());
+  e.waitUntil(rede.catch(() => {}));
+  return velho;
+});
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   if (req.mode === 'navigate') { e.respondWith(redePrimeiro(req, './index.html')); return; }
-  if (new URL(req.url).origin === self.location.origin) { e.respondWith(redePrimeiro(req, req)); return; }
+  const url = new URL(req.url);
+  if (url.origin === self.location.origin) {
+    if (/\.(js|png|jpg|svg|mp3)$/.test(url.pathname) && !/\/sw\.js$/.test(url.pathname)) { e.respondWith(guardadoPrimeiro(e, req)); return; }
+    e.respondWith(redePrimeiro(req, req)); return;
+  }
   e.respondWith(caches.match(req).then(r => r || fetch(req).then(resp => guarda(req, resp))));
 });
 
