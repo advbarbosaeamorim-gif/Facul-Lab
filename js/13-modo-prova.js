@@ -33,7 +33,7 @@ function mpComecar(d,r){const fx=mpFaixa(d,r),n=mpN(d,r);if(!n)return;
  S.hist=S.hist.filter(a=>!(a.key===key&&a.status==="pausado"));
  sessao={id:"a"+Date.now(),key,titulo:`Modo prova · ${mpRot(r)}`,sub:nomeCurto(infoDisc(d).nome)+(fx?` · ${txtFaixa(fx)}`:" · a matéria toda"),inicio:Date.now(),status:"pausado",qids,ordem,resp:{},tempo:0,limite:n*R[2],corrFinal:true,pos:0,
   mp:{d,r,fx,vale:mpVale(d,r),ritmo:R[0],av:[]}};
- S.hist.unshift(sessao);if(S.hist.length>200)S.hist.length=200;idx=0;folha=false;confirmar=null;salvar();
+ S.hist.unshift(sessao);podarHist();idx=0;folha=false;confirmar=null;salvar();
  /* "fazer outra prova" a partir do resultado: o resultado antigo sai da pilha, para o voltar levar ao modo prova */
  if(rota.tela==="res"){const v=pilha.length&&pilha[pilha.length-1].tela==="mprova"?pilha.pop():{tela:"mprova",d,r};rota=v}
  ir({tela:"quiz"})}

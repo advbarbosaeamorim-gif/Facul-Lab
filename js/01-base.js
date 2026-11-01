@@ -173,7 +173,9 @@ function sim(key){
   if(p[0]==="ptodas"){const i=+p[1];return {key,tipo:"fac",titulo:"Todas as questões",sub:`${i+1}º período · todas as disciplinas`,qids:idsPer(i).slice(),limite:0}}
   if(p[0]==="ass"){const sc=p[1],a=decodeURIComponent(p[2]||"");const qids=idsEscopo(sc).filter(id=>QMAP[id]&&grupoDe(QMAP[id])===a);
     return {key,tipo:"ass",titulo:"Treino: "+a,sub:nomeCurto(nomeEscopo(sc)),qids,limite:0}}
-  if(p[0]==="errhoje"){return {key,tipo:"err",titulo:"Revisão espaçada",sub:"Questões erradas que chegaram no dia de revisão",qids:errosHoje(),limite:0}}
+  /* revisão de questões: "errhoje" é a cota de hoje; "errhoje:10" são só 10 (da cota ou, com a cota feita, da fila) */
+  if(p[0]==="errhoje"){if(p[1]){const h=errosHoje(),l=(h.length?h:errosHojeTodos()).slice(0,+p[1]||10);return {key,tipo:"err",titulo:"Revisão rápida",sub:`${l.length} ${l.length===1?"questão":"questões"} da revisão espaçada`,qids:l,limite:0}}
+    return {key,tipo:"err",titulo:"Revisão espaçada",sub:"Questões erradas que chegaram no dia de revisão",qids:errosHoje(),limite:0}}
   if(p[0]==="teim"){return {key,tipo:"err",titulo:"Questões teimosas",sub:"As que você errou mais de uma vez",qids:rvTeimQ(),limite:0}}
   if(p[0]==="cad")return cadSim(key,p);
   if(p[0]==="err"){return {key,tipo:"err",titulo:"Refazer erradas",sub:"Questões que você errou na última tentativa",qids:Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]),limite:0}}

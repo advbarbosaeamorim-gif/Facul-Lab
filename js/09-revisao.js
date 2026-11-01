@@ -12,14 +12,18 @@ const RV_CX=[["Recém-aprendido",0,3,"var(--nv5)","acabou de entrar ou voltou de
 const rvLote=()=>({leve:15,intenso:40}[S.cfg&&S.cfg.ritmo]||25);
 const rvPl=(n,s,p)=>`${n} ${n===1?s:p}`;
 function rvItens(){const L=[];const C=S.cards||{},Q=S.qrev||{};
- Object.keys(C).forEach(id=>{if(!DISC[id.split(":")[0]])return;const s=sr(Object.assign({},C[id]));L.push({t:"c",id,due:C[id].due||0,iv:s.iv||0,ult:C[id].t||0,lap:C[id].lap||0})});
- Object.keys(Q).forEach(id=>{if(!QMAP[id])return;const r=Q[id],st=S.stats[id]||{};L.push({t:"q",id,due:r.due||0,iv:PASSOS_Q[Math.min(r.n||0,PASSOS_Q.length-1)],ult:st.t||0,lap:r.lap||0,er:(st.n||0)-(st.ok||0)})});
+ Object.keys(C).forEach(id=>{if(!DISC[id.split(":")[0]])return;const s=sr(Object.assign({},C[id]));L.push({t:"c",id,due:C[id].due||0,iv:s.iv||0,ult:C[id].t||0,lap:C[id].lap||0,errou:!(s.iv>0)})});
+ Object.keys(Q).forEach(id=>{if(!QMAP[id])return;const r=Q[id],st=S.stats[id]||{};L.push({t:"q",id,due:r.due||0,iv:PASSOS_Q[Math.min(r.n||0,PASSOS_Q.length-1)],ult:st.t||0,lap:r.lap||0,er:(st.n||0)-(st.ok||0),errou:st.u===0})});
  return L}
+/* a chance de lembrar cai com o tempo desde a última vez; se essa última vez foi um erro, ela já começa pela metade
+   (antes, errar uma questão contava como "acabou de revisar" e o medidor marcava 100% logo depois de muitos erros) */
 function rvMemoria(L){if(!L.length)return null;const now=Date.now();
- return Math.round(L.reduce((s,x)=>s+Math.pow(.9,Math.max(0,(now-(x.ult||now))/DIA)/Math.max(.5,x.iv)),0)*100/L.length)}
+ return Math.round(L.reduce((s,x)=>s+(x.errou?.5:1)*Math.pow(.9,Math.max(0,(now-(x.ult||now))/DIA)/Math.max(.5,x.iv)),0)*100/L.length)}
 function rvPrevisao(n){const h0=inicioDia();const D=[];for(let i=0;i<n;i++)D.push({c:0,q:0,m:0,t:h0+i*DIA});
  const add=(due,k)=>{const i=Math.max(0,Math.floor((due-h0+36e5)/DIA));if(i<n)D[i][k]++};
- rvItens().forEach(x=>add(x.due,x.t));const A=agendaAp();Object.keys(A).forEach(d=>{if(DISC[d])add(A[d].prox,"m")});return D}
+ rvItens().forEach(x=>add(x.due,x.t));const A=agendaAp();Object.keys(A).forEach(d=>{if(DISC[d])add(A[d].prox,"m")});
+ /* questões: a cota diária empurra o que sobra para os dias seguintes */
+ let resto=0;D.forEach((d,i)=>{const tem=d.q+resto,cabe=i?rvCotaQ():rvRestQ();d.q=Math.min(tem,cabe);resto=tem-d.q});return D}
 function rvCaixas(L){const n=RV_CX.map(()=>({c:0,q:0}));L.forEach(x=>{const i=RV_CX.findIndex(b=>x.iv<b[2]);n[i<0?4:i][x.t]++});return n}
 function rvTeimQ(){const st=S.stats||{};return Object.keys(S.qrev||{}).filter(id=>QMAP[id]&&st[id]&&(st[id].n-st[id].ok)>=2)}
 function rvTeimC(){const C=S.cards||{};return Object.keys(C).filter(id=>DISC[id.split(":")[0]]&&(C[id].lap||0)>=3).sort((a,b)=>C[b].lap-C[a].lap)}
@@ -41,6 +45,11 @@ function rvFimDeck(){if(!deck||!deck.rv)return "";const v=contaVencidos(),e=erro
  if(v)return `<button class="botao cheio" data-acao="rv-cartoes">Mais ${rvPl(Math.min(v,rvLote()),"cartão","cartões")}<small class="rv-bt-sub">${v>rvLote()?`${v} esperando, em lotes de ${rvLote()}`:"os últimos de hoje"}</small></button>`;
  if(e)return `<button class="botao cheio" data-acao="erradas-hoje">Seguir para as questões (${e})</button>`;
  return ""}
+
+/* quadro da cota na configuração da revisão de questões: a cota, o que já foi feito e a fila que sobra */
+function rvCotaPre(n){const fila=errosHojeTodos().length,feitas=rvFeitasHoje();
+ return `<div class="rv-cota-pre">${ic("info")}<div><p><b>Cota de hoje: ${rvCotaQ()} questões</b> (ritmo ${esc(ritmoAtual()[1].toLowerCase())}).${feitas?` Você já fez ${feitas}.`:""}${fila>n?` Na fila: ${fila}; o que não couber hoje entra nos próximos dias, as mais antigas primeiro.`:""}</p>
+ ${n>10||(!n&&fila)?`<button class="botao linha" data-acao="rv-dez">${n?"Só 10 agora":"Fazer mais 10"}</button>`:""}</div></div>`}
 
 /* questão que sai da revisão depois de 5 acertos seguidos */
 function rvDominou(){S.qdom=(S.qdom||0)+1;setTimeout(()=>{const t=document.createElement("div");t.className="rv-toast";t.setAttribute("role","status");
@@ -81,7 +90,7 @@ function rvCurvaMuda(n){rvCurvaN=n;const f=document.querySelector(".rv-curva");i
  if(animOn()){const L=p.getTotalLength();p.style.transition="none";p.style.strokeDasharray=L;p.style.strokeDashoffset=L;void p.getBoundingClientRect();p.style.transition="stroke-dashoffset 1.1s cubic-bezier(.3,.7,.3,1)";p.style.strokeDashoffset=0;setTimeout(()=>{p.style.strokeDasharray="";p.style.transition=""},1200)}}
 
 function telaRevisao(){const L=rvItens(),mem=rvMemoria(L),P=rvPrevisao(14),cx=rvCaixas(L);
- const vc=contaVencidos(),ve=errosHoje().length,aps=apsVencidas(),va=aps.length,tot=vc+ve+va;
+ const vc=contaVencidos(),ve=errosHoje().length,fila=errosHojeTodos().length,aps=apsVencidas(),va=aps.length,tot=vc+ve+va;
  const tC=rvTeimC(),tQ=rvTeimQ(),dom=(S.qdom||0)+L.filter(x=>x.iv>=60).length;
  const mx=Math.max(1,...P.map(d=>d.c+d.q+d.m)),sem=P.slice(1,8).reduce((s,d)=>s+d.c+d.q+d.m,0);
  const cxMax=Math.max(1,...cx.map(n=>n.c+n.q));
@@ -91,13 +100,15 @@ function telaRevisao(){const L=rvItens(),mem=rvMemoria(L),P=rvPrevisao(14),cx=rv
  <section class="rv-hero" aria-labelledby="rv-mem">
   <button class="rv-medidor" data-acao="rv-medidor" aria-label="${mem===null?"Memória estimada: ainda sem dados":`Memória estimada: ${mem}%`}">${rvMedidor(mem)}</button>
   <div class="rv-hero-txt"><p class="rv-k">Memória estimada agora</p><h2 id="rv-mem">${mem===null?"Ainda vazia":mem+"%"}<small>${esc(rvTomMem(mem))}</small></h2>
-  <p>${mem===null?"Responda cartões ou erre uma questão (acontece!) e ela entra aqui. O app traz cada uma de volta na hora certa.":`Se fosse testado agora, você lembraria cerca de ${mem}% do que está em revisão. Revisar o que chegou hoje traz esse número de volta para perto de 100%.`}</p></div>
+  <p>${mem===null?"Responda cartões ou erre uma questão (acontece!) e ela entra aqui. O app traz cada uma de volta na hora certa.":`Se fosse testado agora, você lembraria cerca de ${mem}% do que está em revisão. ${mem>=95?"Está tudo fresco: revisando no dia marcado, continua assim.":tot?"Revisar o que chegou hoje faz esse número subir.":"Cada revisão feita no dia marcado faz esse número subir."}`}</p></div>
   ${ilustra("memoria","var(--toga-txt)")}
  </section>
  <div class="secao-linha"><div class="secao" role="heading" aria-level="2">Para hoje</div><span class="contador">${tot?rvPl(tot,"item","itens"):"tudo em dia"}</span></div>
  <div class="rv-hoje">${tileH("rv-cartoes","","var(--lacre)","cartas",vc,vc===1?"cartão":"cartões",vc>rvLote()?`em lotes de ${rvLote()}`:"lembre antes de virar")}
-  ${tileH("erradas-hoje","","var(--nv2)","refazer",ve,ve===1?"questão":"questões","que você errou")}
+  ${!ve&&fila?`<button class="rv-t ok" data-acao="rv-mais10" style="--c:var(--nv2)"><span class="rv-t-ic">${ic("ok")}</span><b>${rvFeitasHoje()}</b><span class="rv-t-rot">questões hoje</span><small>cota feita · mais 10?</small></button>`
+   :tileH("erradas-hoje","","var(--nv2)","refazer",ve,ve===1?"questão":"questões",fila>ve?`de ${fila} na fila`:"que você errou")}
   ${tileH("rev-ap",va?`data-d="${aps[0]}"`:"","var(--nv1)","livro",va,va===1?"mapa mental":"mapas mentais",va?esc(nomeCurto(infoDisc(aps[0]).nome)):"")}</div>
+ ${fila>ve?`<p class="rv-cota">${ic("info")}<span>A revisão de questões tem uma cota de <b>${rvCotaQ()} por dia</b>, pelo seu <button class="link-inline" data-acao="ir-raiz" data-tela="config">ritmo de estudo</button>. ${ve?`Hoje ${ve===1?"entra 1":`entram ${ve}`}; ${fila-ve===1?"a outra fica":`as outras ${fila-ve} ficam`} para os próximos dias, as mais antigas primeiro.`:`A de hoje já foi feita; ${fila===1?"a questão que sobrou fica":`as ${fila} que sobraram ficam`} para os próximos dias.`}</span></p>`:""}
  ${tot?`<button class="botao cheio rv-comecar" data-acao="rv-comecar">${ic("seta")} Começar a revisão do dia</button><p class="rv-ordem">Primeiro os cartões, depois as questões e, por fim, os mapas mentais. Cada acerto empurra a próxima revisão para mais longe.</p>`
  :vazio("trofeu",L.length?"Revisão em dia!":"Nada para revisar ainda",L.length?(P[1].c+P[1].q+P[1].m?`Amanhã chegam ${rvPartes(P[1])}. Até lá, siga com o plano de hoje.`:"Nada marcado para amanhã. Aproveite para adiantar cartões novos."):"Estude cartões de memorização ou faça um simulado. O que você errar entra na revisão sozinho.",`<button class="botao linha" data-acao="ir-raiz" data-tela="cartoes">Estudar cartões novos</button>`,"var(--ok)")}
  <div class="secao" role="heading" aria-level="2">Próximos 14 dias</div>
@@ -135,6 +146,7 @@ document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest
  else if(a==="rv-cartoes")rvCartoesHoje();
  else if(a==="rv-teim-c")rvDeckCom(rvTeimC(),"Cartões teimosos",20);
  else if(a==="rv-teim-q")ir({tela:"pre",key:"teim"});
+ else if(a==="rv-mais10"||a==="rv-dez")comecar("errhoje:10");
  else if(a==="rv-curva"){rvCurvaMuda(+b.dataset.n);som("toque")}
  else if(a==="rv-dia"){const P=rvPrevisao(14),i=+b.dataset.i,d=P[i],t=d.c+d.q+d.m;
   document.querySelectorAll(".rv-barra").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));

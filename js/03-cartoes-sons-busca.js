@@ -10,7 +10,7 @@ function sr(s){s=s||{};if(s.iv===undefined){s.iv=s.b?INTERV[Math.min(INTERV.leng
 function proxIv(s0,nota){const s=sr(Object.assign({},s0));let iv=s.iv||0,ef=s.ef;
  if(nota===0)return {iv:0,ef:Math.max(1.3,ef-0.2)};
  if(nota===1){iv=iv<1?1:Math.max(iv+1,Math.round(iv*1.2));ef=Math.max(1.3,ef-0.15)}
- else if(nota===2){iv=iv<1?1:iv<3?3:Math.round(iv*ef)}
+ else if(nota===2){iv=iv<1?2:iv<3?3:Math.round(iv*ef)}/* cartão novo: Difícil volta amanhã, Acertei em 2 dias, Fácil em 4 */
  else{iv=iv<1?4:Math.round(Math.max(iv,1)*ef*1.3)+1;ef=Math.min(3.2,ef+0.15)}
  return {iv:Math.min(365,iv),ef}}
 const txtIv=d=>d<1?"hoje":d===1?"amanhã":d<30?`em ${d} dias`:d<60?"em 1 mês":`em ${Math.round(d/30)} meses`;
@@ -184,6 +184,8 @@ const SONS={
 const VIBRA={acerto:18,erro:[40,60,40],toque:8,vira:8,mes:10,fim:60,aprovado:[50,50,90],gabarito:[60,60,60,60,160],meta:[80,60,160],chama:[30,40,30,40,60],fogo:[12,30,12],
  segredo:[20,40,20,40,60],abre:15,peso:12,tira:8,martelo:[35,120,30],carimbo:45,pomba:[10,30,10,30,10],coruja:[20,180,30],puxa:6};
 function som(nome){if(document.hidden)return;
+ /* antes do primeiro toque o navegador bloqueia som e vibração (e avisa no console); ao abrir ou recarregar uma tela, fica em silêncio */
+ if(navigator.userActivation&&!navigator.userActivation.hasBeenActive)return;
  if(somVibra()&&VIBRA[nome]&&navigator.vibrate){try{navigator.vibrate(VIBRA[nome])}catch(e){}}
  if(!somTocaSom()||!SONS[nome])return;const a=audio();if(!a)return;
  try{if(a.state==="suspended")a.resume();SONS[nome](a)}catch(e){}}

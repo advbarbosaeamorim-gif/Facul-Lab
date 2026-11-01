@@ -1,0 +1,46 @@
+/* resultado guardado por simulado (js/17-resultados.js) e cota diária da revisão (js/09-revisao.js) */
+
+/* faculdade: de 40% a 69% o simulado fica em "Exame final" (âmbar) */
+.selo.exame{background:#9c6a0a}
+.placar.exame{background:#8f5d06}
+/* no Premium o selo é claro com o ícone colorido e o placar segue o degradê da paleta, como nos outros resultados */
+[data-estilo="premium"] .selo.exame{--sc:var(--aviso);background:color-mix(in srgb,var(--sc) 15%,transparent)}
+[data-estilo="premium"] .placar.exame{background:var(--grad)}
+
+/* evolução: as últimas notas do simulado, a melhor com anel e a linha tracejada da nota de corte */
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px 12px;margin-top:14px}
+[data-estilo="premium"] .ev{box-shadow:var(--sombra);border-color:transparent;border-radius:22px}
+.ev-top{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap}
+.ev-top b{font-family:var(--f-display);font-size:1.02rem}
+[data-estilo="premium"] .ev-top b{font-family:var(--f-body);font-weight:800;letter-spacing:-.01em}
+.ev-top small{color:var(--muted);font-size:.82rem;font-variant-numeric:tabular-nums}
+.ev-graf{position:relative;height:92px;margin:24px 0 6px}
+.ev-linha{position:absolute;left:0;right:0;bottom:calc(var(--corte)*1%);border-top:2px dashed color-mix(in srgb,var(--fg) 30%,transparent);pointer-events:none}
+.ev-barras{list-style:none;margin:0;padding:0;position:absolute;inset:0;display:flex;align-items:flex-end;gap:6px}
+.ev-barras li{flex:1 1 0;max-width:38px;height:calc(var(--p)*1%);min-height:5px;position:relative;border-radius:8px 8px 3px 3px;
+ background:color-mix(in srgb,var(--erro) 45%,var(--surface));transform-origin:bottom}
+.ev-barras li.ok{background:color-mix(in srgb,var(--ok) 55%,var(--surface))}
+.ev-barras li.ex{background:color-mix(in srgb,var(--aviso) 50%,var(--surface))}
+.ev-barras li.atual.ok{background:var(--ok)} .ev-barras li.atual.ab{background:var(--erro)} .ev-barras li.atual.ex{background:var(--aviso)}
+.ev-barras li.melhor{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--toga-txt)}
+.ev-barras li b{position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);padding:1px 3px;border-radius:5px;background:var(--surface);font-size:.72rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1}
+.ev-barras li.melhor b,.ev-barras li.atual b{color:var(--fg)}
+html[data-anim="on"] .ev-barras li{animation:ev-sobe .7s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--i)*55ms)}
+@keyframes ev-sobe{from{transform:scaleY(0)}}
+.ev-leg{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:.76rem;color:var(--muted);margin-top:8px}
+.ev-l-corte{width:18px;border-top:2px dashed color-mix(in srgb,var(--fg) 30%,transparent)}
+.ev-l-melhor{width:10px;height:10px;border-radius:3px;margin-left:6px;box-shadow:0 0 0 2px var(--toga-txt)}
+.ev-l-ult{margin-left:auto}
+.ev-nota{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:.88rem;line-height:1.45;color:var(--fg)}
+.ev-nota .i{width:18px;height:18px;flex:none;margin-top:1px;color:var(--muted)}
+.ev-nota.rec .i{color:var(--toga-txt)} .ev-nota.sobe .i{color:var(--ok)} .ev-nota.cai .i{color:var(--erro)}
+html[data-anim="on"] .ev-nota.rec .i{animation:ev-brilha 1.2s .5s ease-out both}
+@keyframes ev-brilha{0%{transform:scale(.4) rotate(-30deg);opacity:0}60%{transform:scale(1.25) rotate(8deg);opacity:1}100%{transform:none}}
+
+/* revisão de questões: aviso da cota na tela da revisão e quadro da cota antes de começar */
+.rv-cota{display:flex;gap:8px;align-items:flex-start;margin:10px 2px 0;font-size:.86rem;line-height:1.45;color:var(--muted)}
+.rv-cota .i{width:17px;height:17px;flex:none;margin-top:2px}
+.rv-cota-pre{display:flex;gap:10px;align-items:flex-start;background:color-mix(in srgb,var(--nv2) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--nv2) 28%,var(--line));border-radius:var(--r);padding:12px 14px}
+.rv-cota-pre>.i{width:19px;height:19px;flex:none;margin-top:2px;color:var(--nv2)}
+.rv-cota-pre p{margin:0;font-size:.9rem;line-height:1.45}
+.rv-cota-pre .botao{margin-top:10px;min-height:40px;padding:8px 16px;width:auto}

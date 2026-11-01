@@ -86,10 +86,10 @@ function telaOab(){
   return topo("Simulado OAB","1ª fase · 30 simulados de 80 questões",{menu:true,extra})+
    `<main class="wrap">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
    <button class="fab" data-acao="proximo" aria-label="Iniciar próximo simulado">${ic("mais")}</button>`}
-function concluidosOab(){const l=[];for(let k=0;k<N_SIM;k++){const a=S.hist.find(x=>x.key==="oab:"+k&&x.status==="concluido");if(a)l.push(a)}return l}
+function concluidosOab(){const l=[];for(let k=0;k<N_SIM;k++){const x=resumoKey("oab:"+k);if(x)l.push(x)}return l}
 function blocoProgresso(){
-  const c=concluidosOab();let ok=0,er=0;c.forEach(a=>{const r=res(a);ok+=r.ok;er+=r.er+r.br});
-  const media=c.length?Math.round(c.reduce((s,a)=>s+res(a).pct,0)/c.length):0;
+  const c=concluidosOab();let ok=0,er=0;c.forEach(a=>{ok+=a.ok;er+=a.er+a.br});
+  const media=c.length?Math.round(c.reduce((s,a)=>s+a.pct,0)/c.length):0;
   const tm=c.length?c.reduce((s,a)=>s+a.tempo,0)/c.length:0;
   const tot=ok+er;
   const nh=itensHoje(),sq=sequencia();
@@ -103,7 +103,7 @@ function blocoProgresso(){
     return `<button class="assunto" data-acao="materia" data-m="${m}">${tile(META[m].cor,META[m].ic)}<span class="barra${v?" tem":""}">${v?`<i class="ok" style="width:${pct}%"></i><i class="er" style="width:${100-pct}%"></i>`:""}<span><b>${esc(META[m].nome)}</b><em>${v?pct+"%":"—"}</em></span></span></button>`}).join("")}</div>`}
 function blocoHistorico(){
   const ks=[];for(let k=0;k<N_SIM;k++)ks.push("oab:"+k);
-  const ord=ks.map((k,i)=>({k,i,e:estado(k)})).sort((x,y)=>{const pr={pausa:0,aprov:1,reprov:1,perf:1,nao:2};return pr[x.e.st]-pr[y.e.st]||((y.e.a&&y.e.a.inicio)||0)-((x.e.a&&x.e.a.inicio)||0)||x.i-y.i});
+  const ord=ks.map((k,i)=>({k,i,e:estado(k)})).sort((x,y)=>{const pr={pausa:0,aprov:1,reprov:1,perf:1,exame:1,nao:2};return pr[x.e.st]-pr[y.e.st]||((y.e.a&&y.e.a.inicio)||0)-((x.e.a&&x.e.a.inicio)||0)||x.i-y.i});
   return `<div class="lista" style="margin-top:4px">${ord.map(o=>itemSim(o.k)).join("")}</div>`}
 
 /* ---------- matérias ---------- */
@@ -201,23 +201,23 @@ function telaPre(){if(/^faixa:/.test(rota.key||"")){const d=rota.key.split(":")[
   return topo("Configurar simulado",s.titulo+" · "+s.sub,{})+
   `<main class="wrap"><div class="cartao">
     ${NI?`<div class="box-nivel" style="--c:var(--nv${s.nivel})">${chipNivel(s.nivel)}<p>${esc(NI.dica)}</p></div>`:""}
-    <div class="info"><div><strong>${n}</strong><small>questões</small></div><div><strong>${s.limite?dur(s.limite):"Livre"}</strong><small>${s.limite?"de prova":"sem cronômetro"}</small></div><div><strong>50%</strong><small>para aprovação</small></div></div>
+    <div class="info"><div><strong>${n}</strong><small>questões</small></div><div><strong>${s.limite?dur(s.limite):"Livre"}</strong><small>${s.limite?"de prova":"sem cronômetro"}</small></div>${corteInfo(rota.key)}</div>
     <div class="chave"><p><b>Correção no final ${S.cfg.corrFinal?"ligada":"desligada"}</b><small>${S.cfg.corrFinal?"A correção de cada questão será exibida ao final do simulado":"A correção aparece logo depois de cada resposta"}</small></p>
       <label class="switch"><input type="checkbox" id="corrFinal" ${S.cfg.corrFinal?"checked":""} aria-label="Correção no final"><span></span></label></div>
-    <p class="nota">A ordem das alternativas muda a cada tentativa.${s.fixa?" As questões seguem a ordem das matérias na prova.":s.rampa?" As questões começam pelas mais simples e vão ficando mais difíceis; cada correção traz o comentário e o fundamento legal.":" A ordem das questões também muda."}</p>${invAvisoPre(s)}
-  </div>
+    ${/^errhoje/.test(rota.key)?rvCotaPre(n):""}<p class="nota">A ordem das alternativas muda a cada tentativa.${s.fixa?" As questões seguem a ordem das matérias na prova.":s.rampa?" As questões começam pelas mais simples e vão ficando mais difíceis; cada correção traz o comentário e o fundamento legal.":" A ordem das questões também muda."}</p>${invAvisoPre(s)}
+  </div>${resEvolucao(rota.key)}
   <div class="botoes">${e.st==="pausa"?`<button class="botao linha" data-acao="comecar">Refazer simulado</button><button class="botao cheio" data-acao="continuar">Continuar onde parei</button>`
-    :`${e.a?`<button class="botao linha" data-acao="ver-ultima">Ver última correção</button>`:""}<button class="botao cheio" data-acao="comecar">${e.a?"Refazer simulado":"Iniciar simulado"}</button>`}</div></main>`}
+    :`${e.a&&!e.a.resumo?`<button class="botao linha" data-acao="ver-ultima">Ver última correção</button>`:""}${n?`<button class="botao cheio" data-acao="comecar">${e.a?"Refazer simulado":"Iniciar simulado"}</button>`:""}`}</div></main>`}
 function comecar(key){const s=sim(key);if(!s||!s.qids.length)return;
   const qids=s.fixa?s.qids.slice():s.rampa?rampa(s.qids):emb(s.qids);const ordem={};qids.forEach(id=>ordem[id]=emb([0,1,2,3]));
   S.hist.forEach(a=>{if(a.key===key&&a.status==="pausado"){a.status="descartado"}});
   S.hist=S.hist.filter(a=>a.status!=="descartado");
   sessao={id:"a"+Date.now(),key,titulo:s.titulo,sub:s.sub,inicio:Date.now(),status:"pausado",qids,ordem,resp:{},tempo:0,limite:s.limite,corrFinal:!!S.cfg.corrFinal,pos:0,inv:s.tipo==="err"?invMonta(qids):undefined};
-  S.hist.unshift(sessao);if(S.hist.length>200)S.hist.length=200;idx=0;folha=false;confirmar=null;salvar();ir({tela:"quiz"})}
+  S.hist.unshift(sessao);podarHist();idx=0;folha=false;confirmar=null;salvar();ir({tela:"quiz"})}
 
 /* ---------- prova ---------- */
 function responderQ(o){const s=sessao,id=s.qids[idx];if(!s.corrFinal&&s.resp[id]!==undefined)return;
-  if(s.resp[id]===undefined)marcarDia("q");s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0,o>0&&invDe(s,id)?"inv":o);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
+  if(s.resp[id]===undefined){marcarDia("q");if(/^errhoje/.test(s.key))rvqConta()}s.resp[id]=o;if(!s.corrFinal)registrar(id,o===0,o>0&&invDe(s,id)?"inv":o);s.pos=idx;salvar();rota.manterScroll=true;render();if(!s.corrFinal){efeitoResposta(o===0);som(o===0?"acerto":"erro")}else{efeitoResposta(null);som("toque")}}
 function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   if(!q){return topo("Questão indisponível","",{voltarAcao:"pausar"})+`<main class="wrap">${vazio("carimbo","Questão retirada do banco","Ela foi removida depois de uma revisão. Passe para a próxima: a sua nota considera só as questões disponíveis.")}</main>`+navQuiz()}
   const L=invDe(s,id);if(L)return telaQuizInv(s,id,q,L);
@@ -257,7 +257,7 @@ function iniciarRelogio(){if(!sessao||tick)return;ultimoTick=Date.now();
 function pararRelogio(){if(tick){clearInterval(tick);tick=null;if(sessao){sessao.tempo+=(Date.now()-ultimoTick)/1000;ultimoTick=Date.now()}}}
 function finalizar(){pararRelogio();const a=sessao;a.status="concluido";a.fim=Date.now();
   a.qids.forEach(id=>{const r=a.resp[id];if(a.corrFinal||r===undefined)registrar(id,r===0,r>0&&invDe(a,id)?"inv":r)});
-  sessao=null;folha=false;confirmar=null;salvar();
+  resAnota(a);sessao=null;folha=false;confirmar=null;salvar();
   const base=pilha.filter(r=>r.tela!=="quiz"&&r.tela!=="pre");pilha=base;rota={tela:"res",id:a.id,revela:!!a.mp};render();
   if(!a.mp){const p=res(a).pct;if(p===100)setTimeout(()=>mostrarFesta(a),250);else som(p>=50?"aprovado":"fim")}}
 function pausar(){pararRelogio();if(sessao){sessao.pos=idx;salvar()}sessao=null;folha=false;confirmar=null;
@@ -266,11 +266,11 @@ function pausar(){pararRelogio();if(sessao){sessao.pos=idx;salvar()}sessao=null;
 /* ---------- resultado ---------- */
 function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab"};return telaOab()}
   if(a.mp)return telaResProva(a);
-  const r=res(a),st=r.pct===100?"perf":r.pct>=50?"aprov":"reprov";
+  const r=res(a),st=stDe(a.key,r.pct);
   const pm={};a.qids.forEach(id=>{const q=QMAP[id];if(!q)return;const x=pm[q.m]=pm[q.m]||{o:0,n:0};x.n++;if(a.resp[id]===0)x.o++});
   const temErr=r.er+r.br>0;
   return topo("Resultado",a.titulo+" · "+(a.sub||""),{})+
-  `<main class="wrap"><div class="placar ${st}"><div class="pct">${r.pct}%</div><div><h2>${esc(a.titulo)}: ${ROTULO[st]}</h2><p>${r.ok} certas · ${r.er} erradas · ${r.br} em branco · ${dur(a.tempo)}</p><p>Na 1ª fase, a aprovação exige 40 acertos em 80 (50%).</p></div></div>
+  `<main class="wrap"><div class="placar ${st}"><div class="pct">${r.pct}%</div><div><h2>${esc(a.titulo)}: ${ROTULO[st]}</h2><p>${r.ok} certas · ${r.er} erradas · ${r.br} em branco · ${dur(a.tempo)}</p>${regraTexto(a.key,r)}</div></div>${resEvolucao(a.key,a)}
   ${st==="perf"?versoCard(versoDaChave(a.key),"Gabarito perfeito · uma palavra para você"):""}
   <div class="botoes"><button class="botao cheio" data-acao="refazer-sim" data-key="${a.key}">Refazer simulado</button>${temErr?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button><button class="botao linha" data-cad="abrir">${ic("caderno")} Abrir o caderno de erros</button>`:""}</div>
   ${Object.keys(pm).length>1?`<div class="secao" role="heading" aria-level="2">Desempenho por matéria</div><div class="desemp">${Object.keys(pm).map(m=>{const x=pm[m];const p=Math.round(x.o*100/x.n);
@@ -307,10 +307,11 @@ function telaQuem(){let feitas=0;Object.keys(S.stats).forEach(k=>{if(QMAP[k])fei
   <p class="sb-ass">Bons estudos!<span>Nicolas Amorim</span></p>
   <button class="botao cheio sb-cta" data-acao="ir-raiz" data-tela="hoje">${ic("alvo")} Bora estudar hoje</button>
  </main>`}
+function usadasOab(){const u=new Set();for(let k=0;k<N_SIM;k++)sim("oab:"+k).qids.forEach(id=>u.add(id));return u.size}
 function telaSobre(){const nO=OAB.reduce((s,m)=>s+(porM[m]||[]).length,0);
   return topo("Como funciona","",{menu:true})+
   `<main class="wrap">${tourCta()}<div class="dica"><p style="margin:0 0 8px"><b>Simulados OAB.</b> São 30 provas fixas de 80 questões, com a mesma distribuição de matérias da 1ª fase: 8 de Ética, 6 de Civil, Processo Civil, Constitucional, Penal e Processo Penal, e assim por diante. Você tem 5 horas e precisa de 50% para aprovação.</p>
-  <p style="margin:0 0 8px"><b>Banco atual.</b> ${nO} questões das matérias da OAB e ${QS.length-nO} de disciplinas da faculdade. Como 30 provas de 80 somam 2.400 posições, cada questão aparece, em média, em ${String(Math.round(2400/nO*10)/10).replace(".",",")} simulados diferentes. Conforme o banco crescer, os simulados ficam mais variados automaticamente.</p>
+  <p style="margin:0 0 8px"><b>Banco atual.</b> ${nO.toLocaleString("pt-BR")} questões das matérias da OAB e ${(QS.length-nO).toLocaleString("pt-BR")} de disciplinas da faculdade. Os 30 simulados somam 2.400 posições e usam ${usadasOab().toLocaleString("pt-BR")} questões diferentes: nas matérias com menos questões, algumas se repetem entre simulados, e as que sobram aparecem nos treinos por matéria. Conforme o banco crescer, os simulados ficam mais variados automaticamente.</p>
   <p style="margin:0 0 8px"><b>Questões.</b> São inéditas, no estilo da FGV, sobre os temas que mais caem. Cada uma traz comentário, o dispositivo legal ou precedente e a explicação de por que cada alternativa errada está errada. Se desconfiar de algum gabarito, use <b>Reportar erro nesta questão</b>.</p>
   <p style="margin:0 0 8px"><b>Caderno de erros.</b> Toda questão que você erra vai para o caderno, com a sua resposta, o gabarito e a explicação de cada alternativa. Marque por que errou, anote o que aprendeu e refaça: depois de 3 acertos seguidos ela fica dominada.</p>
   <p style="margin:0 0 8px"><b>Lei seca.</b> ${LS.length} dispositivos mais cobrados, com o texto literal conferido no Planalto, para treinar em dois formatos: complete o artigo e certo ou errado.</p>
