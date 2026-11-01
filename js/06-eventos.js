@@ -125,7 +125,7 @@ document.addEventListener("click",e=>{
     case "periodo":periodo=+b.dataset.p;rota.manterScroll=true;render();break;
     case "erradas":gaveta=false;ir({tela:"pre",key:"err"});break;
     case "erradas-hoje":gaveta=false;ir({tela:"pre",key:"errhoje"});break;
-    case "abrir":{const k=b.dataset.key;const e2=estado(k);if(e2.st==="nao"||e2.st==="pausa")ir({tela:"pre",key:k});else ir({tela:"res",id:e2.a.id});break}
+    case "abrir":{const k=b.dataset.key;const e2=estado(k);if(e2.st==="nao"||e2.st==="pausa"||e2.a.resumo)ir({tela:"pre",key:k});else ir({tela:"res",id:e2.a.id});break}
     case "proximo":{let k=null;for(let i=0;i<N_SIM;i++){const st=estado("oab:"+i).st;if(st==="pausa"){k="oab:"+i;break}}
       if(!k)for(let i=0;i<N_SIM;i++){if(estado("oab:"+i).st==="nao"){k="oab:"+i;break}}
       ir({tela:"pre",key:k||"oab:0"});break}
@@ -136,7 +136,7 @@ document.addEventListener("click",e=>{
     case "refazer-erradas-res":{const x=S.hist.find(y=>y.id===rota.id);if(!x)return;const ids=x.qids.filter(id=>x.resp[id]!==0&&QMAP[id]);if(!ids.length)return;
       const ordem={};ids.forEach(id=>ordem[id]=emb([0,1,2,3]));
       sessao={id:"a"+Date.now(),key:"rev:"+x.id,titulo:"Revisão",sub:x.titulo+" · "+(x.sub||""),inicio:Date.now(),status:"pausado",qids:emb(ids),ordem,resp:{},tempo:0,limite:0,corrFinal:false,pos:0};
-      S.hist.unshift(sessao);idx=0;salvar();ir({tela:"quiz"});break}
+      S.hist.unshift(sessao);podarHist();idx=0;salvar();ir({tela:"quiz"});break}
     case "marcar":{const s=sessao,id=s.qids[idx],o=+b.dataset.o;if(!s.corrFinal&&s.resp[id]!==undefined)return;
       const modo=modoQ();
       if(modo==="confirmar"){pend={id,o};rota.manterScroll=true;render();break}

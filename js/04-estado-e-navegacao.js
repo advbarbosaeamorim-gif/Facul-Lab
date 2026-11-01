@@ -46,16 +46,33 @@ const PASSOS_Q=[1,3,7,15,30];
 function agendarQ(id,c){S.qrev=S.qrev||{};const r=S.qrev[id];const d0=new Date();d0.setHours(0,0,0,0);const hoje=d0.getTime();
  if(!c){S.qrev[id]={n:0,due:hoje+864e5,lap:r?(r.lap||0)+1:0};return}
  if(r){r.n++;if(r.n>=PASSOS_Q.length){delete S.qrev[id];rvDominou()}else r.due=hoje+PASSOS_Q[r.n]*864e5}}
-function errosHoje(){const q=S.qrev||{};const now=Date.now();return Object.keys(q).filter(id=>QMAP[id]&&q[id].due<=now)}
+/* revisão de questões com cota diária: errosHojeTodos() é a fila inteira (as mais atrasadas primeiro);
+   errosHoje() é a parte de hoje, limitada pela cota do ritmo de estudo (leve 20, moderado 40, intenso 60).
+   O que passa da cota continua na fila e entra nos dias seguintes. */
+function errosHojeTodos(){const q=S.qrev||{};const now=Date.now();return Object.keys(q).filter(id=>QMAP[id]&&q[id].due<=now).sort((a,b)=>q[a].due-q[b].due)}
+const rvCotaQ=()=>({leve:20,intenso:60}[S.cfg&&S.cfg.ritmo]||40);
+function rvFeitasHoje(){const r=S.rvq;return r&&r.d===inicioDia()?r.n:0}
+function rvRestQ(){return Math.max(0,rvCotaQ()-rvFeitasHoje())}
+function rvqConta(){const d=inicioDia();if(!S.rvq||S.rvq.d!==d)S.rvq={d,n:0};S.rvq.n++}
+function errosHoje(){return errosHojeTodos().slice(0,rvRestQ())}
 const ultima=key=>S.hist.find(a=>a.key===key);
 const p2=n=>String(n).padStart(2,"0");
 function tile(cor,icn,cls){const d=dinCoresOn&&DIN_POR_COR[cor],c2=d?d[2]:estiloAtual()==="premium"&&/^#[0-9a-f]{6}$/i.test(cor)?mixHex(cor,"#ffffff",.45):"";return `<span class="tile ${cls||""}${c2?" din":""}" style="--c:${cor}${c2?";--c2:"+c2:""}">${ic(icn)}</span>`}
-function estado(key){const a=ultima(key);if(!a)return {st:"nao",a:null};if(a.status==="pausado")return {st:"pausa",a};const r=res(a);return {st:r.pct===100?"perf":r.pct>=50?"aprov":"reprov",a,r}}
-const ROTULO={nao:"Não iniciado",pausa:"Pausado",aprov:"Aprovado",reprov:"Reprovado",perf:"Perfeito"};
-const SELO={nao:"exc",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela"};
+/* nota de corte de cada tipo de simulado: OAB, 50%; faculdade, a regra de notas do app (Afya Unigranrio: 70 aprova direto,
+   de 40 a 69 vai para o exame final); listas de revisão e treinos seguem os 50% */
+const FAC_KEY=/^(fac|faixa|ftodas|per|ptodas):/;
+function tipoNota(key){key=key||"";return FAC_KEY.test(key)?"fac":/^(oab|mat|mtodas|casos):/.test(key)?"oab":"treino"}
+function stDe(key,pct){if(pct===100)return "perf";if(tipoNota(key)==="fac")return pct>=NOTA_REGRA.dir?"aprov":pct>=NOTA_REGRA.ex?"exame":"reprov";return pct>=50?"aprov":"reprov"}
+/* a última tentativa de cada simulado: a sessão guardada ou, se ela já saiu do histórico, o resumo fixo (S.res) */
+function estado(key){const a=ultima(key);
+  if(a){if(a.status==="pausado")return {st:"pausa",a};const r=res(a);return {st:stDe(key,r.pct),a,r}}
+  const R=resDe(key);if(R)return {st:stDe(key,R.u),a:{inicio:R.i||R.t,fim:R.t,tempo:R.tp||0,status:"concluido",resumo:true},r:{ok:R.ok||0,er:R.er||0,br:R.br||0,pct:R.u}};
+  return {st:"nao",a:null}}
+const ROTULO={nao:"Não iniciado",pausa:"Pausado",aprov:"Aprovado",reprov:"Reprovado",perf:"Perfeito",exame:"Exame final"};
+const SELO={nao:"exc",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela",exame:"refazer"};
 function contagem(r){r=r||{ok:0,er:0,br:0};return `<span class="cont"><span title="Certas"><span class="ck ok">${ic("ok")}</span>${p2(r.ok)}<span class="sr"> certas</span></span><span title="Erradas"><span class="ck er">${ic("x")}</span>${p2(r.er)}<span class="sr"> erradas</span></span><span class="c-br" title="Em branco"><span class="ck br">${ic("exc")}</span>${p2(r.br)}<span class="sr"> em branco</span></span></span>`}
 function itemSim(key,tituloOpc){const s=sim(key);if(!s||!s.qids.length)return "";const e=estado(key);const a=e.a;
-  let sub;if(e.st==="nao")sub="[Toque para iniciar]";else if(e.st==="pausa")sub="[Toque para continuar]";else sub=`com ${e.r.pct}% em ${dur(a.tempo)}`;
+  const R=resDe(key);let sub;if(e.st==="nao")sub="[Toque para iniciar]";else if(e.st==="pausa")sub="[Toque para continuar]";else sub=`com ${e.r.pct}% em ${dur(a.tempo)}${R&&R.n>1&&R.b>e.r.pct?` · melhor ${R.b}%`:""}`;
   const r=a?(e.r||res(a)):null;
   return `<button class="item" data-acao="abrir" data-key="${key}"><span class="selo ${e.st}">${ic(SELO[e.st])}</span>
    <span style="min-width:0">${s.nivel?chipNivel(s.nivel)+"<br>":""}<span class="item-tit">${esc(tituloOpc||s.titulo)}: ${ROTULO[e.st]}</span><br><span class="item-sub">${sub} · ${s.qids.length} questões</span><br>${contagem(r)}</span>

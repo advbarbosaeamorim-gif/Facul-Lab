@@ -18,7 +18,7 @@ const BK_PASSOS=[
  ["Enviar","Mande o arquivo para você mesmo: WhatsApp, e-mail ou Google Drive. Ele é pequeno e fica guardado como qualquer documento."],
  ["Restaurar","No celular novo, abra o Facul Lab, entre em <b>Backup do progresso</b> e toque em <b>Restaurar de um arquivo</b>. Tudo volta como estava."]];
 function bkResumo(o){o=o||{};const n=x=>Object.keys(x||{}).length;
- return {q:n(o.stats),sim:(o.hist||[]).length,dias:Object.keys(o.dias||{}).filter(k=>temAtiv(o.dias[k])).length,cards:n(o.cards),lidos:n(o.lidos),
+ return {q:n(o.stats),sim:Math.max((o.hist||[]).length,Object.keys(o.res||{}).reduce((s,k)=>s+((o.res[k]&&o.res[k].n)||0),0)),dias:Object.keys(o.dias||{}).filter(k=>temAtiv(o.dias[k])).length,cards:n(o.cards),lidos:n(o.lidos),
   fav:n(o.fav)+Object.keys(o.notas||{}).filter(k=>o.notas[k]).length,ovos:n(o.ovos),ult:o.atualizado||0}}
 const BK_ITENS=[["q","Questões respondidas","ok","var(--nv1)"],["sim","Simulados e listas","recibo","var(--nv2)"],["dias","Dias de estudo","chama","var(--nv4)"],
  ["cards","Cartões em revisão","cartas","var(--nv6)"],["lidos","Temas lidos","livro","var(--nv7)"],["fav","Favoritos e anotações","marcador","var(--nv3)"],["ovos","Segredos achados","estrela","var(--nv5)"]];
@@ -116,6 +116,9 @@ function bkJuntar(a,b){const r=JSON.parse(JSON.stringify(a)),o=x=>x&&typeof x=="
  cada("lidos",(x,y)=>Math.min(x||y,y||x));cada("revAp",(x,y)=>(y.n||0)>(x.n||0)?y:x);cada("apPg",(x,y)=>Math.max(x||0,y||0));cada("apT",(x,y)=>String(y)>String(x)?y:x);
  cada("ls",(x,y)=>((y.a||0)+(y.e||0))>((x.a||0)+(x.e||0))?y:x);cada("rep",(x,y)=>(y.d||0)>(x.d||0)?y:x);
  cada("fav",(x,y)=>x||y);cada("notas",(x,y)=>x||y);cada("ovos",(x,y)=>String(x)<String(y)?x:y);cada("sacode",(x,y)=>String(x)>String(y)?x:y);
+ /* resultado fixo de cada simulado: a evolução dos dois lados junta, a última e a melhor nota valem para os dois */
+ cada("res",(x,y)=>{const ev=(x.ev||[]).concat(y.ev||[]).filter((e,i,l)=>l.findIndex(f=>f[0]===e[0])===i).sort((p,q)=>p[0]-q[0]).slice(-12);
+  return Object.assign({},(y.t||0)>(x.t||0)?y:x,{n:Math.max(x.n||0,y.n||0,ev.length),b:Math.max(x.b||0,y.b||0),ev})});
  Object.keys(b).forEach(k=>{if(!(k in r))r[k]=b[k];else if(o(r[k])&&o(b[k])&&!["cfg","planoPv","bk"].includes(k))r[k]=Object.assign({},b[k],r[k])});
  r.v=2;return r}
 
