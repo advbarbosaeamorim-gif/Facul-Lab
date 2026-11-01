@@ -15,7 +15,7 @@ const TELAS = [
   { tela: "periodo", p: 2 }, { tela: "disc", d: "pen2" }, { tela: "apost", p: 2 }, { tela: "ler", d: "pen2" },
   { tela: "ler", d: "pen2", pg: 2, pagina: true }, { tela: "config" }, { tela: "progresso" }, { tela: "metas" },
   { tela: "cartoes" }, { tela: "busca" }, { tela: "leiseca" }, { tela: "caderno" }, { tela: "revisao" },
-  { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" }, { tela: "medida" },
+  { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" }, { tela: "medida" }, { tela: "mudancas" },
   { tela: "pre", key: "casos:todas" },
 ];
 /* avisos do navegador que não são defeitos do app */
