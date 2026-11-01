@@ -305,13 +305,35 @@ function capaTela(ilu,tit,txt){return estiloAtual()==="premium"?`<div class="cap
 /* estado vazio: ilustração, o que aconteceu e o próximo passo */
 function vazio(ilu,tit,txt,acoes,cor){return `<div class="vazio-ilu">${ilustra(ilu,cor||"var(--toga-txt)")}<p class="v-tit">${tit}</p>${txt?`<p class="v-txt">${txt}</p>`:""}${acoes?`<div class="vazio-acoes">${acoes}</div>`:""}</div>`}
 /* simuladores interativos das apostilas: ::calc prd (cabe a substituição?), ::calc conv (conversão em prisão),
-   ::calc dosi (dosimetria trifásica), ::calc reinc (é reincidente?) e ::calc antec (linha do tempo: reincidência ou maus antecedentes?) */
+   ::calc dosi (dosimetria trifásica), ::calc reinc (é reincidente?), ::calc antec (linha do tempo: reincidência ou maus antecedentes?)
+   e ::calc prog (quanto falta para progredir de regime, pelo art. 112 da LEP atual) */
 const CALC_DEF={
  prd:{a:2,m:0,d:0,tipo:"doloso",viol:"nao",reinc:"nao",circ:"sim"},
  conv:{pm:7,pd:0,cm:1,cd:0},
  dosi:{mina:4,maxa:10,circ:2,ag:1,at:1,aum:"1/3",dim:"0"},
  reinc:{ant:"doloso",quando:"depois",prazo:"ate5",novo:"doloso",mesmo:"nao"},
- antec:{fa:"2000-03-10",tj:"2002-03-31",ext:"",fn:"2003-05-30",sn:"2004-08-20"}};
+ antec:{fa:"2000-03-10",tj:"2002-03-31",ext:"",fn:"2003-05-30",sn:"2004-08-20"},
+ prog:{a:6,m:0,crime:"comum",reinc:"nao"}};
+/* progressão de regime para crimes praticados a partir de 8/5/2026 (Leis 15.358/2026 e 15.402/2026), com o aviso da lei da época */
+function calcProgressao(v){
+ const dias=(+v.a||0)*360+(+v.m||0)*30,c=v.crime,r=v.reinc;
+ if(!dias)return {ok:null,tit:"Informe a pena total",it:[]};
+ const hed=c==="hed"||c==="hedm",morte=c==="hedm";let f,rot,lei,livr,antes;
+ if(c==="comum"){if(r==="nao"){f=1/6;rot="1/6";lei="art. 112, caput";antes=`Crime praticado **antes de 8/5/2026**: valem os **16%** do Pacote Anticrime, um pouco menos que 1/6: **${calcTempo(Math.ceil(dias*.16))}**.`}
+  else{f=.2;rot="20%";lei="art. 112, III"}}
+ else if(c==="viol"){if(r==="nao"){f=.25;rot="25%";lei="art. 112, I"}else{f=.3;rot="30%";lei="art. 112, II"}}
+ else{const esp=r==="hed";f=esp?(morte?.85:.8):(morte?.75:.7);rot=Math.round(f*100)+"%";
+  lei=esp?(morte?"art. 112, VIII":"art. 112, VII"):(morte?"art. 112, VI, a e d":"art. 112, V");
+  livr=morte?"**Livramento condicional:** vedado (art. 112, VI, a e d, e VIII, da LEP).":esp?"**Livramento condicional:** não cabe ao reincidente específico em crime hediondo (art. 83, V, do CP).":"**Livramento condicional:** só depois de cumprir mais de 2/3 da pena (art. 83, V, do CP).";
+  antes=`Crime praticado **antes de 25/3/2026**: valem os percentuais do Pacote Anticrime, mais baixos (${morte?(esp?"70%":"50%, ou 55% no feminicídio do primário"):(esp?"60%":"40%")}).`}
+ const t=Math.ceil(dias*f),it=[`Pena total de **${calcTempo(dias)}** × **${rot}** (${lei}, da LEP) = **${calcTempo(t)}** no regime atual.`];
+ if(hed&&r==="nao")it.push(morte?"Primário em hediondo com resultado morte ou em feminicídio: 75%, cinco pontos acima dos 70% do hediondo sem morte.":"Primário em crime hediondo: o percentual mais baixo dos hediondos.");
+ if(hed&&r==="sim")it.push("Reincidente em crime **comum**: fica com o percentual do primário, porque os 80% e os 85% são para o reincidente **específico** em hediondo (mesma lógica do STF, Tema 1.169).");
+ if(!hed&&r==="hed")it.push("A reincidência conta como reincidência comum: o crime de agora não é hediondo.");
+ if(livr)it.push(livr);
+ if(antes)it.push(antes);
+ it.push("Além do tempo, é preciso **boa conduta carcerária** e o resultado do **exame criminológico** (art. 112, §1º). Uma **falta grave** reinicia a contagem (Súmula 534 do STJ).");
+ return {ok:null,tit:`Progride depois de cumprir ${rot}: ${calcTempo(t)}`,it}}
 const FRACAO={"0":0,"1/6":1/6,"1/5":1/5,"1/4":1/4,"1/3":1/3,"1/2":1/2,"2/3":2/3};
 function calcDosimetria(v){
  const min=Math.max(0,+v.mina||0)*360,max=Math.max(0,+v.maxa||0)*360;
@@ -368,6 +390,7 @@ function calcResultado(tipo,v){
  if(tipo==="dosi")return calcDosimetria(v);
  if(tipo==="reinc")return calcReincidencia(v);
  if(tipo==="antec")return calcAntecedentes(v);
+ if(tipo==="prog")return calcProgressao(v);
  if(tipo==="conv"){const pena=(+v.pm||0)*30+(+v.pd||0),cump=Math.min(pena,(+v.cm||0)*30+(+v.cd||0));
   if(!pena)return {ok:null,tit:"Informe a pena substituída",it:[]};
   const resto=pena-cump,final=Math.max(30,resto);
@@ -406,6 +429,9 @@ function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
   ${sel("dim","Causa de diminuição",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}`
   :tipo==="antec"?`<p class="calc-rot">Condenação anterior</p>${dt("fa","Data do fato anterior")}${dt("tj","Trânsito em julgado (deixe vazio se ainda não houve)")}${dt("ext","Fim da pena: cumprimento ou extinção (vazio se ainda não acabou)")}
   <p class="calc-rot">Processo que está sendo julgado agora</p>${dt("fn","Data do novo fato")}${dt("sn","Data da sentença")}`
+  :tipo==="prog"?`<p class="calc-rot">Pena total da condenação</p><div class="calc-l3">${num("a","Anos",200)}${num("m","Meses",11)}</div>
+  ${sel("crime","O crime é",[["comum","comum, sem violência ou grave ameaça"],["viol","comum, com violência ou grave ameaça"],["hed","hediondo ou equiparado, sem resultado morte"],["hedm","hediondo com resultado morte (inclui o feminicídio)"]])}
+  ${sel("reinc","O condenado é",[["nao","primário"],["sim","reincidente em crime comum"],["hed","reincidente em crime hediondo ou equiparado"]])}`
   :tipo==="reinc"?`${sel("ant","Condenação anterior, transitada em julgado, por",[["doloso","crime doloso"],["culposo","crime culposo"],["contr","contravenção penal"]])}
   ${sel("quando","O novo fato foi praticado",[["depois","depois do trânsito em julgado"],["antes","antes do trânsito em julgado"]])}
   ${sel("prazo","Do fim da pena anterior até o novo fato",[["ate5","até 5 anos"],["mais5","mais de 5 anos"]])}

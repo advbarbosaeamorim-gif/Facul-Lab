@@ -108,7 +108,7 @@ As penas são **privativas de liberdade**, **restritivas de direitos** e **multa
 ## Regime e substituição
 O regime inicial depende da pena: **fechado** acima de 8 anos; **semiaberto** de mais de 4 até 8 (se não reincidente); **aberto** até 4 (se não reincidente). A pena de até **4 anos**, em crime sem violência ou grave ameaça (ou crime culposo), pode ser **substituída** por restritivas de direitos se o réu não for reincidente em crime doloso. No **concurso material**, somam-se as penas; no **formal** e no **continuado**, aplica-se uma só, aumentada.
 ## Execução da pena
-A **progressão** de regime depende do cumprimento de uma fração da pena, de 16% a 30% nos crimes comuns e de 40% a 70% nos hediondos (art. 112 da LEP), e de bom comportamento. A **remição** desconta 1 dia de pena a cada 3 dias de trabalho ou 12 horas de estudo.
+A **progressão** de regime depende do cumprimento de uma parte da pena, de 1/6 a 30% nos crimes comuns e de 70% a 85% nos hediondos (art. 112 da LEP, com as Leis 15.358/2026 e 15.402/2026), e de bom comportamento. Para crimes anteriores a essas leis, vale o percentual da época quando for mais favorável. A **remição** desconta 1 dia de pena a cada 3 dias de trabalho ou 12 horas de estudo.
 ## Extinção da punibilidade
 O Estado perde o direito de punir, entre outros casos, pela morte do agente, anistia, graça, indulto, abolitio criminis, decadência, perempção e **prescrição** (art. 107). Antes da sentença, a prescrição se calcula pela pena máxima (art. 109, de 3 a 20 anos), e os prazos caem **pela metade** se o agente tinha menos de 21 anos na data do fato ou mais de 70 na data da sentença.
 > Exemplo: condenado a 5 anos, réu primário, começa no regime semiaberto.`,

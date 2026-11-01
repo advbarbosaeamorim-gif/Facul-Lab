@@ -1005,7 +1005,7 @@ O Sistema Financeiro Nacional deve promover o desenvolvimento equilibrado do Pa�
 - **A assistência à saúde é livre à iniciativa privada** (art. 199). As instituições privadas podem participar do SUS de forma **complementar**, com **preferência para as entidades filantrópicas e as sem fins lucrativos** (§1º). É **vedada a destinação de recursos públicos para auxílios ou subvenções às instituições privadas com fins lucrativos** (§2º) e, em regra, a participação de **capital estrangeiro** na assistência à saúde (§3º). É **proibido todo tipo de comercialização** de órgãos, tecidos, sangue e derivados (§4º).
 - **Responsabilidade solidária:** os entes federativos são **solidariamente responsáveis** nas demandas de saúde, cabendo ao juiz direcionar o cumprimento conforme as regras de repartição de competências (STF, RE 855.178, Tema 793).
 
-> Atenção sobre medicamentos: o STF fixou que, em regra, o Estado **não é obrigado a fornecer medicamento não incorporado ao SUS**, salvo se cumpridos requisitos rigorosos (Temas 6 e 1.234, 2024), e que **não pode ser obrigado a fornecer medicamento experimental** nem, em regra, medicamento **sem registro na Anvisa** (RE 657.718, Tema 500) [confirmar os requisitos detalhados das teses dos Temas 6 e 1.234 antes de usar em peça].
+> Atenção sobre medicamentos: o STF fixou que, em regra, o Estado **não é obrigado a fornecer medicamento não incorporado ao SUS** (Tema 6, RE 566.471, 2024; **Súmula Vinculante 61**). A exceção vale para remédio **registrado na Anvisa** e exige seis requisitos **cumulativos**, que o autor da ação deve provar: **(a)** negativa do pedido na via administrativa; **(b)** ilegalidade da não incorporação pela Conitec, falta de pedido de incorporação ou demora na sua análise; **(c)** impossibilidade de substituição por remédio das listas do SUS; **(d)** eficácia e segurança comprovadas por evidência científica de alto nível (ensaios clínicos randomizados, revisão sistemática ou meta-análise); **(e)** imprescindibilidade clínica, comprovada por laudo médico fundamentado; e **(f)** incapacidade financeira de custear o tratamento. O **Tema 1.234** (RE 1.366.243) organizou quem paga e onde a ação corre, conforme os acordos entre União, Estados e Municípios homologados pelo STF (**Súmula Vinculante 60**): em regra, se o tratamento anual custa **210 salários mínimos ou mais**, a ação corre na **Justiça Federal**. E o Estado **não pode ser obrigado a fornecer medicamento experimental** nem, em regra, medicamento **sem registro na Anvisa** (RE 657.718, Tema 500).
 
 ## Educação (arts. 205 a 214)
 - **A educação, direito de todos e dever do Estado e da família**, visa ao pleno desenvolvimento da pessoa, ao preparo para a cidadania e à qualificação para o trabalho (art. 205).
@@ -1059,7 +1059,7 @@ O Sistema Financeiro Nacional deve promover o desenvolvimento equilibrado do Pa�
 - São **nulos e extintos**, sem produzir efeitos jurídicos, os atos que tenham por objeto a ocupação, o domínio e a posse dessas terras, sem direito a indenização, **ressalvadas as benfeitorias derivadas da ocupação de boa-fé** (§6º).
 - **Os índios, suas comunidades e organizações são partes legítimas para ingressar em juízo em defesa de seus direitos e interesses, intervindo o Ministério Público em todos os atos do processo** (art. 232). A competência para julgar a **disputa sobre direitos indígenas** é da **Justiça Federal** (art. 109, XI).
 
-> Atenção (marco temporal): no **Tema 1.031** (RE 1.017.365, 2023), o STF decidiu que a proteção constitucional das terras indígenas **independe da existência de um marco temporal em 5 de outubro de 1988** ou da configuração do renitente esbulho. A demarcação é ato **declaratório** de um direito **originário**. O Congresso aprovou depois a **Lei 14.701/2023**, que voltou a prever o marco temporal, e a constitucionalidade dessa lei é discutida no STF [confirmar o estado atual do julgamento sobre a Lei 14.701/2023].
+> Atenção (marco temporal): no **Tema 1.031** (RE 1.017.365, 2023), o STF decidiu que a proteção constitucional das terras indígenas **independe da existência de um marco temporal em 5 de outubro de 1988** ou da configuração do renitente esbulho. A demarcação é ato **declaratório** de um direito **originário**. O Congresso aprovou depois a **Lei 14.701/2023**, que voltou a prever o marco temporal. Em dezembro de 2025, o STF julgou as ações sobre essa lei (ADC 87 e ADIs 7.582, 7.583 e 7.586, rel. Min. Gilmar Mendes) e declarou **inconstitucional o marco temporal** nela previsto, reafirmando o Tema 1.031. Em reação, o Senado aprovou a **PEC 48/2023**, que põe o marco temporal no texto da Constituição; até a última atualização desta apostila (novembro de 2026), ela aguardava votação na Câmara dos Deputados.
 
 !! Índios: direitos **originários**; terras = **bens da União**, posse **permanente** e usufruto **exclusivo**; recursos hídricos e minerais só com **autorização do Congresso** e **oitiva** das comunidades; terras **inalienáveis, indisponíveis e imprescritíveis**; remoção só em **catástrofe, epidemia ou soberania**, com **retorno imediato**; disputa sobre direitos indígenas = **Justiça Federal**.
 
@@ -1205,7 +1205,7 @@ Quem define se o crime é punido com reclusão ou detenção é o **legislador**
 ## Os regimes de cumprimento
 Os regimes são três, e cada um tem regras próprias:
 - **Fechado (art. 34):** a pena é cumprida em **estabelecimento de segurança máxima ou média** (penitenciária). O condenado fica sujeito a **trabalho no período diurno** e a **isolamento durante o repouso noturno**. O trabalho externo é admissível em serviços ou obras públicas.
-- **Semiaberto (art. 35):** a pena é cumprida em **colônia agrícola, industrial ou estabelecimento similar**. O condenado fica sujeito a trabalho em comum durante o dia. São admissíveis o **trabalho externo** e a frequência a **cursos** supletivos profissionalizantes, de instrução de segundo grau ou superior.
+- **Semiaberto (art. 35):** a pena é cumprida em **colônia agrícola, industrial ou estabelecimento similar**. O condenado fica sujeito a trabalho em comum durante o dia. São admissíveis o **trabalho externo** e a frequência a **cursos** supletivos profissionalizantes, de instrução de segundo grau ou superior. Desde a Lei 14.843/2024, quem cumpre pena por crime **hediondo** ou com **violência ou grave ameaça** contra pessoa não pode ter trabalho externo **sem vigilância direta** nem saída temporária (art. 122, §2º, da LEP).
 - **Aberto (art. 36):** baseia-se na **autodisciplina e no senso de responsabilidade** do condenado. Ele deve, **fora do estabelecimento** e sem vigilância, **trabalhar, frequentar curso** ou exercer outra atividade autorizada, permanecendo recolhido durante o período noturno e nos dias de folga, em **casa de albergado**.
 
 > Atenção: segundo a **Súmula Vinculante 56**, a **falta de estabelecimento penal adequado** não autoriza a manutenção do condenado em regime prisional mais gravoso. Se não houver vaga no semiaberto, o condenado não pode ficar no fechado: o juiz deve buscar alternativas, como a saída antecipada, a liberdade monitorada eletronicamente ou a prisão domiciliar.
@@ -1231,7 +1231,7 @@ Súmulas importantes sobre o regime:
 ## O limite de cumprimento
 O tempo de cumprimento das penas privativas de liberdade **não pode ser superior a 40 anos** (art. 75, com a redação dada pela Lei 13.964/2019, o Pacote Anticrime; antes eram 30 anos). Quando o agente for condenado a penas cuja soma seja superior a 40 anos, elas devem ser **unificadas** para atender a esse limite (art. 75, §1º).
 
-> Atenção: a unificação serve apenas para o **limite de cumprimento**. Os **benefícios** da execução (progressão, livramento condicional) são calculados sobre a **pena total**, e não sobre o limite unificado (Súmula 715 do STF). Quem foi condenado a 200 anos não progride depois de cumprir 16% de 40 anos.
+> Atenção: a unificação serve apenas para o **limite de cumprimento**. Os **benefícios** da execução (progressão, livramento condicional) são calculados sobre a **pena total**, e não sobre o limite unificado (Súmula 715 do STF). Quem foi condenado a 200 anos não progride depois de cumprir 1/6 de 40 anos: o percentual da progressão incide sobre os 200 anos.
 
 ?? Qual é o regime inicial de um condenado primário a 6 anos de reclusão? | Semiaberto (pena superior a 4 e não superior a 8 anos, art. 33, §2º, b).
 ?? Um reincidente condenado a 3 anos pode começar no semiaberto? | Sim, se as circunstâncias judiciais forem favoráveis (Súmula 269 do STJ).
@@ -1610,7 +1610,7 @@ O art. 60, §2º, mais antigo (Lei 7.209/1984), também prevê a substituição 
 - **1ª corrente:** o art. 60, §2º, foi **revogado tacitamente** pelo art. 44, §2º (Lei 9.714/1998); só vale o art. 44: multa substitutiva até 1 ano, em crime sem violência ou grave ameaça.
 - **2ª corrente:** **não houve revogação**; o art. 60, §2º, continua útil para penas de **até 6 meses** em crimes **com** violência ou grave ameaça, como a lesão corporal leve e a ameaça, presentes os demais requisitos.
 
-> Exemplo: pena de 9 meses por furto simples, réu primário e circunstâncias favoráveis. O juiz fixa o regime aberto e, depois, como a pena não passa de 1 ano, pode substituí-la por **multa** (vicariante) **ou** por **uma** restritiva, inclusive a prestação de serviços à comunidade (a pena é superior a 6 meses).
+> Exemplo: pena de 8 meses por tentativa de furto simples (1 ano, menos 1/3), réu primário e circunstâncias favoráveis. O juiz fixa o regime aberto e, depois, como a pena não passa de 1 ano, pode substituí-la por **multa** (vicariante) **ou** por **uma** restritiva, inclusive a prestação de serviços à comunidade (a pena é superior a 6 meses).
 
 ## Conversão: as hipóteses e os cálculos
 ::ilus cadeado|Descumpriu a restritiva sem justificativa? A porta da prisão volta a se abrir.
@@ -1693,7 +1693,7 @@ O **livramento condicional** é a **antecipação da liberdade** do condenado qu
 Para o condenado por crime **doloso, cometido com violência ou grave ameaça** à pessoa, a concessão ficará também subordinada à constatação de condições pessoais que façam presumir que o liberado não voltará a delinquir (art. 83, parágrafo único).
 
 - O **reincidente específico** em crime hediondo **não tem direito** ao livramento condicional.
-- É **vedado** o livramento condicional ao condenado por **crime hediondo ou equiparado com resultado morte** (art. 112, VI, a, e VIII, da LEP).
+- É **vedado** o livramento condicional ao condenado por **crime hediondo ou equiparado com resultado morte** (art. 112, VI, a, e VIII, da LEP) e ao condenado por **feminicídio** (art. 112, VI, d). A **Lei 15.358/2026** estendeu a vedação a quem exerce o **comando de organização criminosa ultraviolenta** estruturada para crimes hediondos (art. 112, VI, b) e aos crimes de **domínio social estruturado** (art. 2º, §4º, III, da Lei 15.358/2026).
 - A **falta grave não interrompe** o prazo para obtenção de livramento condicional (Súmula 441 do STJ), embora possa impedir a concessão pelo requisito subjetivo (falta grave nos últimos 12 meses).
 - **Revogação obrigatória:** se o liberado vem a ser condenado a pena privativa de liberdade, em sentença irrecorrível, por crime cometido **durante a vigência do benefício** ou por crime **anterior** (observada a soma das penas) (art. 86).
 
@@ -1711,31 +1711,47 @@ Para o condenado por crime **doloso, cometido com violência ou grave ameaça** 
 O sistema brasileiro é **progressivo**: o condenado começa em um regime mais rigoroso e, cumprindo requisitos, passa a um regime menos rigoroso (do fechado para o semiaberto; do semiaberto para o aberto). É proibida a progressão "por salto" (do fechado direto para o aberto) (Súmula 491 do STJ).
 
 A progressão exige dois requisitos:
-- **objetivo:** o cumprimento de um **percentual** da pena;
-- **subjetivo:** **boa conduta carcerária**, comprovada pelo diretor do estabelecimento (art. 112, §1º, da LEP). A Lei 14.843/2024 passou a exigir também os resultados do **exame criminológico**.
+- **objetivo:** o cumprimento de uma **fração** ou de um **percentual** da pena;
+- **subjetivo:** **boa conduta carcerária**, comprovada pelo diretor do estabelecimento (art. 112, §1º, da LEP). A Lei 14.843/2024 passou a exigir também os resultados do **exame criminológico**. Para crimes anteriores a essa lei, o STJ entende que a exigência, mais gravosa, não retroage: o exame só pode ser determinado pelas peculiaridades do caso, em decisão motivada (Súmula 439 do STJ).
 
-Após o Pacote Anticrime, os percentuais do requisito objetivo são:
+Em 2026, duas leis mudaram o requisito objetivo. A **Lei 15.358/2026** (Marco Legal do Combate ao Crime Organizado, em vigor desde 25/3/2026) aumentou os percentuais dos crimes **hediondos**. Depois, a **Lei 15.402/2026** (em vigor desde 8/5/2026) devolveu ao caput do art. 112 a fração de **1/6** como regra geral e reorganizou os incisos dos crimes comuns. Hoje, o requisito objetivo é este:
 
-|Situação|Percentual|
-|Primário, crime sem violência ou grave ameaça|16%|
-|Reincidente, crime sem violência ou grave ameaça|20%|
-|Primário, crime com violência ou grave ameaça|25%|
-|Reincidente, crime com violência ou grave ameaça|30%|
-|Primário, crime hediondo ou equiparado|40%|
-|Primário, hediondo com resultado morte (vedado o livramento); comando de organização criminosa para hediondo; milícia privada|50%|
-|Reincidente em hediondo ou equiparado|60%|
-|Reincidente em hediondo com resultado morte (vedado o livramento)|70%|
+|Situação|Quanto cumprir|
+|Primário, crime sem violência ou grave ameaça (regra geral, caput)|1/6|
+|Reincidente, crime sem violência ou grave ameaça (inciso III)|20%|
+|Primário, crime com violência ou grave ameaça (inciso I)|25%|
+|Reincidente, crime com violência ou grave ameaça (inciso II)|30%|
+|Primário, crime hediondo ou equiparado (inciso V)|70%|
+|Primário, hediondo com resultado morte; comando de organização criminosa ultraviolenta estruturada para hediondo; milícia privada; feminicídio, se primário (inciso VI)|75%|
+|Reincidente em crime hediondo ou equiparado (inciso VII)|80%|
+|Reincidente em hediondo com resultado morte (inciso VIII)|85%|
 
-!! Progressão sem hediondo = "**16-20-25-30**": sobe 4 ou 5 pontos a cada degrau (reincidência ou violência). Hediondo = "**40-50-60-70**", de 10 em 10.
+!! Crime comum = "**1/6 · 20 · 25 · 30**": a reincidência e a violência sobem o degrau. Hediondo = "**70 · 75 · 80 · 85**", de 5 em 5: o resultado morte soma 5 e a reincidência soma 10.
+
+::calc prog|Simulador: quanto falta para progredir?
 
 Pontos importantes:
-- O STF e o STJ entendem que os percentuais de 60% e 70% se aplicam ao **reincidente específico** em crime hediondo. O condenado por crime hediondo que é reincidente em crime **comum** (reincidente genérico) progride com **40%** (ou 50%, se houver resultado morte), por aplicação da regra mais favorável.
+- **Vale a lei da época do fato.** A lei que aumenta o percentual não retroage (art. 5º, XL, da Constituição). Os 70% a 85% valem para hediondos praticados a partir de 25/3/2026; para os anteriores, continuam os 40% a 70% do Pacote Anticrime. E como 1/6 (cerca de 16,7%) é um pouco mais que 16%, quem é primário e praticou crime sem violência **antes de 8/5/2026** continua progredindo com os **16%** do Pacote Anticrime, que são mais favoráveis.
+- **Livramento vedado:** nos casos de hediondo com resultado morte (incisos VI, a, e VIII), de comando de organização criminosa ultraviolenta (VI, b) e de feminicídio (VI, d), o art. 112 também proíbe o livramento condicional.
+- **Crimes contra o Estado Democrático de Direito** (Título XII da Parte Especial do Código Penal) ficaram fora dos incisos I e II pela Lei 15.402/2026. Para o primário, vale a regra geral de **1/6**, mesmo havendo violência ou grave ameaça.
+- **Reincidente genérico em hediondo:** o STF (Tema 1.169) firmou, na redação anterior, que o percentual de reincidente em crime hediondo vale só para o **reincidente específico**; quem é reincidente em crime comum fica com o percentual do primário. Pela mesma lógica, na redação atual o reincidente genérico fica com **70%** (ou 75%, com resultado morte), e não com 80% ou 85%.
 - A prática de **falta grave interrompe** o prazo para a progressão de regime, que recomeça a partir da data da infração disciplinar (Súmula 534 do STJ; art. 112, §6º, da LEP). Compare com o livramento condicional, em que a falta grave não interrompe o prazo.
 - A **mulher gestante ou que for mãe ou responsável por crianças ou pessoas com deficiência** tem progressão especial, com **1/8** da pena, se preencher os requisitos do art. 112, §3º, da LEP (crime sem violência ou grave ameaça, não ter cometido crime contra seu filho ou dependente, primária, bom comportamento, não integrar organização criminosa).
 - Nos **crimes contra a administração pública**, a progressão depende também da **reparação do dano** causado ou da devolução do produto do ilícito (art. 33, §4º).
 
 ## Regressão
 A execução da pena privativa de liberdade fica sujeita à forma **regressiva**, com a transferência para qualquer dos regimes mais rigorosos, quando o condenado praticar **fato definido como crime doloso ou falta grave**, ou sofrer condenação por crime anterior cuja pena, somada ao restante da pena em execução, torne incabível o regime (art. 118 da LEP). Na regressão, admite-se o "salto": do aberto direto para o fechado.
+
+## Saída temporária
+A **saída temporária** permite ao condenado do regime **semiaberto** sair do estabelecimento **sem vigilância direta**, por autorização do juiz da execução, desde que tenha **comportamento adequado**, cumpra **1/6** da pena (se primário) ou **1/4** (se reincidente) e o benefício seja compatível com os objetivos da pena (arts. 122 e 123 da LEP). Para quem começou no fechado, conta-se o tempo cumprido nesse regime (Súmula 40 do STJ). O juiz pode impor **monitoração eletrônica** (art. 122, §1º).
+
+A **Lei 14.843/2024** (Lei Sargento PM Dias) restringiu muito o benefício:
+- acabaram a saída para **visitar a família** e para **atividades de retorno ao convívio social** (o Presidente vetou essa parte, mas o Congresso derrubou o veto em maio de 2024). Hoje, ela só cabe para **frequentar curso** supletivo profissionalizante ou de ensino médio ou superior, pelo **tempo necessário** às atividades escolares (art. 122, II e §3º);
+- **não tem direito** à saída temporária, nem ao **trabalho externo sem vigilância direta**, quem cumpre pena por crime **hediondo** ou com **violência ou grave ameaça** contra pessoa (art. 122, §2º). Antes, desde o Pacote Anticrime, a vedação alcançava só o hediondo com resultado morte.
+
+> Atenção: a restrição é mais gravosa, por isso o STJ entende que ela não alcança quem praticou o crime antes da lei, de 11/4/2024 (HC 932.864, 6ª Turma, 2024). O STF vai dar a palavra final no **Tema 1.381** da repercussão geral, ainda sem tese firmada até a última atualização desta apostila (novembro de 2026).
+
+!! Saída temporária hoje = **só para estudar**, no **semiaberto**, com **1/6** (primário) ou **1/4** (reincidente); **hediondo** ou **violência** = sem saída e sem trabalho externo sem vigilância.
 
 ## Remição
 A **remição** permite ao condenado que cumpre a pena em regime **fechado ou semiaberto** **descontar dias da pena** por **trabalho** ou **estudo** (art. 126 da LEP):
@@ -1749,12 +1765,16 @@ O tempo a remir em função das horas de estudo será **acrescido de 1/3** no ca
 ## Detração
 **Computam-se**, na pena privativa de liberdade e na medida de segurança, o tempo de **prisão provisória**, no Brasil ou no estrangeiro, o de **prisão administrativa** e o de **internação** em hospital de custódia (art. 42). Quem ficou preso preventivamente por 1 ano e é condenado a 5 anos terá apenas 4 anos a cumprir. O juiz que proferir a sentença condenatória já deve considerar a detração para **determinar o regime inicial** (art. 387, §2º, do Código de Processo Penal).
 
-> Exemplo: um réu primário é condenado a 6 anos por furto qualificado (crime sem violência ou grave ameaça). Para progredir do fechado ao semiaberto, precisa cumprir **16%** da pena, cerca de 11 meses e meio, e ter boa conduta. Se trabalhar 3 dias por semana nesse período, ainda **remirá** 1 dia de pena a cada 3 trabalhados. Se tiver ficado preso preventivamente por 4 meses, esse tempo é descontado pela **detração**.
+> Exemplo: um réu primário é condenado a 6 anos por um furto qualificado (crime sem violência ou grave ameaça) praticado em junho de 2026. Ele começa no semiaberto (art. 33, §2º, b). Para ir ao aberto, precisa cumprir **1/6** da pena, ou seja, **1 ano**, e ter boa conduta. Se o furto fosse de antes de 8/5/2026, valeriam os **16%** do Pacote Anticrime, cerca de 11 meses e meio, porque são mais favoráveis. Se trabalhar 3 dias por semana nesse período, ainda **remirá** 1 dia de pena a cada 3 trabalhados. Se tiver ficado preso preventivamente por 4 meses, esse tempo é descontado pela **detração**.
 
-?? Qual é o percentual de progressão para um condenado primário por roubo (crime com grave ameaça)? | 25% (art. 112, III, da LEP).
+?? Qual é o percentual de progressão para um condenado primário por roubo (crime com grave ameaça)? | 25% (art. 112, I, da LEP, com a redação da Lei 15.402/2026).
 ?? A falta grave interrompe o prazo para a progressão de regime? | Sim (Súmula 534 do STJ; art. 112, §6º, da LEP).
 ?? Quantos dias de trabalho são necessários para remir 1 dia de pena? | 3 dias de trabalho (art. 126, §1º, II, da LEP).
 ?? O que é detração? | O cômputo, na pena, do tempo de prisão provisória, prisão administrativa e internação (art. 42).
+?? Desde a Lei 15.402/2026, quanto o primário condenado por crime sem violência ou grave ameaça cumpre para progredir? | 1/6 da pena (art. 112, caput, da LEP). Para crimes anteriores a 8/5/2026, continuam os 16%, mais favoráveis.
+?? Quanto cumpre para progredir o primário condenado por crime hediondo sem resultado morte praticado depois de 25/3/2026? | 70% da pena (art. 112, V, da LEP, com a redação da Lei 15.358/2026).
+?? Desde a Lei 14.843/2024, para que serve a saída temporária? | Só para frequentar curso supletivo profissionalizante ou de ensino médio ou superior, pelo tempo necessário às aulas (art. 122, II e §3º, da LEP).
+?? Quem não tem direito à saída temporária nem ao trabalho externo sem vigilância direta? | O condenado que cumpre pena por crime hediondo ou com violência ou grave ameaça contra pessoa (art. 122, §2º, da LEP).
 
 # Efeitos da condenação e reabilitação
 ## Efeitos genéricos (art. 91)
@@ -1921,7 +1941,7 @@ A **pronúncia** é causa interruptiva da prescrição, **ainda que o Tribunal d
 * Restritivas: espécies; 4-S-N; reincidente não específico; conversão (saldo de 30 dias); Súmula 588
 * Multa: 10 a 360 dias; 1/30 a 5 salários; triplicar; dívida de valor no juízo da execução
 * Benefícios: sursis (até 2 anos; 2 a 4; etário até 4); livramento (2 anos; 1/3, 1/2, 2/3; Súmula 441)
-* Execução: progressão 16-20-25-30 e 40-50-60-70; falta grave interrompe (Súmula 534); regressão; remição 3 por 1 e 12 horas; detração
+* Execução: progressão 1/6-20-25-30 (Lei 15.402/2026) e 70-75-80-85 nos hediondos (Lei 15.358/2026); lei da época do fato; falta grave interrompe (Súmula 534); regressão; remição 3 por 1 e 12 horas; detração
 * Efeitos e extinção: art. 91 (automáticos) e art. 92 (declarados); reabilitação (2 anos); medida de segurança (Súmula 527); art. 107; anistia x graça x indulto; perdão judicial (Súmula 18)
 * Prescrição: punitiva x executória; tabela 3-4-8-12-16-20; retroativa e intercorrente; Tema 788; metade (21 e 70); art. 111; art. 116; interrupção (art. 117); multa 2 anos`,
 
