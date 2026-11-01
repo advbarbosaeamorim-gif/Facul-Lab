@@ -97,6 +97,28 @@ for (const [estilo, tema] of VISUAIS) {
     if (await pA.locator("#art-camada").count()) falhas.push(`${nomeA}: a folha não fechou com Esc`);
   } catch (e) { falhas.push(`${nomeA}: ${e.message.split("\n")[0]}`) }
   await ctxA.close();
+  /* marca-texto: selecionar um trecho do tema, grifar em verde, achar em Favoritos e grifos, voltar ao trecho e apagar */
+  const nomeG = `${estilo}-${tema}-marca-texto`;
+  const [ctxG, pG] = await abre(nomeG, estilo, tema, { tela: "ler", d: "pen2", pg: 2, pagina: true });
+  try {
+    await pG.evaluate(() => {
+      const par = document.querySelectorAll("#app article[data-grifo] > p")[1];
+      const n = document.createTreeWalker(par, NodeFilter.SHOW_TEXT).nextNode();
+      const r = document.createRange(); r.setStart(n, 0); r.setEnd(n, Math.min(20, n.nodeValue.length));
+      getSelection().removeAllRanges(); getSelection().addRange(r);
+    });
+    await pG.locator('#gr-barra [data-gr="cor"][data-c="vd"]').tap({ timeout: 4000 });
+    await pG.locator("#app mark.grifo.gr-vd").first().waitFor({ timeout: 3000 });
+    await pG.evaluate(() => raiz({ tela: "favs" }));
+    await pG.locator(".gr-abrir").first().click({ timeout: 4000 });
+    await pG.locator("#app mark.grifo.gr-pisca").first().waitFor({ timeout: 3000 });
+    await pG.waitForTimeout(700);
+    if (estilo === "premium" && tema === "claro") await pG.screenshot({ path: PRINTS + nomeG + ".png" });
+    await pG.locator("#app mark.grifo").first().click();
+    await pG.locator('#gr-barra[data-modo="grifo"] [data-gr="apagar"]').tap({ timeout: 3000 });
+    if (await pG.locator("#app mark.grifo").count()) falhas.push(`${nomeG}: o grifo não saiu ao apagar`);
+  } catch (e) { falhas.push(`${nomeG}: ${e.message.split("\n")[0]}`) }
+  await ctxG.close();
 }
 await browser.close();
 
@@ -104,4 +126,4 @@ if (falhas.length) {
   console.error(`\n${falhas.length} problema(s):\n- ` + falhas.join("\n- "));
   process.exit(1);
 }
-console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 3)} telas e fluxos, sem erros.`);
+console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 4)} telas e fluxos, sem erros.`);

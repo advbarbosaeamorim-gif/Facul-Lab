@@ -612,7 +612,7 @@ function nesteTema(s){const subs=[];s.corpo.split("\n").forEach(l=>{l=l.trim();i
  return `<nav class="neste" aria-label="Neste tema"><p class="neste-t">${ic("grade")}Neste tema</p>${subs.length>=2?`<ol>${subs.map(x=>`<li>${inl(x)}</li>`).join("")}</ol>`:""}${extras.length?`<p class="neste-x">Inclui ${extras.join(", ")}.</p>`:""}</nav>`}
 function blocoTema(d,f,P,k){const s=P.secs[k-1];
  return `<div class="tema-ban" style="--c:${s.cor||f.cor}">${ilustra(s.ilu,s.cor||f.cor)}<div><span class="tn">Tema ${k} de ${P.secs.length} · ${minLeitura(s.corpo)} min</span><h3>${inl(s.tit)}</h3></div></div>
- ${nesteTema(s)}${ouvirBtn(d+":"+k)}<article class="texto" style="--c:${f.cor}"${leisAttr(d,"",s.tit)}>${md(s.corpo,f.cor).html}</article>`}
+ ${nesteTema(s)}${ouvirBtn(d+":"+k)}<article class="texto" style="--c:${f.cor}"${leisAttr(d,"",s.tit)} data-grifo="${d}:${k}">${md(s.corpo,f.cor).html}</article>`}
 function trilhaTemas(d,P,pg){const N=P.secs.length;const vis=(S.apPg&&S.apPg[d])||0;
  return `<ol class="trilha" aria-label="Progresso na apostila">${P.secs.map((x,k)=>`<li class="${k+1===pg?"atual":k+1<=vis?"lido":""}"><button data-acao="pag" data-pg="${k+1}" aria-label="Tema ${k+1}: ${esc(limpo(x.tit))}${k+1===pg?" (atual)":""}"${k+1===pg?' aria-current="step"':""}></button></li>`).join("")}<li class="${pg>N?"atual":vis>N?"lido":""}"><button data-acao="pag" data-pg="${N+1}" aria-label="Mapa mental e revisão"${pg>N?' aria-current="step"':""}></button></li></ol>`}
 function extrasTema(d,k){const key=d+":"+k;const fav=S.fav&&S.fav[key];const nota=(S.notas&&S.notas[key])||"";
@@ -629,7 +629,7 @@ function capaAp(d,f,P){const N=P.secs.length;const vis=(S.apPg&&S.apPg[d])||0;
  ${btnModo()}
  <div class="capa-acoes"><button class="botao cheio" data-acao="pag" data-pg="${alvo}">${ic("livro")} ${esc(cont)}</button>${btnLida(d)}</div>
  <div class="secao" role="heading" aria-level="2">Temas desta apostila</div>
- <div class="indice-temas">${P.secs.map((s,k)=>`<button data-acao="pag" data-pg="${k+1}">${ilustra(s.ilu,s.cor||f.cor)}<span><small>Tema ${k+1}${S.fav&&S.fav[d+":"+(k+1)]?" · favorito":""}</small><b>${inl(s.tit)}</b></span><span class="vis">${vis>=k+1?ic("ok"):ic("prox")}</span></button>`).join("")}
+ <div class="indice-temas">${P.secs.map((s,k)=>`<button data-acao="pag" data-pg="${k+1}">${ilustra(s.ilu,s.cor||f.cor)}<span><small>Tema ${k+1}${S.fav&&S.fav[d+":"+(k+1)]?" · favorito":""}${typeof grSelo==="function"?grSelo(d,k+1):""}</small><b>${inl(s.tit)}</b></span><span class="vis">${vis>=k+1?ic("ok"):ic("prox")}</span></button>`).join("")}
  <button data-acao="pag" data-pg="${N+1}">${ilustra("mente",f.cor)}<span><small>Conclusão</small><b>Mapa mental e revisão</b></span><span class="vis">${vis>N?ic("ok"):ic("prox")}</span></button></div>`}
 function paginaTema(d,f,P,pg){const N=P.secs.length;
  const ant=pg>1?P.secs[pg-2].tit:"Índice dos temas";const prx=pg<N?P.secs[pg].tit:"Mapa mental e revisão";
