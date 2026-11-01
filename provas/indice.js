@@ -1,0 +1,3 @@
+/* Provas anteriores da OAB (FGV): a lista que o app mostra. Gerado por tools/provas/gerar.py: não edite à mão.
+   As questões de cada prova ficam em provas/oab-<n>.js e só carregam quando a prova é aberta. */
+window.PROVAS_FGV=[{"n":47,"data":"2026-09-06","anul":[47]},{"n":46,"data":"2026-05-03","anul":[]},{"n":45,"data":"2025-12-21","anul":[]},{"n":44,"data":"2025-08-17","anul":[]},{"n":43,"data":"2025-04-27","anul":[1,74]},{"n":42,"data":"2024-12-01","anul":[43]},{"n":41,"data":"2024-07-28","anul":[]},{"n":40,"data":"2024-03-24","anul":[5]},{"n":39,"data":"2023-11-19","anul":[18,49,63]},{"n":38,"data":"2023-07-09","anul":[45,60,62]}];

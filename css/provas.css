@@ -1,0 +1,61 @@
+/* Provas anteriores da OAB (js/23-provas.js) */
+
+/* ---------- lista das provas ---------- */
+.fg-regras{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin:2px 0 14px;padding:0}
+.fg-regras li{display:flex;gap:8px;align-items:center;min-width:0;padding:10px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.fg-regras svg.i{width:20px;height:20px;flex:none;color:var(--toga-txt)}
+.fg-regras span{display:grid;line-height:1.25;min-width:0}
+.fg-regras b{font-size:.9rem}
+.fg-regras small{font-size:.76rem;color:var(--muted)}
+[data-estilo="premium"] .fg-regras li{border-radius:16px;border-color:color-mix(in srgb,var(--p1) 22%,var(--line));background:var(--grad-suave),var(--surface)}
+[data-estilo="premium"] .fg-regras svg.i{color:var(--p1-txt)}
+.fg-placar-geral{display:flex;gap:8px;align-items:center;margin:0 0 10px;font-size:.92rem}
+.fg-placar-geral svg.i{width:20px;height:20px;flex:none;color:var(--toga-txt)}
+[data-estilo="premium"] .fg-placar-geral svg.i{color:var(--p1-txt)}
+.fg-fonte{margin-top:16px;font-size:.8rem;line-height:1.5}
+.fg-card{margin-top:2px}
+
+/* ---------- antes de começar ---------- */
+.fg-itens{list-style:none;margin:16px 0 4px;padding:0;display:grid;gap:12px}
+.fg-itens li{display:flex;gap:10px;align-items:flex-start;font-size:.93rem;line-height:1.45}
+.fg-itens svg.i{width:20px;height:20px;flex:none;margin-top:1px;color:var(--toga-txt)}
+[data-estilo="premium"] .fg-itens svg.i{color:var(--p1-txt)}
+.fg-aviso{display:flex;gap:8px;align-items:flex-start;margin:16px 0 0;padding:10px 12px;border-radius:12px;background:var(--surface-2);font-size:.86rem;line-height:1.5;color:var(--muted)}
+.fg-aviso svg.i{width:18px;height:18px;flex:none;margin-top:2px}
+[data-estilo="premium"] .fg-aviso{border-radius:16px}
+.fg-link{display:inline;margin:0;padding:0;border:0;background:none;color:var(--toga-txt);font:inherit;font-weight:700;text-align:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+[data-estilo="premium"] .fg-link{color:var(--p1-txt)}
+.fg-carregando{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:18px}
+.fg-carregando svg.i{width:18px;height:18px}
+html[data-anim="on"] .fg-carregando svg.i{animation:fg-gira 1.4s linear infinite}
+@keyframes fg-gira{to{transform:rotate(360deg)}}
+
+/* ---------- na questão ---------- */
+.fg-enun p{margin:0}
+.fg-enun p+p{margin-top:.7em}
+.coment.fg-anulada{border-left-color:var(--aviso)}
+.coment.fg-anulada h3{display:flex;gap:6px;align-items:center}
+.coment.fg-anulada h3 svg.i{width:20px;height:20px;flex:none}
+
+/* ---------- resultado ---------- */
+.fg-placar .pct small{font-size:.42em;font-weight:600;opacity:.9;margin-left:2px;letter-spacing:0}
+.fg-placar p+p{margin-top:8px}
+.rev .num.an{background:#585d69}
+.fg-an{font-weight:700}
+.fg-rq{display:block}
+.fg-rq>span{display:block}
+.fg-rq>span+span{margin-top:.45em}
+.rev:not([open]) .fg-rq>span:not(:first-child){display:none}
+.rev:not([open]) .fg-rq>span:first-child{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.fg-anul-txt{display:flex;gap:6px;align-items:flex-start;margin:10px 0 0;padding:8px 10px;border-radius:10px;background:var(--surface-2);font-size:.88rem;line-height:1.45}
+.fg-anul-txt svg.i{width:18px;height:18px;flex:none;margin-top:1px}
+.fg-sua{color:var(--muted);font-weight:600}
+.fg-abrindo .ilu{opacity:.9}
+
+/* ---------- ilustração: a folha de respostas sendo marcada e o carimbo ---------- */
+.ilu .fg-bolha,.ilu .fg-carimbo{transform-box:fill-box;transform-origin:center}
+html[data-anim="on"] .ilu .fg-bolha{animation:fg-marca 4s ease-in-out infinite;animation-delay:calc(var(--k)*.32s)}
+html[data-anim="on"] .ilu .fg-carimbo{animation:fg-carimbo 4s ease-in-out infinite}
+@keyframes fg-marca{0%,6%{transform:scale(0)}14%{transform:scale(1.25)}20%,88%{transform:scale(1)}100%{transform:scale(0)}}
+@keyframes fg-carimbo{0%,44%{opacity:0;transform:scale(1.7) rotate(-24deg)}52%{opacity:1;transform:scale(.9) rotate(-8deg)}58%,88%{opacity:1;transform:scale(1) rotate(-8deg)}100%{opacity:0;transform:scale(1) rotate(-8deg)}}
+@media (prefers-reduced-motion:reduce){.ilu .fg-bolha,.ilu .fg-carimbo,.fg-carregando svg.i{animation:none!important}}
