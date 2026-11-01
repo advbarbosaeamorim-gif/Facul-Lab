@@ -1,0 +1,1470 @@
+[
+ {
+  "id": "cf",
+  "tipo": "constituicao",
+  "numero": "1988",
+  "data": "1988-10-05",
+  "nome": "Constituição Federal",
+  "sigla": "CF",
+  "num": "Constituição de 1988",
+  "urn": "urn:lex:br:federal:constituicao:1988-10-05;1988",
+  "fonte": "normas",
+  "apelidos": [
+   "Constituição Federal",
+   "Constituição da República Federativa do Brasil",
+   "Constituição da República",
+   "Constituição de 1988",
+   "CRFB/1988",
+   "CRFB/88",
+   "CRFB",
+   "CF/1988",
+   "CF/88",
+   "CF",
+   "Constituição",
+   "Carta Magna",
+   "Lei Maior"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "const"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "adct",
+  "tipo": "constituicao",
+  "numero": "1988",
+  "data": "1988-10-05",
+  "nome": "Ato das Disposições Constitucionais Transitórias",
+  "sigla": "ADCT",
+  "num": "ADCT da Constituição de 1988",
+  "urn": "urn:lex:br:federal:ato.disposicoes.constitucionais.transitorias:1988-10-05;1988",
+  "fonte": "normas",
+  "apelidos": [
+   "Ato das Disposições Constitucionais Transitórias",
+   "ADCT"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "cp",
+  "tipo": "decreto.lei",
+  "numero": "2848",
+  "data": "1940-12-07",
+  "nome": "Código Penal",
+  "sigla": "CP",
+  "num": "Decreto-Lei 2.848/1940",
+  "urn": "urn:lex:br:federal:decreto.lei:1940-12-07;2848",
+  "fonte": "normas",
+  "apelidos": [
+   "Código Penal",
+   "CP"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "penal"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "cpp",
+  "tipo": "decreto.lei",
+  "numero": "3689",
+  "data": "1941-10-03",
+  "nome": "Código de Processo Penal",
+  "sigla": "CPP",
+  "num": "Decreto-Lei 3.689/1941",
+  "urn": "urn:lex:br:federal:decreto.lei:1941-10-03;3689",
+  "fonte": "normas",
+  "apelidos": [
+   "Código de Processo Penal",
+   "CPP"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "pp"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "cc",
+  "tipo": "lei",
+  "numero": "10406",
+  "data": "2002-01-10",
+  "nome": "Código Civil",
+  "sigla": "CC",
+  "num": "Lei 10.406/2002",
+  "urn": "urn:lex:br:federal:lei:2002-01-10;10406",
+  "fonte": "normas",
+  "apelidos": [
+   "Código Civil de 2002",
+   "Código Civil",
+   "CC/2002",
+   "CC/02",
+   "CC"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "civil"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "cpc",
+  "tipo": "lei",
+  "numero": "13105",
+  "data": "2015-03-16",
+  "nome": "Código de Processo Civil",
+  "sigla": "CPC",
+  "num": "Lei 13.105/2015",
+  "urn": "urn:lex:br:federal:lei:2015-03-16;13105",
+  "fonte": "normas",
+  "apelidos": [
+   "Código de Processo Civil de 2015",
+   "Código de Processo Civil",
+   "CPC/2015",
+   "CPC/15",
+   "CPC"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "pc"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "clt",
+  "tipo": "decreto.lei",
+  "numero": "5452",
+  "data": "1943-05-01",
+  "nome": "Consolidação das Leis do Trabalho",
+  "sigla": "CLT",
+  "num": "Decreto-Lei 5.452/1943",
+  "urn": "urn:lex:br:federal:decreto.lei:1943-05-01;5452",
+  "fonte": "normas",
+  "apelidos": [
+   "Consolidação das Leis do Trabalho",
+   "CLT"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "trab",
+   "pt"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "ctn",
+  "tipo": "lei",
+  "numero": "5172",
+  "data": "1966-10-25",
+  "nome": "Código Tributário Nacional",
+  "sigla": "CTN",
+  "num": "Lei 5.172/1966",
+  "urn": "urn:lex:br:federal:lei:1966-10-25;5172",
+  "fonte": "normas",
+  "apelidos": [
+   "Código Tributário Nacional",
+   "CTN"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "trib"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "cdc",
+  "tipo": "lei",
+  "numero": "8078",
+  "data": "1990-09-11",
+  "nome": "Código de Defesa do Consumidor",
+  "sigla": "CDC",
+  "num": "Lei 8.078/1990",
+  "urn": "urn:lex:br:federal:lei:1990-09-11;8078",
+  "fonte": "normas",
+  "apelidos": [
+   "Código de Defesa do Consumidor",
+   "CDC"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "cdc"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "eca",
+  "tipo": "lei",
+  "numero": "8069",
+  "data": "1990-07-13",
+  "nome": "Estatuto da Criança e do Adolescente",
+  "sigla": "ECA",
+  "num": "Lei 8.069/1990",
+  "urn": "urn:lex:br:federal:lei:1990-07-13;8069",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto da Criança e do Adolescente",
+   "ECA"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "eca"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "lep",
+  "tipo": "lei",
+  "numero": "7210",
+  "data": "1984-07-11",
+  "nome": "Lei de Execução Penal",
+  "sigla": "LEP",
+  "num": "Lei 7.210/1984",
+  "urn": "urn:lex:br:federal:lei:1984-07-11;7210",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Execução Penal",
+   "Lei de Execuções Penais",
+   "LEP"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "lindb",
+  "tipo": "decreto.lei",
+  "numero": "4657",
+  "data": "1942-09-04",
+  "nome": "Lei de Introdução às Normas do Direito Brasileiro",
+  "sigla": "LINDB",
+  "num": "Decreto-Lei 4.657/1942",
+  "urn": "urn:lex:br:federal:decreto.lei:1942-09-04;4657",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Introdução às Normas do Direito Brasileiro",
+   "Lei de Introdução ao Código Civil",
+   "LINDB",
+   "LICC"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "eaoab",
+  "tipo": "lei",
+  "numero": "8906",
+  "data": "1994-07-04",
+  "nome": "Estatuto da Advocacia e da OAB",
+  "sigla": "EAOAB",
+  "num": "Lei 8.906/1994",
+  "urn": "urn:lex:br:federal:lei:1994-07-04;8906",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto da Advocacia e da OAB",
+   "Estatuto da Advocacia e da Ordem dos Advogados do Brasil",
+   "Estatuto da Advocacia",
+   "Estatuto da OAB",
+   "EAOAB"
+  ],
+  "so_citacao": [],
+  "padrao": [
+   "etica"
+  ],
+  "ementa": ""
+ },
+ {
+  "id": "lcp",
+  "tipo": "decreto.lei",
+  "numero": "3688",
+  "data": "1941-10-03",
+  "nome": "Lei das Contravenções Penais",
+  "sigla": "LCP",
+  "num": "Decreto-Lei 3.688/1941",
+  "urn": "urn:lex:br:federal:decreto.lei:1941-10-03;3688",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Contravenções Penais",
+   "Lei de Contravenções Penais",
+   "LCP"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "ctb",
+  "tipo": "lei",
+  "numero": "9503",
+  "data": "1997-09-23",
+  "nome": "Código de Trânsito Brasileiro",
+  "sigla": "CTB",
+  "num": "Lei 9.503/1997",
+  "urn": "urn:lex:br:federal:lei:1997-09-23;9503",
+  "fonte": "normas",
+  "apelidos": [
+   "Código de Trânsito Brasileiro",
+   "CTB"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "ce",
+  "tipo": "lei",
+  "numero": "4737",
+  "data": "1965-07-15",
+  "nome": "Código Eleitoral",
+  "sigla": "Código Eleitoral",
+  "num": "Lei 4.737/1965",
+  "urn": "urn:lex:br:federal:lei:1965-07-15;4737",
+  "fonte": "normas",
+  "apelidos": [
+   "Código Eleitoral"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "lef",
+  "tipo": "lei",
+  "numero": "6830",
+  "data": "1980-09-22",
+  "nome": "Lei de Execução Fiscal",
+  "sigla": "LEF",
+  "num": "Lei 6.830/1980",
+  "urn": "urn:lex:br:federal:lei:1980-09-22;6830",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Execução Fiscal",
+   "Lei de Execuções Fiscais",
+   "LEF"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "lrf",
+  "tipo": "lei.complementar",
+  "numero": "101",
+  "data": "2000-05-04",
+  "nome": "Lei de Responsabilidade Fiscal",
+  "sigla": "LRF",
+  "num": "LC 101/2000",
+  "urn": "urn:lex:br:federal:lei.complementar:2000-05-04;101",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Responsabilidade Fiscal",
+   "LRF"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": ""
+ },
+ {
+  "id": "l9099",
+  "tipo": "lei",
+  "numero": "9099",
+  "data": "1995-09-26",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.099/1995",
+  "urn": "urn:lex:br:federal:lei:1995-09-26;9099",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei dos Juizados Especiais Cíveis e Criminais",
+   "Lei dos Juizados Especiais"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os Juizados Especiais Cíveis e Criminais e dá outras providências."
+ },
+ {
+  "id": "l9504",
+  "tipo": "lei",
+  "numero": "9504",
+  "data": "1997-09-30",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.504/1997",
+  "urn": "urn:lex:br:federal:lei:1997-09-30;9504",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Eleições",
+   "Lei Eleitoral"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Estabelece normas para as eleições."
+ },
+ {
+  "id": "l11340",
+  "tipo": "lei",
+  "numero": "11340",
+  "data": "2006-08-07",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 11.340/2006",
+  "urn": "urn:lex:br:federal:lei:2006-08-07;11340",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei Maria da Penha"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Cria mecanismos para coibir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Discriminação contra as Mulheres e da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; altera o Código de Processo Penal, o Código Penal e a Lei de Execução Penal; e dá outras providências."
+ },
+ {
+  "id": "l9307",
+  "tipo": "lei",
+  "numero": "9307",
+  "data": "1996-09-23",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.307/1996",
+  "urn": "urn:lex:br:federal:lei:1996-09-23;9307",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Arbitragem"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a arbitragem."
+ },
+ {
+  "id": "l8245",
+  "tipo": "lei",
+  "numero": "8245",
+  "data": "1991-10-18",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.245/1991",
+  "urn": "urn:lex:br:federal:lei:1991-10-18;8245",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do Inquilinato",
+   "Lei de Locações",
+   "Lei de Locação"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre as locações dos imóveis urbanos e os procedimentos a elas pertinentes."
+ },
+ {
+  "id": "l12016",
+  "tipo": "lei",
+  "numero": "12016",
+  "data": "2009-08-07",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.016/2009",
+  "urn": "urn:lex:br:federal:lei:2009-08-07;12016",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do Mandado de Segurança"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Disciplina o mandado de segurança individual e coletivo e dá outras providências."
+ },
+ {
+  "id": "l11343",
+  "tipo": "lei",
+  "numero": "11343",
+  "data": "2006-08-23",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 11.343/2006",
+  "urn": "urn:lex:br:federal:lei:2006-08-23;11343",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Drogas",
+   "Lei Antidrogas",
+   "Lei de Tóxicos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui o Sistema Nacional de Políticas Públicas sobre Drogas - Sisnad; prescreve medidas para prevenção do uso indevido, atenção e reinserção social de usuários e dependentes de drogas; estabelece normas para repressão à produção não autorizada e ao tráfico ilícito de drogas; define crimes e dá outras providências."
+ },
+ {
+  "id": "l9784",
+  "tipo": "lei",
+  "numero": "9784",
+  "data": "1999-01-29",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.784/1999",
+  "urn": "urn:lex:br:federal:lei:1999-01-29;9784",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do Processo Administrativo Federal",
+   "Lei do Processo Administrativo",
+   "Lei de Processo Administrativo"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regula o processo administrativo no âmbito da Administração Pública Federal."
+ },
+ {
+  "id": "l9868",
+  "tipo": "lei",
+  "numero": "9868",
+  "data": "1999-11-10",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.868/1999",
+  "urn": "urn:lex:br:federal:lei:1999-11-10;9868",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da ADI"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o processo e julgamento da ação direta de inconstitucionalidade e da ação declaratória de constitucionalidade perante o Supremo Tribunal Federal."
+ },
+ {
+  "id": "l8072",
+  "tipo": "lei",
+  "numero": "8072",
+  "data": "1990-07-25",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.072/1990",
+  "urn": "urn:lex:br:federal:lei:1990-07-25;8072",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei dos Crimes Hediondos",
+   "Lei de Crimes Hediondos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os crimes hediondos, nos termos do art. 5º, inciso XLIII, da Constituição Federal, e determina outras providências."
+ },
+ {
+  "id": "l4320",
+  "tipo": "lei",
+  "numero": "4320",
+  "data": "1964-03-17",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 4.320/1964",
+  "urn": "urn:lex:br:federal:lei:1964-03-17;4320",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Estatui Normas Gerais de Direito Financeiro para elaboração e contrôle dos orçamentos e balanços da União, dos Estados, dos Municípios e do Distrito Federal."
+ },
+ {
+  "id": "l8213",
+  "tipo": "lei",
+  "numero": "8213",
+  "data": "1991-07-24",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.213/1991",
+  "urn": "urn:lex:br:federal:lei:1991-07-24;8213",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Benefícios da Previdência Social",
+   "Lei de Benefícios"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os Planos de Benefícios da Previdência Social e dá outras providências."
+ },
+ {
+  "id": "l13140",
+  "tipo": "lei",
+  "numero": "13140",
+  "data": "2015-06-26",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 13.140/2015",
+  "urn": "urn:lex:br:federal:lei:2015-06-26;13140",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Mediação"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a mediação entre particulares como meio de solução de controvérsias e sobre a autocomposição de conflitos no âmbito da administração pública; altera a Lei nº 9.469, de 10 de julho de 1997, e o Decreto nº 70.235, de 6 de março de 1972; e revoga o § 2º do art. 6º da Lei nº 9.469, de 10 de julho de 1997."
+ },
+ {
+  "id": "lc64",
+  "tipo": "lei.complementar",
+  "numero": "64",
+  "data": "1990-05-18",
+  "nome": "",
+  "sigla": "",
+  "num": "LC 64/1990",
+  "urn": "urn:lex:br:federal:lei.complementar:1990-05-18;64",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Inelegibilidades",
+   "Lei de Inelegibilidades",
+   "Lei de Inelegibilidade"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Estabelece, de acordo com o art. 14, § 9º, da Constituição Federal, casos de inelegibilidade, prazos de cessação e determina outras providências."
+ },
+ {
+  "id": "l13146",
+  "tipo": "lei",
+  "numero": "13146",
+  "data": "2015-07-06",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 13.146/2015",
+  "urn": "urn:lex:br:federal:lei:2015-07-06;13146",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto da Pessoa com Deficiência",
+   "Lei Brasileira de Inclusão"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência)."
+ },
+ {
+  "id": "l9605",
+  "tipo": "lei",
+  "numero": "9605",
+  "data": "1998-02-12",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.605/1998",
+  "urn": "urn:lex:br:federal:lei:1998-02-12;9605",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei dos Crimes Ambientais",
+   "Lei de Crimes Ambientais"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre as sanções penais e administrativas derivadas de condutas e atividades lesivas ao meio ambiente, e dá outras providências."
+ },
+ {
+  "id": "l9455",
+  "tipo": "lei",
+  "numero": "9455",
+  "data": "1997-04-07",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.455/1997",
+  "urn": "urn:lex:br:federal:lei:1997-04-07;9455",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Tortura",
+   "Lei da Tortura"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Define os crimes de tortura e dá outras providências."
+ },
+ {
+  "id": "l6938",
+  "tipo": "lei",
+  "numero": "6938",
+  "data": "1981-08-31",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 6.938/1981",
+  "urn": "urn:lex:br:federal:lei:1981-08-31;6938",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Política Nacional do Meio Ambiente",
+   "Política Nacional do Meio Ambiente",
+   "PNMA"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a Política Nacional do Meio Ambiente, seus fins e mecanismos de formulação e aplicação, e dá outras providências."
+ },
+ {
+  "id": "l12850",
+  "tipo": "lei",
+  "numero": "12850",
+  "data": "2013-08-02",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.850/2013",
+  "urn": "urn:lex:br:federal:lei:2013-08-02;12850",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Organizações Criminosas",
+   "Lei de Organizações Criminosas",
+   "Lei do Crime Organizado"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Define organização criminosa e dispõe sobre a investigação criminal, os meios de obtenção da prova, infrações penais correlatas e o procedimento criminal; altera o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal); revoga a Lei nº 9.034, de 3 de maio de 1995; e dá outras providências."
+ },
+ {
+  "id": "l6404",
+  "tipo": "lei",
+  "numero": "6404",
+  "data": "1976-12-15",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 6.404/1976",
+  "urn": "urn:lex:br:federal:lei:1976-12-15;6404",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Sociedades Anônimas",
+   "Lei das Sociedades por Ações",
+   "Lei das S.A.",
+   "Lei das S/A",
+   "LSA"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre as sociedades por ações."
+ },
+ {
+  "id": "l5584",
+  "tipo": "lei",
+  "numero": "5584",
+  "data": "1970-06-26",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 5.584/1970",
+  "urn": "urn:lex:br:federal:lei:1970-06-26;5584",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre normas de Direito Processual do Trabalho, altera dispositivos da Consolidação das Leis do Trabalho, disciplina a concessão e prestação de assistência judiciária na Justiça do Trabalho e dá outras providências."
+ },
+ {
+  "id": "l9096",
+  "tipo": "lei",
+  "numero": "9096",
+  "data": "1995-09-19",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.096/1995",
+  "urn": "urn:lex:br:federal:lei:1995-09-19;9096",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei dos Partidos Políticos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre partidos políticos, regulamenta os arts. 17 e 14, § 3º, inciso V, da Constituição Federal."
+ },
+ {
+  "id": "l7347",
+  "tipo": "lei",
+  "numero": "7347",
+  "data": "1985-07-24",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 7.347/1985",
+  "urn": "urn:lex:br:federal:lei:1985-07-24;7347",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Ação Civil Pública",
+   "LACP"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Disciplina a ação civil pública de responsabilidade por danos causados ao meio ambiente, ao consumidor, a bens e direitos de valor artístico, estético, histórico, turístico e paisagístico (VETADO) e dá outras providências."
+ },
+ {
+  "id": "l4717",
+  "tipo": "lei",
+  "numero": "4717",
+  "data": "1965-06-29",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 4.717/1965",
+  "urn": "urn:lex:br:federal:lei:1965-06-29;4717",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Ação Popular"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regula a ação popular."
+ },
+ {
+  "id": "l11079",
+  "tipo": "lei",
+  "numero": "11079",
+  "data": "2004-12-30",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 11.079/2004",
+  "urn": "urn:lex:br:federal:lei:2004-12-30;11079",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Parcerias Público-Privadas",
+   "Lei das PPPs"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui normas gerais para licitação e contratação de parceria público-privada no âmbito da administração pública."
+ },
+ {
+  "id": "lc123",
+  "tipo": "lei.complementar",
+  "numero": "123",
+  "data": "2006-12-14",
+  "nome": "",
+  "sigla": "",
+  "num": "LC 123/2006",
+  "urn": "urn:lex:br:federal:lei.complementar:2006-12-14;123",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte",
+   "Estatuto da Microempresa"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui o Estatuto Nacional da Microempresa e da Empresa de Pequeno Porte; altera dispositivos das Leis nºs 8.212 e 8.213, ambas de 24 de julho de 1991, da Consolidação das Leis do Trabalho - CLT, aprovada pelo Decreto-Lei nº 5.452, de 1º de maio de 1943, da Lei nº 10.189, de 14 de fevereiro de 2001, da Lei Complementar nº 63, de 11 de janeiro de 1990; e revoga as Leis nºs 9.317, de 5 de dezembro de 1996, e 9.841, de 5 de outubro de 1999."
+ },
+ {
+  "id": "lc150",
+  "tipo": "lei.complementar",
+  "numero": "150",
+  "data": "2015-06-01",
+  "nome": "",
+  "sigla": "",
+  "num": "LC 150/2015",
+  "urn": "urn:lex:br:federal:lei.complementar:2015-06-01;150",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei dos Empregados Domésticos",
+   "Lei do Trabalho Doméstico"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o contrato de trabalho doméstico; altera as Leis nº 8.212, de 24 de julho de 1991, nº 8.213, de 24 de julho de 1991, e nº 11.196, de 21 de novembro de 2005; revoga o inciso I do art. 3º da Lei nº 8.009, de 29 de março de 1990, o art. 36 da Lei nº 8.213, de 24 de julho de 1991, a Lei nº 5.859, de 11 de dezembro de 1972, e o inciso VII do art. 12 da Lei nº 9.250, de 26 de dezembro 1995; e dá outras providências."
+ },
+ {
+  "id": "l8036",
+  "tipo": "lei",
+  "numero": "8036",
+  "data": "1990-05-11",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.036/1990",
+  "urn": "urn:lex:br:federal:lei:1990-05-11;8036",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do FGTS"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o Fundo de Garantia do Tempo de Serviço e dá outras providências."
+ },
+ {
+  "id": "l7960",
+  "tipo": "lei",
+  "numero": "7960",
+  "data": "1989-12-21",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 7.960/1989",
+  "urn": "urn:lex:br:federal:lei:1989-12-21;7960",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Prisão Temporária",
+   "Lei de Prisão Temporária"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre prisão temporária."
+ },
+ {
+  "id": "l6015",
+  "tipo": "lei",
+  "numero": "6015",
+  "data": "1973-12-31",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 6.015/1973",
+  "urn": "urn:lex:br:federal:lei:1973-12-31;6015",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Registros Públicos",
+   "Lei dos Registros Públicos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os registros públicos e dá outras providências."
+ },
+ {
+  "id": "l8009",
+  "tipo": "lei",
+  "numero": "8009",
+  "data": "1990-03-29",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.009/1990",
+  "urn": "urn:lex:br:federal:lei:1990-03-29;8009",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do Bem de Família"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a impenhorabilidade do bem de família."
+ },
+ {
+  "id": "l10257",
+  "tipo": "lei",
+  "numero": "10257",
+  "data": "2001-07-10",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 10.257/2001",
+  "urn": "urn:lex:br:federal:lei:2001-07-10;10257",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto da Cidade"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regulamenta os arts. 182 e 183 da Constituição Federal, estabelece diretrizes gerais da política urbana e dá outras providências."
+ },
+ {
+  "id": "l7783",
+  "tipo": "lei",
+  "numero": "7783",
+  "data": "1989-06-28",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 7.783/1989",
+  "urn": "urn:lex:br:federal:lei:1989-06-28;7783",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Greve"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o exercício do direito de greve, define as atividades essenciais, regula o atendimento das necessidades inadiáveis da comunidade, e dá outras providências."
+ },
+ {
+  "id": "l9985",
+  "tipo": "lei",
+  "numero": "9985",
+  "data": "2000-07-18",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.985/2000",
+  "urn": "urn:lex:br:federal:lei:2000-07-18;9985",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do SNUC",
+   "SNUC"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regulamenta o art. 225, § 1º, incisos I, II, III, e VII da Constituição Federal, institui o Sistema Nacional de Unidades de Conservação da Natureza e dá outras providências."
+ },
+ {
+  "id": "l8742",
+  "tipo": "lei",
+  "numero": "8742",
+  "data": "1993-12-07",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.742/1993",
+  "urn": "urn:lex:br:federal:lei:1993-12-07;8742",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei Orgânica da Assistência Social",
+   "LOAS"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a organização da Assistência Social e dá outras providências."
+ },
+ {
+  "id": "lc95",
+  "tipo": "lei.complementar",
+  "numero": "95",
+  "data": "1998-02-26",
+  "nome": "",
+  "sigla": "",
+  "num": "LC 95/1998",
+  "urn": "urn:lex:br:federal:lei.complementar:1998-02-26;95",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a elaboração, a redação, a alteração e a consolidação das leis, conforme determina o parágrafo único do art. 59 da Constituição Federal, e estabelece normas para a consolidação dos atos normativos que menciona."
+ },
+ {
+  "id": "l13869",
+  "tipo": "lei",
+  "numero": "13869",
+  "data": "2019-09-05",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 13.869/2019",
+  "urn": "urn:lex:br:federal:lei:2019-09-05;13869",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Abuso de Autoridade",
+   "Lei do Abuso de Autoridade"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os crimes de abuso de autoridade; altera a Lei nº 7.960, de 21 de dezembro de 1989, a Lei nº 9.296, de 24 de julho de 1996, a Lei nº 8.069, de 13 de julho de 1990, e a Lei nº 8.906, de 4 de julho de 1994; e revoga a Lei nº 4.898, de 9 de dezembro de 1965, e dispositivos do Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal)."
+ },
+ {
+  "id": "l8112",
+  "tipo": "lei",
+  "numero": "8112",
+  "data": "1990-12-11",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.112/1990",
+  "urn": "urn:lex:br:federal:lei:1990-12-11;8112",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto dos Servidores Públicos Civis da União",
+   "Estatuto dos Servidores Públicos Federais",
+   "Estatuto do Servidor Público Federal"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o Regime Jurídico dos Servidores Públicos Civis da União, das autarquias e das fundações públicas federais"
+ },
+ {
+  "id": "l5474",
+  "tipo": "lei",
+  "numero": "5474",
+  "data": "1968-07-18",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 5.474/1968",
+  "urn": "urn:lex:br:federal:lei:1968-07-18;5474",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Duplicatas",
+   "Lei da Duplicata"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sôbre as Duplicatas, e dá outras providências."
+ },
+ {
+  "id": "l9296",
+  "tipo": "lei",
+  "numero": "9296",
+  "data": "1996-07-24",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.296/1996",
+  "urn": "urn:lex:br:federal:lei:1996-07-24;9296",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Interceptação Telefônica",
+   "Lei das Interceptações Telefônicas"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regulamenta o inciso XII, parte final, do art. 5° da Constituição Federal."
+ },
+ {
+  "id": "l12318",
+  "tipo": "lei",
+  "numero": "12318",
+  "data": "2010-08-26",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.318/2010",
+  "urn": "urn:lex:br:federal:lei:2010-08-26;12318",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Alienação Parental",
+   "Lei de Alienação Parental"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a alienação parental e altera o art. 236 da Lei nº 8.069, de 13 de julho de 1990."
+ },
+ {
+  "id": "l12305",
+  "tipo": "lei",
+  "numero": "12305",
+  "data": "2010-08-02",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.305/2010",
+  "urn": "urn:lex:br:federal:lei:2010-08-02;12305",
+  "fonte": "normas",
+  "apelidos": [
+   "Política Nacional de Resíduos Sólidos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui a Política Nacional de Resíduos Sólidos; altera a Lei nº 9.605, de 12 de fevereiro de 1998; e dá outras providências."
+ },
+ {
+  "id": "l5010",
+  "tipo": "lei",
+  "numero": "5010",
+  "data": "1966-05-30",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 5.010/1966",
+  "urn": "urn:lex:br:federal:lei:1966-05-30;5010",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Organiza a Justiça Federal de primeira instância, e dá outras providências."
+ },
+ {
+  "id": "l8429",
+  "tipo": "lei",
+  "numero": "8429",
+  "data": "1992-06-02",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.429/1992",
+  "urn": "urn:lex:br:federal:lei:1992-06-02;8429",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Improbidade Administrativa",
+   "Lei de Improbidade",
+   "LIA"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre as sanções aplicáveis em virtude da prática de atos de improbidade administrativa, de que trata o § 4º do art. 37 da Constituição Federal; e dá outras providências."
+ },
+ {
+  "id": "l10741",
+  "tipo": "lei",
+  "numero": "10741",
+  "data": "2003-10-01",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 10.741/2003",
+  "urn": "urn:lex:br:federal:lei:2003-10-01;10741",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto da Pessoa Idosa",
+   "Estatuto do Idoso"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o Estatuto da Pessoa Idosa e dá outras providências."
+ },
+ {
+  "id": "l10826",
+  "tipo": "lei",
+  "numero": "10826",
+  "data": "2003-12-22",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 10.826/2003",
+  "urn": "urn:lex:br:federal:lei:2003-12-22;10826",
+  "fonte": "normas",
+  "apelidos": [
+   "Estatuto do Desarmamento"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre registro, posse e comercialização de armas de fogo e munição, sobre o Sistema Nacional de Armas - Sinarm, define crimes e dá outras providências."
+ },
+ {
+  "id": "l9613",
+  "tipo": "lei",
+  "numero": "9613",
+  "data": "1998-03-03",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.613/1998",
+  "urn": "urn:lex:br:federal:lei:1998-03-03;9613",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Lavagem de Dinheiro",
+   "Lei de Lavagem"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre os crimes de \"lavagem\" ou ocultação de bens, direitos e valores; a prevenção da utilização do sistema financeiro para os ilícitos previstos nesta Lei; cria o Conselho de Controle de Atividades Financeiras - COAF, e dá outras providências"
+ },
+ {
+  "id": "l8987",
+  "tipo": "lei",
+  "numero": "8987",
+  "data": "1995-02-13",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.987/1995",
+  "urn": "urn:lex:br:federal:lei:1995-02-13;8987",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei das Concessões",
+   "Lei de Concessões"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o regime de concessão e permissão da prestação de serviços públicos previsto no art. 175 da Constituição Federal, e dá outras providências."
+ },
+ {
+  "id": "dl3365",
+  "tipo": "decreto.lei",
+  "numero": "3365",
+  "data": "1941-06-21",
+  "nome": "",
+  "sigla": "",
+  "num": "Decreto-Lei 3.365/1941",
+  "urn": "urn:lex:br:federal:decreto.lei:1941-06-21;3365",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei Geral de Desapropriações",
+   "Lei de Desapropriação"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre desapropriações por utilidade pública."
+ },
+ {
+  "id": "l12527",
+  "tipo": "lei",
+  "numero": "12527",
+  "data": "2011-11-18",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.527/2011",
+  "urn": "urn:lex:br:federal:lei:2011-11-18;12527",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Acesso à Informação",
+   "LAI"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Regula o acesso a informações previsto no inciso XXXIII do art. 5º, no inciso II do § 3º do art. 37 e no § 2º do art. 216 da Constituição Federal; altera a Lei nº 8.112, de 11 de dezembro de 1990; revoga a Lei nº 11.111, de 5 de maio de 2005, e dispositivos da Lei nº 8.159, de 8 de janeiro de 1991; e dá outras providências."
+ },
+ {
+  "id": "l5889",
+  "tipo": "lei",
+  "numero": "5889",
+  "data": "1973-06-08",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 5.889/1973",
+  "urn": "urn:lex:br:federal:lei:1973-06-08;5889",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do Trabalho Rural"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Estatui normas reguladoras do trabalho rural e dá outras providências."
+ },
+ {
+  "id": "l11770",
+  "tipo": "lei",
+  "numero": "11770",
+  "data": "2008-09-09",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 11.770/2008",
+  "urn": "urn:lex:br:federal:lei:2008-09-09;11770",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei da Empresa Cidadã"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Cria o Programa Empresa Cidadã, destinado à prorrogação da licença-maternidade mediante concessão de incentivo fiscal, e altera a Lei n° 8.212, de 24 de julho de 1991."
+ },
+ {
+  "id": "lc116",
+  "tipo": "lei.complementar",
+  "numero": "116",
+  "data": "2003-07-31",
+  "nome": "",
+  "sigla": "",
+  "num": "LC 116/2003",
+  "urn": "urn:lex:br:federal:lei.complementar:2003-07-31;116",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei do ISS"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre o Imposto Sobre Serviços de Qualquer Natureza, de competência dos Municípios e do Distrito Federal, e dá outras providências."
+ },
+ {
+  "id": "dl1569",
+  "tipo": "decreto.lei",
+  "numero": "1569",
+  "data": "1977-08-08",
+  "nome": "",
+  "sigla": "",
+  "num": "Decreto-Lei 1.569/1977",
+  "urn": "urn:lex:br:federal:decreto.lei:1977-08-08;1569",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Modifica o artigo 11 do Decreto-lei n.º 352, de 17 de junho de 1968, alterado pelo artigo 1º do Decreto-lei n.º 623, de 11 de junho de 1969, e dá outras providências."
+ },
+ {
+  "id": "l8212",
+  "tipo": "lei",
+  "numero": "8212",
+  "data": "1991-07-24",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.212/1991",
+  "urn": "urn:lex:br:federal:lei:1991-07-24;8212",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Custeio da Seguridade Social",
+   "Lei de Custeio",
+   "Lei Orgânica da Seguridade Social"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a organização da Seguridade Social, institui Plano de Custeio, e dá outras providências. ; ;"
+ },
+ {
+  "id": "l9433",
+  "tipo": "lei",
+  "numero": "9433",
+  "data": "1997-01-08",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 9.433/1997",
+  "urn": "urn:lex:br:federal:lei:1997-01-08;9433",
+  "fonte": "normas",
+  "apelidos": [
+   "Política Nacional de Recursos Hídricos",
+   "Lei das Águas"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui a Política Nacional de Recursos Hídricos, cria o Sistema Nacional de Gerenciamento de Recursos Hídricos, regulamenta o inciso XIX do art. 21 da Constituição Federal e altera o art. 1º da Lei nº 8.001, de 13 de março de 1990, que modificou a Lei nº 7.990, de 28 de dezembro de 1989."
+ },
+ {
+  "id": "l5478",
+  "tipo": "lei",
+  "numero": "5478",
+  "data": "1968-07-25",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 5.478/1968",
+  "urn": "urn:lex:br:federal:lei:1968-07-25;5478",
+  "fonte": "normas",
+  "apelidos": [
+   "Lei de Alimentos"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre ação de alimentos e dá outras providências."
+ },
+ {
+  "id": "l8038",
+  "tipo": "lei",
+  "numero": "8038",
+  "data": "1990-05-28",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.038/1990",
+  "urn": "urn:lex:br:federal:lei:1990-05-28;8038",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Institui normas procedimentais para processos que especifica, perante o Superior Tribunal de Justiça e o Supremo Tribunal Federal."
+ },
+ {
+  "id": "l8177",
+  "tipo": "lei",
+  "numero": "8177",
+  "data": "1991-03-01",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 8.177/1991",
+  "urn": "urn:lex:br:federal:lei:1991-03-01;8177",
+  "fonte": "normas",
+  "apelidos": [],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Estabelece regras para a desindexação da economia e dá outras providências."
+ },
+ {
+  "id": "l12651",
+  "tipo": "lei",
+  "numero": "12651",
+  "data": "2012-05-25",
+  "nome": "",
+  "sigla": "",
+  "num": "Lei 12.651/2012",
+  "urn": "urn:lex:br:federal:lei:2012-05-25;12651",
+  "fonte": "normas",
+  "apelidos": [
+   "Código Florestal",
+   "Novo Código Florestal"
+  ],
+  "so_citacao": [],
+  "padrao": [],
+  "ementa": "Dispõe sobre a proteção da vegetação nativa; altera as Leis nºs 6.938, de 31 de agosto de 1981, 9.393, de 19 de dezembro de 1996, e 11.428, de 22 de dezembro de 2006; revoga as Leis nºs 4.771, de 15 de setembro de 1965, e 7.754, de 14 de abril de 1989, e a Medida Provisória nº 2.166- 67, de 24 de agosto de 2001; e dá outras providências."
+ },
+ {
+  "id": "ced",
+  "tipo": "resolucao.oab",
+  "numero": "2",
+  "data": "2015-10-19",
+  "ano": "2015",
+  "nome": "Código de Ética e Disciplina da OAB",
+  "sigla": "CED",
+  "num": "Resolução 2/2015 do CFOAB",
+  "fonte": "oab",
+  "url": "https://www.oab.org.br/publicacoes/AbrirPDF?LivroId=0000004085",
+  "ver": "https://www.oab.org.br/leisnormas/legislacao/codigo-de-etica",
+  "apelidos": [
+   "Código de Ética e Disciplina da OAB",
+   "Código de Ética e Disciplina da Ordem dos Advogados do Brasil",
+   "Código de Ética e Disciplina",
+   "Código de Ética da OAB",
+   "Código de Ética",
+   "CED"
+  ],
+  "so_citacao": [],
+  "padrao": []
+ },
+ {
+  "id": "rgoab",
+  "tipo": "regulamento.oab",
+  "numero": "",
+  "data": "1994-11-16",
+  "ano": "1994",
+  "nome": "Regulamento Geral do Estatuto da Advocacia e da OAB",
+  "sigla": "Regulamento Geral",
+  "num": "Regulamento Geral do EAOAB",
+  "fonte": "oab",
+  "url": "https://www.oab.org.br/publicacoes/AbrirPDF?LivroId=0000004095",
+  "ver": "https://www.oab.org.br/leisnormas/legislacao/regulamento-geral",
+  "apelidos": [
+   "Regulamento Geral do Estatuto da Advocacia e da OAB",
+   "Regulamento Geral da OAB",
+   "Regulamento Geral"
+  ],
+  "so_citacao": [
+   "RG"
+  ],
+  "padrao": []
+ }
+]

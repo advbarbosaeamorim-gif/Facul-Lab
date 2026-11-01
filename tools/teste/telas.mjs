@@ -81,6 +81,22 @@ for (const [estilo, tema] of VISUAIS) {
     if (n !== 10) falhas.push(`${nomeT}: o treino deveria ter 10 questões e tem ${n}`);
   } catch (e) { falhas.push(`${nomeT}: ${e.message.split("\n")[0]}`) }
   await ctxT.close();
+  /* abrir o artigo citado: na apostila, "art. 112, VI, a, e VIII, da LEP" vira link e abre o texto da lei com o trecho destacado */
+  const nomeA = `${estilo}-${tema}-artigo-citado`;
+  const [ctxA, pA] = await abre(nomeA, estilo, tema, { tela: "ler", d: "pen2", pg: 7, pagina: true });
+  try {
+    const link = pA.locator(".art-link", { hasText: "da LEP" }).first();
+    await link.waitFor({ timeout: 6000 });
+    await link.click();
+    await pA.locator("#art-camada .al.alvo").first().waitFor({ timeout: 6000 });
+    const tit = await pA.locator("#art-tit").innerText();
+    if (!/Art\. 112/.test(tit)) falhas.push(`${nomeA}: a folha abriu "${tit}" em vez do art. 112 da LEP`);
+    if (estilo === "premium" && tema === "claro") await pA.screenshot({ path: PRINTS + nomeA + ".png" });
+    await pA.keyboard.press("Escape");
+    await pA.waitForTimeout(400);
+    if (await pA.locator("#art-camada").count()) falhas.push(`${nomeA}: a folha não fechou com Esc`);
+  } catch (e) { falhas.push(`${nomeA}: ${e.message.split("\n")[0]}`) }
+  await ctxA.close();
 }
 await browser.close();
 
@@ -88,4 +104,4 @@ if (falhas.length) {
   console.error(`\n${falhas.length} problema(s):\n- ` + falhas.join("\n- "));
   process.exit(1);
 }
-console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 2)} telas e fluxos, sem erros.`);
+console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 3)} telas e fluxos, sem erros.`);

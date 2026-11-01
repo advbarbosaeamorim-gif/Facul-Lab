@@ -58,6 +58,9 @@ const P={
  sino:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',
  calendario:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
 };
+/* texto com citações de lei: js/21-artigos.js liga "art. 112 da LEP" ao texto oficial (m: matéria ou disciplina, para a lei
+   padrão; fund: fundamento da questão, cuja lei vale para o comentário; tit: título do tema da apostila) */
+const leisAttr=(m,fund,tit)=>` data-leis="${esc(m||"")}"${fund?` data-leis-fund="${esc(fund)}"`:""}${tit?` data-leis-tit="${esc(tit)}"`:""}`;
 const ic=(n,cls)=>`<svg class="i${cls?" "+cls:""}" viewBox="0 0 24 24" aria-hidden="true">${P[n]||""}</svg>`;
 
 /* ---------- matérias e grade ---------- */
@@ -609,7 +612,7 @@ function nesteTema(s){const subs=[];s.corpo.split("\n").forEach(l=>{l=l.trim();i
  return `<nav class="neste" aria-label="Neste tema"><p class="neste-t">${ic("grade")}Neste tema</p>${subs.length>=2?`<ol>${subs.map(x=>`<li>${inl(x)}</li>`).join("")}</ol>`:""}${extras.length?`<p class="neste-x">Inclui ${extras.join(", ")}.</p>`:""}</nav>`}
 function blocoTema(d,f,P,k){const s=P.secs[k-1];
  return `<div class="tema-ban" style="--c:${s.cor||f.cor}">${ilustra(s.ilu,s.cor||f.cor)}<div><span class="tn">Tema ${k} de ${P.secs.length} · ${minLeitura(s.corpo)} min</span><h3>${inl(s.tit)}</h3></div></div>
- ${nesteTema(s)}${ouvirBtn(d+":"+k)}<article class="texto" style="--c:${f.cor}">${md(s.corpo,f.cor).html}</article>`}
+ ${nesteTema(s)}${ouvirBtn(d+":"+k)}<article class="texto" style="--c:${f.cor}"${leisAttr(d,"",s.tit)}>${md(s.corpo,f.cor).html}</article>`}
 function trilhaTemas(d,P,pg){const N=P.secs.length;const vis=(S.apPg&&S.apPg[d])||0;
  return `<ol class="trilha" aria-label="Progresso na apostila">${P.secs.map((x,k)=>`<li class="${k+1===pg?"atual":k+1<=vis?"lido":""}"><button data-acao="pag" data-pg="${k+1}" aria-label="Tema ${k+1}: ${esc(limpo(x.tit))}${k+1===pg?" (atual)":""}"${k+1===pg?' aria-current="step"':""}></button></li>`).join("")}<li class="${pg>N?"atual":vis>N?"lido":""}"><button data-acao="pag" data-pg="${N+1}" aria-label="Mapa mental e revisão"${pg>N?' aria-current="step"':""}></button></li></ol>`}
 function extrasTema(d,k){const key=d+":"+k;const fav=S.fav&&S.fav[key];const nota=(S.notas&&S.notas[key])||"";
@@ -622,7 +625,7 @@ function capaAp(d,f,P){const N=P.secs.length;const vis=(S.apPg&&S.apPg[d])||0;
  const alvo=vis>0?Math.min(vis,N+1):1;
  const pct=Math.round(Math.min(vis,N)*100/Math.max(1,N));
  return `<div class="ap-hero">${ilustra(AP_DISC[d]||"livros",f.cor)}<div><h2>${esc(f.nome)}</h2><p class="nota">${minLeitura(P.t)} min de leitura · ${N} temas</p>${vis?`<div class="ap-prog"><span class="trilho"><i class="f-ok" style="width:${pct}%"></i></span><small>${Math.min(vis,N)} de ${N} temas lidos</small></div>`:""}</div></div>
- ${P.pre.trim()?`<div class="texto" style="--c:${f.cor}">${md(P.pre,f.cor).html}</div>`:""}
+ ${P.pre.trim()?`<div class="texto" style="--c:${f.cor}"${leisAttr(d)}>${md(P.pre,f.cor).html}</div>`:""}
  ${btnModo()}
  <div class="capa-acoes"><button class="botao cheio" data-acao="pag" data-pg="${alvo}">${ic("livro")} ${esc(cont)}</button>${btnLida(d)}</div>
  <div class="secao" role="heading" aria-level="2">Temas desta apostila</div>
@@ -635,7 +638,7 @@ function paginaTema(d,f,P,pg){const N=P.secs.length;
  <nav class="navtema"><button data-acao="pag" data-pg="${pg-1}"><small>${ic("ant")}${pg>1?"Tema anterior":"Voltar"}</small><span>${inl(ant)}</span></button><button class="prox" data-acao="pag" data-pg="${pg+1}"><small>${pg<N?"Próximo tema":"Concluir"}${ic("prox")}</small><span>${inl(prx)}</span></button></nav>`}
 function conclusaoAp(d,f,P,i){const A=window.APOSTILA[i];const ds=PERIODOS[i].filter(x=>A.mat&&A.mat[x]);const k=ds.indexOf(d);const ant=ds[k-1],prox=ds[k+1];
  return `<div class="tema-ban" style="--c:${f.cor}">${ilustra("mente",f.cor)}<div><span class="tn">Revisão final</span><h3>Mapa mental</h3></div></div>
- ${P.mapa?`<article class="texto" style="--c:${f.cor}">${md(P.mapa,f.cor).html}</article>`:""}
+ ${P.mapa?`<article class="texto" style="--c:${f.cor}"${leisAttr(d)}>${md(P.mapa,f.cor).html}</article>`:""}
  ${versoCard(VERSOS[d]||versoGeral(i),"Uma palavra para a sua caminhada")}
  <div class="capa-acoes">${btnLida(d)}</div>
  <div class="ap-fim" style="margin-top:12px"><button class="botao cheio" data-acao="disc" data-d="${d}">${ic("alvo")} Treinar com os simulados desta matéria</button>
@@ -674,7 +677,7 @@ const nomeCurto=n=>String(n).split(" — ")[0];
 function folhaResumo(i){const R=(window.RESUMOS||[])[i]||{};const ds=PERIODOS[i].filter(d=>R[d]);const v=versoGeral(i);
  return `<header class="rf-cab"><b>Resumo do ${i+1}º período</b><span>${esc(ds.map(d=>nomeCurto(infoDisc(d).nome)).join(" · "))}</span></header>
  ${ds.map(d=>{const f=infoDisc(d);const x=R[d];const corpo=typeof x==="string"?md(x,f.cor).html:`<ul>${x.map(y=>`<li>${inl(y)}</li>`).join("")}</ul>`;
-  return `<section class="rf-mat texto" style="--c:${f.cor}"><div class="rf-tit">${ilustra(AP_DISC[d]||"livros",f.cor)}<h3>${esc(f.nome)}</h3></div>${corpo}</section>`}).join("")}
+  return `<section class="rf-mat texto" style="--c:${f.cor}"${leisAttr(d)}><div class="rf-tit">${ilustra(AP_DISC[d]||"livros",f.cor)}<h3>${esc(f.nome)}</h3></div>${corpo}</section>`}).join("")}
  ${versoCard(v,"Uma palavra para a sua caminhada")}`}
 function telaResumo(){const i=rota.p;const R=(window.RESUMOS||[])[i];
  if(!R)return topo(`Resumo do ${i+1}º período`,"",{})+`<main class="wrap">${vazio("recibo","Resumo em preparação","O resumo deste período ainda está sendo escrito. A apostila completa já traz toda a matéria, com mapas mentais no fim de cada disciplina.",`<button class="botao cheio" data-acao="ap" data-p="${i}">Abrir a apostila</button>`)}</main>`;
