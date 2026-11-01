@@ -32,7 +32,7 @@ function invTopo(q,novo){return `<div class="inv-cab"><span class="inv-selo">${i
 function invAlts(L,ord,r,marc,mostra,attr){return `<div class="alts inv-alts" role="radiogroup" aria-label="Perguntas">${ord.map((oi,p)=>{let c="";if(mostra){if(oi===0)c="certa";else if(oi===r)c="errada"}else if(oi===marc)c="marcada";
  return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" ${attr} data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[p]}</span><span>${invPerg(QMAP[L[oi]])}</span></button>`}).join("")}</div>`}
 function invExplica(q,L,r,ord,cad){const ok=r===0,x=r>0?QMAP[L[r]]:null;
- return `<div class="coment ${ok?"":"err"} inv-coment"><h3>${r===undefined?"Em branco":ok?"Inverso certo":"Inverso incorreto"} · era a ${LETRAS[ord.indexOf(0)]}</h3>
+ return `<div class="coment ${ok?"":"err"} inv-coment"${leisAttr(q.m,q.f)}><h3>${r===undefined?"Em branco":ok?"Inverso certo":"Inverso incorreto"} · era a ${LETRAS[ord.indexOf(0)]}</h3>
  <p class="inv-frase">${ic("inverte")}<span>${invFrase(q)}</span></p><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>
  ${x?`<div class="inv-comp"><p class="porque-t">Compare com a pergunta que você marcou</p><p>${invFrase(x)}</p><p class="inv-dica">Perguntas vizinhas, respostas diferentes. Grave o detalhe do enunciado que separa uma da outra.</p></div>`:""}
  <p class="inv-porque">${ic("lampada")}<span><b>Por que inverter?</b> Na prova você vai da pergunta à resposta. Aqui faz o caminho de volta: ligar a resposta ao contexto certo mostra que você entendeu, e não só reconheceu a alternativa. A memória fica firme nos dois sentidos.</span></p>
@@ -51,7 +51,7 @@ function telaQuizInv(s,id,q,L){const ord=s.ordem[id],r=s.resp[id],mostra=!s.corr
 /* na correção do resultado */
 function invCorr(a,id,i,L){const q=QMAP[id],x=a.resp[id],ord=a.ordem[id],k=x===undefined?"br":x===0?"ok":"er";
  return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)} · teste inverso</span><br>A resposta é: <b>${esc(q.o[0])}</b></span></summary>
- <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${invPerg(QMAP[L[oi]])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}</p>`).join("")}
+ <div class="rbody"${leisAttr(q.m,q.f)}>${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${invPerg(QMAP[L[oi]])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}</p>`).join("")}
  <p class="inv-frase" style="margin-top:10px">${ic("inverte")}<span>${invFrase(q)}</span></p>${x>0?`<p class="fund">A pergunta que você marcou: ${invFrase(QMAP[L[x]])}</p>`:""}<p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${botaoRep(q)}</div></details>`}
 /* aviso na tela de começar */
 function invAvisoPre(s){if(s.tipo!=="err")return "";const n=s.qids.filter(id=>invQuer(id)&&invApta(QMAP[id])).length;if(!n)return "";
@@ -146,7 +146,7 @@ function cadCorpo(id){const q=QMAP[id],e=S.cad[id],st=cadEst(id);
  return `<div class="cad-corpo${cadEntra===id?" entra":""}">
  ${e.br?`<p class="cad-aviso">${ic("exc")} Da última vez você deixou esta questão em branco.</p>`:e.inv?`<p class="cad-aviso">${ic("inverte")} Da última vez você errou o teste inverso: reconheceu a resposta, mas não a pergunta. Releia o enunciado com calma.</p>`:""}
  ${cadAlts(q,cadOrd(id),e.br?undefined:e.r,true,false)}
- <div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>
+ <div class="coment err cad-coment"${leisAttr(q.m,q.f)}><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>
  <div class="cad-pq"><p class="cad-pq-t">Por que eu errei?</p><div class="cad-pq-bts">${CAD_MOT.map(x=>`<button data-cad="mot" data-id="${id}" data-v="${x[0]}" aria-pressed="${e.mot===x[0]}">${ic(x[2])}${x[1]}</button>`).join("")}</div>
  ${e.mot?`<p class="cad-dica">${ic("lampada")}<span>${CAD_MOT.find(x=>x[0]===e.mot)[3]}</span></p>`:""}</div>
  <label class="campo cad-nota"><span>${ic("nota")} O que eu aprendi</span><textarea data-cad-nota="${id}" rows="2" placeholder="Com suas palavras. Ex.: na dúvida entre as duas, o prazo é de 15 dias úteis.">${esc(e.nota||"")}</textarea></label>
@@ -159,7 +159,7 @@ function cadRefaz(id){const q=QMAP[id],R=cadRef,e=S.cad[id],feito=R.r!==undefine
   <div class="cad-pontos" aria-hidden="true">${Array.from({length:CAD_DOMINA},(_,k)=>`<i class="${k<(e.s||0)?"on":""}"></i>`).join("")}</div></div>`}
  return `<div class="cad-corpo cad-refaz${cadEntra===id?" entra":""}${L?" inv":""}">${L?invTopo(q,!feito):`<p class="cad-aviso">${ic("relogio")} ${feito?"Resultado":"Sem olhar a explicação: qual é a certa?"}</p>`}
  ${L?invAlts(L,R.ord,R.r,undefined,feito,feito?"":'data-cad="resp"'):cadAlts(q,R.ord,R.r,feito,!feito)}${res}
- ${L&&feito?invExplica(q,L,R.r,R.ord,true):feito&&R.r!==0?`<div class="coment err cad-coment"><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>`:""}
+ ${L&&feito?invExplica(q,L,R.r,R.ord,true):feito&&R.r!==0?`<div class="coment err cad-coment"${leisAttr(q.m,q.f)}><h3>${ic("lampada")} Entenda o gabarito</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p></div>`:""}
  <div class="cad-acoes">${feito?`<button class="botao cheio" data-cad="fecha-ref" data-id="${id}">${R.r===0?"Voltar à explicação":"Ver explicação completa"}</button>${R.r!==0?`<button class="botao linha" data-cad="refazer" data-id="${id}">Tentar de novo</button>`:""}`
   :`<button class="botao linha" data-cad="fecha-ref" data-id="${id}">Cancelar</button>`}</div></div>`}
 function cadRender(){rota.manterScroll=true;render()}

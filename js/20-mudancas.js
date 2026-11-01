@@ -75,7 +75,7 @@ function mudItem(x,novas){const nova=novas.has(x.id);const aberto=mudAbertos.has
  <summary><span class="mud-dia" aria-hidden="true"><b>${d}</b><small>${MUD_MES[+x.data.slice(5,7)-1]}</small></span>
  <span class="mud-tx"><small>${esc(x.n)}<span class="sr">, ${esc(mudData(x,true))}</span> · ${esc(areas)}</small><b>${esc(x.nome)}</b>${nova||x.top?`<span class="mud-tags">${nova?`<span class="mud-nova">Nova</span>`:""}${x.top?`<span class="mud-top">Revise primeiro</span>`:""}</span>`:""}</span>
  <span class="mud-seta" aria-hidden="true">${ic("prox")}</span></summary>
- <div class="mud-corpo"><p class="mud-sub">O que mudou</p><ul class="mud-o">${x.mud.map(m=>`<li>${inl(m)}</li>`).join("")}</ul>
+ <div class="mud-corpo" data-leis=""><p class="mud-sub">O que mudou</p><ul class="mud-o">${x.mud.map(m=>`<li>${inl(m)}</li>`).join("")}</ul>
  ${mudAA(x)}
  ${x.vig?`<p class="mud-vig">${ic("calendario")}<span>${inl(x.vig)}</span></p>`:""}
  ${mudTemas(x)}

@@ -1902,7 +1902,7 @@ Há três **modalidades** de lançamento:
 !! **MODERECOCOPA** suspende (**MO**ratória, **DE**pósito, **RE**clamações e recursos, **CO**ncessão de liminar em MS, **CO**ncessão de liminar ou tutela em outras ações, **PA**rcelamento). Desde 2026, some a eles os quatro meios consensuais e de garantia: **A**rbitragem, **T**ransação aceita, **M**ediação e **S**eguro garantia ou fiança aceitos ("**ATMS**"). **IA** exclui (**I**senção e **A**nistia). O resto **extingue**.
 
 ### Suspensão
-- **A suspensão da exigibilidade do crédito tributário não dispensa o cumprimento das obrigações acessórias** (art. 151, parágrafo único).
+- **A suspensão da exigibilidade do crédito tributário não dispensa o cumprimento das obrigações acessórias** (art. 151, §1º).
 - **O depósito somente suspende a exigibilidade do crédito tributário se for integral e em dinheiro** (Súmula 112 do STJ).
 - Desde a **LC 236/2026**, também suspendem a exigibilidade: a **instituição da arbitragem especial tributária e aduaneira**; a **proposta de transação aceita** pela administração; o **acordo decorrente de mediação**, até sua eventual dissolução; e a **aceitação, pelo credor, de seguro garantia ou fiança bancária** oferecidos na execução fiscal (art. 151, VII a X). Com a execução fiscal em curso, a arbitragem só suspende se houver outra causa de suspensão ou garantia integral (§3º).
 - **É vedada a exigência de caução ou de depósito para apresentar impugnações, recursos ou pedidos** na esfera administrativa (art. 151, §2º, incluído pela LC 236/2026), na linha da Súmula Vinculante 21.
@@ -2060,7 +2060,7 @@ A **Constituição de 1988** (art. 227) e o **Estatuto da Criança e do Adolesce
 
 ?? Uma pessoa que completa 12 anos hoje é criança ou adolescente? | Adolescente: a criança é a pessoa até 12 anos incompletos (art. 2º).
 ?? O ECA se aplica a pessoas com mais de 18 anos? | Excepcionalmente, entre 18 e 21 anos, nos casos expressos em lei, como o cumprimento de medida socioeducativa (art. 2º, parágrafo único).
-?? Quais são os componentes da prioridade absoluta? | Primazia de socorro, precedência de atendimento, preferência nas políticas sociais e destinação privilegiada de recursos (art. 4º, parágrafo único).
+?? Quais são os componentes da prioridade absoluta? | Primazia de socorro, precedência de atendimento, preferência nas políticas sociais e destinação privilegiada de recursos (art. 4º, §1º).
 
 # Direitos fundamentais
 ## Vida e saúde

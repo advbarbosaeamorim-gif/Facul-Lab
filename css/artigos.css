@@ -1,0 +1,98 @@
+/* Abrir o artigo citado (js/21-artigos.js) */
+
+/* ---------- a citação no texto ---------- */
+.art-link{display:inline;margin:0;padding:0 1px;border:0;border-radius:4px;background:none;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;text-align:inherit;text-transform:inherit;white-space:normal;cursor:pointer;
+  text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,var(--toga-txt) 75%,transparent);-webkit-tap-highlight-color:transparent;transition:background-color .2s,text-decoration-color .2s}
+.art-link:hover{background:color-mix(in srgb,var(--toga-txt) 10%,transparent);text-decoration-style:solid}
+.art-link:focus-visible{outline:2px solid var(--toga-txt);outline-offset:1px}
+.art-link:active{background:color-mix(in srgb,var(--toga-txt) 18%,transparent)}
+[data-estilo="premium"] .art-link{text-decoration-color:color-mix(in srgb,var(--p1-txt) 75%,transparent)}
+[data-estilo="premium"] .art-link:hover{background:color-mix(in srgb,var(--p1) 12%,transparent)}
+[data-estilo="premium"] .art-link:focus-visible{outline-color:var(--p1-txt)}
+@media print{.art-link{text-decoration:none}}
+
+/* ---------- a folha ---------- */
+html.art-trava,html.art-trava body{overflow:hidden}
+.art-camada{position:fixed;inset:0;z-index:45;display:flex;align-items:flex-end;justify-content:center;background:rgba(16,8,10,.55);overscroll-behavior:contain}
+[data-estilo="premium"] .art-camada{background:rgba(10,8,20,.5)}
+.art-folha{position:relative;display:flex;flex-direction:column;width:100%;max-width:760px;max-height:88vh;max-height:88dvh;background:var(--bg);color:var(--fg);border-radius:20px 20px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.25);outline:0}
+[data-estilo="premium"] .art-folha{border-radius:28px 28px 0 0}
+html[data-anim="on"] .art-camada{transition:background-color .25s}
+html[data-anim="on"] .art-camada:not(.aberta){background:transparent}
+html[data-anim="on"] .art-camada .art-folha{transform:translateY(102%);transition:transform .32s cubic-bezier(.2,.9,.3,1)}
+html[data-anim="on"] .art-camada.aberta .art-folha{transform:none}
+html[data-anim="on"] .art-camada.saindo{background:transparent}
+html[data-anim="on"] .art-camada.saindo .art-folha{transform:translateY(102%);transition-duration:.2s}
+.art-pega{width:40px;height:4px;margin:8px auto 0;border-radius:4px;background:var(--line);flex:none}
+
+.art-cab{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px 12px 18px;border-bottom:1px solid var(--line);flex:none}
+.art-selo{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--toga-txt) 13%,var(--surface));color:var(--toga-txt)}
+.art-selo svg.i{width:24px;height:24px}
+[data-estilo="premium"] .art-selo{border-radius:16px;background:var(--grad-suave),var(--surface);color:var(--p1-txt)}
+.art-cab-t{display:grid;gap:1px;min-width:0}
+.art-cab-t small{font-size:.8rem;font-weight:600;color:var(--muted);line-height:1.3}
+.art-cab-t h2{margin:0;font-size:1.35rem;line-height:1.2}
+.art-x{width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:none;color:var(--muted)}
+.art-x:hover{background:var(--surface-2)}
+.art-x svg.i{width:22px;height:22px}
+
+.art-rola{overflow:auto;overscroll-behavior:contain;padding:14px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+.art-dica{display:flex;gap:8px;align-items:flex-start;margin:0 0 14px;padding:10px 12px;border-radius:12px;background:var(--surface-2);font-size:.88rem;line-height:1.45;color:var(--muted)}
+.art-dica svg.i{width:18px;height:18px;flex:none;margin-top:1px;color:var(--toga-txt)}
+[data-estilo="premium"] .art-dica{border-radius:16px}
+[data-estilo="premium"] .art-dica svg.i{color:var(--p1-txt)}
+
+.art-um+.art-um{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
+.art-n{margin:0 0 4px;font-size:1.1rem}
+.art-onde{display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;font-size:.84rem;line-height:1.4;color:var(--muted)}
+.art-onde svg.i{width:16px;height:16px;flex:none;margin-top:2px}
+.art-onde span{display:grid}
+.art-onde small{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
+/* o texto da lei: caput, parágrafos, incisos e alíneas em degraus */
+.art-texto{font-size:1rem;line-height:1.6}
+.art-texto .al{margin:0;padding:3px 8px;border-radius:8px;overflow-wrap:anywhere}
+.art-texto .al+.al{margin-top:4px}
+.art-texto .al-par{margin-top:10px}
+.art-texto .al-inc{padding-left:22px}
+.art-texto .al-ali{padding-left:36px}
+.art-texto .al-item{padding-left:50px}
+.art-texto .al-elide{color:var(--muted);padding-left:22px}
+.art-texto .al b{font-weight:700}
+.art-texto .al.morto{color:var(--muted)}
+.al-nota{font-size:.74rem;line-height:1.35;color:var(--muted)}
+.sem-notas .al-nota{display:none}
+.art-texto .al.alvo .al-nota,.art-texto .al.alvo.morto{color:color-mix(in srgb,var(--muted) 55%,var(--fg))}   /* contraste sobre o destaque */
+/* trecho citado: como o marca-texto da apostila (linhas seguidas formam um bloco só) */
+.art-texto .al.alvo{background:color-mix(in srgb,var(--lacre) 22%,transparent);box-shadow:inset 3px 0 0 var(--lacre)}
+.art-texto .al.alvo+.al.alvo{margin-top:0;padding-top:6px;border-top-left-radius:0;border-top-right-radius:0}
+.art-texto .al.alvo:has(+.al.alvo){padding-bottom:4px;border-bottom-left-radius:0;border-bottom-right-radius:0}
+[data-estilo="premium"] .art-texto .al.alvo{background:color-mix(in srgb,var(--lacre) 24%,transparent)}
+html[data-anim="on"] .art-camada.aberta .al.alvo[data-primeiro]{animation:art-grifa .9s .25s ease-out both}
+@keyframes art-grifa{from{background-color:transparent;box-shadow:inset 0 0 0 var(--lacre)}}
+
+/* redação nova que a compilação oficial ainda não trouxe */
+.art-nova{margin-top:14px;padding:12px;border-radius:14px;border:1.5px dashed color-mix(in srgb,var(--lacre) 60%,var(--line));background:color-mix(in srgb,var(--lacre) 6%,var(--bg))}
+.art-nova-t{display:flex;gap:8px;align-items:flex-start;margin:0 0 8px;font-size:.88rem;line-height:1.45}
+.art-nova-t svg.i{width:20px;height:20px;flex:none;color:color-mix(in srgb,var(--lacre) 75%,var(--fg))}
+.art-nova .art-texto{font-size:.96rem}
+
+/* abrindo / aviso */
+.art-abrindo{padding:6px 0 18px}
+.art-falta{display:grid;justify-items:center;gap:6px;padding:4px 6px 8px;text-align:center}
+.art-falta .ilu{width:min(220px,70%);height:auto}
+.art-falta p{display:grid;gap:4px;margin:0;font-size:.94rem;line-height:1.5;color:var(--muted)}
+.art-falta b{font-size:1.05rem;color:var(--fg)}
+
+.art-acoes{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px}
+.art-acoes .botao{width:auto;flex:1 1 160px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;text-transform:none;letter-spacing:0;font-size:.92rem}
+.art-acoes .botao svg.i{width:18px;height:18px}
+.art-acoes .botao[aria-pressed="true"]{border-color:var(--toga-txt);color:var(--toga-txt)}
+[data-estilo="premium"] .art-acoes .botao{border-radius:14px}
+[data-estilo="premium"] .art-acoes .botao[aria-pressed="true"]{border-color:var(--p1-txt);color:var(--p1-txt)}
+.art-acoes .botao.feito{border-color:var(--ok);color:var(--ok)}
+.art-fonte{margin:14px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted);text-align:center}
+.art-fonte a{display:inline-flex;align-items:center;gap:4px;min-height:44px;font-weight:700;color:var(--toga-txt)}
+.art-fonte a svg.i{width:16px;height:16px}
+[data-estilo="premium"] .art-fonte a{color:var(--p1-txt)}
+@media (prefers-reduced-motion:reduce){.art-camada,.art-camada .art-folha,.art-camada .al.alvo{transition:none!important;animation:none!important}}

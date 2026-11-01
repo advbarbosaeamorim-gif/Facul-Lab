@@ -38,12 +38,12 @@ function telaLsQuiz(){const s=lsSess;if(!s){rota={tela:"leiseca"};return telaLei
   corpo=cab+`<p class="ls-texto">${lsTextoLacuna(x,resp)}</p><p class="ls-ref">${esc(x.ref)}</p></div>
   <div class="alts" role="radiogroup" aria-label="Trechos">${it.ord.map((oi,pos)=>{let c="";if(resp){if(oi===0)c="certa";else if(oi===r)c="errada"}
    return `<button class="alt ${c}" role="radio" aria-checked="${oi===r}" data-acao="ls-resp" data-v="${oi}" ${resp?"disabled":""}><span class="letra">${LETRAS[pos]}</span><span>${esc(x.l[oi])}</span></button>`}).join("")}</div>`;
-  if(resp)corpo+=`<div class="coment ${r===0?"":"err"}"><h3>${r===0?"Resposta correta":"Resposta incorreta"}</h3><p>O texto da lei diz: <b>${esc(x.l[0])}</b>.</p>${x.ex?`<p>${esc(x.ex)}</p>`:""}<p class="fund">${esc(x.ref)}</p></div>`}
+  if(resp)corpo+=`<div class="coment ${r===0?"":"err"}"${leisAttr(x.m,x.ref)}><h3>${r===0?"Resposta correta":"Resposta incorreta"}</h3><p>O texto da lei diz: <b>${esc(x.l[0])}</b>.</p>${x.ex?`<p>${esc(x.ex)}</p>`:""}<p class="fund">${esc(x.ref)}</p></div>`}
  else{const mostrado=it.certo?x.t:x.e;const acertou=resp&&((r===1)===it.certo);
   corpo=cab+`<p class="ls-texto">“${esc(mostrado)}”</p><p class="ls-ref">${esc(x.ref)}</p></div>
   <p style="margin:14px 2px 0;font-weight:600">Este é o texto da lei?</p>
   <div class="ls-ce"><button class="botao linha ${resp?(it.certo?"certa":r===1?"errada":""):""}" data-acao="ls-resp" data-v="1" ${resp?"disabled":""}>Certo</button><button class="botao linha ${resp?(!it.certo?"certa":r===0?"errada":""):""}" data-acao="ls-resp" data-v="0" ${resp?"disabled":""}>Errado</button></div>`;
-  if(resp)corpo+=`<div class="coment ${acertou?"":"err"}"><h3>${acertou?"Resposta correta":"Resposta incorreta"} · ${it.certo?"o texto estava certo":"o texto estava alterado"}</h3>${it.certo?"":`<p>${esc(x.ex||"")}</p><p><b>Texto da lei:</b> ${esc(x.t)}</p>`}<p class="fund">${esc(x.ref)}</p></div>`}
+  if(resp)corpo+=`<div class="coment ${acertou?"":"err"}"${leisAttr(x.m,x.ref)}><h3>${acertou?"Resposta correta":"Resposta incorreta"} · ${it.certo?"o texto estava certo":"o texto estava alterado"}</h3>${it.certo?"":`<p>${esc(x.ex||"")}</p><p><b>Texto da lei:</b> ${esc(x.t)}</p>`}<p class="fund">${esc(x.ref)}</p></div>`}
  const ult=s.i===s.itens.length-1;
  return topo(`Lei seca · ${s.i+1} de ${s.itens.length}`,"",{voltarAcao:"ls-sair"})+`<main class="wrap">${corpo}</main>
  <nav class="nav"><div class="nav-in"><button data-acao="ls-sair">${ic("ant")}<span>Sair</span></button><span></span><button data-acao="ls-prox" class="forte" ${resp?"":"disabled"}>${ic("prox")}<span>${ult?"Ver resultado":"Próximo"}</span></button></div></nav>`}
@@ -248,7 +248,7 @@ function navQuiz(){const s=sessao;return `<nav class="nav"><div class="nav-in">
   <button data-acao="folha">${ic("grade")}<span>Finalizar</span></button>
   <button data-acao="prox" ${idx===s.qids.length-1?"disabled":""}>${ic("prox")}<span>Próximo</span></button></div></nav>`}
 function comentario(q,r,ord){const ok=r===0;
-  return `<div class="coment ${ok?"":"err"}"><h3>${r===undefined?"Em branco":ok?"Resposta correta":"Resposta incorreta"} · gabarito ${LETRAS[ord.indexOf(0)]}</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${porQue(q,r,ord)}${ok?"":`<p class="cad-foi">${ic("caderno")}<span>Guardada no seu <b>Caderno de erros</b>, com a explicação, para refazer depois.</span></p>`}${botaoRep(q)}</div>`}
+  return `<div class="coment ${ok?"":"err"}"${leisAttr(q.m,q.f)}><h3>${r===undefined?"Em branco":ok?"Resposta correta":"Resposta incorreta"} · gabarito ${LETRAS[ord.indexOf(0)]}</h3><p>${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${porQue(q,r,ord)}${ok?"":`<p class="cad-foi">${ic("caderno")}<span>Guardada no seu <b>Caderno de erros</b>, com a explicação, para refazer depois.</span></p>`}${botaoRep(q)}</div>`}
 function telaFolha(){const s=sessao,r=res(s),feitas=s.qids.length-r.br;
   return `<div class="folha-camada" data-acao="fechar-folha"><div class="folha wrap" role="dialog" aria-label="Questões do simulado">
    <h2>${esc(s.titulo)}</h2><p class="nota">${esc(s.sub)} · ${feitas} de ${s.qids.length} respondidas</p>
@@ -287,7 +287,7 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
   ${listaCorrecao(a)}</main>`}
 function listaCorrecao(a){return `<div class="revisao">${a.qids.map((id,i)=>{const q=QMAP[id];if(!q)return "";const L=invDe(a,id);if(L)return invCorr(a,id,i,L);const x=a.resp[id],ord=a.ordem[id];const k=x===undefined?"br":x===0?"ok":"er";
     return `<details class="rev"><summary><span class="num ${k}">${p2(i+1)}</span><span class="rq"><span class="rotulo">${esc(META[q.m].nome)}</span><br>${esc(q.q)}</span></summary>
-    <div class="rbody">${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${esc(q.o[oi])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}${oi!==0&&explQ(q)?`<span class="px">${esc(explQ(q)[oi-1])}</span>`:""}</p>`).join("")}
+    <div class="rbody"${leisAttr(q.m,q.f)}>${ord.map((oi,p)=>`<p>${oi===0?"<b>":""}${LETRAS[p]}) ${esc(q.o[oi])}${oi===0?` <span class="gab">${ic("ok")}gabarito</span></b>`:""}${oi===x&&oi!==0?" <span class='c-er'>(sua resposta)</span>":""}${oi!==0&&explQ(q)?`<span class="px">${esc(explQ(q)[oi-1])}</span>`:""}</p>`).join("")}
     <p style="margin-top:10px">${esc(q.e)}</p><p class="fund">${esc(q.f)}</p>${candidatosQ(q).length?`<button class="link-tema" data-acao="estudar" data-q="${q.id}">${ic("livro")} Estudar este tema na apostila</button>`:""}${botaoRep(q)}</div></details>`}).join("")}</div>`}
 
 /* ---------- sobre ---------- */
