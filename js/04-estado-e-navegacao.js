@@ -255,6 +255,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
     case "foco":h=telaFoco();break;
     case "semanal":h=telaSemanal();break;
     case "medida":h=telaMedida();break;
+    case "mudancas":h=telaMudancas();break;
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();

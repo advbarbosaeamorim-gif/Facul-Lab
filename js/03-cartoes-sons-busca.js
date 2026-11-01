@@ -241,6 +241,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  <p class="pp-etapa"><span class="pp-num">2</span><span><b>Depois: ${per===9?"seu foco na OAB":per===null?"o restante do dia":"as outras matérias do período"}</b><small>Com a prova em dia, siga com a meta, as revisões e o resto do período.</small></span></p>`:""}
  <div class="lista plano-lista">${itens}</div>
  ${per!==null?`<div class="dica"><p style="margin:0"><b>${esc(F.nome)}.</b> ${esc(F.txt)} <button class="link-inline" data-acao="ir-raiz" data-tela="config">Alterar</button></p></div>`:""}
+ ${mudAviso()}
  <div class="secao" role="heading" aria-level="2">Atalhos</div><div class="grade-mat atalhos">
  <button class="card" data-acao="ir-raiz" data-tela="busca"><span class="at-ilu">${ilustra("lupa","var(--toga)")}</span><b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="foco"><span class="at-ilu">${ilustra("foco","#e5484d")}</span><b>Modo foco</b><small>Pomodoro com a chama crescendo</small></button>
