@@ -25,7 +25,9 @@ function telaCartoes(){const i=rota.p===undefined?periodo:rota.p;rota.p=i;if(!ap
  const ds=PERIODOS[i].filter(d=>window.APOSTILA[i].mat&&window.APOSTILA[i].mat[d]);const venc=contaVencidos();
  const extra=`<div class="periodos" role="group" aria-label="Período">${PERIODOS.map((_,j)=>`<button data-acao="cards-per" data-p="${j}" aria-pressed="${i===j}">${j+1}º período</button>`).join("")}</div>`;
  return topo("Cartões de memorização","Perguntas das apostilas com revisão espaçada",{menu:true,extra})+
- `<main class="wrap">${capaTela("cartas","Memorize sem decorar","Tente lembrar antes de virar. O app traz cada cartão de volta na hora certa.")}${Object.keys(S.cards||{}).length?"":`<div class="dica"><p style="margin:0">Leia a pergunta, tente responder de cabeça e só depois vire o cartão. Depois diga como foi: <b>Errei</b>, <b>Difícil</b>, <b>Acertei</b> ou <b>Fácil</b>. Cada cartão aprende o seu ritmo: o que você acerta com facilidade volta cada vez mais tarde, e o que você erra volta logo, até fixar.</p></div>`}
+ `<main class="wrap">${(()=>{const COMO="Leia a pergunta, tente responder de cabeça e só depois vire o cartão. Depois diga como foi: <b>Errei</b>, <b>Difícil</b>, <b>Acertei</b> ou <b>Fácil</b>. O que você acerta com facilidade volta cada vez mais tarde, e o que você erra volta logo, até fixar.";
+  return Object.keys(S.cards||{}).length?capaTela("cartas","Memorize sem decorar","Tente lembrar antes de virar. O app traz cada cartão de volta na hora certa.")
+   :capaTela("cartas","Como funcionam os cartões",COMO)||`<div class="dica"><p style="margin:0">${COMO}</p></div>`})()}
  ${venc?`<button class="card destaque" data-acao="cards-venc" style="margin-top:12px">${tile("var(--lacre)","refazer")}<b>Revisar os ${venc} cartões de hoje</b><small>Cartões de todas as matérias que chegaram no dia de revisão</small></button>`:""}
  <div class="secao" role="heading" aria-level="2">${i+1}º período</div><div class="lista">${ds.map(d=>{const f=infoDisc(d);const x=infoDeck(d);
   return `<button class="item" data-acao="cards-disc" data-d="${d}" ${x.cs.length?"":"disabled"}>${tile(f.cor,f.ic)}<span style="min-width:0"><span class="item-tit">${esc(f.nome)}</span><br><span class="item-sub">${x.cs.length} cartões · ${x.novos} novos · ${x.venc} para revisar</span></span><span class="item-data">${ic("prox")}</span></button>`}).join("")}</div></main>`}
@@ -74,9 +76,9 @@ function chamaViva(seq){const on=seq>0;const nv=seq>=30?" n3":seq>=7?" n2":"";
  <g class="cv-int"><path fill="url(#cv-g3)" d="M32 78c-5 0-9-4-9-9 0-5 3-8 6-11 1 3 2 4 4 5 1-3 2-6 5-8 0 4 1 6 2 9 1 2 1 4 1 6 0 5-4 8-9 8z"/></g></svg></button>`}
 const MESES_C=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
 function calProva(x){const p=x&&x.dt,falta=x?x.n:null;
- if(!p||falta===null)return `<button class="cal-prova vazio" data-acao="ir-raiz" data-tela="config" aria-label="Definir a data da prova nas configurações"><span class="cal-in"><span class="cal-pag"><span class="cal-mes">prova</span><span class="cal-dia">?</span><span class="cal-sem">definir</span></span></span></button>`;
+ if(!p||falta===null)return `<button class="cal-prova vazio" data-acao="ir-raiz" data-tela="config"><span class="sr">Definir a data da prova nas configurações</span><span class="cal-in" aria-hidden="true"><span class="cal-pag"><span class="cal-mes">prova</span><span class="cal-dia">?</span><span class="cal-sem">definir</span></span></span></button>`;
  const d=new Date(p+"T12:00:00");const sem=new Intl.DateTimeFormat("pt-BR",{weekday:"short"}).format(d).replace(".","");const ok=falta>=0;const semanas=falta>=14;
- return `<button class="cal-prova" data-acao="cal-vira" aria-label="${esc(x.nome||"Prova")} em ${d.getDate()} de ${new Intl.DateTimeFormat("pt-BR",{month:"long"}).format(d)}. Toque para virar o calendário"><span class="cal-in"><span class="cal-pag cal-frente"><span class="cal-mes">${MESES_C[d.getMonth()]}</span><span class="cal-dia">${d.getDate()}</span><span class="cal-sem">${sem}</span></span><span class="cal-pag cal-verso"><span class="cal-mes">faltam</span><span class="cal-dia">${ok?(semanas?Math.floor(falta/7):falta):"0"}</span><span class="cal-sem">${ok?(semanas?"semanas":falta===1?"dia":"dias"):"passou"}</span></span></span></button>`}
+ return `<button class="cal-prova" data-acao="cal-vira"><span class="sr">${esc(x.nome||"Prova")} em ${d.getDate()} de ${new Intl.DateTimeFormat("pt-BR",{month:"long"}).format(d)}${ok?`, ${falta===0?"é hoje":falta===1?"falta 1 dia":`faltam ${falta} dias`}`:""}. Toque para virar o calendário</span><span class="cal-in" aria-hidden="true"><span class="cal-pag cal-frente"><span class="cal-mes">${MESES_C[d.getMonth()]}</span><span class="cal-dia">${d.getDate()}</span><span class="cal-sem">${sem}</span></span><span class="cal-pag cal-verso"><span class="cal-mes">faltam</span><span class="cal-dia">${ok?(semanas?Math.floor(falta/7):falta):"0"}</span><span class="cal-sem">${ok?(semanas?"semanas":falta===1?"dia":"dias"):"passou"}</span></span></span></button>`}
 /* ---------- animações e efeitos interativos ---------- */
 function animOn(){if(S.cfg&&S.cfg.anim==="off")return false;try{return !(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}catch(e){return true}}
 function contar(el){const t=el.firstChild;if(!t||t.nodeType!==3)return;const m=t.nodeValue.match(/^(\d+)(%?)$/);if(!m)return;const fim=+m[1];if(fim<2)return;const t0=performance.now(),dur=750;
@@ -257,10 +259,8 @@ function telaProgresso(){
  let ok=0,er=0;Object.keys(S.stats).forEach(k=>{if(!QMAP[k])return;if(S.stats[k].u)ok++;else er++});
  const tot=ok+er,n=QS.length;
  const ms=Object.keys(porM).filter(m=>META[m]).map(m=>{const x=statMat(porM[m]);return {m,...x,pct:x.v?Math.round(x.o*100/x.v):null}}).sort((a,b)=>(b.v>0)-(a.v>0)||(a.pct===null?0:a.pct)-(b.pct===null?0:b.pct)||META[a.m].nome.localeCompare(META[b.m].nome));
- const nh=itensHoje(),sq=sequencia();
  return topo("Progresso geral","Faculdade e Exame de Ordem, tudo junto",{menu:true})+
  `<main class="wrap">${capaTela("trofeu","Seu caminho até aqui","Todas as questões que você respondeu, nos simulados da OAB, por matéria e da faculdade.")}
-  <button class="card hoje-card" data-acao="ir-raiz" data-tela="hoje">${tile("var(--lacre)","alvo")}<b>${nh?`Revisar hoje: ${nh} ${nh>1?"itens":"item"}`:"Plano de hoje"}</b><small>${perAtual()!==null?esc(nomePer(perAtual()))+" · ":""}${sq?`${sq} dia${sq>1?"s":""} seguido${sq>1?"s":""} de estudo · `:""}${esc(textoProva())}</small></button>
   <div class="metrica" style="margin-top:6px">${tile("var(--toga)","pct")}<div><div class="top"><span>Nota média nos simulados</span><b>${c.length?media+"%":"—"}</b></div><div class="trilho"><i class="f-toga" style="width:${media}%;background:var(--ok)"></i></div></div></div>
   <div class="metrica">${tile("var(--lacre)","relogio")}<div><div class="top"><span>Tempo médio por simulado</span><b>${c.length?dur(tm):"—"}</b></div><div class="trilho"><i class="f-lacre" style="width:${Math.min(100,tm*100/(5*3600))}%"></i></div></div></div>
   <div class="secao" role="heading" aria-level="2">Questões respondidas</div>
@@ -272,7 +272,7 @@ function telaProgresso(){
   <p class="sinc">${esc(statusSinc)}</p></main>`}
 
 /* ---------- busca nas apostilas ---------- */
-const limpo=t=>String(t).replace(/\*\*|==/g,"").replace(/^(::\S+|!!|\?\?|>|#+|\* )\s?/gm,"").replace(/\s\|\s/g," — ").replace(/\|/g," ");
+const limpo=t=>String(t).replace(/\*\*|==/g,"").replace(/^[ \t]*(::\S+|!!|\?\?|>|#+|[*-] )\s?/gm,"").replace(/\s\|\s/g," — ").replace(/\|/g," ");
 /* ---------- busca inteligente ----------
    A consulta vira um "casador": aceita acentos, plural e singular, "art."/"artigo"/"art 8º",
    e siglas de leis e tribunais ("CF" = "Constituição Federal"). Primeiro procura a expressão inteira;
@@ -352,7 +352,16 @@ function sugestao(q,forcar){const V=vocabulario();const nq=semAcento(q).trim();c
  return melhor.fr.split(" ").map(w=>FORMA.get(w)||w).join(" ")}
 /* ---------- busca global: apostilas, questões, resumos e lei seca ---------- */
 const FILTROS_BUSCA=[["tudo","Tudo"],["ap","Apostilas"],["q","Questões"],["res","Resumos"],["ls","Lei seca"]];
-function trecho(txt,nt,nq,p0,m){const a=Math.max(0,p0-70);const tr=p0>=0?txt.slice(a,p0+String(m.q).length+110):txt.slice(0,160);return `${a?"…":""}${realce(tr,m)}…`}
+const LETRA_BUSCA=/[0-9A-Za-zÀ-ÖØ-öø-ÿºª§]/;
+/* trecho do resultado: uns 70 caracteres antes do achado e 110 depois, cortado sempre entre palavras */
+function trecho(txt,nt,nq,p0,m){let a=0,b=Math.min(txt.length,160);
+ if(p0>=0){a=Math.max(0,p0-70);b=Math.min(txt.length,p0+String(m.q).length+110)}
+ if(a>0){let k=a;while(k>0&&a-k<24&&LETRA_BUSCA.test(txt[k-1]))k--;
+  if(k>0&&LETRA_BUSCA.test(txt[k-1])){k=a;while(k<txt.length&&(p0<0||k<p0)&&LETRA_BUSCA.test(txt[k]))k++}a=k}
+ if(b<txt.length){let k=b;while(k<txt.length&&k-b<24&&LETRA_BUSCA.test(txt[k]))k++;
+  if(k<txt.length&&LETRA_BUSCA.test(txt[k])){k=b;while(k>a+1&&LETRA_BUSCA.test(txt[k-1]))k--}b=k}
+ const tr=txt.slice(a,b).replace(/^[\s,;:.)\]—–-]+/,"").replace(/[\s,;:(\[—–-]+$/,"");
+ return `${a>0?"…":""}${realce(tr,m)}${b<txt.length?"…":""}`}
 function buscaAp(m){const out=[];
  PERIODOS.forEach((ds,i)=>ds.forEach(d=>{if(!(window.APOSTILA&&window.APOSTILA[i]&&window.APOSTILA[i].mat[d]))return;const P=paginas(d);
   P.secs.forEach((s,k)=>{const txt=s.lp||(s.lp=limpo(s.corpo).replace(/\s+/g," "));const nt=s.lnt||(s.lnt=semAcento(txt));const p0=m.idx(nt);const c=p0>=0?m.conta(nt):0;

@@ -467,7 +467,7 @@ window.lbConvite=lbConvite;
 function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";const m=(S.cfg&&S.cfg.meta)||0;const f=fase();const mostra=!!p||rota.escolherData||!!rota.tipoData;
  const ambos=per!==null&&per>=8;const tipo=rota.tipoData||(p?(ambos&&avOn()?"ambas":"oab"):(avOn()&&provasFac().length?"fac":null));
  const comOab=tipo==="oab"||tipo==="ambas",comFac=tipo==="fac"||tipo==="ambas";
- return topo("Configurações","Seu período, a prova, as questões e a aparência do app",{menu:true})+
+ return topo("Configurações","Estudo, prova, questões e aparência",{menu:true})+
  `<main class="wrap">${capaTela("checklist","Do seu jeito","Período, data da prova, meta diária e a aparência do app.")}
  ${cfgG("estudo","capelo","Meu estudo",`${nomePer(per)} · meta de ${metaDia()} por dia`,`<div class="secao" role="heading" aria-level="2">Em que momento você está?</div>
  <p class="nota" style="margin-top:0">A tela Hoje usa essa escolha para sugerir os temas, os cartões e os simulados certos para você.</p>
@@ -530,7 +530,7 @@ function telaMetas(){const meta=metaDia();const D=S.dias||{};const hoje=D[hojeSt
  const pm=OAB.concat(["ied","tge","soc","psc","crim","masc"]).map(m=>{const st=statMat(porM[m]||[]);return {m,st,p:st.v?Math.round(st.o*100/st.v):null}}).filter(x=>x.st.v).sort((a,b)=>a.p-b.p);
  const L=[];Object.keys(porM).forEach(m=>fracos(m).forEach(x=>L.push([m,x])));L.sort((a,b)=>a[1].pct-b[1].pct||b[1].v-a[1].v);
  return topo("Metas e desempenho","Sequência, meta diária, acertos e pontos fracos",{menu:true})+
- `<main class="wrap">${metaBanner()}${capaTela("trofeu","Seu progresso","Cada dia de estudo conta. Veja onde você mais acerta e o que treinar.")}
+ `<main class="wrap">${metaBanner()||capaTela("trofeu","Seu progresso","Cada dia de estudo conta. Veja onde você mais acerta e o que treinar.")}
  <div class="hoje-stats">
   <div class="hs hs-meta">${anel(hoje.q||0,meta,`${hoje.q||0} de ${meta} questões hoje`)}<div><b>${hoje.q||0}<small>/${meta}</small></b><span>questões hoje</span></div></div>
   <div class="hs hs-seq">${chamaViva(seq)}<div><b>${seq}</b><span>dia${seq===1?"":"s"} seguido${seq===1?"":"s"}</span></div>${semana()}</div>

@@ -83,9 +83,9 @@ function semCartao(R,cor){const A=R.A,mx=Math.max(1,...A.dias.map(z=>z.q));const
  <header class="sc-topo"><span class="sc-marca">${ic("balanca")}Facul Lab</span><span class="sc-data">${semFaixa(A.seg)}${R.emCurso?" · em curso":""}</span></header>
  <p class="sc-kicker">${R.rec?"Recorde! ":""}Resumo da semana</p>
  <h2 class="sc-tit">${esc(R.nv.tit)}</h2><p class="sc-frase">${esc(R.nv.frase)}</p>
- <button class="sc-selo" data-sem="selo" aria-label="Carimbo da semana: ${esc(R.nv.selo.join(" ").toLowerCase())}">${semSeloSvg(R.nv.selo)}</button>
+ <button class="sc-selo" data-sem="selo"><span class="sr">Carimbo da semana: ${esc(R.nv.selo.join(" ").toLowerCase())}</span>${semSeloSvg(R.nv.selo)}</button>
  <div class="sc-hero"><b class="sc-num">${A.q}</b><span>quest${A.q===1?"ão resolvida":"ões resolvidas"}${dl?`<em class="sc-delta">${esc(dl)}</em>`:""}${R.seq>1?`<em class="sc-delta sc-fogo">${ic("chama")} ofensiva de ${R.seq} dias</em>`:""}</span></div>
- <div class="sc-barras" role="group" aria-label="Questões por dia">${A.dias.map(z=>`<button class="sc-dia${z.on?" on":""}${z.hoje?" hoje":""}${z.fut?" fut":""}" data-sem="dia" data-i="${z.i}" style="--h:${Math.round(z.q*100/mx)}%;--i:${z.i}" aria-label="${SEM_DIAS[z.i]}: ${z.q} questões"><b>${z.q||""}</b><span class="sc-col"><i></i></span><small>${SEM_DIAS[z.i].slice(0,3)}</small></button>`).join("")}</div>
+ <div class="sc-barras" role="group" aria-label="Questões por dia">${A.dias.map(z=>`<button class="sc-dia${z.on?" on":""}${z.hoje?" hoje":""}${z.fut?" fut":""}" data-sem="dia" data-i="${z.i}" style="--h:${Math.round(z.q*100/mx)}%;--i:${z.i}" ><span class="sr">${SEM_DIAS[z.i]}: ${z.q} ${z.q===1?"questão":"questões"}</span><b aria-hidden="true">${z.q||""}</b><span class="sc-col" aria-hidden="true"><i></i></span><small aria-hidden="true">${SEM_DIAS[z.i].slice(0,3)}</small></button>`).join("")}</div>
  <p class="sc-info" aria-live="polite">Toque em um dia para ver os detalhes</p>
  <div class="sc-stats">
   <div>${semAnel(A.pct)}<b>${A.pct===null?"—":A.pct+"%"}</b><small>de acerto</small></div>

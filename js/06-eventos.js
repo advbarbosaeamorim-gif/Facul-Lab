@@ -36,6 +36,9 @@ document.addEventListener("click",e=>{
     case "rep-fechar":case "fechar-rep":repQ=null;rota.manterScroll=true;render();break;
     case "copiar-rep":{const tx=textoReportes();const fim=()=>{b.textContent="Lista copiada";anunciar("Lista copiada");setTimeout(()=>{b.textContent="Copiar a lista"},2200)};
       try{navigator.clipboard.writeText(tx).then(fim,()=>{prompt("Copie o texto:",tx)})}catch(err){prompt("Copie o texto:",tx)}break}
+    case "enviar-rep":{const tx=textoReportes();
+      navigator.share({title:"Questões reportadas no Facul Lab",text:tx}).catch(err=>{if(err&&err.name==="AbortError")return;
+       try{navigator.clipboard.writeText(tx).then(()=>anunciar("Não deu para abrir o compartilhar. A lista foi copiada: cole onde quiser."),()=>prompt("Copie o texto:",tx))}catch(e2){prompt("Copie o texto:",tx)}});break}
     case "ir-raiz":raiz({tela:b.dataset.tela,aba:"progresso"});break;
     case "aba":rota.aba=b.dataset.aba;render();break;
     case "voltar":voltar();break;
