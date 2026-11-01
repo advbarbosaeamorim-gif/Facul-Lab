@@ -16,7 +16,7 @@ const TELAS = [
   { tela: "ler", d: "pen2", pg: 2, pagina: true }, { tela: "config" }, { tela: "progresso" }, { tela: "metas" },
   { tela: "cartoes" }, { tela: "busca" }, { tela: "leiseca" }, { tela: "caderno" }, { tela: "revisao" },
   { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" }, { tela: "medida" }, { tela: "mudancas" },
-  { tela: "pre", key: "casos:todas" },
+  { tela: "pre", key: "casos:todas" }, { tela: "provas" },
 ];
 /* avisos do navegador que não são defeitos do app */
 const IGNORA = /vibrate|fonts\.g|ERR_INTERNET_DISCONNECTED|ERR_NAME_NOT_RESOLVED|net::ERR/;
@@ -119,6 +119,32 @@ for (const [estilo, tema] of VISUAIS) {
     if (await pG.locator("#app mark.grifo").count()) falhas.push(`${nomeG}: o grifo não saiu ao apagar`);
   } catch (e) { falhas.push(`${nomeG}: ${e.message.split("\n")[0]}`) }
   await ctxG.close();
+  /* provas anteriores da OAB: abrir a 47ª, começar (a contagem pula com um toque), conferir a ordem do caderno, responder,
+     ver a anulada (sem certa nem errada), finalizar e ver a nota de 0 a 80 com a anulada contando ponto */
+  const nomeP = `${estilo}-${tema}-prova-anterior`;
+  const [ctxP, pP] = await abre(nomeP, estilo, tema, { tela: "provas" });
+  try {
+    await pP.locator('.fg-item[data-key="fgv:47"]').click();
+    await pP.locator('[data-acao="comecar"]').click({ timeout: 8000 });
+    await pP.locator(".mp-conta").click({ timeout: 2000 }).catch(() => {});
+    await pP.locator(".fg-enun").waitFor({ timeout: 5000 });
+    const ordem = await pP.evaluate(() => { const q = QMAP["fgv47-01"]; return [...document.querySelectorAll(".alt span:last-child")].map(x => q.o.indexOf(x.textContent)).join() === q.fgv.ord.join() });
+    if (!ordem) falhas.push(`${nomeP}: as alternativas não estão na ordem do caderno`);
+    await pP.locator(".alts .alt").nth(await pP.evaluate(() => QMAP["fgv47-01"].fgv.ord.indexOf(0))).click();
+    await pP.waitForTimeout(300);
+    if (!/correta/.test(await pP.locator(".coment h3").innerText())) falhas.push(`${nomeP}: a resposta certa não foi corrigida como certa`);
+    await pP.evaluate(() => { idx = 46; render() });
+    await pP.locator(".alts .alt").nth(1).click();
+    await pP.waitForTimeout(300);
+    if (await pP.locator(".alt.certa, .alt.errada").count() || !(await pP.locator(".coment.fg-anulada").count())) falhas.push(`${nomeP}: a questão anulada mostrou certa/errada`);
+    if (estilo === "premium" && tema === "claro") await pP.screenshot({ path: PRINTS + nomeP + "-anulada.png" });
+    await pP.evaluate(() => finalizar());
+    await pP.locator(".fg-placar").waitFor({ timeout: 4000 });
+    const nota = await pP.locator(".fg-placar .pct").innerText();
+    if (!/^2\s*\/\s*80$/.test(nota.replace(/\n/g, ""))) falhas.push(`${nomeP}: a nota deveria ser 2/80 (1 certa + a anulada) e saiu "${nota}"`);
+    if (estilo === "premium" && tema === "claro") { await pP.waitForTimeout(1200); await pP.screenshot({ path: PRINTS + nomeP + "-resultado.png" }) }
+  } catch (e) { falhas.push(`${nomeP}: ${e.message.split("\n")[0]}`) }
+  await ctxP.close();
 }
 await browser.close();
 
@@ -126,4 +152,4 @@ if (falhas.length) {
   console.error(`\n${falhas.length} problema(s):\n- ` + falhas.join("\n- "));
   process.exit(1);
 }
-console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 4)} telas e fluxos, sem erros.`);
+console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 5)} telas e fluxos, sem erros.`);

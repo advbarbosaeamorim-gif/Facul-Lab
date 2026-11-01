@@ -65,7 +65,7 @@ function telaGaveta(){
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
    <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("revisao","refazer","Revisão espaçada")}${it("metas","barras","Metas e desempenho")}${it("semanal","calendario","Resumo da semana")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("foco","tomate","Modo foco (Pomodoro)")}${it("leiseca","recibo","Lei seca")}${it("mudancas","leinova","O que mudou na lei"+mudBadge())}${it("favs","marcador","Favoritos e grifos")}
-   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}${it("medida","medida","Treino sob medida")}${it("mprova","relogio","Modo prova (N1 e N2)")}
+   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("provas","prancheta","Provas anteriores da OAB")}${it("materias","grade","Simulados por matéria")}${it("medida","medida","Treino sob medida")}${it("mprova","relogio","Modo prova (N1 e N2)")}
    ${it("caderno","caderno","Caderno de erros"+(cadPendentes()?` <span class="badge">${cadPendentes()}</span>`:""))}
    <hr>${it("config","eng","Configurações")}${it("backup","arquivo","Backup do progresso")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
@@ -84,7 +84,7 @@ function telaOab(){
   const aba=rota.aba||"progresso";
   const extra=`<div class="abas" role="tablist"><button role="tab" aria-selected="${aba==="progresso"}" data-acao="aba" data-aba="progresso">Progresso</button><button role="tab" aria-selected="${aba==="historico"}" data-acao="aba" data-aba="historico">Histórico</button></div>`;
   return topo("Simulado OAB","1ª fase · 30 simulados de 80 questões",{menu:true,extra})+
-   `<main class="wrap com-fab">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
+   `<main class="wrap com-fab">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos()+(typeof blocoProvas==="function"?blocoProvas():""):blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
    <button class="fab" data-acao="proximo" aria-label="Iniciar próximo simulado">${ic("mais")}</button>`}
 function concluidosOab(){const l=[];for(let k=0;k<N_SIM;k++){const x=resumoKey("oab:"+k);if(x)l.push(x)}return l}
 function blocoProgresso(){
