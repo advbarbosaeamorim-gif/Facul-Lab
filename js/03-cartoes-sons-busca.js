@@ -246,7 +246,7 @@ function telaHoje(){const per=perAtual(),fs=fase(),F=FASES[fs];const venc=contaV
  <button class="card" data-acao="ir-raiz" data-tela="busca"><span class="at-ilu">${ilustra("lupa","var(--toga)")}</span><b>Buscar em tudo</b><small>Apostilas, questões, resumos e lei seca</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="foco"><span class="at-ilu">${ilustra("foco","#e5484d")}</span><b>Modo foco</b><small>Pomodoro com a chama crescendo</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="cartoes"><span class="at-ilu">${ilustra("cartas","var(--lacre)")}</span><b>Todos os cartões</b><small>Escolha uma matéria</small></button>
- <button class="card" data-acao="ir-raiz" data-tela="favs"><span class="at-ilu">${ilustra("marcador","var(--nv5)")}</span><b>Favoritos e anotações</b><small>Seus temas marcados</small></button>
+ <button class="card" data-acao="ir-raiz" data-tela="favs"><span class="at-ilu">${ilustra("marcador","var(--nv5)")}</span><b>Favoritos e grifos</b><small>Temas marcados e trechos grifados</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="caderno"><span class="at-ilu">${ilustra("caderno","var(--erro)")}</span><b>Caderno de erros</b><small>${cadPendentes()?`${cadPendentes()} para refazer`:"Seus erros viram lição"}</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="metas"><span class="at-ilu">${ilustra("alvo","var(--ok)")}</span><b>Metas e desempenho</b><small>Sequência, meta e pontos fracos</small></button>
  <button class="card" data-acao="ir-raiz" data-tela="progresso"><span class="at-ilu">${ilustra("trofeu","var(--toga)")}</span><b>Progresso geral</b><small>Acertos em todas as matérias</small></button>
@@ -418,14 +418,19 @@ function realcarPagina(){if((rota.tela!=="ler"&&rota.tela!=="resumo")||!rota.q)r
   nos.forEach(n=>{const t=n.nodeValue;const nt=semAcento(t);if(!mq.marcas(nt).length)return;const sp=document.createElement("span");sp.innerHTML=realce(t,mq);sp.querySelectorAll("mark").forEach(m=>{m.className="achado";if(!primeiro)primeiro=m});n.parentNode.replaceChild(sp,n)})});
  if(primeiro)setTimeout(()=>{try{primeiro.scrollIntoView({block:"center"})}catch(e){}},60)}
 
-/* ---------- favoritos e anotações ---------- */
+/* ---------- favoritos, grifos e anotações ----------
+   Duas abas: os trechos grifados com o marca-texto (js/22-grifos.js) e os temas salvos (favoritos e anotações). */
 function telaFavs(){const keys=[...new Set(Object.keys(S.fav||{}).concat(Object.keys(S.notas||{}).filter(k=>S.notas[k])))];
  const pers=[...new Set(keys.map(k=>periodoDe(k.split(":")[0])).filter(i=>i>=0))];const falt=pers.filter(i=>!apOk(i));if(falt.length)Promise.all(falt.map(carregarApP)).then(()=>reRenderSe("favs"));
  const itens=keys.map(k=>{const [d,ks]=k.split(":");const i=periodoDe(d);if(i<0||!DISC[d])return null;const kk=+ks;let tit=`Tema ${kk}`;if(apOk(i)){const P=paginas(d);if(P.secs[kk-1])tit=P.secs[kk-1].tit}return {k,d,kk,tit,fav:!!(S.fav&&S.fav[k]),nota:(S.notas&&S.notas[k])||""}}).filter(Boolean)
   .sort((a,b)=>periodoDe(a.d)-periodoDe(b.d)||a.d.localeCompare(b.d)||a.kk-b.kk);
- return topo("Favoritos e anotações",`${itens.length} tema${itens.length===1?"":"s"}`,{menu:true})+
- `<main class="wrap">${itens.length?`<div class="lista">${itens.map(x=>{const f=infoDisc(x.d);return `<button class="item" data-acao="abrir-tema" data-d="${x.d}" data-k="${x.kk}">${tile(f.cor,f.ic)}<span style="min-width:0"><span class="item-tit">${x.fav?`<span class="fav-ic" title="Favorito">${ic("estrela")}</span>`:""}${esc(x.tit)}</span><br><span class="item-sub">${esc(nomeCurto(f.nome))} · Tema ${x.kk}</span>${x.nota?`<span class="trecho">${esc(x.nota.slice(0,180))}${x.nota.length>180?"…":""}</span>`:""}</span><span class="item-data">${ic("prox")}</span></button>`}).join("")}</div>`
-  :vazio("marcador","Nenhum tema salvo ainda","Dentro de cada tema da apostila, toque em <b>Favoritar este tema</b> ou escreva em <b>Minhas anotações</b>. O que você salvar aparece aqui, em ordem de período e de tema, para revisar antes da prova.",`<button class="botao cheio" data-acao="ir-raiz" data-tela="faculdade">Abrir as apostilas</button>`)}</main>`}
+ const temGr=typeof grTela==="function",nG=temGr?grLista().length:0;
+ const aba=temGr&&(rota.aba==="grifos"||(rota.aba!=="temas"&&nG>0))?"grifos":"temas";
+ const abas=temGr?`<div class="chips" role="group" aria-label="O que mostrar"><button data-gr="aba" data-v="grifos" aria-pressed="${aba==="grifos"}">Trechos grifados · ${nG}</button><button data-gr="aba" data-v="temas" aria-pressed="${aba==="temas"}">Temas salvos · ${itens.length}</button></div>`:"";
+ const temas=itens.length?`<div class="lista">${itens.map(x=>{const f=infoDisc(x.d);return `<button class="item" data-acao="abrir-tema" data-d="${x.d}" data-k="${x.kk}">${tile(f.cor,f.ic)}<span style="min-width:0"><span class="item-tit">${x.fav?`<span class="fav-ic" title="Favorito">${ic("estrela")}</span>`:""}${esc(x.tit)}</span><br><span class="item-sub">${esc(nomeCurto(f.nome))} · Tema ${x.kk}</span>${x.nota?`<span class="trecho">${esc(x.nota.slice(0,180))}${x.nota.length>180?"…":""}</span>`:""}</span><span class="item-data">${ic("prox")}</span></button>`}).join("")}</div>`
+  :vazio("marcador","Nenhum tema salvo ainda","Dentro de cada tema da apostila, toque em <b>Favoritar este tema</b> ou escreva em <b>Minhas anotações</b>. O que você salvar aparece aqui, em ordem de período e de tema, para revisar antes da prova.",`<button class="botao cheio" data-acao="ir-raiz" data-tela="faculdade">Abrir as apostilas</button>`);
+ return topo(temGr?"Favoritos e grifos":"Favoritos e anotações",temGr?`${nG} grifo${nG===1?"":"s"} · ${itens.length} tema${itens.length===1?"":"s"} salvo${itens.length===1?"":"s"}`:`${itens.length} tema${itens.length===1?"":"s"}`,{menu:true,extra:abas})+
+ `<main class="wrap${aba==="grifos"?" gr-tela":""}">${aba==="grifos"?grTela():temas}</main>`}
 
 /* ---------- da questão para o tema da apostila ---------- */
 const STOP=new Set("sobre entre quando qual quais pois para pela pelo pelos pelas como mais menos esta este essa esse isso aquele aquela segundo conforme deve pode podem sendo seja sera serao tambem ainda apenas caso fato artigo direito direitos alternativa correta incorreta afirmar assinale".split(" "));
