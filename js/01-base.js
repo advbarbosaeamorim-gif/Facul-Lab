@@ -180,6 +180,7 @@ function sim(key){
     return {key,tipo:"err",titulo:"Revisão espaçada",sub:"Questões erradas que chegaram no dia de revisão",qids:errosHoje(),limite:0}}
   if(p[0]==="teim"){return {key,tipo:"err",titulo:"Questões teimosas",sub:"As que você errou mais de uma vez",qids:rvTeimQ(),limite:0}}
   if(p[0]==="cad")return cadSim(key,p);
+  if(p[0]==="sob")return sobSim(key);
   if(p[0]==="err"){return {key,tipo:"err",titulo:"Refazer erradas",sub:"Questões que você errou na última tentativa",qids:Object.keys(S.stats).filter(k=>S.stats[k].u===0&&QMAP[k]),limite:0}}
   return null;
 }

@@ -15,7 +15,7 @@ const TELAS = [
   { tela: "periodo", p: 2 }, { tela: "disc", d: "pen2" }, { tela: "apost", p: 2 }, { tela: "ler", d: "pen2" },
   { tela: "ler", d: "pen2", pg: 2, pagina: true }, { tela: "config" }, { tela: "progresso" }, { tela: "metas" },
   { tela: "cartoes" }, { tela: "busca" }, { tela: "leiseca" }, { tela: "caderno" }, { tela: "revisao" },
-  { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" },
+  { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" }, { tela: "medida" },
   { tela: "pre", key: "casos:todas" },
 ];
 /* avisos do navegador que não são defeitos do app */
@@ -67,6 +67,20 @@ for (const [estilo, tema] of VISUAIS) {
     await p.waitForTimeout(300);
   } catch (e) { falhas.push(`${nome}: ${e.message.split("\n")[0]}`) }
   await ctx.close();
+  /* treino sob medida: montar um treino de 10, começar e responder uma questão */
+  const nomeT = `${estilo}-${tema}-treino-sob-medida`;
+  const [ctxT, pT] = await abre(nomeT, estilo, tema, { tela: "medida" });
+  try {
+    await pT.locator('[data-sob="n"][data-v="10"]').click();
+    await pT.locator('[data-sob="montar"]').click();
+    await pT.getByText("Iniciar simulado").click();
+    await pT.locator(".alts .alt").nth(1).click();
+    await pT.waitForTimeout(400);
+    if (!(await pT.locator(".coment").count())) falhas.push(`${nomeT}: a correção não apareceu depois de responder`);
+    const n = await pT.evaluate(() => sessao && sessao.qids.length);
+    if (n !== 10) falhas.push(`${nomeT}: o treino deveria ter 10 questões e tem ${n}`);
+  } catch (e) { falhas.push(`${nomeT}: ${e.message.split("\n")[0]}`) }
+  await ctxT.close();
 }
 await browser.close();
 
@@ -74,4 +88,4 @@ if (falhas.length) {
   console.error(`\n${falhas.length} problema(s):\n- ` + falhas.join("\n- "));
   process.exit(1);
 }
-console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 1)} telas e fluxos, sem erros.`);
+console.log(`Tudo certo: ${VISUAIS.length * (TELAS.length + 2)} telas e fluxos, sem erros.`);

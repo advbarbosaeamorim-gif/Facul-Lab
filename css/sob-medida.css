@@ -1,0 +1,47 @@
+/* treino sob medida (js/19-sob-medida.js) */
+.sob-card{margin:12px 0}
+.sob-passo{display:flex;align-items:center;gap:10px;margin:24px 0 10px}
+.sob-passo .n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--toga);color:var(--toga-fg);font-size:.85rem;font-variant-numeric:tabular-nums}
+[data-estilo="premium"] .sob-passo .n{background:var(--grad);color:#fff}
+.sob-passo h2{margin:0;font-size:1.05rem;font-family:var(--f-display)}
+[data-estilo="premium"] .sob-passo h2{font-family:var(--f-body);font-weight:800;letter-spacing:-.01em}
+.sob-passo small{margin-left:auto;color:var(--muted);font-size:.84rem;font-variant-numeric:tabular-nums}
+
+/* atalhos e matérias */
+.sob-atalhos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.sob-atalhos button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:6px 12px;border-radius:999px;border:1px dashed color-mix(in srgb,var(--toga-txt) 45%,var(--line));background:none;color:var(--toga-txt);font-weight:700;font-size:.84rem}
+[data-estilo="premium"] .sob-atalhos button{color:var(--p1-txt);border-color:color-mix(in srgb,var(--p1) 40%,var(--line))}
+.sob-atalhos svg.i{width:15px;height:15px}
+.sob-grupo{margin:14px 0 6px;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sob-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sob-chip{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:5px 11px 5px 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-weight:600;font-size:.88rem;transition:background-color .15s,border-color .15s,box-shadow .15s}
+.sob-chip .tile-mini{margin:0;width:26px;height:26px;border-radius:50%}
+.sob-chip small{font-size:.74rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.sob-chip[aria-pressed="false"] .tile-mini{filter:grayscale(.85);opacity:.55}
+.sob-chip[aria-pressed="true"]{border-color:color-mix(in srgb,var(--c) 70%,var(--line));background:color-mix(in srgb,var(--c) 12%,var(--surface));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 70%,transparent)}
+html[data-anim="on"] .sob-chip.pop{animation:sob-pop .4s cubic-bezier(.2,1.6,.4,1)}
+@keyframes sob-pop{0%{transform:scale(.88)}100%{transform:none}}
+
+/* quais questões: cartões de opção (estilo das configurações) */
+.sob-f small{font-variant-numeric:tabular-nums}
+
+/* nível e quantidade: botões lado a lado */
+.sob-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:var(--surface-2);padding:5px;border-radius:14px}
+.sob-seg.quatro{grid-template-columns:repeat(4,minmax(0,1fr))}
+.sob-seg button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:54px;padding:8px 4px;border:0;border-radius:10px;background:transparent;color:inherit;transition:background-color .2s,color .2s}
+.sob-seg b{font-size:.92rem;line-height:1.15;text-align:center}
+.sob-seg small{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.sob-seg button[aria-pressed="true"]{background:var(--surface);box-shadow:0 2px 8px -3px rgba(0,0,0,.25),inset 0 0 0 2px var(--toga-borda)}
+[data-estilo="premium"] .sob-seg button[aria-pressed="true"]{box-shadow:0 4px 12px -6px color-mix(in srgb,var(--p1) 60%,transparent),inset 0 0 0 2px var(--p1)}
+
+/* resumo e botão: ficam à mão no pé da tela enquanto a lista rola */
+.sob-resumo{position:sticky;bottom:calc(10px + var(--np,0px) + env(safe-area-inset-bottom,0px));z-index:3;margin-top:22px;padding:12px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 28px -14px rgba(0,0,0,.45);display:grid;gap:10px}
+[data-estilo="premium"] .sob-resumo{border-radius:22px;border-color:transparent}
+.sob-resumo p{margin:0;font-size:.95rem;line-height:1.4}
+.sob-resumo small{display:block;color:var(--muted);font-size:.84rem;margin-top:2px}
+.sob-num{font-size:1.25rem;font-variant-numeric:tabular-nums}
+.sob-resumo .botao{display:flex;align-items:center;justify-content:center;gap:8px}
+.sob-resumo .botao svg.i{width:18px;height:18px}
+.sob-resumo .botao:disabled{opacity:.5}
+.sob-dica{margin-top:16px}
+@media (min-width:700px){.sob-resumo{grid-template-columns:1fr auto;align-items:center}.sob-resumo .botao{width:auto;padding-inline:22px}}

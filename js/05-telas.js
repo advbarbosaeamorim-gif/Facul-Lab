@@ -65,7 +65,7 @@ function telaGaveta(){
    <div class="gaveta-topo"><span class="marca" aria-hidden="true">${ic("balanca")}</span><b>Facul Lab</b><small>${QS.length.toLocaleString("pt-BR")} questões · faculdade e Exame de Ordem</small></div>
    <nav aria-label="Seções do app">${it("hoje","alvo","Hoje"+(itensHoje()?` <span class="badge">${itensHoje()}</span>`:""))}${it("revisao","refazer","Revisão espaçada")}${it("metas","barras","Metas e desempenho")}${it("semanal","calendario","Resumo da semana")}${it("progresso","pct","Progresso geral")}${it("busca","lupa","Buscar em tudo")}
    <p class="nav-grupo">Estudar</p>${it("faculdade","livro","Faculdade (1º ao 10º)")}${it("cartoes","cartas","Cartões de memorização")}${it("foco","tomate","Modo foco (Pomodoro)")}${it("leiseca","recibo","Lei seca")}${it("favs","marcador","Favoritos e anotações")}
-   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}${it("mprova","relogio","Modo prova (N1 e N2)")}
+   <p class="nav-grupo">Treinar</p>${it("oab","carro","Simulados OAB")}${it("materias","grade","Simulados por matéria")}${it("medida","medida","Treino sob medida")}${it("mprova","relogio","Modo prova (N1 e N2)")}
    ${it("caderno","caderno","Caderno de erros"+(cadPendentes()?` <span class="badge">${cadPendentes()}</span>`:""))}
    <hr>${it("config","eng","Configurações")}${it("backup","arquivo","Backup do progresso")}${it("reportes","exc","Questões reportadas"+(nRep()?` (${nRep()})`:""))}<button data-acao="tour">${ic("estrela")}<span>Tour pelo app</span></button>${it("sobre","info","Como funciona")}${it("quem","coracao","Sobre o Facul Lab")}</nav></aside></div>`}
 
@@ -163,7 +163,7 @@ function cardMat(id,acao,attr,nome,cor,icn,ids){const s=statMat(ids);
    <span class="trilho"><i class="f-ok" style="width:${s.o*100/(s.n||1)}%"></i><i class="f-er" style="width:${s.e*100/(s.n||1)}%"></i></span></button>`}
 function telaMaterias(){
   return topo("Simulados por matéria","Escolha uma disciplina da OAB",{menu:true})+
-  `<main class="wrap">${capaTela("alvo","Treine por matéria","Foque nas disciplinas em que você mais erra.")}<div class="grade-mat">${OAB.map(m=>cardMat(m,"materia",`data-m="${m}"`,META[m].nome,META[m].cor,META[m].ic,porM[m]||[])).join("")}</div><p class="sinc">${esc(statusSinc)}</p></main>`}
+  `<main class="wrap">${capaTela("alvo","Treine por matéria","Foque nas disciplinas em que você mais erra.")}<button class="card sob-card" data-sob="abrir">${tile("var(--nv2)","medida")}<b>Treino sob medida</b><small>Escolha as matérias, só as que nunca fez ou só as que errou, o nível e quantas questões</small></button><div class="grade-mat">${OAB.map(m=>cardMat(m,"materia",`data-m="${m}"`,META[m].nome,META[m].cor,META[m].ic,porM[m]||[])).join("")}</div><p class="sinc">${esc(statusSinc)}</p></main>`}
 function telaMateria(){const m=rota.m,M=META[m];const n=nMat(m);const ks=[];for(let i=0;i<n;i++)ks.push(`mat:${m}:${i}`);
   return topo(M.nome,`${(porM[m]||[]).length} questões`,{})+
   `<main class="wrap"><div class="cabeca">${tile(M.cor,M.ic)}<div><h2>${esc(M.nome)}</h2><p class="nota">Na prova, caem ${(DIST.find(d=>d[0]===m)||[0,0])[1]} questões desta matéria.</p></div></div>
@@ -178,6 +178,7 @@ function telaFaculdade(){
   `<main class="wrap">${capaTela("capelo",`${periodo+1}º período`,"Apostila, resumo, cartões e simulados de cada disciplina.")}<div class="secao" role="heading" aria-level="2">Apostila do período</div>
   <button class="card apost" data-acao="ap" data-p="${periodo}">${tile("var(--toga)","livro")}<b>Apostila do ${periodo+1}º período</b><small>Explicação de todas as matérias, com técnicas de memorização, ilustrações e mapas mentais</small></button>
   <button class="card resumo" data-acao="resumo" data-p="${periodo}" style="margin-top:10px">${tile("var(--lacre)","recibo")}<b>Resumo do ${periodo+1}º período</b><small>Versão curta com todas as matérias juntas em um só arquivo</small></button>
+  <button class="card sob-card" data-sob="abrir" data-p="${periodo}" style="margin-top:10px">${tile("var(--nv2)","medida")}<b>Treino sob medida</b><small>Questões das matérias do ${periodo+1}º período: só as que nunca fez, só as que errou ou todas</small></button>
   ${cardModoProva({p:periodo})}
   ${ds.length>1?`<div class="secao" role="heading" aria-level="2">Simulado do período</div>
   <button class="card destaque" data-acao="per" data-p="${periodo}">${tile("var(--lacre)","alvo")}<b>Simulado do ${periodo+1}º período</b><small>${idsPer(periodo).length} questões de ${ds.length} disciplinas · ${nPer(periodo)} simulado${nPer(periodo)>1?"s":""} de cerca de ${TAM_PER}</small>${(()=>{const s=statMat(idsPer(periodo));return `<span class="trilho"><i class="f-ok" style="width:${s.o*100/(s.n||1)}%"></i><i class="f-er" style="width:${s.e*100/(s.n||1)}%"></i></span>`})()}</button>`:""}
@@ -279,7 +280,7 @@ function telaRes(){const a=S.hist.find(x=>x.id===rota.id);if(!a){rota={tela:"oab
   return topo("Resultado",a.titulo+" · "+(a.sub||""),{})+
   `<main class="wrap"><div class="placar ${st}"><div class="pct">${r.pct}%</div><div><h2>${esc(a.titulo)}: ${ROTULO[st]}</h2><p>${r.ok} certas · ${r.er} erradas · ${r.br} em branco · ${dur(a.tempo)}</p>${regraTexto(a.key,r)}</div></div>${resEvolucao(a.key,a)}
   ${st==="perf"?versoCard(versoDaChave(a.key),"Gabarito perfeito · uma palavra para você"):""}
-  <div class="botoes"><button class="botao cheio" data-acao="refazer-sim" data-key="${a.key}">Refazer simulado</button>${temErr?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button><button class="botao linha" data-cad="abrir">${ic("caderno")} Abrir o caderno de erros</button>`:""}</div>
+  <div class="botoes"><button class="botao cheio" data-acao="refazer-sim" data-key="${a.key}">${/^sob:/.test(a.key)?"Refazer este treino":"Refazer simulado"}</button>${/^sob:/.test(a.key)?`<button class="botao linha" data-sob="abrir">${ic("medida")} Montar outro treino</button>`:""}${temErr?`<button class="botao linha" data-acao="refazer-erradas-res">Refazer só as que errei</button><button class="botao linha" data-cad="abrir">${ic("caderno")} Abrir o caderno de erros</button>`:""}</div>
   ${Object.keys(pm).length>1?`<div class="secao" role="heading" aria-level="2">Desempenho por matéria</div><div class="desemp">${Object.keys(pm).map(m=>{const x=pm[m];const p=Math.round(x.o*100/x.n);
     return `<div class="linha">${tile(META[m].cor,META[m].ic)}<div><div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(META[m].nome)}</span><b style="font-family:var(--f-mono);font-weight:500">${x.o}/${x.n}</b></div><div class="trilho"><i class="f-ok" style="width:${p}%"></i><i class="f-er" style="width:${100-p}%"></i></div></div><span></span></div>`}).join("")}</div>`:""}
   <div class="secao" role="heading" aria-level="2">Correção comentada</div>
