@@ -254,6 +254,7 @@ function render(){S.cfg=S.cfg||{};if(!S.cfg.mig38){S.cfg.mig38=1;S.cfg.cor="azul
     case "apost":h=telaApost();break; case "ler":h=telaLer();break; case "resumo":h=telaResumo();break; case "hoje":h=telaHoje();break; case "cartoes":h=telaCartoes();break; case "revisao":h=telaRevisao();break; case "cartao":h=telaCartao();break; case "busca":h=telaBusca();break; case "favs":h=telaFavs();break; case "config":h=telaConfig();break; case "backup":h=telaBackup();break; case "reportes":h=telaReportes();break; case "metas":h=telaMetas();break; case "progresso":h=telaProgresso();break; case "leiseca":h=telaLeiSeca();break; case "caderno":h=telaCaderno();break; case "ls-quiz":h=telaLsQuiz();break;
     case "foco":h=telaFoco();break;
     case "semanal":h=telaSemanal();break;
+    case "medida":h=telaMedida();break;
   }
   if(repQ)h+=telaRep();
   if(gaveta)h+=telaGaveta();

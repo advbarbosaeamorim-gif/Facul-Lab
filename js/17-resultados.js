@@ -6,6 +6,9 @@
    e ev com as últimas 12 notas [quando, %]. Listas de revisão e "refazer as que errei" não entram (chaves efêmeras).
    Cada tentativa concluída ganha rz=1 quando entra no resumo, para não contar duas vezes. */
 const HIST_MAX=200,HIST_TETO=300,RES_EFEMERA=/^(rev:|errhoje|teim$|err$|cad:)/;
+/* na poda, além das listas efêmeras, os treinos sob medida também não seguram lugar (cada um tem a sua chave);
+   o resultado deles fica no resumo e a lista de questões em S.sob (js/19-sob-medida.js) */
+const HIST_LIVRE=/^(rev:|errhoje|teim$|err$|cad:|sob:)/;
 let resDoS=null;
 function resGarante(){if(resDoS===S&&S.res)return;resDoS=S;if(!S.res||typeof S.res!=="object"||Array.isArray(S.res))S.res={};
  /* tentativas concluídas que ainda não entraram no resumo (progresso de versões antigas ou de um backup), das mais antigas às mais novas */
@@ -25,7 +28,7 @@ function resumoKey(key){const a=S.hist.find(x=>x.key===key&&x.status==="concluid
    e, até 200 no total, as mais recentes; nunca mais de 300. O que sai já está no resumo. */
 function podarHist(){const H=S.hist||[];if(H.length<=HIST_MAX)return;resGarante();
  const fica=new Set(),visto=new Set();if(typeof sessao!=="undefined"&&sessao)fica.add(sessao);
- H.forEach(a=>{if(RES_EFEMERA.test(a.key||""))return;
+ H.forEach(a=>{if(HIST_LIVRE.test(a.key||""))return;
   if(a.status==="pausado")fica.add(a);else if(a.status==="concluido"&&!visto.has(a.key)){visto.add(a.key);fica.add(a)}});
  let livres=Math.max(0,HIST_MAX-fica.size);
  let nova=H.filter(a=>fica.has(a)||livres-->0);
