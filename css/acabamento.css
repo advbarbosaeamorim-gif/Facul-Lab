@@ -1,0 +1,106 @@
+/* acabamento das telas e contraste nos 4 visuais (Clássico e Premium, claro e escuro).
+   Fica por último na cascata: só ajusta o que as outras folhas já desenham. */
+
+/* ---------- cores de estado com contraste de 4,5:1 ----------
+   O verde do claro escureceu um pouco (#1f8a5b dava 4,3:1 com o branco). Os "cheios" são os fundos
+   com texto branco por cima (placar, números da correção, barras por matéria, selos): no escuro,
+   o verde, o vermelho e o âmbar claros não seguram o branco, então o fundo fica mais fechado. */
+:root{--ok:#17784e;--ok-cheio:var(--ok);--erro-cheio:var(--erro);--aviso-cheio:#8a5f06}
+:root[data-theme="dark"]{--ok-cheio:#1f7a52;--erro-cheio:#a8392c;--aviso-cheio:#8a5f06}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ok-cheio:#1f7a52;--erro-cheio:#a8392c;--aviso-cheio:#8a5f06}}
+
+/* números da correção comentada (1, 2, 3…) */
+.rev .num{color:#fff}
+.rev .num.ok{background:var(--ok-cheio)} .rev .num.er{background:var(--erro-cheio)} .rev .num.br{background:var(--aviso-cheio)}
+/* Clássico: placar do resultado, selos e marcas das listas, barras por matéria */
+:root:not([data-estilo="premium"]) .placar.aprov{background:var(--ok-cheio)}
+:root:not([data-estilo="premium"]) .placar.reprov{background:var(--erro-cheio)}
+:root:not([data-estilo="premium"]) .placar p{opacity:1}
+:root:not([data-estilo="premium"]) .selo.aprov{background:var(--ok-cheio)}
+:root:not([data-estilo="premium"]) .selo.reprov{background:var(--erro-cheio)}
+:root:not([data-estilo="premium"]) .ck.ok{background:var(--ok-cheio)}
+:root:not([data-estilo="premium"]) .ck.er{background:var(--erro-cheio)}
+:root:not([data-estilo="premium"]) .ck.br{background:var(--aviso-cheio)}
+:root:not([data-estilo="premium"]) .assunto .barra .ok{background:var(--ok-cheio);opacity:1}
+:root:not([data-estilo="premium"]) .assunto .barra .er{background:var(--erro-cheio);opacity:1}
+:root:not([data-estilo="premium"]) .assunto .barra.tem span{text-shadow:0 1px 1px rgba(0,0,0,.3)}
+
+/* textos coloridos sobre fundo tingido: puxam para a cor do texto até passar de 4,5:1 */
+.nivel{color:color-mix(in srgb,var(--c) 72%,var(--fg))}
+.cad-tag.st{color:color-mix(in srgb,var(--k) 70%,var(--fg))}
+.cad-seg button small{opacity:1}
+.scp-d.sobe{color:color-mix(in srgb,var(--ok) 78%,var(--fg))}
+.scp-d.desce{color:color-mix(in srgb,var(--erro) 75%,var(--fg))}
+.call>b,.memo>b{color:color-mix(in srgb,var(--k) 58%,var(--fg))}
+[data-estilo="premium"] .call>b,[data-estilo="premium"] .teste>b{color:color-mix(in srgb,var(--k) 55%,var(--fg))}
+.ovo-lacre{color:#6b4e00}
+/* versículo do Clássico: a referência fica branca, com um filete dourado (dourado sobre azul dava 2,6:1) */
+.verso cite{color:var(--toga-fg);border-left:3px solid var(--lacre);padding-left:8px}
+/* busca no Premium: a marca amarela animada levava o texto claro do escuro junto */
+[data-estilo="premium"] mark.b-mark{--mark-bg:color-mix(in srgb,var(--lacre) 35%,transparent)}
+/* o texto dentro da marca usa a cor principal, não o cinza do trecho */
+[data-estilo="premium"] .trecho mark{color:var(--fg)}
+
+/* ---------- alvos de toque de pelo menos 24 px ---------- */
+/* links no meio do texto ("Alterar", "ritmo de estudo"): a área de toque cresce sem mexer na linha */
+.link-inline{padding:4px 3px;margin:-4px -3px;border-radius:6px}
+/* pontinhos do tour: o botão tem 24 px de altura e o traço continua fino, desenhado por dentro */
+.tour-pontos{align-items:center}
+.tour-pontos button,[data-estilo="premium"] .tour-pontos button{height:24px;background:none!important}
+.tour-pontos button::before{content:"";position:absolute;left:0;right:0;top:9px;height:6px;border-radius:3px;background:var(--trilho);transition:background-color .3s}
+.tour-pontos button::after{inset:-4px 0}
+.tour-pontos button.feito::before{background:color-mix(in srgb,var(--toga) 55%,var(--trilho))}
+.tour-pontos button[aria-current]::before{background:var(--toga)}
+[data-estilo="premium"] .tour-pontos button.feito::before{background:color-mix(in srgb,var(--p1) 45%,var(--trilho))}
+[data-estilo="premium"] .tour-pontos button[aria-current]::before{background:var(--grad)}
+
+/* ---------- listas de simulados ---------- */
+/* barra de andamento: vazia antes de começar, parcial quando pausado */
+.sim-barra{display:block;height:6px;margin-top:7px;border-radius:999px;background:var(--trilho);overflow:hidden;max-width:220px}
+.sim-barra i{display:block;height:100%;border-radius:inherit;background:var(--lacre)}
+.sim-barra.pausa i{background:var(--lacre)}
+[data-estilo="premium"] .sim-barra i{background:var(--grad)}
+
+/* ---------- configurar simulado: "Correção: na hora / no final" ---------- */
+.pre-corr{display:grid;gap:10px}
+.pre-corr>p{margin:0}
+.pre-corr>p b{display:block}
+.pre-corr>p small{display:block;color:var(--muted);font-size:.86rem}
+.pre-corr .cores{grid-template-columns:1fr 1fr}
+
+/* ---------- Simulado OAB ---------- */
+/* abas no Premium: trilho escuro translúcido e aba escolhida em branco; a inativa não some mais no degradê */
+[data-estilo="premium"] .abas{background:rgba(0,0,0,.26);border-radius:999px;padding:4px;gap:4px}
+[data-estilo="premium"] .abas button{color:#fff}
+[data-estilo="premium"] .abas button[aria-selected="true"]{background:#fff;color:var(--p1);box-shadow:0 4px 12px -6px rgba(0,0,0,.4)}
+/* o botão "+" se recolhe enquanto a lista rola para baixo (js/18-acabamento.js) e não cobre a % das matérias */
+.fab{transition:transform .28s cubic-bezier(.3,.7,.3,1),opacity .2s}
+.fab.recolhe{transform:translateY(calc(100% + 40px));opacity:0;pointer-events:none}
+
+/* ---------- Progresso geral e OAB: nomes longos em até duas linhas ---------- */
+/* o valor da métrica ("1 h 5 min", "menos de 1 min") não quebra; quem quebra é o rótulo */
+.metrica .top b{white-space:nowrap}
+.assunto .barra span{align-items:center;padding-block:6px}
+.assunto .barra span b{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:1.2;overflow-wrap:anywhere}
+
+/* ---------- Revisão espaçada ---------- */
+/* no celular, a ilustração do Clássico ia parar atrás do texto: some, como no Premium */
+@media (max-width:520px){.rv-hero .ilu{display:none}}
+/* anel do Hoje: "100%" cabe dentro do círculo */
+.rv-anel b{font-family:var(--f-body)}
+.rv-anel.c3 b{font-size:.74rem;letter-spacing:-.02em}
+.rv-anel.c3 b small{font-size:.52rem}
+
+/* ---------- Modo prova: matérias com a mesma altura ---------- */
+.mp-discs{grid-auto-rows:1fr}
+.mp-disc>span:not(.tile){line-height:1.25}
+
+/* ---------- Configurações ---------- */
+.cfg-g-txt small{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:1.35}
+#sec-av{margin-top:20px}
+
+/* ---------- Questões reportadas: enviar ou copiar a lista ---------- */
+.botoes [data-acao="enviar-rep"],.botoes a.botao{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.botoes a.botao.cheio{color:var(--toga-fg)}
+.botoes a.botao.linha{color:var(--fg)}
+.botoes [data-acao="enviar-rep"] svg.i,.botoes a.botao svg.i{width:18px;height:18px}

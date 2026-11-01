@@ -67,7 +67,7 @@ ILU.prova=`<g class="mp-folha"><rect x="52" y="30" width="92" height="112" rx="8
 /* atalho nas telas da faculdade e da disciplina */
 function cardModoProva(o){const d=o.d,x=d&&avOn()&&mpProvaDe(d)?estadoProva(mpProvaDe(d)):null;
  const txt=x&&x.prox?`${esc(x.prox.r||"Prova")} ${quandoTxt(x.prox.n)}: treine com cronômetro, só com o que cai, e veja a nota estimada`:"Cronômetro, só os temas da N1 ou da N2 e nota estimada no fim";
- return `<button class="btn-mp" data-mp="abrir"${d?` data-d="${d}" data-r="${mpSugere(d)}"`:` data-p="${o.p}"`}><span class="btn-mp-ic" aria-hidden="true">${ic("relogio")}<i></i></span><span><b>Modo prova${d?"":" do período"}</b><small>${txt}</small></span>${ic("prox")}</button>`}
+ return `<button class="btn-mp" data-mp="abrir"${d?` data-d="${d}" data-r="${mpSugere(d)}"`:` data-p="${o.p}"`}><span class="btn-mp-ic" aria-hidden="true">${ic("relogio")}</span><span><b>Modo prova${d?"":" do período"}</b><small>${txt}</small></span>${ic("prox")}</button>`}
 
 /* ---------- tela do modo prova ---------- */
 function telaModoProva(){const L=avOn()?provasAtivas():[];

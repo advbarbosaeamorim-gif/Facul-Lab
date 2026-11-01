@@ -41,7 +41,7 @@ function telaQuizInv(s,id,q,L){const ord=s.ordem[id],r=s.resp[id],mostra=!s.corr
  const modo=modoQ(),pv=(pend&&pend.id===id)?pend.o:undefined,marc=pv!==undefined?pv:r;const rest=s.limite?s.limite-s.tempo:s.tempo;
  const dir=`<span class="relogio" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
  const novo=r===undefined&&!(pend&&pend.id===id);
- return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,"Teste inverso",{voltarAcao:"pausar",dir})+
+ return topo(`Questão ${idx+1} de ${s.qids.length}`,"Teste inverso",{voltarAcao:"pausar",dir})+
  `<main class="wrap"><div class="q-cab inv${novo?" novo":""}"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${invTopo(q,novo)}</div>
  ${invAlts(L,ord,r,marc,mostra,'data-acao="marcar"')}
  ${modo==="confirmar"&&!mostra?(pv!==undefined&&pv!==r?`<div class="botoes" style="margin-top:12px"><button class="botao cheio" data-acao="confirmar-resp">Confirmar resposta</button></div>`:r===undefined?`<p class="dica-modo">Toque em uma pergunta e depois em "Confirmar resposta".</p>`:""):""}

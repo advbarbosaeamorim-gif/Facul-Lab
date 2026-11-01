@@ -19,7 +19,7 @@ function telaLeiSeca(){const L=lsFiltro();const f=rota.lsm||"todas";const dom=L.
  <h2 style="margin:22px 2px 8px;font-size:1rem;font-family:var(--f-display)">Texto dos dispositivos</h2>
  <div class="alts ls-lista">${L.map(x=>{const z=lsSt(x.id);const st=lsDominado(x.id)?"dominado":z?(z.u?"acertou a última":"errou a última"):"não treinado";
   return `<details><summary><span>${esc(x.ref)}</span><small>${st}</small></summary><p>${esc(x.t)}</p></details>`}).join("")}</div>
- <p class="ls-ref" style="text-align:center;margin-top:14px">Textos conferidos com a legislação compilada do Planalto.</p></main>`}
+ <p class="ls-ref" style="text-align:center;margin-top:14px">Textos conferidos com a legislação compilada do Planalto em outubro de 2026.</p></main>`}
 function lsIniciar(modo){let L=lsFiltro();
  if(modo==="err")L=L.filter(x=>{const z=lsSt(x.id);return z&&z.u===0});
  else L=emb(L).sort((a,b)=>(lsDominado(a.id)?1:0)-(lsDominado(b.id)?1:0));
@@ -84,7 +84,7 @@ function telaOab(){
   const aba=rota.aba||"progresso";
   const extra=`<div class="abas" role="tablist"><button role="tab" aria-selected="${aba==="progresso"}" data-acao="aba" data-aba="progresso">Progresso</button><button role="tab" aria-selected="${aba==="historico"}" data-acao="aba" data-aba="historico">Histórico</button></div>`;
   return topo("Simulado OAB","1ª fase · 30 simulados de 80 questões",{menu:true,extra})+
-   `<main class="wrap">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
+   `<main class="wrap com-fab">${capaTela("balanca","Rumo à aprovação","30 simulados com a distribuição da 1ª fase. A meta é acertar 40 de 80.")}${aba==="progresso"?blocoProgresso()+blocoCasos():blocoHistorico()}<p class="sinc">${esc(statusSinc)}</p></main>
    <button class="fab" data-acao="proximo" aria-label="Iniciar próximo simulado">${ic("mais")}</button>`}
 function concluidosOab(){const l=[];for(let k=0;k<N_SIM;k++){const x=resumoKey("oab:"+k);if(x)l.push(x)}return l}
 function blocoProgresso(){
@@ -92,8 +92,7 @@ function blocoProgresso(){
   const media=c.length?Math.round(c.reduce((s,a)=>s+a.pct,0)/c.length):0;
   const tm=c.length?c.reduce((s,a)=>s+a.tempo,0)/c.length:0;
   const tot=ok+er;
-  const nh=itensHoje(),sq=sequencia();
-  return `${true?`<button class="card hoje-card" data-acao="ir-raiz" data-tela="hoje">${tile("var(--lacre)","alvo")}<b>${nh?`Revisar hoje: ${nh} ${nh>1?"itens":"item"}`:"Plano de hoje"}</b><small>${perAtual()!==null?esc(nomePer(perAtual()))+" · ":""}${sq?`${sq} dia${sq>1?"s":""} seguido${sq>1?"s":""} de estudo · `:""}${esc(textoProva())}</small></button>`:""}<div class="metrica" style="margin-top:6px">${tile("var(--toga)","pct")}<div><div class="top"><span>Nota média</span><b>${c.length?media+"%":"—"}</b></div><div class="trilho"><i class="f-toga" style="width:${media}%;background:var(--ok)"></i></div></div></div>
+  return `<div class="metrica" style="margin-top:6px">${tile("var(--toga)","pct")}<div><div class="top"><span>Nota média</span><b>${c.length?media+"%":"—"}</b></div><div class="trilho"><i class="f-toga" style="width:${media}%;background:var(--ok)"></i></div></div></div>
   <div class="metrica">${tile("var(--lacre)","relogio")}<div><div class="top"><span>Tempo médio</span><b>${c.length?dur(tm):"—"}</b></div><div class="trilho"><i class="f-lacre" style="width:${Math.min(100,tm*100/(5*3600))}%"></i></div></div></div>
   <div class="secao" role="heading" aria-level="2">Progresso geral</div>
   <div class="metrica">${tile("var(--toga)","barras")}<div><div class="top"><span>${c.length} de ${N_SIM}</span>${contagem({ok,er,br:0}).replace(/<span class="c-br"[\s\S]*?<\/span><\/span>(?=<\/span>$)/,"")}</div>
@@ -138,11 +137,19 @@ function telaRep(){const q=QMAP[repQ];if(!q)return "";const r=(S.rep||{})[repQ]|
   <div class="botoes">${r.d?`<button class="botao linha" data-acao="rep-tirar">Retirar o aviso</button>`:`<button class="botao linha" data-acao="rep-fechar">Cancelar</button>`}<button class="botao cheio" data-acao="rep-enviar" id="rep-ok" ${mot?"":"disabled"}>Salvar aviso</button></div>
  </div></div>`}
 function textoReportes(){const ks=Object.keys(S.rep||{}).filter(k=>QMAP[k]).sort((a,b)=>S.rep[b].d-S.rep[a].d);
- return "Questões reportadas no Simulado OAB\n\n"+ks.map(k=>{const q=QMAP[k],r=S.rep[k];return `[${k}] ${META[q.m].nome} · ${q.a}\n${q.q}\nGabarito do app: ${q.o[0]}\nMotivo: ${r.m}${r.t?`\nObservação: ${r.t}`:""}`}).join("\n\n")}
+ return "Questões reportadas no Facul Lab\n\n"+ks.map(k=>{const q=QMAP[k],r=S.rep[k];return `[${k}] ${META[q.m].nome} · ${q.a}\n${q.q}\nGabarito do app: ${q.o[0]}\nMotivo: ${r.m}${r.t?`\nObservação: ${r.t}`:""}`}).join("\n\n")}
+/* enviar a lista: o compartilhar do aparelho (WhatsApp, e-mail, Drive…); sem ele, links de WhatsApp e e-mail com a lista
+   (cortada em avisos inteiros se for longa demais para um link) e, sempre, copiar o texto */
+function repTextoLink(max){const t=textoReportes();if(t.length<=max)return t;const c=t.lastIndexOf("\n\n",max-90);
+ return t.slice(0,c>0?c:max-90)+"\n\n(Lista cortada: no app, use Copiar a lista para mandar tudo.)"}
+function repBotoesEnviar(){const copiar=`<button class="botao linha" data-acao="copiar-rep">Copiar a lista</button>`;
+ if(navigator.share)return copiar+`<button class="botao cheio" data-acao="enviar-rep">${ic("enviar")}<span>Enviar a lista</span></button>`;
+ const t=encodeURIComponent(repTextoLink(1800));
+ return copiar+`<a class="botao cheio" href="https://wa.me/?text=${t}" target="_blank" rel="noopener">${ic("enviar")}<span>Enviar por WhatsApp</span></a><a class="botao linha" href="mailto:?subject=${encodeURIComponent("Questões reportadas no Facul Lab")}&amp;body=${t}">${ic("arquivo")}<span>Enviar por e-mail</span></a>`}
 function telaReportes(){const ks=Object.keys(S.rep||{}).filter(k=>QMAP[k]).sort((a,b)=>S.rep[b].d-S.rep[a].d);
  return topo("Questões reportadas",ks.length?`${ks.length} aviso${ks.length>1?"s":""}`:"Nenhum aviso",{menu:true})+
- `<main class="wrap">${ks.length?`<div class="dica"><p style="margin:0">Para corrigir, toque em <b>Copiar a lista</b> e cole na conversa com o Claude. Os avisos também ficam salvos na sua conta.</p></div>
- <div class="botoes"><button class="botao cheio" data-acao="copiar-rep">Copiar a lista</button></div>
+ `<main class="wrap">${ks.length?`<div class="dica"><p style="margin:0">Os avisos ficam guardados neste aparelho. Para pedir a correção, envie a lista por WhatsApp, e-mail ou outro app, ou copie o texto e cole onde quiser.</p></div>
+ <div class="botoes">${repBotoesEnviar()}</div>
  <div class="lista" style="margin-top:14px">${ks.map(k=>{const q=QMAP[k],r=S.rep[k];const M=META[q.m];
   return `<button class="item" data-acao="reportar" data-q="${k}">${tile(M.cor,M.ic)}<span style="min-width:0"><span class="item-tit">${esc(r.m)}</span><br><span class="item-sub">${esc(M.nome)} · ${esc(q.a)} · ${esc(k)}</span><span class="rep-q">${esc(q.q)}</span>${r.t?`<span class="rep-t">“${esc(r.t)}”</span>`:""}</span><span class="item-data">${ic("prox")}</span></button>`}).join("")}</div>`
  :vazio("checklist","Nenhuma questão reportada","Na correção de cada questão há o botão <b>Reportar erro nesta questão</b>. Use quando desconfiar de um gabarito ou de uma lei desatualizada: o aviso fica guardado aqui para você enviar depois.")}</main>`}
@@ -202,8 +209,8 @@ function telaPre(){if(/^faixa:/.test(rota.key||"")){const d=rota.key.split(":")[
   `<main class="wrap"><div class="cartao">
     ${NI?`<div class="box-nivel" style="--c:var(--nv${s.nivel})">${chipNivel(s.nivel)}<p>${esc(NI.dica)}</p></div>`:""}
     <div class="info"><div><strong>${n}</strong><small>questões</small></div><div><strong>${s.limite?dur(s.limite):"Livre"}</strong><small>${s.limite?"de prova":"sem cronômetro"}</small></div>${corteInfo(rota.key)}</div>
-    <div class="chave"><p><b>Correção no final ${S.cfg.corrFinal?"ligada":"desligada"}</b><small>${S.cfg.corrFinal?"A correção de cada questão será exibida ao final do simulado":"A correção aparece logo depois de cada resposta"}</small></p>
-      <label class="switch"><input type="checkbox" id="corrFinal" ${S.cfg.corrFinal?"checked":""} aria-label="Correção no final"><span></span></label></div>
+    <div class="pre-corr"><p id="pre-corr-t"><b>Correção</b><small>${S.cfg.corrFinal?"O gabarito e os comentários aparecem só no resultado, como no dia da prova":"O comentário aparece logo depois de cada resposta"}</small></p>
+      <div class="cores" role="group" aria-labelledby="pre-corr-t">${[["0","Na hora","ok"],["1","No final","relogio"]].map(([k,n,i])=>`<button data-acao="cfg-corr" data-v="${k}" aria-pressed="${(S.cfg.corrFinal?"1":"0")===k}"><span class="ico-op">${ic(i)}</span><span>${n}</span></button>`).join("")}</div></div>
     ${/^errhoje/.test(rota.key)?rvCotaPre(n):""}<p class="nota">A ordem das alternativas muda a cada tentativa.${s.fixa?" As questões seguem a ordem das matérias na prova.":s.rampa?" As questões começam pelas mais simples e vão ficando mais difíceis; cada correção traz o comentário e o fundamento legal.":" A ordem das questões também muda."}</p>${invAvisoPre(s)}
   </div>${resEvolucao(rota.key)}
   <div class="botoes">${e.st==="pausa"?`<button class="botao linha" data-acao="comecar">Refazer simulado</button><button class="botao cheio" data-acao="continuar">Continuar onde parei</button>`
@@ -225,7 +232,7 @@ function telaQuiz(){const s=sessao,id=s.qids[idx],q=QMAP[id];
   const modo=modoQ(),pv=(pend&&pend.id===id)?pend.o:undefined,marc=pv!==undefined?pv:r;
   const rest=s.limite?s.limite-s.tempo:s.tempo;
   const dir=`<span class="relogio${s.limite&&rest<alertaRel(s)?" alerta":""}" id="relogio">${ic("relogio")}<span id="rel-t">${mmss(rest)}</span></span>`;
-  return topo(`Questão ${p2(idx+1)} de ${s.qids.length}`,s.mp?"Modo prova · correção no fim":"",{voltarAcao:"pausar",dir,extra:s.mp?mpBarraTempo(s):""})+
+  return topo(`Questão ${idx+1} de ${s.qids.length}`,s.mp?"Modo prova · correção no fim":"",{voltarAcao:"pausar",dir,extra:s.mp?mpBarraTempo(s):""})+
   `<main class="wrap"><div class="q-cab"><div class="q-mat">${tile(M.cor,M.ic)}<b>${esc(M.nome)}</b><span>· ${esc(q.a)}</span></div>${seloCaso(q)}${/^(fac|per|ftodas|ptodas):/.test(s.key)?`<div class="q-niv nivel" style="--c:var(--nv${nv(id)})">${barras(nv(id))}Dificuldade: ${NIVEL_INFO[nv(id)-1].nome}</div>`:""}<p class="q-enun">${esc(q.q)}</p></div>
   <div class="alts" role="radiogroup" aria-label="Alternativas">${ord.map((oi,pos)=>{let c="";if(mostra){if(oi===0)c="certa";else if(oi===r)c="errada"}else if(oi===marc)c="marcada";
     return `<button class="alt ${c}" role="radio" aria-checked="${oi===marc}" data-acao="marcar" data-o="${oi}" ${mostra?"disabled":""}><span class="letra">${LETRAS[pos]}</span><span>${esc(q.o[oi])}</span></button>`}).join("")}</div>
@@ -365,7 +372,7 @@ function tourDemoLs(){const r=tourD.ls,ok=r==="iguais";
  <div class="opcoes">${["livres","iguais","soberanos"].map(o=>`<button data-acao="tour-ls" data-v="${o}" aria-pressed="${r===o}"${ok?" disabled":""}>${o}</button>`).join("")}</div></div>
  ${r?`<p class="tour-res${ok?"":" err"}${tourNv()}" aria-live="polite">${ic(ok?"ok":"x")}<span>${ok?"Isso! É o texto literal da Constituição, conferido no Planalto.":"Não é essa. Tente outra palavra."}</span></p>`:""}`}
 function tourDemoMetas(){const n=tourD.dias||0;
- return `<div class="tour-metas"><ol class="tour-semana" aria-label="Dias de estudo nesta semana">${["D","S","T","Q","Q","S","S"].map((d,i)=>`<li class="${i<n?"on":""}${i===n-1&&tourD.novo?" novo":""}"><i>${ic("chama")}</i><small>${d}</small></li>`).join("")}</ol>
+ return `<div class="tour-metas"><ol class="tour-semana" aria-label="Dias de estudo nesta semana">${DIA_CURTO.map((d,i)=>`<li class="${i<n?"on":""}${i===n-1&&tourD.novo?" novo":""}"><i>${ic("chama")}</i><small>${d}</small></li>`).join("")}</ol>
  <p class="tour-seq" aria-live="polite"><b>${n}</b> ${n===1?"dia":"dias"} de ofensiva</p>
  <div class="botoes"><button class="botao cheio" data-acao="tour-dia"${n>=7?" disabled":""}>${n>=7?"Semana completa!":`${ic("mais")} Estudar mais um dia`}</button></div></div>
  ${n>=7?`<p class="tour-res tour-chama${tourNv()}">${ic("estrela")}<span><b>Uma semana inteira!</b> No app, cada meta cumprida vira festa, e a chama mostra quantos dias seguidos você estudou.</span></p>`:""}`}

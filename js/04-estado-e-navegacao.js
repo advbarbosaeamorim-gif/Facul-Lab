@@ -34,7 +34,8 @@ const $=s=>document.querySelector(s);
 const LETRAS="ABCD";
 function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function mmss(s){s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;const p=n=>String(n).padStart(2,"0");return h?`${h}:${p(m)}:${p(x)}`:`${p(m)}:${p(x)}`}
-function dur(s){s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;const p=n=>String(n).padStart(2,"0");return h?`${h}h ${p(m)}min`:`${p(m)}min ${p(x)}s`}
+/* duração para ler: "menos de 1 min", "12 min", "1 h 5 min", "5 h" (sem zeros à esquerda) */
+function dur(s){s=Math.max(0,Math.round(s||0));if(s<60)return "menos de 1 min";const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?(m?`${h} h ${m} min`:`${h} h`):`${m} min`}
 function quando(ts){const d=new Date(ts),h=new Date();const o=new Date(h);o.setDate(h.getDate()-1);
   const hr=d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
   if(d.toDateString()===h.toDateString())return "Hoje<br>"+hr;if(d.toDateString()===o.toDateString())return "Ontem<br>"+hr;
@@ -69,13 +70,16 @@ function estado(key){const a=ultima(key);
   const R=resDe(key);if(R)return {st:stDe(key,R.u),a:{inicio:R.i||R.t,fim:R.t,tempo:R.tp||0,status:"concluido",resumo:true},r:{ok:R.ok||0,er:R.er||0,br:R.br||0,pct:R.u}};
   return {st:"nao",a:null}}
 const ROTULO={nao:"Não iniciado",pausa:"Pausado",aprov:"Aprovado",reprov:"Reprovado",perf:"Perfeito",exame:"Exame final"};
-const SELO={nao:"exc",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela",exame:"refazer"};
-function contagem(r){r=r||{ok:0,er:0,br:0};return `<span class="cont"><span title="Certas"><span class="ck ok">${ic("ok")}</span>${p2(r.ok)}<span class="sr"> certas</span></span><span title="Erradas"><span class="ck er">${ic("x")}</span>${p2(r.er)}<span class="sr"> erradas</span></span><span class="c-br" title="Em branco"><span class="ck br">${ic("exc")}</span>${p2(r.br)}<span class="sr"> em branco</span></span></span>`}
+const SELO={nao:"play",pausa:"pausa",aprov:"ok",reprov:"x",perf:"estrela",exame:"refazer"};
+function contagem(r){r=r||{ok:0,er:0,br:0};return `<span class="cont"><span title="Certas"><span class="ck ok">${ic("ok")}</span>${r.ok}<span class="sr"> certas</span></span><span title="Erradas"><span class="ck er">${ic("x")}</span>${r.er}<span class="sr"> erradas</span></span><span class="c-br" title="Em branco"><span class="ck br">${ic("exc")}</span>${r.br}<span class="sr"> em branco</span></span></span>`}
 function itemSim(key,tituloOpc){const s=sim(key);if(!s||!s.qids.length)return "";const e=estado(key);const a=e.a;
-  const R=resDe(key);let sub;if(e.st==="nao")sub="[Toque para iniciar]";else if(e.st==="pausa")sub="[Toque para continuar]";else sub=`com ${e.r.pct}% em ${dur(a.tempo)}${R&&R.n>1&&R.b>e.r.pct?` · melhor ${R.b}%`:""}`;
-  const r=a?(e.r||res(a)):null;
+  const R=resDe(key),n=s.qids.length;let sub,rodape;
+  /* não iniciado: só o tamanho e uma barra vazia; pausado: quantas já respondeu; concluído: nota, tempo e placar */
+  if(e.st==="nao"){sub=`${n} questões`;rodape=`<span class="sim-barra" aria-hidden="true"><i style="width:0"></i></span>`}
+  else if(e.st==="pausa"){const feitas=a.qids.filter(id=>a.resp[id]!==undefined).length;sub=`Respondeu ${feitas} de ${a.qids.length} · toque para continuar`;rodape=`<span class="sim-barra pausa" aria-hidden="true"><i style="width:${Math.round(feitas*100/Math.max(1,a.qids.length))}%"></i></span>`}
+  else{sub=`Com ${e.r.pct}% em ${dur(a.tempo)}${R&&R.n>1&&R.b>e.r.pct?` · melhor ${R.b}%`:""} · ${n} questões`;rodape=contagem(e.r||res(a))}
   return `<button class="item" data-acao="abrir" data-key="${key}"><span class="selo ${e.st}">${ic(SELO[e.st])}</span>
-   <span style="min-width:0">${s.nivel?chipNivel(s.nivel)+"<br>":""}<span class="item-tit">${esc(tituloOpc||s.titulo)}: ${ROTULO[e.st]}</span><br><span class="item-sub">${sub} · ${s.qids.length} questões</span><br>${contagem(r)}</span>
+   <span style="min-width:0">${s.nivel?chipNivel(s.nivel)+"<br>":""}<span class="item-tit">${esc(tituloOpc||s.titulo)}: ${ROTULO[e.st]}</span><br><span class="item-sub">${sub}</span><br>${rodape}</span>
    <span class="item-data">${a?quando(a.inicio):""}</span></button>`}
 
 /* ---------- navegação ---------- */
@@ -117,7 +121,7 @@ try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>apl
    de pelo menos 4,5:1 com o branco (texto dos botões e do topo); a segunda e a terceira aparecem nos
    degradês, na faixa do topo, nos ícones e nas ilustrações. Fora de uma matéria, vale a cor de base. */
 const DIN={
- ied:["Lombada de código","#14532d","#16a34a","#ca8a04","O azul-marinho e o dourado das lombadas dos códigos na estante: a porta de entrada do curso de Direito."],
+ ied:["Lombada de código","#14532d","#16a34a","#ca8a04","O verde-escuro e o dourado das lombadas dos códigos na estante: a porta de entrada do curso de Direito."],
  tge:["Púrpura e coroa","#8b5a0b","#d97706","#6b21a8","A púrpura e o ouro das coroas antigas: do poder absoluto dos reis ao Estado de Direito, em que o próprio poder obedece à lei."],
  soc:["Praça cheia","#0e7490","#fb7185","#f59e0b","Cores misturadas, como uma praça cheia de gente: o Direito visto como fato social, nascido da vida em sociedade."],
  psc:["Debate de ideias","#9d174d","#fb923c","#7c3aed","Tons quentes de uma boa conversa: correntes de pensamento que dialogam, discordam e se completam."],
@@ -126,7 +130,7 @@ const DIN={
  civil:["Vida em comum","#0f766e","#2dd4bf","#f59e0b","Verde-água, a cor do dia a dia: pessoas, contratos, bens e família, do nascimento à sucessão."],
  const:["Amarelo e verde","#9c7a00","#00733a","#002776","O verde, o amarelo e o azul da Bandeira Nacional: a Constituição dá forma ao país e está acima de todas as outras leis."],
  penal:["Vermelho-alerta","#b91c1c","#f43f5e","#1f2937","Vermelho de alerta: o Direito Penal protege os bens jurídicos mais importantes e só entra em cena como última opção, a ultima ratio."],
- pc:["Roxo do rito","#1e3a8a","#3b82f6","#cbd5e1","Roxo e lilás em degraus, como o próprio processo: cada ato no seu tempo, da petição inicial à sentença."],
+ pc:["Azul do rito","#1e3a8a","#3b82f6","#cbd5e1","Azul em degraus, do marinho ao claro, como o próprio processo: cada ato no seu tempo, da petição inicial à sentença."],
  dh:["Azul da ONU","#0369a1","#e11d48","#7dd3fc","O azul das Nações Unidas, que aprovaram a Declaração Universal dos Direitos Humanos em 1948, com o vermelho do coração: dignidade para cada pessoa."],
  adm:["Prédios públicos","#1e40af","#0ea5e9","#94a3b8","O azul sóbrio das repartições e o cinza do concreto de Brasília: a máquina do Estado a serviço do interesse público."],
  emp:["Terno e ouro","#1e293b","#475569","#ca8a04","O azul-marinho das reuniões de negócio e o dourado dos resultados: empresário, sociedades, títulos de crédito e recuperação."],

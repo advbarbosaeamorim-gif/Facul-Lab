@@ -17,6 +17,8 @@ const P={
  maleta:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/>',
  martelo:'<path d="M13 4l7 7M10.5 6.5l7 7M12 5l-3.5 3.5 7 7L19 12M10 10l-7 7 2 2 7-7M3 21h9"/>',
  algema:'<circle cx="7" cy="15" r="4"/><circle cx="17" cy="15" r="4"/><path d="M9.5 11.8l2.5-3.3 2.5 3.3"/>',
+ /* espada da Justiça (Direito Penal): lâmina, guarda e cabo */
+ espada:'<path d="M12 2.5l2 2.6V15h-4V5.1z"/><path d="M7 15h10M12 15v4.5"/><circle cx="12" cy="20.6" r="1.4"/>',
  lupa:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
  guardachuva:'<path d="M3 12a9 9 0 0 1 18 0zM12 12v6a2 2 0 0 0 4 0M12 3v0"/>',
  capacete:'<path d="M3 17h18M5 17v-3a7 7 0 0 1 14 0v3M10 7V5h4v2"/>',
@@ -67,7 +69,7 @@ const META={
  adm:{nome:"Direito Administrativo",cor:"#44609c",ic:"predio"}, amb:{nome:"Direito Ambiental",cor:"#2f8a45",ic:"folha"},
  civil:{nome:"Direito Civil",cor:"#2a7a6a",ic:"familia"}, eca:{nome:"ECA",cor:"#cc6526",ic:"crianca"},
  cdc:{nome:"Direito do Consumidor",cor:"#a0367a",ic:"carrinho"}, emp:{nome:"Direito Empresarial",cor:"#55606e",ic:"maleta"},
- pc:{nome:"Processo Civil",cor:"#6b3fa0",ic:"martelo"}, penal:{nome:"Direito Penal",cor:"#b03030",ic:"algema"},
+ pc:{nome:"Processo Civil",cor:"#6b3fa0",ic:"martelo"}, penal:{nome:"Direito Penal",cor:"#b03030",ic:"espada"},
  pp:{nome:"Processo Penal",cor:"#8a3f3f",ic:"lupa"}, prev:{nome:"Direito Previdenciário",cor:"#2b7fb8",ic:"guardachuva"},
  trab:{nome:"Direito do Trabalho",cor:"#b07f0c",ic:"capacete"}, pt:{nome:"Processo do Trabalho",cor:"#866420",ic:"prancheta"},
  ied:{nome:"Introdução ao Estudo do Direito",cor:"#4d6b8a",ic:"livro"}, tge:{nome:"Teoria do Estado e Ciência Política",cor:"#8a6b2d",ic:"coroa"},
@@ -255,6 +257,10 @@ Object.assign(ILU,{
 });
 /* escolhe a ilustração do tema pelo título */
 const ILU_REGRAS=[
+ /* Penal II: um desenho por tema (antes quase todos caíam na grade da "pena") */
+ [/para que serve a pena/,"balanca"],[/especies de pena/,"grade"],[/dosimetria/,"martelo"],[/restritivas de direitos/,"trabalho"],[/pena de multa/,"cedula"],
+ [/suspensao condicional da pena|livramento condicional/,"calendario"],[/execucao: progress|remicao|detracao/,"escada"],[/efeitos da condenacao/,"carimbo"],
+ [/medida de seguranca/,"saude"],[/extincao da punibilidade/,"pergaminho"],
  [/propriedade industrial/,"fabrica"],[/bem de familia|locacao/,"casa"],[/hidric|residuo/,"gota"],[/florest|conservacao|meio ambiente|ambiental/,"arvore"],
  [/execucao: progress|medida de seguranca|prisao|prisoes|cautelar|pena\b|penas|punibilidade|reabilita/,"grade"],
  [/pena de multa|honorario|remuneracao|precatorio|titulos de credito|pagamento|receita/,"cedula"],
@@ -653,7 +659,7 @@ function telaLer(){const d=rota.d,i=periodoDe(d),f=infoDisc(d);if(!apOk(i))retur
  const pg=Math.max(0,Math.min(N+1,rota.pg||0));rota.pg=pg;
  if(!tudo&&pg>0){S.apPg=S.apPg||{};S.apT=S.apT||{};const ad=(S.apPg[d]||0)<pg,nd=S.apT[d]!==hojeStr();if(ad)S.apPg[d]=pg;if(nd)S.apT[d]=hojeStr();if(ad||nd)salvar()}
  const fonte=(S.cfg&&S.cfg.fonte)||0;
- const dir=`<button class="icone" data-acao="fonte" data-v="-1" aria-label="Diminuir letra">A−</button><button class="icone" data-acao="fonte" data-v="1" aria-label="Aumentar letra">A+</button>`;
+ const dir=`<button class="icone" data-acao="fonte" data-v="-1"><span aria-hidden="true">A−</span><span class="sr">Diminuir letra</span></button><button class="icone" data-acao="fonte" data-v="1"><span aria-hidden="true">A+</span><span class="sr">Aumentar letra</span></button>`;
  const corpo=tudo?tudoAp(d,f,P,i):pg===0?capaAp(d,f,P):pg<=N?paginaTema(d,f,P,pg):fimAp(d,f,P,i);
  return topo(f.nome,`Apostila do ${i+1}º período`,{dir,extra:`<div class="progresso-leitura"><i ${tudo?'id="prog-l"':""} style="width:${tudo?0:Math.round(pg*100/(N+1))}%"></i></div>`})+
  `<main class="wrap leitura" style="--fs:${[1,1.08,1.17,0.94][(fonte+4)%4]}">${corpo}</main>`}
