@@ -1589,6 +1589,7 @@ Quando **ambas as partes perdem em parte** (sucumbência recíproca), cada uma p
 
 ## Efeitos dos recursos
 - **Efeito devolutivo:** todo recurso **devolve ao órgão julgador o conhecimento da matéria impugnada**. O tribunal só pode examinar o que foi objeto do recurso (_tantum devolutum quantum appellatum_).
+- **Recurso total ou parcial:** a decisão pode ser impugnada **no todo ou em parte** (art. 1.002). É o recorrente quem escolhe os capítulos que quer atacar: se a sentença condenou em danos materiais e morais e o réu só recorre dos morais, a condenação em danos materiais **fica definitiva** e o tribunal não pode mexer nela.
 - **Efeito suspensivo:** impede que a decisão produza efeitos enquanto o recurso não for julgado. **Os recursos não impedem a eficácia da decisão, salvo disposição legal ou decisão judicial em sentido diverso** (art. 995). A regra, portanto, é a **ausência** de efeito suspensivo, com a importante exceção da **apelação**.
 - **Efeito translativo:** permite ao tribunal conhecer de **matérias de ordem pública**, mesmo que não alegadas no recurso.
 - **Efeito regressivo (ou de retratação):** permite que o **próprio juiz** que proferiu a decisão a reconsidere. Ocorre no agravo de instrumento e, excepcionalmente, na apelação (contra o indeferimento da inicial, a improcedência liminar e as sentenças sem resolução de mérito).
