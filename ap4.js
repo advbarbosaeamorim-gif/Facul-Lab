@@ -77,8 +77,23 @@ A doutrina e a jurisprudência desenvolveram figuras específicas que concretiza
 |Tu quoque|quem violou uma norma não pode exigir que o outro a cumpra, nem tirar proveito da própria violação|o comprador que não pagou não pode exigir a entrega da coisa|
 |Duty to mitigate the loss|o credor deve adotar medidas razoáveis para evitar o agravamento do próprio prejuízo|o banco deixa a dívida crescer por anos com juros, sem cobrar, para receber mais|
 |Adimplemento substancial|quando o contrato foi quase todo cumprido, o credor não pode pedir a resolução, mas apenas cobrar o saldo|o comprador pagou 95% das parcelas e o vendedor quer desfazer a venda|
+|Exceptio doli|a parte pode se defender e recusar o cumprimento quando a outra age com dolo ou abuso para exigir a prestação|o condomínio cobra multa de 30% por atraso; a lei só permite até 2% (art. 1.336, §1º), e o condômino pode recusar o excesso|
+|Culpa in contrahendo|responsabilidade por quebrar a confiança criada nas tratativas, antes de o contrato existir|a distribuidora orienta o dono do terreno a demolir e fazer obras para um posto de gasolina e depois desiste sem motivo|
 
-!! Figuras da boa-fé = "**VE-SU-SU-TU-DU-AD**": **VE**nire, **SU**pressio, **SU**rrectio, **TU** quoque, **DU**ty to mitigate, **AD**implemento substancial.
+!! Figuras da boa-fé = "**VE-SU-SU-TU-DU-AD**": **VE**nire, **SU**pressio, **SU**rrectio, **TU** quoque, **DU**ty to mitigate, **AD**implemento substancial. E mais duas no fim da fila: **EX**ceptio doli e **CU**lpa in contrahendo.
+
+- O **venire** e seus "filhotes" (supressio, surrectio, tu quoque) são construção da doutrina e da jurisprudência, sem artigo próprio: apoiam-se na proteção da confiança dos arts. 187 e 422 (Enunciado 362 da Jornada de Direito Civil). O **duty to mitigate** está no Enunciado 169 e é aplicado pelo STJ.
+- A **supressio** tem uma regra expressa: o pagamento **reiteradamente feito em outro local** faz presumir que o credor renunciou ao local previsto no contrato (art. 330). Pela mesma lógica, quem sempre aceitou a mensalidade no dia 10, sem multa, não pode cobrar multa retroativa dos meses passados. Por isso muitos contratos de locação trazem uma **cláusula de tolerância**: aceitar o aluguel atrasado é mera liberalidade e não altera o contrato.
+
+> Exemplo de venire: um plano de saúde, sem ordem judicial, fornece por anos um remédio à base de cannabis ao paciente e, de repente, para. A interrupção é **comportamento contraditório**: a conduta anterior criou confiança legítima, e o fornecimento contínuo fez surgir um direito para o paciente (surrectio) e suprimiu o direito do plano de simplesmente parar (supressio).
+
+> Atenção: no direito de família a lógica é outra. Se o pai paga por anos pensão **maior** do que a fixada, isso não cria, sozinho, a obrigação de manter o valor maior; mas pode servir de **prova** da capacidade financeira numa **ação revisional**.
+
+> Exemplo de culpa in contrahendo: a empresa aprova o candidato em todas as etapas, marca a data de início e cancela a vaga sem justificativa, depois que ele pediu demissão do emprego anterior. Há dano pré-contratual, mesmo sem vínculo formalizado; a prova pode ser feita por qualquer meio (WhatsApp, e-mail, testemunhas). A indenização não equivale a um emprego vitalício: costuma ser fixada por um período razoável.
+
+?? Qual é a multa máxima por atraso na taxa de condomínio? | 2% sobre o débito, além de juros e correção (art. 1.336, §1º). Uma multa de 30% é abusiva e pode ser recusada (exceptio doli).
+?? O que é culpa in contrahendo? | A responsabilidade por quebrar a boa-fé nas tratativas, antes de o contrato ser assinado, quando a outra parte confiou e teve gastos ou prejuízos (arts. 187 e 422).
+?? Em que artigo do Código Civil aparece a ideia de supressio? | No art. 330: o pagamento reiteradamente feito em outro local faz presumir renúncia do credor relativamente ao previsto no contrato.
 
 > Atenção: o STJ **não aplica** a teoria do adimplemento substancial aos contratos de **alienação fiduciária em garantia** regidos pelo Decreto-Lei 911/1969 (REsp 1.622.555), nem às obrigações de **alimentos**.
 

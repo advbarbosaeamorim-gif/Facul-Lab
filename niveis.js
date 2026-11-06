@@ -13,3 +13,9 @@ window.NIVEIS[1]+=" wa02 wa03 wa05 wa07 wa08 wb01 wb03 wb04 wb05 wb08 wb10 wc01 
 window.NIVEIS[2]+=" wa01 wa04 wf01 wf02 wf03 wf06 wg02 wg03 wh02 wh03 wh07 wh08 wj04 wk06 wk10 wl03 wl04 wl08 wp01 wr04";
 window.NIVEIS[3]+=" wa06 we06 wh04 wh05 wi01 wi04 wm02 wm07 wn02 wo02 wo04 wp02 ws05";
 window.NIVEIS[4]+=" wb02 wb06 wb09 wd02 wg01 wg05 wg06 wj05 wj07 wk04 wl01 wl02 wn03 wn05 wq06 wq07";
+
+/* Questões das aulas de nicolas: bens, negócio jurídico, boa-fé e pedido. */
+window.NIVEIS[0]+=" bn01 pd01 pd05";
+window.NIVEIS[1]+=" bn03 bn06 bn07 bn08 bf03 pd02";
+window.NIVEIS[2]+=" bn02 bn04 bn05 nj01 nj03 bf01 pd03 pd06 pd07";
+window.NIVEIS[3]+=" nj02 bf02 pd04";

@@ -211,38 +211,72 @@ Essa é a **teoria maior**, que exige **prova do abuso**. No Código de Defesa d
 # Os bens
 Bens são as **coisas e direitos** que podem ser **objeto de relações jurídicas**. O Código Civil os classifica de várias formas, e cada classificação tem consequências práticas.
 
+## Coisa, bem e patrimônio
+- **Coisa** é o gênero: tudo o que existe e não é pessoa. **Bem** é a espécie: a coisa (ou o direito) que tem **valor econômico** ou pode ser **objeto de relação jurídica**. É a corrente majoritária.
+- Uma pedra solta na rua é **coisa**, mas não é bem. Uma mesa é coisa **e** bem. O animal de estimação é **bem**, mesmo sem grande valor de mercado, porque pode ser doado, vendido ou disputado em guarda.
+- **Pessoas** (naturais ou jurídicas) **não são coisa nem bem**: são sujeitos de direito. Já as **cotas** de uma empresa são bens do sócio.
+- **Patrimônio** não é sinônimo de bem. É o **conjunto das relações jurídicas de valor econômico** de uma pessoa, com **ativo** (o que ela tem e tem a receber) e **passivo** (o que ela deve). Os bens fazem parte do patrimônio.
+
+## Corpóreos e incorpóreos
+É uma classificação da doutrina (o Código não a traz expressamente):
+- **Corpóreos** têm existência física e podem ser tocados: um carro, um prédio, uma plantação.
+- **Incorpóreos** são abstratos e existem só para o Direito: um crédito, as cotas de uma sociedade, os direitos autorais, uma marca. Em regra, transferem-se por **cessão**.
+
+> Atenção: a **honra** não é tratada como bem, porque não pode ser negociada. A **imagem** também é direito da personalidade, mas o seu **uso econômico** pode ser autorizado e cobrado (o contrato de cessão de imagem de um atleta), e por isso a prova costuma colocá-la entre os bens incorpóreos.
+
 ## Imóveis e móveis
 - **Imóveis** são o **solo** e **tudo quanto se lhe incorporar natural ou artificialmente** (art. 79): as árvores, as construções.
 - Consideram-se **imóveis para os efeitos legais** os **direitos reais sobre imóveis** e as ações que os asseguram, e o **direito à sucessão aberta** (art. 80). Por isso, a cessão de direitos hereditários exige escritura pública, mesmo que a herança só tenha dinheiro.
 - Não perdem o caráter de imóveis as edificações que, separadas do solo, forem removidas para outro local, e os materiais provisoriamente separados de um prédio para nele se reempregarem (art. 81).
 - **Móveis** são os bens **suscetíveis de movimento próprio** (os semoventes, como os animais) **ou de remoção por força alheia**, sem alteração da substância ou da destinação econômico-social (art. 82).
-- Consideram-se móveis para os efeitos legais as **energias que tenham valor econômico** (como a energia elétrica) e os direitos pessoais de caráter patrimonial e respectivas ações (art. 83).
+- Os **semoventes** são os animais. O Código ainda os trata como bens móveis, mas o **STJ** reconhece que são **seres sencientes**, capazes de sentir dor e afeto, e já admitiu regras de convivência com o animal depois do fim de uma união estável (REsp 1.713.167, 2018).
+- Consideram-se móveis para os efeitos legais as **energias que tenham valor econômico** (como a energia elétrica), os **direitos reais sobre objetos móveis** e as ações correspondentes, e os **direitos pessoais de caráter patrimonial** (os créditos) e respectivas ações (art. 83, I a III).
+
+> Atenção: nos incisos II e III do art. 83 há **dois bens** em cada um: o **direito** (o crédito, a propriedade do carro) e a **ação** que o protege. Robôs e sistemas de inteligência artificial são **bens**, e não pessoas: há um debate doutrinário sobre uma "personalidade eletrônica" (_e-personality_), mas o Brasil não a adotou.
 - Os **materiais destinados a alguma construção**, enquanto não forem empregados, conservam sua qualidade de móveis; readquirem essa qualidade os provenientes da demolição de algum prédio (art. 84).
 
 A distinção importa porque os **imóveis** se transferem pelo **registro** (e, acima de certo valor, exigem escritura pública), enquanto os **móveis** se transferem pela **tradição** (entrega). Também muda a garantia: imóveis se dão em hipoteca; móveis, em penhor.
 
 ## Fungíveis, consumíveis e divisíveis
 - **Fungíveis** são os **móveis** que podem ser **substituídos** por outros da **mesma espécie, qualidade e quantidade** (art. 85). O dinheiro, os grãos, o combustível. Infungíveis são os que não podem ser substituídos, como um quadro original ou um carro específico com placa e chassi.
+- **Depende:** um carro, uma joia, um violão ou um sofá **novos e idênticos** na loja são fungíveis; **usados ou individualizados** (com placa e chassi, com dedicatória, feitos sob encomenda) passam a ser infungíveis. A vontade das partes também pode tornar infungível um bem fungível (a garrafa de vinho emprestada só para enfeitar uma vitrine, que tem de voltar a mesma).
+- A distinção decide o tipo de empréstimo: **mútuo** é o empréstimo de coisa **fungível** (o dinheiro do banco, devolvido em outras notas) (art. 586); **comodato** é o empréstimo de coisa **infungível** (o carro emprestado ao amigo, que tem de voltar o mesmo) e só se perfaz com a **tradição**, a entrega (art. 579).
 - **Consumíveis** são os bens móveis cujo **uso importa destruição imediata** da própria substância (os alimentos), e também os destinados à **alienação** (as mercadorias de uma loja são consumíveis para o lojista) (art. 86).
+- **Inconsumíveis** suportam uso continuado: o imóvel, a joia, a mesa, o ar-condicionado. A **roupa**, embora se desgaste, costuma ser tratada como inconsumível, porque dura muito.
 - **Divisíveis** são os que se podem **fracionar** sem alteração na sua substância, diminuição considerável de valor ou prejuízo do uso a que se destinam (art. 87). Um terreno grande é divisível; um cavalo de corrida, não.
+- Os bens naturalmente divisíveis podem tornar-se **indivisíveis** por **determinação da lei** ou por **vontade das partes** (art. 88). Exemplo de indivisibilidade por lei: nenhum lote urbano pode ter menos de 125 m² (Lei 6.766/1979, art. 4º, II). Na prática, quase tudo é indivisível: o carro, a casa, o computador, o animal vivo.
 
 ## Singulares, coletivos e universalidades
-- **Universalidade de fato:** a **pluralidade de bens singulares** que, pertinentes à mesma pessoa, tenham **destinação unitária** (art. 90). Um rebanho, uma biblioteca.
+- **Singulares** são os bens que, embora reunidos, se consideram **de per si**, independentemente dos demais (art. 89): um livro, uma cadeira, um carro. **Coletivos** (universalidades) valem pelo **conjunto**.
+- **Universalidade de fato:** a **pluralidade de bens singulares** que, pertinentes à mesma pessoa, tenham **destinação unitária** (art. 90). Um rebanho, uma biblioteca, uma coleção de moedas, o estabelecimento comercial. Cada bem do conjunto pode ser objeto de relação jurídica própria (art. 90, parágrafo único): dá para vender um só boi do rebanho.
 - **Universalidade de direito:** o **complexo de relações jurídicas** de uma pessoa, dotadas de valor econômico (art. 91). A herança, o patrimônio.
 
+> Atenção: a **herança** é sempre universalidade de direito, mesmo que tenha **um único bem**, e até a partilha é **indivisível** (art. 1.791). Já o imóvel herdado, olhado sozinho, é bem singular.
+
 ## Principais e acessórios
-- **Principal** é o bem que existe sobre si, abstrata ou concretamente; **acessório**, aquele cuja **existência supõe a do principal** (art. 92). Em regra, **o acessório segue o principal**.
+- **Principal** é o bem que existe sobre si, abstrata ou concretamente; **acessório**, aquele cuja **existência supõe a do principal** (art. 92). Em regra, **o acessório segue o principal**: é o princípio da **gravitação jurídica**. Exemplos: o aluguel e a multa ou os juros; a árvore e os frutos.
+- **Parte integrante** é o que compõe a **estrutura** do próprio bem e segue o principal: o pneu, o para-lama, o limpador de para-brisa do carro. **Pertença** é acrescida **sem integrar** o bem: o rádio, o insulfilme, o envelopamento, a escultura do jardim.
 - **Pertenças** são os bens que, **não constituindo partes integrantes**, se destinam, de modo duradouro, ao **uso, ao serviço ou ao aformoseamento** de outro (art. 93): os móveis de uma casa, os tratores de uma fazenda, o aparelho de ar-condicionado. Atenção: os negócios jurídicos que dizem respeito ao bem principal **não abrangem as pertenças**, salvo se o contrário resultar da lei, da manifestação de vontade ou das circunstâncias do caso (art. 94). Quem vende uma casa não vende, automaticamente, os móveis.
-- **Frutos** são as utilidades que a coisa **produz periodicamente**, sem perder sua substância (as frutas de uma árvore, os aluguéis de um imóvel, os juros de um capital). **Produtos** são as utilidades que, quando retiradas, **diminuem a substância** da coisa (o minério de uma jazida). Apesar de ainda não separados do bem principal, os frutos e produtos podem ser objeto de negócio jurídico (art. 95).
+- **Frutos** são as utilidades que a coisa **produz periodicamente**, sem perder sua substância (as frutas de uma árvore, os aluguéis de um imóvel, os juros de um capital). **Produtos** são as utilidades que, quando retiradas, **diminuem a substância** da coisa (o minério de uma jazida). Apesar de ainda não separados do bem principal, os frutos e produtos podem ser objeto de negócio jurídico (art. 95). Os frutos podem ser:
+  - **naturais:** nascem da própria coisa, pela força da natureza (as frutas, o leite, os ovos do quintal, as crias dos animais);
+  - **industriais:** dependem da intervenção humana organizada (a produção de uma fábrica, os ovos de uma granja com mil galinhas);
+  - **civis:** são os **rendimentos** que a coisa dá por ser usada por outro (os aluguéis, os juros).
 - **Benfeitorias** são as obras ou despesas feitas na coisa para conservá-la, melhorá-la ou embelezá-la (art. 96):
   - **necessárias:** têm por fim **conservar o bem** ou evitar que se deteriore (refazer o telhado que está caindo);
   - **úteis:** **aumentam ou facilitam o uso** do bem (construir uma garagem, instalar grades);
   - **voluptuárias:** de **mero deleite ou recreio**, que não aumentam o uso habitual do bem, ainda que o tornem mais agradável ou sejam de elevado valor (uma fonte decorativa, um jardim de inverno).
 
+Casos limítrofes, como a churrasqueira ou o envelopamento do carro, dependem do contexto. Na **locação** de imóvel urbano, as necessárias são indenizáveis mesmo sem autorização, as úteis só se autorizadas, e as voluptuárias não se indenizam, mas podem ser retiradas (arts. 35 e 36 da Lei 8.245/1991).
+
 !! Benfeitorias = **NUVem**: **N**ecessárias conservam, **Ú**teis melhoram o uso, **V**oluptuárias embelezam.
 
 ## Bens públicos
-São públicos os bens do domínio nacional pertencentes às pessoas jurídicas de direito público interno; todos os outros são particulares (art. 98). Eles se dividem em três espécies (art. 99):
+São públicos os bens do domínio nacional pertencentes às pessoas jurídicas de direito público interno; todos os outros são particulares (art. 98).
+- **Quem é dono de bem público:** só as pessoas jurídicas de direito público interno (art. 41): a União, os estados, o Distrito Federal, os municípios, as **autarquias** (INSS, Banco Central, IBAMA) e as **fundações públicas**.
+- A **Caixa** (empresa pública) e o **Banco do Brasil** (sociedade de economia mista) são pessoas de direito **privado**: seus bens são **particulares** e podem ser penhorados. Os **Correios** são a exceção famosa: empresa pública com tratamento de Fazenda Pública, que paga por **precatório** (STF).
+- A **OAB** é uma "autarquia especial", _sui generis_, que não integra a administração pública (STF, ADI 3.026).
+
+Os bens públicos se dividem em três espécies (art. 99):
 
 |Espécie|Exemplo|Pode ser vendido?|
 |Uso comum do povo|rios, mares, estradas, ruas e praças|não, enquanto conservar essa qualificação (art. 100)|
@@ -254,11 +288,20 @@ São públicos os bens do domínio nacional pertencentes às pessoas jurídicas 
 - Os bens públicos também são **impenhoráveis**: as dívidas judiciais do Estado se pagam por **precatório** (art. 100 da Constituição).
 - O uso comum dos bens públicos pode ser **gratuito ou retribuído** (art. 103): a praça é gratuita, mas o pedágio e a zona azul são cobrados.
 
+> Na prova: a **escola pública** é de **uso especial**, e não de uso comum, porque só os alunos matriculados a usam. Um **monumento** na praça não é dominical, porque tem destinação.
+
+::calc bem|Classifique o bem
+
 > Exemplo: em um apartamento alugado, o apartamento é bem **imóvel**; o aluguel que ele rende todo mês é **fruto** civil; o ar-condicionado instalado na sala é **pertença** (não vai junto na venda, salvo acordo); refazer o telhado que ameaça cair é benfeitoria **necessária**; construir uma garagem é **útil**; instalar uma fonte decorativa é **voluptuária**.
 
 ?? Quem vende uma casa vende automaticamente os móveis que estão dentro dela? | Não. Os móveis são pertenças, e os negócios sobre o bem principal não as abrangem, salvo se o contrário resultar da lei, da vontade ou das circunstâncias (art. 94).
 ?? Qual é a diferença entre fruto e produto? | O fruto é produzido periodicamente sem diminuir a substância da coisa (aluguel, juros, frutas); o produto diminui a substância quando retirado (minério).
 ?? Um terreno público sem destinação pode ser vendido? Pode ser usucapido? | Pode ser vendido, por ser bem dominical, observadas as exigências legais (art. 101). Não pode ser usucapido (art. 102).
+?? Coisa e bem são a mesma coisa? | Não. Coisa é o gênero (tudo o que não é pessoa); bem é a espécie, a coisa que tem valor econômico ou pode ser objeto de relação jurídica. Uma pedra na rua é coisa, mas não é bem.
+?? A herança é bem móvel ou imóvel? Singular ou coletivo? | Imóvel por determinação legal (art. 80, II) e coletivo, universalidade de direito (art. 91), mesmo que tenha um único bem. Por isso a cessão de direitos hereditários exige escritura pública (art. 1.793).
+?? Emprestar dinheiro e emprestar o carro são o mesmo contrato? | Não. O dinheiro é fungível: o empréstimo é mútuo (art. 586). O carro é infungível: o empréstimo é comodato, que só se perfaz com a entrega (art. 579).
+?? Os bens do Banco do Brasil são públicos? | Não. O Banco do Brasil é sociedade de economia mista, pessoa de direito privado: seus bens são particulares e penhoráveis. Públicos são só os bens das pessoas jurídicas de direito público interno (art. 98).
+?? Qual é a diferença entre parte integrante e pertença? | A parte integrante compõe a estrutura do bem e o segue (o pneu do carro). A pertença é acrescida sem integrá-lo (o rádio, o insulfilme) e só acompanha o bem se a lei, o contrato ou as circunstâncias indicarem (arts. 93 e 94).
 
 # O negócio jurídico
 ## Conceito
@@ -284,6 +327,27 @@ A validade do negócio jurídico requer (art. 104):
 A doutrina acrescenta a **vontade livre e de boa-fé**, cuja falta gera os **defeitos** do negócio jurídico.
 
 A regra é a **liberdade de forma**: a validade da declaração de vontade **não dependerá de forma especial**, senão quando a lei expressamente a exigir (art. 107). Contratos verbais são válidos, em regra. Mas, **não dispondo a lei em contrário**, a **escritura pública** é **essencial à validade** dos negócios jurídicos que visem à constituição, transferência, modificação ou renúncia de **direitos reais sobre imóveis** de valor **superior a 30 vezes o maior salário mínimo** vigente no país (art. 108). Se a forma exigida não for observada, o negócio é **nulo** (art. 166, IV).
+
+## Classificação dos negócios jurídicos
+|Critério|Espécies|Exemplo|
+|Vantagens|**gratuitos** (só uma parte ganha) x **onerosos** (as duas têm vantagens e sacrifícios); os onerosos podem ser **comutativos** (prestações certas) ou **aleatórios** (dependem da sorte)|doação x compra e venda; o seguro é aleatório|
+|Forma|**solenes** ou formais (a lei exige forma) x **não solenes** ou informais (forma livre)|testamento, compra de imóvel acima de 30 salários mínimos x compra de um livro|
+|Conteúdo|**patrimoniais** (valor econômico) x **extrapatrimoniais** (sem valor econômico direto)|locação x casamento|
+|Número de vontades|**unilaterais** (basta uma vontade) x **bilaterais** (duas) x **plurilaterais** (várias)|testamento, renúncia x contrato x sociedade com vários sócios|
+|Momento dos efeitos|**inter vivos** x **mortis causa**|doação x testamento|
+
+> Atenção: todo **contrato** é negócio jurídico **bilateral** (precisa de duas vontades), até a doação. Quando se diz que a doação é contrato **unilateral**, olha-se outra coisa: quantas partes **se obrigam**. São classificações diferentes, e a banca gosta de misturá-las.
+
+## Vontade interna e vontade declarada
+A vontade só interessa ao Direito quando tem **relevância jurídica**: trocar um beijo é ato social, sem efeitos jurídicos; se houver uma agressão, passa a ter. No negócio jurídico, a vontade tem **finalidade negocial** e é elemento de **existência**. O problema surge quando o que a pessoa **queria** (vontade interna) não bate com o que ela **declarou**:
+
+::compara Vontade interna x vontade declarada|Teoria da vontade (voluntarista): vale o que a parte realmente quis; protege quem declarou; é a linha que o art. 112 prestigia|Teoria da declaração (objetivista): vale o que foi declarado; protege quem confiou na declaração e a segurança dos negócios; ligada ao pacta sunt servanda
+
+O Código de 2002 não adota nenhuma das duas em estado puro. Ele manda buscar a **intenção** (art. 112), mas protege a confiança de quem recebeu a declaração: a **reserva mental** não desfaz o negócio (art. 110), e a interpretação segue a **boa-fé** e os usos (art. 113). Como não dá para "entrar na cabeça" da parte, o juiz procura **elementos objetivos** que revelem a vontade real.
+
+> Atenção: a regra do art. 112 **não é novidade de 2002**. O Código de 1916 já dizia, no art. 85, que nas declarações de vontade se atende mais à intenção do que ao sentido literal da linguagem. A grande mudança de 2002 foi somar a ela a **boa-fé objetiva** (arts. 113, 187 e 422) e a **função social do contrato** (art. 421), valores que o CDC (1990) já tinha trazido e que a Constituição de 1988 pedia. O Código de 1916, patriarcal, era incompatível com a Constituição; o projeto do novo Código tramitou desde 1975 até 2002.
+
+> Caso: uma tia vende a casa ao sobrinho poucos meses antes de morrer. O imóvel valia R$ 1 milhão e foi "vendido" por R$ 200 mil. Os netos dela, herdeiros necessários, vão a juízo dizendo que, na verdade, ela quis **doar** a casa e disfarçou a doação de venda. O preço de 20% do valor de mercado é o **elemento objetivo** que revela a vontade real. Por que isso importa? Quem tem herdeiros necessários só pode dispor livremente de **metade** do patrimônio (a parte disponível, arts. 1.789 e 1.846): vender e gastar em vida é livre, mas a doação é **nula** na parte que exceder a disponível (doação inoficiosa, art. 549). E a venda que esconde uma doação é **simulação**: o negócio aparente é **nulo**, e o escondido só subsiste se for válido na substância e na forma (art. 167). A escritura registrada em cartório não impede a invalidação.
 
 ## Interpretação dos negócios
 - Nas declarações de vontade, se atenderá mais à **intenção** nelas consubstanciada do que ao sentido literal da linguagem (art. 112).
@@ -349,6 +413,8 @@ O **dolo** é o **erro provocado** por um **artifício malicioso** (um engano in
 - Nos negócios bilaterais, o **silêncio intencional** de uma das partes a respeito de fato ou qualidade que a outra haja ignorado constitui **omissão dolosa**, provando-se que sem ela o negócio não se teria celebrado (art. 147).
 - O **dolo de terceiro** só anula o negócio se a parte a quem aproveite **dele tivesse ou devesse ter conhecimento**; caso contrário, o terceiro responde por perdas e danos (art. 148).
 - Se **ambas as partes** procederem com dolo, **nenhuma pode alegá-lo** para anular o negócio ou reclamar indenização (art. 150).
+
+> Caso: uma pessoa que mora na Europa herda um imóvel na Região dos Lagos (RJ) e não conhece a região. Um corretor que conhece bem o mercado oferece R$ 500 mil para comprá-lo, dizendo que esse é o valor de mercado. Ela aceita e depois descobre que o imóvel valia o dobro. Até os anos 1980, a resposta comum era "ela foi desidiosa, assinou porque quis". Hoje, com a boa-fé objetiva, o critério é objetivo: ela teria vendido pela metade se soubesse o valor real? Se não, a mentira do comprador foi **dolo essencial**, e o negócio é **anulável** (art. 145), no prazo de **4 anos** (art. 178, II). Anulado, as partes voltam ao estado anterior: o imóvel volta à vendedora e o dinheiro, ao comprador (art. 182). O dano moral **não é automático**: depende do caso concreto.
 
 ## Coação
 A **coação** é a **ameaça** (violência moral, _vis compulsiva_) que leva alguém a celebrar o negócio. Para viciar a vontade, há de ser tal que incuta ao paciente **fundado temor de dano iminente e considerável** à sua pessoa, à sua família ou aos seus bens (art. 151). No apreciar a coação, ter-se-ão em conta o sexo, a idade, a condição, a saúde, o temperamento do paciente e todas as demais circunstâncias que possam influir na gravidade dela (art. 152).
