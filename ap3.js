@@ -1374,6 +1374,12 @@ No concurso de causas de aumento ou de diminuição previstas na **parte especia
 
 > Exemplo completo de dosimetria: Carlos comete um furto simples (pena de 1 a 6 anos, desde a Lei 15.397/2026). **1ª fase:** as circunstâncias judiciais são neutras; pena-base de 1 ano. **2ª fase:** ele é reincidente (agravante), mas confessou (atenuante); as duas se compensam; a pena continua em 1 ano. Ainda que só houvesse a confissão, a pena não poderia descer abaixo de 1 ano (Súmula 231). **3ª fase:** o crime foi tentado; aplica-se a redução de 1/3 a 2/3 (art. 14, parágrafo único); com a redução de 1/2, a pena definitiva fica em 6 meses, abaixo do mínimo, o que é permitido nesta fase.
 
+> Exemplo do quadro: roubo simples (art. 157, pena de 4 a 10 anos). **1ª fase:** pena-base de 5 anos. **2ª fase:** com a reincidência, a pena sobe, mas fica **presa** entre 4 e 10. **3ª fase:** se a arma de fogo for de **uso restrito ou proibido**, a pena do caput é aplicada **em dobro** (art. 157, §2º-B). Aqui a pena **pode** passar de 10 anos: é a única fase em que isso é permitido.
+
+> Exemplo de causa de diminuição: o **tráfico privilegiado** (art. 33, §4º, da Lei 11.343/2006) reduz a pena de **1/6 a 2/3** se o agente for **primário**, de **bons antecedentes**, **não se dedicar a atividades criminosas** nem **integrar organização criminosa** (os quatro requisitos juntos). Como é causa de diminuição, entra na 3ª fase e pode levar a pena **abaixo** do mínimo de 5 anos.
+
+> Atenção: "1/6 a 2/3" **não** é a regra de toda a 3ª fase. Cada causa tem a **sua** fração, escrita na lei: tentativa, 1/3 a 2/3 (art. 14); arrependimento posterior, 1/3 a 2/3 (art. 16); roubo com arma de fogo, 2/3 (art. 157, §2º-A); arma de uso restrito, o dobro (art. 157, §2º-B).
+
 ::calc dosi|Simulador: calcule a pena nas três fases
 
 !! As três fases: **1ª** = art. 59, **dentro** dos limites; **2ª** = agravantes e atenuantes, **dentro** dos limites (Súmula 231); **3ª** = frações, **pode sair** dos limites.
@@ -1404,6 +1410,31 @@ Muitas vezes **o mesmo fato** se encaixa em mais de uma categoria. O motivo torp
 ?? Uma atenuante pode levar a pena abaixo do mínimo legal? | Não, na 2ª fase (Súmula 231 do STJ). Só as causas de diminuição, na 3ª fase, permitem isso.
 ?? O agente comete um segundo crime antes do trânsito em julgado da condenação pelo primeiro. Ele é reincidente? | Não. A reincidência exige que o novo crime seja praticado depois do trânsito em julgado da condenação anterior (art. 63).
 ?? Qual é o período depurador da reincidência? | 5 anos, contados do cumprimento ou da extinção da pena anterior (art. 64, I).
+
+
+## Caso de sala: Maria (ache os erros)
+::ilus martelo|Antes de calcular, confira as datas.
+> Caso: **Maria** foi presa em flagrante em **10/11/2021** por furtar **2 tintas de cabelo**, avaliadas em **R$ 60,00**. O MP a denunciou por furto simples (art. 155 do CP), na 5ª Vara Criminal da Capital. A audiência de instrução e julgamento (AIJ) foi em 18/10/2022. Chegou ao processo a seguinte informação: em **15/05/2022** transitou em julgado uma condenação de Maria por **estelionato**, crime **anterior** ao furto.
+> **Sentença:** na **1ª fase**, o juiz aumentou a pena-base acima do mínimo porque o trânsito em julgado do estelionato configurava **maus antecedentes**. Na **2ª fase**, aplicou a agravante da **reincidência**, levando em conta o **mesmo** trânsito em julgado do estelionato. Condenou Maria a **4 anos de reclusão, em regime semiaberto**, e **não substituiu** a pena de prisão por restritivas de direitos, por entender que ela não preenchia os requisitos legais.
+
+Monte a **linha do tempo** antes de tudo: fato do furto (10/11/2021) → TJ do estelionato (15/05/2022) → AIJ e sentença (18/10/2022). Agora, os erros e os acertos:
+
+1. **Reincidência: errado.** O furto foi praticado **antes** do trânsito em julgado do estelionato. A reincidência exige que o novo crime venha **depois** do TJ (art. 63). Maria é **tecnicamente primária**.
+2. **Maus antecedentes: certo.** O TJ veio **depois do fato, mas antes da sentença**. Para o STJ, essa condenação pode pesar como **maus antecedentes** na 1ª fase. (Se o estelionato ainda não tivesse transitado na sentença, nem isso: Súmula 444 do STJ.)
+3. **Bis in idem: errado.** Mesmo que houvesse reincidência, a **mesma** condenação não pode ser usada na 1ª fase (antecedentes) e na 2ª (agravante). É o que proíbe a **Súmula 241 do STJ**.
+4. **A pena de 4 anos: errada.** O fato é de 2021, então vale a pena **da época**: furto simples de **1 a 4 anos**. A pena de 1 a 6 anos só veio com a **Lei 15.397/2026**, e a lei penal mais grave **não retroage** (art. 5º, XL, da CF). Com **uma** circunstância judicial negativa, chegar ao **máximo** (4 anos) é desproporcional: pelo critério de 1/8 do intervalo, a pena-base ficaria perto de **1 ano e 4 meses**.
+5. **Furto privilegiado esquecido.** Maria é **primária** e a coisa é de **pequeno valor** (R$ 60, bem abaixo de um salário mínimo). O §2º do art. 155 permite trocar reclusão por detenção, diminuir a pena de 1/3 a 2/3 ou aplicar só multa.
+6. **Insignificância: tese da defesa.** R$ 60 era menos de 10% do salário mínimo da época (R$ 1.100), parâmetro usado pelo STJ. Os **maus antecedentes** não impedem a tese automaticamente: STF e STJ analisam **caso a caso** a reiteração. Se acolhida, não há crime (falta a tipicidade material) e Maria é **absolvida** (art. 386, III, do CPP).
+7. **Regime e substituição.** Com pena até 4 anos e **sem reincidência**, o regime inicial pode ser o **aberto** (art. 33, §2º, c); um regime mais duro exige **motivação idônea** (Súmula 719 do STF). Na substituição (art. 44), os requisitos objetivos estão presentes: pena até 4 anos, crime **sem violência** e ré **não reincidente** em crime doloso. Negar a substituição só cabe com fundamentação concreta sobre as circunstâncias do art. 59.
+
+!! Caso Maria: **fato antes do TJ** = não é reincidente, mas pode ter **maus antecedentes**. A **mesma** condenação não entra em duas fases (Súmula 241). Fato de 2021: furto de **1 a 4 anos** (a lei mais grave não retroage).
+
+> Dica: no **simulador da linha do tempo** (na seção de reincidência, acima), ponha o novo fato em 10/11/2021, a nova sentença em 18/10/2022 e o trânsito em julgado anterior em 15/05/2022. Para o fato do estelionato, qualquer data antes de 10/11/2021. O resultado será **maus antecedentes, não reincidência**.
+
+?? Maria furtou em 10/11/2021, e a condenação por estelionato transitou em 15/05/2022. Ela é reincidente? | Não. O furto foi praticado antes do trânsito em julgado; a reincidência exige o novo crime depois do TJ (art. 63). A condenação pode pesar como maus antecedentes.
+?? O juiz usou o mesmo trânsito em julgado como maus antecedentes e como reincidência. Qual é o erro? | Bis in idem: a mesma condenação não pode ser circunstância judicial e agravante ao mesmo tempo (Súmula 241 do STJ).
+?? Furto praticado em 2021: qual pena se aplica, a de 1 a 4 ou a de 1 a 6 anos? | A de 1 a 4 anos, vigente na data do fato. A Lei 15.397/2026 é mais grave e não retroage (art. 5º, XL, da CF).
+?? Qual instituto do art. 155 o juiz esqueceu no caso de Maria (primária, coisa de R$ 60)? | O furto privilegiado (§2º): detenção no lugar de reclusão, redução de 1/3 a 2/3 ou só multa.
 
 # Concurso de crimes
 Quando o agente pratica **mais de um crime**, é preciso saber como somar ou combinar as penas. O Código prevê três espécies de concurso:
