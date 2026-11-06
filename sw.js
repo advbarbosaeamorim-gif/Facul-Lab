@@ -32,6 +32,11 @@ const guarda = (chave, resp) => {
 const daRede = (req, chave) => fetch(req, { cache: 'no-cache' }).then(resp => guarda(chave, resp));
 const guardadoOuRede = (req, chave) => caches.match(chave).then(r => r || daRede(req, chave).catch(() => Response.error()));
 const versao = r => r ? (r.headers.get('etag') || r.headers.get('last-modified') || r.headers.get('content-length') || '') : '';
+const diferente = async (velho, novo) => {
+  if (!velho) return true;
+  if (versao(velho) && versao(velho) === versao(novo)) return false;
+  try { return (await velho.clone().text()) !== (await novo.clone().text()); } catch (e) { return false; }
+};
 const ehCodigo = u => /^(css|js)\/[^/]+\.(css|js)$/.test(u);
 let conferindo = null, conferiuEm = 0;
 const conferirVersao = () => {
@@ -46,8 +51,11 @@ const conferirVersao = () => {
     const novos = await Promise.all(lista.map(u => fetch(u, { cache: 'no-cache' }).then(r => [u, r])));
     if (novos.some(([, r]) => !r.ok)) return;
     const c = await caches.open(CACHE_NAME);
-    let mudou = versao(await c.match('./index.html')) !== versao(pagina);
-    for (const [u, r] of novos) if (!mudou && versao(await c.match(u)) !== versao(r)) mudou = true;
+    /* compara o CONTEÚDO, não só os cabeçalhos: no iPhone (Safari) a cópia guardada pode voltar com etag diferente da
+       rede (etag fraca/forte, compressão, servidor do GitHub Pages) mesmo sem nada mudar, e isso fazia o app achar
+       "versão nova" a cada abertura e recarregar sem parar (a tela piscava entre a logo e a tela inicial). */
+    let mudou = await diferente(await c.match('./index.html'), pagina);
+    for (const [u, r] of novos) if (!mudou && await diferente(await c.match(u), r)) mudou = true;
     if (!mudou) return;
     await Promise.all([c.put('./index.html', pagina), ...novos.map(([u, r]) => c.put(u, r))]);
     avisaNovo();
@@ -60,12 +68,9 @@ self.addEventListener('message', e => { if (e.data && e.data.tipo === 'conferir'
    recebe o aviso "conteudo-novo" e oferece atualizar. Sem cópia guardada, vem da rede como antes. */
 const avisaNovo = () => self.clients.matchAll({ type: 'window' }).then(l => l.forEach(c => c.postMessage({ tipo: 'conteudo-novo' })));
 const guardadoPrimeiro = (e, req) => caches.match(req).then(velho => {
-  const rede = fetch(req, { cache: 'no-cache' }).then(resp => {
-    if (resp.ok && velho) {
-      const a = velho.headers.get('etag') || velho.headers.get('last-modified') || velho.headers.get('content-length');
-      const b = resp.headers.get('etag') || resp.headers.get('last-modified') || resp.headers.get('content-length');
-      if (a && b && a !== b) avisaNovo();
-    }
+  const rede = fetch(req, { cache: 'no-cache' }).then(async resp => {
+    /* só avisa "conteúdo novo" se o texto do arquivo mudou de verdade (ver diferente()); imagens e sons não avisam */
+    if (resp.ok && velho && /\.js$/.test(new URL(req.url).pathname) && await diferente(velho, resp)) avisaNovo();
     return guarda(req, resp);
   });
   if (!velho) return rede.catch(() => Response.error());
