@@ -344,7 +344,7 @@ function calcProgressao(v){
  if(antes)it.push(antes);
  it.push("Além do tempo, é preciso **boa conduta carcerária** e o resultado do **exame criminológico** (art. 112, §1º). Uma **falta grave** reinicia a contagem (Súmula 534 do STJ).");
  return {ok:null,tit:`Progride depois de cumprir ${rot}: ${calcTempo(t)}`,it}}
-const FRACAO={"0":0,"1/6":1/6,"1/5":1/5,"1/4":1/4,"1/3":1/3,"1/2":1/2,"2/3":2/3};
+const FRACAO={"0":0,"1/6":1/6,"1/5":1/5,"1/4":1/4,"1/3":1/3,"1/2":1/2,"2/3":2/3,"2":1};
 function calcDosimetria(v){
  const min=Math.max(0,+v.mina||0)*360,max=Math.max(0,+v.maxa||0)*360;
  if(!min||max<=min)return {ok:null,tit:"Informe a pena mínima e uma pena máxima maior que ela",it:[]};
@@ -361,7 +361,7 @@ function calcDosimetria(v){
  const fa=FRACAO[v.aum]||0,fd=FRACAO[v.dim]||0;let fim=inter;
  if(fa)fim=Math.floor(fim+fim*fa);const aposAum=fim;
  if(fd)fim=Math.floor(fim-fim*fd);
- const passos=[];if(fa)passos.push(`aumento de ${v.aum} → ${calcTempo(aposAum)}`);if(fd)passos.push(`diminuição de ${v.dim} → ${calcTempo(fim)}`);
+ const passos=[];if(fa)passos.push(`${v.aum==="2"?"pena em dobro":"aumento de "+v.aum} → ${calcTempo(aposAum)}`);if(fd)passos.push(`diminuição de ${v.dim} → ${calcTempo(fim)}`);
  it.push(passos.length?`**3ª fase (causas de aumento e de diminuição):** ${passos.join("; ")}.${fim>max?" Passou do máximo do tipo, e **pode**: na 3ª fase os limites ficam para trás.":fim<min?" Ficou abaixo do mínimo do tipo, e **pode**: na 3ª fase os limites ficam para trás.":""}`:"**3ª fase:** sem causas de aumento ou de diminuição.");
  it.push("As frações de dia são desprezadas (art. 11). As frações de 1/8 e de 1/6 são critérios da jurisprudência, não números da lei.");
  return {ok:null,tit:`Pena definitiva: ${calcTempo(fim)}`,it}}
@@ -435,7 +435,7 @@ function calcWidget(tipo,tit){const v=CALC_DEF[tipo];if(!v)return "";
   :tipo==="dosi"?`<p class="calc-rot">Pena prevista no tipo (em anos)</p><div class="calc-l3">${num("mina","Mínima",30)}${num("maxa","Máxima",40)}</div>
   ${num("circ","Circunstâncias judiciais desfavoráveis (0 a 8)",8)}
   <div class="calc-l3">${num("ag","Agravantes",9)}${num("at","Atenuantes",9)}</div>
-  ${sel("aum","Causa de aumento",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}
+  ${sel("aum","Causa de aumento",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"],["2","o dobro"]])}
   ${sel("dim","Causa de diminuição",[["0","nenhuma"],["1/6","1/6"],["1/3","1/3"],["1/2","metade"],["2/3","2/3"]])}`
   :tipo==="antec"?`<p class="calc-rot">Condenação anterior</p>${dt("fa","Data do fato anterior")}${dt("tj","Trânsito em julgado (deixe vazio se ainda não houve)")}${dt("ext","Fim da pena: cumprimento ou extinção (vazio se ainda não acabou)")}
   <p class="calc-rot">Processo que está sendo julgado agora</p>${dt("fn","Data do novo fato")}${dt("sn","Data da sentença")}`
