@@ -20,4 +20,11 @@ addEventListener("scroll",()=>{if(tCalma)acalmar()},{passive:true});
 /* versão nova do app encontrada logo ao abrir, antes de a pessoa tocar em algo: recarrega sozinho, sem perguntar */
 {let tocou=false;addEventListener("pointerdown",()=>{tocou=true},{once:true,capture:true});
  try{navigator.serviceWorker&&navigator.serviceWorker.addEventListener("message",e=>{
-   if(e.data&&e.data.tipo==="conteudo-novo"&&!tocou&&performance.now()<6000&&!sessao){guardarRolagem();location.reload()}})}catch(e){}}
+   if(!e.data||e.data.tipo!=="conteudo-novo"||tocou||performance.now()>=6000||sessao)return;
+   /* trava contra recarregar em círculo: no máximo uma recarga sozinha a cada 10 minutos. No iPhone, cada recarga
+      mostra a logo de novo; se o aviso voltasse a cada abertura, a tela ficava piscando entre a logo e o Hoje.
+      Se já recarregou há pouco, fica só o aviso "Chegou conteúdo novo" com o botão Atualizar. */
+   let ult=0;try{ult=+localStorage.getItem("faculLab.recarregou")||0}catch(x){}
+   if(Date.now()-ult<600000)return;
+   try{localStorage.setItem("faculLab.recarregou",String(Date.now()))}catch(x){return}
+   guardarRolagem();location.reload()})}catch(e){}}
