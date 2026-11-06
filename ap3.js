@@ -1995,11 +1995,19 @@ Regras que protegem o acesso à justiça:
 - na ação em que os pedidos são **alternativos**, o de **maior valor**;
 - na ação em que houver **pedido subsidiário**, o valor do **pedido principal**.
 
+> Atenção: o valor da causa é obrigatório **mesmo sem conteúdo econômico** (o divórcio sem bens, art. 291). Ele é base dos **honorários de sucumbência**, pagos pelo vencido ao advogado do vencedor, em regra de **10% a 20%** sobre a condenação, o proveito econômico ou, não sendo possível mensurá-lo, sobre o valor atualizado da causa (art. 85, §2º); não se confundem com os honorários **contratuais**. Também é base da **multa por litigância de má-fé**, de mais de 1% e menos de 10% do valor corrigido da causa (art. 81).
+
 O juiz **corrigirá, de ofício** e por arbitramento, o valor da causa quando verificar que não corresponde ao conteúdo patrimonial em discussão ou ao proveito econômico perseguido pelo autor (art. 292, §3º). O réu pode impugnar o valor da causa em **preliminar de contestação** (art. 293).
 
 !! Valor da causa: **alimentos** = **12 prestações**; **dano moral** = o **valor pedido**; **cumulação** = **soma**; **alternativos** = o **maior**; **subsidiário** = o **principal**.
 
 ## Pedido
+O pedido tem duas faces, segundo a doutrina:
+- **pedido imediato:** o **provimento jurisdicional** pedido ao juiz (a sentença que condena, declara ou constitui);
+- **pedido mediato:** o **bem da vida** que se quer obter com essa sentença (o dinheiro, o produto, a entrega do imóvel). Bem da vida é tudo aquilo que satisfaz a pessoa.
+
+> Exemplo: comprei um liquidificador com defeito, a loja prometeu consertar em 30 dias e não consertou, não trocou nem devolveu o dinheiro. Não posso resolver por conta própria, então ajuízo ação. O pedido **imediato** é a sentença que reconheça meu direito e condene a loja; o pedido **mediato** é o liquidificador novo ou a devolução do valor.
+
 O pedido é o **núcleo** da petição inicial. Ele deve ser **certo** (expresso, e não implícito) e **determinado** (definido quanto à qualidade e à quantidade) (arts. 322 e 324).
 - **Pedidos implícitos:** compreendem-se no principal os **juros legais**, a **correção monetária** e as **verbas de sucumbência**, inclusive os honorários advocatícios, mesmo que não pedidos (art. 322, §1º). Também se consideram incluídas no pedido as **prestações sucessivas** que vencerem durante o processo (art. 323), como os aluguéis que vencem no curso da ação de cobrança.
 - A interpretação do pedido considerará o **conjunto da postulação** e observará o princípio da **boa-fé** (art. 322, §2º).
@@ -2011,11 +2019,35 @@ O pedido é o **núcleo** da petição inicial. Ele deve ser **certo** (expresso
 - que seja **competente** para conhecer deles o mesmo juízo;
 - que seja **adequado** para todos os pedidos o tipo de procedimento. Quando, para cada pedido, corresponder tipo diverso de procedimento, a cumulação será admitida se o autor empregar o **procedimento comum** (art. 327, §2º).
 
-Os pedidos podem ser cumulados de diferentes formas:
-- **simples:** os pedidos são independentes (indenização por dano material e por dano moral);
-- **sucessiva:** o segundo pedido depende do acolhimento do primeiro (investigação de paternidade e alimentos);
-- **subsidiária (eventual):** o autor formula um pedido principal e, se o juiz não puder acolhê-lo, outro, subsidiário (art. 326). "Peço a entrega do carro; se não for possível, a devolução do dinheiro."
-- **alternativa:** o autor pede uma coisa **ou** outra, quando, pela natureza da obrigação, o devedor puder cumprir a prestação de mais de um modo (art. 325).
+Cumular bem gera **economia processual** (uma ação em vez de várias); cumular errado pode levar ao **indeferimento** da inicial por pedidos incompatíveis (art. 330, §1º, IV).
+- A **compatibilidade não é exigida** nas cumulações do art. 326 (subsidiária e alternativa), porque só um pedido será acolhido (art. 327, §3º).
+- **Mesmo juízo:** não se cumula pedido de alimentos (vara de família) com indenização por dano material (vara cível).
+- **Procedimento:** a maioria das ações segue o procedimento **comum**; algumas têm procedimento **especial**, como a **consignação em pagamento** (o credor recusa o pagamento sem justa causa), a ação de **exigir contas** e as **possessórias** (reintegração e manutenção de posse).
+
+> Exemplo: o comprador de um carro financiado quer **revisar** o contrato, porque os juros cobrados não batem com os contratados (procedimento comum), e **consignar** as parcelas em juízo (consignação em pagamento, procedimento especial). Pode cumular os dois, desde que opte pelo procedimento comum na inicial (art. 327, §2º). Só o fato de o contrato ser caro, se era claro, não basta para a revisão.
+
+A doutrina divide a cumulação em dois grandes grupos:
+
+::compara Cumulação própria x imprópria|Própria (art. 327): o autor quer que **todos** os pedidos sejam acolhidos; **simples**: pedidos independentes, como dano material + dano moral ou dois contratos de empréstimo contra o mesmo devedor; **sucessiva**: o 2º só é analisado se o 1º for acolhido, como investigação de paternidade + alimentos ou anulação do contrato + devolução do que foi pago|Imprópria (art. 326): o autor faz vários pedidos, mas **só um** pode ser acolhido; **eventual ou subsidiária** (caput): há ordem de preferência, como troca do produto ou, não sendo possível, devolução do dinheiro; **alternativa** (parágrafo único): sem preferência, qualquer um satisfaz, como substituição, restituição ou abatimento no vício do produto (art. 18 do CDC)
+
+|Tipo|O autor quer|Preferência?|Valor da causa (art. 292)|
+|Própria simples|todos, independentes|não se aplica|a soma (VI)|
+|Própria sucessiva|todos; o 2º depende do 1º|não se aplica|a soma (VI)|
+|Imprópria eventual (subsidiária)|só um|sim|o do pedido principal (VIII)|
+|Imprópria alternativa|só um|não|o de maior valor (VII)|
+
+- Na **subsidiária**, se o juiz acolher só o pedido subsidiário, o autor **tem interesse em recorrer** para tentar o principal. Na **alternativa**, qualquer pedido acolhido satisfaz o autor, que **não tem interesse** em recorrer.
+
+> Atenção: não confunda a **cumulação alternativa** (art. 326, parágrafo único: vários pedidos, o juiz acolhe um) com o **pedido alternativo** (art. 325): neste há **um só pedido**, mas a obrigação pode ser cumprida de mais de um modo ("entregar o cavalo ou pagar R$ 50 mil", conforme o contrato). Quando a escolha cabe ao devedor, o juiz lhe assegura cumprir de um ou de outro modo, ainda que o autor não tenha formulado pedido alternativo (art. 325, parágrafo único).
+
+::calc cumul|Monte a cumulação de pedidos
+
+!! Cumulação: **própria** = quero **tudo** (simples ou sucessiva); **imprópria** = quero **um** (subsidiária, com fila de preferência; alternativa, sem fila). Valor da causa: própria **soma**, alternativa **o maior**, subsidiária **o principal**.
+
+?? Qual é a diferença entre pedido imediato e pedido mediato? | O imediato é o provimento jurisdicional (a sentença que condena, declara ou constitui); o mediato é o bem da vida que se quer obter com ela.
+?? A cumulação subsidiária exige que os pedidos sejam compatíveis? | Não. O art. 327, §3º, dispensa a compatibilidade nas cumulações do art. 326, porque só um pedido será acolhido.
+?? Na cumulação alternativa, o autor pode recorrer se o juiz acolher um dos pedidos? | Não tem interesse: qualquer pedido acolhido o satisfaz. Já na subsidiária, se só o subsidiário for acolhido, ele pode recorrer para tentar o principal.
+?? Pedidos de procedimentos diferentes podem ser cumulados? | Sim, se o autor empregar o procedimento comum (art. 327, §2º), como a revisão do financiamento com a consignação das parcelas.
 
 ## Alteração do pedido e da causa de pedir
 O autor poderá (art. 329):
@@ -2346,6 +2378,13 @@ O juiz decidirá o mérito **nos limites propostos pelas partes** (art. 141). É
 - **extra petita:** o juiz decide **fora** do pedido (o autor pediu indenização por dano material e o juiz concede dano moral);
 - **ultra petita:** o juiz decide **além** do pedido (o autor pediu R$ 10 mil e o juiz concede R$ 15 mil);
 - **citra petita (infra petita):** o juiz decide **aquém** do pedido, deixando de examinar um dos pedidos.
+
+|Vício|Exemplo|Consequência|
+|Extra petita|o autor pede a devolução de um caminhão azul, de placa e chassi determinados, e o juiz manda devolver uma bicicleta|sentença **nula**; se o processo estiver pronto, o tribunal decide desde logo o mérito (art. 1.013, §3º, II)|
+|Ultra petita|o autor pede R$ 10 mil de dano moral e o juiz condena a R$ 80 mil|o tribunal **corta o excesso** e reduz a condenação aos limites do pedido, sem precisar anular tudo (STJ)|
+|Citra petita|o autor faz dois pedidos e o juiz só julga um|a omissão se corrige por **embargos de declaração**; na apelação, o tribunal pode julgar desde logo o pedido esquecido, se o processo estiver pronto (art. 1.013, §3º, III)|
+
+> Atenção: **procedência parcial não é citra petita**. Na procedência parcial o juiz **julga todos** os pedidos, acolhendo uns e rejeitando outros; na citra petita ele **deixa de julgar** algum.
 
 Se, depois da propositura da ação, algum **fato constitutivo, modificativo ou extintivo** do direito influir no julgamento do mérito, caberá ao juiz **tomá-lo em consideração**, de ofício ou a requerimento da parte, no momento de proferir a decisão, ouvidas as partes sobre ele (art. 493).
 
