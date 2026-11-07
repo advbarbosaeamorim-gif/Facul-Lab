@@ -504,6 +504,7 @@ function telaConfig(){const per=perAtual();const p=(S.cfg&&S.cfg.prova)||"";cons
  <div class="secao" role="heading" aria-level="2">Sons e vibração</div>
  <div class="cores tres quatro">${SOM_OP.map(([k,n,d,i])=>`<button data-acao="cfg-som" data-v="${k}" aria-pressed="${somModo()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
  <p class="nota">Os sons seguem o volume de mídia do aparelho, e no iPhone o modo silencioso também os cala. A vibração funciona em celulares Android. Toque em uma opção para ouvir como fica.</p>
+ ${typeof vozesCfgHtml=="function"?vozesCfgHtml():""}
  `)}
  ${cfgG("questoes","alvo","Questões",`${(MODOS_Q.find(x=>x[0]===modoQ())||MODOS_Q[0])[1]} · correção ${S.cfg&&S.cfg.corrFinal?"no final":"na hora"}`,`<div class="secao" role="heading" aria-level="2">Como responder as questões</div>
  <div class="cores uma">${MODOS_Q.map(([k,n,d,i])=>`<button data-acao="cfg-modoq" data-v="${k}" aria-pressed="${modoQ()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${esc(d)}</small></span></button>`).join("")}</div>
