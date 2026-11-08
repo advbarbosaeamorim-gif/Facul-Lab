@@ -1,7 +1,7 @@
 """Grava a narração dos temas com o OmniVoice (clonando a voz de referência) e gera, por tema:
 audio/<voz>/<materia>-<tema>.mp3 e .json {h: impressão dos trechos, t: início de cada trecho em segundos}.
 Uso: python gravar.py trechos.json <voz f|m> ref.wav "texto da referência" [chaves...]"""
-import sys, os, re, json, subprocess, time, numpy as np, torch, soundfile as sf
+import sys, os, re, json, subprocess, time, hashlib, numpy as np, torch, soundfile as sf
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fala import fala
 from omnivoice import OmniVoice
@@ -19,7 +19,13 @@ def pedacos(t, lim=320):
         if out[-1] and len(out[-1]) + len(f) > lim: out.append(f)
         else: out[-1] = (out[-1] + " " + f).strip()
     return [x for x in out if x]
+# guarda cada trecho já gravado (pasta NARR_CACHE, padrão ./cache) para retomar temas longos se a gravação parar
+CACHE = os.environ.get("NARR_CACHE", "cache"); os.makedirs(CACHE, exist_ok=True)
 def diz(t):
+    c = os.path.join(CACHE, hashlib.sha1((voz + "|" + ref + "|" + t).encode()).hexdigest() + ".npy")
+    if os.path.exists(c): return np.load(c)
+    a = diz0(t); np.save(c + ".tmp.npy", a); os.replace(c + ".tmp.npy", c); return a
+def diz0(t):
     return np.concatenate([np.concatenate([m.generate(text=p, language="pt", speed=0.97, voice_clone_prompt=pr)[0].astype(np.float32), pausa(0.25)]) for p in pedacos(t)])
 for k, tema in J.items():
     if so and k not in so: continue
