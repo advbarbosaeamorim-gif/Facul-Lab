@@ -1,0 +1,36 @@
+/* Extrai, do app de verdade, os trechos que o "Ouvir este tema" lê em cada tema (mesma função ouvirTrechos),
+   para gerar a narração na mesma ordem. Uso: node tools/narracao/trechos.mjs pen2 [pen1 ...] > saida.json
+   BASE padrão: http://localhost:8765/ (rode "python3 -m http.server 8765" na raiz). */
+import { createRequire } from "module";
+const { chromium } = createRequire(import.meta.url)("playwright");
+const BASE = process.env.BASE || "http://localhost:8765/";
+const discs = process.argv.slice(2);
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 412, height: 915 }, locale: "pt-BR" });
+const p = await ctx.newPage();
+await p.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
+await p.goto(BASE);
+const out = {};
+for (const d of discs) {
+  for (let k = 1; ; k++) {
+    await p.evaluate(([d, k]) => {
+      localStorage.setItem("simuladoOAB.v2", JSON.stringify({ v: 2, hist: [], stats: {}, lidos: {}, cfg: { tour: 1, mig38: 1, mig40: 1, migCorr: 1, per: 2 } }));
+      localStorage.setItem("faculLab.lbConvite", "1"); localStorage.setItem("faculLab.motiva", "x");
+      localStorage.setItem("faculLab.data", new Date().toISOString().slice(0, 10));
+      sessionStorage.setItem("faculLab.tela", JSON.stringify({ t: Date.now(), rota: { tela: "ler", d, pg: k }, pilha: [{ tela: "hoje" }], y: 0 }));
+    }, [d, k]);
+    await p.reload();
+    await p.waitForTimeout(900);
+    const r = await p.evaluate(k => {
+      const b = document.querySelector("[data-ouvir-k]");
+      if (!b || b.dataset.ouvirK.split(":")[1] != String(k)) return null;
+      const els = ouvirTrechos(b);
+      return { k: b.dataset.ouvirK, tit: document.querySelector(".tema-ban h3")?.innerText || "", h: ouvirImpressao(els), trechos: els.map(e => ({ tag: e.tagName.toLowerCase(), t: ouvirTexto(e) })) };
+    }, k);
+    if (!r) break;
+    out[r.k] = r;
+    console.error(r.k, r.tit, r.trechos.length);
+  }
+}
+console.log(JSON.stringify(out, null, 1));
+await browser.close();

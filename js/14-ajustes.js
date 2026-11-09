@@ -28,40 +28,77 @@ function treinoTema(d,k){const b=assuntoDoTema(d,k);const f=infoDisc(d);
  return `<button class="treino-tema" data-acao="abrir-disc" data-d="${d}">${ilustra("alvo","var(--toga)")}<span><small>Agora, pratique</small><b>Questões de ${esc(nomeCurto(f.nome))}</b><em>Simulados e treino por assunto desta matéria</em></span>${ic("prox")}</button>`}
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('.treino-tema[data-acao="abrir-disc"]');if(!b)return;e.stopImmediatePropagation();ir({tela:"disc",d:b.dataset.d})},true);
 
-/* Ouvir a apostila: a voz do próprio celular lê o tema, parágrafo por parágrafo, com o trecho em destaque.
-   Funciona sem internet. Pula os simuladores, as respostas do Teste-se e as tabelas. */
+/* Ouvir a apostila: lê o tema, parágrafo por parágrafo, com o trecho em destaque.
+   Voz padrão: a narração gravada da professora (ou do professor, à escolha em Configurações), com o texto exato da
+   apostila. Os áudios ficam em audio/<voz>/<matéria>-<tema>.mp3 e só baixam quando a pessoa toca em ouvir (depois
+   ficam guardados para ouvir sem internet). Se o tema ainda não foi gravado, se o texto mudou depois da gravação
+   (a "impressão" dos trechos não bate) ou sem internet, a voz do próprio celular assume, como antes.
+   Pula os simuladores, as respostas do Teste-se e as tabelas. */
 const ouvirOk=()=>{try{return "speechSynthesis" in window&&typeof SpeechSynthesisUtterance=="function"}catch(e){return false}};
-let ouv=null;
-function ouvirBtn(k){if(!ouvirOk())return "";const on=ouv&&ouv.k===k;
+const VOZES=[["f","Professora","Voz gravada e natural, como numa aula","balao"],["m","Professor","Voz gravada e natural, como numa aula","balao"],["cel","Voz do celular","A voz do aparelho, em todos os temas e sem internet","som"]];
+const vozCfg=()=>{const v=S.cfg&&S.cfg.voz;return VOZES.some(x=>x[0]===v)?v:"f"};
+const ouvirTexto=el=>el.textContent.replace(/\s+/g," ").trim();
+function ouvirImpressao(els){const s=els.map(ouvirTexto).join("\n");let h=5381;for(let i=0;i<s.length;i++)h=(Math.imul(h,33)+s.charCodeAt(i))>>>0;return h.toString(36)+"."+els.length}
+let ouv=null,ouvIdx=null;
+function ouvirIndice(){if(!ouvIdx)ouvIdx=fetch("audio/indice.json").then(r=>r.ok?r.json():{}).catch(()=>{ouvIdx=null;return {}});return ouvIdx}
+async function ouvirAudio(k,v,els){const idx=await ouvirIndice();const tem=idx[k];if(!tem||!tem.includes(v))return null;
+ const arq="audio/"+v+"/"+k.replace(":","-");const j=await fetch(arq+".json").then(r=>r.ok?r.json():null);
+ if(!j||j.h!==ouvirImpressao(els)||!Array.isArray(j.t)||j.t.length!==els.length)return null;
+ const r=await fetch(arq+".mp3");if(!r.ok)return null;const url=URL.createObjectURL(await r.blob());
+ const au=new Audio(url);au.preload="auto";au._url=url;return {au,T:j.t}}
+function ouvirBtn(k){if(!ouvirOk()&&vozCfg()==="cel")return "";const on=ouv&&ouv.k===k;
  return `<button class="ouvir${on?" on":""}" data-ouvir="tocar" data-ouvir-k="${k}" aria-pressed="${!!on}">${ic(on?"pausa":"som")}<span>${on?(ouv.pausa?"Continuar ouvindo":"Pausar a leitura"):"Ouvir este tema"}</span></button>`}
 function ouvirTrechos(btn){const art=btn&&btn.nextElementSibling;if(!art||!art.matches("article.texto"))return [];
  return [...art.querySelectorAll("h2,h3,h4,h5,p,li,blockquote")].filter(el=>!el.closest("details,.calc,.ilus,figure,.tab,button,table")&&!(el.matches("li")&&el.querySelector("p"))&&!(el.matches("blockquote")&&el.querySelector("p"))&&el.innerText.trim().length>1)}
 function ouvirVoz(){const v=speechSynthesis.getVoices();return v.find(x=>/^pt[-_]BR/i.test(x.lang)&&/google|natural|neural/i.test(x.name))||v.find(x=>/^pt[-_]BR/i.test(x.lang))||v.find(x=>/^pt/i.test(x.lang))||null}
+function ouvirMarca(el){document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));el.classList.add("ouvindo");
+ if(ouv.segue){const r=el.getBoundingClientRect();if(r.top<90||r.bottom>innerHeight-110)try{el.scrollIntoView({block:"center",behavior:animOn()?"smooth":"auto"})}catch(e){}}}
+/* cala sem perder o lugar: pausa o áudio gravado ou cancela a fala do celular */
+function ouvirCala(){if(ouv&&ouv.au)try{ouv.au.pause()}catch(e){}try{speechSynthesis.cancel()}catch(e){}}
+/* o áudio gravado falhou no meio: a voz do celular continua do mesmo trecho */
+function ouvirCel(){if(!ouv)return;if(ouv.au){try{ouv.au.pause();URL.revokeObjectURL(ouv.au._url)}catch(e){}ouv.au=null}
+ if(!ouvirOk()){ouvirParar();return}ouv.id=Date.now();if(!ouv.pausa)ouvirFalar();else ouvirBarra()}
 function ouvirFalar(){if(!ouv)return;const el=ouv.els[ouv.i];if(!el){ouvirParar(true);return}
- document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));el.classList.add("ouvindo");
- if(ouv.segue){const r=el.getBoundingClientRect();if(r.top<90||r.bottom>innerHeight-110)try{el.scrollIntoView({block:"center",behavior:animOn()?"smooth":"auto"})}catch(e){}}
+ ouvirMarca(el);
+ if(ouv.au){ouv.au.playbackRate=ouv.vel;const p=ouv.au.play();if(p&&p.catch)p.catch(()=>ouvirCel());ouvirBarra();return}
  const u=new SpeechSynthesisUtterance(el.innerText.replace(/\s+/g," ").replace(/§/g,"parágrafo ").trim());u.lang="pt-BR";u.rate=ouv.vel;const v=ouvirVoz();if(v)u.voice=v;
  const id=ouv.id;u.onend=()=>{if(!ouv||ouv.id!==id||ouv.pausa)return;ouv.i++;ouvirFalar()};u.onerror=e=>{if(!ouv||ouv.id!==id)return;if(e.error!=="interrupted"&&e.error!=="canceled"){const k=ouv.k;ouvirParar();const x=document.querySelector(`[data-ouvir-k="${k}"] span`);if(x)x.textContent="A voz do celular não respondeu. Confira a leitura em voz alta nas configurações do aparelho.";anunciar("A leitura em voz alta não funcionou neste aparelho.")}};
  speechSynthesis.speak(u);ouvirBarra()}
 function ouvirBarra(){let b=document.getElementById("ouvir-barra");if(!ouv){if(b)b.remove();return}
  if(!b){b=document.createElement("div");b.id="ouvir-barra";b.className="ouvir-barra";b.setAttribute("role","region");b.setAttribute("aria-label","Leitura em voz alta");document.body.appendChild(b)}
- const pct=Math.round(100*ouv.i/Math.max(ouv.els.length,1));
- b.innerHTML=`<span class="ob-onda${ouv.pausa?"":" tocando"}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="ob-txt"><b>${ouv.pausa?"Leitura pausada":"Ouvindo o tema"}</b><small>Trecho ${Math.min(ouv.i+1,ouv.els.length)} de ${ouv.els.length}</small><span class="ob-prog"><i style="width:${pct}%"></i></span></span>
+ const pct=Math.round(100*ouv.i/Math.max(ouv.els.length,1));const quem=ouv.au?(ouv.v==="m"?"o professor":"a professora"):"";
+ const tit=ouv.carrega?"Chamando "+(vozCfg()==="m"?"o professor":"a professora")+"…":ouv.pausa?"Leitura pausada":quem?"Ouvindo "+quem:"Ouvindo o tema";
+ b.innerHTML=`<span class="ob-onda${ouv.pausa||ouv.carrega?"":" tocando"}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="ob-txt"><b>${tit}</b><small>Trecho ${Math.min(ouv.i+1,ouv.els.length)} de ${ouv.els.length}</small><span class="ob-prog"><i style="width:${pct}%"></i></span></span>
  <button class="ob-b" data-ouvir="vel" aria-label="Velocidade ${String(ouv.vel).replace(".",",")} vezes">${String(ouv.vel).replace(".",",")}×</button>
  <button class="ob-b" data-ouvir="${ouv.pausa?"continuar":"pausar"}" aria-label="${ouv.pausa?"Continuar":"Pausar"}">${ic(ouv.pausa?"prox":"pausa")}</button>
  <button class="ob-b" data-ouvir="parar" aria-label="Parar a leitura">${ic("x")}</button>`;
  document.querySelectorAll("[data-ouvir-k]").forEach(x=>{const on=x.dataset.ouvirK===ouv.k;x.classList.toggle("on",on);x.setAttribute("aria-pressed",on);x.innerHTML=`${ic(on&&!ouv.pausa?"pausa":"som")}<span>${on?(ouv.pausa?"Continuar ouvindo":"Pausar a leitura"):"Ouvir este tema"}</span>`})}
-function ouvirParar(fim){try{speechSynthesis.cancel()}catch(e){}document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));
+function ouvirParar(fim){ouvirCala();if(ouv&&ouv.au)try{URL.revokeObjectURL(ouv.au._url)}catch(e){}document.querySelectorAll(".ouvindo").forEach(x=>x.classList.remove("ouvindo"));
  const k=ouv&&ouv.k;ouv=null;ouvirBarra();document.querySelectorAll("[data-ouvir-k]").forEach(x=>{x.classList.remove("on");x.setAttribute("aria-pressed","false");x.innerHTML=`${ic("som")}<span>Ouvir este tema</span>`});
  if(fim&&k)anunciar("Fim do tema. Que tal o Teste-se?")}
-function ouvirComecar(btn){const els=ouvirTrechos(btn);if(!els.length)return;try{speechSynthesis.cancel()}catch(e){}
- ouv={k:btn.dataset.ouvirK,els,i:0,vel:(S.cfg&&S.cfg.ouvVel)||1,pausa:false,segue:true,id:Date.now()};ouvirFalar()}
+async function ouvirComecar(btn){const els=ouvirTrechos(btn);if(!els.length)return;if(ouv)ouvirParar();
+ const eu=ouv={k:btn.dataset.ouvirK,els,i:0,vel:(S.cfg&&S.cfg.ouvVel)||1,pausa:false,segue:true,id:Date.now()};const v=vozCfg();
+ if(v!=="cel"){ouv.carrega=true;ouvirBarra();const a=await ouvirAudio(eu.k,v,els).catch(()=>null);
+  if(ouv!==eu){if(a)URL.revokeObjectURL(a.au._url);return}ouv.carrega=false;
+  if(a){const au=a.au,T=a.T;ouv.au=au;ouv.v=v;
+   au.addEventListener("timeupdate",()=>{if(!ouv||ouv.au!==au)return;const t=au.currentTime;let i=0;while(i+1<T.length&&T[i+1]<=t+.05)i++;if(i!==ouv.i){ouv.i=i;const el=ouv.els[i];if(el)ouvirMarca(el);ouvirBarra()}});
+   au.addEventListener("ended",()=>{if(ouv&&ouv.au===au)ouvirParar(true)});
+   au.addEventListener("error",()=>{if(ouv&&ouv.au===au)ouvirCel()})}}
+ if(!ouv.au&&!ouvirOk()){ouvirParar();return}
+ if(ouv.pausa)ouvirBarra();else ouvirFalar()}
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-ouvir]");if(!b)return;e.stopImmediatePropagation();const a=b.dataset.ouvir;
- if(a==="tocar"){if(ouv&&ouv.k===b.dataset.ouvirK){if(ouv.pausa){ouv.pausa=false;ouv.id=Date.now();ouvirFalar()}else{ouv.pausa=true;try{speechSynthesis.cancel()}catch(x){}ouvirBarra()}}else ouvirComecar(b)}
- else if(a==="pausar"&&ouv){ouv.pausa=true;try{speechSynthesis.cancel()}catch(x){}ouvirBarra()}
- else if(a==="continuar"&&ouv){ouv.pausa=false;ouv.id=Date.now();ouvirFalar()}
+ if(a==="tocar"){if(ouv&&ouv.k===b.dataset.ouvirK){if(ouv.pausa){ouv.pausa=false;ouv.id=Date.now();if(!ouv.carrega)ouvirFalar();else ouvirBarra()}else{ouv.pausa=true;ouvirCala();ouvirBarra()}}else ouvirComecar(b)}
+ else if(a==="pausar"&&ouv){ouv.pausa=true;ouvirCala();ouvirBarra()}
+ else if(a==="continuar"&&ouv){ouv.pausa=false;ouv.id=Date.now();if(!ouv.carrega)ouvirFalar();else ouvirBarra()}
  else if(a==="parar")ouvirParar();
- else if(a==="vel"&&ouv){const V=[1,1.25,1.5,1.75,0.75],n=V[(V.indexOf(ouv.vel)+1)%V.length];ouv.vel=n;S.cfg=S.cfg||{};S.cfg.ouvVel=n;salvar();if(!ouv.pausa){ouv.id=Date.now();try{speechSynthesis.cancel()}catch(x){}ouvirFalar()}else ouvirBarra()}},true);
+ else if(a==="vel"&&ouv){const V=[1,1.25,1.5,1.75,0.75],n=V[(V.indexOf(ouv.vel)+1)%V.length];ouv.vel=n;S.cfg=S.cfg||{};S.cfg.ouvVel=n;salvar();
+  if(ouv.au){ouv.au.playbackRate=n;ouvirBarra()}else if(!ouv.pausa&&!ouv.carrega){ouv.id=Date.now();try{speechSynthesis.cancel()}catch(x){}ouvirFalar()}else ouvirBarra()}},true);
+/* Configurações: quem lê os temas */
+function vozesCfgHtml(){return `<div class="secao" role="heading" aria-level="2">Voz que lê os temas</div>
+ <div class="cores tres">${VOZES.map(([k,n,d,i])=>`<button data-acao="cfg-voz" data-v="${k}" aria-pressed="${vozCfg()===k}"><span class="ico-op">${ic(i)}</span><span>${n}<small>${d}</small></span></button>`).join("")}</div>
+ <p class="nota">A professora e o professor leem o texto da apostila, palavra por palavra. A gravação baixa quando você toca em "Ouvir este tema" e depois fica guardada no aparelho. Nos temas que ainda não foram gravados, a voz do celular lê.</p>`}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest('[data-acao="cfg-voz"]');if(!b)return;e.stopImmediatePropagation();
+ if(ouv)ouvirParar();S.cfg=S.cfg||{};S.cfg.voz=b.dataset.v;salvar();rota.manterScroll=true;render();anunciar("Voz escolhida: "+VOZES.find(x=>x[0]===b.dataset.v)[1])},true);
 /* se a pessoa rolar a tela, a leitura para de puxar a rolagem até o próximo toque em continuar */
 window.addEventListener("touchmove",()=>{if(ouv)ouv.segue=false},{passive:true});
 /* depois de cada render: mesma página, a leitura segue (só reencontra os trechos); outra tela, ela para */
