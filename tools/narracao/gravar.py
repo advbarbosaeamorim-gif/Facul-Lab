@@ -13,7 +13,7 @@ sys.path.insert(0, AQUI)
 from fala import fala
 
 SR = 24000
-VEL = 1.0             # ritmo natural do modelo
+VEL = 1.0             # ritmo natural do modelo (vozes.json pode trocar por voz)
 ENTRE_FRASES = 0.30   # pausa entre pedaços do mesmo trecho
 ENTRE_TRECHOS = 0.55  # pausa entre um trecho e o seguinte
 ANTES_TITULO = 0.70   # respiro antes de mudar de assunto
@@ -132,6 +132,7 @@ if __name__ == "__main__":
     if os.environ.get("NARR_THREADS"): torch.set_num_threads(int(os.environ["NARR_THREADS"]))  # para gravar em mais de um processo ao mesmo tempo
     V = json.load(open(os.path.join(AQUI, "vozes.json"), encoding="utf-8"))[voz]
     ref = os.path.join(AQUI, V["ref"]); marca = hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12]
+    vel = float(V.get("vel", VEL))  # cada voz pode ter o seu ritmo ("vel" em vozes.json; menor que 1 = mais devagar)
     raiz = os.path.join(AQUI, "..", "..", "audio"); os.makedirs(os.path.join(raiz, voz), exist_ok=True)
     J = json.load(open(arq, encoding="utf-8"))
     m = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
@@ -140,9 +141,9 @@ if __name__ == "__main__":
     CACHE = os.environ.get("NARR_CACHE", "cache"); os.makedirs(CACHE, exist_ok=True)
 
     def diz(t):
-        c = os.path.join(CACHE, hashlib.sha1(f"{voz}|{marca}|{VEL}|{t}".encode()).hexdigest() + ".npy")
+        c = os.path.join(CACHE, hashlib.sha1(f"{voz}|{marca}|{vel}|{t}".encode()).hexdigest() + ".npy")
         if os.path.exists(c): return np.load(c)
-        a = m.generate(text=t, language="pt", speed=VEL, voice_clone_prompt=pr)[0].astype(np.float32)
+        a = m.generate(text=t, language="pt", speed=vel, voice_clone_prompt=pr)[0].astype(np.float32)
         tmp = f"{c}.{os.getpid()}.tmp.npy"; np.save(tmp, a); os.replace(tmp, c)
         return a
 
@@ -150,7 +151,7 @@ if __name__ == "__main__":
         tema = J[k]
         nome = k.replace(":", "-"); dest = os.path.join(raiz, voz, nome)
         falas = falas_do_tema(k, tema)
-        feito = hashlib.sha1(json.dumps([voz, marca, VEL, ENTRE_FRASES, ENTRE_TRECHOS, ANTES_TITULO, DEPOIS_TITULO, PAUSA_MAX, tema["h"], falas], ensure_ascii=False).encode()).hexdigest()[:10]
+        feito = hashlib.sha1(json.dumps([voz, marca, vel, ENTRE_FRASES, ENTRE_TRECHOS, ANTES_TITULO, DEPOIS_TITULO, PAUSA_MAX, tema["h"], falas], ensure_ascii=False).encode()).hexdigest()[:10]
         if os.path.exists(dest + ".json") and json.load(open(dest + ".json")).get("v") == feito: print("pula", k, flush=True); continue
         t0 = time.time(); audio, T = monta(tema, falas, diz)
         sf.write(dest + ".wav", audio, SR); mp3(dest + ".wav", dest + ".mp3"); os.remove(dest + ".wav")
