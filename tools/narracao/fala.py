@@ -54,7 +54,7 @@ def fala(t):
     t = re.sub(r"\bal\.\s*", "alínea ", t)
     t = re.sub(r"\bn[º°]\s*", "número ", t)
     t = re.sub(r"\b[Ee]x\.:\s*", "Por exemplo: ", t)
-    t = re.sub(r"\bR\$\s*([\d.]+)(,(\d+))?( (mil|milhão|milhões|bilhão|bilhões)\b)?",
+    t = re.sub(r"\bR\$\s*(\d+(?:\.\d{3})*)(,(\d+))?( (mil|milhão|milhões|bilhão|bilhões)\b)?",
                lambda m: card(m[1].replace(".", "")) + (" " + m[5] + ("" if m[5] == "mil" else " de") if m[5] else "") + " reais" + (" e " + card(m[3]) + " centavos" if m[3] and int(m[3]) else ""), t)
     # leis: Lei 15.159/2025 -> lei quinze mil..., de dois mil e vinte e cinco
     t = re.sub(r"(?<=[Ll]ei )(\d{1,3}(?:\.\d{3})*)/(\d{2,4})\b", lambda m: card(m[1].replace(".", "")) + ", de " + card(m[2]), t)
