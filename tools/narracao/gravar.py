@@ -4,7 +4,8 @@ audio/<voz>/<materia>-<tema>.mp3 e .json {h: impressão dos trechos, t: início 
 A fala de cada trecho vem do roteiro de aula (aulas/<materia>-<tema>.txt, uma linha por trecho, no jeito de quem
 explica em sala). Sem roteiro, lê o texto da apostila como está.
 
-Uso: python gravar.py trechos.json <voz f|m> [chaves...]     (vozes e textos de referência em vozes.json)"""
+Uso: python gravar.py trechos.json <voz f|m> [chaves...]     (vozes e textos de referência em vozes.json)
+NARR_CACHE = pasta dos pedaços já gravados; NARR_THREADS = núcleos por processo (para rodar mais de um ao mesmo tempo)."""
 import sys, os, re, json, subprocess, time, hashlib, numpy as np
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -127,7 +128,8 @@ def mp3(wav, dest):
 if __name__ == "__main__":
     import torch, soundfile as sf
     from omnivoice import OmniVoice
-    arq, voz = sys.argv[1:3]; so = set(sys.argv[3:])
+    arq, voz = sys.argv[1:3]; so = sys.argv[3:]  # sem chaves, grava todos os temas; com chaves, só elas e nessa ordem
+    if os.environ.get("NARR_THREADS"): torch.set_num_threads(int(os.environ["NARR_THREADS"]))  # para gravar em mais de um processo ao mesmo tempo
     V = json.load(open(os.path.join(AQUI, "vozes.json"), encoding="utf-8"))[voz]
     ref = os.path.join(AQUI, V["ref"]); marca = hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12]
     raiz = os.path.join(AQUI, "..", "..", "audio"); os.makedirs(os.path.join(raiz, voz), exist_ok=True)
@@ -141,11 +143,11 @@ if __name__ == "__main__":
         c = os.path.join(CACHE, hashlib.sha1(f"{voz}|{marca}|{VEL}|{t}".encode()).hexdigest() + ".npy")
         if os.path.exists(c): return np.load(c)
         a = m.generate(text=t, language="pt", speed=VEL, voice_clone_prompt=pr)[0].astype(np.float32)
-        np.save(c + ".tmp.npy", a); os.replace(c + ".tmp.npy", c)
+        tmp = f"{c}.{os.getpid()}.tmp.npy"; np.save(tmp, a); os.replace(tmp, c)
         return a
 
-    for k, tema in J.items():
-        if so and k not in so: continue
+    for k in so or list(J):
+        tema = J[k]
         nome = k.replace(":", "-"); dest = os.path.join(raiz, voz, nome)
         falas = falas_do_tema(k, tema)
         feito = hashlib.sha1(json.dumps([voz, marca, VEL, ENTRE_FRASES, ENTRE_TRECHOS, ANTES_TITULO, DEPOIS_TITULO, PAUSA_MAX, tema["h"], falas], ensure_ascii=False).encode()).hexdigest()[:10]
