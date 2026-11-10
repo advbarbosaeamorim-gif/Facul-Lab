@@ -1,0 +1,20 @@
+# Roteiro de aula falada. Penal II, tema 11: Extinção da punibilidade
+# h=1bg2l22.18
+0| Vamos falar de extinção da punibilidade. Primeiro, o que é punibilidade? É a possibilidade jurídica de o Estado aplicar a pena. E repara: ela não é elemento do crime. O crime existe, mas, por alguma razão prevista em lei, o Estado não pode mais punir. E quais são essas razões? Estão no art. 107. Extingue-se a punibilidade nos seguintes casos.
+1| Pela morte do agente, provada pela certidão de óbito. Afinal, a pena não passa da pessoa do condenado.
+2| Pela anistia, pela graça ou pelo indulto.
+3| Pela retroatividade de lei que não mais considera o fato como criminoso. É a famosa abolitio criminis.
+4| Pela prescrição, pela decadência ou pela perempção. E quando ocorre a decadência? Quando o ofendido não oferece a queixa ou a representação em 6 meses, contados do dia em que soube quem é o autor do crime. É o art. 103. E atenção para a novidade: nos crimes de violência doméstica e familiar contra a mulher, o prazo é de 12 meses. Art. 103, parágrafo único, incluído pela Lei 15.438/2026.
+5| Pela renúncia do direito de queixa, ou pelo perdão aceito, nos crimes de ação privada.
+6| Pela retratação do agente, nos casos em que a lei admite. Por exemplo: na calúnia e na difamação, art. 143, e no falso testemunho, art. 342, §2º.
+7| E, por fim, pelo perdão judicial, nos casos previstos em lei.
+8| Agora vamos separar três figuras que muita gente confunde: anistia, graça e indulto.
+9| A anistia é concedida por lei do Congresso Nacional. Ela se refere a fatos, ou seja, a crimes, e não a pessoas. E ela apaga o crime e todos os seus efeitos penais. Normalmente, é usada para crimes políticos.
+10| A graça, também chamada de indulto individual, é concedida pelo Presidente da República a uma pessoa determinada, a pedido.
+11| E o indulto é coletivo. É concedido pelo Presidente da República, por decreto, a um grupo de condenados que preencham certos requisitos. É o tradicional indulto de Natal.
+12| De quem é a competência? A concessão de indulto e a comutação de penas competem ao Presidente da República, que pode delegar essa atribuição aos Ministros de Estado, ao Procurador-Geral da República ou ao Advogado-Geral da União. Está no art. 84, inciso XII e parágrafo único, da Constituição. E tem crime que fica de fora! Os crimes hediondos, a tortura, o tráfico e o terrorismo são insuscetíveis de graça e anistia, pelo art. 5º, inciso XLIII, da Constituição. E também de indulto, pelo art. 2º, inciso I, da Lei 8.072/1990. Um último detalhe: graça e indulto extinguem apenas a pena, ou seja, os efeitos executórios. Os efeitos secundários da condenação continuam, como a reincidência.
+13| E o perdão judicial? Vamos a ele.
+14| O perdão judicial permite ao juiz deixar de aplicar a pena, nas hipóteses previstas em lei. O exemplo mais conhecido está no homicídio culposo: o juiz poderá deixar de aplicar a pena se as consequências da infração atingirem o próprio agente de forma tão grave que a sanção penal se torne desnecessária. É o art. 121, §5º. É o caso do pai que, por descuido no trânsito, causa a morte do próprio filho. E qual é a natureza dessa sentença? Ela é declaratória da extinção da punibilidade, e não subsiste qualquer efeito condenatório. É a Súmula 18 do STJ. E também não gera reincidência, pelo art. 120.
+15| Para decorar o art. 107, usa a sigla MAA, PRRP. Morte. Anistia, graça e indulto. Abolitio. Prescrição, decadência e perempção. Renúncia e perdão. Retratação. E perdão judicial.
+16| Um exemplo de abolitio criminis para fixar. O adultério era crime, no art. 240 do Código Penal, até a Lei 11.106/2005, que o revogou. O que aconteceu então? Quem respondia a processo por adultério teve a punibilidade extinta pela abolitio criminis. E quem já estava condenado deixou de sofrer os efeitos penais da condenação, pelo art. 2º do Código Penal. Mas atenção: os efeitos civis, como uma eventual indenização, não são apagados.
+17| Agora é com você. Tente responder sozinho, antes de tocar na pergunta para ver a resposta. E assim fechamos a extinção da punibilidade. Bora para o Teste-se!

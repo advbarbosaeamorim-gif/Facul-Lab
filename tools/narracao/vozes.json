@@ -1,0 +1,6 @@
+{
+  "f": {"nome": "Professora", "ref": "ref-professora.wav",
+        "texto": "Olá, pessoal! Hoje a gente vai entender, com calma, o que é reincidência no Direito Penal. Prestem atenção, porque isso cai muito na prova."},
+  "m": {"nome": "Professor", "ref": "ref-professor.wav",
+        "texto": "Pessoal, prestem atenção nisso aqui, porque é muito importante! Sabe aquela pergunta que sempre cai na prova? Pois é... é exatamente essa. E olha que interessante: a resposta é bem mais simples do que parece!"}
+}

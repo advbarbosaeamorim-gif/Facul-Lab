@@ -1,0 +1,29 @@
+# Roteiro de aula falada. Penal II, tema 2: Espécies de pena
+# h=1gqx8b8.27
+0| Vamos conhecer as espécies de pena. Segundo o art. 32, elas são três.
+1| Primeiro, as privativas de liberdade. No Código Penal, são a reclusão e a detenção. E, nas contravenções, a prisão simples.
+2| Segundo, as restritivas de direitos.
+3| E terceiro, a pena de multa.
+4| E não esquece das penas que a Constituição proíbe! Pena de morte, salvo em caso de guerra declarada. Pena de caráter perpétuo. De trabalhos forçados. De banimento. E penas cruéis. Está no art. 5º, inciso XLVII, da Constituição.
+5| Agora, reclusão e detenção.
+6| Qual é a diferença entre as duas? Ela está no regime inicial de cumprimento e em algumas consequências. Olha só. A reclusão é prevista para os crimes mais graves. Ela pode começar no regime fechado, no semiaberto ou no aberto. Admite interceptação telefônica. E pode gerar a incapacidade para o poder familiar, como efeito da condenação, em certos crimes. Já a detenção é prevista para os crimes menos graves. Ela começa no regime semiaberto ou no aberto, salvo necessidade de transferência ao fechado, que é a regressão. E não admite interceptação telefônica.
+7| E quem define se o crime é punido com reclusão ou com detenção? O legislador, no próprio tipo penal. Por exemplo: o homicídio doloso é punido com reclusão. Já o homicídio culposo, com detenção.
+8| Vamos aos regimes de cumprimento.
+9| Os regimes são três, e cada um tem as suas regras.
+10| O regime fechado está no art. 34. A pena é cumprida em estabelecimento de segurança máxima ou média, a penitenciária. O condenado fica sujeito a trabalho no período diurno e a isolamento durante o repouso noturno. E o trabalho externo? É admissível, mas em serviços ou obras públicas.
+11| O semiaberto está no art. 35. A pena é cumprida em colônia agrícola, industrial ou estabelecimento similar. O condenado fica sujeito a trabalho em comum durante o dia. E são admissíveis o trabalho externo e a frequência a cursos supletivos profissionalizantes, de instrução de segundo grau ou superior. Mas atenção para uma mudança recente! Desde a Lei 14.843/2024, quem cumpre pena por crime hediondo, ou com violência ou grave ameaça contra pessoa, não pode ter trabalho externo sem vigilância direta, nem saída temporária. É o art. 122, §2º, da LEP.
+12| E o regime aberto, do art. 36, se baseia na autodisciplina e no senso de responsabilidade do condenado. Ele deve, fora do estabelecimento e sem vigilância, trabalhar, frequentar curso ou exercer outra atividade autorizada. E fica recolhido durante o período noturno e nos dias de folga, em casa de albergado.
+13| E se faltar vaga? Aí entra a Súmula Vinculante 56: a falta de estabelecimento penal adequado não autoriza a manutenção do condenado em regime prisional mais gravoso. Ou seja: se não houver vaga no semiaberto, o condenado não pode ficar no fechado. O juiz deve buscar alternativas, como a saída antecipada, a liberdade monitorada eletronicamente ou a prisão domiciliar.
+14| Agora, como se define o regime inicial? Está no art. 33.
+15| O regime inicial é fixado na sentença. E o juiz leva em conta três coisas: a quantidade de pena aplicada, a reincidência e as circunstâncias judiciais do art. 59. Isso está no art. 33, §§2º e 3º. E funciona assim. Pena superior a 8 anos: regime fechado, seja o réu reincidente ou não. Pena superior a 4 e até 8 anos: semiaberto para quem não é reincidente, e fechado para o reincidente. E pena de até 4 anos: aberto para quem não é reincidente. Já para o reincidente, fechado, ou semiaberto se as circunstâncias judiciais forem favoráveis, pela Súmula 269 do STJ.
+16| Para guardar, pensa nos números 8 e 4. Acima de 8, fechado. Acima de 4, semiaberto. Até 4, aberto. Isso para quem não é reincidente. E a reincidência? Ela empurra para o fechado.
+17| E tem quatro súmulas importantes sobre o regime. Vamos a elas.
+18| A primeira é a Súmula 718 do STF: a opinião do julgador sobre a gravidade em abstrato do crime não constitui motivação idônea para a imposição de regime mais severo do que o permitido segundo a pena aplicada.
+19| A segunda é a Súmula 719 do STF: a imposição do regime de cumprimento mais severo do que a pena aplicada permitir exige motivação idônea.
+20| A terceira é a Súmula 440 do STJ: fixada a pena-base no mínimo legal, é vedado o estabelecimento de regime prisional mais gravoso do que o cabível em razão da sanção imposta, com base apenas na gravidade abstrata do delito.
+21| E a quarta é a Súmula 269 do STJ, que a gente acabou de ver: é admissível a adoção do regime prisional semiaberto aos reincidentes condenados a pena igual ou inferior a 4 anos, se favoráveis as circunstâncias judiciais.
+22| Vamos ver na prática? Ana, primária, é condenada a 5 anos de reclusão por um roubo. A pena está entre 4 e 8 anos, e ela não é reincidente. Qual é o regime inicial? Semiaberto. E se o juiz quiser impor o fechado? Aí ele vai ter que apontar circunstâncias concretas, como o uso de arma contra várias vítimas. Não basta dizer que o roubo é crime grave.
+23| Para terminar, o limite de cumprimento.
+24| O tempo de cumprimento das penas privativas de liberdade não pode ser superior a 40 anos. É o art. 75, com a redação dada pela Lei 13.964/2019, o Pacote Anticrime. Antes, eram 30 anos. E se o agente for condenado a penas cuja soma passe de 40 anos? Aí elas devem ser unificadas para atender a esse limite. Art. 75, §1º.
+25| Mas cuidado com esta pegadinha! A unificação serve apenas para o limite de cumprimento. Os benefícios da execução, como a progressão e o livramento condicional, são calculados sobre a pena total, e não sobre o limite unificado. É a Súmula 715 do STF. Então, quem foi condenado a 200 anos não progride depois de cumprir 1/6 de 40 anos. O percentual da progressão incide sobre os 200 anos.
+26| Agora é com você. Tente responder sozinho, antes de tocar na pergunta para ver a resposta. E assim fechamos as espécies de pena. Bora para o Teste-se!
