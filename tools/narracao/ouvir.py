@@ -16,7 +16,7 @@ import sys, os, re, json, difflib, time, unicodedata, numpy as np
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 import gravar as G
-from fala import fala
+from fala import fala, LETRA
 
 TENTATIVAS = 3  # ao regravar, quantas vezes tenta até o pedaço conferir
 LEVE = set("e de a o do da as os em no na que se".split())  # palavrinhas que o reconhecedor troca à toa
@@ -38,6 +38,8 @@ def norm(t):
 
 def difs(dito, ouvido):
     """O que difere entre o texto que devia ser dito e o que o reconhecedor ouviu (lista de "roteiro => ouvido")."""
+    # letra solta na transcrição é nome de letra ("C de corrente"), a não ser depois de "inciso" (aí é número romano)
+    ouvido = re.sub(r"(?<![Ii]nciso )(?<![Ii]ncisos )\b([B-DF-HJ-NP-TV-Z])\b(?![ºª°])", lambda m: LETRA[m[1]], ouvido)
     ref = norm(dito); hyp = norm(fala(ouvido)); out = []
     for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, ref, hyp, autojunk=False).get_opcodes():
         if op == "equal" or all(w in LEVE for w in ref[i1:i2] + hyp[j1:j2]): continue
