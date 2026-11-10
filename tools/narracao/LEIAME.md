@@ -4,7 +4,8 @@ O "Ouvir este tema" toca a narração gravada quando ela existe e confere com o 
 
 - `audio/indice.json`: quais temas têm áudio e em quais vozes (`f` professora, `m` professor).
 - `audio/<voz>/<matéria>-<tema>.mp3` + `.json` (`h` = impressão dos trechos, `t` = início de cada trecho em segundos,
-  `v` = versão do áudio; o app pede o MP3 com `?v=` para não tocar uma gravação antiga guardada no aparelho).
+  `v` = versão do áudio; o app pede o MP3 com `?v=` para não tocar uma gravação antiga guardada no aparelho;
+  `r` = receita da gravação, que o `gravar.py` usa para saber se o tema já está pronto).
   Se o texto do tema mudar, a impressão deixa de bater e o app volta à voz do celular até gravar de novo.
 
 ## A aula falada
@@ -37,6 +38,12 @@ Motor OmniVoice (`pip install omnivoice num2words` + torch; com GPU é dezenas d
 3. `python tools/narracao/gravar.py trechos.json f [pen2:1 ...]` (professor: `m`).
    As vozes de referência e os textos delas estão em `vozes.json`. Cada pedaço gravado fica guardado na pasta
    `NARR_CACHE` (padrão `./cache`), então dá para parar e retomar.
+
+4. `python tools/narracao/ouvir.py trechos.json f [pen2:1 ...]` ouve cada pedaço gravado (whisper, `pip install
+   faster-whisper librosa`) e mostra só onde o que se ouve difere do roteiro, números incluídos. A lista sai curta:
+   leia e separe o engano do reconhecedor (latim, palavra rara, palavras emendadas) do defeito de verdade (palavra
+   que sumiu ou saiu embolada). Para o defeito: `python tools/narracao/ouvir.py trechos.json f --regrava <hash>` e
+   depois `NARR_REFAZ=1 python tools/narracao/gravar.py trechos.json f <tema>` para montar o tema de novo.
 
 Ritmo: 0,3 s entre frases, 0,55 s entre trechos, 0,7 s antes de um título, e nenhuma pausa no meio da fala passa
 de 0,45 s. Volume igual em todos os temas, MP3 mono de 64 kbps.

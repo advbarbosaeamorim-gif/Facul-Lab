@@ -1,11 +1,14 @@
 """Grava a narração dos temas com o OmniVoice (clonando a voz de referência) e gera, por tema:
-audio/<voz>/<materia>-<tema>.mp3 e .json {h: impressão dos trechos, t: início de cada trecho em segundos, v: versão do áudio}.
+audio/<voz>/<materia>-<tema>.mp3 e .json {h: impressão dos trechos, t: início de cada trecho em segundos, v: versão do áudio
+(muda quando qualquer pedaço é regravado), r: receita da gravação (voz, ritmo, pausas e falas; diz se o tema já está pronto)}.
 
 A fala de cada trecho vem do roteiro de aula (aulas/<materia>-<tema>.txt, uma linha por trecho, no jeito de quem
 explica em sala). Sem roteiro, lê o texto da apostila como está.
 
 Uso: python gravar.py trechos.json <voz f|m> [chaves...]     (vozes e textos de referência em vozes.json)
-NARR_CACHE = pasta dos pedaços já gravados; NARR_THREADS = núcleos por processo (para rodar mais de um ao mesmo tempo)."""
+NARR_CACHE = pasta dos pedaços já gravados; NARR_THREADS = núcleos por processo (para rodar mais de um ao mesmo tempo);
+NARR_REFAZ=1 = monta o tema de novo mesmo que já esteja pronto (depois de regravar um pedaço com ouvir.py);
+NARR_VOZES = outro arquivo de vozes no lugar de vozes.json (para experimentar uma voz)."""
 import sys, os, re, json, subprocess, time, hashlib, numpy as np
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -101,6 +104,18 @@ def falas_do_tema(chave, tema):
     return out
 
 
+def voz_cfg(voz):
+    """vozes.json -> (clipe de referência, texto dito nele, marca do clipe, ritmo)."""
+    V = json.load(open(os.environ.get("NARR_VOZES") or os.path.join(AQUI, "vozes.json"), encoding="utf-8"))[voz]
+    ref = os.path.join(AQUI, V["ref"])
+    return ref, V["texto"], hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12], float(V.get("vel", VEL))  # "vel" menor que 1 = mais devagar
+
+
+def arq_cache(pasta, voz, marca, vel, t):
+    """Arquivo do pedaço já gravado: muda se mudar a voz, o clipe de referência, o ritmo ou o texto."""
+    return os.path.join(pasta, hashlib.sha1(f"{voz}|{marca}|{vel}|{t}".encode()).hexdigest() + ".npy")
+
+
 def monta(tema, falas, diz):
     """Junta as falas com pausas curtas e devolve (áudio, início de cada trecho em segundos)."""
     tags = [tr["tag"] in ("h4", "h5") for tr in tema["trechos"]]
@@ -130,18 +145,16 @@ if __name__ == "__main__":
     from omnivoice import OmniVoice
     arq, voz = sys.argv[1:3]; so = sys.argv[3:]  # sem chaves, grava todos os temas; com chaves, só elas e nessa ordem
     if os.environ.get("NARR_THREADS"): torch.set_num_threads(int(os.environ["NARR_THREADS"]))  # para gravar em mais de um processo ao mesmo tempo
-    V = json.load(open(os.path.join(AQUI, "vozes.json"), encoding="utf-8"))[voz]
-    ref = os.path.join(AQUI, V["ref"]); marca = hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12]
-    vel = float(V.get("vel", VEL))  # cada voz pode ter o seu ritmo ("vel" em vozes.json; menor que 1 = mais devagar)
+    ref, ref_texto, marca, vel = voz_cfg(voz)
     raiz = os.path.join(AQUI, "..", "..", "audio"); os.makedirs(os.path.join(raiz, voz), exist_ok=True)
     J = json.load(open(arq, encoding="utf-8"))
     m = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map="cpu", dtype=torch.float32)
-    pr = m.create_voice_clone_prompt(ref_audio=ref, ref_text=V["texto"])
+    pr = m.create_voice_clone_prompt(ref_audio=ref, ref_text=ref_texto)
     # guarda cada pedaço já gravado (pasta NARR_CACHE, padrão ./cache) para retomar temas longos se a gravação parar
     CACHE = os.environ.get("NARR_CACHE", "cache"); os.makedirs(CACHE, exist_ok=True)
 
     def diz(t):
-        c = os.path.join(CACHE, hashlib.sha1(f"{voz}|{marca}|{vel}|{t}".encode()).hexdigest() + ".npy")
+        c = arq_cache(CACHE, voz, marca, vel, t)
         if os.path.exists(c): return np.load(c)
         a = m.generate(text=t, language="pt", speed=vel, voice_clone_prompt=pr)[0].astype(np.float32)
         tmp = f"{c}.{os.getpid()}.tmp.npy"; np.save(tmp, a); os.replace(tmp, c)
@@ -152,10 +165,11 @@ if __name__ == "__main__":
         nome = k.replace(":", "-"); dest = os.path.join(raiz, voz, nome)
         falas = falas_do_tema(k, tema)
         feito = hashlib.sha1(json.dumps([voz, marca, vel, ENTRE_FRASES, ENTRE_TRECHOS, ANTES_TITULO, DEPOIS_TITULO, PAUSA_MAX, tema["h"], falas], ensure_ascii=False).encode()).hexdigest()[:10]
-        if os.path.exists(dest + ".json") and json.load(open(dest + ".json")).get("v") == feito: print("pula", k, flush=True); continue
+        j = json.load(open(dest + ".json")) if os.path.exists(dest + ".json") else {}
+        if j.get("r", j.get("v")) == feito and not os.environ.get("NARR_REFAZ"): print("pula", k, flush=True); continue
         t0 = time.time(); audio, T = monta(tema, falas, diz)
         sf.write(dest + ".wav", audio, SR); mp3(dest + ".wav", dest + ".mp3"); os.remove(dest + ".wav")
-        json.dump({"h": tema["h"], "t": T, "v": feito}, open(dest + ".json", "w"))
+        json.dump({"h": tema["h"], "t": T, "v": hashlib.sha1(audio.tobytes()).hexdigest()[:10], "r": feito}, open(dest + ".json", "w"))
         idx_p = os.path.join(raiz, "indice.json"); idx = json.load(open(idx_p)) if os.path.exists(idx_p) else {}
         idx[k] = sorted(set(idx.get(k, []) + [voz])); json.dump(idx, open(idx_p, "w"), sort_keys=True)
         print(k, voz, "ok", round(len(audio) / SR / 60, 1), "min de áudio em", round((time.time() - t0) / 60, 1), "min", flush=True)
