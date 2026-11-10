@@ -21,7 +21,8 @@ from fala import fala, LETRA
 TENTATIVAS = 3  # ao regravar, quantas vezes tenta até o pedaço conferir
 LEVE = set("e de a o do da as os em no na que se".split())  # palavrinhas que o reconhecedor troca à toa
 TROCA = {"uma": "um", "duas": "dois", "duzentas": "duzentos", "trezentas": "trezentos", "primeira": "primeiro", "segunda": "segundo",
-         "terceira": "terceiro", "pro": "para o", "pros": "para os", "pra": "para", "pras": "para as", "ta": "esta"}
+         "terceira": "terceiro", "pro": "para o", "pros": "para os", "pra": "para", "pras": "para as", "ta": "esta",
+         "remissao": "remicao"}  # remição e remissão soam igual
 NOME = {"be": "b", "ce": "c", "de": "d", "efe": "f", "ge": "g", "aga": "h", "jota": "j", "ca": "k", "ele": "l", "eme": "m", "ene": "n",
         "pe": "p", "que": "q", "erre": "r", "esse": "s", "te": "t", "ve": "v", "xis": "x", "ze": "z"}
 
@@ -29,7 +30,7 @@ NOME = {"be": "b", "ce": "c", "de": "d", "efe": "f", "ge": "g", "aga": "h", "jot
 def norm(t):
     """Palavras para comparar: minúsculas, sem acento nem pontuação, e sem diferenças só de escrita."""
     t = "".join(c for c in unicodedata.normalize("NFD", t.lower()) if unicodedata.category(c) != "Mn")
-    t = re.sub(r"[^\w\s]", " ", t); t = re.sub(r"\ba linha\b", "alinea", t); out = []
+    t = re.sub(r"[^\w\s]", " ", t); t = re.sub(r"\ba linha\b", "alinea", t); t = re.sub(r"\blei numero\b", "lei", t); out = []
     for w in t.split(): out += TROCA.get(w, w).split()
     for i in range(1, len(out)):
         if out[i - 1] == "alinea" and out[i] in NOME: out[i] = NOME[out[i]]  # alínea cê = alínea c
@@ -39,6 +40,7 @@ def norm(t):
 def difs(dito, ouvido):
     """O que difere entre o texto que devia ser dito e o que o reconhecedor ouviu (lista de "roteiro => ouvido")."""
     # letra solta na transcrição é nome de letra ("C de corrente"), a não ser depois de "inciso" (aí é número romano)
+    ouvido = re.sub(r"(\d)([A-Z])\b", r"\1-\2", ouvido)  # 241A -> 241-A
     ouvido = re.sub(r"(?<![Ii]nciso )(?<![Ii]ncisos )\b([B-DF-HJ-NP-TV-Z])\b(?![ºª°])", lambda m: LETRA[m[1]], ouvido)
     ref = norm(dito); hyp = norm(fala(ouvido)); out = []
     for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, ref, hyp, autojunk=False).get_opcodes():
