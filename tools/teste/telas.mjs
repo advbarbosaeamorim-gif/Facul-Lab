@@ -16,7 +16,7 @@ const TELAS = [
   { tela: "ler", d: "pen2", pg: 2, pagina: true }, { tela: "config" }, { tela: "progresso" }, { tela: "metas" },
   { tela: "cartoes" }, { tela: "busca" }, { tela: "leiseca" }, { tela: "caderno" }, { tela: "revisao" },
   { tela: "foco" }, { tela: "semanal" }, { tela: "sobre" }, { tela: "quem" }, { tela: "mprova" }, { tela: "backup" }, { tela: "favs" }, { tela: "medida" }, { tela: "mudancas" },
-  { tela: "pre", key: "casos:todas" }, { tela: "provas" },
+  { tela: "pre", key: "casos:todas" }, { tela: "provas" }, { tela: "pre", key: "rvp:pena:0" },
 ];
 /* avisos do navegador que não são defeitos do app */
 const IGNORA = /vibrate|fonts\.g|ERR_INTERNET_DISCONNECTED|ERR_NAME_NOT_RESOLVED|net::ERR/;
