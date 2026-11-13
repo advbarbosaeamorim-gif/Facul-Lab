@@ -8,7 +8,7 @@ const REV_PROVA={
    "Regimes","Penas privativas de liberdade","Espécies de pena","Progressão de regime","Exame criminológico","Saída temporária","Execução",
    "Penas restritivas","Requisitos da substituição","Prestação pecuniária","Perda de bens e valores","Prestação de serviços","Limitação de fim de semana","Conversão","Falta grave",
    "Princípios da pena"],
-  fora:["p206"]}};
+  fora:["p206"],ate:"2026-12-20"}};
 const REV_TAM=15,CACHE_REV={};
 /* intercala os assuntos para que cada simulado misture todos os temas */
 function idsRev(id){if(CACHE_REV[id])return CACHE_REV[id];const R=REV_PROVA[id];if(!R)return [];
@@ -31,3 +31,9 @@ function blocoRevProva(d){const ids=Object.keys(REV_PROVA).filter(k=>REV_PROVA[k
 {const t0=telaDisc;telaDisc=function(){const h=t0(),b=blocoRevProva(rota.d);if(!b)return h;
  const marca=`<div class="secao" role="heading" aria-level="2">Simulados</div>`,i=h.indexOf(marca);
  return i<0?h:h.slice(0,i)+`<div class="secao" role="heading" aria-level="2">Revisão para a prova</div>`+b+h.slice(i)}}
+/* atalhos para achar a revisão: cartão no Hoje (até a data "ate") e na tela Faculdade do período da disciplina */
+function cartaoRevProva(){return Object.keys(REV_PROVA).map(id=>{const R=REV_PROVA[id],tot=idsRev(id).length;if(!tot||(R.ate&&hojeStr()>R.ate))return "";
+ return `<button class="card destaque rvp-card" data-acao="disc" data-d="${R.d}">${tile("var(--lacre)","alvo")}<b>${esc(R.titulo)}: ${esc(R.sub)}</b><small>${tot} questões só com o que cai na prova: ${esc(R.temas.slice(0,4).join(", "))} e mais</small></button>`}).join("")}
+{const t0=telaHoje;telaHoje=function(){const h=t0(),c=cartaoRevProva(),m=`<main class="wrap hoje">`,i=h.indexOf(m);return !c||i<0?h:h.slice(0,i+m.length)+c+h.slice(i+m.length)}}
+{const t0=telaFaculdade;telaFaculdade=function(){const h=t0(),ds=PERIODOS[periodo]||[];const c=Object.keys(REV_PROVA).some(id=>ds.includes(REV_PROVA[id].d))?cartaoRevProva():"";
+ const m=`<div class="secao" role="heading" aria-level="2">Apostila do período</div>`,i=h.indexOf(m);return !c||i<0?h:h.slice(0,i)+c+h.slice(i)}}
