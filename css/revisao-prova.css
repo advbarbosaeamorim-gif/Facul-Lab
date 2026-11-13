@@ -9,3 +9,4 @@
 [data-estilo="premium"] .rvp-temas li{color:var(--p1);background:color-mix(in srgb,var(--p1) 10%,transparent);border-color:color-mix(in srgb,var(--p1) 28%,transparent)}
 [data-estilo="classico"] .rvp{border-radius:6px}
 [data-estilo="classico"] .rvp-temas li{border-radius:4px}
+.rvp-card{margin:4px 0 14px}
