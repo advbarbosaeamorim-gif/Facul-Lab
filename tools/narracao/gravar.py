@@ -8,8 +8,10 @@ explica em sala). Sem roteiro, lê o texto da apostila como está.
 Uso: python gravar.py trechos.json <voz f|m> [chaves...]     (vozes e textos de referência em vozes.json)
 NARR_CACHE = pasta dos pedaços já gravados; NARR_THREADS = núcleos por processo (para rodar mais de um ao mesmo tempo);
 NARR_REFAZ=1 = monta o tema de novo mesmo que já esteja pronto (depois de regravar um pedaço com ouvir.py);
-NARR_VOZES = outro arquivo de vozes no lugar de vozes.json (para experimentar uma voz)."""
-import sys, os, re, json, subprocess, time, hashlib, numpy as np
+NARR_VOZES = outro arquivo de vozes no lugar de vozes.json (para experimentar uma voz).
+Dois ou mais processos podem gravar os mesmos temas ao mesmo tempo com o mesmo NARR_CACHE: cada um marca o pedaço
+que está gravando (<pedaço>.fazendo) e os outros pegam o seguinte; quem chega primeiro ao fim monta o tema."""
+import sys, os, re, json, subprocess, time, hashlib, signal, numpy as np
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
@@ -116,6 +118,42 @@ def arq_cache(pasta, voz, marca, vel, t):
     return os.path.join(pasta, hashlib.sha1(f"{voz}|{marca}|{vel}|{t}".encode()).hexdigest() + ".npy")
 
 
+MARCA_VELHA = 20 * 60  # marca mais antiga que isso é de um processo que morreu
+
+
+def reserva(arq):
+    """Marca que este processo está cuidando de `arq` (um pedaço ou a montagem de um tema). False se outro já marcou."""
+    marca = arq + ".fazendo"
+    try:
+        if time.time() - os.path.getmtime(marca) > MARCA_VELHA: os.remove(marca)
+    except OSError: pass
+    try: os.close(os.open(marca, os.O_CREAT | os.O_EXCL | os.O_WRONLY)); return True
+    except FileExistsError: return False
+
+
+def solta(arq):
+    try: os.remove(arq + ".fazendo")
+    except OSError: pass
+
+
+def garante(textos, arq_de, grava, espera=10):
+    """Deixa todos os pedaços gravados no cache. O pedaço que outro processo já está gravando fica com ele: este
+    processo segue para o próximo e, no fim, espera os que faltarem (ou grava, se o outro processo morreu)."""
+    falta = list(dict.fromkeys(textos))
+    while falta:
+        resto = []; andou = False
+        for t in falta:
+            c = arq_de(t)
+            if os.path.exists(c): andou = True; continue
+            if not reserva(c): resto.append(t); continue
+            try:
+                if not os.path.exists(c): grava(t, c)
+            finally: solta(c)
+            andou = True
+        falta = resto
+        if falta and not andou: time.sleep(espera)
+
+
 def monta(tema, falas, diz):
     """Junta as falas com pausas curtas e devolve (áudio, início de cada trecho em segundos)."""
     tags = [tr["tag"] in ("h4", "h5") for tr in tema["trechos"]]
@@ -153,23 +191,34 @@ if __name__ == "__main__":
     # guarda cada pedaço já gravado (pasta NARR_CACHE, padrão ./cache) para retomar temas longos se a gravação parar
     CACHE = os.environ.get("NARR_CACHE", "cache"); os.makedirs(CACHE, exist_ok=True)
 
-    def diz(t):
-        c = arq_cache(CACHE, voz, marca, vel, t)
-        if os.path.exists(c): return np.load(c)
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(143))  # ao ser parado, solta o pedaço que estava marcado
+
+    def arq_de(t): return arq_cache(CACHE, voz, marca, vel, t)
+
+    def grava(t, c):
         a = m.generate(text=t, language="pt", speed=vel, voice_clone_prompt=pr)[0].astype(np.float32)
         tmp = f"{c}.{os.getpid()}.tmp.npy"; np.save(tmp, a); os.replace(tmp, c)
-        return a
+
+    def diz(t): return np.load(arq_de(t))
 
     for k in so or list(J):
         tema = J[k]
         nome = k.replace(":", "-"); dest = os.path.join(raiz, voz, nome)
         falas = falas_do_tema(k, tema)
         feito = hashlib.sha1(json.dumps([voz, marca, vel, ENTRE_FRASES, ENTRE_TRECHOS, ANTES_TITULO, DEPOIS_TITULO, PAUSA_MAX, tema["h"], falas], ensure_ascii=False).encode()).hexdigest()[:10]
-        j = json.load(open(dest + ".json")) if os.path.exists(dest + ".json") else {}
-        if j.get("r", j.get("v")) == feito and not os.environ.get("NARR_REFAZ"): print("pula", k, flush=True); continue
-        t0 = time.time(); audio, T = monta(tema, falas, diz)
-        sf.write(dest + ".wav", audio, SR); mp3(dest + ".wav", dest + ".mp3"); os.remove(dest + ".wav")
-        json.dump({"h": tema["h"], "t": T, "v": hashlib.sha1(audio.tobytes()).hexdigest()[:10], "r": feito}, open(dest + ".json", "w"))
-        idx_p = os.path.join(raiz, "indice.json"); idx = json.load(open(idx_p)) if os.path.exists(idx_p) else {}
-        idx[k] = sorted(set(idx.get(k, []) + [voz])); json.dump(idx, open(idx_p, "w"), sort_keys=True)
+        def pronto():
+            j = json.load(open(dest + ".json")) if os.path.exists(dest + ".json") else {}
+            return j.get("r", j.get("v")) == feito and not os.environ.get("NARR_REFAZ")
+        if pronto(): print("pula", k, flush=True); continue
+        t0 = time.time(); garante([p for f in falas for p in pedacos(f)], arq_de, grava)
+        montagem = os.path.join(CACHE, f"{voz}-{nome}")
+        if not reserva(montagem): print("pula", k, "(outro processo está montando)", flush=True); continue
+        try:
+            if pronto(): print("pula", k, "(outro processo montou)", flush=True); continue
+            audio, T = monta(tema, falas, diz)
+            sf.write(dest + ".wav", audio, SR); mp3(dest + ".wav", dest + ".mp3"); os.remove(dest + ".wav")
+            json.dump({"h": tema["h"], "t": T, "v": hashlib.sha1(audio.tobytes()).hexdigest()[:10], "r": feito}, open(dest + ".json", "w"))
+            idx_p = os.path.join(raiz, "indice.json"); idx = json.load(open(idx_p)) if os.path.exists(idx_p) else {}
+            idx[k] = sorted(set(idx.get(k, []) + [voz])); json.dump(idx, open(idx_p, "w"), sort_keys=True)
+        finally: solta(montagem)
         print(k, voz, "ok", round(len(audio) / SR / 60, 1), "min de áudio em", round((time.time() - t0) / 60, 1), "min", flush=True)
