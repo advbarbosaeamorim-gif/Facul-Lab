@@ -41,6 +41,10 @@ def pedacos(t, lim=300):
         else: out[-1] = (out[-1] + " " + f).strip()
     out = [x for x in out if x]
     if len(out) > 1 and len(out[-1]) < 70 and len(out[-2]) + len(out[-1]) <= 370: out[-2:] = [out[-2] + " " + out[-1]]  # não deixa um restinho sozinho
+    # pedaço não começa com frase de uma ou duas palavras ("Semiaberto."): sem nada antes, a voz engole. Ela fica no fim do anterior.
+    for i in range(1, len(out)):
+        f = re.split(r"(?<=[.!?…])\s+", out[i])
+        if len(f) > 1 and len(f[0]) <= 16 and len(out[i - 1]) + len(f[0]) <= 370: out[i - 1] += " " + f[0]; out[i] = " ".join(f[1:])
     return out
 
 
