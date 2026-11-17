@@ -1,0 +1,55 @@
+# Roteiro de aula falada. Penal II, tema 12: Prescrição penal
+# h=1gxjdfq.53
+0| Chegamos à prescrição penal. Vamos começar pelo conceito.
+1| A prescrição é a perda do poder de punir, ou de executar a pena, pelo decurso do tempo. E por que isso existe? Porque, depois de muito tempo, a pena perde a sua utilidade. A sociedade esqueceu o fato, as provas se perderam, o agente pode ter mudado. E guarda isto: é matéria de ordem pública. O juiz deve reconhecer a prescrição de ofício, em qualquer fase do processo. Art. 61 do Código de Processo Penal.
+2| Existem duas grandes espécies.
+3| A primeira é a prescrição da pretensão punitiva, a PPP. Ela ocorre antes do trânsito em julgado da condenação. E ela impede a própria condenação, ou apaga a condenação, com todos os seus efeitos.
+4| A segunda é a prescrição da pretensão executória, a PPE. Ela ocorre depois do trânsito em julgado. Aqui, o Estado perde o direito de executar a pena, mas a condenação continua valendo para outros efeitos, como a reincidência.
+5| Vamos começar pela pretensão punitiva em abstrato.
+6| Antes de haver sentença, a prescrição se regula pelo máximo da pena privativa de liberdade cominada ao crime. É a tabela do art. 109. Presta atenção. Pena máxima inferior a 1 ano: prescreve em 3 anos. Pena de 1 a 2 anos: prescreve em 4 anos. Superior a 2, até 4 anos: prescreve em 8. Superior a 4, até 8 anos: prescreve em 12. Superior a 8, até 12 anos: prescreve em 16. E pena superior a 12 anos: prescreve em 20 anos.
+7| Tem um jeito fácil de decorar essa tabela do art. 109. Abaixo de 1 ano, são 3. Até 4 anos, você dobra o teto: até 2 vira 4, e até 4 vira 8. Depois, você soma 4 ao teto: até 8 vira 12, até 12 vira 16, e acima disso, 20.
+8| Vamos aplicar? O furto simples tem pena de 1 a 6 anos, pela Lei 15.397/2026. A pena máxima é de 6 anos, que cai na faixa superior a 4 até 8 anos. Então, a prescrição em abstrato ocorre em 12 anos. E para os fatos anteriores a maio de 2026? Vale a pena antiga, de 1 a 4 anos, com prescrição em 8 anos, porque a lei penal mais grave não retroage. Outro exemplo: o homicídio simples, com pena de 6 a 20 anos, prescreve em 20 anos.
+9| E um detalhe do cálculo: as causas de aumento e de diminuição de pena são consideradas, pelo máximo de aumento e pelo mínimo de diminuição. Já as agravantes e as atenuantes, não.
+10| Agora, a pretensão punitiva retroativa e a intercorrente.
+11| O que muda aqui? Depois da sentença condenatória com trânsito em julgado para a acusação, ou depois de improvido o recurso dela, a prescrição passa a se regular pela pena aplicada na sentença, a pena em concreto, e não mais pela pena máxima. É o art. 110, §1º. E isso dá origem a duas modalidades.
+12| A retroativa: aqui, conta-se o prazo para trás, entre os marcos interruptivos anteriores à sentença, ou seja, entre o recebimento da denúncia e a sentença. Mas ela não pode, em hipótese alguma, ter por termo inicial data anterior à da denúncia ou queixa. Art. 110, §1º. Em outras palavras: o período entre o fato e o recebimento da denúncia não conta para a retroativa.
+13| E a intercorrente, também chamada de superveniente: aqui, conta-se o prazo para frente, entre a sentença condenatória e o trânsito em julgado definitivo, durante os recursos da defesa.
+14| Olha um exemplo. Fábio é denunciado por um furto. A denúncia é recebida em 2015, e a sentença é publicada em 2020, condenando Fábio a 1 ano de reclusão, sem recurso do Ministério Público. Pela pena aplicada, de 1 ano, a prescrição é de 4 anos. Só que, entre o recebimento da denúncia, em 2015, e a sentença, em 2020, passaram-se 5 anos. Resultado: ocorreu a prescrição retroativa, e a punibilidade está extinta.
+15| E a tal prescrição virtual, ou em perspectiva? Não é aceita! Pela Súmula 438 do STJ, é inadmissível a extinção da punibilidade pela prescrição da pretensão punitiva com fundamento em pena hipotética, independentemente da existência ou sorte do processo criminal.
+16| Vamos para a pretensão executória.
+17| Depois do trânsito em julgado da condenação, a prescrição se regula pela pena aplicada e pelos mesmos prazos do art. 109. E esses prazos se aumentam de 1/3 se o condenado é reincidente. Art. 110. Mas cuidado com a troca: a reincidência não influi no prazo da prescrição da pretensão punitiva. É a Súmula 220 do STJ.
+18| E quando ela começa a correr? A letra do art. 112, inciso I, diz que é do dia em que transita em julgado a sentença condenatória para a acusação. Mas o STF fixou, no Tema 788, que o termo inicial é o trânsito em julgado para ambas as partes. E esse entendimento se aplica aos casos em que a pena não tenha sido declarada extinta, e em que o trânsito em julgado para a acusação tenha ocorrido a partir de 12/11/2020.
+19| E se o condenado fugir, ou se o livramento condicional for revogado? Aí a prescrição é regulada pelo tempo que resta da pena. Art. 113.
+20| Agora, a redução dos prazos.
+21| Os prazos de prescrição são reduzidos de metade quando o criminoso era, ao tempo do crime, menor de 21 anos, ou, na data da sentença, maior de 70 anos. É o art. 115. E atenção para a novidade: desde a Lei 15.160/2025, essa redução não se aplica quando o crime envolver violência sexual contra a mulher.
+22| Para guardar a prescrição pela metade: menos de 21 na data do fato, e mais de 70 na data da sentença. São as mesmas idades da atenuante do art. 65, inciso I.
+23| E quando começa a correr a pretensão punitiva? É o termo inicial, do art. 111.
+24| Antes de transitar em julgado a sentença final, a prescrição começa a correr nos seguintes momentos.
+25| Do dia em que o crime se consumou.
+26| No caso de tentativa, do dia em que cessou a atividade criminosa.
+27| Nos crimes permanentes, do dia em que cessou a permanência.
+28| Nos crimes de bigamia, e nos de falsificação ou alteração de assentamento do registro civil, da data em que o fato se tornou conhecido.
+29| E, nos crimes contra a dignidade sexual, ou que envolvam violência contra a criança e o adolescente, previstos no Código ou em legislação especial, da data em que a vítima completar 18 anos. Salvo se, a esse tempo, já houver sido proposta a ação penal.
+30| Agora, as causas impeditivas, também chamadas de suspensivas.
+31| Pelo art. 116, antes de passar em julgado a sentença final, a prescrição não corre em quatro situações.
+32| Enquanto não for resolvida, em outro processo, questão de que dependa o reconhecimento da existência do crime.
+33| Enquanto o agente cumpre pena no exterior.
+34| Na pendência de embargos de declaração ou de recursos aos Tribunais Superiores, quando inadmissíveis.
+35| E enquanto não for cumprido ou não for rescindido o acordo de não persecução penal.
+36| E depois de passada em julgado a sentença condenatória? Aí a prescrição não corre durante o tempo em que o condenado está preso por outro motivo. Art. 116, parágrafo único. E tem mais uma hipótese: a prescrição também se suspende quando o réu, citado por edital, não comparece nem constitui advogado. É o art. 366 do Código de Processo Penal. E por quanto tempo? Pelo prazo regulado pelo máximo da pena cominada, conforme a Súmula 415 do STJ.
+37| Vamos às causas interruptivas, do art. 117.
+38| Aqui é diferente da suspensão: na interrupção, o prazo zera e recomeça. E o curso da prescrição se interrompe em seis momentos.
+39| Inciso I: pelo recebimento da denúncia ou da queixa.
+40| Inciso II: pela pronúncia.
+41| Inciso III: pela decisão confirmatória da pronúncia.
+42| Inciso IV: pela publicação da sentença ou do acórdão condenatórios recorríveis.
+43| Inciso V: pelo início ou continuação do cumprimento da pena.
+44| E inciso VI: pela reincidência.
+45| Dois complementos importantes. A pronúncia é causa interruptiva da prescrição, ainda que o Tribunal do Júri venha a desclassificar o crime. É a Súmula 191 do STJ. E o acórdão que confirma a condenação também interrompe a prescrição, segundo o STF, no Tema 1.100.
+46| Para decorar as causas de interrupção, junta as primeiras sílabas: re, pro, co, pu, cu, rein. Re, de recebimento da denúncia. Pro, de pronúncia. Co, de confirmação da pronúncia. Pu, de publicação da sentença ou acórdão condenatório. Cu, de cumprimento da pena. E rein, de reincidência.
+47| Para fechar, multa e imprescritibilidade.
+48| A prescrição da pena de multa ocorre em 2 anos, quando a multa for a única cominada ou aplicada. Ou no mesmo prazo estabelecido para a prescrição da pena privativa de liberdade, quando a multa for alternativa ou cumulativamente cominada, ou cumulativamente aplicada. Art. 114.
+49| As penas mais leves prescrevem com as mais graves. Art. 118.
+50| E o que nunca prescreve? São imprescritíveis o racismo e a ação de grupos armados, civis ou militares, contra a ordem constitucional e o Estado Democrático. Art. 5º, incisos XLII e XLIV, da Constituição. E o STF incluiu a injúria racial nessa regra.
+51| E, para a sua revisão final, anota o que responde pela maior parte das questões. Dosimetria, com as Súmulas 231, 241 e 444. Regimes, com as Súmulas 269, 718 e 719. Concurso de crimes. Substituição, com o macete do 4, ésse, êne. Sursis. Livramento, com 1/3, 1/2 e 2/3. Progressão. A tabela do art. 109. A prescrição retroativa. E as causas de redução e de interrupção da prescrição.
+52| Agora é com você. Tente responder sozinho, antes de tocar na pergunta para ver a resposta. E assim a gente fecha a prescrição penal. Bora para o Teste-se!

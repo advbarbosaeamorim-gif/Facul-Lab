@@ -25,7 +25,18 @@ for (const d of discs) {
       const b = document.querySelector("[data-ouvir-k]");
       if (!b || b.dataset.ouvirK.split(":")[1] != String(k)) return null;
       const els = ouvirTrechos(b);
-      return { k: b.dataset.ouvirK, tit: document.querySelector(".tema-ban h3")?.innerText || "", h: ouvirImpressao(els), trechos: els.map(e => ({ tag: e.tagName.toLowerCase(), t: ouvirTexto(e) })) };
+      /* quadros, tabelas e figuras que o leitor pula (não dá para ler em linha): vão em "x" no trecho anterior,
+         para o roteiro da aula poder explicar o que está neles. Simuladores ficam de fora. */
+      const limpa = s => s.replace(/\s+/g, " ").trim();
+      const extras = els.map(() => []);
+      [...b.nextElementSibling.querySelectorAll("figure.fig, .tab")].filter(f => !f.matches(".calc") && !f.closest("details")).forEach(f => {
+        let i = -1; els.forEach((e, n) => { if (e.compareDocumentPosition(f) & Node.DOCUMENT_POSITION_FOLLOWING) i = n; });
+        const linhas = [...f.querySelectorAll("tr")].map(tr => [...tr.children].map(c => limpa(c.innerText)).join(" | "));
+        const t = linhas.length ? linhas.join(" // ") : f.innerText.split("\n").map(limpa).filter(Boolean).join(" | ");
+        extras[Math.max(i, 0)].push((f.matches(".ilus") ? "ilustração: " : f.matches(".tab") ? "tabela: " : "quadro: ") + t);
+      });
+      return { k: b.dataset.ouvirK, tit: document.querySelector(".tema-ban h3")?.innerText || "", h: ouvirImpressao(els),
+        trechos: els.map((e, n) => Object.assign({ tag: e.tagName.toLowerCase(), t: ouvirTexto(e) }, extras[n].length ? { x: extras[n] } : {})) };
     }, k);
     if (!r) break;
     out[r.k] = r;

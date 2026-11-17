@@ -1,3 +1,5 @@
 node_modules/
 .netlify/
 tools/teste/prints/
+__pycache__/
+tools/narracao/cache/

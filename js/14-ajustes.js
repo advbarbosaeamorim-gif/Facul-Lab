@@ -41,10 +41,12 @@ const ouvirTexto=el=>el.textContent.replace(/\s+/g," ").trim();
 function ouvirImpressao(els){const s=els.map(ouvirTexto).join("\n");let h=5381;for(let i=0;i<s.length;i++)h=(Math.imul(h,33)+s.charCodeAt(i))>>>0;return h.toString(36)+"."+els.length}
 let ouv=null,ouvIdx=null;
 function ouvirIndice(){if(!ouvIdx)ouvIdx=fetch("audio/indice.json").then(r=>r.ok?r.json():{}).catch(()=>{ouvIdx=null;return {}});return ouvIdx}
+/* tema regravado ganha outra versão (?v=): assim o aparelho não toca a gravação antiga com a marcação nova, e as cópias velhas saem da memória */
+function ouvirLimpa(arq,v){try{if(!v||!self.caches)return;const fim="/"+arq+".mp3";caches.keys().then(ns=>ns.forEach(n=>caches.open(n).then(c=>c.keys().then(rs=>rs.forEach(r=>{const u=new URL(r.url);if(u.pathname.endsWith(fim)&&u.search!=="?v="+v)c.delete(r)}))))).catch(()=>{})}catch(e){}}
 async function ouvirAudio(k,v,els){const idx=await ouvirIndice();const tem=idx[k];if(!tem||!tem.includes(v))return null;
  const arq="audio/"+v+"/"+k.replace(":","-");const j=await fetch(arq+".json").then(r=>r.ok?r.json():null);
  if(!j||j.h!==ouvirImpressao(els)||!Array.isArray(j.t)||j.t.length!==els.length)return null;
- const r=await fetch(arq+".mp3");if(!r.ok)return null;const url=URL.createObjectURL(await r.blob());
+ const r=await fetch(arq+".mp3"+(j.v?"?v="+j.v:""));if(!r.ok)return null;ouvirLimpa(arq,j.v);const url=URL.createObjectURL(await r.blob());
  const au=new Audio(url);au.preload="auto";au._url=url;return {au,T:j.t}}
 function ouvirBtn(k){if(!ouvirOk()&&vozCfg()==="cel")return "";const on=ouv&&ouv.k===k;
  return `<button class="ouvir${on?" on":""}" data-ouvir="tocar" data-ouvir-k="${k}" aria-pressed="${!!on}">${ic(on?"pausa":"som")}<span>${on?(ouv.pausa?"Continuar ouvindo":"Pausar a leitura"):"Ouvir este tema"}</span></button>`}
