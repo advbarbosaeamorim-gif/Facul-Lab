@@ -41,7 +41,7 @@ def difs(dito, ouvido):
     """O que difere entre o texto que devia ser dito e o que o reconhecedor ouviu (lista de "roteiro => ouvido")."""
     # letra solta na transcrição é nome de letra ("C de corrente"), a não ser depois de "inciso" (aí é número romano)
     ouvido = re.sub(r"(\d)([A-Z])\b", r"\1-\2", ouvido)  # 241A -> 241-A
-    ouvido = re.sub(r"(?<![Ii]nciso )(?<![Ii]ncisos )\b([B-DF-HJ-NP-TV-Z])\b(?![ºª°])", lambda m: LETRA[m[1]], ouvido)
+    ouvido = re.sub(r"(?<![Ii]nciso )(?<![Ii]ncisos )\b([B-DF-HJ-NP-TV-Z])\b(?![ºª°$])", lambda m: LETRA[m[1]], ouvido)
     ref = norm(dito); hyp = norm(fala(ouvido)); out = []
     for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, ref, hyp, autojunk=False).get_opcodes():
         if op == "equal" or all(w in LEVE for w in ref[i1:i2] + hyp[j1:j2]): continue
